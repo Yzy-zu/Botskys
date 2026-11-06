@@ -1,0 +1,22 @@
+{
+  "group": {
+    "verified_lab": true,
+    "subject": "Botsky Lab",
+    "bot_admin": true,
+    "participants": 2,
+    "locked": false,
+    "announcement": false
+  },
+  "status": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running"
+  },
+  "players": {
+    "status": "online",
+    "online": true,
+    "players_known": true,
+    "count": 0,
+    "max": 10
+  }
+}

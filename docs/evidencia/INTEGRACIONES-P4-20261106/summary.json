@@ -1,0 +1,40 @@
+{
+  "campaign_closed": true,
+  "real_application_commands": 15,
+  "expected_command_outcomes": 13,
+  "backup_receipt": "uncertain; subsequent read-only inspection observed no archive",
+  "app_restart_after_uncertainty": "blocked as designed; distinct operator recovery start succeeded",
+  "drive_roundtrip_verified": true,
+  "drive_fixture_trashed": true,
+  "group_toggle_and_restoration_verified": true,
+  "participants_or_roles_changed": false,
+  "minecraft_initial_online_restored": true,
+  "minecraft_healthy": true,
+  "minecraft_players_known": true,
+  "minecraft_final_players": 0,
+  "backup_data_bytes": 1591454143,
+  "backup_max_bytes": 1073741824,
+  "backup_worker_timeout_seconds": 25,
+  "backup_accepted": false,
+  "backup_repeated": false,
+  "source_profile_write_flags_remain_disabled": true,
+  "sqlite_integrity": "ok",
+  "active_jobs_remaining": 0,
+  "pending_fixture_outbox_cancelled": 16,
+  "whatsapp_sends": 0,
+  "transition_or_browser_or_calls": false,
+  "point4_global_acceptance_complete": false,
+  "remaining": [
+    "Backup exceeds current worker budget/size; no successful backup acceptance",
+    "Participant mutations: Lab has only protected owner/bot; no eligible synthetic participant",
+    "Mod activation/deactivation and restart command not remotely accepted in this run"
+  ],
+  "local_tests": {
+    "tests": 50,
+    "success": true,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "non_loopback_attempts": 0
+  }
+}

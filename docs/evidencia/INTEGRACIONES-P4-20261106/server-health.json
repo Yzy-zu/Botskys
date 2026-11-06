@@ -1,0 +1,14 @@
+{
+  "limits": {
+    "MAX_BACKUP_BYTES": 1073741824,
+    "BACKUP_TIMEOUT_SECONDS": 25,
+    "WORKER_TIMEOUT_SECONDS": 25
+  },
+  "running": true,
+  "restarting": false,
+  "exit_code": 0,
+  "health": "healthy",
+  "server_started_seen": true,
+  "log_error_count": 0,
+  "players_response_seen": true
+}

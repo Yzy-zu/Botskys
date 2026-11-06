@@ -1,0 +1,114 @@
+{
+  "cases": [
+    {
+      "case": "drive_quota",
+      "status": "ok",
+      "code": "drive_capacity",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "drive_upload",
+      "status": "ok",
+      "code": "drive_saved",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "drive_search",
+      "status": "needs_input",
+      "code": "drive_choices",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "drive_choose",
+      "status": "ok",
+      "code": "drive_downloaded",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "group_toggle_lock",
+      "status": "ok",
+      "code": "admin_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "group_restore_lock",
+      "status": "ok",
+      "code": "admin_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_query_estado",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_query_jugadores",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_query_mundos",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_query_mods",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_query_config",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_console_list",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_stop",
+      "status": "ok",
+      "code": "minecraft_completed",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_backup",
+      "status": "uncertain",
+      "code": "minecraft_uncertain",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    },
+    {
+      "case": "mc_restore_start",
+      "status": "needs_input",
+      "code": "minecraft_resource_busy",
+      "evidence": "real_provider; simulated_operator_input; no_WhatsApp_delivery"
+    }
+  ],
+  "checks": {
+    "drive_5TiB": true,
+    "drive_roundtrip_sha256": true,
+    "drive_fixture_bytes": 73,
+    "drive_duplicate_received_without_second_upload": true,
+    "drive_fixture_trashed": true,
+    "group_setting_changed": true,
+    "group_setting_restored": true,
+    "group_members_and_roles_unchanged": true,
+    "group_announcement_unchanged": true,
+    "mc_console_bridge_ack": true,
+    "mc_stopped": true,
+    "mc_backup_created": false,
+    "mc_backup_source_bytes": null,
+    "mc_backup_entries": null,
+    "mc_initial_online_state_restored": true,
+    "mc_active_world_unchanged": true,
+    "mc_after_players_verified": false,
+    "mc_after_player_count": null
+  }
+}

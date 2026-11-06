@@ -1,0 +1,11 @@
+{
+  "recent_backup_files": [],
+  "data_bytes": 1591454143,
+  "worker_matches_local": false,
+  "online": true,
+  "players_known": true,
+  "count": 0,
+  "players_verification": "Subsequent live query after healthy startup",
+  "backup_outcome": "KNOWN_FAILED_NO_ARCHIVE_OBSERVED; original receipt remains uncertain",
+  "backup_not_repeated": true
+}

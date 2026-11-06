@@ -142,3 +142,9 @@ previamente configurada también accesible. No crea carpeta ni cambia el destino
 permisos operativos, servicios o campañas. Cero escrituras remotas. Bloqueo
 invalid_grant resuelto en perfil propio principal; copias de laboratorios cerrados
 no se actualizan ni reactivan. Evidencia OAUTH-RENOVADO-5TB-20261106.json.
+
+## Punto4 real posterior
+
+Drive roundtrip y ajuste reversible Lab verificados. Minecraft recuperado sano;
+backup no aceptado por plazo y volumen fuera del límite. Ejecución cerrada,
+aceptación parcial y permisos operativos intactos. Ver [informe](INTEGRACIONES_P4_20261106.md).

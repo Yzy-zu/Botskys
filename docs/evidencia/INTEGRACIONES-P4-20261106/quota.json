@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-11-06T21:31:04.789814Z",
+  "buckets": [
+    {
+      "id": "codex",
+      "primary": {
+        "used_percent": 87,
+        "remaining_percent": 13,
+        "window_minutes": 300,
+        "resets_at_utc": "2026-11-06T23:53:37Z"
+      },
+      "secondary": {
+        "used_percent": 80,
+        "remaining_percent": 20,
+        "window_minutes": 10080,
+        "resets_at_utc": "2026-11-12T02:23:05Z"
+      }
+    }
+  ]
+}

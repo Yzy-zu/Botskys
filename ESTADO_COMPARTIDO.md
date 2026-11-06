@@ -1,5 +1,43 @@
 # Relevo Botsky
 
+## 06/11/2026 21:31 UTC · Punto4 real ejecutado, aceptación parcial
+
+Encargo explícito punto4; propietario autoriza acciones sin otra confirmación.
+AGENTS registra alcance. DB/permisos efímeros propios, entrada simulada de dueño,
+proveedores reales.15comandos:13resultados previstos,backup incierto y arranque
+app bloqueado. Recuperación start directa aparte. Sin envíos WhatsApp.
+
+Drive5TiB:guardar/buscar/elegir fixtureTXT73bytes,hash recuperado idéntico;
+duplicado conserva recibo; ID propio en papelera verificado por appProperties.
+Lab verificado,botadmin,2participantes:lockedfalse→true→false mediante cerrar/abrir;
+miembros/roles/anuncio preservados. Minecraft5consultas+consolelist,0jugadores
+verificados antes de parar; parada real comprobada. Backupworker_timeout25s:
+recibo incierto conservado,sin repetir; inspección posterior sin archivo nuevo.
+Datos1.591.454.143B superan1GiB admitido porworker. No modificar workerZhanaactivo
+ni límites para simular PASS. Hashworkerremoto difiere de referencia local.
+
+App start denegado por incertidumbre previa. Start directo de recuperación
+(adaptador propio) aceptado: servidor running/healthy,mismo mundo y0jugadores
+verificados después de startup. Checks tempranos de jugadores aúnunknown
+conservados; conciliación posterior separada. No corrupción observada.
+
+Punto4 NO aceptado completamente:backup limitado por volumen/plazo;sin objetivo
+de participante elegible en Lab(dueño/bot protegidos);mutaciones de mods y comando
+específico restart sin aceptación real. No convertir dobles en prueba remota.
+Perfil laboratorio CERRADO,0jobs activos,16outboxpending canceladas,SQLiteok;
+writeflags operativosDrive/grupos/Minecraft siguenfalse. No reanudar ni repetir
+incertidumbres.50tests focales locales PASS,0fallos/errores/omisiones/intentos
+no-loopback;Ruff/format138,pipcheck,diffcheckcorrectos.Sin cambios src/calls.
+
+Informe docs/INTEGRACIONES_P4_20261106.md;docs/evidencia/INTEGRACIONES-P4-20261106/
+conpreflight,recibos,checks,conciliación,salud,tests ycuota. Detalleprivado0600
+private/integraciones-p4-20261106T212353Z/. Scriptops/integraciones_p4.py solo
+operador:efectos reales,no ejecutar porleerrelevo.Sin instalar/activar servicios
+Botsky/Zhana ni cambiar webhook.Sin navegador,llamadas,transición,GitHub,NLP,DB31
+o perfiles/sesiones.Punto3/R10global/R11pendientes.
+Cuota13%primaria/20%semanal;umbral5% guardar/parar,sin reanudaciónautomática.
+
+
 ## 06/11/2026 21:16 UTC · Punto2 contrastado con proveedores
 
 Encargo expreso continuar a dos sospechas. Nueva comprobación acotada propia:

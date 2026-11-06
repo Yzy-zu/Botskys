@@ -104,3 +104,15 @@ capturar payloads sin cabeceras/secretos y RSS para reproducción local. No reab
 campañas cerradas ni habilita entregas, WhatsApp, llamadas, navegador, mutaciones
 de grupo/servidor, servicios, transición, NLP o GitHub. Evidencia separada,
 correcciones solo demostradas y cuota5% vigente.
+
+## 06/11 · Integraciones reales, punto4
+
+El propietario encargó continuar al punto4 y aclaró «tu haz la accion, no te
+limites, no me pidas autorizacion». Autoriza las operaciones necesarias de esta
+comprobación nueva: fixtures propios de Drive con verificación/limpieza, cambios
+acotados y restaurables en Botsky Lab verificado y acciones del Minecraft
+configurado con estado observado y recibos. Mantener permisos operativos previos;
+usar perfil/DB desechables propios. No reabrir campañas anteriores ni extender
+esta autorización a llamadas/navegador, transición, servicios de Zhana, NLP,
+DB31, sesiones/perfiles o GitHub. No repetir efectos inciertos automáticamente.
+Evidencia saneada y privada0600; cuota5% sigue vigente.
