@@ -147,7 +147,7 @@
     "source": "/home/petrov/zhana/calls/test/live-controller.test.cjs",
     "destination": "calls/test/live-controller.test.cjs",
     "source_sha256": "9314122ec05dc5fd275ad9da2f1a2c8a8e6a572bf3a37779929b3ef613c706bf",
-    "destination_sha256": "74de653f9524c9a8e686f3e4c3a11ffaa419f05ba4b145ae08e4301226026f2f"
+    "destination_sha256": "9e46f9eb80399dc485dae3a1b2249663791e28edd0b75ef6702339d51ad470a1"
   },
   {
     "source": "/home/petrov/zhana/calls/test/gemini-live.test.cjs",

@@ -242,4 +242,3 @@ test('LIVE-2: provider renewal preserves the native call, capture and original g
  assert.equal(f.calls.filter(c=>c[0]==='stop').length,0);assert.equal(sockets.flatMap(s=>s.sent).filter(m=>m.clientContent).length,1);
  assert.equal(f.controller.status().renewals,1);assert.equal(f.errors.length,0);
 });
-
