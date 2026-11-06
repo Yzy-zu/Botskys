@@ -82,3 +82,16 @@ una copia propia de laboratorio. 150POST con HTTP201 al Lab incluyendo avisos/ci
 sin atribuirles recepción humana. Perfil operativo anterior sin cambios; efectos
 del perfil desechable también deshabilitados al terminar. Sin servicio/webhook,
 sesión/navegador/llamada, mutación de grupo/servidor, transición o GitHub.
+
+# Nueva campaña de profundidad · 06/11 18:35 UTC
+
+Tres tandas de diez testers AGY, modelo gemini-3.8-flash-medium:783casos y29informes.
+Descubrimiento sin cambiar producto;50claims para contraste posterior, no50defectos
+confirmados. Balance y evidencia en [STRESS_20261106.md](STRESS_20261106.md).
+95POST reales con HTTP201 al Lab contando cierre; resto de entregas de batería
+capturadas como fixtures y etiquetadas. No recepción Android/humana acreditada.
+
+Drive mantiene bloqueo OAuth; no se intentó reconectar por cuenta propia. Perfiles
+base y30herramientas con efectos retirados al cerrar, autenticación AGY temporal
+eliminada. Perfil operativo anterior intacto; no sesiones/navegador/llamadas,
+mutaciones grupo/servidor, servicio/webhook, transición o GitHub. R10 global abierto.

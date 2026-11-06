@@ -1,0 +1,251 @@
+{"tool": "manage_pdf", "case": "c01", "verdict": "PASS", "seconds": 9.092}
+{"tool": "make_voice", "case": "c01", "verdict": "PASS", "seconds": 7.176}
+{"tool": "conversation", "case": "c01", "verdict": "PASS", "seconds": 8.537}
+{"tool": "search_web", "case": "c01", "verdict": "PASS", "seconds": 8.208}
+{"tool": "manage_pdf", "case": "c02", "verdict": "PASS", "seconds": 6.347}
+{"tool": "read_image", "case": "c01", "verdict": "PASS", "seconds": 13.776}
+{"tool": "conversation", "case": "c02", "verdict": "PASS", "seconds": 2.601}
+{"tool": "search_web", "case": "c02", "verdict": "SUSPECTED", "seconds": 2.361}
+{"tool": "manage_pdf", "case": "c03", "verdict": "PASS", "seconds": 2.317}
+{"tool": "make_voice", "case": "c02", "verdict": "SUSPECTED", "seconds": 5.225}
+{"tool": "conversation", "case": "c03", "verdict": "PASS", "seconds": 0.61}
+{"tool": "read_image", "case": "c02", "verdict": "PASS", "seconds": 1.432}
+{"tool": "convert_document", "case": "c01", "verdict": "SUSPECTED", "seconds": 20.51}
+{"tool": "read_image", "case": "c03", "verdict": "PASS", "seconds": 1.668}
+{"tool": "transcribe_media", "case": "c01", "verdict": "SUSPECTED", "seconds": 16.582}
+{"tool": "convert_document", "case": "c02", "verdict": "SUSPECTED", "seconds": 1.947}
+{"tool": "read_image", "case": "c04", "verdict": "SUSPECTED", "seconds": 1.04}
+{"tool": "convert_document", "case": "c03", "verdict": "SUSPECTED", "seconds": 1.165}
+{"tool": "convert_document", "case": "c04", "verdict": "PASS", "seconds": 0.753}
+{"tool": "edit_media", "case": "c01", "verdict": "PASS", "seconds": 23.758}
+{"tool": "convert_document", "case": "c05", "verdict": "PASS", "seconds": 0.453}
+{"tool": "edit_media", "case": "c02", "verdict": "SUSPECTED", "seconds": 0.577}
+{"tool": "convert_document", "case": "c06", "verdict": "PASS", "seconds": 1.269}
+{"tool": "read_image", "case": "c05", "verdict": "SUSPECTED", "seconds": 3.519}
+{"tool": "make_sticker", "case": "c01", "verdict": "PASS", "seconds": 22.449}
+{"tool": "convert_document", "case": "c07", "verdict": "SUSPECTED", "seconds": 0.753}
+{"tool": "make_sticker", "case": "c02", "verdict": "PASS", "seconds": 0.848}
+{"tool": "read_image", "case": "c06", "verdict": "PASS", "seconds": 1.325}
+{"tool": "read_image", "case": "c07", "verdict": "PASS", "seconds": 0.61}
+{"tool": "read_image", "case": "c08", "verdict": "PASS", "seconds": 0.261}
+{"tool": "read_image", "case": "c09", "verdict": "PASS", "seconds": 0.003}
+{"tool": "read_image", "case": "c10", "verdict": "PASS", "seconds": 0.003}
+{"tool": "read_image", "case": "c11", "verdict": "PASS", "seconds": 0.081}
+{"tool": "convert_document", "case": "c08", "verdict": "PASS", "seconds": 2.778}
+{"tool": "convert_document", "case": "c09", "verdict": "PASS", "seconds": 0.324}
+{"tool": "convert_document", "case": "c10", "verdict": "PASS", "seconds": 0.357}
+{"tool": "search_web", "case": "c03", "verdict": "SUSPECTED", "seconds": 11.83}
+{"tool": "convert_document", "case": "c11", "verdict": "PASS", "seconds": 1.404}
+{"tool": "convert_document", "case": "c12", "verdict": "PASS", "seconds": 1.111}
+{"tool": "convert_document", "case": "c13", "verdict": "SUSPECTED", "seconds": 0.431}
+{"tool": "conversation", "case": "c04", "verdict": "PASS", "seconds": 15.855}
+{"tool": "conversation", "case": "c05", "verdict": "PASS", "seconds": 0.815}
+{"tool": "conversation", "case": "c06", "verdict": "PASS", "seconds": 1.057}
+{"tool": "transcribe_media", "case": "c02", "verdict": "SUSPECTED", "seconds": 16.291}
+{"tool": "transcribe_media", "case": "c03", "verdict": "SUSPECTED", "seconds": 2.916}
+{"tool": "transcribe_media", "case": "c04", "verdict": "SUSPECTED", "seconds": 1.96}
+{"tool": "transcribe_media", "case": "c05", "verdict": "SUSPECTED", "seconds": 0.768}
+{"tool": "download_media", "case": "c01", "verdict": "PASS", "seconds": 44.766}
+{"tool": "read_image", "case": "c12", "verdict": "PASS", "seconds": 16.175}
+{"tool": "transcribe_media", "case": "c06", "verdict": "SUSPECTED", "seconds": 1.649}
+{"tool": "search_web", "case": "c04", "verdict": "PASS", "seconds": 17.167}
+{"tool": "download_media", "case": "c02", "verdict": "PASS", "seconds": 4.775}
+{"tool": "read_image", "case": "c13", "verdict": "PASS", "seconds": 3.764}
+{"tool": "transcribe_media", "case": "c07", "verdict": "PASS", "seconds": 4.173}
+{"tool": "manage_pdf", "case": "c04", "verdict": "PASS", "seconds": 30.656}
+{"tool": "search_web", "case": "c05", "verdict": "PASS", "seconds": 2.045}
+{"tool": "make_voice", "case": "c03", "verdict": "SUSPECTED", "seconds": 32.378}
+{"tool": "download_media", "case": "c03", "verdict": "PASS", "seconds": 3.684}
+{"tool": "read_image", "case": "c14", "verdict": "PASS", "seconds": 3.582}
+{"tool": "transcribe_media", "case": "c08", "verdict": "PASS", "seconds": 3.292}
+{"tool": "manage_pdf", "case": "c05", "verdict": "PASS", "seconds": 9.207}
+{"tool": "conversation", "case": "c07", "verdict": "PASS", "seconds": 21.867}
+{"tool": "conversation", "case": "c08", "verdict": "PASS", "seconds": 0.003}
+{"tool": "convert_document", "case": "c14", "verdict": "SUSPECTED", "seconds": 26.085}
+{"tool": "search_web", "case": "c06", "verdict": "PASS", "seconds": 9.859}
+{"tool": "make_voice", "case": "c04", "verdict": "SUSPECTED", "seconds": 9.946}
+{"tool": "read_image", "case": "c15", "verdict": "PASS", "seconds": 8.963}
+{"tool": "edit_media", "case": "c03", "verdict": "PASS", "seconds": 36.945}
+{"tool": "transcribe_media", "case": "c09", "verdict": "SUSPECTED", "seconds": 3.049}
+{"tool": "manage_pdf", "case": "c06", "verdict": "PASS", "seconds": 2.978}
+{"tool": "conversation", "case": "c09", "verdict": "PASS", "seconds": 2.447}
+{"tool": "conversation", "case": "c10", "verdict": "PASS", "seconds": 0.004}
+{"tool": "convert_document", "case": "c15", "verdict": "SUSPECTED", "seconds": 2.919}
+{"tool": "search_web", "case": "c07", "verdict": "PASS", "seconds": 2.941}
+{"tool": "download_media", "case": "c04", "verdict": "PASS", "seconds": 10.7}
+{"tool": "read_image", "case": "c16", "verdict": "PASS", "seconds": 1.437}
+{"tool": "read_image", "case": "c17", "verdict": "PASS", "seconds": 0.004}
+{"tool": "read_image", "case": "c18", "verdict": "PASS", "seconds": 0.004}
+{"tool": "make_sticker", "case": "c03", "verdict": "PASS", "seconds": 36.574}
+{"tool": "make_voice", "case": "c05", "verdict": "SUSPECTED", "seconds": 3.23}
+{"tool": "edit_media", "case": "c04", "verdict": "PASS", "seconds": 3.415}
+{"tool": "manage_pdf", "case": "c07", "verdict": "SUSPECTED", "seconds": 3.346}
+{"tool": "transcribe_media", "case": "c10", "verdict": "PASS", "seconds": 3.48}
+{"tool": "search_web", "case": "c08", "verdict": "PASS", "seconds": 2.775}
+{"tool": "convert_document", "case": "c16", "verdict": "SUSPECTED", "seconds": 5.059}
+{"tool": "conversation", "case": "c11", "verdict": "PASS", "seconds": 6.373}
+{"tool": "read_image", "case": "c19", "verdict": "PASS", "seconds": 4.65}
+{"tool": "make_sticker", "case": "c04", "verdict": "PASS", "seconds": 5.064}
+{"tool": "edit_media", "case": "c05", "verdict": "PASS", "seconds": 4.307}
+{"tool": "manage_pdf", "case": "c08", "verdict": "SUSPECTED", "seconds": 4.309}
+{"tool": "transcribe_media", "case": "c11", "verdict": "PASS", "seconds": 4.899}
+{"tool": "search_web", "case": "c09", "verdict": "PASS", "seconds": 4.383}
+{"tool": "convert_document", "case": "c17", "verdict": "PASS", "seconds": 2.386}
+{"tool": "conversation", "case": "c12", "verdict": "PASS", "seconds": 2.448}
+{"tool": "read_image", "case": "c20", "verdict": "PASS", "seconds": 2.466}
+{"tool": "make_voice", "case": "c06", "verdict": "SUSPECTED", "seconds": 6.317}
+{"tool": "make_sticker", "case": "c05", "verdict": "PASS", "seconds": 2.59}
+{"tool": "manage_pdf", "case": "c09", "verdict": "PASS", "seconds": 1.442}
+{"tool": "transcribe_media", "case": "c12", "verdict": "PASS", "seconds": 1.452}
+{"tool": "search_web", "case": "c10", "verdict": "SUSPECTED", "seconds": 1.139}
+{"tool": "convert_document", "case": "c18", "verdict": "SUSPECTED", "seconds": 1.157}
+{"tool": "download_media", "case": "c05", "verdict": "SUSPECTED", "seconds": 8.784}
+{"tool": "edit_media", "case": "c06", "verdict": "PASS", "seconds": 2.538}
+{"tool": "read_image", "case": "c21", "verdict": "SUSPECTED", "seconds": 1.169}
+{"tool": "conversation", "case": "c13", "verdict": "PASS", "seconds": 1.369}
+{"tool": "make_sticker", "case": "c06", "verdict": "SUSPECTED", "seconds": 0.85}
+{"tool": "manage_pdf", "case": "c10", "verdict": "PASS", "seconds": 1.111}
+{"tool": "transcribe_media", "case": "c13", "verdict": "SUSPECTED", "seconds": 1.104}
+{"tool": "search_web", "case": "c11", "verdict": "PASS", "seconds": 1.105}
+{"tool": "convert_document", "case": "c19", "verdict": "PASS", "seconds": 1.096}
+{"tool": "make_voice", "case": "c07", "verdict": "SUSPECTED", "seconds": 3.032}
+{"tool": "edit_media", "case": "c07", "verdict": "SUSPECTED", "seconds": 2.372}
+{"tool": "read_image", "case": "c22", "verdict": "SUSPECTED", "seconds": 2.373}
+{"tool": "download_media", "case": "c06", "verdict": "SUSPECTED", "seconds": 2.822}
+{"tool": "make_sticker", "case": "c07", "verdict": "PASS", "seconds": 3.19}
+{"tool": "conversation", "case": "c14", "verdict": "PASS", "seconds": 3.7}
+{"tool": "transcribe_media", "case": "c14", "verdict": "SUSPECTED", "seconds": 3.157}
+{"tool": "search_web", "case": "c12", "verdict": "PASS", "seconds": 3.152}
+{"tool": "make_voice", "case": "c08", "verdict": "SUSPECTED", "seconds": 1.845}
+{"tool": "edit_media", "case": "c08", "verdict": "SUSPECTED", "seconds": 2.634}
+{"tool": "read_image", "case": "c23", "verdict": "PASS", "seconds": 3.241}
+{"tool": "convert_document", "case": "c20", "verdict": "PASS", "seconds": 4.904}
+{"tool": "download_media", "case": "c07", "verdict": "PASS", "seconds": 3.191}
+{"tool": "make_sticker", "case": "c08", "verdict": "SUSPECTED", "seconds": 2.356}
+{"tool": "transcribe_media", "case": "c15", "verdict": "SUSPECTED", "seconds": 2.674}
+{"tool": "search_web", "case": "c13", "verdict": "PASS", "seconds": 2.679}
+{"tool": "make_voice", "case": "c09", "verdict": "SUSPECTED", "seconds": 1.736}
+{"tool": "edit_media", "case": "c09", "verdict": "PASS", "seconds": 1.484}
+{"tool": "read_image", "case": "c24", "verdict": "SUSPECTED", "seconds": 1.472}
+{"tool": "convert_document", "case": "c21", "verdict": "PASS", "seconds": 1.532}
+{"tool": "convert_document", "case": "c22", "verdict": "PASS", "seconds": 0.004}
+{"tool": "convert_document", "case": "c23", "verdict": "PASS", "seconds": 0.004}
+{"tool": "download_media", "case": "c08", "verdict": "PASS", "seconds": 1.522}
+{"tool": "make_sticker", "case": "c09", "verdict": "PASS", "seconds": 1.51}
+{"tool": "transcribe_media", "case": "c16", "verdict": "SUSPECTED", "seconds": 1.525}
+{"tool": "manage_pdf", "case": "c11", "verdict": "SUSPECTED", "seconds": 8.15}
+{"tool": "search_web", "case": "c14", "verdict": "SUSPECTED", "seconds": 2.267}
+{"tool": "make_voice", "case": "c10", "verdict": "PASS", "seconds": 2.265}
+{"tool": "edit_media", "case": "c10", "verdict": "SUSPECTED", "seconds": 1.879}
+{"tool": "convert_document", "case": "c24", "verdict": "PASS", "seconds": 1.768}
+{"tool": "download_media", "case": "c09", "verdict": "SUSPECTED", "seconds": 1.773}
+{"tool": "conversation", "case": "c15", "verdict": "PASS", "seconds": 5.972}
+{"tool": "make_sticker", "case": "c10", "verdict": "PASS", "seconds": 1.878}
+{"tool": "make_sticker", "case": "c11", "verdict": "PASS", "seconds": 0.003}
+{"tool": "make_sticker", "case": "c12", "verdict": "PASS", "seconds": 0.003}
+{"tool": "transcribe_media", "case": "c17", "verdict": "PASS", "seconds": 1.17}
+{"tool": "search_web", "case": "c15", "verdict": "SUSPECTED", "seconds": 1.141}
+{"tool": "make_voice", "case": "c11", "verdict": "SUSPECTED", "seconds": 1.149}
+{"tool": "edit_media", "case": "c11", "verdict": "SUSPECTED", "seconds": 1.307}
+{"tool": "convert_document", "case": "c25", "verdict": "PASS", "seconds": 0.665}
+{"tool": "download_media", "case": "c10", "verdict": "SUSPECTED", "seconds": 0.652}
+{"tool": "manage_pdf", "case": "c12", "verdict": "SUSPECTED", "seconds": 1.682}
+{"tool": "make_sticker", "case": "c13", "verdict": "PASS", "seconds": 0.67}
+{"tool": "transcribe_media", "case": "c18", "verdict": "PASS", "seconds": 0.742}
+{"tool": "search_web", "case": "c16", "verdict": "SUSPECTED", "seconds": 0.773}
+{"tool": "conversation", "case": "c16", "verdict": "PASS", "seconds": 2.456}
+{"tool": "edit_media", "case": "c12", "verdict": "PASS", "seconds": 22.055}
+{"tool": "search_web", "case": "c17", "verdict": "REVIEW", "seconds": 20.805}
+{"tool": "make_sticker", "case": "c14", "verdict": "REVIEW", "seconds": 21.791}
+{"tool": "manage_pdf", "case": "c13", "verdict": "REVIEW", "seconds": 21.87}
+{"tool": "transcribe_media", "case": "c19", "verdict": "REVIEW", "seconds": 21.669}
+{"tool": "edit_media", "case": "c13", "verdict": "REVIEW", "seconds": 0.059}
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/ops/stress_backend.py", line 617, in main
+    await asyncio.gather(
+    ...<4 lines>...
+    )
+  File "/home/petrov/botsky/ops/stress_backend.py", line 405, in execute_tool
+    save(out / "quota.json", lab.quota())
+                             ~~~~~~~~~^^
+  File "/home/petrov/botsky/ops/campana_lab.py", line 62, in quota
+    result = subprocess.run(
+        ["python3", "/home/petrov/zhana/ops/consultar_uso_codex.py"],
+    ...<2 lines>...
+        timeout=20,
+    )
+  File "/usr/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['python3', '/home/petrov/zhana/ops/consultar_uso_codex.py']' timed out after 20 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/petrov/botsky/ops/stress_backend.py", line 627, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 203, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 63, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 71, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 215, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 706, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 677, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 2057, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/asyncio/events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/jobs.py", line 876, in execute_engine
+    output = await engine.convert(source, args["target"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/engines/documents.py", line 371, in convert
+    return await self._convert(data, kind, target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/engines/documents.py", line 506, in _convert
+    await self._pdf_check(source)
+  File "/home/petrov/botsky/src/botsky/engines/documents.py", line 397, in _pdf_check
+    info = (await self._run(pdf.parent, ["pdfinfo", "/work/" + pdf.name])).decode(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/engines/documents.py", line 382, in _run
+    return await run_process(
+           ^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "/home/petrov/botsky/src/botsky/engines/process.py", line 60, in run_process
+    cancelled_during_launch = True
+    ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

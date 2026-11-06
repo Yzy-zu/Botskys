@@ -1,0 +1,588 @@
+[
+  {
+    "tool": "download_media",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 25,
+    "recorded_cases": 25,
+    "counts": {
+      "PASS": 10,
+      "SUSPECTED": 15
+    },
+    "agent_report_available": false,
+    "session_state": "error",
+    "conversation_ids": [
+      "d4f3ca44-2206-4b4a-aeab-5be595b47a6b"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "convert_document",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "SUSPECTED": 9,
+      "PASS": 16,
+      "REVIEW": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "fa800e3e-4a28-49cc-9d29-0f9172d0c807"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "edit_media",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "PASS": 15,
+      "SUSPECTED": 11
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "6b5de656-914a-42d1-bcc2-af5e69682223"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_pdf",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 28,
+    "recorded_cases": 28,
+    "counts": {
+      "PASS": 13,
+      "SUSPECTED": 13,
+      "BLOCKED": 2
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "e90e20a4-e939-4d3c-a14d-d1b65c573804"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "make_sticker",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 16,
+      "SUSPECTED": 6,
+      "BLOCKED": 2
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "353d24f4-011e-4f1e-a077-4d3a9d337241"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "read_image",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 19,
+      "SUSPECTED": 5
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "7c1b9b5a-707f-4a2f-ade2-ccf51d95252c"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "transcribe_media",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "SUSPECTED": 12,
+      "PASS": 12,
+      "BLOCKED": 2
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "c0602163-78f6-49f1-8f3a-0380a482dc6e"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "make_voice",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 25,
+    "recorded_cases": 25,
+    "counts": {
+      "PASS": 4,
+      "SUSPECTED": 20,
+      "REVIEW": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "8d3ce829-2f17-4555-829d-c7c2a45a7815"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "conversation",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 20,
+      "SUSPECTED": 4
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "c33a02d4-f1b9-4521-9e3b-79a18e97ebd1"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "search_web",
+    "batch": 1,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 14,
+      "SUSPECTED": 10
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "c8f9c883-2d5c-41e5-947a-5a2f5e297e1e"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_conversation",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "PASS": 13,
+      "SUSPECTED": 13
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "3d2220a5-3ea3-4c28-954d-3a3703d137e5"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "save_note",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 25,
+    "recorded_cases": 25,
+    "counts": {
+      "SUSPECTED": 20,
+      "PASS": 5
+    },
+    "agent_report_available": true,
+    "session_state": "error",
+    "conversation_ids": [
+      "cad35e5d-09ba-42b5-a66a-02c26fd204d7"
+    ],
+    "reopened_conversation_ids": [
+      "ba87a544-1a42-4710-ab1b-604ec0f15af7"
+    ],
+    "mechanical_repair": true,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "find_notes",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 11,
+      "SUSPECTED": 13
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "7d5a6f0d-9570-4b27-b906-ca587484bd67"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_memory",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 27,
+    "recorded_cases": 27,
+    "counts": {
+      "PASS": 10,
+      "SUSPECTED": 17
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "19d32e8e-fc78-40c8-825a-f6063061e36e"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_reminder",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 30,
+    "recorded_cases": 30,
+    "counts": {
+      "PASS": 12,
+      "SUSPECTED": 18
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "c8f49238-46c8-469b-865f-ea0106839e67"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_school",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 30,
+    "recorded_cases": 30,
+    "counts": {
+      "PASS": 19,
+      "SUSPECTED": 11
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "7bccb5d5-9c53-4eda-90df-6d0c01f4d9b8"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_poll",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "PASS": 12,
+      "SUSPECTED": 14
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "c9a2005f-2f4e-4f91-9ad0-444af3616bf3"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_drive",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "SUSPECTED": 6,
+      "BLOCKED": 16,
+      "PASS": 4
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "20137ef1-fca7-4443-af76-811d1bf1fdc5"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_messages",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 10,
+      "SUSPECTED": 13,
+      "BLOCKED": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "da874e33-a1aa-4b59-9b31-177d5b76f843"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "send_sticker",
+    "batch": 2,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 9,
+      "SUSPECTED": 14,
+      "BLOCKED": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "0c4daf0f-c60a-42ff-83be-fed65617bf4d"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_pack",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 25,
+    "recorded_cases": 25,
+    "counts": {
+      "PASS": 8,
+      "SUSPECTED": 17
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "1afa777a-d258-4f12-9d27-0e7378be76fa"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_cooperacha",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "PASS": 10,
+      "SUSPECTED": 16
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "77179110-06db-482d-8fa6-3412277b6e34"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_happy_hour",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "PASS": 11,
+      "SUSPECTED": 15
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "f0cf8a09-e5eb-4e81-af1f-56f43ba3c2a8"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_economy",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 25,
+    "recorded_cases": 25,
+    "counts": {
+      "PASS": 7,
+      "SUSPECTED": 18
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "d1d17df9-1495-454b-b9aa-fc718845d006"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_blackjack",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 32,
+    "recorded_cases": 32,
+    "counts": {
+      "PASS": 10,
+      "SUSPECTED": 19,
+      "BLOCKED": 3
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "64354605-e12d-48f0-afa4-69cc731c800f"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_roulette",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 26,
+    "recorded_cases": 26,
+    "counts": {
+      "BLOCKED": 12,
+      "SUSPECTED": 13,
+      "PASS": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "9fe46732-7f68-4f0f-bf6c-b344db29b5c0"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_admin",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 31,
+    "recorded_cases": 31,
+    "counts": {
+      "PASS": 5,
+      "SUSPECTED": 17,
+      "BLOCKED": 9
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "ed431674-ba0e-4c2f-85de-a385b98a7d2a"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "manage_minecraft",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 8,
+      "BLOCKED": 13,
+      "SUSPECTED": 3
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "faf9034a-a11e-40d8-9309-2781ac3df18b"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "make_prank",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 24,
+    "recorded_cases": 24,
+    "counts": {
+      "PASS": 14,
+      "SUSPECTED": 8,
+      "BLOCKED": 2
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "a0d9d2a4-a115-46e6-9889-8b5118f2251c"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  },
+  {
+    "tool": "control_call",
+    "batch": 3,
+    "model": "gemini-3.8-flash-medium",
+    "proposed_cases": 30,
+    "recorded_cases": 30,
+    "counts": {
+      "BLOCKED": 20,
+      "SUSPECTED": 9,
+      "PASS": 1
+    },
+    "agent_report_available": true,
+    "session_state": "complete",
+    "conversation_ids": [
+      "6a481904-7942-4e5f-af5a-a49ed552b1bb"
+    ],
+    "reopened_conversation_ids": [],
+    "mechanical_repair": false,
+    "not_recorded_cases": []
+  }
+]

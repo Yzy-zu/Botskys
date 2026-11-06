@@ -1,5 +1,67 @@
 # Relevo Botsky
 
+## 06/11/2026 18:35 UTC · Descubrimiento10+10+10 terminado; paquete listo para contraste
+
+Nuevo encargo del dueño: tres tandas de diez agentes AGY CLI, una herramienta por
+sesión y modelo gemini-3.8-flash-medium. Aclaración posterior: recopilar resultados
+sin corregir producto; el dueño elegirá otro agente de alto calibre para contrastar.
+Cumplido: no cambios src/calls/dependencias ni contraste de otro modelo. AGENTS
+actualizado con este alcance, sin reanudar automáticamente la campaña anterior.
+
+30testers lógicos en tandas10+10+10,31arranques CLI (una reapertura técnica del
+informe de notas tras propuesta JSON malformada), máximo10concurrentes. Todas las
+invocaciones con modelo solicitado.29informes AGY completos; el reporte final de
+descargas fue rechazado por el proveedor. Conserva propuesta/25casos/resultados;
+no se reformuló para eludir el rechazo ni cambió modelo. Notas contenía3repeticiones
+de literales dentro de JSON: expansión mecánica acotada, sin eval/JavaScript;
+original/repair/hashes guardados. Reapertura recibió conversación nueva: no afirmar
+que el historial anterior se recuperó.
+
+783casos:319PASS (202positivos+117negativos),379SUSPECTED,83BLOCKED,2REVIEW. Tandas
+252/262/269casos. 50claims de AGY pendientes de contraste, no50bugs confirmados.
+256discrepancias son de pruebas negativas;326del estado esperado frente al observado.
+No borrar ni adjudicar automáticamente esas discrepancias.134/152rutas observadas;
+18NOT_TESTED y campos no observados explícitos.310checks adicionales de parser puro:
+303PASS/7REVIEW de constructor por opciones incompatibles; separados de motores.
+
+Backend real de Botsky, DB por herramienta, fixtures sintéticos propios y proveedores
+reales según disponibilidad. Artefactos abiertos/hash/tamaño, PDF/páginas/texto,
+ffprobe, ZIP/CRC/XML. DOCX/XLSX/CSV/JSON/HTML/MD/PPTX, PDFs escaneados/cifrados/corruptos/
+501páginas, audio350s, video12s, TXT8MiB y archivo sparse1.000.000.001B para rechazo
+antes de copia (no transferencia real1GB), imágenes grandes/animadas/corruptas.
+Cadenas usan resultados previos; dependencias inexistentes bloqueadas. Actor propio
+simulado, no teléfono/webhook real. XP/fotos de setup propios, no DB31/historial.
+
+Hasta2muestras naturales por herramienta y resúmenes al Lab verificado.95POST reales
+con HTTP201 incluido cierre;4mensajes internos de batería con ACKfixture; outboxdel
+resto capturado localmente. Nivel de evidencia explícito, sin convertir ACKfixture
+en proveedor ni ACK201 en render/recepción humana. Reportes conservan qué funcionó,
+sospechas, argumentos/comandos, límites y huecos. No se encargó testeo manual al dueño.
+
+Incidente de harness: helper de cuota agotó20s y canceló runner compartido de tanda1.
+Al cerrar, conversor quedó en bucle de cancelación de creación de subproceso;
+traza/private snapshots preservados. Se detuvo solo proceso de laboratorio y se
+continuó esta campaña abierta con workers OSaislados, dos a la vez y watchdog.
+Casos completados/partes aceptadas no repetidos; dos en curso retirados y REVIEW.
+Repro mínima de cancelación, sin hijo real, no termina en3s y deja traza del bucle
+en engines/process.py: observación reproducida para contrastar alcance/gravedad,
+sin parche de producto. Datos temporales/resultados originales conservados.
+
+Informe docs/STRESS_20261106.md; entrega docs/CONTRASTE_STRESS_20261106.md; paquete
+público saneado docs/evidencia/STRESS-20261106 con50claims UNREVIEWED_AGENT_CLAIM,
+783resultados/oracles,29informes,30dominios, cobertura, fixtures/hashes y observaciones
+del orquestador. Evidencia completa privada0600 en private/stress-20261106/.
+6pruebas focales de harness/guardias PASS, Ruff/formato131/pipcheck/diffcheck correctos.
+No regresión histórica completa repetida sin cambio de producto. Revisión posterior
+no debe lanzar campañas o correcciones por leer el paquete; decisión del dueño.
+
+Campaña CERRADA, resumen enviado al Lab; efectos retirados de31perfiles (base+30tools),
+copias de auth AGY eliminadas, sin procesos de campaña pendientes. Perfil operativo
+anterior intacto/apagado. Drive requiere reconectar OAuth; audiovisual real y efectos
+ruleta/grupo/servidor sin aceptación. R10 global ABIERTO, R11 no iniciado. No navegador,
+llamada, sesión copiada/vinculada, cambio webhook/servicios/Zhana activa/NLP/DB31,
+GitHub o transición. Cuota28%primaria/67%semanal; al5%guardar y parar sin reanudación.
+
 ## 06/11/2026 16:40 UTC · Campaña R10 real automática terminada; efectos del Lab retirados
 
 Encargo posterior expreso: 1–10 sesiones AGY CLI, entrada simulada del propietario,

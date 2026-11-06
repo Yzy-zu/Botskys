@@ -1,0 +1,10 @@
+Timeout (0:00:01)!
+Thread 0x0000e2b53e2ae7a0 [python] (most recent call first):
+  File "/home/petrov/botsky/src/botsky/engines/process.py", line 59 in run_process
+  File "/usr/lib/python3.14/asyncio/events.py", line 94 in _run
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 2057 in _run_once
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 677 in run_forever
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 706 in run_until_complete
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127 in run
+  File "/usr/lib/python3.14/asyncio/runners.py", line 204 in run
+  File "/home/petrov/botsky/private/stress-20261106/cancelled-launch-repro.py", line 18 in <module>

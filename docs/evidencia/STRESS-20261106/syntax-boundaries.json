@@ -1,0 +1,2454 @@
+{
+  "level": "pure_syntax_only_no_effects_or_network",
+  "counts": {
+    "PASS": 303,
+    "REVIEW": 7
+  },
+  "cases": 310,
+  "rows": [
+    {
+      "route": "/ayuda",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "topic"
+      ]
+    },
+    {
+      "route": "/ayuda",
+      "field": "topic",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "id"
+      ]
+    },
+    {
+      "route": "/estado",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "id"
+      ]
+    },
+    {
+      "route": "/cancelar",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/confirmar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "id"
+      ]
+    },
+    {
+      "route": "/confirmar",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bot estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/bot modo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "mode"
+      ]
+    },
+    {
+      "route": "/bot modo",
+      "field": "mode",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bot pausa",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "minutes"
+      ]
+    },
+    {
+      "route": "/bot pausa",
+      "field": "minutes",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bot reanudar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/reaccion",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "sticker_id"
+      ]
+    },
+    {
+      "route": "/reaccion",
+      "field": "sticker_id",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/sticker",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/ia",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "text"
+      ]
+    },
+    {
+      "route": "/ia",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/nota guardar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "text"
+      ]
+    },
+    {
+      "route": "/nota guardar",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/notas",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "page",
+        "query"
+      ]
+    },
+    {
+      "route": "/notas",
+      "field": "page",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/notas",
+      "field": "query",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ocr",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/qr",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/transcribir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "output_mode"
+      ]
+    },
+    {
+      "route": "/transcribir",
+      "field": "output_mode",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp3",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "end_seconds",
+        "quality",
+        "start_seconds",
+        "url"
+      ]
+    },
+    {
+      "route": "/dl mp3",
+      "field": "quality",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp3",
+      "field": "start_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp3",
+      "field": "end_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp3",
+      "field": "url",
+      "kind": "url",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp4",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "end_seconds",
+        "quality",
+        "start_seconds",
+        "url"
+      ]
+    },
+    {
+      "route": "/dl mp4",
+      "field": "quality",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp4",
+      "field": "start_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp4",
+      "field": "end_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl mp4",
+      "field": "url",
+      "kind": "url",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl webm",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "end_seconds",
+        "quality",
+        "start_seconds",
+        "url"
+      ]
+    },
+    {
+      "route": "/dl webm",
+      "field": "quality",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl webm",
+      "field": "start_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl webm",
+      "field": "end_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl webm",
+      "field": "url",
+      "kind": "url",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl srt",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "subtitle_language",
+        "url"
+      ]
+    },
+    {
+      "route": "/dl srt",
+      "field": "subtitle_language",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl srt",
+      "field": "url",
+      "kind": "url",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl buscar",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "subtitle_language: El idioma solo se usa con formato srt.\nUso: /dl buscar mp3|mp4|webm|srt [--fuente youtube|soundcloud|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY\nEjemplo: /dl buscar mp3 ejemplo"
+    },
+    {
+      "route": "/dl elegir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "choice",
+        "view_id"
+      ]
+    },
+    {
+      "route": "/dl elegir",
+      "field": "view_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl elegir",
+      "field": "choice",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/dl anterior",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "subtitle_language: El idioma solo se usa con formato srt.\nUso: /dl anterior mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en]\nEjemplo: /dl anterior mp3"
+    },
+    {
+      "route": "/editar",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "subtitle_language: El idioma solo se usa con formato srt.\nUso: /editar mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] + adjunto o cita exacta\nEjemplo: /editar mp3"
+    },
+    {
+      "route": "/voz",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "effect",
+        "text",
+        "voice"
+      ]
+    },
+    {
+      "route": "/voz",
+      "field": "voice",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz",
+      "field": "effect",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz crear",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "effect",
+        "requested_seconds",
+        "text",
+        "voice"
+      ]
+    },
+    {
+      "route": "/voz crear",
+      "field": "voice",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz crear",
+      "field": "effect",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz crear",
+      "field": "requested_seconds",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz crear",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz cita",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "effect",
+        "voice"
+      ]
+    },
+    {
+      "route": "/voz cita",
+      "field": "voice",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz cita",
+      "field": "effect",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz ultima",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "effect",
+        "voice"
+      ]
+    },
+    {
+      "route": "/voz ultima",
+      "field": "voice",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voz ultima",
+      "field": "effect",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/voces",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/llamar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "max_seconds",
+        "topic",
+        "video"
+      ]
+    },
+    {
+      "route": "/llamar",
+      "field": "video",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/llamar",
+      "field": "max_seconds",
+      "kind": "duration",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamar",
+      "field": "topic",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamada estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/llamada colgar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/llamada cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pdf iniciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pdf agregar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pdf terminar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pdf cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pdf extraer",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "pages"
+      ]
+    },
+    {
+      "route": "/pdf extraer",
+      "field": "pages",
+      "kind": "pages",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pdf reintentar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "confirm_uncertain",
+        "id"
+      ]
+    },
+    {
+      "route": "/pdf reintentar",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pdf reintentar",
+      "field": "confirm_uncertain",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/convertir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/convertir",
+      "field": "target",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea crear",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "attach",
+        "due_date",
+        "due_time",
+        "subject",
+        "text"
+      ]
+    },
+    {
+      "route": "/tarea crear",
+      "field": "subject",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea crear",
+      "field": "due_date",
+      "kind": "date",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea crear",
+      "field": "due_time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea crear",
+      "field": "attach",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/tarea crear",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tareas",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "include_closed",
+        "page"
+      ]
+    },
+    {
+      "route": "/tareas",
+      "field": "page",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tareas",
+      "field": "include_closed",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/tarea completar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "task_id"
+      ]
+    },
+    {
+      "route": "/tarea completar",
+      "field": "task_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea borrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "task_id"
+      ]
+    },
+    {
+      "route": "/tarea borrar",
+      "field": "task_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/tarea archivo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "task_id"
+      ]
+    },
+    {
+      "route": "/tarea archivo",
+      "field": "task_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario agregar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "end_time",
+        "start_time",
+        "subject",
+        "weekday"
+      ]
+    },
+    {
+      "route": "/horario agregar",
+      "field": "subject",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario agregar",
+      "field": "weekday",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario agregar",
+      "field": "start_time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario agregar",
+      "field": "end_time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario listar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "weekday"
+      ]
+    },
+    {
+      "route": "/horario listar",
+      "field": "weekday",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/horario borrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "lesson_id"
+      ]
+    },
+    {
+      "route": "/horario borrar",
+      "field": "lesson_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/escuela resumen configurar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "digest_time",
+        "enabled"
+      ]
+    },
+    {
+      "route": "/escuela resumen configurar",
+      "field": "enabled",
+      "kind": "bool",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/escuela resumen configurar",
+      "field": "digest_time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/escuela resumen estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/encuesta crear",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "options",
+        "question"
+      ]
+    },
+    {
+      "route": "/encuesta crear",
+      "field": "question",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/encuesta crear",
+      "field": "options",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/encuesta votar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "choice",
+        "poll_id"
+      ]
+    },
+    {
+      "route": "/encuesta votar",
+      "field": "poll_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/encuesta votar",
+      "field": "choice",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/encuesta resultados",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "poll_id"
+      ]
+    },
+    {
+      "route": "/encuesta resultados",
+      "field": "poll_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/encuesta cerrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "poll_id"
+      ]
+    },
+    {
+      "route": "/encuesta cerrar",
+      "field": "poll_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado preparar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "attach",
+        "recipients",
+        "source",
+        "text"
+      ]
+    },
+    {
+      "route": "/recado preparar",
+      "field": "recipients",
+      "kind": "contacts",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado preparar",
+      "field": "source",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado preparar",
+      "field": "attach",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/recado preparar",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "draft_id"
+      ]
+    },
+    {
+      "route": "/recado estado",
+      "field": "draft_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado enviar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "draft_id"
+      ]
+    },
+    {
+      "route": "/recado enviar",
+      "field": "draft_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recado cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "draft_id"
+      ]
+    },
+    {
+      "route": "/recado cancelar",
+      "field": "draft_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/contactos",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/pack catalogo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "category",
+        "page"
+      ]
+    },
+    {
+      "route": "/pack catalogo",
+      "field": "category",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pack catalogo",
+      "field": "page",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pack comprar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "category"
+      ]
+    },
+    {
+      "route": "/pack comprar",
+      "field": "category",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pack confirmar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "purchase_id"
+      ]
+    },
+    {
+      "route": "/pack confirmar",
+      "field": "purchase_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/pack estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "purchase_id"
+      ]
+    },
+    {
+      "route": "/pack estado",
+      "field": "purchase_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop crear",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "category",
+        "target_xp"
+      ]
+    },
+    {
+      "route": "/coop crear",
+      "field": "category",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop crear",
+      "field": "target_xp",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop aportar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "amount",
+        "challenge_id"
+      ]
+    },
+    {
+      "route": "/coop aportar",
+      "field": "challenge_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop aportar",
+      "field": "amount",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "challenge_id"
+      ]
+    },
+    {
+      "route": "/coop estado",
+      "field": "challenge_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/coop cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "challenge_id"
+      ]
+    },
+    {
+      "route": "/coop cancelar",
+      "field": "challenge_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh iniciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "duration_seconds"
+      ]
+    },
+    {
+      "route": "/hh iniciar",
+      "field": "duration_seconds",
+      "kind": "duration",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh parar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "event_id"
+      ]
+    },
+    {
+      "route": "/hh parar",
+      "field": "event_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "event_id"
+      ]
+    },
+    {
+      "route": "/hh estado",
+      "field": "event_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh lluvia",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "event_id"
+      ]
+    },
+    {
+      "route": "/hh lluvia",
+      "field": "event_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh airdrop",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "event_id"
+      ]
+    },
+    {
+      "route": "/hh airdrop",
+      "field": "event_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/hh reclamar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "event_id"
+      ]
+    },
+    {
+      "route": "/hh reclamar",
+      "field": "event_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem guardar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "kind",
+        "text"
+      ]
+    },
+    {
+      "route": "/mem guardar",
+      "field": "kind",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem guardar",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem listar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "kind",
+        "page"
+      ]
+    },
+    {
+      "route": "/mem listar",
+      "field": "kind",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem listar",
+      "field": "page",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem corregir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "memory_id",
+        "text"
+      ]
+    },
+    {
+      "route": "/mem corregir",
+      "field": "memory_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem corregir",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem olvidar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "memory_id"
+      ]
+    },
+    {
+      "route": "/mem olvidar",
+      "field": "memory_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mem borrar-todo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc jugadores",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc mundos",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc mods",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc config",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc iniciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc parar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc reiniciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc backup",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/mc mod activar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "route": "/mc mod activar",
+      "field": "name",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mc mod desactivar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "route": "/mc mod desactivar",
+      "field": "name",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/mc consola",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "command"
+      ]
+    },
+    {
+      "route": "/mc consola",
+      "field": "command",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin advertir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin advertir",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin quitar-aviso",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target",
+        "warning_id"
+      ]
+    },
+    {
+      "route": "/admin quitar-aviso",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin quitar-aviso",
+      "field": "warning_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin avisos",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin avisos",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin expulsar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin expulsar",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin ban",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin ban",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin unban",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin unban",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin promover",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin promover",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin degradar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "target"
+      ]
+    },
+    {
+      "route": "/admin degradar",
+      "field": "target",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin silenciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/admin desilenciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/admin cerrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/admin abrir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/admin xp-dar",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "target: Indica exactamente --objetivo REF o --cuenta ID.\nUso: /admin xp-dar [--objetivo TARGET] [--cuenta ACCOUNT_ID] AMOUNT\nEjemplo: /admin xp-dar --cuenta 1 1"
+    },
+    {
+      "route": "/admin xp-quitar",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "target: Indica exactamente --objetivo REF o --cuenta ID.\nUso: /admin xp-quitar [--objetivo TARGET] [--cuenta ACCOUNT_ID] AMOUNT\nEjemplo: /admin xp-quitar --cuenta 1 1"
+    },
+    {
+      "route": "/admin nuclear-preparar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/admin nuclear-confirmar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "draft_id"
+      ]
+    },
+    {
+      "route": "/admin nuclear-confirmar",
+      "field": "draft_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/admin nuclear-cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "draft_id"
+      ]
+    },
+    {
+      "route": "/admin nuclear-cancelar",
+      "field": "draft_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj iniciar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "bet"
+      ]
+    },
+    {
+      "route": "/bj iniciar",
+      "field": "bet",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj mesa",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "bet"
+      ]
+    },
+    {
+      "route": "/bj mesa",
+      "field": "bet",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj entrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj entrar",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj repartir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj repartir",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj pedir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj pedir",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj plantarse",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj plantarse",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj doblar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj doblar",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj estado",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/bj cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "game_id"
+      ]
+    },
+    {
+      "route": "/bj cancelar",
+      "field": "game_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ruleta crear",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "bet"
+      ]
+    },
+    {
+      "route": "/ruleta crear",
+      "field": "bet",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ruleta entrar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "room_id"
+      ]
+    },
+    {
+      "route": "/ruleta entrar",
+      "field": "room_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ruleta jugar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "room_id"
+      ]
+    },
+    {
+      "route": "/ruleta jugar",
+      "field": "room_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ruleta estado",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "room_id"
+      ]
+    },
+    {
+      "route": "/ruleta estado",
+      "field": "room_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/ruleta cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "room_id"
+      ]
+    },
+    {
+      "route": "/ruleta cancelar",
+      "field": "room_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/broma",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "label"
+      ]
+    },
+    {
+      "route": "/broma",
+      "field": "label",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/daily",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/saldo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/top",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/recordar en",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "duration_seconds",
+        "text"
+      ]
+    },
+    {
+      "route": "/recordar en",
+      "field": "duration_seconds",
+      "kind": "duration",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordar en",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordar el",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "date",
+        "text",
+        "time"
+      ]
+    },
+    {
+      "route": "/recordar el",
+      "field": "date",
+      "kind": "date",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordar el",
+      "field": "time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordar el",
+      "field": "text",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordatorios",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "include_closed",
+        "page"
+      ]
+    },
+    {
+      "route": "/recordatorios",
+      "field": "page",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordatorios",
+      "field": "include_closed",
+      "kind": "flag",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "duplicate_option"
+    },
+    {
+      "route": "/recordatorio cancelar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "reminder_id"
+      ]
+    },
+    {
+      "route": "/recordatorio cancelar",
+      "field": "reminder_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/recordatorio archivar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "reminder_id"
+      ]
+    },
+    {
+      "route": "/recordatorio archivar",
+      "field": "reminder_id",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/buscar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "query",
+        "required_terms"
+      ]
+    },
+    {
+      "route": "/buscar",
+      "field": "required_terms",
+      "kind": "terms",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/buscar",
+      "field": "query",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/drive guardar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/drive buscar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "query"
+      ]
+    },
+    {
+      "route": "/drive buscar",
+      "field": "query",
+      "kind": "text",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/drive elegir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "choice",
+        "view_id"
+      ]
+    },
+    {
+      "route": "/drive elegir",
+      "field": "view_id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/drive elegir",
+      "field": "choice",
+      "kind": "int",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/drive cuota",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip lista",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip poner",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "clip_id: Indica exactamente ID del catálogo o --nombre TEXTO.\nUso: /clip poner [CLIP_ID] [--nombre QUERY]\nEjemplo: /clip poner ID_REAL"
+    },
+    {
+      "route": "/clip pausa",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip seguir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip repetir",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip siguiente",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip parar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/clip volumen",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "volume"
+      ]
+    },
+    {
+      "route": "/clip volumen",
+      "field": "volume",
+      "kind": "float",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/clip ajustar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "adjustment",
+        "direction"
+      ]
+    },
+    {
+      "route": "/clip ajustar",
+      "field": "direction",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/clip ajustar",
+      "field": "adjustment",
+      "kind": "float",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar fondo",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "name"
+      ]
+    },
+    {
+      "route": "/avatar fondo",
+      "field": "name",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar expresion",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "duration",
+        "name"
+      ]
+    },
+    {
+      "route": "/avatar expresion",
+      "field": "name",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar expresion",
+      "field": "duration",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar gesto",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "duration",
+        "name"
+      ]
+    },
+    {
+      "route": "/avatar gesto",
+      "field": "name",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar gesto",
+      "field": "duration",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar rubor",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "duration",
+        "name"
+      ]
+    },
+    {
+      "route": "/avatar rubor",
+      "field": "name",
+      "kind": "enum",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/avatar rubor",
+      "field": "duration",
+      "kind": "seconds",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamada programar",
+      "phase": "construction_review",
+      "verdict": "REVIEW",
+      "code": "incompatible_fields",
+      "reply": "audio_id: Audio preparado y conversación Live son modos excluyentes.\nUso: /llamada programar DATE TIME [--duracion MAX_SECONDS] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]\nEjemplo: /llamada programar 2026-12-01 12:00"
+    },
+    {
+      "route": "/llamada agenda",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": []
+    },
+    {
+      "route": "/llamada reprogramar",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "date",
+        "id",
+        "time"
+      ]
+    },
+    {
+      "route": "/llamada reprogramar",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamada reprogramar",
+      "field": "date",
+      "kind": "date",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamada reprogramar",
+      "field": "time",
+      "kind": "clock",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    },
+    {
+      "route": "/llamada cancelar-agenda",
+      "phase": "all_fields_explicit",
+      "verdict": "PASS",
+      "fields": [
+        "id"
+      ]
+    },
+    {
+      "route": "/llamada cancelar-agenda",
+      "field": "id",
+      "kind": "id",
+      "phase": "invalid_boundary",
+      "verdict": "PASS",
+      "code": "invalid_field"
+    }
+  ]
+}

@@ -14,6 +14,8 @@ Galería conservada, Kazumi recuperado y permisos por integración/chat conectad
 [activos y permisos](docs/ACTIVOS_Y_PERMISOS.md). Tres álbumes originales sin fotos.
 Campaña automática real encargada, con resultados en Botsky Lab y laboratorio
 detenido: [116 casos, hallazgos y bloqueos](docs/LAB_20261106.md). R10 global abierto.
+Nueva campaña de descubrimiento10+10+10: [783casos y29informes](docs/STRESS_20261106.md).
+[Paquete para contraste posterior](docs/CONTRASTE_STRESS_20261106.md); producto sin corregir.
 
 Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
 hashes, límites, formatos, dependencias y superficie audiovisual. Tener una

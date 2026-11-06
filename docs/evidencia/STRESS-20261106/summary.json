@@ -1,0 +1,54 @@
+{
+  "model": "gemini-3.8-flash-medium",
+  "testers": 30,
+  "batches": [
+    10,
+    10,
+    10
+  ],
+  "proposed_cases": 783,
+  "recorded_cases": 783,
+  "counts": {
+    "PASS": 319,
+    "SUSPECTED": 379,
+    "REVIEW": 2,
+    "BLOCKED": 83
+  },
+  "reports_available": 29,
+  "cli_starts": 31,
+  "agent_claims_for_future_review": 50,
+  "routes_observed": 134,
+  "routes_total": 152,
+  "provider_delivery_POSTs": 94,
+  "delivery_fixture_POSTs": 4,
+  "product_modified": false,
+  "independent_high_tier_contrast_performed": false,
+  "limits": [
+    "SUSPECTED is discrepancy, not confirmed bug",
+    "PASS includes negative checks and fixture delivery",
+    "all scenario statements and agent reports require future independent contrast",
+    "no real calls/browser, group/server mutations or transition",
+    "case seconds include engine queue; not a latency benchmark"
+  ],
+  "syntax_boundary_cases": 310,
+  "syntax_boundary_counts": {
+    "PASS": 303,
+    "REVIEW": 7
+  },
+  "orchestrator_observations": 3,
+  "testers_complete": true,
+  "campaign_closed": true,
+  "all_temporary_profile_effects_retired": true,
+  "harness_focal_tests": 6,
+  "provider_delivery_POSTs_total_with_closing": 95,
+  "provider_http_status_counts": {
+    "201": 95
+  },
+  "original_kind_verdict_counts": {
+    "positive_PASS": 202,
+    "negative_PASS": 117,
+    "negative_SUSPECTED": 256,
+    "positive_SUSPECTED": 117,
+    "blocked_SUSPECTED": 6
+  }
+}

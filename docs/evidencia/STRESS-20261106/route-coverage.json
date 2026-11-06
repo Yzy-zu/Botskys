@@ -1,0 +1,2118 @@
+[
+  {
+    "route": "/ayuda",
+    "tool": "core",
+    "observed_cases": [
+      "make_sticker:c21",
+      "read_image:c23",
+      "transcribe_media:c24",
+      "conversation:c20",
+      "search_web:c24",
+      "save_note:c22",
+      "manage_poll:c25",
+      "send_sticker:c18",
+      "send_sticker:c19",
+      "manage_economy:c17",
+      "manage_economy:c18",
+      "manage_economy:c19",
+      "make_prank:c24"
+    ],
+    "explicit_fields": [
+      "topic"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/estado",
+    "tool": "core",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/cancelar",
+    "tool": "core",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/confirmar",
+    "tool": "core",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bot estado",
+    "tool": "manage_conversation",
+    "observed_cases": [
+      "manage_conversation:c01",
+      "manage_conversation:c26"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bot modo",
+    "tool": "manage_conversation",
+    "observed_cases": [
+      "manage_conversation:c02",
+      "manage_conversation:c03",
+      "manage_conversation:c04",
+      "manage_conversation:c11"
+    ],
+    "explicit_fields": [
+      "mode"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bot pausa",
+    "tool": "manage_conversation",
+    "observed_cases": [
+      "manage_conversation:c05",
+      "manage_conversation:c06",
+      "manage_conversation:c07",
+      "manage_conversation:c24"
+    ],
+    "explicit_fields": [
+      "minutes"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bot reanudar",
+    "tool": "manage_conversation",
+    "observed_cases": [
+      "manage_conversation:c08",
+      "manage_conversation:c25"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/reaccion",
+    "tool": "send_sticker",
+    "observed_cases": [
+      "send_sticker:c01",
+      "send_sticker:c02",
+      "send_sticker:c03",
+      "send_sticker:c04",
+      "send_sticker:c07",
+      "send_sticker:c08",
+      "send_sticker:c12",
+      "send_sticker:c15",
+      "send_sticker:c16"
+    ],
+    "explicit_fields": [
+      "sticker_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/sticker",
+    "tool": "make_sticker",
+    "observed_cases": [
+      "make_sticker:c01",
+      "make_sticker:c02",
+      "make_sticker:c03",
+      "make_sticker:c04",
+      "make_sticker:c05",
+      "make_sticker:c06",
+      "make_sticker:c07",
+      "make_sticker:c08",
+      "make_sticker:c09",
+      "make_sticker:c10",
+      "make_sticker:c13",
+      "make_sticker:c14",
+      "make_sticker:c15",
+      "make_sticker:c16",
+      "make_sticker:c17",
+      "make_sticker:c18",
+      "make_sticker:c24"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ia",
+    "tool": "conversation",
+    "observed_cases": [
+      "conversation:c01",
+      "conversation:c04",
+      "conversation:c05",
+      "conversation:c06",
+      "conversation:c07",
+      "conversation:c09",
+      "conversation:c11",
+      "conversation:c12",
+      "conversation:c13",
+      "conversation:c14",
+      "conversation:c15",
+      "conversation:c16",
+      "conversation:c17",
+      "conversation:c18",
+      "conversation:c19",
+      "conversation:c24"
+    ],
+    "explicit_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/nota guardar",
+    "tool": "save_note",
+    "observed_cases": [
+      "save_note:c01",
+      "save_note:c02",
+      "save_note:c05",
+      "save_note:c06",
+      "save_note:c07",
+      "save_note:c08",
+      "save_note:c09",
+      "save_note:c10",
+      "save_note:c11",
+      "save_note:c12",
+      "save_note:c14",
+      "save_note:c16",
+      "save_note:c17"
+    ],
+    "explicit_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/notas",
+    "tool": "find_notes",
+    "observed_cases": [
+      "find_notes:c01",
+      "find_notes:c02",
+      "find_notes:c03",
+      "find_notes:c04",
+      "find_notes:c05",
+      "find_notes:c06",
+      "find_notes:c12",
+      "find_notes:c13",
+      "find_notes:c14",
+      "find_notes:c16",
+      "find_notes:c17",
+      "find_notes:c20",
+      "find_notes:c21",
+      "find_notes:c24"
+    ],
+    "explicit_fields": [
+      "page",
+      "query"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ocr",
+    "tool": "read_image",
+    "observed_cases": [
+      "read_image:c01",
+      "read_image:c02",
+      "read_image:c03",
+      "read_image:c04",
+      "read_image:c05",
+      "read_image:c06",
+      "read_image:c07",
+      "read_image:c08",
+      "read_image:c11",
+      "read_image:c19",
+      "read_image:c20"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/qr",
+    "tool": "read_image",
+    "observed_cases": [
+      "read_image:c12",
+      "read_image:c13",
+      "read_image:c14",
+      "read_image:c15",
+      "read_image:c16"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/transcribir",
+    "tool": "transcribe_media",
+    "observed_cases": [
+      "transcribe_media:c01",
+      "transcribe_media:c02",
+      "transcribe_media:c03",
+      "transcribe_media:c04",
+      "transcribe_media:c05",
+      "transcribe_media:c06",
+      "transcribe_media:c07",
+      "transcribe_media:c08",
+      "transcribe_media:c09",
+      "transcribe_media:c10",
+      "transcribe_media:c11",
+      "transcribe_media:c17",
+      "transcribe_media:c18",
+      "transcribe_media:c19",
+      "transcribe_media:c20",
+      "transcribe_media:c23"
+    ],
+    "explicit_fields": [
+      "output_mode"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl mp3",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c03"
+    ],
+    "explicit_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl mp4",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c01",
+      "download_media:c02",
+      "download_media:c05"
+    ],
+    "explicit_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl webm",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c04"
+    ],
+    "explicit_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl srt",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c06",
+      "download_media:c07"
+    ],
+    "explicit_fields": [
+      "subtitle_language",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl buscar",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c15",
+      "download_media:c16",
+      "download_media:c17",
+      "download_media:c18"
+    ],
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "query",
+      "source",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl elegir",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c21"
+    ],
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/dl anterior",
+    "tool": "download_media",
+    "observed_cases": [
+      "download_media:c24"
+    ],
+    "explicit_fields": [
+      "container",
+      "quality"
+    ],
+    "unobserved_fields": [
+      "end_seconds",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/editar",
+    "tool": "edit_media",
+    "observed_cases": [
+      "edit_media:c01",
+      "edit_media:c02",
+      "edit_media:c03",
+      "edit_media:c04",
+      "edit_media:c05",
+      "edit_media:c06",
+      "edit_media:c07",
+      "edit_media:c08",
+      "edit_media:c09",
+      "edit_media:c10",
+      "edit_media:c11",
+      "edit_media:c14",
+      "edit_media:c20",
+      "edit_media:c21",
+      "edit_media:c22",
+      "edit_media:c23",
+      "edit_media:c26"
+    ],
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/voz",
+    "tool": "make_voice",
+    "observed_cases": [
+      "make_voice:c02",
+      "make_voice:c03",
+      "make_voice:c04",
+      "make_voice:c05",
+      "make_voice:c06",
+      "make_voice:c07",
+      "make_voice:c24"
+    ],
+    "explicit_fields": [
+      "effect",
+      "text",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/voz crear",
+    "tool": "make_voice",
+    "observed_cases": [
+      "make_voice:c13",
+      "make_voice:c14"
+    ],
+    "explicit_fields": [
+      "requested_seconds",
+      "text"
+    ],
+    "unobserved_fields": [
+      "effect",
+      "voice"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/voz cita",
+    "tool": "make_voice",
+    "observed_cases": [
+      "make_voice:c19",
+      "make_voice:c20"
+    ],
+    "explicit_fields": [
+      "effect",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/voz ultima",
+    "tool": "make_voice",
+    "observed_cases": [
+      "make_voice:c21",
+      "make_voice:c22"
+    ],
+    "explicit_fields": [
+      "effect",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/voces",
+    "tool": "make_voice",
+    "observed_cases": [
+      "make_voice:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamar",
+    "tool": "control_call",
+    "observed_cases": [
+      "control_call:c02"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "max_seconds",
+      "topic",
+      "video"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamada estado",
+    "tool": "control_call",
+    "observed_cases": [
+      "control_call:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamada colgar",
+    "tool": "control_call",
+    "observed_cases": [
+      "control_call:c05"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamada cancelar",
+    "tool": "control_call",
+    "observed_cases": [
+      "control_call:c06"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf iniciar",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c01",
+      "manage_pdf:c05",
+      "manage_pdf:c17",
+      "manage_pdf:c18",
+      "manage_pdf:c21"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf agregar",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c02",
+      "manage_pdf:c03",
+      "manage_pdf:c08"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf terminar",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c04",
+      "manage_pdf:c07"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf cancelar",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c06",
+      "manage_pdf:c09"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf extraer",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c10",
+      "manage_pdf:c11",
+      "manage_pdf:c12",
+      "manage_pdf:c16",
+      "manage_pdf:c22",
+      "manage_pdf:c23",
+      "manage_pdf:c28"
+    ],
+    "explicit_fields": [
+      "pages"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pdf reintentar",
+    "tool": "manage_pdf",
+    "observed_cases": [
+      "manage_pdf:c26"
+    ],
+    "explicit_fields": [
+      "id"
+    ],
+    "unobserved_fields": [
+      "confirm_uncertain"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/convertir",
+    "tool": "convert_document",
+    "observed_cases": [
+      "convert_document:c01",
+      "convert_document:c02",
+      "convert_document:c03",
+      "convert_document:c04",
+      "convert_document:c05",
+      "convert_document:c06",
+      "convert_document:c07",
+      "convert_document:c08",
+      "convert_document:c09",
+      "convert_document:c10",
+      "convert_document:c11",
+      "convert_document:c12",
+      "convert_document:c13",
+      "convert_document:c14",
+      "convert_document:c15",
+      "convert_document:c16",
+      "convert_document:c19",
+      "convert_document:c20",
+      "convert_document:c21",
+      "convert_document:c24",
+      "convert_document:c25"
+    ],
+    "explicit_fields": [
+      "target"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/tarea crear",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c06",
+      "manage_school:c07",
+      "manage_school:c08",
+      "manage_school:c09"
+    ],
+    "explicit_fields": [
+      "attach",
+      "due_date",
+      "due_time",
+      "subject",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/tareas",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c15",
+      "manage_school:c16"
+    ],
+    "explicit_fields": [
+      "include_closed",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/tarea completar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c19",
+      "manage_school:c20"
+    ],
+    "explicit_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/tarea borrar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c21"
+    ],
+    "explicit_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/tarea archivo",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c12",
+      "manage_school:c13",
+      "manage_school:c14"
+    ],
+    "explicit_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/horario agregar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c23",
+      "manage_school:c24"
+    ],
+    "explicit_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/horario listar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c25",
+      "manage_school:c26"
+    ],
+    "explicit_fields": [
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/horario borrar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c29",
+      "manage_school:c30"
+    ],
+    "explicit_fields": [
+      "lesson_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/escuela resumen configurar",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c02",
+      "manage_school:c03"
+    ],
+    "explicit_fields": [
+      "digest_time",
+      "enabled"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/escuela resumen estado",
+    "tool": "manage_school",
+    "observed_cases": [
+      "manage_school:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/encuesta crear",
+    "tool": "manage_poll",
+    "observed_cases": [
+      "manage_poll:c01",
+      "manage_poll:c06"
+    ],
+    "explicit_fields": [
+      "options",
+      "question"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/encuesta votar",
+    "tool": "manage_poll",
+    "observed_cases": [
+      "manage_poll:c02",
+      "manage_poll:c05",
+      "manage_poll:c07",
+      "manage_poll:c17",
+      "manage_poll:c18"
+    ],
+    "explicit_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/encuesta resultados",
+    "tool": "manage_poll",
+    "observed_cases": [
+      "manage_poll:c03",
+      "manage_poll:c08",
+      "manage_poll:c20"
+    ],
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/encuesta cerrar",
+    "tool": "manage_poll",
+    "observed_cases": [
+      "manage_poll:c04",
+      "manage_poll:c22",
+      "manage_poll:c23",
+      "manage_poll:c24"
+    ],
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recado preparar",
+    "tool": "manage_messages",
+    "observed_cases": [
+      "manage_messages:c02",
+      "manage_messages:c06",
+      "manage_messages:c17",
+      "manage_messages:c18",
+      "manage_messages:c19"
+    ],
+    "explicit_fields": [
+      "attach",
+      "recipients",
+      "source",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recado estado",
+    "tool": "manage_messages",
+    "observed_cases": [
+      "manage_messages:c03",
+      "manage_messages:c05",
+      "manage_messages:c07",
+      "manage_messages:c09",
+      "manage_messages:c21"
+    ],
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recado enviar",
+    "tool": "manage_messages",
+    "observed_cases": [
+      "manage_messages:c04",
+      "manage_messages:c10",
+      "manage_messages:c22",
+      "manage_messages:c24"
+    ],
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recado cancelar",
+    "tool": "manage_messages",
+    "observed_cases": [
+      "manage_messages:c08",
+      "manage_messages:c11",
+      "manage_messages:c23"
+    ],
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/contactos",
+    "tool": "manage_messages",
+    "observed_cases": [
+      "manage_messages:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pack catalogo",
+    "tool": "manage_pack",
+    "observed_cases": [
+      "manage_pack:c01",
+      "manage_pack:c02",
+      "manage_pack:c03",
+      "manage_pack:c07",
+      "manage_pack:c08",
+      "manage_pack:c12"
+    ],
+    "explicit_fields": [
+      "category",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pack comprar",
+    "tool": "manage_pack",
+    "observed_cases": [
+      "manage_pack:c14",
+      "manage_pack:c19",
+      "manage_pack:c25"
+    ],
+    "explicit_fields": [
+      "category"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pack confirmar",
+    "tool": "manage_pack",
+    "observed_cases": [
+      "manage_pack:c16",
+      "manage_pack:c18",
+      "manage_pack:c22"
+    ],
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/pack estado",
+    "tool": "manage_pack",
+    "observed_cases": [
+      "manage_pack:c15",
+      "manage_pack:c17",
+      "manage_pack:c24"
+    ],
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/coop crear",
+    "tool": "manage_cooperacha",
+    "observed_cases": [
+      "manage_cooperacha:c02",
+      "manage_cooperacha:c09",
+      "manage_cooperacha:c13",
+      "manage_cooperacha:c19"
+    ],
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/coop aportar",
+    "tool": "manage_cooperacha",
+    "observed_cases": [
+      "manage_cooperacha:c04",
+      "manage_cooperacha:c05",
+      "manage_cooperacha:c07",
+      "manage_cooperacha:c10",
+      "manage_cooperacha:c12",
+      "manage_cooperacha:c14",
+      "manage_cooperacha:c25"
+    ],
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/coop estado",
+    "tool": "manage_cooperacha",
+    "observed_cases": [
+      "manage_cooperacha:c01",
+      "manage_cooperacha:c03",
+      "manage_cooperacha:c06"
+    ],
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/coop cancelar",
+    "tool": "manage_cooperacha",
+    "observed_cases": [
+      "manage_cooperacha:c08",
+      "manage_cooperacha:c11",
+      "manage_cooperacha:c26"
+    ],
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh iniciar",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "duration_seconds"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh parar",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c10",
+      "manage_happy_hour:c14",
+      "manage_happy_hour:c16",
+      "manage_happy_hour:c23"
+    ],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh estado",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c02",
+      "manage_happy_hour:c03",
+      "manage_happy_hour:c11",
+      "manage_happy_hour:c24"
+    ],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh lluvia",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c04",
+      "manage_happy_hour:c05",
+      "manage_happy_hour:c25"
+    ],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh airdrop",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c06",
+      "manage_happy_hour:c07",
+      "manage_happy_hour:c26"
+    ],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/hh reclamar",
+    "tool": "manage_happy_hour",
+    "observed_cases": [
+      "manage_happy_hour:c08",
+      "manage_happy_hour:c09",
+      "manage_happy_hour:c12",
+      "manage_happy_hour:c22"
+    ],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mem guardar",
+    "tool": "manage_memory",
+    "observed_cases": [
+      "manage_memory:c02",
+      "manage_memory:c03",
+      "manage_memory:c04"
+    ],
+    "explicit_fields": [
+      "kind",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mem listar",
+    "tool": "manage_memory",
+    "observed_cases": [
+      "manage_memory:c01",
+      "manage_memory:c05",
+      "manage_memory:c06",
+      "manage_memory:c07",
+      "manage_memory:c12",
+      "manage_memory:c27"
+    ],
+    "explicit_fields": [
+      "kind",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mem corregir",
+    "tool": "manage_memory",
+    "observed_cases": [
+      "manage_memory:c16",
+      "manage_memory:c17"
+    ],
+    "explicit_fields": [
+      "memory_id",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mem olvidar",
+    "tool": "manage_memory",
+    "observed_cases": [
+      "manage_memory:c21",
+      "manage_memory:c22"
+    ],
+    "explicit_fields": [
+      "memory_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mem borrar-todo",
+    "tool": "manage_memory",
+    "observed_cases": [
+      "manage_memory:c25"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc estado",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc jugadores",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c02"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc mundos",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c03"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc mods",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c04"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc config",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c05"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc iniciar",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c06"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc parar",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c07"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc reiniciar",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c08"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc backup",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c09"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc mod activar",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c10",
+      "manage_minecraft:c17",
+      "manage_minecraft:c19",
+      "manage_minecraft:c24"
+    ],
+    "explicit_fields": [
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc mod desactivar",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c11",
+      "manage_minecraft:c18"
+    ],
+    "explicit_fields": [
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/mc consola",
+    "tool": "manage_minecraft",
+    "observed_cases": [
+      "manage_minecraft:c12",
+      "manage_minecraft:c13",
+      "manage_minecraft:c23"
+    ],
+    "explicit_fields": [
+      "command"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin advertir",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin quitar-aviso",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target",
+      "warning_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin avisos",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin expulsar",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin ban",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin unban",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin promover",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin degradar",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin silenciar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c28"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin desilenciar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c29"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin cerrar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c30"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin abrir",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c31"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin xp-dar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c03",
+      "manage_admin:c04"
+    ],
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin xp-quitar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c10",
+      "manage_admin:c11"
+    ],
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin nuclear-preparar",
+    "tool": "manage_admin",
+    "observed_cases": [
+      "manage_admin:c14",
+      "manage_admin:c17"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/admin nuclear-confirmar",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin nuclear-cancelar",
+    "tool": "manage_admin",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj iniciar",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c01",
+      "manage_blackjack:c05",
+      "manage_blackjack:c07"
+    ],
+    "explicit_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj mesa",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c14",
+      "manage_blackjack:c15"
+    ],
+    "explicit_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj entrar",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c19",
+      "manage_blackjack:c20"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj repartir",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c23"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "game_id"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj pedir",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c03",
+      "manage_blackjack:c25",
+      "manage_blackjack:c26"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj plantarse",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c04",
+      "manage_blackjack:c27",
+      "manage_blackjack:c28"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj doblar",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c06",
+      "manage_blackjack:c29"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj estado",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c02",
+      "manage_blackjack:c30",
+      "manage_blackjack:c31"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/bj cancelar",
+    "tool": "manage_blackjack",
+    "observed_cases": [
+      "manage_blackjack:c08",
+      "manage_blackjack:c32"
+    ],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ruleta crear",
+    "tool": "manage_roulette",
+    "observed_cases": [
+      "manage_roulette:c01",
+      "manage_roulette:c02",
+      "manage_roulette:c03"
+    ],
+    "explicit_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ruleta entrar",
+    "tool": "manage_roulette",
+    "observed_cases": [
+      "manage_roulette:c17"
+    ],
+    "explicit_fields": [
+      "room_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ruleta jugar",
+    "tool": "manage_roulette",
+    "observed_cases": [
+      "manage_roulette:c20"
+    ],
+    "explicit_fields": [
+      "room_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ruleta estado",
+    "tool": "manage_roulette",
+    "observed_cases": [
+      "manage_roulette:c11",
+      "manage_roulette:c13"
+    ],
+    "explicit_fields": [
+      "room_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "tool": "manage_roulette",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/broma",
+    "tool": "make_prank",
+    "observed_cases": [
+      "make_prank:c01",
+      "make_prank:c02",
+      "make_prank:c03",
+      "make_prank:c04",
+      "make_prank:c07",
+      "make_prank:c08",
+      "make_prank:c09",
+      "make_prank:c10",
+      "make_prank:c11",
+      "make_prank:c12",
+      "make_prank:c13",
+      "make_prank:c14",
+      "make_prank:c15",
+      "make_prank:c16",
+      "make_prank:c17",
+      "make_prank:c20",
+      "make_prank:c21"
+    ],
+    "explicit_fields": [
+      "label"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/daily",
+    "tool": "manage_economy",
+    "observed_cases": [
+      "manage_economy:c02",
+      "manage_economy:c04",
+      "manage_economy:c14"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/saldo",
+    "tool": "manage_economy",
+    "observed_cases": [
+      "manage_economy:c01",
+      "manage_economy:c03",
+      "manage_economy:c15"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/top",
+    "tool": "manage_economy",
+    "observed_cases": [
+      "manage_economy:c05",
+      "manage_economy:c16"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recordar en",
+    "tool": "manage_reminder",
+    "observed_cases": [
+      "manage_reminder:c01",
+      "manage_reminder:c02",
+      "manage_reminder:c03"
+    ],
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recordar el",
+    "tool": "manage_reminder",
+    "observed_cases": [
+      "manage_reminder:c08",
+      "manage_reminder:c09"
+    ],
+    "explicit_fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recordatorios",
+    "tool": "manage_reminder",
+    "observed_cases": [
+      "manage_reminder:c14",
+      "manage_reminder:c15",
+      "manage_reminder:c16",
+      "manage_reminder:c17",
+      "manage_reminder:c21"
+    ],
+    "explicit_fields": [
+      "include_closed",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recordatorio cancelar",
+    "tool": "manage_reminder",
+    "observed_cases": [
+      "manage_reminder:c22",
+      "manage_reminder:c23",
+      "manage_reminder:c26"
+    ],
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/recordatorio archivar",
+    "tool": "manage_reminder",
+    "observed_cases": [
+      "manage_reminder:c27",
+      "manage_reminder:c28",
+      "manage_reminder:c30"
+    ],
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/buscar",
+    "tool": "search_web",
+    "observed_cases": [
+      "search_web:c01",
+      "search_web:c02",
+      "search_web:c03",
+      "search_web:c04",
+      "search_web:c05",
+      "search_web:c06",
+      "search_web:c07",
+      "search_web:c08",
+      "search_web:c09",
+      "search_web:c20",
+      "search_web:c22",
+      "search_web:c23"
+    ],
+    "explicit_fields": [
+      "query",
+      "required_terms"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/drive guardar",
+    "tool": "manage_drive",
+    "observed_cases": [
+      "manage_drive:c03",
+      "manage_drive:c09",
+      "manage_drive:c12"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/drive buscar",
+    "tool": "manage_drive",
+    "observed_cases": [
+      "manage_drive:c17"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "query"
+    ],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/drive elegir",
+    "tool": "manage_drive",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "choice",
+      "view_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/drive cuota",
+    "tool": "manage_drive",
+    "observed_cases": [
+      "manage_drive:c01"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip lista",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c07"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip poner",
+    "tool": "audiovisual.clip",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "clip_id",
+      "query"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip pausa",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c10"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip seguir",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c11"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip repetir",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c12"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip siguiente",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c13"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip parar",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c14"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip volumen",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c15"
+    ],
+    "explicit_fields": [
+      "volume"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/clip ajustar",
+    "tool": "audiovisual.clip",
+    "observed_cases": [
+      "control_call:c17"
+    ],
+    "explicit_fields": [
+      "adjustment",
+      "direction"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/avatar fondo",
+    "tool": "audiovisual.avatar",
+    "observed_cases": [
+      "control_call:c19"
+    ],
+    "explicit_fields": [
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/avatar expresion",
+    "tool": "audiovisual.avatar",
+    "observed_cases": [
+      "control_call:c21"
+    ],
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/avatar gesto",
+    "tool": "audiovisual.avatar",
+    "observed_cases": [
+      "control_call:c23"
+    ],
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/avatar rubor",
+    "tool": "audiovisual.avatar",
+    "observed_cases": [
+      "control_call:c25"
+    ],
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamada programar",
+    "tool": "audiovisual.agenda",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada agenda",
+    "tool": "audiovisual.agenda",
+    "observed_cases": [
+      "control_call:c26"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "OBSERVED_SEE_CASE"
+  },
+  {
+    "route": "/llamada reprogramar",
+    "tool": "audiovisual.agenda",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada cancelar-agenda",
+    "tool": "audiovisual.agenda",
+    "observed_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  }
+]

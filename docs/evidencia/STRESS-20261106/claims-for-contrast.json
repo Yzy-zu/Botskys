@@ -1,0 +1,936 @@
+[
+  {
+    "id": "convert_document-01",
+    "tool": "convert_document",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fallo en conversión de texto largo a PDF por validación de límite de páginas",
+      "cases": [
+        "c14"
+      ],
+      "reproduce": "/convertir pdf con fixture large_txt",
+      "expected": "Paginación automática del texto plano y generación de PDF multipágina",
+      "observed": "Status failed con código 'document_pages' ('El PDF debe tener entre 1 y 500 páginas')",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/convert_document/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "convert_document-02",
+    "tool": "convert_document",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Falta de soporte o fallback para PDFs escaneados basados puramente en imágenes",
+      "cases": [
+        "c15"
+      ],
+      "reproduce": "/convertir docx con fixture scan_pdf",
+      "expected": "Generación de DOCX conteniendo las imágenes de páginas o texto extraído",
+      "observed": "Status failed con código 'document_no_text' ('No encontré texto extraíble. Si es un escaneo, necesitas OCR.')",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/convert_document/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "edit_media-01",
+    "tool": "edit_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Rechazo de fixture de subtítulo srt como formato no soportado (unsupported_media)",
+      "cases": [
+        "c08"
+      ],
+      "reproduce": "Ejecutar '/editar srt --idioma en' suministrando un archivo válido con extensión .srt.",
+      "expected": "Normalización o procesamiento del archivo srt según catálogo de contenedores permitidos.",
+      "observed": "Respuesta fallida con status 'failed' y código 'unsupported_media'.",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/edit_media/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_pdf-01",
+    "tool": "manage_pdf",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación de PDF corrupto en inicio de sesión provocando bloqueo por sesión abierta residual",
+      "cases": [
+        "c17",
+        "c18",
+        "c21"
+      ],
+      "reproduce": "Ejecutar /pdf iniciar adjuntando un fixture corrupto (broken_pdf) y随后 intentar comandos /pdf iniciar adicionales",
+      "expected": "Rechazo inmediato con status failed por archivo no legible sin crear ni persistir sesión activa",
+      "observed": "Retorna status ok con código pdf_session_started; la sesión activa no descartada causa que los casos siguientes fallen con pdf_session_exists en status needs_input",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/manage_pdf/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_pdf-02",
+    "tool": "manage_pdf",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fallo en la extracción de rangos o listas de páginas sobre fixture many_pages_pdf",
+      "cases": [
+        "c11",
+        "c12"
+      ],
+      "reproduce": "Ejecutar /pdf extraer 1-3 o /pdf extraer 1,3 proporcionando el fixture many_pages_pdf",
+      "expected": "Extracción exitosa de las páginas indicadas retornando un artefacto PDF con status ok",
+      "observed": "Operación rechazada con status failed y código document_pages indicando 'El PDF debe tener entre 1 y 500 páginas.'",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/manage_pdf/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_pdf-03",
+    "tool": "manage_pdf",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Imposibilidad de resolver y encadenar artefactos generados en pasos previos mediante output:ID",
+      "cases": [
+        "c28"
+      ],
+      "reproduce": "Ejecutar /pdf extraer 1 referenciando el artefacto resultante de c04 mediante el fixture sintético output:c04",
+      "expected": "Extracción correcta de la primera página del PDF generado en la sesión de ensamblado anterior",
+      "observed": "Rechazo con status failed y código attachment_source_mismatch ('El archivo no está disponible o no tienes acceso en este ámbito.')",
+      "confidence": "medium",
+      "level": "transport"
+    },
+    "evidence_results": "private/stress-20261106/batch1/manage_pdf/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_sticker-01",
+    "tool": "make_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fallo al procesar imágenes panorámicas por restricción de dimensiones",
+      "cases": [
+        "c06"
+      ],
+      "reproduce": "Ejecutar '/sticker' adjuntando fixture 'wide_image'",
+      "expected": "Ajuste proporcional a un marco estándar de 512px mediante downscaling o padding",
+      "observed": "status: failed con código 'image_dimensions' ('No pude completar el archivo. Código: image_dimensions')",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_sticker/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_sticker-02",
+    "tool": "make_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Rechazo de formato WEBP animado en la herramienta de stickers",
+      "cases": [
+        "c08"
+      ],
+      "reproduce": "Ejecutar '/sticker' adjuntando fixture 'animated_webp'",
+      "expected": "Generación de sticker animado o extracción del primer fotograma estático",
+      "observed": "status: failed con código 'unsupported_image'",
+      "confidence": "medium",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_sticker/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_sticker-03",
+    "tool": "make_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Incapacidad de reutilizar artefactos previos generados por la herramienta (output:c01)",
+      "cases": [
+        "c18"
+      ],
+      "reproduce": "Ejecutar '/sticker' referenciando 'output:c01'",
+      "expected": "Procesamiento y reemisión válida del sticker previamente generado",
+      "observed": "status: failed con código 'attachment_source_mismatch' ('No puedo usar ese archivo en este ámbito')",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_sticker/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "read_image-01",
+    "tool": "read_image",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fallo de procesamiento en imágenes panorámicas por restricción de dimensiones",
+      "cases": [
+        "c04"
+      ],
+      "reproduce": "Ejecutar /ocr adjuntando fixture 'wide_image'",
+      "expected": "Procesamiento y lectura de la imagen panorámica sin error de renderizado (status ok)",
+      "observed": "Status 'failed' con código 'image_dimensions' y mensaje 'No pude completar el archivo'",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/read_image/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "read_image-02",
+    "tool": "read_image",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Omisión de texto en imágenes de alta resolución (large_image) resultando en empty",
+      "cases": [
+        "c05"
+      ],
+      "reproduce": "Ejecutar /ocr adjuntando fixture 'large_image'",
+      "expected": "Extracción de texto contenido en la imagen con status 'ok'",
+      "observed": "Status 'empty' con código 'image_empty' ('No encontré contenido extraíble')",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/read_image/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "transcribe_media-01",
+    "tool": "transcribe_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Transcripción vacía o degradada en extracción de pistas de video (video y long_video devuelven solo un punto)",
+      "cases": [
+        "c05",
+        "c06",
+        "c23"
+      ],
+      "reproduce": "Ejecutar /transcribir con fixture 'video' o 'long_video'",
+      "expected": "Extracción y transcripción del contenido verbal audible del video",
+      "observed": "El resultado devuelve transcript_ready con data.transcript = ' .' y consecuentemente el resumen reporta falta de texto",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/transcribe_media/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "transcribe_media-02",
+    "tool": "transcribe_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Rechazo de archivo de audio grande con código audio_too_large sin procesamiento por partes",
+      "cases": [
+        "c09"
+      ],
+      "reproduce": "Ejecutar /transcribir adjuntando fixture 'large_audio'",
+      "expected": "Procesamiento íntegro del audio o segmentación automática",
+      "observed": "Fallo directo con status 'failed' y código 'audio_too_large'",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/transcribe_media/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_voice-01",
+    "tool": "make_voice",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Vocalización de comandos de sistema (/estado [ID]) en /voz ultima",
+      "cases": [
+        "c21",
+        "c22"
+      ],
+      "reproduce": "Ejecutar /voz ultima cuando el último mensaje del bot contiene un pie de seguimiento de estado",
+      "expected": "El sintetizador debe sanitizar el texto eliminando comandos del sistema como '/estado [ID]' antes de generar la locución",
+      "observed": "El audio generado incluye la lectura textual de metadatos del bot: 'No hay texto propio exacto...\\n/estado [ID]'",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_voice-02",
+    "tool": "make_voice",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Truncamiento abrupto a mitad de palabra en texto extendido generado por /voz crear",
+      "cases": [
+        "c14"
+      ],
+      "reproduce": "/voz crear --duracion 600 Audio en el limite superior",
+      "expected": "El texto compuesto para el audio debe cerrarse en un límite gramatical limpio o palabra completa",
+      "observed": "El texto generado y sintetizado termina abruptamente cortado a mitad de palabra ('requiere un esfue')",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_voice-03",
+    "tool": "make_voice",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Reemplazo de texto y discrepancia severa de duración mínima en /voz crear",
+      "cases": [
+        "c13"
+      ],
+      "reproduce": "/voz crear --duracion 0.01 Pulso ultra corto",
+      "expected": "Debería sintetizar el texto provisto ('Pulso ultra corto') o rechazar duración no realizable",
+      "observed": "El contenido fue sustituido arbitrariamente por 'Hola.' y la duración del audio resultante fue 1.88 segundos en lugar de aproximarse a 0.01s",
+      "confidence": "medium",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "conversation-01",
+    "tool": "conversation",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fuga de excepción de proveedor 'gemini_request_failed' en audio dañado",
+      "cases": [
+        "c16"
+      ],
+      "reproduce": "Ejecutar /ia Analiza este archivo de audio dañado adjuntando el fixture broken_audio",
+      "expected": "Código de error de dominio controlado (ej. invalid_audio) análogo a invalid_image en imágenes dañadas",
+      "observed": "Devuelve status failed con código de proveedor sin transformar: 'gemini_request_failed'",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/conversation/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "conversation-02",
+    "tool": "conversation",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Omisión silenciosa de adjuntos en formatos no procesados por el backend (pptx, json)",
+      "cases": [
+        "c14",
+        "c19"
+      ],
+      "reproduce": "Ejecutar /ia pidiendo analizar el archivo adjunto con fixtures pptx o invalid_json",
+      "expected": "Rechazo controlado (código unsupported_format o invalid_input) o entrega del contenido al modelo",
+      "observed": "La petición responde ok pero el modelo manifiesta no haber recibido ningún archivo ni texto adjunto",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/conversation/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "search_web-01",
+    "tool": "search_web",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Discrepancia entre catálogo y backend en max_items de --terminos",
+      "cases": [
+        "c15"
+      ],
+      "reproduce": "/buscar --terminos t1,t2,t3,t4,t5,t6,t7,t8,t9,t10 test valid count",
+      "expected": "Aceptación de hasta 10 términos según la especificación del catálogo (min_items: 1, max_items: 10)",
+      "observed": "Rechazo con code invalid_field y mensaje 'required_terms: usa de 1 a 8 valores distintos de hasta 100 caracteres, separados por coma'",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch1/search_web/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "search_web-02",
+    "tool": "search_web",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Filtrado con --terminos devuelve conjunto vacío en consultas con alta probabilidad de coincidencia",
+      "cases": [
+        "c02",
+        "c03"
+      ],
+      "reproduce": "/buscar --terminos W3C,HTML standards specification",
+      "expected": "Resultados web válidos acordes a los términos y la consulta",
+      "observed": "Respuesta code web_empty, status empty con texto 'No encontré resultados que cumplan los términos y las fuentes solicitadas.'",
+      "confidence": "medium",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch1/search_web/execution/recovery1/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_conversation-01",
+    "tool": "manage_conversation",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación silenciosa de archivos adjuntos binarios en comandos de control que no admiten fixtures",
+      "cases": [
+        "c24"
+      ],
+      "reproduce": "Ejecutar '/bot pausa 15' adjuntando un fixture de imagen ('image').",
+      "expected": "Rechazo de la petición o advertencia por adjunto incompatible con el comando de pausa.",
+      "observed": "El backend procesó y aplicó la pausa con status 'ok' (bot_mode_updated), ignorando por completo el binario adjunto.",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_conversation/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_conversation-02",
+    "tool": "manage_conversation",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Normalización permisiva no tipificada ante valores enum en mayúsculas",
+      "cases": [
+        "c11"
+      ],
+      "reproduce": "Ejecutar '/bot modo APAGADO'.",
+      "expected": "Rechazo de validación si el contrato exige coincidencia exacta con choices ['apagado', 'discreto', 'activo'].",
+      "observed": "El sistema normalizó internamente la cadena a minúsculas y actualizó el modo con status 'ok'.",
+      "confidence": "low",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_conversation/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "save_note-01",
+    "tool": "save_note",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Validación de longitud máxima devuelve status 'needs_input' en lugar de error o fallo",
+      "cases": [
+        "c18"
+      ],
+      "reproduce": "/nota guardar C[x8001]",
+      "expected": "Rechazo de la petición por exceder el tamaño máximo permitido con status 'failed' o 'error'",
+      "observed": "{\"code\": \"invalid_field\", \"data\": {}, \"status\": \"needs_input\", \"text\": \"text: requiere texto de 1 a 8000 caracteres\\nUso: /nota guardar TEXT\\nEjemplo: /nota guardar ejemplo\"}",
+      "confidence": "medium",
+      "level": "providers_real_delivery_fixture"
+    },
+    "evidence_results": "private/stress-20261106/batch2/save_note/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "save_note-02",
+    "tool": "save_note",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Subcomandos no soportados retornan status 'needs_input' en lugar de fallo de despacho",
+      "cases": [
+        "c20",
+        "c21"
+      ],
+      "reproduce": "/nota modificar Mi nota existente",
+      "expected": "Error o rechazo explícito por comando o subcomando desconocido",
+      "observed": "{\"code\": \"unknown_action\", \"data\": {}, \"status\": \"needs_input\", \"text\": \"Falta una acción válida.\\n/nota guardar TEXT\\nEjemplo: /nota guardar ejemplo\\nPermiso: friend; implementación: R2.\"}",
+      "confidence": "low",
+      "level": "providers_real_delivery_fixture"
+    },
+    "evidence_results": "private/stress-20261106/batch2/save_note/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "save_note-03",
+    "tool": "save_note",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Comandos de control y ciclo de vida exigen ID obligatorio y retornan 'needs_input'",
+      "cases": [
+        "c23",
+        "c24",
+        "c25"
+      ],
+      "reproduce": "/estado",
+      "expected": "Respuesta neutra o informativa global sin requerir ID obligatorio",
+      "observed": "{\"code\": \"missing_field\", \"data\": {}, \"status\": \"needs_input\", \"text\": \"id: Falta el campo requerido.\\nUso: /estado ID\\nEjemplo: /estado ID_REAL\"}",
+      "confidence": "low",
+      "level": "providers_real_delivery_fixture"
+    },
+    "evidence_results": "private/stress-20261106/batch2/save_note/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "find_notes-01",
+    "tool": "find_notes",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Paginación superior a las páginas disponibles emite 'needs_input' en lugar de estado 'empty'",
+      "cases": [
+        "c05",
+        "c06",
+        "c12"
+      ],
+      "reproduce": "/notas --pagina 2",
+      "expected": "Estado 'empty' o lista vacía al navegar a una página válida dentro del esquema pero sin registros",
+      "observed": "Estado 'needs_input' con código 'note_page_out_of_range' y texto 'Página fuera de rango: 1–1.'",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/find_notes/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_memory-01",
+    "tool": "manage_memory",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Retorno de status 'empty' en mutaciones sobre identificadores inexistentes",
+      "cases": [
+        "c17",
+        "c22"
+      ],
+      "reproduce": "Ejecutar /mem corregir 9223372036854775800 <texto> o /mem olvidar <id_inexistente_o_borrado>",
+      "expected": "Respuesta con status de fallo ('failed') al no haberse podido ejecutar la mutación solicitada",
+      "observed": "Status 'empty' con código 'memory_not_found', convención habitualmente asociada a consultas de lectura sin resultados",
+      "confidence": "medium",
+      "level": "providers_real_delivery_fixture"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_memory/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_reminder-01",
+    "tool": "manage_reminder",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Cancelación redundante de recordatorio ya cancelado responde status ok sin validar estado",
+      "cases": [
+        "c26"
+      ],
+      "reproduce": "Ejecutar /recordatorio cancelar 1 después de haber cancelado exitosamente el recordatorio 1 en c22",
+      "expected": "Rechazo o advertencia indicando que el recordatorio ya no está en estado pendiente o ya fue cancelado",
+      "observed": "Devuelve status 'ok' con código 'reminder_cancelled' y mensaje 'Recordatorio cancelled.' de forma idéntica a la primera cancelación",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_reminder/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_school-01",
+    "tool": "manage_school",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación de archivos adjuntos corruptos sin verificación de integridad",
+      "cases": [
+        "c09"
+      ],
+      "reproduce": "/tarea crear --materia Quimica --fecha 2026-12-01 --adjunto Enunciado con adjunto roto con fixture broken_pdf",
+      "expected": "El backend debe validar el archivo y rechazar adjuntos dañados o ilegibles (status failed o uncertain)",
+      "observed": "Devolvió status 'ok' y código 'school_task_created' asignando task_id 4 a un archivo corrupto",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_school/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_poll-01",
+    "tool": "manage_poll",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Cierre redundante de encuesta ya cerrada responde con éxito sin indicar estado previo",
+      "cases": [
+        "c22"
+      ],
+      "reproduce": "Ejecutar '/encuesta cerrar 1' sobre una encuesta que ya fue cerrada exitosamente en una llamada anterior ('c04').",
+      "expected": "El backend debería advertir o rechazar la acción informando que la encuesta ya se encuentra cerrada (código 'poll_closed' o similar).",
+      "observed": "Devuelve status 'ok' con código 'poll_results' devolviendo los resultados como si la operación de cierre acabara de ejecutarse.",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_poll/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_drive-01",
+    "tool": "manage_drive",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Comandos con errores de sintaxis y validación retornan status needs_input en lugar de failed",
+      "cases": [
+        "c19",
+        "c25",
+        "c26"
+      ],
+      "reproduce": "Ejecutar '/drive buscar' con más de 200 caracteres, '/drive elegir' sin argumentos o '/drive cuota' con argumentos extra.",
+      "expected": "Status failed indicando error de invocación de sintaxis o parámetro inválido.",
+      "observed": "Status needs_input con códigos invalid_field, missing_field y extra_argument.",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_drive/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_messages-01",
+    "tool": "manage_messages",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación de adjuntos corruptos sin validación de integridad en vista previa",
+      "cases": [
+        "c19"
+      ],
+      "reproduce": "/recado preparar --para Lab --adjunto Archivo dañado adjunto con fixture broken_png",
+      "expected": "Rechazo del borrador o advertencia de archivo corrupto/inválido",
+      "observed": "Generó vista previa exitosa (status: 'needs_input', code: 'message_preview') aceptando el archivo corrupto de 17 bytes como png válido",
+      "confidence": "high",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_messages-02",
+    "tool": "manage_messages",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Ausencia de código de error al intentar enviar recados cancelados o previamente completados",
+      "cases": [
+        "c10",
+        "c24"
+      ],
+      "reproduce": "/recado enviar DRAFT_ID sobre un borrador cancelado (c10) o ya enviado (c24)",
+      "expected": "Rechazo de la acción mediante status 'failed' o código de error por transición de estado ilegal",
+      "observed": "El comando responde con status 'ok' devolviendo el estado pasivo ('cancelled' o 'completed') sin alertar del rechazo de la orden de envío",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "send_sticker-01",
+    "tool": "send_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación permisiva de mayúsculas y capitalización fuera del catálogo enum",
+      "cases": [
+        "c07",
+        "c08"
+      ],
+      "reproduce": "Ejecutar '/reaccion SALUDO' o '/reaccion Saludo'",
+      "expected": "Fallo o rechazo de validación al no coincidir con los valores enum en minúsculas definidos en el catálogo",
+      "observed": "Retorna status 'ok' con código 'reaction_ready' normalizando silenciosamente el valor a minúsculas",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/send_sticker/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "send_sticker-02",
+    "tool": "send_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación y stripping implícito de comillas envolventes en el identificador",
+      "cases": [
+        "c12"
+      ],
+      "reproduce": "Ejecutar '/reaccion \"saludo\"'",
+      "expected": "Rechazo por formato literal inválido o delimitador no estándar",
+      "observed": "Retorna status 'ok' con código 'reaction_ready' eliminando comillas",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch2/send_sticker/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_pack-01",
+    "tool": "manage_pack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación de compra y oferta creada para categoría inexistente sin validación previa",
+      "cases": [
+        "c19"
+      ],
+      "reproduce": "Ejecutar '/pack comprar categoria_inexistente_99999'",
+      "expected": "Rechazo de la solicitud indicando que la categoría no existe o no tiene stock para venta",
+      "observed": "El backend emite exitosamente un 'pack_offer' con purchase_id y precio 150 XP para una categoría inexistente",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_pack/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_pack-02",
+    "tool": "manage_pack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Falta de control de estado o idempotencia al reconfirmar una compra ya finalizada",
+      "cases": [
+        "c18"
+      ],
+      "reproduce": "Ejecutar '/pack confirmar [ID]' sobre un purchase_id que ya fue confirmado y pasó a estado 'failed'",
+      "expected": "Rechazo de la operación con error de estado (ej. compra ya procesada o finalizada)",
+      "observed": "Responde con status 'ok' y repite el estado 'failed' sin señalar error de reconfirmación",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_pack/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_cooperacha-01",
+    "tool": "manage_cooperacha",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Cooperacha creada nace inmediatamente en estado 'failed' imposibilitando aportes",
+      "cases": [
+        "c02",
+        "c04",
+        "c05",
+        "c09",
+        "c10",
+        "c13",
+        "c14"
+      ],
+      "reproduce": "Ejecutar '/coop crear [categoria] [meta]' (ej. /coop crear fiesta 100). Observar en el resultado que 'state' es 'failed' en lugar de 'open'/'active', provocando que cualquier aporte posterior falle con 'coop_not_open'.",
+      "expected": "La cooperacha debe crearse en estado abierto/activo para recibir aportes hacia la meta.",
+      "observed": "data.state es 'failed' y el texto muestra 'Cooperacha [ID]: failed · 0/100 XP · devuelto 0 XP.'. Aportes subsiguientes devuelven coop_not_open con status failed.",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_cooperacha/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_cooperacha-02",
+    "tool": "manage_cooperacha",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Omisión de validación de longitud máxima en category (>120 caracteres)",
+      "cases": [
+        "c19"
+      ],
+      "reproduce": "Ejecutar '/coop crear' con una cadena de categoría de 127 caracteres y meta 100.",
+      "expected": "Rechazo de validación (needs_input o failed) por exceder max_length: 120.",
+      "observed": "Comando aceptado con status ok y cooperacha generada sin validar la longitud máxima.",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_cooperacha/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_cooperacha-03",
+    "tool": "manage_cooperacha",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "/coop cancelar responde ok sobre cooperachas que ya están en estado failed",
+      "cases": [
+        "c08"
+      ],
+      "reproduce": "Ejecutar '/coop cancelar [ID]' sobre un reto cuyo estado ya es 'failed'.",
+      "expected": "Error indicando que el reto no puede ser cancelado por encontrarse ya cerrado/fallido.",
+      "observed": "Operación responde status ok y no notifica que el estado previo ya era terminal.",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_cooperacha/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_happy_hour-01",
+    "tool": "manage_happy_hour",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Discrepancia en parser de opción --duracion: rechaza enteros en segundos y exige cadenas con sufijo de unidad",
+      "cases": [
+        "c13",
+        "c15"
+      ],
+      "reproduce": "Ejecutar '/hh iniciar --duracion 60' o '/hh iniciar --duracion 86400'",
+      "expected": "El backend debería aceptar valores enteros representando segundos dentro del rango permitido [60, 86400]",
+      "observed": "Devuelve status needs_input y código invalid_field exigiendo intervalos como 30s, 10m, 2h o 1d",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_happy_hour/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_happy_hour-02",
+    "tool": "manage_happy_hour",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Fallo inmediato al reclamar AirDrop recién anunciado en el grupo",
+      "cases": [
+        "c08"
+      ],
+      "reproduce": "Ejecutar '/hh airdrop' seguido inmediatamente de '/hh reclamar {c01.event_id}'",
+      "expected": "Reclamación exitosa con status ok y adjudicación del beneficio al participante",
+      "observed": "Devuelve status empty con código happy_drop_unavailable indicando 'Ese AirDrop no está abierto en este grupo'",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_happy_hour/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_economy-01",
+    "tool": "manage_economy",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Omisión silenciosa de archivos adjuntos (incluyendo binarios corruptos) en comandos textuales",
+      "cases": [
+        "c14",
+        "c15",
+        "c16"
+      ],
+      "reproduce": "Ejecutar /daily con fixture 'image', /saldo con fixture 'broken_png' o /top con fixture 'txt'.",
+      "expected": "El backend debería validar el payload de entrada y rechazar o advertir sobre adjuntos no soportados o archivos corruptos.",
+      "observed": "Los adjuntos son ignorados completamente y los comandos se procesan retornando status 'ok' (c15 entrega xp_balance, c16 entrega xp_top y c14 entrega daily_cooldown).",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_economy/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_blackjack-01",
+    "tool": "manage_blackjack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Cancelación de partida ya liquidada devuelve status ok en lugar de error",
+      "cases": [
+        "c32"
+      ],
+      "reproduce": "Ejecutar /bj cancelar [ID] referenciando una partida que ya finalizó en estado 'settled'.",
+      "expected": "Rechazo con estado 'failed' indicando que una mano concluida no es cancelable.",
+      "observed": "Devuelve status 'ok' con código 'blackjack_settled' mostrando el resultado ya liquidado.",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_blackjack/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_blackjack-02",
+    "tool": "manage_blackjack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Imposibilidad de cancelar partidas activas mediante comando explícito",
+      "cases": [
+        "c08"
+      ],
+      "reproduce": "Ejecutar /bj cancelar [ID] sobre una partida en curso (estado 'playing').",
+      "expected": "Cancelación de la partida o reembolso según reglas de abandono.",
+      "observed": "Falla con status 'failed' y código 'blackjack_cancel_playing': 'Una mano repartida se termina por turno o plazo; no se devuelve por cancelación voluntaria.'",
+      "confidence": "medium",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_blackjack/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_roulette-01",
+    "tool": "manage_roulette",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Mensaje de validación ambiguo o impreciso para apuestas no enteras",
+      "cases": [
+        "c05",
+        "c08",
+        "c09"
+      ],
+      "reproduce": "Ejecutar /ruleta crear con valor no entero o texto (ej. /ruleta crear 50.5 o /ruleta crear diez)",
+      "expected": "El mensaje debería especificar que se requiere un número entero en el rango 1–1000",
+      "observed": "El mensaje indica textualmente 'requiere un número decimal positivo sin coerciones', induciendo a error sobre el soporte de valores flotantes",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_roulette/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_admin-01",
+    "tool": "manage_admin",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Mensaje de validación para amount refiere a tipo decimal en un campo catalogado como entero",
+      "cases": [
+        "c07"
+      ],
+      "reproduce": "/admin xp-dar --cuenta 1 -25",
+      "expected": "Mensaje de rechazo indicando la necesidad de un número entero positivo dentro del rango 1–50000.",
+      "observed": "amount: requiere un número decimal positivo sin coerciones",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_admin/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "manage_minecraft-01",
+    "tool": "manage_minecraft",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Subcomando desconocido y argumentos sobrantes devuelven status 'needs_input' en lugar de fallo terminal",
+      "cases": [
+        "c21",
+        "c22"
+      ],
+      "reproduce": "Ejecutar /mc subcomando_desconocido o /mc estado con argumentos superfluos",
+      "expected": "Respuesta con status 'failed' indicando error de comando o sintaxis no válida",
+      "observed": "Status 'needs_input' con códigos 'extra_argument' y 'unknown_action'",
+      "confidence": "medium",
+      "level": "provider"
+    },
+    "evidence_results": "private/stress-20261106/batch3/manage_minecraft/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "make_prank-01",
+    "tool": "make_prank",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Aceptación silenciosa y generación exitosa ignorando adjuntos corruptos o de tipos de medio incompatibles",
+      "cases": [
+        "c17",
+        "c20",
+        "c21"
+      ],
+      "reproduce": "Ejecutar /broma adjuntando un archivo corrupto (broken_png) o incompatible (audio, pdf).",
+      "expected": "Rechazo controlado con estado failed o código indicativo de archivo no admitido/ilegible.",
+      "observed": "Devuelve status 'ok' con código 'prank_fiction' generando texto ficticio e ignorando totalmente el adjunto inválido.",
+      "confidence": "high",
+      "level": "providers_real_delivery_fixture"
+    },
+    "evidence_results": "private/stress-20261106/batch3/make_prank/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  },
+  {
+    "id": "control_call-01",
+    "tool": "control_call",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "claim": {
+      "title": "Discrepancia entre esquema de catálogo (numérico) y formato exigido por el parser para max_seconds",
+      "cases": [
+        "c03",
+        "c04",
+        "c27"
+      ],
+      "reproduce": "Ejecutar /llamar --duracion 600 o /llamada programar 2026-12-01 12:00 --duracion 300",
+      "expected": "El catálogo define tipo duration con minimum 5 y maximum 3600 (segundos), esperando aceptación de enteros o mensaje acorde a límites numéricos.",
+      "observed": "El parser rechaza enteros simples con invalid_field y needs_input, exigiendo obligatoriamente sufijos de unidad de intervalo ('30s, 10m, 2h o 1d').",
+      "confidence": "high",
+      "level": "local"
+    },
+    "evidence_results": "private/stress-20261106/batch3/control_call/execution/results.json",
+    "warning": "Agent confidence is not independent verification; compare contract, fixture and observed output."
+  }
+]

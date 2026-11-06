@@ -59,3 +59,18 @@ Drive puede escribir fixtures sintéticos en la carpeta propia de Botsky; recado
 solo a Botsky Lab. Los permisos se habilitan únicamente en el perfil desechable
 del laboratorio, no en el perfil operativo previo. No reanudar envíos inciertos
 ni una campaña terminada automáticamente. Umbral de cuota5% vigente.
+
+## 06/11 · Nueva campaña de profundidad 10 + 10 + 10
+
+El propietario encargó una campaña nueva: tres tandas de diez sesiones AGY CLI,
+modelo gemini-3.8-flash-medium, una herramienta por sesión hasta cubrir las30.
+Variar acciones/argumentos, cadenas, archivos corruptos/grandes y enlaces; conservar
+evidencia reproducible y un informe por herramienta. Aclaración posterior: fase de
+descubrimiento y recuento, **no corregir producto durante la campaña**. Los errores
+sospechados se contrastarán después con otro agente que elegirá el propietario;
+no lanzar ese contraste ni sustituir el modelo por iniciativa propia.
+Backend/fixtures propios y ámbitos anteriores; muestras reales y resúmenes al Lab,
+resto de entregas capturadas localmente y etiquetadas sin fingir ACK de proveedor.
+No reanuda la campaña cerrada anterior. Se conservan exclusiones de perfiles,
+llamadas/navegador, mutaciones grupo/servidor, transición, NLP y GitHub. Umbral5%
+vigente: guardar evidencia/relevo/commits y detenerse sin reanudación automática.

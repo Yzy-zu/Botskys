@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ORCH-CANCEL-01",
+    "review_status": "REPRODUCED_OBSERVATION_PENDING_CONTRAST",
+    "title": "Cancellation of subprocess launch can loop without completing",
+    "observed": "Initial quota helper timeout triggered global cancellation; stack stopped at engines/process.py line60. Isolated fault injection cancels launch task; caller did not terminate within3s. No real OS child was launched in minimal reproduction.",
+    "reproduce": "Run cancelled-launch-repro.py in a disposable subprocess with a 3s external deadline. It intentionally does not terminate on the observed revision.",
+    "evidence": [
+      "cancelled-launch-repro.py",
+      "cancelled-launch-repro-stderr.txt",
+      "cancelled-launch-repro-result.json"
+    ],
+    "product_modified": false
+  },
+  {
+    "id": "ORCH-HARNESS-01",
+    "review_status": "HARNESS_INCIDENT",
+    "title": "Quota helper timed out after20s in shared-loop harness",
+    "observed": "Batch1 interrupted; original result ledgers and SQLite snapshots preserved. Harness changed to isolated worker processes, completed cases not repeated; two interrupted in-flight cases remain REVIEW.",
+    "evidence": "private/stress-20261106/batch1-backend.log"
+  },
+  {
+    "id": "ORCH-AGY-01",
+    "review_status": "PROVIDER_REPORT_BLOCKED",
+    "title": "Download tester final report rejected by AGY upstream",
+    "observed": "Proposal and25executed results exist; provider returned a non-JSON refusal during final reporting. No rephrasing or model substitution performed.",
+    "evidence": "private/stress-20261106/batch1/download_media/turn2-events.jsonl"
+  }
+]
