@@ -1,5 +1,26 @@
 # Relevo Botsky
 
+## 06/11/2026 04:30 UTC · PARADA al5%, sin reanudación automática
+
+Consulta oficial5% primaria/48% semanal. Se guarda y se detiene por instrucción del
+propietario; no continuar automáticamente. R6 cerrado353d57c, R7 cerrado1c08f1a,
+R8 cerrado c9fda0d, siempre nivel LOCAL. Regresión R8:134tests;11focales posteriores
+pasan. No APIs/proveedores/servicios activos ni recepción humana comprobados.
+
+R9 INICIADO, NO cerrado: calls/pcm-queue.cjs con callId/sessionId/epoch, secuencia,
+PCM s16le24k mono, paquete96000B, presión10s, copia/drain/clear/cierre. Dos pruebas
+Node20.20.2 de muestras/identidad/epoch/presión/liberación pasan. Es una cola PCM
+sintética, NO una llamada ni WebRTC/escucha. Sin navegador ni dependencia Node
+remota/antigua instalada. Fuente audio-bridge técnica con hash en R9-partial.json.
+
+Reanudar R9 leyendo ficha docs/portados/audiovisual.md y evidencia R9-partial.json;
+completar control durable/agenda/recados/audio/Live/audiencia/video/clips/avatar,
+servicio autenticado nuevo y WebRTC local real sin abrir navegador ni usar perfiles
+activos. R10 local espera cierre de R9; R10 remoto/R11 requieren otro encargo.
+No ejecutar fases de otros planes ni continuar NLP. Zhana activa/DB31/config/
+servicios/sesiones/transportes y cambios/evidencias/auditorías previos intactos.
+Solo commits locales selectivos. STOP-20261106-0430.json conserva punto de parada.
+
 ## 06/11/2026 · R8 cerrado localmente; siguiente R9 audiovisual
 
 R6 commit353d57c; R7 commit1c08f1a. R8 esquema propio16, administración de dueño,

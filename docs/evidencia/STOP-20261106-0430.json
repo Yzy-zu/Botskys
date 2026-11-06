@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-06T04:31:43.643830+00:00",
+  "primary_remaining_percent": 5,
+  "weekly_remaining_percent": 48,
+  "state": "STOPPED_QUOTA",
+  "automatic_resume": false,
+  "completed_blocks": [
+    "R0",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+  ],
+  "partial_block": "R9",
+  "commits": {
+    "R6": "353d57c",
+    "R7": "1c08f1a",
+    "R8": "c9fda0d"
+  },
+  "next": "Continuar R9 según relevo/ficha/evidencia. No browser, datos activos, remoto ni transición."
+}

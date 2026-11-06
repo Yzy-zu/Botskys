@@ -1,0 +1,25 @@
+{
+  "block": "R9",
+  "status": "REVIEW",
+  "completion": "partial; NOT_CLOSED",
+  "at": "2026-11-06T04:31:43.643830+00:00",
+  "component": "calls/pcm-queue.cjs",
+  "node_version": "20.20.2",
+  "tests": 2,
+  "log": "R9-pcm-initial-tests.txt",
+  "reference": {
+    "source": "calls/service/audio-bridge.cjs",
+    "sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10"
+  },
+  "implemented": [
+    "cola PCM s16le mono24k por call/session/epoch",
+    "secuencia, copia, presión10s, drenaje, clear/cierre"
+  ],
+  "not_tested": [
+    "WebRTC",
+    "llamada, transporte, captura y recepción humana",
+    "Live, audiencia, video/clips/avatar",
+    "servicio autenticado y agenda"
+  ],
+  "remote": "not authorized; none performed"
+}
