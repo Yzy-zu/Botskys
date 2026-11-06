@@ -1,7 +1,11 @@
 # Procedimiento documental de transición y reversión
 
-Documento exigido por R10. **No ejecutado ni autorizado para ejecutarse ahora.**
-R11 exige R10 aceptado y encargo expreso posterior. No contiene instrucciones para
+Actualización06/11: propietario ya encargó R10/R11 y producción. Preflight,
+respaldo y cesión temporal AV en [R10_PRODUCCION_20261106.md](R10_PRODUCCION_20261106.md).
+El corte final no se ha ejecutado: R10 requiere todavía aceptación real pendiente.
+
+Procedimiento original exigido por R10, conservado como referencia.
+R11 exige R10 aceptado y encargo expreso (este último ya recibido). No contiene instrucciones para
 activar un MVP ni para saltar capacidades pendientes.
 
 Antes de una campaña remota se debe fijar su alcance concreto: cuenta/chat,
@@ -54,5 +58,7 @@ Reversión futura:
   qué efectos quedaron conciliados o inciertos, el punto de reversión y el estado
   conservado de ambos proyectos.
 
-No se han preparado secretos activos, modificado webhooks/servicios, abierto perfiles,
-hecho respaldos de producción ni ejecutado ninguno de estos pasos en esta construcción.
+El alcance y los resultados nuevos de preparación/respaldo/cesión temporal están
+en el informe enlazado al principio. No se modificó el webhook activo ni se
+ejecutó el corte final de producción. Los límites históricos anteriores mantienen
+su fecha; no describen por sí solos el estado posterior.

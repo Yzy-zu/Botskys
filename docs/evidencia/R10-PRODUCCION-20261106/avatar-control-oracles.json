@@ -1,0 +1,8 @@
+{
+  "background": true,
+  "expressionMorphs": true,
+  "gestureBones": true,
+  "blushOverlay": true,
+  "realRGBAFrames": true,
+  "humanReception": "NOT_TESTED"
+}

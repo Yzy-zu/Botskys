@@ -1,0 +1,17 @@
+{
+  "avatar-control-oracles.json": "fb097df2c7cd2f8261b5d59c691ab1ad02f4d52e70c6c447b40b3456b4df35fe",
+  "avatar-render.json": "7a780194bc7b947fb5f0f5a9ef07354e56da72164eb4ff3d78c2e190e553c054",
+  "delivery.json": "d85ba267b22990eb560f9ae73789cb02691b975a3560a2d870d17c4792196494",
+  "format.txt": "203e93364cb1cadf2891085bdf0d28057864d4a8c3d6594de13ce367c1fc9272",
+  "network.json": "cedf05b4bd7884b92e48877e1b665d49778f2d157580e87738854d1ff93a5316",
+  "node-tests.txt": "f6a7b6a7a631d76f4b477021908e25aa110745f6661085d2d7dbfdbe80367083",
+  "probeSyntax.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "procedures/botsky-av-handoff.py.txt": "172d3752a26605d72da5d79ae5b385cf2d728be5666d812c93ccfbb33b02494d",
+  "procedures/botsky-production-prepare.py.txt": "75d50a70f9265ed3f0a63d5b45f199beb06788a2539b980c2f7b4a8d8ec8f6bf",
+  "procedures/botsky-r10-delivery.py.txt": "f069bbbdb0b2a316b5152f6b0ea1cb1042a048a3c7f98f0ea0e1257ac8885851",
+  "procedures/botsky-r10-network.py.txt": "2e602a0d5bdf67c9b2d29df80990b80651cfa02fbb9a3ecd296bf3ceb469f7c3",
+  "ruff.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "static-checks.json": "6064fc84e2de5b7ffd521d2154a97e77302750e36aa00842b77d6abc813e295e",
+  "summary.json": "54e0be3bd1ac8bed35cd0a0028209e19f297f8c2a3cd9fda28b241fef55dacf7",
+  "templateSyntax.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

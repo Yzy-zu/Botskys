@@ -1,0 +1,1546 @@
+{
+  "first": {
+    "ready": true,
+    "name": "Zhana",
+    "background": "neon",
+    "expression": "relaxed",
+    "expressionCapabilities": [
+      {
+        "name": "neutral",
+        "expression": "neutral",
+        "supported": true,
+        "mode": "reset",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "relaxed",
+        "expression": "relaxed",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "happy",
+        "expression": "happy",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "angry",
+        "expression": "angry",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "sad",
+        "expression": "sad",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "surprised",
+        "expression": "Surprised",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "wink",
+        "expression": "blinkLeft",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "laugh",
+        "expression": "happy",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      }
+    ],
+    "appliedExpression": {
+      "requested": "relaxed",
+      "resolved": "relaxed",
+      "weight": 0.22,
+      "value": 0.22,
+      "bindCount": 9,
+      "applied": true,
+      "binds": [
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        },
+        {
+          "type": "morph",
+          "index": 10,
+          "weight": 1,
+          "influence": 0.22
+        }
+      ]
+    },
+    "gesture": null,
+    "appliedGesture": null,
+    "gestureCapabilities": [
+      {
+        "name": "wave",
+        "supported": true,
+        "bones": [
+          "rightUpperArm",
+          "rightLowerArm",
+          "rightHand"
+        ]
+      },
+      {
+        "name": "nod",
+        "supported": true,
+        "bones": [
+          "head"
+        ]
+      },
+      {
+        "name": "shake_head",
+        "supported": true,
+        "bones": [
+          "head"
+        ]
+      },
+      {
+        "name": "hand_to_chest",
+        "supported": true,
+        "bones": [
+          "head",
+          "rightUpperArm",
+          "rightLowerArm",
+          "rightHand",
+          "chest"
+        ]
+      }
+    ],
+    "blushCapabilities": [
+      {
+        "name": "soft",
+        "supported": true,
+        "mode": "procedural-overlay"
+      }
+    ],
+    "appliedBlush": null,
+    "mouth": 0,
+    "frames": 1,
+    "renderMs": 6,
+    "animationMs": 7,
+    "omittedTriangles": 3548,
+    "drawCalls": 95,
+    "triangles": 30570,
+    "width": 384,
+    "height": 384,
+    "targetFps": 20,
+    "effectiveFps": 0,
+    "frameMs": 1875,
+    "averageFrameMs": 1875,
+    "readbackMs": 1862,
+    "slowFrames": 1,
+    "recovering": false,
+    "failed": false,
+    "recoveries": 0,
+    "worker": true
+  },
+  "controls": [
+    {
+      "command": {
+        "action": "background",
+        "name": "studio"
+      },
+      "status": {
+        "ready": true,
+        "name": "Zhana",
+        "background": "studio",
+        "expression": "relaxed",
+        "expressionCapabilities": [
+          {
+            "name": "neutral",
+            "expression": "neutral",
+            "supported": true,
+            "mode": "reset",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "relaxed",
+            "expression": "relaxed",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "happy",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "angry",
+            "expression": "angry",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "sad",
+            "expression": "sad",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "surprised",
+            "expression": "Surprised",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "wink",
+            "expression": "blinkLeft",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "laugh",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          }
+        ],
+        "appliedExpression": {
+          "requested": "relaxed",
+          "resolved": "relaxed",
+          "weight": 0.22,
+          "value": 0.22,
+          "bindCount": 9,
+          "applied": true,
+          "binds": [
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            },
+            {
+              "type": "morph",
+              "index": 10,
+              "weight": 1,
+              "influence": 0.22
+            }
+          ]
+        },
+        "gesture": null,
+        "appliedGesture": null,
+        "gestureCapabilities": [
+          {
+            "name": "wave",
+            "supported": true,
+            "bones": [
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand"
+            ]
+          },
+          {
+            "name": "nod",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "shake_head",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "hand_to_chest",
+            "supported": true,
+            "bones": [
+              "head",
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand",
+              "chest"
+            ]
+          }
+        ],
+        "blushCapabilities": [
+          {
+            "name": "soft",
+            "supported": true,
+            "mode": "procedural-overlay"
+          }
+        ],
+        "appliedBlush": null,
+        "mouth": 0,
+        "frames": 3,
+        "renderMs": 3,
+        "animationMs": 2,
+        "omittedTriangles": 3548,
+        "drawCalls": 95,
+        "triangles": 30570,
+        "width": 384,
+        "height": 384,
+        "targetFps": 20,
+        "effectiveFps": 18.7,
+        "frameMs": 49,
+        "averageFrameMs": 660,
+        "readbackMs": 43,
+        "slowFrames": 2,
+        "recovering": false,
+        "failed": false,
+        "recoveries": 0
+      }
+    },
+    {
+      "command": {
+        "action": "expression",
+        "name": "happy",
+        "duration": 2
+      },
+      "status": {
+        "ready": true,
+        "name": "Zhana",
+        "background": "studio",
+        "expression": "happy",
+        "expressionCapabilities": [
+          {
+            "name": "neutral",
+            "expression": "neutral",
+            "supported": true,
+            "mode": "reset",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "relaxed",
+            "expression": "relaxed",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "happy",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "angry",
+            "expression": "angry",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "sad",
+            "expression": "sad",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "surprised",
+            "expression": "Surprised",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "wink",
+            "expression": "blinkLeft",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "laugh",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          }
+        ],
+        "appliedExpression": {
+          "requested": "happy",
+          "resolved": "happy",
+          "weight": 0.65,
+          "value": 0.65,
+          "bindCount": 9,
+          "applied": true,
+          "binds": [
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            }
+          ]
+        },
+        "gesture": null,
+        "appliedGesture": null,
+        "gestureCapabilities": [
+          {
+            "name": "wave",
+            "supported": true,
+            "bones": [
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand"
+            ]
+          },
+          {
+            "name": "nod",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "shake_head",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "hand_to_chest",
+            "supported": true,
+            "bones": [
+              "head",
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand",
+              "chest"
+            ]
+          }
+        ],
+        "blushCapabilities": [
+          {
+            "name": "soft",
+            "supported": true,
+            "mode": "procedural-overlay"
+          }
+        ],
+        "appliedBlush": null,
+        "mouth": 0,
+        "frames": 5,
+        "renderMs": 5,
+        "animationMs": 2,
+        "omittedTriangles": 3548,
+        "drawCalls": 95,
+        "triangles": 30570,
+        "width": 384,
+        "height": 384,
+        "targetFps": 20,
+        "effectiveFps": 19.1,
+        "frameMs": 51,
+        "averageFrameMs": 416,
+        "readbackMs": 44,
+        "slowFrames": 3,
+        "recovering": false,
+        "failed": false,
+        "recoveries": 0
+      }
+    },
+    {
+      "command": {
+        "action": "gesture",
+        "name": "wave",
+        "duration": 2
+      },
+      "status": {
+        "ready": true,
+        "name": "Zhana",
+        "background": "studio",
+        "expression": "happy",
+        "expressionCapabilities": [
+          {
+            "name": "neutral",
+            "expression": "neutral",
+            "supported": true,
+            "mode": "reset",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "relaxed",
+            "expression": "relaxed",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "happy",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "angry",
+            "expression": "angry",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "sad",
+            "expression": "sad",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "surprised",
+            "expression": "Surprised",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "wink",
+            "expression": "blinkLeft",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "laugh",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          }
+        ],
+        "appliedExpression": {
+          "requested": "happy",
+          "resolved": "happy",
+          "weight": 0.65,
+          "value": 0.65,
+          "bindCount": 9,
+          "applied": true,
+          "binds": [
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            }
+          ]
+        },
+        "gesture": "wave",
+        "appliedGesture": {
+          "transitioning": false,
+          "requested": "wave",
+          "applied": true,
+          "weight": 0.09285717738264855,
+          "bones": [
+            {
+              "bone": "rightUpperArm",
+              "axis": "z",
+              "delta": 0.07428574190611885,
+              "value": -1.075714258093881
+            },
+            {
+              "bone": "rightUpperArm",
+              "axis": "x",
+              "delta": -0.023214294345662138,
+              "value": -0.023214294345662138
+            },
+            {
+              "bone": "rightLowerArm",
+              "axis": "z",
+              "delta": 0.17642863702703224,
+              "value": 0.17642863702703224
+            },
+            {
+              "bone": "rightHand",
+              "axis": "z",
+              "delta": 0.013389643325275447,
+              "value": 0.013389643325275447
+            }
+          ],
+          "joints": [
+            {
+              "bone": "rightUpperArm",
+              "position": [
+                -0.0979063382711292,
+                1.1618046266530289,
+                -0.003922341091745264
+              ]
+            },
+            {
+              "bone": "rightLowerArm",
+              "position": [
+                -0.18068938559612613,
+                0.9898022188653831,
+                -0.006158406531301459
+              ]
+            },
+            {
+              "bone": "rightHand",
+              "position": [
+                -0.2951680996790379,
+                0.8448301031699301,
+                0.005926033752519532
+              ]
+            }
+          ]
+        },
+        "gestureCapabilities": [
+          {
+            "name": "wave",
+            "supported": true,
+            "bones": [
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand"
+            ]
+          },
+          {
+            "name": "nod",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "shake_head",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "hand_to_chest",
+            "supported": true,
+            "bones": [
+              "head",
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand",
+              "chest"
+            ]
+          }
+        ],
+        "blushCapabilities": [
+          {
+            "name": "soft",
+            "supported": true,
+            "mode": "procedural-overlay"
+          }
+        ],
+        "appliedBlush": null,
+        "mouth": 0,
+        "frames": 7,
+        "renderMs": 2,
+        "animationMs": 2,
+        "omittedTriangles": 3548,
+        "drawCalls": 95,
+        "triangles": 30570,
+        "width": 384,
+        "height": 384,
+        "targetFps": 20,
+        "effectiveFps": 19.3,
+        "frameMs": 48,
+        "averageFrameMs": 311,
+        "readbackMs": 43,
+        "slowFrames": 4,
+        "recovering": false,
+        "failed": false,
+        "recoveries": 0
+      }
+    },
+    {
+      "command": {
+        "action": "blush",
+        "name": "soft",
+        "duration": 2
+      },
+      "status": {
+        "ready": true,
+        "name": "Zhana",
+        "background": "studio",
+        "expression": "happy",
+        "expressionCapabilities": [
+          {
+            "name": "neutral",
+            "expression": "neutral",
+            "supported": true,
+            "mode": "reset",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "relaxed",
+            "expression": "relaxed",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "happy",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "angry",
+            "expression": "angry",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "sad",
+            "expression": "sad",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "surprised",
+            "expression": "Surprised",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "wink",
+            "expression": "blinkLeft",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          },
+          {
+            "name": "laugh",
+            "expression": "happy",
+            "supported": true,
+            "mode": "expression",
+            "bindCount": 9,
+            "bindTypes": [
+              "morph"
+            ]
+          }
+        ],
+        "appliedExpression": {
+          "requested": "happy",
+          "resolved": "happy",
+          "weight": 0.65,
+          "value": 0.65,
+          "bindCount": 9,
+          "applied": true,
+          "binds": [
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            },
+            {
+              "type": "morph",
+              "index": 11,
+              "weight": 1,
+              "influence": 0.65
+            }
+          ]
+        },
+        "gesture": "wave",
+        "appliedGesture": {
+          "transitioning": false,
+          "requested": "wave",
+          "applied": true,
+          "weight": 0.2696868416355273,
+          "bones": [
+            {
+              "bone": "rightUpperArm",
+              "axis": "z",
+              "delta": 0.21574947330842187,
+              "value": -0.934250526691578
+            },
+            {
+              "bone": "rightUpperArm",
+              "axis": "x",
+              "delta": -0.06742171040888183,
+              "value": -0.06742171040888183
+            },
+            {
+              "bone": "rightLowerArm",
+              "axis": "z",
+              "delta": 0.5124049991075018,
+              "value": 0.5124049991075018
+            },
+            {
+              "bone": "rightHand",
+              "axis": "z",
+              "delta": 0.060466229383224775,
+              "value": 0.060466229383224775
+            }
+          ],
+          "joints": [
+            {
+              "bone": "rightUpperArm",
+              "position": [
+                -0.0979063382711292,
+                1.161826923566375,
+                -0.0037982468825872827
+              ]
+            },
+            {
+              "bone": "rightLowerArm",
+              "position": [
+                -0.20411455873625806,
+                1.003458484199357,
+                -0.012859842542071558
+              ]
+            },
+            {
+              "bone": "rightHand",
+              "position": [
+                -0.37226981818598487,
+                0.9267186059582879,
+                -0.002704853068562522
+              ]
+            }
+          ]
+        },
+        "gestureCapabilities": [
+          {
+            "name": "wave",
+            "supported": true,
+            "bones": [
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand"
+            ]
+          },
+          {
+            "name": "nod",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "shake_head",
+            "supported": true,
+            "bones": [
+              "head"
+            ]
+          },
+          {
+            "name": "hand_to_chest",
+            "supported": true,
+            "bones": [
+              "head",
+              "rightUpperArm",
+              "rightLowerArm",
+              "rightHand",
+              "chest"
+            ]
+          }
+        ],
+        "blushCapabilities": [
+          {
+            "name": "soft",
+            "supported": true,
+            "mode": "procedural-overlay"
+          }
+        ],
+        "appliedBlush": {
+          "requested": "soft",
+          "applied": true,
+          "weight": 0.21432142896311623,
+          "cheeks": [
+            {
+              "position": [
+                0.04417993025102253,
+                1.2386899287072692,
+                0.0697255505924685
+              ],
+              "opacity": 0.171457143170493
+            },
+            {
+              "position": [
+                -0.04576863649120266,
+                1.2359978818619373,
+                0.06830843210695031
+              ],
+              "opacity": 0.171457143170493
+            }
+          ]
+        },
+        "mouth": 0,
+        "frames": 8,
+        "renderMs": 16,
+        "animationMs": 2,
+        "omittedTriangles": 3548,
+        "drawCalls": 97,
+        "triangles": 30574,
+        "width": 384,
+        "height": 384,
+        "targetFps": 20,
+        "effectiveFps": 13.2,
+        "frameMs": 216,
+        "averageFrameMs": 299,
+        "readbackMs": 198,
+        "slowFrames": 5,
+        "recovering": false,
+        "failed": false,
+        "recoveries": 0
+      }
+    }
+  ],
+  "last": {
+    "ready": true,
+    "name": "Zhana",
+    "background": "studio",
+    "expression": "happy",
+    "expressionCapabilities": [
+      {
+        "name": "neutral",
+        "expression": "neutral",
+        "supported": true,
+        "mode": "reset",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "relaxed",
+        "expression": "relaxed",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "happy",
+        "expression": "happy",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "angry",
+        "expression": "angry",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "sad",
+        "expression": "sad",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "surprised",
+        "expression": "Surprised",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "wink",
+        "expression": "blinkLeft",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      },
+      {
+        "name": "laugh",
+        "expression": "happy",
+        "supported": true,
+        "mode": "expression",
+        "bindCount": 9,
+        "bindTypes": [
+          "morph"
+        ]
+      }
+    ],
+    "appliedExpression": {
+      "requested": "happy",
+      "resolved": "happy",
+      "weight": 0.65,
+      "value": 0.65,
+      "bindCount": 9,
+      "applied": true,
+      "binds": [
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        },
+        {
+          "type": "morph",
+          "index": 11,
+          "weight": 1,
+          "influence": 0.65
+        }
+      ]
+    },
+    "gesture": "wave",
+    "appliedGesture": {
+      "transitioning": false,
+      "requested": "wave",
+      "applied": true,
+      "weight": 0.2696868416355273,
+      "bones": [
+        {
+          "bone": "rightUpperArm",
+          "axis": "z",
+          "delta": 0.21574947330842187,
+          "value": -0.934250526691578
+        },
+        {
+          "bone": "rightUpperArm",
+          "axis": "x",
+          "delta": -0.06742171040888183,
+          "value": -0.06742171040888183
+        },
+        {
+          "bone": "rightLowerArm",
+          "axis": "z",
+          "delta": 0.5124049991075018,
+          "value": 0.5124049991075018
+        },
+        {
+          "bone": "rightHand",
+          "axis": "z",
+          "delta": 0.060466229383224775,
+          "value": 0.060466229383224775
+        }
+      ],
+      "joints": [
+        {
+          "bone": "rightUpperArm",
+          "position": [
+            -0.0979063382711292,
+            1.161826923566375,
+            -0.0037982468825872827
+          ]
+        },
+        {
+          "bone": "rightLowerArm",
+          "position": [
+            -0.20411455873625806,
+            1.003458484199357,
+            -0.012859842542071558
+          ]
+        },
+        {
+          "bone": "rightHand",
+          "position": [
+            -0.37226981818598487,
+            0.9267186059582879,
+            -0.002704853068562522
+          ]
+        }
+      ]
+    },
+    "gestureCapabilities": [
+      {
+        "name": "wave",
+        "supported": true,
+        "bones": [
+          "rightUpperArm",
+          "rightLowerArm",
+          "rightHand"
+        ]
+      },
+      {
+        "name": "nod",
+        "supported": true,
+        "bones": [
+          "head"
+        ]
+      },
+      {
+        "name": "shake_head",
+        "supported": true,
+        "bones": [
+          "head"
+        ]
+      },
+      {
+        "name": "hand_to_chest",
+        "supported": true,
+        "bones": [
+          "head",
+          "rightUpperArm",
+          "rightLowerArm",
+          "rightHand",
+          "chest"
+        ]
+      }
+    ],
+    "blushCapabilities": [
+      {
+        "name": "soft",
+        "supported": true,
+        "mode": "procedural-overlay"
+      }
+    ],
+    "appliedBlush": {
+      "requested": "soft",
+      "applied": true,
+      "weight": 0.21432142896311623,
+      "cheeks": [
+        {
+          "position": [
+            0.04417993025102253,
+            1.2386899287072692,
+            0.0697255505924685
+          ],
+          "opacity": 0.171457143170493
+        },
+        {
+          "position": [
+            -0.04576863649120266,
+            1.2359978818619373,
+            0.06830843210695031
+          ],
+          "opacity": 0.171457143170493
+        }
+      ]
+    },
+    "mouth": 0,
+    "frames": 8,
+    "renderMs": 16,
+    "animationMs": 2,
+    "omittedTriangles": 3548,
+    "drawCalls": 97,
+    "triangles": 30574,
+    "width": 384,
+    "height": 384,
+    "targetFps": 20,
+    "effectiveFps": 13.2,
+    "frameMs": 216,
+    "averageFrameMs": 299,
+    "readbackMs": 198,
+    "slowFrames": 5,
+    "recovering": false,
+    "failed": false,
+    "recoveries": 0,
+    "worker": true
+  },
+  "opaquePixels": 55569,
+  "coloredPixels": 50587
+}

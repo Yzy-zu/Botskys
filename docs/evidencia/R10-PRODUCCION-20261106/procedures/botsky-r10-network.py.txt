@@ -1,0 +1,36 @@
+import asyncio,json,os,time
+from pathlib import Path
+from dataclasses import replace
+from botsky.config import Settings
+from botsky.integrations import Integrations
+from botsky.runtime import Runtime
+ROOT=Path('/home/petrov/botsky');OUT=ROOT/'private/r10-network-20261106-port3000';os.umask(0o077);OUT.mkdir(mode=0o700)
+s=Settings.load(ROOT/'private/production/config.toml');s=replace(s,root=OUT,database=OUT/'test.sqlite3',instance='botsky-r10-network')
+p=json.loads((ROOT/'private/integrations.production.json').read_text());p['call_service']['enabled']=False;p['permissions']['delivery']['send']=False;p['runtime'].update(port=0,webhook_token=os.urandom(32).hex())
+f=OUT/'providers.json';f.write_text(json.dumps(p));f.chmod(0o600)
+JS="""const http=require('node:http'); let chunks=[]; process.stdin.on('data',x=>chunks.push(x)); process.stdin.on('end',async()=>{const o=JSON.parse(Buffer.concat(chunks)); const results=[];for(const auth of [true,false]){results.push(await new Promise((resolve,reject)=>{const req=http.request({host:'172.18.0.1',port:3000,path:'/healthz',method:'GET',headers:auth?{Authorization:'Bearer '+o.token}:{}},r=>{let b='';r.on('data',c=>b+=c);r.on('end',()=>resolve({authorized:auth,status:r.statusCode,body:JSON.parse(b)}))});req.on('error',reject);req.setTimeout(5000,()=>req.destroy(Error('timeout')));req.end()}));}process.stdout.write(JSON.stringify(results))});"""
+async def real():
+ from botsky.integrations import Integrations
+ stop=asyncio.Event();ready=asyncio.Event();bridge=None;running=None
+ services=Integrations(s,f)
+ async with services as app:
+  rt=Runtime(app,p,services.http,services=services)
+  try:
+   running=asyncio.create_task(rt.run(stop,on_ready=lambda _:ready.set()))
+   await asyncio.wait_for(ready.wait(),10)
+   bridge=await asyncio.create_subprocess_exec('/usr/bin/socat','-T','10','TCP-LISTEN:3000,bind=172.18.0.1,reuseaddr,fork,max-children=32','TCP:127.0.0.1:'+str(rt.webhook.port),stderr=asyncio.subprocess.PIPE)
+   await asyncio.sleep(.3)
+   assert bridge.returncode is None
+   process=await asyncio.create_subprocess_exec('/usr/bin/docker','exec','-i','evolution_api','node','-e',JS,stdin=asyncio.subprocess.PIPE,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
+   stdout,stderr=await asyncio.wait_for(process.communicate(json.dumps({'token':p['runtime']['webhook_token']}).encode()),15)
+   (OUT/'docker-stderr.txt').write_bytes(stderr); (OUT/'docker-stdout.txt').write_bytes(stdout)
+   assert process.returncode==0
+   result=json.loads(stdout);assert result[0]['status']==200 and result[0]['body']=={'ready':True} and result[1]['status']==401,result
+   with app.store.transaction() as db:assert db.execute('select count(*) from inbox').fetchone()[0]==0
+   report={'success':True,'source':'real Evolution container','target':'temporary Botsky loopback runtime through proposed Docker bridge port3000','checks':result,'webhookChanged':False,'messagesSent':0}
+  finally:
+   if bridge and bridge.returncode is None:bridge.terminate();await bridge.wait()
+   stop.set()
+   if running:await asyncio.wait_for(running,20)
+  (OUT/'result.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+asyncio.run(real())

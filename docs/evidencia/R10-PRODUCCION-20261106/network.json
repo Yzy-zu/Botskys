@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "source": "real Evolution container",
+  "target": "temporary Botsky loopback runtime through proposed Docker bridge port3000",
+  "checks": [
+    {
+      "authorized": true,
+      "status": 200,
+      "body": {
+        "ready": true
+      }
+    },
+    {
+      "authorized": false,
+      "status": 401,
+      "body": {
+        "error": "unauthorized"
+      }
+    }
+  ],
+  "webhookChanged": false,
+  "messagesSent": 0
+}

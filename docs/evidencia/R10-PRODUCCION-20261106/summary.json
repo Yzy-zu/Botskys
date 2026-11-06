@@ -1,0 +1,103 @@
+{
+  "at_ms": 1794008992496,
+  "R10": "PARTIAL",
+  "R11": "FINAL_CUTOVER_NOT_EXECUTED",
+  "deploymentAuthorized": true,
+  "humanAvailable": false,
+  "tests": {
+    "python": 260,
+    "node": 286,
+    "failures": 0,
+    "skipped": 0
+  },
+  "nativeAV": {
+    "accountVerified": true,
+    "ready": true,
+    "idle": true,
+    "renderedRGBAFrames": 8,
+    "controlsApplied": [
+      "background",
+      "expression",
+      "gesture",
+      "blush"
+    ],
+    "callDispatched": false,
+    "resourcesClosed": true,
+    "humanReception": "NOT_TESTED"
+  },
+  "delivery": {
+    "source": "operator-simulated local input explicitly labelled; NOT WhatsApp ingress",
+    "destination": "verified Botsky Lab only",
+    "humanReception": "NOT_TESTED",
+    "postCount": 3,
+    "restartNoResend": true,
+    "success": true,
+    "caseResults": [
+      {
+        "case": "text",
+        "result": "note_saved",
+        "acceptedParts": 1,
+        "outbox": [
+          "accepted"
+        ],
+        "duplicateNoResend": true
+      },
+      {
+        "case": "pdf",
+        "result": "document_converted",
+        "acceptedParts": 2,
+        "outbox": [
+          "accepted",
+          "accepted"
+        ],
+        "duplicateNoResend": true
+      }
+    ]
+  },
+  "network": {
+    "success": true,
+    "source": "real Evolution container",
+    "target": "temporary Botsky loopback runtime through proposed Docker bridge port3000",
+    "checks": [
+      {
+        "authorized": true,
+        "status": 200,
+        "body": {
+          "ready": true
+        }
+      },
+      {
+        "authorized": false,
+        "status": 401,
+        "body": {
+          "error": "unauthorized"
+        }
+      }
+    ],
+    "webhookChanged": false,
+    "messagesSent": 0
+  },
+  "finalChecks": {
+    "legacyCore": true,
+    "legacyCalls": true,
+    "originalWebhookUnchanged": true,
+    "evolutionOpen": true,
+    "profileReturned": true,
+    "probeRuntimeReleased": true,
+    "productionUserTablesEmpty": true,
+    "productionIntegrityOK": true,
+    "ownBrowserMatchesInstalledThirdParty": true
+  },
+  "historicalFailuresPreserved": [
+    "harness /estado missing ID, 0 POST",
+    "new bridge3012 blocked; control3000 passed, firewall unchanged",
+    "legacy avatar dangling symlink prevented rollback start; exact original hash file restored, original link retained"
+  ],
+  "pending": [
+    "genuine WhatsApp ingress from verified owner",
+    "human file/audio/video reception and answered call",
+    "moderation participant effects with eligible verified targets",
+    "acceptance inventory closure before production replacement"
+  ],
+  "automaticResume": false
+}

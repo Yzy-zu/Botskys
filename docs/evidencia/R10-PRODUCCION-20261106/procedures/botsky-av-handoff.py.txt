@@ -1,0 +1,58 @@
+import json,subprocess,time,os,shutil,hashlib,tomllib,tarfile
+from pathlib import Path
+import httpx
+from botsky.config import Settings
+ROOT=Path('/home/petrov/botsky'); OLD=Path('/home/petrov/zhana'); OUT=ROOT/'private/production-transition-20261106'; LAB=ROOT/'private/r10-native-activation-20261106'
+os.umask(0o077)
+def save(p,v):
+ with p.open('x') as f:json.dump(v,f,indent=2)
+ p.chmod(0o600)
+def pm2(action):subprocess.run(['pm2',action,'zhana-calls'],check=True,capture_output=True,timeout=35)
+def state():
+ rows=json.loads(subprocess.check_output(['pm2','jlist']));return next(p for p in rows if p['name']=='zhana-calls')
+z=tomllib.loads((OLD/'private/config.toml').read_text());token=(OLD/z['calls_token_file']).read_text().strip()
+with httpx.Client(timeout=10,trust_env=False) as c:
+ resp=c.get(z['calls_base_url'].rstrip('/')+'/v1/status',headers={'Authorization':'Bearer '+token});resp.raise_for_status();v=resp.json()
+ assert v['state']=='ready' and not v.get('activeCall') and not v.get('observedCall'), 'legacy_call_busy'
+assert state()['pm2_env']['status']=='online'
+LAB.mkdir(mode=0o700);dest=LAB/'private/calls';dest.mkdir(parents=True,mode=0o700)
+shutil.copytree(ROOT/'private/private/calls/avatar',dest/'avatar')
+p=json.loads((ROOT/'private/integrations.production.json').read_text());s=Settings.load(ROOT/'private/production/config.toml');doc=s.calls.document;doc['instance']='botsky-r10-native'
+options={'projectRoot':str(LAB),'document':doc,'token':os.urandom(32).hex(),'live':p['live'],'port':0,'executable':p['call_service']['executable'],'allowBrowserLaunch':True,'agendaTimers':False}
+save(LAB/'options.json',options)
+source=OLD/'private/calls/profile-brave';target=dest/'profile-brave'
+assert source.is_dir() and not source.is_symlink() and not target.exists()
+result={'legacyCallsStopped':False,'profileMovedOffline':False,'probeCompleted':False,'legacyRestored':False,'callDispatched':False}
+save(OUT/'av-handoff-intent.json',{'source':str(source),'target':str(target),'restore':'pm2 stop own probe; move target back ONLY when no profile process alive; pm2 start zhana-calls','accountCopied':False})
+try:
+ pm2('stop');result['legacyCallsStopped']=True
+ assert state()['pm2_env']['status']=='stopped'
+ # Chromium lock disappears on graceful closure. Refuse live owner, do not kill by PID alone.
+ lock=source/'SingletonLock'
+ if lock.is_symlink():
+  try:pid=int(os.readlink(lock).rsplit('-',1)[1])
+  except (ValueError,IndexError):raise RuntimeError('unrecognized_profile_lock')
+  assert not Path('/proc/'+str(pid)).exists(),'legacy_browser_still_running'
+ with tarfile.open(OUT/'calls-profile-offline-before.tar.gz','x:gz',compresslevel=1) as tar:tar.add(source,arcname='profile-brave')
+ with tarfile.open(OUT/'calls-profile-offline-before.tar.gz','r:gz') as tar:members=tar.getmembers();assert members
+ source.rename(target);result['profileMovedOffline']=True
+ run=subprocess.run([shutil.which('node'),str(ROOT/'ops/verificar_arranque_av.cjs'),'--run-with-exclusive-profile',str(LAB/'options.json'),str(LAB/'probe-1')],cwd=ROOT,capture_output=True,text=True,timeout=165)
+ (LAB/'probe-output.txt').write_text(run.stdout+'\n'+run.stderr);result['probeExitCode']=run.returncode;result['probeCompleted']=True
+ if (LAB/'probe-1/result.json').exists():result['probe']=json.loads((LAB/'probe-1/result.json').read_text())
+finally:
+ if target.exists():
+  lock=target/'SingletonLock'
+  if lock.is_symlink():
+   pid=int(os.readlink(lock).rsplit('-',1)[1]);assert not Path('/proc/'+str(pid)).exists(),'probe_browser_alive_no_restore'
+  assert not source.exists();target.rename(source);result['profileReturned']=True
+ if result['legacyCallsStopped']:
+  pm2('start')
+  with httpx.Client(timeout=5,trust_env=False) as c:
+   for _ in range(60):
+    try:
+     resp=c.get(z['calls_base_url'].rstrip('/')+'/healthz');result['legacyRestored']=resp.status_code==200 and resp.json().get('ready') is True
+    except httpx.HTTPError:pass
+    if result['legacyRestored']:break
+    time.sleep(1)
+ save(OUT/'av-handoff-result.json',result)
+ print(json.dumps({k:v for k,v in result.items() if k!='probe'}))

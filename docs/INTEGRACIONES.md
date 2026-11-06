@@ -204,3 +204,18 @@ Carrera nativa reproducida y corregida en revisión exacta;19fixtures y37testsMC
 Runtime propio readonly persistido en Compose del Minecraft; respaldo verificado,
 arranque/reinicio reales sanos, mismo mundo/paquetes y cero jugadores. Ver
 [Minecraft Box64 corregido](MINECRAFT_BOX64_CORREGIDO_20261106.md) para evidencia, límites y reversión.
+
+
+## 06/11 · Encargo de producción y nueva aceptación R10
+
+[R10 nuevo](R10_PRODUCCION_20261106.md): navegador propio instalado en prefijo
+privado porque la ruta preparada no existía; cuenta verificada y avatar renderizado
+realmente, sin llamada. Cesión temporal offline y reversión comprobadas; para que
+Zhana volviera a arrancar se repuso el modelo exacto de su enlace roto preexistente,
+conservando el enlace original y el primer fallo de reversión separado.
+Tres partes texto/PDF aceptadas en BotskyLab, sin duplicar al recomponer; entrada
+simulada etiquetada, recepción humana pendiente. Puente futuro en puerto3000
+probado desde contenedor Evolution con200 autorizado/401 sin Bearer, sin cambiar
+firewall/webhook activo. Perfil productivo preparado propio, con DBvacía y tokens
+nuevos; perfil previo conserva flags. El propietario no está disponible Android.
+R10 parcial; R11 autorizado, corte final no ejecutado, Zhana vuelve a estar sana.

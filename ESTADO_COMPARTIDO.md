@@ -1,5 +1,53 @@
 # Relevo Botsky
 
+## 06/11 · R10/R11 encargados: pruebas nuevas PASS, corte final pendiente
+
+Propietario ordenó desplegar Botsky, ejecutar R10/R11 y archivar Zhana recuperable;
+permiso registrado AGENTS. Después indicó no disponible Android: no se marcaron
+llamadas ni se inventó recepción. R10 continúa parcial; no recorte de capacidades
+ni corte final R11. No hace falta autorización nueva: faltan evidencias/observación.
+
+Regresión nueva260Python/286Node PASS, sin omisiones/red no loopback en harness.
+Brave configurado /usr/bin/brave-browser no existe: copia propia del tercero ya
+instalado private/browser/brave, hash igual, configuración productiva corregida.
+Cesión temporal R10: ZhanaCalls detenido sin llamada/agendas pendientes, perfil
+respaldado offline y renombrado al laboratorio propio, nunca clonado activo.
+Botsky navegador real ready/cuenta exacta/ocioso; Kazumi con texturas reales8frames
+RGBA y controles fondo/morphhappy/huesoswave/rubor aplicados. Cierre de recursos,
+perfil devuelto. Sin llamada/Live emitido ni recepción audiovisual humana.
+
+Devolución detectó ENOENT por enlace avatar Zhana roto preexistente: primer recibo
+legacyRestoredfalse conservado. Se detuvo reinicio PM2, preservó enlace como
+zhana.vrm.pretransition-broken-link y repuso0600 exacto SHA de manifiesto original.
+Resultado posterior separado: núcleo/calls ready, sin llamada. Código/DB31 intactos.
+
+Prueba nueva de entrega con DB propia simuló operador explícitamente etiquetado:
+nota y PNG→PDF1página,3partes proveedor aceptadas solo BotskyLab verificado;
+duplicado/recomposición no reenvían. No ingreso real desde teléfono ni lectura.
+Primer harness /estado sin ID falló missing_field con0POST; fallo runner guardado,
+su salida pendiente cancelada localmente. No repetir efectos inciertos.
+Puente socat propuesto3012 bloqueado por UFW, fallo real conservado; plantilla usa
+3000 ya permitido, bindbridge solamente. Desde contenedor Evolution: health con
+Bearer200/ready y sin Bearer401. Sin cambios firewall/webhook; procesos prueba cerrados.
+
+Preflight Zhana: inbox/jobs/recordatorios/entregas terminales, agendas vacías y
+sin llamada. Respaldos privados: SQLite consistente integrity/FKok, config/PM2,
+código+Git y perfil offline; archivos gzip CRC completo+SHA verificados. Preparados
+private/production/config.toml y SQLite18 con tablas usuario vacías, activos propios,
+private/integrations.production.json con tokens nuevos; no importar datos/recibos
+laboratorio. Plantilla PM2 ops/examples/botsky-production.ecosystem.config.cjs inerte.
+ANTES del futuro corte actualizar cutoff/estado/respaldo final y cerrar R10;
+no ejecutar plantillas ni procedimientos de evidencia por leer este relevo.
+
+Cierre observado: webhook anterior exacto/Evolutionopen/ZhanaCoreyCallsready/perfil
+original dueño exclusivo; runtime propio temporal liberado; DBproductiva vacía.
+Informe docs/R10_PRODUCCION_20261106.md y evidencia R10-PRODUCCION-20261106. Otros
+pendientes: ingreso auténtico/recepción humanaAV y archivos, participantes elegibles,
+conciliación final inventario. R11 autorizado pero sustitución no realizada; no
+reanudar automáticamente pruebas/envíos/llamadas. Cuota69%/62% restante al23:49UTC;
+umbral5%vigente. Sin NLP, migración DB31, GitHub ni perfil activo duplicado.
+
+
 ## 06/11 · Box64 corregido y aplicado al Minecraft configurado
 
 Usuario encargó resolver fallo nativo y reiteró proseguir. Reproductor propio

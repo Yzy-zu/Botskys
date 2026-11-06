@@ -165,3 +165,16 @@ imagen/binario originales y no tocar servicios de Zhana. Configuración del Dock
 Minecraft dentro de su base autorizada puede incorporar referencia propia estable.
 Sin mundos/historial importados al laboratorio, sin mensajes/llamadas/navegador,
 NLP, DB31, sesiones, perfiles, GitHub remoto mutable o transición. Cuota5% vigente.
+
+## 06/11 · Encargo expreso R10, R11 y producción
+
+El propietario ordenó «procede a desplegar», ejecutar R10 y R11 y sustituir Zhana
+por Botsky en producción, archivando Zhana recuperable. Autoriza preflight e
+inventario operativo, respaldo consistente privado, pruebas nuevas acotadas de
+aceptación en ámbitos verificados, configuración/servicios/webhook y cesión
+exclusiva de cuenta y navegador según soporte comprobado. R11 depende de aceptación
+R10: no convertir bloqueos o recepción humana no observada en PASS, ni recortar
+capacidades silenciosamente. No duplicar perfiles activos ni ejecutar campañas
+históricas; no importar DB31/historial/datos de usuario a Botsky. Conservar archivo
+y reversión, corte temporal y datos productivos nuevos. Sin NLP ni GitHub mutable;
+umbral5% vigente. Resolver pasos técnicos rutinarios autónomamente.

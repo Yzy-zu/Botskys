@@ -1,0 +1,69 @@
+import json,sqlite3,tomllib,os,hashlib,shutil,subprocess
+from pathlib import Path
+from datetime import datetime,timezone
+ROOT=Path('/home/petrov/botsky'); OLD=Path('/home/petrov/zhana'); out=ROOT/'private/production-transition-20261106'
+os.umask(0o077);out.mkdir(mode=0o700,exist_ok=True)
+def write(path,value):
+ with path.open('x') as f: json.dump(value,f,ensure_ascii=False,indent=2)
+ path.chmod(0o600)
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+z=tomllib.loads((OLD/'private/config.toml').read_text())
+db=sqlite3.connect('file:'+str(OLD/z['database'])+'?mode=ro',uri=True)
+counts={}
+for t in ['inbox','jobs','reminders','school_digest_deliveries','school_asset_deliveries','happy_jobs','rich_delivery_parts']:
+ counts[t]=dict(db.execute('SELECT state,count(*) FROM '+t+' GROUP BY state'))
+allowed={'inbox':{'accepted','ignored','failed','cancelled'},'jobs':{'completed','failed','cancelled'},'reminders':{'cancelled','sent','failed'},'rich_delivery_parts':{'accepted','failed','cancelled'}}
+for t,c in counts.items():
+ if set(c)-allowed.get(t,set()):raise RuntimeError('unresolved_legacy_effects:'+t)
+backup=out/'zhana-before.sqlite3'
+if backup.exists():raise RuntimeError('snapshot_already_exists')
+target=sqlite3.connect(backup);db.backup(target);assert target.execute('pragma integrity_check').fetchone()[0]=='ok';assert not target.execute('pragma foreign_key_check').fetchall();target.close();db.close();backup.chmod(0o600)
+paths=['private/config.toml','private/credentials.json','private/calls-policy.json','ops/ecosystem.config.cjs']
+for name in paths:
+ dest=out/'zhana-config'/name;dest.parent.mkdir(parents=True,exist_ok=True,mode=0o700);shutil.copyfile(OLD/name,dest);dest.chmod(0o600)
+# PM2 contains credentials; retain privately without printing it.
+subprocess.run(['pm2','jlist'],stdout=(out/'pm2-before.json').open('x'),check=True)
+for name in ['dump.pm2','dump.pm2.bak']:
+ p=Path('/home/petrov/.pm2')/name
+ if p.is_file():shutil.copyfile(p,out/name);(out/name).chmod(0o600)
+p=json.loads((ROOT/'private/integrations.json').read_text());s=tomllib.loads((ROOT/'private/config.integrations.toml').read_text())
+prod=ROOT/'private/production';prod.mkdir(mode=0o700,exist_ok=False)
+s.update(instance='botsky-production',epoch=1,database='botsky.sqlite3',transport='evolution')
+s['activation_at']=datetime.now(timezone.utc).isoformat()
+s['calls'].update(instance=s['instance'],epoch=s['epoch'])
+s['calls']['features'].update(outgoing=True,live=True,agenda=True,incoming=False)
+p['runtime'].update(webhook_token=os.urandom(32).hex(),port=18787,scheduler_enabled=False,notices_enabled=False)
+p['call_service'].update(enabled=True,mode='managed',token=os.urandom(32).hex(),allow_browser_launch=True,agenda_timers=False)
+# Retain established scopes. Activation of optional mutations remains a separately
+# adjudicated acceptance item; do not silently claim denied routes passed remotely.
+p['permissions']['delivery']['send']=True
+p['permissions']['delivery']['chats']=sorted({s['owner'],*s['allowed_groups']})
+# Config TOML serialization with explicit tables, no external packages.
+text=''
+for k,v in s.items():
+ if k!='calls':text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+c=s['calls'];text+='\n[calls]\n'
+for k,v in c.items():
+ if k not in ('features','schedule'):text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+for k in ('features','schedule'):
+ text+='\n[calls.'+k+']\n'
+ for key,v in c[k].items():text+=key+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+config=prod/'config.toml';config.write_text(text);config.chmod(0o600)
+providers=ROOT/'private/integrations.production.json';write(providers,p)
+# Only already imported owned assets, never lab databases or receipts.
+for source,dest in [(ROOT/'private/private/gallery',prod/'private/gallery'),(ROOT/'private/private/calls/avatar',prod/'private/calls/avatar')]:
+ dest.parent.mkdir(parents=True,exist_ok=True,mode=0o700);shutil.copytree(source,dest)
+from botsky.config import Settings
+from botsky.store import Store
+from botsky.integrations import read_profile
+from botsky.operational import OperationalPolicy
+settings=Settings.load(config);OperationalPolicy.build(read_profile(providers),settings)
+store=Store(settings.database)
+conn=store.connect();assert conn.execute('pragma integrity_check').fetchone()[0]=='ok'
+rows={r[0]:conn.execute('SELECT count(*) FROM "'+r[0]+'"').fetchone()[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
+conn.close()
+# Nonempty schema tables are expected; no user table may be seeded.
+assert {k:v for k,v in rows.items() if v}=={'schema_version':18}, {k:v for k,v in rows.items() if v}
+manifest={'at':datetime.now(timezone.utc).isoformat(),'legacy_revision':subprocess.check_output(['git','-C',str(OLD),'rev-parse','HEAD'],text=True).strip(),'botsky_revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'legacy_pending_counts':counts,'legacy_snapshot_sha256':sha(backup),'production_database_sha256':sha(settings.database),'production_user_tables_empty':True,'production_schema':18,'services_changed':False,'webhook_changed':False,'profile_handoff':False,'R10':'IN_PROGRESS','R11':'NOT_STARTED'}
+write(out/'prepared.json',manifest)
+print(json.dumps(manifest))

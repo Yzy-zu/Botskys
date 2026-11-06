@@ -1,0 +1,67 @@
+"""New, bounded operator simulation. NOT genuine WhatsApp ingress or human reception."""
+import asyncio,json,os,time,hashlib
+from pathlib import Path
+from dataclasses import replace
+import httpx
+from PIL import Image,ImageDraw
+from pypdf import PdfReader
+from botsky.config import Settings
+from botsky.integrations import Integrations
+from botsky.adapters.local import LocalAdapter
+from botsky.adapters.evolution import EvolutionTransport
+from botsky.delivery import deliver_async
+ROOT=Path('/home/petrov/botsky');OUT=ROOT/'private/r10-delivery-20261106-control';os.umask(0o077);OUT.mkdir(mode=0o700)
+s=Settings.load(ROOT/'private/production/config.toml');s=replace(s,root=OUT,database=OUT/'test.sqlite3',instance='botsky-r10-delivery')
+p=json.loads((ROOT/'private/integrations.production.json').read_text());p['call_service']['enabled']=False
+assert len(s.allowed_groups)==1;target=next(iter(s.allowed_groups));p['permissions']['delivery']={'send':True,'chats':[target]}
+prof=OUT/'providers.json';prof.write_text(json.dumps(p));prof.chmod(0o600)
+# This temporary location changes the OAuth directory inference, but this probe
+# never invokes OAuth or Drive. It uses only the configured Evolution origin.
+ledger=[]
+def save(name,data):(OUT/name).write_text(json.dumps(data,indent=2,ensure_ascii=False))
+class Guard(httpx.AsyncBaseTransport):
+ def __init__(self):self.inner=httpx.AsyncHTTPTransport(retries=0,trust_env=False)
+ async def handle_async_request(self,r):
+  assert str(r.url).startswith(p['evolution']['base_url'].rstrip('/')+'/')
+  if r.method=='POST':
+   assert len(ledger)<3 and r.url.path in ['/message/sendText/'+p['evolution']['instance'],'/message/sendMedia/'+p['evolution']['instance']]
+   raw=await r.aread();body=json.loads(raw);assert body['number']==target and len(raw)<2*1024*1024
+   row={'endpoint':r.url.path.split('/')[2],'state':'uncertain','body_sha256':hashlib.sha256(raw).hexdigest()};ledger.append(row);save('ledger.json',ledger)
+   response=await self.inner.handle_async_request(r);row.update(state='http_response',http_status=response.status_code);save('ledger.json',ledger);return response
+  assert r.method=='GET' and r.url.path=='/group/findGroupInfos/'+p['evolution']['instance']
+  return await self.inner.handle_async_request(r)
+ async def aclose(self):await self.inner.aclose()
+class Label:
+ def __init__(self,backend):self.backend=backend
+ async def send(self,part):
+  if part.text:part=replace(part,text='[Botsky R10 · prueba sintética de operador; recepción humana pendiente]\n'+part.text)
+  return await self.backend.send(part)
+async def main():
+ report={'source':'operator-simulated local input explicitly labelled; NOT WhatsApp ingress','destination':'verified Botsky Lab only','humanReception':'NOT_TESTED','cases':[]}
+ async with httpx.AsyncClient(transport=Guard(),trust_env=False,timeout=30) as h:
+  async with Integrations(s,prof,http=h) as app:
+   g=await app.groups._request('GET','findGroupInfos',target);g=g.get('group',g)
+   assert g['id']==target and g['subject']=='Botsky Lab'
+   evo=EvolutionTransport(app,p['evolution'],h);delivery=Label(evo);adapter=LocalAdapter(s)
+   image=Image.new('RGB',(640,320),'white');ImageDraw.Draw(image).text((20,100),'BOTSKY R10 - SYNTHETIC ACCEPTANCE FIXTURE',fill='black');image.save(OUT/'fixture.png')
+   for ident,command in [('text','/nota guardar Prueba sintética R10 Botsky, sin datos migrados'),('pdf','/convertir pdf')]:
+    incoming=replace(adapter.incoming('R10-PRODUCTION-20261106-'+ident,s.owner,target,command,is_group=True),transport='evolution')
+    if ident=='pdf':incoming=app.attach_local(incoming,OUT/'fixture.png')
+    receipt=app.receive(incoming);await app.jobs.run_pending()
+    with app.store.transaction() as db:
+     row=db.execute('select result_json from inbox where id=?',(receipt.id,)).fetchone();result=json.loads(row[0]);assert result['status']=='ok',result['code']
+     if ident=='pdf':
+      assert result['code']=='document_converted'
+      artifact=result['data']['artifacts'][0];ar=db.execute('select * from artifacts where id=?',(artifact,)).fetchone();assert len(PdfReader(app.artifacts.path(artifact)).pages)==1
+    accepted=await deliver_async(app.store,receipt.id,s,delivery,app.clock)
+    duplicate=app.receive(incoming).duplicate;repeated=await deliver_async(app.store,receipt.id,s,delivery,app.clock)
+    with app.store.transaction() as db:states=[r[0] for r in db.execute('select state from outbox where receipt_id=?',(receipt.id,))]
+    assert accepted>0 and duplicate and repeated==0 and set(states)=={'accepted'}
+    report['cases'].append({'case':ident,'result':result['code'],'acceptedParts':accepted,'outbox':states,'duplicateNoResend':True,'receipt':receipt.id})
+   report['postCount']=len(ledger)
+  async with Integrations(s,prof,http=h) as app:
+   evo=EvolutionTransport(app,p['evolution'],h)
+   for row in report['cases']:assert await deliver_async(app.store,row['receipt'],s,evo,app.clock)==0
+   report['restartNoResend']=True
+ report['success']=True;save('result.json',report);print(json.dumps(report))
+asyncio.run(main())

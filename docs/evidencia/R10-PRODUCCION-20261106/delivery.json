@@ -1,0 +1,29 @@
+{
+  "source": "operator-simulated local input explicitly labelled; NOT WhatsApp ingress",
+  "destination": "verified Botsky Lab only",
+  "humanReception": "NOT_TESTED",
+  "postCount": 3,
+  "restartNoResend": true,
+  "success": true,
+  "caseResults": [
+    {
+      "case": "text",
+      "result": "note_saved",
+      "acceptedParts": 1,
+      "outbox": [
+        "accepted"
+      ],
+      "duplicateNoResend": true
+    },
+    {
+      "case": "pdf",
+      "result": "document_converted",
+      "acceptedParts": 2,
+      "outbox": [
+        "accepted",
+        "accepted"
+      ],
+      "duplicateNoResend": true
+    }
+  ]
+}

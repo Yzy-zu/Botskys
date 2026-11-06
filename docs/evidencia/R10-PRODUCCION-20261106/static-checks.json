@@ -1,0 +1,6 @@
+{
+  "ruff": "PASS",
+  "format": "PASS",
+  "probeSyntax": "PASS",
+  "templateSyntax": "PASS"
+}
