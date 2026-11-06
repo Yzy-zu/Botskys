@@ -29,12 +29,20 @@ class Application:
         gemini=None,
         tts=None,
         asr=None,
+        drive=None,
+        directory=None,
+        messenger=None,
     ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
         self.downloads = downloads
         self.web = web
         self.gemini, self.tts, self.asr = gemini, tts, asr
+        from .domains.contacts import Directory
+
+        self.drive = drive
+        self.directory = directory if directory is not None else Directory()
+        self.messenger = messenger
         self.store = Store(settings.database)
         self.artifacts = Artifacts(self.store, settings.root / "private/artifacts")
         self.jobs = Jobs(
@@ -46,6 +54,8 @@ class Application:
             downloads=lambda: self.downloads,
             web=lambda: self.web,
             content=lambda: (self.gemini, self.tts, self.asr),
+            drive=lambda: self.drive,
+            messages=lambda: (self.messenger, self.directory),
         )
         from .scheduler import Scheduler
 
@@ -117,6 +127,14 @@ class Application:
             return denied
         args = command["arguments"]
         operation = command["operation"]
+        if spec.family == "manage_drive":
+            from .domains import drive
+
+            return drive.execute(db, context, spec, command, now, self)
+        if spec.family == "manage_messages":
+            from .domains import messages
+
+            return messages.execute(db, context, spec, command, now, self)
         if spec.family == "manage_conversation":
             caps = {
                 "comandos": True,

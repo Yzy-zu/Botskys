@@ -1,5 +1,31 @@
 # Relevo Botsky
 
+## 06/11/2026 · Reanudación expresa; R6 cerrado localmente, sigue R7
+
+«Prosigue» del propietario revoca parada anterior; consulta nueva56% primaria y
+56% semanal. R6 completa migración6, Drive trabajos/leases y vistas propias,
+selección solo después de entrega, ID remoto durable antes de subir, conciliación
+por GET y corte incierto sin repetir POST/PUT. OAuth propio explícito0600, refresh
+con lock y persistencia atómica, sin leer claves/configuración antiguas.
+
+Recados: directorio exacto, dueño en privado, literal/cita/adjunto propio, borrador
+y vista entregada5min, confirmación posterior y reserva atómica por destinatario/
+parte. Revalidación de permiso/modo/directorio antes de cada parte, historial de
+ACK, fallo incierto/cancelación/reinicio sin repetir. Cliente HTTPX nuevo probado
+con MockTransport y HTTP loopback efímero real; ningún Evolution/Google remoto.
+Todos los proveedores siguen sin configurar por defecto, sin secretos reales.
+
+89tests completos pasan, Ruff/pipcheck/diffcheck correctos. Evidencia R6.json y
+R6-closure-tests.txt; docs/R6.md y ficha de portado con hashes/créditos técnicos.
+Los checkpoints R6-partial y logs de desarrollo se conservan sin convertirlos en
+aceptación externa. Activación/WhatsApp/recepción humana NOT_TESTED.
+
+Siguiente R7 economía/juegos: reglas, liquidación única, cooldowns, consentimiento
+ruleta y packs. R8/R9 después de dependencias; R10 local tras todos. R10 remoto/R11
+requieren otro encargo. Solo repo propio y fixtures; Zhana activa y cambios/NLP/
+auditorías previos intactos, sin GitHub. Cuota última50% primaria/55% semanal;
+al5% guardar, commits y parar sin reanudación automática.
+
 ## 06/11/2026 03:31 UTC · PARADA POR CUOTA5%, sin reanudación automática
 
 Consulta oficial:5% primaria restante/40% semanal. Encargo detenido conforme al

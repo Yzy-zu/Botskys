@@ -58,6 +58,12 @@ def cancel_job(db, context, target):
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
+        if row["operation"] == "manage_messages.send":
+            from time import time_ns
+
+            from .domains.messages import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
         args = json.loads(row["arguments_json"])
         if args.get("session_id"):
             db.execute(
@@ -69,13 +75,25 @@ def cancel_job(db, context, target):
 
 class Jobs:
     def __init__(
-        self, store, settings, artifacts, clock, policy=None, downloads=None, web=None, content=None
+        self,
+        store,
+        settings,
+        artifacts,
+        clock,
+        policy=None,
+        downloads=None,
+        web=None,
+        content=None,
+        drive=None,
+        messages=None,
     ):
         self.store, self.artifacts, self.clock = store, artifacts, clock
         self._policy = policy or (lambda: settings)
         self.downloads = downloads or (lambda: None)
         self.web = web or (lambda: None)
         self.content = content or (lambda: (None, None, None))
+        self.drive = drive or (lambda: None)
+        self.messages = messages or (lambda: (None, None))
         self.root = private_directory(settings.root, "tmp/jobs")
 
     @property
@@ -139,6 +157,14 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
+                if row["operation"] == "manage_messages.send":
+                    from .domains.messages import retire_job
+
+                    retire_job(db, row["id"], now)
+                db.execute(
+                    "UPDATE drive_uploads SET state='uncertain',updated_ms=? WHERE receipt_id=? AND state='reserved'",
+                    (now, row["id"]),
+                )
                 result = Result(
                     "uncertain",
                     "provider_interrupted",
@@ -218,6 +244,14 @@ class Jobs:
 
     def mark_provider(self, job):
         with self.store.transaction() as db:
+            from .domains.bot import current
+            from .engines.process import MediaError
+
+            parent = db.execute("SELECT * FROM inbox WHERE id=?", (job["id"],)).fetchone()
+            denied = access.authorize(parent["permission"], context_of(parent), self.settings)
+            mode = current(db, context_of(parent))
+            if denied or mode["mode"] == "apagado" or mode["paused_until_ms"] > self.clock():
+                raise MediaError(denied.code if denied else "bot_paused")
             changed = db.execute(
                 "UPDATE jobs SET provider_dispatched=1 WHERE id=? AND state='running' AND lease_token=? AND revision=? AND lease_until_ms>?",
                 (job["id"], job["token"], job["revision"], self.clock()),
@@ -264,6 +298,10 @@ class Jobs:
                 return False
             context = context_of(parent)
             args = json.loads(row["arguments_json"])
+            if row["operation"] == "manage_messages.send":
+                from .domains.messages import retire_job
+
+                retire_job(db, job["id"], now)
             session = None
             if args.get("session_id"):
                 session = db.execute(
@@ -322,6 +360,10 @@ class Jobs:
                     "\n".join(lines),
                     {"view_id": identifier, "choices": data["choices"]},
                 )
+            if result.code == "drive_choices":
+                from .domains.drive import finish_choices
+
+                result = finish_choices(db, context, parent, result, now)
             if row["operation"].startswith("download_media.") and ids:
                 identifier = uuid4().hex
                 db.execute(
@@ -538,6 +580,15 @@ class Jobs:
             if digest.hexdigest() != expected:
                 raise ArtifactProblem("artifact_changed")
         op = job["operation"]
+        if op.startswith("manage_drive."):
+            from .domains.drive import run
+
+            return await run(job, directory, paths, self, self.drive())
+        if op == "manage_messages.send":
+            from .domains.messages import run
+
+            backend, contacts = self.messages()
+            return await run(job, directory, paths, self, backend, contacts)
         if (
             op == "conversation.respond"
             or op.startswith("make_voice.")

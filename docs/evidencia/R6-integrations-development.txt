@@ -1,0 +1,13 @@
+test_drive_save_reserved_identity_hash_and_no_repeat_after_restart (test_integrations.IntegrationsTest.test_drive_save_reserved_identity_hash_and_no_repeat_after_restart) ... ok
+test_drive_search_selection_delivered_scope_and_real_artifact (test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact) ... ok
+test_message_crash_and_revoked_owner_stop_before_next_send (test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send) ... ok
+test_message_directory_change_expiry_cancel_and_stale_confirmation (test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation) ... ok
+test_message_partial_uncertain_restart_never_sends_second_destination (test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination) ... ok
+test_message_preview_owner_private_directory_literal_and_duplicate (test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate) ... ok
+test_message_quote_attachment_and_ownership_and_mid_send_cancel (test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel) ... ok
+test_oauth_explicit_private_storage_rotation_single_refresh_and_no_redirect (test_integrations.IntegrationsTest.test_oauth_explicit_private_storage_rotation_single_refresh_and_no_redirect) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.396s
+
+OK

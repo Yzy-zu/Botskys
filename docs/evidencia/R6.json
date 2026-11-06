@@ -1,0 +1,26 @@
+{
+  "block": "R6",
+  "status": "PASS",
+  "level": "local implementation; real remote providers NOT_TESTED",
+  "at": "2026-11-06T03:50:29.768520+00:00",
+  "schema": 6,
+  "regression_tests": 89,
+  "log": "R6-closure-tests.txt",
+  "checks": [
+    "Drive ID durable antes de POST y no repetición tras corte",
+    "vistas entregadas, elección/propiedad/configuración/caducidad",
+    "archivo real recuperado y hash/lease propio antes de upload",
+    "OAuth propio modo0600, refresh único y rotación atómica",
+    "recados dueño privado y confirmación posterior a entrega completa",
+    "directorio exacto, carreras, cambio de destino entre partes",
+    "partes aceptadas/inciertas durables; cancelación/reinicio sin repetición",
+    "HTTPX MockTransport y cliente messenger contra HTTP loopback real",
+    "ruff/pipcheck/diffcheck"
+  ],
+  "limits": [
+    "sin Google/Evolution/WhatsApp remotos",
+    "sin credenciales/contactos reales, autorización Google y recepción humana pendientes",
+    "ningún servicio/transporte configurado por defecto",
+    "R7–R9 pendientes; R10 remoto/R11 sin encargo"
+  ]
+}

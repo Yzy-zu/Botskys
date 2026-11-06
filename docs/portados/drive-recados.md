@@ -1,4 +1,4 @@
-# Drive y recados · R6 en curso, sin cierre
+# Drive y recados · R6 (construcción local cerrada)
 
 Referencia técnica Zhana fijada en R0:7e12d54; hashes de archivos consultados en
 drive-origen.json. No se consulta configuración, OAuth, directorio o datos antiguos.
@@ -33,3 +33,16 @@ trabajos bajo contratos de Botsky; OAuth propio; borrador de recado con fuente/c
 verificada, adjunto y vista entregada, confirmación de dueño privado con frescura;
 reserva por destinatario/parte, cancelación y conciliación incierta sin repetición;
 cliente de envío acotado y pruebas locales. Ni R6 cerrado ni transición autorizada.
+
+## Cierre posterior al checkpoint parcial
+
+Los apartados anteriores describen el checkpoint06a2cef y se conservan como
+procedencia. Se completaron OAuth propio, migraciónv6, trabajos Drive con ID
+remoto durable, vistas entregadas/selección/leases y el flujo de recados con
+borradores, confirmación explícita de dueño privado, partes y recibos inciertos.
+Cliente Messenger nuevo con referencia técnica Evolution sendText/sendMedia; no
+se importa cliente/runtime antiguo. Fronteras HTTPX probadas con MockTransport y
+un servidor loopback real efímero, sin servicios ni contactos reales.
+
+Decisiones y límites finales en ../R6.md y evidencia ../evidencia/R6.json. No hay
+aceptación Google/Evolution/WhatsApp remotos; proveedores deshabilitados por defecto.

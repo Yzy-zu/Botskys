@@ -23,5 +23,10 @@
     "source": "src/zhana/media_limits.py",
     "sha256": "0ba57e5044579c5abe53918d8b3c69d9e5ee1c5a4632ed0efed65feb8d4acded",
     "decision": "reference only"
+  },
+  {
+    "source": "src/zhana/providers/evolution.py",
+    "sha256": "48f1708b3dcdd51b3fa85d19914a29a4c24a433684f9d3836bcb57a7071c9366",
+    "decision": "sendText/sendMedia technical reference only; own client"
   }
 ]

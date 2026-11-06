@@ -1,0 +1,19 @@
+test_cancel_exact_pending_own_request_and_status_hides_foreign (test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign) ... ok
+test_config_and_foreign_database_are_rejected_without_migration (test_core.CoreTest.test_config_and_foreign_database_are_rejected_without_migration) ... ok
+test_delivery_cas_prevents_parallel_send_and_keeps_network_outside_transaction (test_core.CoreTest.test_delivery_cas_prevents_parallel_send_and_keeps_network_outside_transaction) ... ok
+test_duplicate_restart_collision_and_concurrent_writes (test_core.CoreTest.test_duplicate_restart_collision_and_concurrent_writes) ... ok
+test_freshness_cutoff_history_future_and_silent_noncommands (test_core.CoreTest.test_freshness_cutoff_history_future_and_silent_noncommands) ... ok
+test_newer_unaccepted_view_does_not_replace_delivered_filter (test_core.CoreTest.test_newer_unaccepted_view_does_not_replace_delivered_filter) ... ok
+test_notes_filter_requires_accepted_current_own_view (test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view) ... ok
+test_part_receipts_restart_and_explicit_known_failure_retry (test_core.CoreTest.test_part_receipts_restart_and_explicit_known_failure_retry) ... ok
+test_permissions_before_dispatch_and_revalidated_after_admission (test_core.CoreTest.test_permissions_before_dispatch_and_revalidated_after_admission) ... ok
+test_recovery_executes_saved_canonical_command_without_reparsing (test_core.CoreTest.test_recovery_executes_saved_canonical_command_without_reparsing) ... ok
+test_rollback_between_note_and_receipt_preserves_atomicity (test_core.CoreTest.test_rollback_between_note_and_receipt_preserves_atomicity) ... ok
+test_scope_and_epoch_isolation_with_same_group (test_core.CoreTest.test_scope_and_epoch_isolation_with_same_group) ... ok
+test_uncertain_delivery_restart_does_not_repeat_effect_or_send (test_core.CoreTest.test_uncertain_delivery_restart_does_not_repeat_effect_or_send) ... ok
+test_vertical_notes_literal_filter_and_real_delivery_receipt (test_core.CoreTest.test_vertical_notes_literal_filter_and_real_delivery_receipt) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.303s
+
+OK
