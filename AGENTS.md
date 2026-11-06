@@ -116,3 +116,10 @@ usar perfil/DB desechables propios. No reabrir campañas anteriores ni extender
 esta autorización a llamadas/navegador, transición, servicios de Zhana, NLP,
 DB31, sesiones/perfiles o GitHub. No repetir efectos inciertos automáticamente.
 Evidencia saneada y privada0600; cuota5% sigue vigente.
+
+## Respaldo ampliado posterior
+
+El propietario encargó ampliar respaldo y comprobarlo realmente. Autoriza worker
+propio remoto separado y referencia privada propia, sin sustituir workerZhana.
+Parada/backup/arranque bajo estado verificado y evidencia; límites50GiB/20min.
+Cuota5% y exclusiones de transición/NLP/perfiles/GitHub siguen vigentes.

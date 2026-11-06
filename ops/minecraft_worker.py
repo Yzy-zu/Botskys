@@ -30,9 +30,9 @@ from typing import Any
 MAX_INPUT = 16 * 1024
 MAX_OUTPUT = 128 * 1024
 MAX_SCAN = 1000
-MAX_BACKUP_BYTES = 1024 * 1024 * 1024
+MAX_BACKUP_BYTES = 50 * 1024 * 1024 * 1024
 MAX_BACKUP_FILES = 100_000
-BACKUP_TIMEOUT_SECONDS = 25
+BACKUP_TIMEOUT_SECONDS = 1200
 WORKER_TIMEOUT_SECONDS = 25
 PACK_ID = re.compile(r"^[0-9a-fA-F-]{36}$")
 
@@ -180,7 +180,7 @@ def _backup(root: Path, data: Path, container: str, *, run: Callable[..., str]) 
     entries_seen = 0
     try:
         with os.fdopen(fd, "wb") as archive_stream:
-            with tarfile.open(fileobj=archive_stream, mode="w:gz") as archive:
+            with tarfile.open(fileobj=archive_stream, mode="w:gz", compresslevel=1) as archive:
                 pending: list[tuple[Path, str]] = [(data, "data")]
                 data_root = data.resolve(strict=True)
                 while pending:
@@ -489,6 +489,8 @@ def main() -> int:
             request = json.loads(raw)
             if not isinstance(request, dict):
                 raise WorkerError("invalid_request")
+            if request.get("action") == "backup":
+                signal.setitimer(signal.ITIMER_REAL, BACKUP_TIMEOUT_SECONDS + 30)
             response = handle(request)
         except (WorkerError, OSError, subprocess.SubprocessError, ValueError) as exc:
             code = str(exc) if isinstance(exc, WorkerError) else "worker_failed"

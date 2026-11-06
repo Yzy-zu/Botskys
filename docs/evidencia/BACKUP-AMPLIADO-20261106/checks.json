@@ -1,0 +1,10 @@
+{
+  "local_tests": 9,
+  "success": true,
+  "ruff_check": "PASS",
+  "ruff_format_files": 139,
+  "diff_check": "PASS",
+  "quota_remaining_primary_percent": 4,
+  "quota_remaining_weekly_percent": 18,
+  "stopped_at_quota_threshold": true
+}

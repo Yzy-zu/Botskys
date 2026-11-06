@@ -1,0 +1,23 @@
+{
+  "worker_deployed_own_path": true,
+  "initial_online": true,
+  "initial_players": 0,
+  "stop": {
+    "status": "ok",
+    "action": "stop"
+  },
+  "backup_started": true,
+  "backup": {
+    "status": "ok",
+    "bytes": 1679272039,
+    "files": 62390
+  },
+  "seconds": 53.73,
+  "own_profile_updated": true,
+  "start": {
+    "status": "ok",
+    "action": "start"
+  },
+  "online_restored": true,
+  "world_unchanged": true
+}

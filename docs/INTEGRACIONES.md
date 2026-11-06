@@ -148,3 +148,19 @@ no se actualizan ni reactivan. Evidencia OAUTH-RENOVADO-5TB-20261106.json.
 Drive roundtrip y ajuste reversible Lab verificados. Minecraft recuperado sano;
 backup no aceptado por plazo y volumen fuera del límite. Ejecución cerrada,
 aceptación parcial y permisos operativos intactos. Ver [informe](INTEGRACIONES_P4_20261106.md).
+
+## 06/11 · Respaldo ampliado por encargo expreso
+
+Propietario pidió corregir límite1GB. Ahora50GiB de origen/100000entradas,
+compresión gzip nivel1, presupuesto backup1200s, worker1230s, SSH1260s; job1800s.
+Consultas normales conservan worker25s/SSH30s. Limpieza de parciales y requisito
+servidor apagado preservados. Worker propio desplegado en ruta botsky separada;
+perfil privado apunta a esa ruta, copia previa0600 conservada. WorkerZhana intacto.
+Prueba real nueva explícita, no repetición de recibo incierto anterior:0jugadores,
+parada,backup exitoso1679272039bytes/62390entradas,ciclo53.73s,arranque correcto,
+servidor online y mismo mundo. Nueve tests locales PASS (archivo real,limpieza,
+plazos y clienteMinecraft). Ruff/format correctos. Evidencia nueva
+docs/evidencia/BACKUP-AMPLIADO-20261106/. No serviciosBotsky,transición,mensajes,
+NLP,DB31,perfiles/sesiones oGitHub. Permisos write operativos siguenfalse.
+El bloqueo de respaldo del punto4 queda resuelto; participantes/mods/reinicio
+específico y audiovisualreal mantienen sus límites anteriores.

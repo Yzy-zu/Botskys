@@ -20,6 +20,7 @@ from typing import Any, Literal
 MAX_OUTPUT = 128 * 1024
 MAX_REQUEST = 16 * 1024
 TIMEOUT_SECONDS = 30
+BACKUP_TIMEOUT_SECONDS = 1260
 _ACTIONS = {
     "status",
     "players",
@@ -177,7 +178,10 @@ class MinecraftRemote:
             remote_command,
         ]
         try:
-            raw = await self._runner(argv, payload)
+            if action == "backup" and self._runner is _run_ssh:
+                raw = await _run_ssh(argv, payload, timeout_seconds=BACKUP_TIMEOUT_SECONDS)
+            else:
+                raw = await self._runner(argv, payload)
         except TimeoutError as exc:
             raise MinecraftRemoteError(
                 "remote_timeout",
@@ -217,7 +221,7 @@ class MinecraftRemote:
         return result
 
 
-async def _run_ssh(argv: list[str], payload: bytes) -> bytes:
+async def _run_ssh(argv: list[str], payload: bytes, *, timeout_seconds=None) -> bytes:
     """Run SSH without a local shell and kill its process group on timeout/cancel."""
     launch = asyncio.create_task(
         asyncio.create_subprocess_exec(
@@ -263,7 +267,9 @@ async def _run_ssh(argv: list[str], payload: bytes) -> bytes:
         return bytes(output)
 
     try:
-        return await asyncio.wait_for(exchange(), TIMEOUT_SECONDS)
+        return await asyncio.wait_for(
+            exchange(), TIMEOUT_SECONDS if timeout_seconds is None else timeout_seconds
+        )
     except TimeoutError, asyncio.CancelledError:
         await _stop_process(process)
         task = asyncio.current_task()

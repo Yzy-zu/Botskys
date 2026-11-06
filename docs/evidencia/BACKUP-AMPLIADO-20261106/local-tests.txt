@@ -1,0 +1,14 @@
+test_only_backup_gets_extended_ssh_deadline (test_backup_limits.BackupTransportTest.test_only_backup_gets_extended_ssh_deadline) ... ok
+test_larger_budget_real_archive_and_failed_partial_cleanup (test_backup_limits.BackupWorkerTest.test_larger_budget_real_archive_and_failed_partial_cleanup) ... ok
+test_cancel_during_remote_call_is_uncertain_and_configuration_is_explicit (test_minecraft.MinecraftTest.test_cancel_during_remote_call_is_uncertain_and_configuration_is_explicit) ... ok
+test_mod_literal_json_console_is_not_shell_and_duplicate_once (test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once) ... ok
+test_permissions_console_allowlist_and_queries_before_client (test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client) ... ok
+test_read_routes_and_disable_mod_retain_closed_remote_contract (test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract) ... ok
+test_revocation_after_admission_and_interrupted_dispatch_never_replays (test_minecraft.MinecraftTest.test_revocation_after_admission_and_interrupted_dispatch_never_replays) ... ok
+test_ssh_boundary_real_local_process_json_and_timeout_release (test_minecraft.MinecraftTest.test_ssh_boundary_real_local_process_json_and_timeout_release) ... ok
+test_uncertain_change_blocks_next_mutation_but_status_is_available (test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.550s
+
+OK
