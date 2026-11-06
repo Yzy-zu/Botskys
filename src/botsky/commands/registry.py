@@ -259,7 +259,12 @@ def build_specs():
             "download_media",
             "url",
             [
-                *media_options(),
+                *(
+                    f
+                    for f in media_options()
+                    if (container == "srt" and f.name == "subtitle_language")
+                    or (container != "srt" and f.name != "subtitle_language")
+                ),
                 Field(
                     "url",
                     "url",

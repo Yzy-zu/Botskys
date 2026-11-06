@@ -1,0 +1,12 @@
+test_node_guard_rejects_normalized_and_direct_non_loopback_without_network (test_acceptance_local.AcceptanceNetworkGuardTest.test_node_guard_rejects_normalized_and_direct_non_loopback_without_network) ... ok
+test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) ... ok
+test_every_route_reaches_its_guard_or_handler_and_delivers_locally (test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally) ... Executing <Task pending name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() running at /home/petrov/botsky/tests/test_acceptance_local.py:98> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.258 seconds
+Executing <Task finished name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() done, defined at /home/petrov/botsky/tests/test_acceptance_local.py:85> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 4.289 seconds
+ok
+test_image_to_pdf_delivers_verified_bytes_into_the_local_receiver (test_acceptance_local.LocalTransportAcceptanceTest.test_image_to_pdf_delivers_verified_bytes_into_the_local_receiver) ... ok
+test_transport_restarts_and_rejects_foreign_epoch (test_acceptance_local.LocalTransportAcceptanceTest.test_transport_restarts_and_rejects_foreign_epoch) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.992s
+
+OK

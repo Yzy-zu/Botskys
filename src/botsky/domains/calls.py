@@ -22,7 +22,7 @@ def permitted(backend, settings, context):
 
 def current_binding(db, context):
     return db.execute(
-        "SELECT * FROM call_bindings WHERE instance=? AND account=? AND chat=? AND is_group=? AND epoch=? AND (is_group=1 OR actor=?) ORDER BY updated_ms DESC,receipt_id DESC LIMIT 1",
+        "SELECT * FROM call_bindings WHERE instance=? AND account=? AND chat=? AND is_group=? AND epoch=? AND (is_group=1 OR actor=?) ORDER BY CASE WHEN state NOT IN ('ended','failed','interrupted','cancelled','scheduled') THEN 0 WHEN state='scheduled' THEN 1 ELSE 2 END,updated_ms DESC,receipt_id DESC LIMIT 1",
         (
             context.instance,
             context.account,
@@ -118,6 +118,8 @@ def retire_job(db, receipt_id, now):
 
 
 async def drain_cancellations(manager, backend):
+    if backend is None:
+        return
     with manager.store.transaction() as db:
         pending = db.execute(
             "SELECT c.receipt_id FROM call_cancellations c JOIN call_bindings b USING(receipt_id) WHERE c.state='pending' AND b.instance=? AND b.account=? LIMIT 100",
@@ -126,6 +128,19 @@ async def drain_cancellations(manager, backend):
     for row in pending:
         try:
             await backend.cancel_preparation(row["receipt_id"])
+            observed = await backend.operation(row["receipt_id"])
+            call = observed.get("call")
+            if call:
+                with manager.store.transaction() as db:
+                    binding = db.execute(
+                        "SELECT * FROM call_bindings WHERE receipt_id=?", (row["receipt_id"],)
+                    ).fetchone()
+                validate_owned_call(call, binding)
+            settled = (call is None and observed.get("cancelled") is True) or (
+                call is not None
+                and call.get("state") in TERMINAL
+                and call.get("cleanup", {}).get("state") in {"released", "browser_closed"}
+            )
         except CallsError:
             continue
         with manager.store.transaction() as db:
@@ -134,8 +149,8 @@ async def drain_cancellations(manager, backend):
                 (manager.clock(), row["receipt_id"]),
             )
             db.execute(
-                "UPDATE call_bindings SET state='cancelled',updated_ms=? WHERE receipt_id=?",
-                (manager.clock(), row["receipt_id"]),
+                "UPDATE call_bindings SET state=?,updated_ms=? WHERE receipt_id=?",
+                ("cancelled" if settled else "cancelling", manager.clock(), row["receipt_id"]),
             )
 
 
@@ -273,15 +288,30 @@ async def run(job, directory, manager):
                             args["id"],
                         ),
                     )
-            return EngineOutput(
-                Result(
-                    "ok",
-                    "agenda_" + action,
-                    "Agenda audiovisual: " + action + ". No confirma una llamada conectada.",
-                    response,
-                )
+            schedules = (
+                response.get("schedules") if action == "list" else [response.get("schedule")]
             )
-        if not binding or binding["state"] in TERMINAL:
+            if not isinstance(schedules, list) or any(
+                not isinstance(v, dict)
+                or not isinstance(v.get("id"), str)
+                or type(v.get("dueAt")) is not int
+                or not isinstance(v.get("state"), str)
+                for v in schedules
+            ):
+                raise CallsError("invalid_provider_result")
+            lines = []
+            for value in schedules:
+                due = datetime.fromtimestamp(
+                    value["dueAt"] / 1000, ZoneInfo(manager.settings.timezone)
+                ).strftime("%Y-%m-%d %H:%M")
+                lines.append(value["id"] + " · " + due + " · " + value["state"])
+            text = (
+                "Agenda vacía."
+                if not lines
+                else "Agenda (America/Mexico_City):\n" + "\n".join(lines)
+            )
+            return EngineOutput(Result("ok", "agenda_" + action, text, response))
+        if not binding:
             return EngineOutput(
                 Result("empty", "no_current_call", "No hay una llamada vigente en este chat.")
             )
@@ -337,20 +367,48 @@ async def run(job, directory, manager):
         if op in {"control_call.hangup", "control_call.cancel"}:
             if action == "cancel":
                 await backend.cancel_preparation(binding["receipt_id"])
+                response = await backend.operation(binding["receipt_id"])
             else:
-                await backend.hangup(call["id"])
+                response = await backend.hangup(call["id"])
+            returned = response.get("call")
+            if returned is not None:
+                validate_owned_call(returned, binding)
+            state = (
+                returned["state"]
+                if returned
+                and returned.get("state") in TERMINAL
+                and returned.get("cleanup", {}).get("state") in {"released", "browser_closed"}
+                else "ending"
+            )
             with manager.store.transaction() as db:
                 db.execute(
-                    "UPDATE call_bindings SET state='ended',updated_ms=? WHERE receipt_id=?",
-                    (manager.clock(), binding["receipt_id"]),
+                    "UPDATE call_bindings SET state=?,updated_ms=? WHERE receipt_id=?",
+                    (state, manager.clock(), binding["receipt_id"]),
                 )
             return EngineOutput(
                 Result(
                     "ok",
                     "call_end_requested",
-                    "Cierre solicitado a la llamada exacta; consulta estado para confirmar.",
+                    "Cierre solicitado a la llamada exacta; consulta /llamada estado para confirmar.",
                 )
             )
+        if op == "audiovisual.clip.list":
+            response = await backend.command("clip.list")
+            clips = response.get("clips")
+            if not isinstance(clips, list) or any(
+                not isinstance(c, dict)
+                or not isinstance(c.get("id"), str)
+                or not isinstance(c.get("label"), str)
+                for c in clips
+            ):
+                raise CallsError("invalid_provider_result")
+            safe = [{"id": c["id"], "name": c["label"][:120]} for c in clips]
+            text = (
+                "Catálogo vacío."
+                if not safe
+                else "Clips disponibles:\n" + "\n".join(c["id"] + " · " + c["name"] for c in safe)
+            )
+            return EngineOutput(Result("ok", "av_control_applied", text, {"clips": safe}))
         if op.startswith("audiovisual.avatar."):
             payload = {
                 "callId": call["id"],
@@ -366,7 +424,20 @@ async def run(job, directory, manager):
             response = await backend.command(
                 "clip.play", {"callId": call["id"], "clipId": args["clip_id"]}, key=job["id"]
             )
+            if (
+                response.get("callId") != call["id"]
+                or not isinstance(response.get("clip"), dict)
+                or response["clip"].get("state") not in {"playing", "paused"}
+            ):
+                raise CallsError("invalid_provider_result")
             response["success"] = True
+            response["message"] = (
+                "Clip solicitado: "
+                + args["clip_id"]
+                + ". Estado del servicio: "
+                + str(response["clip"].get("state", "desconocido"))
+                + "."
+            )
         else:
             request = {"action": action}
             if args.get("query"):

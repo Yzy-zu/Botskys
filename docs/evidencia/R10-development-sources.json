@@ -1,0 +1,12 @@
+{
+  "normalization": "only trailing whitespace stripped in combined readable development log; original private inputs retained",
+  "sources": {
+    "private/R10-probes-development.txt": "da2ebe3731350f867c2f45a3847ecef2eca0cfcc889b732cfd42a3a5c63be72d",
+    "private/R10-clip-integration-development.txt": "d7802feb98971418a70692301ad7a679bf61d52cadaac096b3ce4302d2c345a8",
+    "private/R10-admin-routes-tests.txt": "14d46962dcf2e18d705d33fd18390b0f8b9ff0a5abe9f2bd2ecb74a45e36b212",
+    "private/R10-pack-status-tests.txt": "138d2dffcdc59d30c15f899d8b2af9f87342faaf362799628abfb0deb8ace737",
+    "private/R10-roulette-close-tests.txt": "897061cef842fa0326a7653642b90a0be9994e7e39c4bab27202506eb7079f22",
+    "private/R10-nuclear-cancel-tests.txt": "238373ae57fdbe89ae040d0a8fe98d392ef5c90ba09b4acdb68100cc28ade62c",
+    "private/R10-download-options-tests.txt": "db03eb6ab361a8940c9400aa934d40cd3ef623e5eb5b16422020c8924002984e"
+  }
+}

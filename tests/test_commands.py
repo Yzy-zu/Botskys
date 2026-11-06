@@ -136,6 +136,8 @@ class CommandsTest(TestCase):
     def test_incompatible_fields_and_precise_errors(self):
         for command in (
             "/editar mp4 --idioma es",
+            "/dl buscar srt --hasta 5 consulta",
+            "/dl anterior srt --desde 1",
             "/editar mp4 --desde 3 --hasta 2",
             "/admin xp-dar 1",
             "/admin xp-dar --objetivo ref --cuenta 1 1",

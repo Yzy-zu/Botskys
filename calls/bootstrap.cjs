@@ -97,7 +97,7 @@ async function createService({ projectRoot, document, token, driver, runtime, li
     if (errors.length) throw new AggregateError(errors, 'CALLS_CLEANUP_FAILED');
   }
   try {
-    bindAccount(driver, document, privateDir);
+    bindAccount(driver, policy.document, privateDir);
     const journal = new Journal(path.join(privateDir, 'journal.json'));
     audioStore = new AudioStore(privateDir); await audioStore.init();
     clipStore = new ClipStore(privateDir); await clipStore.init();
@@ -117,7 +117,7 @@ async function createService({ projectRoot, document, token, driver, runtime, li
         tools: [...(!record.groupId ? SPOKEN_TOOLS : []), ...(record.video ? [...CLIP_TOOLS, ...AVATAR_TOOLS] : [])],
         onToolCall: (request, { id, name, signal }) => {
           if (name === 'controlar_llamada') return spoken.execute(record, request, { signal });
-          if (name === 'controlar_avatar') return manager.avatarCommand({ callId: record.id, ...request, signal });
+          if (name === 'controlar_avatar') return manager.avatarCommand({ ...request, callId: record.id, signal });
           if (name === 'controlar_clips') return manager.clipCommands.execute({ callId: record.id, scope: 'voice', key: id, request, signal });
           return Promise.resolve({ success: false });
         },

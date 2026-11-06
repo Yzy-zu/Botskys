@@ -114,7 +114,7 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         )
 
     async def test_view_accepted_scope_choice_format_and_previous_reuses_file(self):
-        search = self.receive("/dl buscar mp4 CABLE literal")
+        search = self.receive("/dl buscar mp4 --hasta 0.8 CABLE literal")
         await self.app.jobs.run_pending()
         result = self.result(search.id)
         self.assertEqual(result.code, "download_choices")
@@ -286,3 +286,90 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             self.assertIn("No encontré", self.result(empty.id).text)
         with self.assertRaises(SearchError):
             parse_results(b'<!DOCTYPE rss [<!ENTITY x SYSTEM "file:///tmp/no">]><rss/>', "test")
+
+    async def test_url_webm_and_embedded_srt_are_real_files_without_remote_download(self):
+        captions = self.root / "fixture.srt"
+        captions.write_text("1\n00:00:00,000 --> 00:00:00,800\nSubtítulo sintético literal.\n")
+        video = self.root / "subtitled.mp4"
+        await run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-i",
+                str(self.video),
+                "-i",
+                str(captions),
+                "-c",
+                "copy",
+                "-c:s",
+                "mov_text",
+                "-metadata:s:s:0",
+                "language=spa",
+                str(video),
+            ],
+            15,
+        )
+        self.backend.video = video
+        for command, suffix in (("/dl webm " + W3, "webm"), ("/dl srt --idioma es " + W3, "srt")):
+            receipt = self.receive(command)
+            await self.app.jobs.run_pending()
+            result = self.result(receipt.id)
+            self.assertEqual(result.code, "download_ready")
+            artifact = self.app.artifacts.path(result.data["artifacts"][0])
+            if suffix == "srt":
+                self.assertIn("Subtítulo sintético literal.", artifact.read_text())
+            else:
+                info = json.loads(
+                    await run_process(
+                        [
+                            "ffprobe",
+                            "-v",
+                            "error",
+                            "-show_entries",
+                            "stream=codec_type",
+                            "-of",
+                            "json",
+                            str(artifact),
+                        ],
+                        10,
+                    )
+                )
+                self.assertIn("video", {s["codec_type"] for s in info["streams"]})
+        self.assertEqual(self.backend.downloads, [W3, W3])
+
+    async def test_clip_options_flow_through_url_search_and_retained_source(self):
+        for container in ("mp3", "mp4", "webm"):
+            receipt = self.receive("/dl " + container + " --hasta 0.8 " + W3)
+            await self.app.jobs.run_pending()
+            result = self.result(receipt.id)
+            self.assertEqual(result.code, "download_ready")
+            output = self.app.artifacts.path(result.data["artifacts"][0])
+            info = json.loads(
+                await run_process(
+                    [
+                        "ffprobe",
+                        "-v",
+                        "error",
+                        "-show_entries",
+                        "format=duration",
+                        "-of",
+                        "json",
+                        str(output),
+                    ],
+                    10,
+                )
+            )
+            self.assertLess(float(info["format"]["duration"]), 0.95)
+            self.app.deliver(receipt.id, CollectingTransport())
+        previous = self.receive("/dl anterior mp3 --hasta 0.5")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(previous.id).code, "media_edited")
+        no_subs = self.receive("/dl anterior srt --idioma es")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(no_subs.id).code, "subtitles_unavailable")
+        search = self.receive("/dl buscar srt --idioma es consulta sintética")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(search.id).code, "download_choices")
+        self.assertEqual(self.backend.downloads, [W3, W3, W3])

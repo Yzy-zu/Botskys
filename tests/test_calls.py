@@ -260,3 +260,84 @@ class CallsTest(IsolatedAsyncioTestCase):
         self.assertTrue((await self.backend.operation(queued.id))["cancelled"])
         self.assertEqual(self.result(queued).status, "uncertain")
         self.assertEqual(self.rows("SELECT state FROM call_cancellations")[0]["state"], "confirmed")
+
+    async def test_all_clip_controls_use_catalog_ids_and_current_session_only(self):
+        await self.command("/llamar --video")
+        await self.ipc({"action": "connect"})
+        asset = await self.ipc({"action": "seedClip"})
+        listing, _, _ = await self.command("/clip lista")
+        self.assertEqual(listing.data["clips"][0]["id"], asset["id"])
+        self.assertIn(asset["id"], listing.text)
+        named, _, _ = await self.command(
+            "/clip poner --nombre "
+            + json.dumps(listing.data["clips"][0]["name"], ensure_ascii=False)
+        )
+        self.assertEqual(named.code, "av_control_applied")
+        commands = [
+            "/clip poner " + asset["id"],
+            "/clip pausa",
+            "/clip seguir",
+            "/clip volumen 0.7",
+            "/clip ajustar bajar 0.1",
+            "/clip repetir",
+            "/clip siguiente",
+            "/clip parar",
+        ]
+        for command in commands:
+            result, _, _ = await self.command(command)
+            self.assertEqual(
+                result.code,
+                "av_control_unconfirmed" if command == "/clip siguiente" else "av_control_applied",
+                (command, result),
+            )
+        await self.ipc({"action": "confirmAvatar"})
+        for command in (
+            "/avatar fondo neon",
+            "/avatar gesto wave --duracion 2",
+            "/avatar rubor suave",
+        ):
+            result, _, _ = await self.command(command)
+            self.assertEqual(result.code, "av_control_applied", (command, result))
+        await self.command("/llamada colgar")
+        state, _, _ = await self.command("/llamada estado")
+        self.assertEqual(state.data["call"]["state"], "ended")
+        retired, _, _ = await self.command("/clip repetir")
+        self.assertEqual(retired.code, "call_ended")
+        self.assertEqual((await self.ipc({"action": "stats"}))["dials"], 1)
+
+    async def test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call(self):
+        await self.command("/llamar")
+        scheduled, _, _ = await self.command("/llamada programar 2026-11-07 13:00")
+        self.assertIn(scheduled.data["schedule"]["id"], scheduled.text)
+        listing, _, _ = await self.command("/llamada agenda")
+        self.assertIn(scheduled.data["schedule"]["id"], listing.text)
+        state, _, _ = await self.command("/llamada estado")
+        self.assertEqual(state.data["call"]["state"], "dialing")
+        ended, _, _ = await self.command("/llamada colgar")
+        self.assertEqual(ended.code, "call_end_requested")
+
+    async def test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy(self):
+        audio = await self.ipc({"action": "seedAudio"})
+        result, _, _ = await self.command(
+            "/llamada programar 2026-11-07 13:00 --audio "
+            + audio["id"]
+            + " --terminar-audio --volumen 0.4"
+        )
+        self.assertEqual(result.code, "agenda_create")
+        self.assertEqual(result.data["schedule"]["mode"], "audio preparado")
+        rows = (await self.ipc({"action": "agendaData"}))["rows"]
+        self.assertEqual(rows[0]["call"]["audioId"], audio["id"])
+        self.assertTrue(rows[0]["call"]["endAfterAudio"])
+        self.assertEqual(rows[0]["call"]["volume"], 0.4)
+        self.assertFalse(rows[0]["call"]["live"])
+        self.assertEqual((await self.ipc({"action": "stats"}))["dials"], 0)
+
+    async def test_backend_removed_after_admission_does_not_lose_cancellation_or_start(self):
+        queued, _ = self.receive("/llamar")
+        self.app.calls = None
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(queued).code, "calls_not_configured")
+        self.app.calls = self.backend
+        await self.app.jobs.run_pending()
+        self.assertTrue((await self.backend.operation(queued.id))["cancelled"])
+        self.assertEqual((await self.ipc({"action": "stats"}))["dials"], 0)

@@ -1,0 +1,2049 @@
+Oracles/diagnóstico de desarrollo conservados; no son el cierre PASS.
+
+Archivo: private/R10-probes-development.txt
+test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) ...
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl mp3', field='subtitle_language') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl mp4', field='subtitle_language') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl webm', field='subtitle_language') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/escuela resumen configurar', field='enabled') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/recado preparar', field='recipients') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/recado preparar', field='source') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/admin xp-dar', field='amount') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/admin xp-quitar', field='amount') ... ERROR
+  test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/llamada programar', field='end_after_audio') ... ERROR
+test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) ... FAIL
+test_every_route_reaches_its_guard_or_handler_and_delivers_locally (test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally) ... <string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335030>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3354e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3358a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335d50>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335300>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3353f0>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3354e0>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335030>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3363e0>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335120>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3358a0>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336b60>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/json/encoder.py:263: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336d40>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336c50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336a70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336f20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336b60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3358a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3353f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3365c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336e30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335120>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3363e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3364d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3354e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:3: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea337010>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task pending name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() running at /home/petrov/botsky/tests/test_acceptance_local.py:86> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.266 seconds
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea337010>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336d40>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335300>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3364d0>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3363e0>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335120>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335030>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3354e0>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335990>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3353f0>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/csv.py:87: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336b60>
+  class Dialect:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea335d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3365c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336e30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336a70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1322f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132c50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336f20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133100>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133010>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133790>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133a60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132f20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133970>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1336a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132e30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133880>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133b50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133c40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133d30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132d40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132a70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028040>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028130>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028220>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132b60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133f10>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0284f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0285e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0286d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133e20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028400>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0289a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028a90>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028b80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028310>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0288b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028e50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028f40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029030>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0287c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028d60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029300>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0293f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0294e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea028c70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029210>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0297b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0298a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029120>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0296c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029c60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029e40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea0295d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029b70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a2f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a5c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a6b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a7a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea029f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a4d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02aa70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02ab60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02ac50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a3e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a980>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02af20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b010>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b100>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02a890>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02ae30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b3d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b4c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b5b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02ad40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b2e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b880>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b970>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02ba60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b1f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b790>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02bd30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02be20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02bf10>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02b6a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02bc40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8220>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8310>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8400>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea02bb50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8130>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd86d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd87c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd88b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8040>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd85e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8b80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8c70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8d60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd84f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8a90>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9030>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9120>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9210>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd89a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8f40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd94e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd95d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd96c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd8e50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd93f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9b70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9300>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd98a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9e40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd97b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda2f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda3e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda4d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dd9c60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda7a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda890>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda980>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda6b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddac50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddad40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddae30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9dda5c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddab60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb100>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb1f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb2e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddaa70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb010>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb5b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb6a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb790>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddaf20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb4c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddba60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddbb50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddbc40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb3d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb970>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddbf10>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60040>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60130>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddb880>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddbe20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60400>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d604f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d605e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9ddbd30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60310>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d608b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d609a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60a90>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60220>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d607c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60d60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60e50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60f40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d606d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60c70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61210>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61300>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d613f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d60b80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61120>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d616c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d617b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d618a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61030>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d615d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61b70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61c60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d614e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d624d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d625c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d626b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d61e40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d623e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62980>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62a70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62b60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d622f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62890>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62e30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62f20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63010>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d627a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62d40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d632e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d633d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d634c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d62c50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d631f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63790>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63880>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63970>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63100>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d636a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63c40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63d30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63e20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d635b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63b50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14130>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14310>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14400>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63a60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14040>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b146d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b147c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b148b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9d63f10>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b145e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14b80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14c70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14d60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b144f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14a90>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15030>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15120>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15210>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b149a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14f40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b154e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b155d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b156c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14e50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b153f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15b70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15c60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15300>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b158a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b157b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15e40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b164d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b165c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b162f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b163e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16890>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16980>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b167a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16c50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16d40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16e30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b166b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16b60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17100>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b171f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b172e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16a70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17010>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b175b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b176a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17790>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16f20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b174c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17a60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17b50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17c40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b173d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17970>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17f10>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8040>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8130>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17880>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17e20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8400>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a84f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a85e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17d30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8310>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a88b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a89a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8a90>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8220>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a87c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8d60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8e50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8f40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a86d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8c70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9210>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9300>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a93f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a8b80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9120>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a96c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a97b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a98a0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9030>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a95d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9b70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9c60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9d50>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a94e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9a80>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa020>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa110>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa200>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9990>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9f30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa4d0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa5c0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa6b0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98a9e40>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa3e0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa980>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aaa70>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aab60>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa2f0>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aa890>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aae30>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/pathlib/__init__.py:297: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98aaf20>
+  return drv, root, [x for x in rel.split(sep) if x and x != '.']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17d30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b173d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17c40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17b50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17a60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b174c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17880>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17f10>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b176a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b175b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17010>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17e20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17790>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b171f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b17100>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16b60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16f20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b172e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16d40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16c50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b167a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16a70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16e30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16890>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b163e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b162f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b166b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16980>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b164d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15f30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15e40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16200>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b165c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16020>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b158a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b16110>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15b70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15a80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b153f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b157b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15c60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b155d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b154e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14f40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15300>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b156c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15120>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15030>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14a90>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14e50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b15210>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14c70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14b80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b145e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b149a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14d60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b146d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14040>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14400>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b144f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b147c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133e20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132b60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132a70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b148b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14130>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133c40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133b50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133880>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9b14310>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133d30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133970>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132f20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133a60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132d40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1336a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133010>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132110>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133100>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132e30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea133790>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1323e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132980>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1324d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132020>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1326b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1325c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1322f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132200>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132c50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea1327a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131e40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131a80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea132890>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131c60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336a70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336e30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea3365c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131f30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea336f20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08130>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08220>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08310>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0ea131990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08040>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f085e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f086d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f087c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f084f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08a90>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08b80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08c70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08400>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f089a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08f40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09030>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09120>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f088b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08e50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f093f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f094e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f095d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f08d60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09300>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f098a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09a80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09210>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f097b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09e40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09f30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f096c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09c60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a200>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a2f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a3e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f09b70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a110>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a6b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a7a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a890>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a020>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a5c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0ab60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0ac50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0ad40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a4d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0aa70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b010>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b100>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b1f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0a980>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0af20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b4c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b5b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b6a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0ae30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b3d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b970>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0ba60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0bb50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b2e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b880>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0be20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0bf10>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48040>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0b790>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0bd30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48310>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48400>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e484f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9f0bc40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48220>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e487c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e488b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e489a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48130>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e486d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48c70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48d60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48e50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e485e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48b80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49120>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49210>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49300>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48a90>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49030>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e495d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e496c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e497b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e48f40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e494e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49a80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49b70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49c60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e493f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49f30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a020>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a110>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e498a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49e40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a3e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a4d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a5c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e49d50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a2f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a890>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a980>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4aa70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a200>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a7a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4ad40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4ae30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4af20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4a6b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4ac50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b2e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b3d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b4c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4ab60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b100>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b1f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b790>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b880>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b010>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b6a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4bb50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4bc40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4bd30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b5b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4ba60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888040>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888130>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888220>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4b970>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4bf10>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98884f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98885e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98886d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9e4be20>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888400>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98889a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888a90>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888b80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888310>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98888b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888e50>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888f40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889030>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98887c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888d60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889300>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98893f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98894e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9888c70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889210>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98897b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98898a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889990>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889120>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98896c0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889c60>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889e40>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889f30>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e98895d0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889b70>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a200>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a2f0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a3e0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e9889a80>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a110>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a6b0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<string>:2: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xf5a0e988a7a0>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() done, defined at /home/petrov/botsky/tests/test_acceptance_local.py:73> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 4.209 seconds
+ok
+test_transport_restarts_and_rejects_foreign_epoch (test_acceptance_local.LocalTransportAcceptanceTest.test_transport_restarts_and_rejects_foreign_epoch) ... ok
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl mp3', field='subtitle_language')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 222, in _validate
+    reject("subtitle_language", "El idioma solo se usa con formato srt.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: El idioma solo se usa con formato srt.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl mp4', field='subtitle_language')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 222, in _validate
+    reject("subtitle_language", "El idioma solo se usa con formato srt.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: El idioma solo se usa con formato srt.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/dl webm', field='subtitle_language')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 222, in _validate
+    reject("subtitle_language", "El idioma solo se usa con formato srt.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: El idioma solo se usa con formato srt.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/escuela resumen configurar', field='enabled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 237, in _validate
+    reject("digest_time", "La activación exige --hora HH:MM; al desactivar se omite.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: La activación exige --hora HH:MM; al desactivar se omite.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/recado preparar', field='recipients')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 246, in _validate
+    reject("text", "Falta el texto literal o un adjunto solicitado.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: Falta el texto literal o un adjunto solicitado.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/recado preparar', field='source')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 246, in _validate
+    reject("text", "Falta el texto literal o un adjunto solicitado.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: Falta el texto literal o un adjunto solicitado.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/admin xp-dar', field='amount')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 234, in _validate
+    reject("target", "Indica exactamente --objetivo REF o --cuenta ID.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: Indica exactamente --objetivo REF o --cuenta ID.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/admin xp-quitar', field='amount')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 234, in _validate
+    reject("target", "Indica exactamente --objetivo REF o --cuenta ID.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: Indica exactamente --objetivo REF o --cuenta ID.
+
+======================================================================
+ERROR: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip) (command='/llamada programar', field='end_after_audio')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 42, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    parsed = router.parse(text)
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 97, in parse
+    return self._arguments(text, position, spec)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 209, in _arguments
+    self._validate(spec, values)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 251, in _validate
+    reject("end_after_audio", "Terminar tras audio requiere un audio preparado propio.")
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/commands/router.py", line 215, in reject
+    raise CommandError("incompatible_fields", reason, field=field, spec=spec)
+botsky.commands.router.CommandError: Terminar tras audio requiere un audio preparado propio.
+
+======================================================================
+FAIL: test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip (test_acceptance_local.AllFieldsTest.test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_acceptance_local.py", line 48, in test_each_public_field_is_explicitly_parsed_with_span_and_canonical_roundtrip
+    self.assertEqual(count, 196)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 187 != 196
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.563s
+
+FAILED (failures=1, errors=9)
+
+
+Archivo: private/R10-clip-integration-development.txt
+test_all_clip_controls_use_catalog_ids_and_current_session_only (test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only) ... FAIL
+
+======================================================================
+FAIL: test_all_clip_controls_use_catalog_ids_and_current_session_only (test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_calls.py", line 283, in test_all_clip_controls_use_catalog_ids_and_current_session_only
+    self.assertEqual(result.code, "av_control_applied", (command, result))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'calls_invalid_provider_result' != 'av_control_applied'
+- calls_invalid_provider_result
++ av_control_applied
+ : ('/clip poner 804a6c4159aee9a8542f8c7d22f67b90a98103f9753b3abbb4ee91f24fb7593c', Result(status='uncertain', code='calls_invalid_provider_result', text='No pude confirmar la operación audiovisual. No la repetiré automáticamente.', data={}))
+
+----------------------------------------------------------------------
+Ran 1 test in 5.838s
+
+FAILED (failures=1)
+
+
+Archivo: private/R10-admin-routes-tests.txt
+test_moderation_setting_routes_preserve_target_and_owner_guards (test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.200s
+
+OK
+
+
+Archivo: private/R10-pack-status-tests.txt
+test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope (test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope) ... ERROR
+
+======================================================================
+ERROR: test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope (test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_packs.py", line 401, in test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope
+    self.assertEqual(self.photos.calls, [])
+                     ^^^^^^^^^^^
+AttributeError: 'PacksTest' object has no attribute 'photos'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.044s
+
+FAILED (errors=1)
+
+
+Archivo: private/R10-roulette-close-tests.txt
+test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick (test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick) ... FAIL
+
+======================================================================
+FAIL: test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick (test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_roulette.py", line 260, in test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick
+    self.assertEqual(cancelled.status, "ok")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'cancelled' != 'ok'
+- cancelled
++ ok
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.117s
+
+FAILED (failures=1)
+
+
+Archivo: private/R10-nuclear-cancel-tests.txt
+test_nuclear_draft_cancel_has_no_cost_or_target_effect (test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect) ... FAIL
+
+======================================================================
+FAIL: test_nuclear_draft_cancel_has_no_cost_or_target_effect (test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_admin.py", line 312, in test_nuclear_draft_cancel_has_no_cost_or_target_effect
+    self.assertNotEqual(refused.status, "ok")
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'ok' == 'ok'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.085s
+
+FAILED (failures=1)
+
+
+Archivo: private/R10-download-options-tests.txt
+test_clip_options_flow_through_url_search_and_retained_source (test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source) ... FAIL
+
+======================================================================
+FAIL: test_clip_options_flow_through_url_search_and_retained_source (test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_downloads.py", line 367, in test_clip_options_flow_through_url_search_and_retained_source
+    self.assertEqual(self.result(previous.id).code, "media_edited")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'previous_download_missing' != 'media_edited'
+- previous_download_missing
++ media_edited
+
+
+----------------------------------------------------------------------
+Ran 1 test in 1.331s
+
+FAILED (failures=1)

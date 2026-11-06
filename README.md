@@ -24,6 +24,8 @@ Drive y recados explícitos: [docs/R6.md](docs/R6.md).
 Economía y juegos: [docs/R7.md](docs/R7.md).
 Administración y Minecraft: [docs/R8.md](docs/R8.md).
 Audiovisual portado y límites: [docs/R9.md](docs/R9.md).
+Integración local, matriz y límites de aceptación: [docs/R10.md](docs/R10.md).
+Guía breve: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md). R10 global/R11 pendientes.
 Pruebas Node locales: `node --test calls/test/*.test.cjs` (sin navegador).
 Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Los handlers de
 bloques posteriores dan un límite explícito hasta que se construyan y comprueben.

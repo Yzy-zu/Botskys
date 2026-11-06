@@ -181,3 +181,21 @@ class MinecraftTest(IsolatedAsyncioTestCase):
         if pidfile.exists():
             with self.assertRaises(ProcessLookupError):
                 os.kill(int(pidfile.read_text()), 0)
+
+    async def test_read_routes_and_disable_mod_retain_closed_remote_contract(self):
+        for command, action in (
+            ("/mc jugadores", "players"),
+            ("/mc mundos", "worlds"),
+            ("/mc mods", "mods"),
+            ("/mc config", "config"),
+        ):
+            receipt = self.receive(command, actor="alice")
+            await self.app.jobs.run_pending()
+            self.assertEqual(self.result(receipt).code, "minecraft_completed")
+            self.assertEqual(self.calls[-1][1]["action"], action)
+            self.assertEqual(self.calls[-1][1]["params"], {})
+        receipt = self.receive('/mc mod desactivar "Nombre sintético"')
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt).code, "minecraft_completed")
+        self.assertEqual(self.calls[-1][1]["action"], "disable_mod")
+        self.assertEqual(self.calls[-1][1]["params"], {"name": "Nombre sintético"})

@@ -1,5 +1,46 @@
 # Relevo Botsky
 
+## 06/11/2026 10:29 UTC · Construcción autorizada local completa; R10 global abierto
+
+R9 commits3a19e03/7ef1259; relevo documental Zhana7591fd3. R0–R9 mantienen su
+cierre local. R10 etapa LOCAL terminada: inventario30herramientas/48componentes AV,
+152rutas y190campos públicos;794filas originales conciliadas. Cada ruta tiene
+observaciones de dominio y cada campo evidencia sintáctica explícita/canónica y
+observaciones de dominio. Esto no convierte observaciones/denegaciones en PASS
+semántico universal; se enlazan los oracles y límites concretos por acción/campo.
+Metacampos del intérprete cancelado fuera del alcance, sin investigar ni ejecutar NLP.
+
+169tests Python completos pasan;5focales finales de transporte añaden una prueba
+nueva:170métodos distintos verificados. 279Node completos pasan sin omisiones.
+Guardias de red loopback en harness Python/Node; cero intentos externos en regresión.
+Transporte local durable independiente: ACK/duplicado/conflicto/época, copias de
+bytes con ownership/lease/tamaño/SHA256; imagen→PDF recibido y abierto en laboratorio.
+Ruff, pipcheck, diffcheck, CLI y DB propia17/integrityok comprobados. Los45hashes
+AV de referencia consultados en Zhana permanecen intactos.
+
+Corregidos en R10: opciones de subtítulos/recorte aplicables; IDs y fechas de agenda
+visibles en texto; catálogo de clips con IDs reales; agenda no oculta llamada activa;
+estado posterior al cierre y cancelación durable separado de liberación de medios;
+backend retirado tras admisión conserva lápida; política Node congelada; callback
+Live antiguo no puede sobrescribir el ID backend del control de avatar. Regresiones
+de clips/avatar/agenda/audio preparado, grupos/XP/nuclear/ruleta, lecturas y archivos
+reales añadidas con fixtures. Desarrollo y errores de oracle conservados aparte.
+
+Evidencia docs/evidencia/R10.json, R10-inventory.json, R10-route-observations.json,
+acceptance-matrix.csv y logs. Guía docs/GUIA_BOTSKY.md y procedimiento DOCUMENTAL
+docs/TRANSICION_Y_REVERSION.md. Este procedimiento no se ha ejecutado.
+
+R10 GLOBAL NO aceptado: faltan configuración propia/licencias/activos y campaña
+real de proveedores/WhatsApp/Android/recepción humana. VRM y clave/modelo Live no
+configurados, ni cuenta/sesión/perfil/transporte productivo de Botsky activados.
+No se acordó recorte de capacidades. R10 remoto y R11 necesitan encargo posterior;
+NO continuar automáticamente con ellos. Trabajo local autorizado completado.
+
+Zhana activa, DB31/configuración/servicios/sesiones/transportes y cambios/auditorías
+anteriores intactos; en Zhana solo relevo documental. Sin GitHub, pruebas remotas,
+mensajes/llamadas reales o navegador. Última cuota33%primaria/38%semanal; no se
+alcanzó el umbral5%. Mantener guardado y parada sin reanudación automática al5%.
+
 ## 06/11/2026 10:00 UTC · R9 cerrado localmente; avanza R10 local
 
 Reanudación expresa del propietario; además pide portado audiovisual casi literal.

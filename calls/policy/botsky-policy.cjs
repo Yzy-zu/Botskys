@@ -8,6 +8,9 @@ function canonical(value) {
   return JSON.stringify(value);
 }
 function makePolicy(document) {
+  document=structuredClone(document);
+  const freeze = value => {if(value && typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;};
+  freeze(document);
   if (!document || Object.keys(document).some(k => !['version','instance','account','epoch','owner','actors','privateChats','groups','features','schedule'].includes(k)) || document.version !== 1 || !Number.isSafeInteger(document.epoch) || document.epoch < 1 || document.epoch > 1000000 || typeof document.instance!=='string' || !document.instance.trim() || typeof document.account!=='string' || !document.account.trim() || canonicalPhoneJid(document.owner) !== document.owner) throw Error('CALLS_POLICY_INVALID');
   const {actors, privateChats, groups, features, schedule} = document;
   if (!Array.isArray(actors) || !actors.length || actors.length > 100 || actors.some(v=>canonicalPhoneJid(v)!==v) || new Set(actors).size!==actors.length || !Array.isArray(privateChats) || privateChats.length>100 || new Set(privateChats).size!==privateChats.length || privateChats.some(v=>canonicalPhoneJid(v)!==v) || !Array.isArray(groups) || groups.length > 50 || groups.some(g=>!g || Object.keys(g).some(k=>!['id','name','maxParticipants'].includes(k)) || !/^\d+(?:-\d+)?@g\.us$/.test(g.id) || typeof g.name!=='string' || !g.name.trim() || !Number.isInteger(g.maxParticipants) || g.maxParticipants<2 || g.maxParticipants>32) || new Set(groups.map(g=>g.id)).size!==groups.length) throw Error('CALLS_POLICY_IDENTITIES');
@@ -24,6 +27,6 @@ function makePolicy(document) {
     if (!origin || !actors.includes(origin.requesterId) || !destination.localEnabled(origin)) throw Object.assign(Error('CALLS_DENIED'),{code:'DESTINATION_NOT_ENABLED',status:403});
     return authorize(id,origin);
   };
-  return {document:structuredClone(document),revision:createHash('sha256').update(canonical(document)).digest('hex'),group:lab,destinationPolicy:destination,schedulePolicy:createSchedulePolicy(env),features:{...features},env};
+  return {document,revision:createHash('sha256').update(canonical(document)).digest('hex'),group:lab,destinationPolicy:destination,schedulePolicy:createSchedulePolicy(env),features:{...features},env};
 }
 module.exports={makePolicy,canonical};

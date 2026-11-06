@@ -218,6 +218,10 @@ class Router:
             "start_seconds", 0
         ):
             reject("end_seconds", "El final debe ser posterior al inicio.")
+        if args.get("container") == "srt" and (
+            args.get("start_seconds", 0) != 0 or args.get("end_seconds") is not None
+        ):
+            reject("end_seconds", "SRT extrae subtítulos completos; no admite recorte.")
         if args.get("subtitle_language") and args.get("container") != "srt":
             reject("subtitle_language", "El idioma solo se usa con formato srt.")
         if spec.family == "manage_poll" and spec.original_action == "create":

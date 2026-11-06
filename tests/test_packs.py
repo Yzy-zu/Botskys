@@ -389,3 +389,13 @@ class PacksTest(IsolatedAsyncioTestCase):
         self.assertTrue(calls[0]["viewOnce"])
         self.assertEqual(base64.b64decode(calls[0]["media"]), photo.data)
         self.assertEqual(calls[0]["mediatype"], "image")
+
+    async def test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope(self):
+        identifier = self.offer()
+        before = self.rows("SELECT balance,reserved FROM wallets")
+        result = self.receive("/pack estado " + identifier).result
+        self.assertEqual(result.status, "ok")
+        self.assertEqual(self.rows("SELECT balance,reserved FROM wallets"), before)
+        foreign = self.receive("/pack estado " + identifier, actor="bob").result
+        self.assertEqual(foreign.code, "pack_not_found")
+        self.assertEqual(self.transport.calls, [])

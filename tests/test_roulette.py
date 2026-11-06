@@ -251,3 +251,15 @@ class RouletteTest(IsolatedAsyncioTestCase):
             "uncertain",
         )
         self.assertEqual(self.result(receipt).code, "request_cancelled")
+
+    async def test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick(self):
+        identifier = await self.lobby()
+        _, status = await self.command("/ruleta estado " + identifier)
+        self.assertEqual(status.status, "ok")
+        _, cancelled = await self.command("/ruleta cancelar " + identifier)
+        self.assertEqual(cancelled.status, "cancelled")
+        self.assertEqual(self.groups.calls, [])
+        wallets = self.rows("SELECT actor,balance,reserved FROM wallets ORDER BY actor")
+        for wallet in wallets:
+            if wallet["actor"] in {"alice", "bob"}:
+                self.assertEqual((wallet["balance"], wallet["reserved"]), (1000, 0))

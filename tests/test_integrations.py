@@ -524,3 +524,17 @@ class IntegrationsTest(IsolatedAsyncioTestCase):
             [r["state"] for r in self.rows("SELECT state FROM message_parts ORDER BY position")],
             ["accepted", "cancelled"],
         )
+
+    async def test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only(self):
+        await self.messenger()
+        contacts = self.receive("/contactos")
+        self.assertEqual(contacts.result.code, "message_contacts")
+        prepared = self.receive("/recado preparar --para Amiga -- Mensaje sintético")
+        identifier = prepared.result.data["draft_id"]
+        status = self.receive("/recado estado " + identifier)
+        self.assertEqual(status.result.status, "ok")
+        self.assertEqual(len(self.http_calls), 0)
+        await self.drive()
+        receipt = self.receive("/drive cuota")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt).status, "ok")

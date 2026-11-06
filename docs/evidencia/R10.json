@@ -1,0 +1,57 @@
+{
+  "block": "R10",
+  "local_status": "PASS_LOCAL_STAGE",
+  "overall_status": "OPEN_REMOTE_CONFIGURATION_AND_AUTHORIZED_ACCEPTANCE",
+  "at": "2026-11-06T10:25:20.484403+00:00",
+  "schema": 17,
+  "catalog_families": 30,
+  "av_components": 48,
+  "routes": 152,
+  "public_fields": 190,
+  "inventory_matrix_rows": 794,
+  "full_python_tests": 169,
+  "post_transport_focal_tests": 5,
+  "unique_python_methods_verified": 170,
+  "node_tests": 279,
+  "python_network_denied_attempts": 0,
+  "observations_are_not_automatic_semantic_pass": true,
+  "oracles": "referenced test assertions; both success and denial/uncertainty cases retained",
+  "local_transport": "independent SQLite receipts; actual owned bytes copied and SHA256/size checked; received PDF opened",
+  "proofs": [
+    "R10-inventory.json",
+    "R10-route-observations.json",
+    "R10-python-tests.txt",
+    "R10-node-tests.txt",
+    "R10-transport-tests.txt",
+    "R10-probes-tests.txt",
+    "R10-cli.txt"
+  ],
+  "documentation": [
+    "../R10.md",
+    "../GUIA_BOTSKY.md",
+    "../TRANSICION_Y_REVERSION.md"
+  ],
+  "remaining": [
+    "remote provider configuration and bounded commissioned tests",
+    "real WhatsApp/Android/human audio/video/file acceptance",
+    "VRM model/license and real gallery assets",
+    "R11 requires subsequent explicit transition commission"
+  ],
+  "preservation": "no changes to active Zhana, DB31/config/profiles/services/transports; relay-only document updates; no GitHub",
+  "scope_reduction": false,
+  "proof_hashes": {
+    "R10-inventory.json": "709e6ed7291cbea68219b5202bd69f56beb205aed164840bd4ca050a97986c7a",
+    "R10-route-observations.json": "26b1fcd9c79d166326f67b16da0d6f14319f47277f3539ea1dc93f61a4136d21",
+    "R10-python-tests.txt": "2debf3e7da41f3e1e83923f4b5d70e31eebc7d4351a5904bcc9c67573b16bd18",
+    "R10-node-tests.txt": "a9a762df89e01c3ed81d1b619adf5dbcaa75e64cad5739a3bbf30f54ffb01286",
+    "R10-transport-tests.txt": "e6e689a853bdc07d71c89994efc42ba67b79c95826ef450ce51e0d309310d0da",
+    "R10-probes-tests.txt": "c6e40f6de6bd0c19df49a38bc641188840da1cc02c46f43c8fce6de5ecff9046",
+    "R10-cli.txt": "a199ff71036c5705655046b383c41860282260262e8d8c4ced9418dd33005ae9"
+  },
+  "own_cli_database": {
+    "schema": 17,
+    "integrity": "ok",
+    "providers_started": false
+  },
+  "source_preservation": "45 consulted AV source hashes unchanged; active source code/config/services not modified"
+}

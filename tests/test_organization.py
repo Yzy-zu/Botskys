@@ -318,3 +318,32 @@ class OrganizationTest(TestCase):
         )
         self.assertEqual(self.app.deliver(notice, CollectingTransport()), 0)
         self.assertEqual(self.app.scheduler.tick(), [])
+
+    def test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped(self):
+        self.assertEqual(self.receive("/bot estado").result.code, "bot_status")
+        self.assertIn("/notas", self.receive("/ayuda notas").result.text)
+        self.assertEqual(self.receive("/voces").result.code, "voice_catalog")
+        self.receive(
+            "/tarea crear --fecha 2026-12-01 --hora 12:00 Texto literal",
+            actor="owner",
+            chat="group",
+            is_group=True,
+        )
+        listing = self.receive("/tareas", chat="group", is_group=True)
+        self.assertEqual(len(listing.result.data["items"]), 1)
+        created = self.receive(
+            "/horario agregar --materia Mate --dia 5 --inicio 10:00 --fin 11:00",
+            actor="owner",
+            chat="group",
+            is_group=True,
+        )
+        identifier = created.result.data["lesson_id"]
+        denied = self.receive("/horario borrar " + str(identifier), chat="group", is_group=True)
+        self.assertEqual(denied.result.code, "owner_required")
+        deleted = self.receive(
+            "/horario borrar " + str(identifier), actor="owner", chat="group", is_group=True
+        )
+        self.assertEqual(deleted.result.code, "school_lesson_deleted")
+        self.assertEqual(
+            self.receive("/horario listar", chat="group", is_group=True).result.data["items"], []
+        )

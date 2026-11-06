@@ -265,6 +265,62 @@ class AdminTest(IsolatedAsyncioTestCase):
         )
         self.assertEqual(self.result(receipt).code, "request_cancelled")
 
+    async def test_moderation_setting_routes_preserve_target_and_owner_guards(self):
+        settings = []
+
+        async def setting(chat, name, value):
+            settings.append((chat, name, value))
+            return "accepted"
+
+        self.groups.setting = setting
+        for command, action in (
+            ("/admin promover alice", "promote"),
+            ("/admin degradar alice", "demote"),
+        ):
+            _, result = await self.command(command)
+            self.assertEqual(result.code, "admin_completed")
+            self.assertEqual(self.groups.calls[-1], ("group", action, "alice-target"))
+        count = len(self.groups.calls)
+        _, protected = await self.command("/admin degradar owner")
+        self.assertEqual(protected.status, "failed")
+        self.assertEqual(len(self.groups.calls), count)
+        for command in ("/admin silenciar", "/admin desilenciar", "/admin cerrar", "/admin abrir"):
+            self.assertEqual(self.receive(command, actor="alice").result.code, "owner_required")
+            _, result = await self.command(command)
+            self.assertEqual(result.code, "admin_completed")
+        self.assertEqual(
+            settings,
+            [
+                ("group", "announcement", True),
+                ("group", "announcement", False),
+                ("group", "locked", True),
+                ("group", "locked", False),
+            ],
+        )
+
+    async def test_nuclear_draft_cancel_has_no_cost_or_target_effect(self):
+        self.app.nuclear_enabled = True
+        identifier = await self.nuclear_preview()
+        before = self.rows("SELECT balance,reserved FROM wallets WHERE actor='owner'")
+        _, cancelled = await self.command("/admin nuclear-cancelar " + identifier)
+        self.assertEqual(cancelled.status, "ok")
+        self.assertEqual(self.groups.calls, [])
+        self.assertEqual(
+            self.rows("SELECT balance,reserved FROM wallets WHERE actor='owner'"), before
+        )
+        _, refused = await self.command("/admin nuclear-confirmar " + identifier)
+        self.assertEqual(refused.data["state"], "cancelled")
+        self.assertEqual(self.groups.calls, [])
+
+    async def test_xp_remove_by_verified_target_preserves_exact_delta(self):
+        await self.command("/admin xp-dar --objetivo alice 10")
+        before = self.rows("SELECT balance FROM wallets WHERE actor='alice'")[0]["balance"]
+        _, result = await self.command("/admin xp-quitar --objetivo alice 3")
+        self.assertEqual(result.code, "admin_xp_changed")
+        self.assertEqual(
+            self.rows("SELECT balance FROM wallets WHERE actor='alice'")[0]["balance"], before - 3
+        )
+
 
 class GroupsHTTPTest(IsolatedAsyncioTestCase):
     async def test_real_client_proofs_roles_changed_setting_and_ack_target(self):

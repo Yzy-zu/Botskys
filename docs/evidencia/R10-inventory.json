@@ -1,0 +1,457 @@
+{
+  "status": "LOCAL_EVIDENCE_RECONCILED; R10_GLOBAL_OPEN",
+  "catalog_families": 30,
+  "original_matrix_rows": 794,
+  "routes": 152,
+  "public_fields": 190,
+  "local_evidence_counts": {
+    "ROUTE_OBSERVED; BACKEND_DERIVED_OR_CONSTANT": 139,
+    "CANCELLED_SCOPE_NO_INTERPRETER": 121,
+    "PUBLIC_FIELD_SYNTAX_AND_DOMAIN_OBSERVED": 150,
+    "NOT_APPLICABLE_FOR_ACTION": 352,
+    "ADAPTED_OUTPUT_CONTRACT": 10,
+    "LOCAL_COMPONENTS; NATIVE_PROVIDER_RENDER_NOT_TESTED": 22
+  },
+  "audiovisual": [
+    {
+      "source": "calls/service/audio-bridge.cjs",
+      "destination": "calls/service/audio-bridge.cjs",
+      "source_sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10",
+      "destination_sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/audio-store.cjs",
+      "destination": "calls/service/audio-store.cjs",
+      "source_sha256": "7a8ea9ee265224543158768cedddde3e09af84491c20ceeea381d06032f751e6",
+      "destination_sha256": "7a8ea9ee265224543158768cedddde3e09af84491c20ceeea381d06032f751e6",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-assets.cjs",
+      "destination": "calls/service/avatar-assets.cjs",
+      "source_sha256": "db3743c1de9865e48a914359e5ddfb8adcf624550f1e27ab0d1b887241c52519",
+      "destination_sha256": "76909d99ca0b811065638ba8bf31b27b40c734554b492537e1795c8c12ec670c",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-client.mjs",
+      "destination": "calls/service/avatar-client.mjs",
+      "source_sha256": "c5b0bce55ecac12d0c91abedabc7a98dc617b79aa2b1fab2a7a3a4e0069f9436",
+      "destination_sha256": "c5b0bce55ecac12d0c91abedabc7a98dc617b79aa2b1fab2a7a3a4e0069f9436",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-expressions.mjs",
+      "destination": "calls/service/avatar-expressions.mjs",
+      "source_sha256": "418d2fea5983f4cf7b31f32b87bbff9fd9f80bceac142aeeef2badb5c0d6779b",
+      "destination_sha256": "418d2fea5983f4cf7b31f32b87bbff9fd9f80bceac142aeeef2badb5c0d6779b",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-geometry.mjs",
+      "destination": "calls/service/avatar-geometry.mjs",
+      "source_sha256": "b4e3c382a5be6644e45b62f9aca2dfb580f1b1ac2ee99d14641f60a0b328585d",
+      "destination_sha256": "b4e3c382a5be6644e45b62f9aca2dfb580f1b1ac2ee99d14641f60a0b328585d",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-motion.mjs",
+      "destination": "calls/service/avatar-motion.mjs",
+      "source_sha256": "9a46bb024466c57d8ac6c2507e29f014e7b3aab8516d2753ee8e27183eba84b7",
+      "destination_sha256": "9a46bb024466c57d8ac6c2507e29f014e7b3aab8516d2753ee8e27183eba84b7",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-quality.mjs",
+      "destination": "calls/service/avatar-quality.mjs",
+      "source_sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+      "destination_sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-renderer.mjs",
+      "destination": "calls/service/avatar-renderer.mjs",
+      "source_sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+      "destination_sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-tools.cjs",
+      "destination": "calls/service/avatar-tools.cjs",
+      "source_sha256": "4f8f1634defc7a9a3585726731fd1ad981b1ea6ec43aab4cfbb3c9d6095aea2d",
+      "destination_sha256": "4f8f1634defc7a9a3585726731fd1ad981b1ea6ec43aab4cfbb3c9d6095aea2d",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/avatar-worker.mjs",
+      "destination": "calls/service/avatar-worker.mjs",
+      "source_sha256": "17cc6a52cac9d7bed8009a0e7397d2ed1b481d4af5f4730864bf126fb9e999b9",
+      "destination_sha256": "17cc6a52cac9d7bed8009a0e7397d2ed1b481d4af5f4730864bf126fb9e999b9",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/browser.cjs",
+      "destination": "calls/service/browser.cjs",
+      "source_sha256": "b886f8610de959a6fa7f9adb12f7b2adfcff56b826de7834156d3672764c8411",
+      "destination_sha256": "629dc7db8d07cf0bca95cc7ef96a78795b96cd985a7dbc9e516f4e41c83e724a",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/call-agenda.cjs",
+      "destination": "calls/service/call-agenda.cjs",
+      "source_sha256": "de8bf39b6744bfe36f5b353e5638791eddc3fceb60df98fe77916d20ed9c3413",
+      "destination_sha256": "de8bf39b6744bfe36f5b353e5638791eddc3fceb60df98fe77916d20ed9c3413",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/call-snapshot.cjs",
+      "destination": "calls/service/call-snapshot.cjs",
+      "source_sha256": "430c1c71f279a1e888aff5c9f389646b1d850fafad7b32a153972034a3eacd4a",
+      "destination_sha256": "430c1c71f279a1e888aff5c9f389646b1d850fafad7b32a153972034a3eacd4a",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/clip-commands.cjs",
+      "destination": "calls/service/clip-commands.cjs",
+      "source_sha256": "d8b2b07a3009c4058bed188b180fa94f44c6bf773451c841c422429b0b86ca4f",
+      "destination_sha256": "d8b2b07a3009c4058bed188b180fa94f44c6bf773451c841c422429b0b86ca4f",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/clip-store.cjs",
+      "destination": "calls/service/clip-store.cjs",
+      "source_sha256": "2c1a8cef59564397552088a27fd4f1442363e6b1c4ee31722ba2c63032f3f9d9",
+      "destination_sha256": "2c1a8cef59564397552088a27fd4f1442363e6b1c4ee31722ba2c63032f3f9d9",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/common.cjs",
+      "destination": "calls/service/common.cjs",
+      "source_sha256": "b92b31d847902cfb2e50ba705776805d5e18ffb993596fa9ec228497f391fe87",
+      "destination_sha256": "b92b31d847902cfb2e50ba705776805d5e18ffb993596fa9ec228497f391fe87",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/config.cjs",
+      "destination": "calls/policy/botsky-policy.cjs",
+      "source_sha256": "69680290c875484abd77fcc1c32ceb60e73878114e2f3fd0d9a6dd2ed81f2bc1",
+      "destination_sha256": "0e919aa54e9b8393202bedb4891a64294873ab3f7299358f77bab9976426c6a6",
+      "decision": "EXPLICIT_REPLACEMENT",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/failure-notices.cjs",
+      "destination": "calls/service/failure-notices.cjs",
+      "source_sha256": "67e56f341347e06c4cfc628687ce646e946ad91cca19a4b133cd3d2956bf5148",
+      "destination_sha256": "67e56f341347e06c4cfc628687ce646e946ad91cca19a4b133cd3d2956bf5148",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/feature-controls.cjs",
+      "destination": "calls/service/feature-controls.cjs",
+      "source_sha256": "8d83787532c9bcdf62e9562635f7a84c4673bbdc87426ecfaf8ad6c205520b7b",
+      "destination_sha256": "8d83787532c9bcdf62e9562635f7a84c4673bbdc87426ecfaf8ad6c205520b7b",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/gemini-live.cjs",
+      "destination": "calls/service/gemini-live.cjs",
+      "source_sha256": "f01de9c55c0f2717bbcfc2f2159a76cd447725d24a0681026e4e93582d87ff60",
+      "destination_sha256": "49ae584726244b8c656188147eefdd221dfbb101eebeb4bb870ab9c7beb7f336",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/group-call.cjs",
+      "destination": "calls/service/group-call.cjs",
+      "source_sha256": "b606529e7975ad856e2279405241e3cda40a01704cd604c0636d022ec5983e34",
+      "destination_sha256": "b606529e7975ad856e2279405241e3cda40a01704cd604c0636d022ec5983e34",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/group-director.cjs",
+      "destination": "calls/service/group-director.cjs",
+      "source_sha256": "a810329cb4efae82546450784507342b03389bf4b9c91491ca4287bfcc0b651e",
+      "destination_sha256": "a810329cb4efae82546450784507342b03389bf4b9c91491ca4287bfcc0b651e",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/group-directory.cjs",
+      "destination": "calls/service/group-directory.cjs",
+      "source_sha256": "373aa48d6fc395eb1a77b8df955b6eb3baf0a51c3eb26b819a04f6aea6eaa593",
+      "destination_sha256": "373aa48d6fc395eb1a77b8df955b6eb3baf0a51c3eb26b819a04f6aea6eaa593",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/group-voice-gate.cjs",
+      "destination": "calls/service/group-voice-gate.cjs",
+      "source_sha256": "90406fdca199fed5b9a39eec108cc305143ab2fd5dc3a72af87e8b997cdaba9a",
+      "destination_sha256": "9d84afd09924288e2b93f9a1a5bf2b0f3a4ecf2d5418164c10015fa6c9fe33ec",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/http.cjs",
+      "destination": "calls/service/http.cjs",
+      "source_sha256": "4afc2d9414e5468a07a86fda0ab5f43724bbdc0751f7fb73dceb0e255aa87e09",
+      "destination_sha256": "f48fb5ab56443b5ce68d66bca543cf531222f247c4c92b53a7112be5e3c46797",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/incoming-policy.cjs",
+      "destination": "calls/service/incoming-policy.cjs",
+      "source_sha256": "3ec7bb1fe0a8e7cb512804225520f245bfcdcc56f0e7fed439737120c4b77a85",
+      "destination_sha256": "3ec7bb1fe0a8e7cb512804225520f245bfcdcc56f0e7fed439737120c4b77a85",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/journal.cjs",
+      "destination": "calls/service/journal.cjs",
+      "source_sha256": "4b0419f2e7084843c4b858bbc9733a49638e85d1225f09c3d1d40f20be530dae",
+      "destination_sha256": "4b0419f2e7084843c4b858bbc9733a49638e85d1225f09c3d1d40f20be530dae",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/live-controller.cjs",
+      "destination": "calls/service/live-controller.cjs",
+      "source_sha256": "cd8bfa58270014c74d6efe0223642bf289d000357816c272dbaf560da662f7b2",
+      "destination_sha256": "ca19a1e6c862ec66ea915f08d0942514a3b981783883e80f4ecbcf1e243e4686",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/live-credentials.cjs",
+      "destination": "calls/service/live-credentials.cjs",
+      "source_sha256": "7bba42115c2f9c70e7dc5687a627be6d8c9a5a65da94bf8241a0e7b31b0f858f",
+      "destination_sha256": "02dd8cfb2372450e6d7dc808e5026d2265f3e1d3c6d1078c70ae67c00caf3f37",
+      "decision": "EXPLICIT_REPLACEMENT",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/live-errors.cjs",
+      "destination": "calls/service/live-errors.cjs",
+      "source_sha256": "794d9896db42e852a5e879101878de50df05ec1cbbb80c6d631f86bc98c6498e",
+      "destination_sha256": "794d9896db42e852a5e879101878de50df05ec1cbbb80c6d631f86bc98c6498e",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/main.cjs",
+      "destination": "calls/bootstrap.cjs",
+      "source_sha256": "2e93c25f3c317064bef1e03a2248c8a4ddbedd427de7090584c0d0e699203a12",
+      "destination_sha256": "dbb9ed6cfb3af91e7b5048fcfe4365bb68bedabdb2ad64942dec4c2b5e91d594",
+      "decision": "EXPLICIT_REPLACEMENT",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/manager.cjs",
+      "destination": "calls/service/manager.cjs",
+      "source_sha256": "4278658001162e192142c1ff8906bea24bcffc94c09169f5c92ab67eb819c842",
+      "destination_sha256": "4278658001162e192142c1ff8906bea24bcffc94c09169f5c92ab67eb819c842",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/native-video.cjs",
+      "destination": "calls/service/native-video.cjs",
+      "source_sha256": "381a01a133a89bde8474217211b0c2699f8da86d929509bda63d893779855ff0",
+      "destination_sha256": "381a01a133a89bde8474217211b0c2699f8da86d929509bda63d893779855ff0",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/operations.cjs",
+      "destination": "calls/service/operations.cjs",
+      "source_sha256": "72069a852c90b5830ad021aa4368d63cc9133f43e8fc1bc59e91e5c106ef451e",
+      "destination_sha256": "72069a852c90b5830ad021aa4368d63cc9133f43e8fc1bc59e91e5c106ef451e",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/private-call.cjs",
+      "destination": "calls/service/private-call.cjs",
+      "source_sha256": "cf68ec25a53098319a2060d1aae8ca816eef413f21b75fa9b037c43580919b0d",
+      "destination_sha256": "cf68ec25a53098319a2060d1aae8ca816eef413f21b75fa9b037c43580919b0d",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/runtime.cjs",
+      "destination": "calls/service/runtime.cjs",
+      "source_sha256": "a481151e0573449e347db9c81bc4e4553d753733f5c46200d21b851fcf2ed75e",
+      "destination_sha256": "a481151e0573449e347db9c81bc4e4553d753733f5c46200d21b851fcf2ed75e",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/schedule-result.cjs",
+      "destination": "calls/service/schedule-result.cjs",
+      "source_sha256": "40c6a49a4c9e8c4d0960fbfded34d27162e845afc882466864ece0e951a345ba",
+      "destination_sha256": "40c6a49a4c9e8c4d0960fbfded34d27162e845afc882466864ece0e951a345ba",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/spoken-controls.cjs",
+      "destination": "calls/service/spoken-controls.cjs",
+      "source_sha256": "0fe3716679627e71a0116d64230e08a56dfdf3d1ea89c9bb86bd72f49ebc4f2e",
+      "destination_sha256": "b44ce1cc97adb9ff0059ef20ff28f57f6be5d95f2970050b6dc6caf38aaaf5fe",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/video-bridge.cjs",
+      "destination": "calls/service/video-bridge.cjs",
+      "source_sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+      "destination_sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/service/voice-click.cjs",
+      "destination": "calls/service/voice-click.cjs",
+      "source_sha256": "e926f4aa18df4a8dc0337a9912e80ca07520bfade939ee758fb09de7beb5c4c4",
+      "destination_sha256": "e926f4aa18df4a8dc0337a9912e80ca07520bfade939ee758fb09de7beb5c4c4",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/auth.js",
+      "destination": "calls/policy/auth.js",
+      "source_sha256": "70171c0dc45457a95b8610d9158d7ef013e9f3aaaf92472463b3669c4560ae64",
+      "destination_sha256": "f5a8aeb39b05b33a7eb34627c6b09706b8fd94a9de92f7ca26120ef573990524",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/callDestinations.js",
+      "destination": "calls/policy/callDestinations.js",
+      "source_sha256": "8f51d6c6197a1eeac65eb233e393667505fbe9f1f64ef011a294b03aea37dd25",
+      "destination_sha256": "8ea6baf09243660b652dcf3e591f0060a0c4fb104a0861723a2345b4e968985c",
+      "decision": "BOUNDARY_ADAPTATION",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/callDuration.js",
+      "destination": "calls/policy/callDuration.js",
+      "source_sha256": "6773bd6548cb3682f5c2f59b40aa44e9c52da0cc75084be8269212a9699a6f77",
+      "destination_sha256": "6773bd6548cb3682f5c2f59b40aa44e9c52da0cc75084be8269212a9699a6f77",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/callScheduleId.js",
+      "destination": "calls/policy/callScheduleId.js",
+      "source_sha256": "324d39697435f2a23ad7bf5408fd60142361f6019b92ca517b543053cfc6717c",
+      "destination_sha256": "324d39697435f2a23ad7bf5408fd60142361f6019b92ca517b543053cfc6717c",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/callScheduleTime.js",
+      "destination": "calls/policy/callScheduleTime.js",
+      "source_sha256": "59528615f9e417fe11fca9440b32b2e158e48d5354a468a1a5dd21f8d5e21329",
+      "destination_sha256": "59528615f9e417fe11fca9440b32b2e158e48d5354a468a1a5dd21f8d5e21329",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/clipRequest.js",
+      "destination": "calls/policy/clipRequest.js",
+      "source_sha256": "f0f6f304b08f74157c2ac97551846bd5a8f735fe6c3d65190e7934ce280e6345",
+      "destination_sha256": "f0f6f304b08f74157c2ac97551846bd5a8f735fe6c3d65190e7934ce280e6345",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    },
+    {
+      "source": "calls/policy/liveCallRequest.js",
+      "destination": "calls/policy/liveCallRequest.js",
+      "source_sha256": "09714e62b79ecbf758d4d748719784b979f88c5968ba4607d4f5c95345602ef8",
+      "destination_sha256": "09714e62b79ecbf758d4d748719784b979f88c5968ba4607d4f5c95345602ef8",
+      "decision": "VERBATIM",
+      "evidence": "docs/R9.md; docs/evidencia/R9.json; R10-node-tests.txt",
+      "browser_provider_human": "NOT_TESTED"
+    }
+  ],
+  "route_observations": "R10-route-observations.json",
+  "local_matrix": "../acceptance-matrix.csv",
+  "limits": [
+    "all 152 routes and 190 public fields have indexed observations; these do not certify every value/branch",
+    "per-test oracles distinguish rejection, success, uncertainty, duplicate and cleanup",
+    "provider configuration, real transport, Android and human acceptance remain open",
+    "no implicit reduction of scope or authorization for transition"
+  ]
+}
