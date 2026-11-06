@@ -1,5 +1,36 @@
 # Relevo Botsky
 
+## 06/11/2026 · R2 cerrado; siguiente R3 y R4 según dependencias
+
+R1 commits 6c33f10/ac6c0d6 (CSV LF corregido y comprobado en índice). Relevo de
+Zhana actualizado documentalmente en d3953cd; cambios anteriores intactos.
+
+R2: aplicación y CLI local funcionales sin IA/clasificador ni proveedores. Ingreso
+sintético explícito con fuente/corte/frescura, identidad de adaptador y permisos
+revalidados antes de efecto. DB propia esquema v2/application_id, inbox con
+fingerprint por instancia/cuenta/mensaje, canonical v1 sin reinterpretación al
+recuperar. /ayuda, /estado ID, /cancelar ID, notas literales y búsqueda con filtro.
+Nota/recibo/efecto/resultado/outbox en transacción local; CAS por parte de entrega,
+sin transacción durante send. Incertidumbre no se reenvía. Vista de notas se
+habilita solo tras aceptación completa; TTL 15min, ámbito actor/chat/cuenta/época.
+
+25 pruebas locales pasan (11 sintaxis +14 núcleo), SQLite temporal real, carreras,
+reinicio, rollback con crash, identidad, cancelación, filtros y entregas. CLI parse,
+init y ayuda comprobados en entorno propio; DB de laboratorio tiene solo recibo de
+ayuda sintético, cero notas. Ruff/diffcheck e integridad SQLite correctos. Evidencia
+docs/evidencia/R2.json y R2-tests.txt; decisiones en docs/R2.md y ficha de portado.
+
+La DB de laboratorio no se usará al transicionar: R11 requiere datos vacíos nuevos.
+R3 siguiente: artefactos/jobs/leases/cancelación en motor, medios/documentos/PDF,
+descargas/selecciones y fronteras de red probadas sin llamadas remotas. R4 puede
+avanzar sin adjuntos desde R2; R3 se requiere para adjuntos. R5–R9 respetan sus
+dependencias. No dar por cerrados dominios que solo tienen sintaxis.
+
+Producción, DB31, configuración, servicios, sesiones y transporte de Zhana no
+tocados. Ningún envío remoto, navegador, llamada, compra ni GitHub. Cuota última
+84% primaria /52% semanal; umbral5% de cualquier ventana, guardar y detener sin
+reanudación automática. Continuación autónoma vigente, solo construcción local.
+
 ## 06/11/2026 · R1 cerrado; avanza R2
 
 R0 commit ee22c2e. R1 implementa lexer incremental, registro de 152 rutas / tres

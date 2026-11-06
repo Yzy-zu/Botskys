@@ -1,0 +1,31 @@
+{
+  "block": "R2",
+  "status": "PASS",
+  "at": "2026-11-06T02:18:21.827303+00:00",
+  "schema": 2,
+  "tests": 25,
+  "core_tests": 14,
+  "syntax_tests": 11,
+  "test_log": "R2-tests.txt",
+  "checks": [
+    "SQLite temporal real: nota/efecto/recibo atómicos",
+    "duplicados concurrentes y reinicio sin reinterpretación",
+    "rollback con crash entre nota y recibo",
+    "aislamiento actor/chat/cuenta/época",
+    "corte/frescura/histórico/futuro",
+    "permisos revalidados y cancelación exacta ajena denegada",
+    "filtro/página/vista aceptada/expiración y %_ literales",
+    "CAS entrega, red fuera de transacción, uncertain sin repetir",
+    "DB31 sintética rechazada sin mutación",
+    "CLI parse/init/ayuda en entorno propio",
+    "integrity_check DB laboratorio ok; cero notas",
+    "Ruff y diffcheck de índice"
+  ],
+  "limits": [
+    "sin transporte remoto ni recepción humana",
+    "notas/receipts de laboratorio; transición exige DB nueva vacía",
+    "leases y cancelación de motor pendientes de R3",
+    "resto de handlers capability_unavailable"
+  ],
+  "active_zhana_changed": false
+}

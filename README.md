@@ -15,3 +15,7 @@ capacidad en el registro no acredita que su handler esté construido.
 Comprobaciones locales: `PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v`.
 Configuración de ejemplo sin secretos en config.example.toml. Los datos propios
 de laboratorio están en private/ (ignorado); nunca se importa private/ de Zhana.
+
+R0/R1/R2 cerrados. Recorrido local y CLI: [docs/R2.md](docs/R2.md).
+Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Los handlers de
+bloques posteriores dan un límite explícito hasta que se construyan y comprueben.

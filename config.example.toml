@@ -1,4 +1,5 @@
 instance = "botsky-local"
+account = "local-account"
 epoch = 1
 database = "private/botsky.sqlite3"
 timezone = "America/Mexico_City"
