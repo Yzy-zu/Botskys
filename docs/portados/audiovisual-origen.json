@@ -1,0 +1,386 @@
+{
+  "instruction": "06/11: propietario pide casi copypaste de lógica/código audiovisual de Zhana",
+  "source_reference": "7e12d54 technical reference fixed R0; per-file working hashes below",
+  "files": [
+    {
+      "source": "calls/service/audio-bridge.cjs",
+      "sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10",
+      "destination": "calls/service/audio-bridge.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/audio-store.cjs",
+      "sha256": "7a8ea9ee265224543158768cedddde3e09af84491c20ceeea381d06032f751e6",
+      "destination": "calls/service/audio-store.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "7a8ea9ee265224543158768cedddde3e09af84491c20ceeea381d06032f751e6",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-assets.cjs",
+      "sha256": "db3743c1de9865e48a914359e5ddfb8adcf624550f1e27ab0d1b887241c52519",
+      "destination": "calls/service/avatar-assets.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "76909d99ca0b811065638ba8bf31b27b40c734554b492537e1795c8c12ec670c",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/avatar-client.mjs",
+      "sha256": "c5b0bce55ecac12d0c91abedabc7a98dc617b79aa2b1fab2a7a3a4e0069f9436",
+      "destination": "calls/service/avatar-client.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "c5b0bce55ecac12d0c91abedabc7a98dc617b79aa2b1fab2a7a3a4e0069f9436",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-expressions.mjs",
+      "sha256": "418d2fea5983f4cf7b31f32b87bbff9fd9f80bceac142aeeef2badb5c0d6779b",
+      "destination": "calls/service/avatar-expressions.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "418d2fea5983f4cf7b31f32b87bbff9fd9f80bceac142aeeef2badb5c0d6779b",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-geometry.mjs",
+      "sha256": "b4e3c382a5be6644e45b62f9aca2dfb580f1b1ac2ee99d14641f60a0b328585d",
+      "destination": "calls/service/avatar-geometry.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "b4e3c382a5be6644e45b62f9aca2dfb580f1b1ac2ee99d14641f60a0b328585d",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-motion.mjs",
+      "sha256": "9a46bb024466c57d8ac6c2507e29f014e7b3aab8516d2753ee8e27183eba84b7",
+      "destination": "calls/service/avatar-motion.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "9a46bb024466c57d8ac6c2507e29f014e7b3aab8516d2753ee8e27183eba84b7",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-quality.mjs",
+      "sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+      "destination": "calls/service/avatar-quality.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-renderer.mjs",
+      "sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+      "destination": "calls/service/avatar-renderer.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-tools.cjs",
+      "sha256": "4f8f1634defc7a9a3585726731fd1ad981b1ea6ec43aab4cfbb3c9d6095aea2d",
+      "destination": "calls/service/avatar-tools.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "4f8f1634defc7a9a3585726731fd1ad981b1ea6ec43aab4cfbb3c9d6095aea2d",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/avatar-worker.mjs",
+      "sha256": "17cc6a52cac9d7bed8009a0e7397d2ed1b481d4af5f4730864bf126fb9e999b9",
+      "destination": "calls/service/avatar-worker.mjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "17cc6a52cac9d7bed8009a0e7397d2ed1b481d4af5f4730864bf126fb9e999b9",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/browser.cjs",
+      "sha256": "b886f8610de959a6fa7f9adb12f7b2adfcff56b826de7834156d3672764c8411",
+      "destination": "calls/service/browser.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "629dc7db8d07cf0bca95cc7ef96a78795b96cd985a7dbc9e516f4e41c83e724a",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/call-agenda.cjs",
+      "sha256": "de8bf39b6744bfe36f5b353e5638791eddc3fceb60df98fe77916d20ed9c3413",
+      "destination": "calls/service/call-agenda.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "de8bf39b6744bfe36f5b353e5638791eddc3fceb60df98fe77916d20ed9c3413",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/call-snapshot.cjs",
+      "sha256": "430c1c71f279a1e888aff5c9f389646b1d850fafad7b32a153972034a3eacd4a",
+      "destination": "calls/service/call-snapshot.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "430c1c71f279a1e888aff5c9f389646b1d850fafad7b32a153972034a3eacd4a",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/clip-commands.cjs",
+      "sha256": "d8b2b07a3009c4058bed188b180fa94f44c6bf773451c841c422429b0b86ca4f",
+      "destination": "calls/service/clip-commands.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "d8b2b07a3009c4058bed188b180fa94f44c6bf773451c841c422429b0b86ca4f",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/clip-store.cjs",
+      "sha256": "2c1a8cef59564397552088a27fd4f1442363e6b1c4ee31722ba2c63032f3f9d9",
+      "destination": "calls/service/clip-store.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "2c1a8cef59564397552088a27fd4f1442363e6b1c4ee31722ba2c63032f3f9d9",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/common.cjs",
+      "sha256": "b92b31d847902cfb2e50ba705776805d5e18ffb993596fa9ec228497f391fe87",
+      "destination": "calls/service/common.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "b92b31d847902cfb2e50ba705776805d5e18ffb993596fa9ec228497f391fe87",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/failure-notices.cjs",
+      "sha256": "67e56f341347e06c4cfc628687ce646e946ad91cca19a4b133cd3d2956bf5148",
+      "destination": "calls/service/failure-notices.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "67e56f341347e06c4cfc628687ce646e946ad91cca19a4b133cd3d2956bf5148",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/feature-controls.cjs",
+      "sha256": "8d83787532c9bcdf62e9562635f7a84c4673bbdc87426ecfaf8ad6c205520b7b",
+      "destination": "calls/service/feature-controls.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "8d83787532c9bcdf62e9562635f7a84c4673bbdc87426ecfaf8ad6c205520b7b",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/gemini-live.cjs",
+      "sha256": "f01de9c55c0f2717bbcfc2f2159a76cd447725d24a0681026e4e93582d87ff60",
+      "destination": "calls/service/gemini-live.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "49ae584726244b8c656188147eefdd221dfbb101eebeb4bb870ab9c7beb7f336",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/group-call.cjs",
+      "sha256": "b606529e7975ad856e2279405241e3cda40a01704cd604c0636d022ec5983e34",
+      "destination": "calls/service/group-call.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "b606529e7975ad856e2279405241e3cda40a01704cd604c0636d022ec5983e34",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/group-director.cjs",
+      "sha256": "a810329cb4efae82546450784507342b03389bf4b9c91491ca4287bfcc0b651e",
+      "destination": "calls/service/group-director.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "a810329cb4efae82546450784507342b03389bf4b9c91491ca4287bfcc0b651e",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/group-directory.cjs",
+      "sha256": "373aa48d6fc395eb1a77b8df955b6eb3baf0a51c3eb26b819a04f6aea6eaa593",
+      "destination": "calls/service/group-directory.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "373aa48d6fc395eb1a77b8df955b6eb3baf0a51c3eb26b819a04f6aea6eaa593",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/group-voice-gate.cjs",
+      "sha256": "90406fdca199fed5b9a39eec108cc305143ab2fd5dc3a72af87e8b997cdaba9a",
+      "destination": "calls/service/group-voice-gate.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "9d84afd09924288e2b93f9a1a5bf2b0f3a4ecf2d5418164c10015fa6c9fe33ec",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/http.cjs",
+      "sha256": "4afc2d9414e5468a07a86fda0ab5f43724bbdc0751f7fb73dceb0e255aa87e09",
+      "destination": "calls/service/http.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "f48fb5ab56443b5ce68d66bca543cf531222f247c4c92b53a7112be5e3c46797",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/incoming-policy.cjs",
+      "sha256": "3ec7bb1fe0a8e7cb512804225520f245bfcdcc56f0e7fed439737120c4b77a85",
+      "destination": "calls/service/incoming-policy.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "3ec7bb1fe0a8e7cb512804225520f245bfcdcc56f0e7fed439737120c4b77a85",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/journal.cjs",
+      "sha256": "4b0419f2e7084843c4b858bbc9733a49638e85d1225f09c3d1d40f20be530dae",
+      "destination": "calls/service/journal.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "4b0419f2e7084843c4b858bbc9733a49638e85d1225f09c3d1d40f20be530dae",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/live-controller.cjs",
+      "sha256": "cd8bfa58270014c74d6efe0223642bf289d000357816c272dbaf560da662f7b2",
+      "destination": "calls/service/live-controller.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "ca19a1e6c862ec66ea915f08d0942514a3b981783883e80f4ecbcf1e243e4686",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/live-errors.cjs",
+      "sha256": "794d9896db42e852a5e879101878de50df05ec1cbbb80c6d631f86bc98c6498e",
+      "destination": "calls/service/live-errors.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "794d9896db42e852a5e879101878de50df05ec1cbbb80c6d631f86bc98c6498e",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/manager.cjs",
+      "sha256": "4278658001162e192142c1ff8906bea24bcffc94c09169f5c92ab67eb819c842",
+      "destination": "calls/service/manager.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "4278658001162e192142c1ff8906bea24bcffc94c09169f5c92ab67eb819c842",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/native-video.cjs",
+      "sha256": "381a01a133a89bde8474217211b0c2699f8da86d929509bda63d893779855ff0",
+      "destination": "calls/service/native-video.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "381a01a133a89bde8474217211b0c2699f8da86d929509bda63d893779855ff0",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/operations.cjs",
+      "sha256": "72069a852c90b5830ad021aa4368d63cc9133f43e8fc1bc59e91e5c106ef451e",
+      "destination": "calls/service/operations.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "72069a852c90b5830ad021aa4368d63cc9133f43e8fc1bc59e91e5c106ef451e",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/private-call.cjs",
+      "sha256": "cf68ec25a53098319a2060d1aae8ca816eef413f21b75fa9b037c43580919b0d",
+      "destination": "calls/service/private-call.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "cf68ec25a53098319a2060d1aae8ca816eef413f21b75fa9b037c43580919b0d",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/runtime.cjs",
+      "sha256": "a481151e0573449e347db9c81bc4e4553d753733f5c46200d21b851fcf2ed75e",
+      "destination": "calls/service/runtime.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "a481151e0573449e347db9c81bc4e4553d753733f5c46200d21b851fcf2ed75e",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/schedule-result.cjs",
+      "sha256": "40c6a49a4c9e8c4d0960fbfded34d27162e845afc882466864ece0e951a345ba",
+      "destination": "calls/service/schedule-result.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "40c6a49a4c9e8c4d0960fbfded34d27162e845afc882466864ece0e951a345ba",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/spoken-controls.cjs",
+      "sha256": "0fe3716679627e71a0116d64230e08a56dfdf3d1ea89c9bb86bd72f49ebc4f2e",
+      "destination": "calls/service/spoken-controls.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "b44ce1cc97adb9ff0059ef20ff28f57f6be5d95f2970050b6dc6caf38aaaf5fe",
+      "verbatim": false
+    },
+    {
+      "source": "calls/service/video-bridge.cjs",
+      "sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+      "destination": "calls/service/video-bridge.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+      "verbatim": true
+    },
+    {
+      "source": "calls/service/voice-click.cjs",
+      "sha256": "e926f4aa18df4a8dc0337a9912e80ca07520bfade939ee758fb09de7beb5c4c4",
+      "destination": "calls/service/voice-click.cjs",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "e926f4aa18df4a8dc0337a9912e80ca07520bfade939ee758fb09de7beb5c4c4",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/callDestinations.js",
+      "sha256": "8f51d6c6197a1eeac65eb233e393667505fbe9f1f64ef011a294b03aea37dd25",
+      "destination": "calls/policy/callDestinations.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "8ea6baf09243660b652dcf3e591f0060a0c4fb104a0861723a2345b4e968985c",
+      "verbatim": false
+    },
+    {
+      "source": "calls/policy/callDuration.js",
+      "sha256": "6773bd6548cb3682f5c2f59b40aa44e9c52da0cc75084be8269212a9699a6f77",
+      "destination": "calls/policy/callDuration.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "6773bd6548cb3682f5c2f59b40aa44e9c52da0cc75084be8269212a9699a6f77",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/callScheduleId.js",
+      "sha256": "324d39697435f2a23ad7bf5408fd60142361f6019b92ca517b543053cfc6717c",
+      "destination": "calls/policy/callScheduleId.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "324d39697435f2a23ad7bf5408fd60142361f6019b92ca517b543053cfc6717c",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/callScheduleTime.js",
+      "sha256": "59528615f9e417fe11fca9440b32b2e158e48d5354a468a1a5dd21f8d5e21329",
+      "destination": "calls/policy/callScheduleTime.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "59528615f9e417fe11fca9440b32b2e158e48d5354a468a1a5dd21f8d5e21329",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/clipRequest.js",
+      "sha256": "f0f6f304b08f74157c2ac97551846bd5a8f735fe6c3d65190e7934ce280e6345",
+      "destination": "calls/policy/clipRequest.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "f0f6f304b08f74157c2ac97551846bd5a8f735fe6c3d65190e7934ce280e6345",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/liveCallRequest.js",
+      "sha256": "09714e62b79ecbf758d4d748719784b979f88c5968ba4607d4f5c95345602ef8",
+      "destination": "calls/policy/liveCallRequest.js",
+      "decision": "technical audiovisual component copied; boundary adaptations tracked in diff",
+      "destination_sha256": "09714e62b79ecbf758d4d748719784b979f88c5968ba4607d4f5c95345602ef8",
+      "verbatim": true
+    },
+    {
+      "source": "calls/policy/auth.js",
+      "sha256": "70171c0dc45457a95b8610d9158d7ef013e9f3aaaf92472463b3669c4560ae64",
+      "destination": "calls/policy/auth.js",
+      "decision": "only phone/owner primitives extracted; no historical authorization workflow",
+      "destination_sha256": "f5a8aeb39b05b33a7eb34627c6b09706b8fd94a9de92f7ca26120ef573990524",
+      "verbatim": false
+    }
+  ],
+  "additional": [
+    {
+      "source": "calls/service/config.cjs",
+      "decision": "replaced with explicit own immutable policy; no dotenv/env/private discovery"
+    },
+    {
+      "source": "calls/service/main.cjs",
+      "decision": "replaced with calls/bootstrap.cjs DI; no automatic runtime/browser/link/agenda start"
+    },
+    {
+      "source": "calls/service/live-credentials.cjs",
+      "decision": "replaced with explicit single key; no pool, lookup or fallback"
+    },
+    {
+      "source": "src/zhana/calls.py:1-398",
+      "source_file_sha256": "1806b53ac00d89009ab621d6140226619bb359320de6118fdf4c97a2efbee805",
+      "destination": "src/botsky/adapters/calls.py",
+      "decision": "bounded HTTP client copied; Scope field names, same-chat guard, explicit fixture transport and closed AV commands adapted"
+    }
+  ]
+}

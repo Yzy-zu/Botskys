@@ -1,0 +1,214 @@
+[
+  {
+    "source": "/home/petrov/zhana/calls/test/audio-store.test.cjs",
+    "destination": "calls/test/audio-store.test.cjs",
+    "source_sha256": "57379d6db7322267849479283c3a0a8743f9977333a655223dc2846c07e20f5a",
+    "destination_sha256": "f9cbe7b71e0c82fe0041127bb492c5bdd6a18cb19f243d71f2f91c6fc88eb720"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/call-agenda.test.cjs",
+    "destination": "calls/test/call-agenda.test.cjs",
+    "source_sha256": "1d411b90b3430b7a90f8f7bf27cd6d317a4198660bff95dea90815e1c37d5b71",
+    "destination_sha256": "4257c4924651828973f88ab4c1cc038a89183c39b36c447a671a9eb661612a1f"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/cancel-by-id.test.cjs",
+    "destination": "calls/test/cancel-by-id.test.cjs",
+    "source_sha256": "cca6b4dbf8e68efa5f63e4d276c6369406615b026f92149e55a0fbc5f08e083d",
+    "destination_sha256": "229b5db99ffeb1ed4f5aa35fd59cb144b9c1eed1d186d4e283e3beadd634c2c7"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/clip-commands.test.cjs",
+    "destination": "calls/test/clip-commands.test.cjs",
+    "source_sha256": "fab2f7c1e67ac9248c9bd9a3e2274da54b585dd5bb62a32d7110e2ef40f51af9",
+    "destination_sha256": "5d56c6466945b271da9a727d1272643555e48065c105d80dbb6517b9b7de3753"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/clip-store.test.cjs",
+    "destination": "calls/test/clip-store.test.cjs",
+    "source_sha256": "579cc0212059803899c7178e77b3cc1840e5a56c4fe71aec85217c69c84beb44",
+    "destination_sha256": "92a06fe3ab6edb2f27a3ad138cacabd90d627d709d538a2bbbb640020825c00d"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/failure-notices.test.cjs",
+    "destination": "calls/test/failure-notices.test.cjs",
+    "source_sha256": "1016aab5122cfc2c774f15845ef0087768c1172459e4ae25895bb685b687efd7",
+    "destination_sha256": "e4edbac287259dd340a5de3616373605ee9445cf75d119c0566b9f0c60a902d7"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/group-director.test.cjs",
+    "destination": "calls/test/group-director.test.cjs",
+    "source_sha256": "5340818ff7e5ccf4305ced5c815398125a499f96c1e6c478131ffdf47d065590",
+    "destination_sha256": "e0ff3e6cccf7cd55e0fde69da83989e2fea066edb285a7c31d09e4b08b1f05c2"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/group-directory.test.cjs",
+    "destination": "calls/test/group-directory.test.cjs",
+    "source_sha256": "17a44d5524695558bf97790053571057c381ddabe13421992e13a7e2212d3b6f",
+    "destination_sha256": "71fbfe130d80865e3da030f5b88453c89f756aeccd568bc99fe68e82f443564c"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/group-voice-gate.test.cjs",
+    "destination": "calls/test/group-voice-gate.test.cjs",
+    "source_sha256": "e50d3c1484363267c349234a14f414ec39e3a77aae98176dbc9cb608fac70b04",
+    "destination_sha256": "eb7c32566a5b213590fad7488df0a423e95534863f6e0f23c6d019de24d0107e"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/manager.test.cjs",
+    "destination": "calls/test/manager.test.cjs",
+    "source_sha256": "71496476adc27afdad9f5efb1a251fb527587da3943b8af3b50f96736995fe15",
+    "destination_sha256": "e0751b867567f0690f2a729cf7a63776db59a7871c4c5185f1b84470aea2b380"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n12a-continuity.test.cjs",
+    "destination": "calls/test/n12a-continuity.test.cjs",
+    "source_sha256": "6cae1bf70dd57df05e49d44a59041ac3f7082f37a38b4dbc8cca64a3a9f70af8",
+    "destination_sha256": "66ee4b2faf9a1ef6716346d324e8c0cfe19c5101bdc1eca957726666b3d1305d"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n12b-controls.test.cjs",
+    "destination": "calls/test/n12b-controls.test.cjs",
+    "source_sha256": "7109e0bd749d53ee4133365cc34d94f56d0b38ff2adbacb9a54369427f52d0ac",
+    "destination_sha256": "45762e48ac61fb8e97ab97e2f82f9163ec5e74b29279ac2785b4b5b71f1de6de"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n12b-renderer-recovery.test.cjs",
+    "destination": "calls/test/n12b-renderer-recovery.test.cjs",
+    "source_sha256": "13efbd8c9b27c63c1bcf765d1ff76cb75b45d851968f387cb44e26c2453e7e28",
+    "destination_sha256": "723bb965426ecd9afa50c2f9be4854f0ac0eea128a20c1f76d0af0a53b80d8e1"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13a-expressions.test.cjs",
+    "destination": "calls/test/n13a-expressions.test.cjs",
+    "source_sha256": "5fb0973e5abf67923d13ee59bf948a7b16dd2bd4657335f50dc38952e8678127",
+    "destination_sha256": "e4c69c27c12abe6dae0600e218b598127d89b33296a3cfeb3958886dd86d570d"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13a-frame-confirmation.test.cjs",
+    "destination": "calls/test/n13a-frame-confirmation.test.cjs",
+    "source_sha256": "8eeade111cb6eb8e04d708a0eeab718c6837ccb8937f4555e9fc6aea6be9d3ea",
+    "destination_sha256": "3b8ebba497b04b59bd9e0722d4f6b2265841f034bff8b61138e58ef15593a8f1"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13a-manager.test.cjs",
+    "destination": "calls/test/n13a-manager.test.cjs",
+    "source_sha256": "598d145490bdddcedd58f4ad3a5ae4606df7c0b920166076d4ac7eec6d03b74d",
+    "destination_sha256": "d1aa143e24938acdb84ca0039292aebaf24a3b7225712dc5bdc3dc3183d88b35"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13b-controls.test.cjs",
+    "destination": "calls/test/n13b-controls.test.cjs",
+    "source_sha256": "2f762772b2bd2a1af09ebac9c82182bd1ee2ac0db12ddf3e84821c852a20b254",
+    "destination_sha256": "09f1cf55f9b6a19210c1233fb737f2b32f2603edae1052dd3301022be3f1c0b0"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13b-motion.test.cjs",
+    "destination": "calls/test/n13b-motion.test.cjs",
+    "source_sha256": "aa8889321c3429b0c5a6754b6e49668426b762d53dd54a6e0564344038516d8c",
+    "destination_sha256": "36a65d793c091829ddf2430cf8369d3c053c17e8dbfe8dd38070b6a8fd4c43f1"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n15-controller.test.cjs",
+    "destination": "calls/test/n15-controller.test.cjs",
+    "source_sha256": "997ab34c0e052cf33e44fc785305d5973f8c25d12e1d352ef0dce13a5e64073f",
+    "destination_sha256": "ffee3599d8a199de3f113e2b1ed42d0270557affa0919bb393a06740f3050d9f"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n15-director.test.cjs",
+    "destination": "calls/test/n15-director.test.cjs",
+    "source_sha256": "b6e56ff2151ea35cd0f11f78643c300a9d6f0b677ed20fc7112d24234a735502",
+    "destination_sha256": "5b5ed26fd52d12588481a7f7a1794a4c97ca2dce49fcef0768dd238e091b1368"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/operations.test.cjs",
+    "destination": "calls/test/operations.test.cjs",
+    "source_sha256": "b831a6f420ee10ccc2e1e7ed23dc4e5ab3161a1cb6495dce3baf3b525cd29d15",
+    "destination_sha256": "d0d5fd47c23f989c94b2f6e98e4f2afa25128bb01e7c00ad3ce5f698d61e0cf4"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/pending-question.test.cjs",
+    "destination": "calls/test/pending-question.test.cjs",
+    "source_sha256": "126f44523679d8210974905be27600f87add72c2c13bd869007873ac3498e012",
+    "destination_sha256": "6ed87123ef7b8b90d5f10883e4150a3479db9d92c752079db9dbf6fc226c25ac"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/recovery-guards.test.cjs",
+    "destination": "calls/test/recovery-guards.test.cjs",
+    "source_sha256": "769f58c72792ec2aaafc0e5f6da5802efcbc24479212b10ec40d7fe1c7dfd7d7",
+    "destination_sha256": "6e5d49c5a7113a8137f5d5e525fea6ead10fc243bcaf943546170dff1e525986"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/live-errors.test.cjs",
+    "destination": "calls/test/live-errors.test.cjs",
+    "source_sha256": "5f6256bd3cc78358126745e3fe189cb41ce137ab7e2972251bbbadd5d3e03870",
+    "destination_sha256": "32691c393c20c48a0528ce59abca34f36ea313526902b9f41b829b07effe8c17"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/live-controller.test.cjs",
+    "destination": "calls/test/live-controller.test.cjs",
+    "source_sha256": "9314122ec05dc5fd275ad9da2f1a2c8a8e6a572bf3a37779929b3ef613c706bf",
+    "destination_sha256": "74de653f9524c9a8e686f3e4c3a11ffaa419f05ba4b145ae08e4301226026f2f"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/gemini-live.test.cjs",
+    "destination": "calls/test/gemini-live.test.cjs",
+    "source_sha256": "f515b3be9e9fee5dd1ddd2b887e35c9d19f3333fdb9c6b420367a70a743dfaf0",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "2eccfa53c0737493fcb4245106b82651a8e439d1682d9d49fd1f9bfcd94a32fc"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/live-tools.test.cjs",
+    "destination": "calls/test/live-tools.test.cjs",
+    "source_sha256": "d464e584d5cd21f5cb929467163cb950da36c88bc81517d96847bf346d260b18",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "25fc9e85d96c638f9078b687204637de82482a960ac4efcea2ccb99b05e06816"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/spoken-controls.test.cjs",
+    "destination": "calls/test/spoken-controls.test.cjs",
+    "source_sha256": "c6254967ef416e4db26fc468f14c64454f45e05ec9fb1fafb8177e67182a3d1b",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "13c2a08087113e9ff0b4c4ff15186821c64fd999385a06cc4f58a05a228146dd"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/spoken-audit-fixes.test.cjs",
+    "destination": "calls/test/spoken-audit-fixes.test.cjs",
+    "source_sha256": "83ad6b96e9b6bab764c6c1efa7207336c0acefed28aa3644efff7aa0d16f6f93",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "dd53d200bdf49297474fb2a30b8cd30664532eadadac2cff8413dbe1f3ea1ba3"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n13a-silent.test.cjs",
+    "destination": "calls/test/n13a-silent.test.cjs",
+    "source_sha256": "b4b30c305817593919dc055559d487372a0724334644dc789e5e08b19836a9fe",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "37a2ea627b67bfeca49ef9ac035f03bb11157d16480c94841dc443983d8d4d9c"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/n15-live.test.cjs",
+    "destination": "calls/test/n15-live.test.cjs",
+    "source_sha256": "856301ba0f93c51044077f487b1ea4dfa14e975840fb7fb6e5d72d5a9ddb1c26",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "373f95518a2b99a03d3f340cf17e067b3da426b7f0ceecfb59d733937011da9e"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/call-audience.test.cjs",
+    "destination": "calls/test/call-audience.test.cjs",
+    "source_sha256": "fcc551fe0a1823889bd88530641f01786db82ba3f312db64df2ad135e3c4e8d0",
+    "adaptations": "explicit fixture model and Botsky name",
+    "destination_sha256": "a534835c2cdca62bcbd9bca3b1bb0c4c1efefc814a00039f8f1b8412ef693291"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/linked-account.test.cjs",
+    "destination": "calls/test/linked-account.test.cjs",
+    "source_sha256": "306bb5e2f02c9b72c53385e09472539174a777d23d939ff122e896471d5396fc",
+    "destination_sha256": "a35e550cfe8439425cc4bed6164ec6b516d3f6607e7e005532f8295860c1c381"
+  },
+  {
+    "source": "/home/petrov/zhana/calls/test/runtime.test.cjs",
+    "destination": "calls/test/runtime.test.cjs",
+    "source_sha256": "277d3f444a99a8bf7ac4d3e5cffd6be229ae97bea58aa61c978378b9dac52881",
+    "adaptations": "fixture environment explicit; no provider variables inherited",
+    "destination_sha256": "1763e72f4ea448f6fb717d25010a8599bab1a5a92c7fef3e0040fb9ca36b1e79"
+  }
+]

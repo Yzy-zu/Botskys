@@ -1,3 +1,26 @@
+# Audiovisual · R9 cerrado en construcción local
+
+Se aplica el encargo «casi copypaste» del propietario: 36 componentes idénticos,
+nueve adaptados, cliente Python recuperado y composición/configuración propias.
+Ver [R9](../R9.md), [hashes/decisiones](audiovisual-origen.json),
+[pruebas trasladadas](audiovisual-tests-origen.json) y [evidencia](../evidencia/R9.json).
+
+Cambios de frontera: identidad y allowlists explícitas, misma cuenta/chat, política
+revisionada, almacenamiento y perfil propios, única clave/modelo Live explícitos,
+fixture local diferenciado y navegador/vinculación cerrados. El código de control,
+audio/video, agenda, audiencia, clips/avatar y recuperación conserva la solución
+original; no se importa el runtime Python ni configuración/datos de Zhana.
+
+Pruebas nuevas de Botsky cubren SQLite/HTTP real local, cancelación tras dispatch,
+reinicio sin otra oferta, scoping, outbox de fallos, WebRTC de loopback y audio
+Pulse real privado. Regresiones técnicas portadas complementarias, sin navegador.
+VRM/licencia y proveedores reales sin configurar; Android/escucha/render real sin
+probar. El cierre es local y no autoriza transición ni campaña remota.
+
+---
+
+Checkpoint anterior conservado íntegro:
+
 # Audiovisual · R9 parcial, NO cerrado
 
 Referencia técnica Zhana7e12d54 fijada en R0; audio-bridge.cjs, startLive/liveAudio/

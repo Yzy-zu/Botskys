@@ -1,0 +1,6 @@
+test_expired_dispatched_worker_is_cancelled_without_second_offer (test_calls.CallsTest.test_expired_dispatched_worker_is_cancelled_without_second_offer) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.393s
+
+OK

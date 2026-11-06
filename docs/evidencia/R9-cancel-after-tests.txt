@@ -1,0 +1,6 @@
+test_cancel_after_provider_acceptance_closes_exact_call_and_suppresses_late_result (test_calls.CallsTest.test_cancel_after_provider_acceptance_closes_exact_call_and_suppresses_late_result) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.412s
+
+OK

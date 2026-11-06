@@ -24,6 +24,8 @@ class Settings:
     transport: str = "local"
     bot_ids: frozenset[str] = frozenset({"botsky-local"})
 
+    calls: object | None = None
+
     @classmethod
     def load(cls, path: Path):
         path = path.resolve(strict=True)
@@ -42,6 +44,7 @@ class Settings:
             "max_future_seconds",
             "transport",
             "bot_ids",
+            "calls",
         }
         if data.keys() - allowed:
             raise ValueError("configuración contiene campos desconocidos")
@@ -84,7 +87,7 @@ class Settings:
         database = (path.parent / data["database"]).resolve()
         if not database.is_relative_to(path.parent) or database == path.parent:
             raise ValueError("la DB debe estar dentro del proyecto propio")
-        return cls(
+        settings = cls(
             path.parent,
             data["instance"],
             account,
@@ -99,3 +102,10 @@ class Settings:
             data.get("max_future_seconds", 30),
             bot_ids=frozenset(data.get("bot_ids", ["botsky-local"])),
         )
+        if "calls" in data:
+            from dataclasses import replace
+
+            from .call_policy import CallPolicy
+
+            settings = replace(settings, calls=CallPolicy.build(data["calls"], settings))
+        return settings

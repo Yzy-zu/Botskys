@@ -1,0 +1,6 @@
+test_opus_video_loopback_and_release (test_webrtc.LocalWebRtcTest.test_opus_video_loopback_and_release) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.527s
+
+OK

@@ -1,0 +1,21 @@
+{
+  "name": "botsky-calls",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontera audiovisual propia; portado t\u00e9cnico de Zhana",
+  "scripts": {
+    "test": "node --test test/*.test.cjs",
+    "start": "node bootstrap.cjs"
+  },
+  "dependencies": {
+    "@pixiv/three-vrm": "3.5.5",
+    "@wppconnect/wa-js": "4.7.2",
+    "esbuild": "0.28.2",
+    "playwright": "1.64.1",
+    "three": "0.186.1",
+    "ws": "8.22.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

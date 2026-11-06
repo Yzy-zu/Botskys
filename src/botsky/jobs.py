@@ -58,6 +58,12 @@ def cancel_job(db, context, target):
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
+        if row["operation"].startswith(("control_call.", "audiovisual.")):
+            from time import time_ns
+
+            from .domains.calls import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
         if row["operation"].startswith("manage_admin."):
             from time import time_ns
 
@@ -125,6 +131,7 @@ class Jobs:
         gallery=None,
         groups=None,
         minecraft=None,
+        calls=None,
         nuclear_enabled=None,
         roulette_policy=None,
     ):
@@ -137,6 +144,7 @@ class Jobs:
         self.messages = messages or (lambda: (None, None))
         self.gallery = gallery or (lambda: (None, None, frozenset()))
         self.groups = groups or (lambda: None)
+        self.calls = calls or (lambda: None)
         self.minecraft = minecraft or (lambda: None)
         self.nuclear_enabled = nuclear_enabled or (lambda: False)
         self.roulette_policy = roulette_policy or (lambda: (frozenset(), False, None))
@@ -203,6 +211,10 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
+                if row["operation"].startswith(("control_call.", "audiovisual.")):
+                    from .domains.calls import retire_job
+
+                    retire_job(db, row["id"], now)
                 if row["operation"].startswith("manage_admin."):
                     from .domains.admin import retire_job
 
@@ -368,6 +380,13 @@ class Jobs:
                 return False
             context = context_of(parent)
             args = json.loads(row["arguments_json"])
+            if row["operation"] in (
+                "control_call.start",
+                "audiovisual.agenda.create",
+            ) and result.code not in ("call_requested", "agenda_create"):
+                from .domains.calls import retire_job
+
+                retire_job(db, job["id"], now)
             if row["operation"].startswith("manage_admin."):
                 from .domains.admin import retire_job
 
@@ -601,7 +620,17 @@ class Jobs:
 
     async def run_pending(self, limit=MAX_QUEUED):
         with worker_lock(self.settings.root):
-            return await self._run_pending(limit)
+            if self.calls() is not None:
+                from .domains.calls import drain_cancellations
+
+                await drain_cancellations(self, self.calls())
+            try:
+                return await self._run_pending(limit)
+            finally:
+                if self.calls() is not None:
+                    from .domains.calls import drain_cancellations
+
+                    await drain_cancellations(self, self.calls())
 
     async def _run_pending(self, limit):
         self.store.prune_context(self.settings, self.clock())
@@ -678,6 +707,10 @@ class Jobs:
             if digest.hexdigest() != expected:
                 raise ArtifactProblem("artifact_changed")
         op = job["operation"]
+        if op.startswith(("control_call.", "audiovisual.")):
+            from .domains.calls import run
+
+            return await run(job, directory, self)
         if op.startswith("manage_admin.nuclear_"):
             from .domains.nuclear import run
 

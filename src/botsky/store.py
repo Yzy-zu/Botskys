@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 16
+SCHEMA_VERSION = 17
 PART_CHARS = 3500
 
 
@@ -132,6 +132,9 @@ class Store:
             if version == 15 and application_id == APPLICATION_ID:
                 db.executescript((Path(__file__).parent / "migrations/016_nuclear.sql").read_text())
                 version = 16
+            if version == 16 and application_id == APPLICATION_ID:
+                db.executescript((Path(__file__).parent / "migrations/017_calls.sql").read_text())
+                version = 17
             if version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")

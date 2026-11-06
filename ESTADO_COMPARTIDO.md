@@ -1,5 +1,39 @@
 # Relevo Botsky
 
+## 06/11/2026 10:00 UTC · R9 cerrado localmente; avanza R10 local
+
+Reanudación expresa del propietario; además pide portado audiovisual casi literal.
+R0–R8 mantienen sus cierres previos. R9 ahora cerrado en construcción LOCAL: 36
+componentes idénticos a Zhana y nueve adaptados; configuración/main/credenciales
+sustituidos por composición propia explícita y única clave/modelo, sin pool.
+Cliente HTTP Python técnico recuperado. Inventario audiovisual48archivos conciliado.
+No se importa runtime ni datos privados de Zhana; fixtures, SQLite17 y almacenes propios.
+
+Comandos explícitos de llamadas/estado/cierre/cancelación, agenda, clips y avatar;
+permisos/binding por cuenta/actor/chat/época, journal y cancelación durable antes y
+después de dispatch. Reinicio de worker incierto se concilia/cancela sin otra oferta.
+Avisos de fallo a outbox propia, sin repetir la llamada ni entregar partes inciertas.
+Gemini tiene solo los controles cerrados de la sesión que permite §8; nunca ejecutor
+general, clasificador ni NLP. Entrantes, vinculación y navegador cerrados por defecto.
+
+146tests Python de regresión pasan;14focales posteriores y dos carreras finales.
+277tests Node pasan sin omisiones: regresión técnica portada + fronteras nuevas.
+WebRTC real solo127.0.0.1: Opus/VP8/SRTP, energía y frames nuevos, peers/tracks cerrados.
+Pulse/D-Bus/Xvfb efímeros propios: coexistencia, tono reproducido/capturado, energía,
+procesos retirados por identidad y sockets eliminados. Ningún navegador abierto.
+No confundir esto con WPP/compositor/escucha/render de VRM ni recepción Android.
+
+VRM/licencia, credencial/modelo Live y proveedor/transporte reales NOT_CONFIGURED;
+capacidad y ACK de avatar probados con fixtures y bundle compilado. Video conserva
+el límite original dueño privado/primer grupo. Evidencia docs/evidencia/R9.json,
+docs/R9.md y docs/portados/audiovisual-origen.json; checkpoints anteriores intactos.
+
+Siguiente R10 LOCAL: conciliación de cada acción/campo, laboratorio aislado, matriz,
+bloqueos visibles, guía del dueño y procedimiento documental de transición/reversión.
+R10 remoto/aceptación humana y R11 requieren encargo posterior; no transición aún.
+Ningún servicio productivo/DB31/configuración/sesión/transporte de Zhana modificado;
+no GitHub ni pruebas remotas. Cuota64% primaria/42% semanal; guardar/parar al5%.
+
 ## 06/11/2026 04:30 UTC · PARADA al5%, sin reanudación automática
 
 Consulta oficial5% primaria/48% semanal. Se guarda y se detiene por instrucción del

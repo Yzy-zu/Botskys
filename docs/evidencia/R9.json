@@ -1,0 +1,45 @@
+{
+  "block": "R9",
+  "status": "PASS",
+  "level": "LOCAL construction; real providers/browser/WPP/Android/human acceptance NOT_TESTED",
+  "at": "2026-11-06T10:00:20.227230+00:00",
+  "schema": 17,
+  "source_verbatim_files": 36,
+  "source_adapted_files": 9,
+  "ported_test_files": 34,
+  "node_tests": 277,
+  "python_regression_tests": 146,
+  "python_final_focal_tests": 14,
+  "additional_race_tests": 2,
+  "webrtc": "two local aiortc peers, loopback-only ICE, real Opus/VP8/SRTP receive and resource close",
+  "pulse": "real synthetic tone playback/capture in isolated private runtimes; processes and sockets released",
+  "checks": [
+    "R0 48-file AV inventory reconciled; configuration/main/credentials explicitly replaced",
+    "explicit deterministic chat commands; no classifier or general tool executor given to Live",
+    "own scoped policy revision and SQLite v17; no borrowed user storage",
+    "HTTP local real + synthetic call driver; duplicate and busy guards",
+    "cancel before/after dispatch and expired dispatched worker without second offer",
+    "source journal/recovery/audience/agenda/clip/avatar ACK and morph/bone regression",
+    "failure notices to own outbox; delivery acceptance separate from tool execution",
+    "real FFmpeg audio/clip normalization, own catalog integrity, cleanup",
+    "client/worker avatar bundle compiles locally; no model copied",
+    "Ruff, pip check, diffcheck"
+  ],
+  "limits": [
+    "VRM/model license NOT_CONFIGURED; no private model/manifest/catalog copied",
+    "Live key and model NOT_CONFIGURED; no provider request made",
+    "browser/WPP/compositor render/in-device media/human reception NOT_TESTED",
+    "automatic incoming, linking and browser disabled; agenda timers opt-in",
+    "real video retains owner-private/first-group restriction from source",
+    "R10 remote and R11 need subsequent explicit order"
+  ],
+  "logs": [
+    "R9-python-regression.txt",
+    "R9-python-final-focal.txt",
+    "R9-cancel-after-tests.txt",
+    "R9-restart-dispatch-tests.txt",
+    "R9-node-tests.txt",
+    "R9-webrtc-tests.txt",
+    "R9-runtime-tests.txt"
+  ]
+}

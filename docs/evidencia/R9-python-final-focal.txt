@@ -1,0 +1,19 @@
+test_policy_snapshot_does_not_change_with_caller_mutations (test_call_policy.CallPolicyTest.test_policy_snapshot_does_not_change_with_caller_mutations) ... ok
+test_settings_accept_only_explicit_calls_table_and_create_no_runtime (test_call_policy.CallPolicyTest.test_settings_accept_only_explicit_calls_table_and_create_no_runtime) ... ok
+test_unknown_fields_implicit_actors_and_automatic_incoming_are_rejected (test_call_policy.CallPolicyTest.test_unknown_fields_implicit_actors_and_automatic_incoming_are_rejected) ... ok
+test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope (test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope) ... ok
+test_cancel_before_dispatch_persists_tombstone_across_application_restart (test_calls.CallsTest.test_cancel_before_dispatch_persists_tombstone_across_application_restart) ... ok
+test_explicit_commands_dispatch_once_and_control_exact_call (test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call) ... ok
+test_failure_notice_is_own_outbox_and_ack_does_not_redial (test_calls.CallsTest.test_failure_notice_is_own_outbox_and_ack_does_not_redial) ... ok
+test_group_call_controls_are_scoped_to_authorized_group_members (test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members) ... ok
+test_scope_transport_revision_and_access_before_provider (test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider) ... ok
+test_absence_after_timeout_is_uncertain_and_not_a_license_to_redial (test_calls_client.CallsClientTest.test_absence_after_timeout_is_uncertain_and_not_a_license_to_redial) ... ok
+test_cancellation_during_dispatch_shields_durable_tombstone (test_calls_client.CallsClientTest.test_cancellation_during_dispatch_shields_durable_tombstone) ... ok
+test_cross_chat_and_unbounded_response_rejected (test_calls_client.CallsClientTest.test_cross_chat_and_unbounded_response_rejected) ... ok
+test_errors_never_expose_provider_body_and_redirects_are_not_followed (test_calls_client.CallsClientTest.test_errors_never_expose_provider_body_and_redirects_are_not_followed) ... ok
+test_lost_start_response_reconciles_without_repeating_post (test_calls_client.CallsClientTest.test_lost_start_response_reconciles_without_repeating_post) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 20.461s
+
+OK

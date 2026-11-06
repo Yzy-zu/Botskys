@@ -25,7 +25,9 @@ def authorize(permission, context, settings):
         )
     if permission == "owner" and scope.actor != settings.owner:
         return Result("failed", "owner_required", "Esta acción está reservada al dueño verificado.")
-    if permission == "call_authorized":
+    if permission == "call_authorized" and (
+        settings.calls is None or not settings.calls.allows(context)
+    ):
         return Result(
             "failed", "call_not_configured", "Las llamadas todavía no están configuradas en Botsky."
         )

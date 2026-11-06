@@ -16,12 +16,14 @@ Comprobaciones locales: `PYTHONPATH=src .venv/bin/python -m unittest discover -s
 Configuración de ejemplo sin secretos en config.example.toml. Los datos propios
 de laboratorio están en private/ (ignorado); nunca se importa private/ de Zhana.
 
-R0–R8 cerrados localmente. Recorrido mínimo: [docs/R2.md](docs/R2.md).
+R0–R9 cerrados localmente. Recorrido mínimo: [docs/R2.md](docs/R2.md).
 Archivos, motores y CLI de trabajos: [docs/R3.md](docs/R3.md).
 Contenido y voz sin despacho desde IA: [docs/R4.md](docs/R4.md).
 Organización y scheduler local: [docs/R5.md](docs/R5.md).
 Drive y recados explícitos: [docs/R6.md](docs/R6.md).
 Economía y juegos: [docs/R7.md](docs/R7.md).
 Administración y Minecraft: [docs/R8.md](docs/R8.md).
+Audiovisual portado y límites: [docs/R9.md](docs/R9.md).
+Pruebas Node locales: `node --test calls/test/*.test.cjs` (sin navegador).
 Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Los handlers de
 bloques posteriores dan un límite explícito hasta que se construyan y comprueben.

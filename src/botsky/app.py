@@ -43,6 +43,7 @@ class Application:
         roulette_choice=None,
         minecraft=None,
         nuclear_enabled=False,
+        calls=None,
     ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
@@ -61,6 +62,7 @@ class Application:
             frozenset(gallery_chats),
         )
         self.store = Store(settings.database)
+        self.calls = calls
         self.minecraft = minecraft
         self.nuclear_enabled = bool(nuclear_enabled)
         self.groups, self.roulette_chats, self.allow_roulette_admins, self.roulette_choice = (
@@ -84,6 +86,7 @@ class Application:
             gallery=lambda: (self.gallery, self.photo_transport, self.gallery_chats),
             groups=lambda: self.groups,
             minecraft=lambda: self.minecraft,
+            calls=lambda: self.calls,
             nuclear_enabled=lambda: self.nuclear_enabled,
             roulette_policy=lambda: (
                 self.roulette_chats,
@@ -94,6 +97,11 @@ class Application:
         from .scheduler import Scheduler
 
         self.scheduler = Scheduler(self)
+
+    async def poll_call_notices(self):
+        from .domains.call_notices import poll
+
+        return await poll(self)
 
     def attach_local(self, incoming, path):
         """Adjunto explícito de operador; nunca una ruta extraída de texto de chat."""
@@ -165,6 +173,10 @@ class Application:
             return denied
         args = command["arguments"]
         operation = command["operation"]
+        if spec.family == "control_call" or spec.family.startswith("audiovisual."):
+            from .domains import calls
+
+            return calls.execute(db, context, spec, args, now, self)
         if spec.family == "manage_admin":
             from .domains import admin
 

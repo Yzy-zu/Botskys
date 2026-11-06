@@ -19,6 +19,7 @@ media = [
 dev = ["reportlab==4.5.1"]
 ai = ["google-genai==2.33.0", "edge-tts==7.3.1", "httpx==0.28.1"]
 integrations = ["httpx==0.28.1"]
+rtc = ["aiortc==1.16.0", "av==19.0.2"]
 
 [project.scripts]
 botsky = "botsky.app:main"

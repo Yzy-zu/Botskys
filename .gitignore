@@ -8,3 +8,5 @@ private/
 tmp/
 build/
 dist/
+
+node_modules/
