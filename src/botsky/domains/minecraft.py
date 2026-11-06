@@ -4,7 +4,7 @@ import json
 
 from ..contracts import Result, canonical
 
-READS = {"status", "players", "worlds", "mods", "config"}
+READS = {"status", "players", "worlds", "mods", "config", "discover"}
 
 
 def execute(db, context, spec, args, now, app):
@@ -28,10 +28,13 @@ def execute(db, context, spec, args, now, app):
                 "minecraft_local_validation",
                 "El cambio no es admisible. Consola: list, save, time query daytime o weather query; no comandos del host.",
             )
-        if db.execute(
-            "SELECT 1 FROM external_operations WHERE domain='minecraft' AND resource=? AND state IN ('reserved','sending','uncertain')",
-            (backend.server_id,),
-        ).fetchone():
+        if (
+            action != "recover"
+            and db.execute(
+                "SELECT 1 FROM external_operations WHERE domain='minecraft' AND resource=? AND state IN ('reserved','sending','uncertain')",
+                (backend.server_id,),
+            ).fetchone()
+        ):
             return Result(
                 "needs_input",
                 "minecraft_resource_busy",
@@ -95,6 +98,18 @@ def public(value, depth=0):
 
 
 def render(data, action):
+    if action == "discover":
+        return (
+            "Entorno Minecraft descubierto y validado. Mundo: "
+            + str(data.get("active_world", "desconocido"))
+            + ". Montaje e identidad Docker verificados."
+        )
+    if action == "recover":
+        return (
+            "Configuración recuperada y verificada. El servidor permanece apagado; revisa /mc mods antes de iniciarlo."
+            if data.get("changed")
+            else "No hay cambios que recuperar en este mundo."
+        )
     if action == "console":
         return "Comando enviado al puente Minecraft; no hay confirmación de ejecución dentro del juego."
     if action == "players":
@@ -325,9 +340,13 @@ def render(data, action):
                 + "."
             )
         return f"{verb} de {str(name)[:160]}: {result}.{group_note} {restart_note} Carga en juego no confirmada."
+    if action in {"start", "restart"} and data.get("verified") is True:
+        return "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
     if action == "restart":
         return "El puente confirmó la solicitud de reinicio del servidor. Esto confirma solo la aceptación del puente; no la disponibilidad posterior ni la carga de mods."
     if action == "status":
+        if data.get("reconciliation") == "pending":
+            return "Hay un cambio interrumpido pendiente de conciliación. Apaga el servidor y usa /mc recuperar; no se repetirá el cambio."
         if data.get("game_status") == "failed":
             return "Minecraft: fallo del juego durante el arranque. El contenedor puede seguir activo; requiere revisión."
         if data.get("game_status") == "starting":
@@ -385,6 +404,18 @@ async def run(job, directory, manager):
             if mutating
             else "failed"
         )
+        if action == "recover" and data.get("recovery_id") and data.get("recovered") is True:
+            with manager.store.transaction() as db:
+                db.execute(
+                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('enable_mod','disable_mod') AND state='uncertain'",
+                    (backend.server_id,),
+                )
+        if action == "recover" and data.get("offline_verified") is True:
+            with manager.store.transaction() as db:
+                db.execute(
+                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('start','restart') AND state='uncertain'",
+                    (backend.server_id,),
+                )
         safe = public(data)
         if action == "mods":
             installed = data.get("installed", [])
@@ -399,6 +430,8 @@ async def run(job, directory, manager):
             safe["installed_truncated"] = len(custom) > len(safe["installed"])
         if status == "needs_input" and data.get("dispatched") is False:
             messages = {
+                "recovery_requires_offline": "Apaga Minecraft antes de recuperar su configuración. No se modificó nada.",
+                "recovery_conflict": "Hay cambios externos desde la operación. No sobrescribí esos archivos; requiere revisión.",
                 "pack_not_unique_or_installed": "No encuentro un paquete único con ese nombre. Consulta /mc mods y usa el identificador o la carpeta exacta; comportamiento y recursos pueden compartir nombre.",
                 "pack_dependency_not_configured": "Falta configurar una dependencia del paquete. Activa primero sus paquetes requeridos; no cambié la configuración.",
                 "pack_version_conflict": "La versión configurada difiere de la instalada. Revisa /mc mods antes de cambiarla; no cambié la configuración.",

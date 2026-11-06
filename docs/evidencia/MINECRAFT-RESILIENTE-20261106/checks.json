@@ -1,0 +1,20 @@
+{
+  "final_focal_tests": 32,
+  "focal_result": "PASS",
+  "full_suite": {
+    "tests": 252,
+    "errors": 1,
+    "error": "test_calls seedClip IPC timeout; separate rerun logged"
+  },
+  "ruff_check": "PASS",
+  "ruff_format_files": 145,
+  "diff_check": "PASS",
+  "own_worker_deployed_sha256": "b6a004b73360f25ae5deb83a096b1b1da0f7c804e4bfb22c3bab0d9279735a15",
+  "remote_validation": "discovery/status read-only; game ready",
+  "recovery_faults": "local synthetic files only",
+  "quota_remaining": {
+    "primary": 70,
+    "weekly": 31
+  },
+  "calls_rerun": "PASS"
+}

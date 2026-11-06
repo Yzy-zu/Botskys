@@ -1,5 +1,30 @@
 # Relevo Botsky
 
+## 06/11 · Bloque Minecraft resiliente implementado
+
+Encargo expreso: descubrimiento desde Docker con montajes/WorkingDir dentro de
+base autorizada; mundo/manifiestos dinámicos y fingerprint imagen/id/montaje.
+/mc diagnostico y /mc recuperar añadidos. Todas las operaciones remotas usan
+descubrimiento estricto; las pruebas de dominio permiten fixtures sin Docker.
+Diario privado write-ahead/fsync por mundo, bloqueo, snapshots exactos y CAS
+antes de recuperar, rechazo de drift externo/entorno. Pending bloquea nuevos
+arranques/cambios; recuperación explícita solo apagado, sin reinicio automático.
+Arranque/reinicio sondean hasta90s; solo ready del juego acredita éxito.
+Recibos inciertos no se reenvían. Parada explícita disponible; conciliación
+acotada tras recuperación/offline observado, inbox histórico intacto.
+
+Worker propio actualizado, discover/status reales solo lectura: ready. No nueva
+mutación del servidor ni repetición del fallo nativo. Pruebas de recuperación
+y crash locales, no afirmar recuperación remota nueva. Permisos operativos
+writefalse conservados. Informe docs/MINECRAFT_RESILIENTE.md; evidencia separada
+MINECRAFT-RESILIENTE-20261106 con logs originales/intermedio y comprobación final.
+32 focales finales PASS; general252 con timeout aislado seedClip audiovisual,
+repetición separada PASS en calls-rerun.txt. Ruff/format145/diffcheckPASS.
+Sigue pendiente fallo nativo previo/R10 global/R11. Sin NLP, Zhana runtime, DB31,
+sesiones, perfiles, llamadas, navegador, GitHub o transición. Cuota y checks en
+evidencia; mantener umbral5% obligatorio y commits selectivos.
+
+
 ## 06/11 · Punto4 Minecraft: mods corregidos; fallo nativo separado
 
 Encargo nuevo del propietario: mods reales y presentación clara. Correcciones:

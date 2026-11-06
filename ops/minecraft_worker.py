@@ -7,6 +7,7 @@ subprocess calls and only accesses the configured Bedrock directory.
 
 from __future__ import annotations
 
+import base64
 import fcntl
 import hashlib
 import json
@@ -121,6 +122,88 @@ def _active_world(data: Path) -> str:
     return name
 
 
+def _without_symlinks(path: Path) -> bool:
+    """Return whether every existing component of an absolute path is real."""
+    if not path.is_absolute():
+        return False
+    current = Path(path.anchor)
+    for part in path.parts[1:]:
+        current = current / part
+        try:
+            if stat.S_ISLNK(current.lstat().st_mode):
+                return False
+        except OSError:
+            return False
+    return True
+
+
+def discover(container: str, base: Path, *, run: Callable[..., str] = _run) -> dict[str, Any]:
+    """Resolve the mounted Bedrock data directory from Docker's full inspect."""
+    if base.is_symlink() or not base.is_dir() or not _without_symlinks(base):
+        raise WorkerError("invalid_base_path")
+    raw = run(["docker", "inspect", "--format", "{{json .}}", container], check=False).strip()
+    if not raw:
+        raise WorkerError("container_inspect_unavailable")
+    try:
+        inspected = json.loads(raw)
+        if isinstance(inspected, list):
+            inspected = inspected[0] if len(inspected) == 1 else None
+        config = inspected["Config"]
+        mounts = inspected["Mounts"]
+        identity = inspected["Id"]
+        image = inspected["Image"]
+        working_dir = config["WorkingDir"]
+    except (TypeError, KeyError, IndexError, json.JSONDecodeError) as exc:
+        raise WorkerError("container_inspect_invalid") from exc
+    if not isinstance(identity, str) or not identity or not isinstance(image, str) or not image:
+        raise WorkerError("container_inspect_invalid")
+    if not isinstance(working_dir, str) or not Path(working_dir).is_absolute() or ".." in Path(working_dir).parts:
+        raise WorkerError("container_workdir_invalid")
+    matches = []
+    for mount in mounts if isinstance(mounts, list) else []:
+        if not isinstance(mount, dict):
+            continue
+        source, destination = mount.get("Source"), mount.get("Destination")
+        if not isinstance(source, str) or not isinstance(destination, str):
+            continue
+        destination_path = Path(destination)
+        if not destination_path.is_absolute() or ".." in destination_path.parts:
+            continue
+        try:
+            relative = Path(working_dir).relative_to(destination_path)
+        except ValueError:
+            continue
+        matches.append((len(destination_path.parts), source, destination_path, relative))
+    if not matches:
+        raise WorkerError("data_mount_unavailable")
+    _, source, destination, relative = max(matches, key=lambda item: item[0])
+    source_path = Path(source)
+    if not source_path.is_absolute() or not _without_symlinks(source_path):
+        raise WorkerError("unsafe_data_mount")
+    try:
+        base_real = base.resolve(strict=True)
+        source_real = source_path.resolve(strict=True)
+        source_real.relative_to(base_real)
+    except (OSError, ValueError) as exc:
+        raise WorkerError("data_mount_outside_base") from exc
+    data = source_real / relative
+    if not _without_symlinks(data) or not data.is_dir():
+        raise WorkerError("data_unavailable")
+    properties = data / "server.properties"
+    if properties.is_symlink() or not properties.is_file():
+        raise WorkerError("server_properties_unavailable")
+    world = _active_world(data)
+    mount_fingerprint = hashlib.sha256(
+        f"{source_real}\0{destination}\0{relative}".encode()
+    ).hexdigest()
+    return {
+        "status": "ok",
+        "data_path": data,
+        "active_world": world,
+        "fingerprint": {"image": image, "id": identity, "mount": mount_fingerprint},
+    }
+
+
 def _json_file(path: Path) -> list[dict[str, Any]]:
     if path.is_symlink() or not path.exists():
         return []
@@ -148,6 +231,11 @@ def _atomic_json(path: Path, value: list[dict[str, Any]], *, mode: int = 0o644) 
             stream.flush()
             os.fsync(stream.fileno())
         os.replace(temp_name, path)
+        directory_fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
     finally:
         try:
             os.unlink(temp_name)
@@ -502,7 +590,118 @@ def _mod_plan(data: Path, name: str, action: str) -> dict[str, Any]:
             "target": target, "selected": selected, "changed": changed, "repaired": repaired}
 
 
-def _apply_mod_plan(plan: dict[str, Any], action: str) -> dict[str, Any]:
+def _journal_read(world):
+    path = world / '.botsky-recovery.json'
+    if path.is_symlink():
+        raise WorkerError('unsafe_recovery_journal')
+    if not path.exists():
+        return None
+    if path.stat().st_size > 1024 * 1024:
+        raise WorkerError('invalid_recovery_journal')
+    value = json.loads(path.read_text())
+    if not isinstance(value, list) or len(value) != 1 or value[0].get('version') != 1:
+        raise WorkerError('invalid_recovery_journal')
+    return value[0]
+
+
+def _journal_prepare(plan):
+    world = plan['history_path'].parent
+    previous = _journal_read(world)
+    if previous and previous['phase'] == 'pending':
+        raise WorkerError('recovery_required')
+    entries = []
+    values = {plan['paths'][kind]: plan['rows'][kind] for kind in plan['touched']}
+    values[plan['history_path']] = plan['history']
+    for path, rows in values.items():
+        if path.is_symlink():
+            raise WorkerError('unsafe_recovery_target')
+        raw = path.read_bytes() if path.exists() else None
+        after = json.dumps(rows, ensure_ascii=False, indent=2).encode()
+        entries.append({'name': path.name, 'before': base64.b64encode(raw).decode() if raw is not None else None,
+                        'mode': stat.S_IMODE(path.stat().st_mode) if raw is not None else None,
+                        'after_hash': hashlib.sha256(after).hexdigest()})
+    record = {'version': 1, 'id': uuid.uuid4().hex, 'phase': 'pending', 'entries': entries, 'fingerprint': plan.get('fingerprint')}
+    _atomic_json(world / '.botsky-recovery.json', [record], mode=0o600)
+    return record
+
+
+def _recover(data, container, *, run, fingerprint=None):
+    fd = _world_lock(data / 'worlds' / _active_world(data))
+    try:
+        return _recover_locked(data, container, run=run, fingerprint=fingerprint)
+    finally:
+        os.close(fd)
+
+
+def _recover_locked(data, container, *, run, fingerprint=None):
+    world = data / 'worlds' / _active_world(data)
+    record = _journal_read(world)
+    if not record or record['phase'] == 'recovered':
+        state = json.loads(run(['docker', 'inspect', '--format', '{{json .State}}', container]))
+        if state.get('Status') not in {'exited', 'created'}:
+            return {'status': 'needs_input', 'dispatched': False, 'code': 'recovery_requires_offline'}
+        return {'status': 'ok', 'changed': False, 'recovered': True, 'offline_verified': True}
+    if record.get('fingerprint') and record['fingerprint'] != fingerprint:
+        return {'status': 'needs_input', 'dispatched': False, 'code': 'recovery_environment_changed'}
+    state = json.loads(run(['docker', 'inspect', '--format', '{{json .State}}', container]))
+    if state.get('Status') not in {'exited', 'created'}:
+        return {'status': 'needs_input', 'dispatched': False, 'code': 'recovery_requires_offline'}
+    allowed = {'world_behavior_packs.json', 'world_resource_packs.json', '.botsky-disabled-packs.json'}
+    prepared = []
+    for entry in record['entries']:
+        if entry['name'] not in allowed:
+            raise WorkerError('unsafe_recovery_target')
+        path = world / entry['name']
+        if path.is_symlink():
+            raise WorkerError('unsafe_recovery_target')
+        current = path.read_bytes() if path.exists() else None
+        before = base64.b64decode(entry['before'], validate=True) if entry['before'] is not None else None
+        if current != before and (current is None or hashlib.sha256(current).hexdigest() != entry['after_hash']):
+            return {'status': 'needs_input', 'dispatched': False, 'code': 'recovery_conflict'}
+        prepared.append((path, before, entry['mode']))
+    for path, before, mode in prepared:
+        if before is None:
+            path.unlink(missing_ok=True)
+        else:
+            fd, temp = tempfile.mkstemp(dir=world, prefix='.botsky-restore-')
+            try:
+                with os.fdopen(fd, 'wb') as stream:
+                    stream.write(before)
+                    os.fchmod(stream.fileno(), mode)
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                os.replace(temp, path)
+            finally:
+                if os.path.exists(temp):
+                    os.unlink(temp)
+    record['phase'] = 'recovered'
+    _atomic_json(world / '.botsky-recovery.json', [record], mode=0o600)
+    return {'status': 'ok', 'changed': True, 'recovered': True, 'recovery_id': record['id'], 'offline_verified': True}
+
+
+def _world_lock(world):
+    fd = os.open(world / '.botsky-operation.lock', os.O_CREAT | os.O_RDWR | getattr(os, 'O_NOFOLLOW', 0), 0o600)
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BaseException:
+        os.close(fd)
+        raise WorkerError('minecraft_change_busy')
+    return fd
+
+
+def _apply_mod_plan(plan, action):
+    fd = _world_lock(plan['history_path'].parent)
+    try:
+        if any(_json_file(plan['paths'][kind]) != rows for kind, rows in plan['originals'].items()):
+            raise WorkerError('configuration_changed_during_plan')
+        return _apply_mod_plan_locked(plan, action)
+    finally:
+        os.close(fd)
+
+
+def _apply_mod_plan_locked(plan: dict[str, Any], action: str) -> dict[str, Any]:
+    world = plan['history_path'].parent
+    record = _journal_prepare(plan) if plan["changed"] or plan["repaired"] else None
     # Record restoration metadata before deleting any configured row. A failure
     # between the two atomic world files is uncertain, never a safe-to-retry error.
     if action == "disable_mod" and plan["history"] != plan["history_before"]:
@@ -515,6 +714,9 @@ def _apply_mod_plan(plan: dict[str, Any], action: str) -> dict[str, Any]:
                 raise WorkerError("pack_write_not_verified")
     if action == "enable_mod" and plan["history"] != plan["history_before"]:
         _atomic_json(plan["history_path"], plan["history"], mode=0o600)
+    if record is not None:
+        record['phase'] = 'applied'
+        _atomic_json(world / '.botsky-recovery.json', [record], mode=0o600)
     target = plan["target"]
     return {"status": "ok", "action": action, "pack_id": target["pack_id"], "name": target["name"],
             "affected": [{"name": pack["name"], "pack_id": pack["pack_id"], "pack_type": pack["pack_type"]}
@@ -523,7 +725,7 @@ def _apply_mod_plan(plan: dict[str, Any], action: str) -> dict[str, Any]:
             "permissions_repaired": plan["repaired"], "loaded_known": False}
 
 
-def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[str, Any]:
+def handle(request: dict[str, Any], *, run: Callable[..., str] = _run, discover_layout: bool = True) -> dict[str, Any]:
     action = request.get("action")
     params = request.get("params")
     container = request.get("container")
@@ -532,10 +734,17 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
         raise WorkerError("invalid_container")
     if not isinstance(base, str) or not Path(base).is_absolute() or ".." in Path(base).parts:
         raise WorkerError("invalid_base_path")
-    if action not in {"status", "players", "worlds", "mods", "config", "diagnostics", "start", "stop", "restart", "backup", "enable_mod", "disable_mod", "console"} or not isinstance(params, dict):
+    if action not in {"status", "players", "worlds", "mods", "config", "diagnostics", "discover", "start", "stop", "restart", "backup", "enable_mod", "disable_mod", "recover", "console"} or not isinstance(params, dict):
         raise WorkerError("invalid_request")
     root = Path(base)
     data = root / "data"
+    layout = None
+    if discover_layout and action not in {"diagnostics", "discover"}:
+        try:
+            layout = discover(container, root, run=run)
+            data = layout['data_path']
+        except WorkerError as exc:
+            return {'status': 'needs_input', 'dispatched': False, 'code': str(exc)}
 
     if action == "diagnostics":
         docker_path = shutil.which("docker")
@@ -546,6 +755,14 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
             "docker_available": docker_path is not None,
             "data_available": data.is_dir() and not data.is_symlink(),
             "configured_container_found": bool(probe),
+        }
+    if action == "discover":
+        result = discover(container, root, run=run)
+        return {
+            "status": "ok",
+            "available": True,
+            "active_world": result["active_world"],
+            "fingerprint": result["fingerprint"],
         }
     if action == "status":
         raw = run(["docker", "inspect", "--format", "{{json .State}}", container], check=False).strip()
@@ -566,6 +783,10 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
         if data.is_dir() and not data.is_symlink():
             props = _props(data)
             result["active_world"] = props.get("level-name")
+        if layout:
+            result['environment'] = layout['fingerprint']
+        journal = _journal_read(data / 'worlds' / _active_world(data))
+        result['reconciliation'] = journal['phase'] if journal else 'no_pending_change'
         return result
     if action == "players":
         return _players(root, container, run=run)
@@ -624,10 +845,16 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
         return output
 
     if action in {"start", "stop", "restart"}:
+        if action != "stop":
+            journal = _journal_read(data / 'worlds' / _active_world(data))
+            if journal and journal['phase'] == 'pending':
+                return {'status': 'needs_input', 'code': 'recovery_required', 'dispatched': False}
         run(["docker", action, container], timeout=25)
-        return {"status": "ok", "action": action}
+        return {"status": "ok", "action": action, "requires_healthcheck": action in {"start", "restart"}}
     if action == "backup":
         return _backup(root, data, container, run=run)
+    if action == "recover":
+        return _recover(data, container, run=run, fingerprint=layout['fingerprint'] if layout else None)
     if action in {"enable_mod", "disable_mod"}:
         name = params.get("name")
         if not isinstance(name, str):
@@ -636,6 +863,7 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
             plan = _mod_plan(data, name, action)
         except WorkerError as exc:
             return {"status": "needs_input", "code": str(exc), "dispatched": False}
+        plan['fingerprint'] = layout['fingerprint'] if layout else None
         return _apply_mod_plan(plan, action)
     if action == "console":
         command = params.get("command")

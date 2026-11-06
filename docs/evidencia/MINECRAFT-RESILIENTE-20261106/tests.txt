@@ -1,0 +1,35 @@
+Executing <Task pending name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() running at /home/petrov/botsky/tests/test_acceptance_local.py:98> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.259 seconds
+Executing <Task finished name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() done, defined at /home/petrov/botsky/tests/test_acceptance_local.py:85> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 4.387 seconds
+Executing <Task pending name='Task-184' coro=<AITest.test_analysis_forwards_presentation_and_malformed_json_content() running at /home/petrov/botsky/tests/test_ai.py:298> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.105 seconds
+Executing <Task finished name='Task-1106' coro=<IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection() done, defined at /home/petrov/botsky/tests/test_integrations.py:411> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.497 seconds
+/usr/lib/python3.14/traceback.py:294: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xed78991aca90>
+  def __init__(self, filename, lineno, name, *, lookup_line=True,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/traceback.py:294: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xed78991ac7c0>
+  def __init__(self, filename, lineno, name, *, lookup_line=True,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/traceback.py:294: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xed7890f571f0>
+  def __init__(self, filename, lineno, name, *, lookup_line=True,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/traceback.py:294: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xed788ff99a80>
+  def __init__(self, filename, lineno, name, *, lookup_line=True,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/traceback.py:294: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xed788ff99c60>
+  def __init__(self, filename, lineno, name, *, lookup_line=True,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task pending name='Task-1529' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:565> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.151 seconds
+Executing <Task finished name='Task-1999' coro=<RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts() done, defined at /home/petrov/botsky/tests/test_runtime.py:398> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.305 seconds
+======================================================================
+ERROR: test_running_container_is_not_proof_game_is_ready (test_minecraft_mod_worker.ModsWorkerTest.test_running_container_is_not_proof_game_is_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_minecraft_mod_worker.py", line 191, in test_running_container_is_not_proof_game_is_ready
+        worker._game_status("fixture", state, run=lambda *a, **kw: "Loading level"),
+        "starting",
+    )
+TypeError: _game_status() got an unexpected keyword argument 'discover_layout'
+
+----------------------------------------------------------------------
+Ran 251 tests in 112.231s
+
+FAILED (errors=1)

@@ -1,0 +1,27 @@
+{
+  "discover": {
+    "status": "ok",
+    "available": true,
+    "active_world": "Supervivencia",
+    "fingerprint": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    }
+  },
+  "status": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T22:00:06.573836631Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Supervivencia",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    },
+    "reconciliation": "no_pending_change"
+  }
+}

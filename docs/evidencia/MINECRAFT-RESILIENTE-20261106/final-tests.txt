@@ -1,0 +1,62 @@
+Executing <Task pending name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() running at /home/petrov/botsky/tests/test_acceptance_local.py:98> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.315 seconds
+Executing <Task finished name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() done, defined at /home/petrov/botsky/tests/test_acceptance_local.py:85> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 5.056 seconds
+Executing <Task pending name='Task-184' coro=<AITest.test_analysis_forwards_presentation_and_malformed_json_content() running at /home/petrov/botsky/tests/test_ai.py:298> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.133 seconds
+Executing <Task finished name='Task-1074' coro=<IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection() done, defined at /home/petrov/botsky/tests/test_integrations.py:411> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.497 seconds
+/usr/lib/python3.14/asyncio/events.py:94: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xefff1e0dca90>
+  self._context.run(self._callback, *self._args)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/asyncio/events.py:94: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xefff1e0dc7c0>
+  self._context.run(self._callback, *self._args)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/asyncio/events.py:94: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xefff1611f6a0>
+  self._context.run(self._callback, *self._args)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/asyncio/events.py:94: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xefff14ecdf30>
+  self._context.run(self._callback, *self._args)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/asyncio/events.py:94: ResourceWarning: unclosed database in <sqlite3.Connection object at 0xefff14ece110>
+  self._context.run(self._callback, *self._args)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-1972' coro=<RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts() done, defined at /home/petrov/botsky/tests/test_runtime.py:398> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.308 seconds
+======================================================================
+ERROR: test_all_clip_controls_use_catalog_ids_and_current_session_only (test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/streams.py", line 562, in readline
+    line = await self.readuntil(sep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/streams.py", line 677, in readuntil
+    await self._wait_for_data('readuntil')
+  File "/usr/lib/python3.14/asyncio/streams.py", line 539, in _wait_for_data
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_calls.py", line 267, in test_all_clip_controls_use_catalog_ids_and_current_session_only
+    asset = await self.ipc({"action": "seedClip"})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/petrov/botsky/tests/test_calls.py", line 99, in ipc
+    data = await asyncio.wait_for(self.process.stdout.readline(), 5)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 487, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/timeouts.py", line 114, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+----------------------------------------------------------------------
+Ran 252 tests in 112.893s
+
+FAILED (errors=1)

@@ -31,11 +31,12 @@ _ACTIONS = {
     "stop",
     "restart",
     "backup",
+    "recover",
     "enable_mod",
     "disable_mod",
     "console",
 }
-_QUERIES = {"status", "players", "worlds", "mods", "config", "diagnostics"}
+_QUERIES = {"status", "players", "worlds", "mods", "config", "diagnostics", "discover"}
 _TOKEN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$")
 
 
@@ -105,6 +106,24 @@ class MinecraftRemote:
         """Dispatch parameters already checked by ``validate_change``."""
         try:
             result = await self._request(action, clean)
+            if action in {"start", "restart"} and result.get("requires_healthcheck") is True:
+                deadline = asyncio.get_running_loop().time() + 90
+                while asyncio.get_running_loop().time() < deadline:
+                    observed = await self.query("status")
+                    if observed.get("game_status") == "ready":
+                        return {**result, "game_status": "ready", "verified": True}
+                    if observed.get("game_status") == "failed":
+                        return {
+                            "status": "uncertain",
+                            "code": "game_startup_failed",
+                            "recovery_available": True,
+                        }
+                    await asyncio.sleep(2)
+                return {
+                    "status": "uncertain",
+                    "code": "game_startup_unverified",
+                    "recovery_available": True,
+                }
             # The worker returns this only when it observed a running server
             # before creating the backup; no backup side effect was dispatched.
             if action == "backup" and result.get("status") == "needs_input":
@@ -126,6 +145,7 @@ class MinecraftRemote:
             "stop",
             "restart",
             "backup",
+            "recover",
             "enable_mod",
             "disable_mod",
             "console",
@@ -299,7 +319,7 @@ async def _stop_process(process: asyncio.subprocess.Process) -> None:
 def _validate_params(action: str, params: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(params, dict):
         raise ValueError("invalid_params")
-    if action in {"start", "stop", "restart", "backup"}:
+    if action in {"start", "stop", "restart", "backup", "recover"}:
         if params:
             raise ValueError("unexpected_params")
         return {}

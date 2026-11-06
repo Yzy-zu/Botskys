@@ -712,20 +712,22 @@ def build_specs():
         ("mundos", "worlds"),
         ("mods", "mods"),
         ("config", "config"),
+        ("diagnostico", "discover"),
         ("iniciar", "start"),
         ("parar", "stop"),
         ("reiniciar", "restart"),
         ("backup", "backup"),
+        ("recuperar", "recover"),
     ]:
         add(
             "mc " + p,
             "manage_minecraft",
             action,
             permission="friend"
-            if action in ("status", "players", "worlds", "mods", "config")
+            if action in ("status", "players", "worlds", "mods", "config", "discover")
             else "owner",
             effect="read"
-            if action in ("status", "players", "worlds", "mods", "config")
+            if action in ("status", "players", "worlds", "mods", "config", "discover")
             else "server_mutation",
             block="R8",
         )

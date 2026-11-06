@@ -131,3 +131,11 @@ clara al usuario. Continúan los permisos acotados anteriores para el Minecraft
 configurado y fixtures propios, con restauración y recibos. No habilita transición,
 servicios Botsky/Zhana, llamadas/navegador, perfiles, NLP o GitHub. Conservar fallos
 nativos y oracles fallidos separados; una aceptación Docker no certifica el juego.
+
+## 06/11 · Bloque Minecraft resiliente
+
+El propietario encargó implementar descubrimiento dinámico, reconciliación y
+recuperación segura. Autoriza código, pruebas locales de fallos con fixtures y
+actualización del worker propio, comprobación real de solo lectura. Conserva
+exclusiones anteriores y permisos operativos; no reanudar campañas ni fallos
+nativos, no restaurar mundos o actualizar imágenes por iniciativa automática.

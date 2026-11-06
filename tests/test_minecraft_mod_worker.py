@@ -53,6 +53,7 @@ class ModsWorkerTest(TestCase):
                 "container": "fixture",
                 "base_path": str(self.root),
             },
+            discover_layout=False,
             run=lambda *a, **kw: json.dumps({"Status": "exited"}),
         )
 
@@ -180,13 +181,17 @@ class ModsWorkerTest(TestCase):
         state = {"Status": "running", "StartedAt": "2026-11-06T21:00:00Z"}
         self.assertEqual(
             worker._game_status(
-                "fixture", state, run=lambda *a, **kw: "free(): invalid next size (normal)"
+                "fixture",
+                state,
+                run=lambda *a, **kw: "free(): invalid next size (normal)",
             ),
             "failed",
         )
         self.assertEqual(
-            worker._game_status("fixture", state, run=lambda *a, **kw: "Loading level"), "starting"
+            worker._game_status("fixture", state, run=lambda *a, **kw: "Loading level"),
+            "starting",
         )
         self.assertEqual(
-            worker._game_status("fixture", state, run=lambda *a, **kw: "Server started."), "ready"
+            worker._game_status("fixture", state, run=lambda *a, **kw: "Server started."),
+            "ready",
         )
