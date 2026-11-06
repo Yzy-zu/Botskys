@@ -265,7 +265,7 @@ def build_specs():
                     "url",
                     max_length=2000,
                     original="url",
-                    example="https://media.w3.org/sintel/trailer.mp4",
+                    example="https://media.w3.org/2010/05/bunny/trailer.mp4",
                 ),
             ],
             constants=(("container", container),),

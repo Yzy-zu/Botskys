@@ -1,0 +1,67 @@
+{
+  "block": "R3",
+  "status": "PASS",
+  "level": "local contracts and real local engines; remote sources NOT_TESTED",
+  "at": "2026-11-06T02:52:35.805344+00:00",
+  "schema": 3,
+  "tests": 46,
+  "test_log": "R3-final-tests.txt",
+  "cases": [
+    "19 destinos de documentos inspeccionados, texto Office recuperado",
+    "imagen-PDF, PDF escaneado sin texto, DOCX con dos páginas",
+    "XLSX varias hojas a ZIP CSV sin perder hojas; fórmula neutralizada",
+    "MP3/MP4/WebM/SRT reales, duración/codec/contenido",
+    "WebP512/OCR/QR y cuatro reacciones reales",
+    "scope/cita exacta/parte archivo aceptada y leases/GC",
+    "cancelación durante motor sin publicación tardía",
+    "recuperación de lease y exclusión de worker",
+    "muerte real padre Python sintético retira grupo motor",
+    "sesiones PDF durables, varias fuentes, cancelación y error antes de crear sesión",
+    "espera propia entregada; sin espera el adjunto no ejecuta",
+    "reintento PDF con preview propio entregado y CAS; sin repetir motor",
+    "descarga con doble local y motor real; selección/Spotify/anterior retenido",
+    "proxy loopback con DNS/salida remota sustituidos; bloqueo IP privada y pin IP pública",
+    "cliente HTTPX real con RSS MockTransport, site y términos literales"
+  ],
+  "checks": [
+    "Ruff",
+    "pip check",
+    "editable install propio y CLI",
+    "SQLite integrity_check propia",
+    "AST sin imports runtime Zhana/NLP",
+    "staged diffcheck"
+  ],
+  "development_findings": [
+    {
+      "case": "fixture font",
+      "resolution": "ruta DejaVu no disponible; usar fuente incorporada Pillow, sin modificar host"
+    },
+    {
+      "case": "lease oracle",
+      "resolution": "un lease vencido no protege; se prueba lease activo extendido más allá de retención"
+    },
+    {
+      "case": "metadata wheels",
+      "resolution": "elegir tag compatible con py3, no primer tag py2; dependencias instaladas offline"
+    },
+    {
+      "case": "build tooling",
+      "resolution": "setuptools/wheel de sistema sin WHEEL no se reempaquetan; build editable local con setuptools78.1.1 ya presente"
+    },
+    {
+      "case": "reference query",
+      "resolution": "rechazar búsquedas de fuente no implementada sin fallback silencioso"
+    },
+    {
+      "case": "quoted output",
+      "resolution": "solo parte de archivo aceptada acredita cita, no aviso textual"
+    }
+  ],
+  "limits": [
+    "fuentes/ASR/TTS/Gemini/WhatsApp/Android NO probados remotamente",
+    "no carga máxima ni producto cartesiano de formatos",
+    "R4-R11 pendientes",
+    "transporte por defecto local; remote clients apagados",
+    "sin cambios productivos ni GitHub"
+  ]
+}

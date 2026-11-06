@@ -1,5 +1,49 @@
 # Relevo Botsky
 
+## 06/11/2026 · R3 cerrado localmente; siguiente R4
+
+R2 commit 7c8d0c1. R3 añade esquema propio v3, artefactos con hash/origen/ámbito,
+leases y GC, trabajos durables con revisiones, dos motores concurrentes y exclusión
+del worker, cancelación en ejecución y bloqueo de resultados tardíos. Directorios
+propios 0700, archivos 0600, sin symlinks. Supervisor de grupo retirado si muere el
+padre; scratch huérfano se retira solo bajo exclusión. Motor fuera de transacciones.
+
+Comandos implementados: reacción de catálogo (4 activos con créditos/hash), sticker,
+OCR/QR, edición MP3/MP4/WebM/SRT, documentos (19 destinos reales), sesiones PDF
+persistentes y selección de páginas. Espera de archivo solo tras prompt propio
+aceptado; nueva orden la reemplaza con aviso visible. PDF incierto se reenvía solo
+con vista previa entregada y confirmación ligada a estado/revisión/hash/ámbito;
+motor no se repite y se conserva historial de intentos.
+
+Descargas: clientes técnicos de referencia adaptados sin Args/runtime antiguos,
+activación explícita, fuentes/host/DNS/redirecciones acotadas, sin cookies/perfiles
+ni plugins. Lista con ID real, selección propia tras entrega, Spotify exige elección,
+anterior usa archivo retenido sin redescarga implícita. Buscador RSS nuevo con site:
+y términos literales y sin atribuir relevancia no comprobada. Ambos remotos están
+apagados por defecto. Pruebas solo con dobles/HTTPX MockTransport/proxy loopback,
+salidas reales del flujo obtenidas de video sintético. Fuentes externas NOT_TESTED.
+
+46 pruebas locales pasan: 25 de R1/R2 +15 de medios/archivos +6 de clientes/vistas.
+19 formatos inspeccionados y texto Office recuperado; imagen→PDF, escaneo error
+específico, dos páginas→DOCX, varias hojas→ZIP CSV, MP3/WebM/SRT y tiempos reales,
+OCR/QR, cancelación, reinicio/lease, retiro del padre y confirmaciones. Evidencia
+docs/evidencia/R3.json y R3-final-tests.txt; logs anteriores conservados. Ruff,
+pip check, integridad SQLite y diffcheck del índice correctos. Datos sintéticos;
+cargas máximas, pares completos de formato y recepción humana pendientes de R10.
+
+Instalación editable en .venv propio desde build local, dependencias media fijadas
+e instaladas offline desde distribuciones locales (con licencias/metadatos). No
+import de Zhana/NLP en runtime, ningún acceso a su private/ ni modelo/corpus.
+Créditos/hashes en docs/portados; no se trasladaron VRM/persona privada/perfiles.
+DB de laboratorio propia v3 con cero notas, un recibo antiguo de ayuda sintético;
+no se usará al transicionar. Zhana productiva y sus cambios/evidencias intactos.
+
+Siguiente R4: Gemini con salida solo contenido, menciones verificadas, ASR/TTS,
+voz literal vs composición, cuota/fallo aislados y adjuntos bajo contratos R3.
+Después R5–R9 conforme dependencias. No R10 remoto/R11 ni GitHub sin encargo.
+Cuota comprobada 47% primaria /47% semanal; continuar autónomamente, guardar y
+parar al5% de cualquier ventana sin reanudación automática.
+
 ## 06/11/2026 · R2 cerrado; siguiente R3 y R4 según dependencias
 
 R1 commits 6c33f10/ac6c0d6 (CSV LF corregido y comprobado en índice). Relevo de

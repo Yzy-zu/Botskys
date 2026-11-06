@@ -28,6 +28,8 @@ class Incoming:
     received_ms: int
     transport: Literal["local", "evolution"] = "local"
     historical: bool = False
+    attachments: tuple[str, ...] = ()
+    quoted_message_id: str | None = None
 
     @property
     def id(self):
@@ -39,6 +41,11 @@ class Incoming:
     def fingerprint(self):
         data = asdict(self)
         del data["received_ms"]
+        # Compatibilidad con los recibos R2 previos a las referencias de archivo.
+        if not self.attachments:
+            del data["attachments"]
+        if self.quoted_message_id is None:
+            del data["quoted_message_id"]
         return hashlib.sha256(canonical(data).encode()).hexdigest()
 
 
@@ -98,3 +105,18 @@ class DeliveryPart:
     position: int
     context: CommandContext
     text: str
+    artifacts: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class ArtifactRef:
+    id: str
+    scope: Scope
+    instance: str
+    account: str
+    epoch: int
+    source_message_id: str
+    format: str
+    size: int
+    sha256: str
+    expires_ms: int

@@ -15,7 +15,17 @@ class LocalAdapter:
         self.settings, self.clock = settings, clock
 
     def incoming(
-        self, message_id, actor, chat, text, *, source_ms=None, is_group=False, historical=False
+        self,
+        message_id,
+        actor,
+        chat,
+        text,
+        *,
+        source_ms=None,
+        is_group=False,
+        historical=False,
+        attachments=(),
+        quoted_message_id=None,
     ):
         if any(
             not isinstance(v, str) or not re.fullmatch(r"[A-Za-z0-9_.:@-]{1,128}", v)
@@ -26,6 +36,20 @@ class LocalAdapter:
             raise ValueError("texto local inválido")
         if type(is_group) is not bool or type(historical) is not bool:
             raise ValueError("metadatos locales inválidos")
+        if (
+            not isinstance(attachments, tuple)
+            or len(attachments) > 20
+            or len(set(attachments)) != len(attachments)
+            or any(
+                not isinstance(a, str) or not re.fullmatch(r"[a-f0-9]{32}", a) for a in attachments
+            )
+        ):
+            raise ValueError("referencias de adjuntos locales inválidas")
+        if quoted_message_id is not None and (
+            not isinstance(quoted_message_id, str)
+            or not re.fullmatch(r"[A-Za-z0-9_.:@-]{1,128}", quoted_message_id)
+        ):
+            raise ValueError("cita local inválida")
         now = self.clock()
         source_ms = now if source_ms is None else source_ms
         if type(source_ms) is not int or source_ms <= 0:
@@ -39,6 +63,8 @@ class LocalAdapter:
             source_ms,
             now,
             historical=historical,
+            attachments=attachments,
+            quoted_message_id=quoted_message_id,
         )
 
 

@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 PART_CHARS = 3500
 
 
@@ -69,6 +69,9 @@ class Store:
                 ):
                     raise ValueError("DB v1 ajena o no reconocida; no migrar")
                 db.executescript((Path(__file__).parent / "migrations/002_core.sql").read_text())
+                version, application_id = 2, APPLICATION_ID
+            if version == 2 and application_id == APPLICATION_ID:
+                db.executescript((Path(__file__).parent / "migrations/003_jobs.sql").read_text())
             elif version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -131,12 +134,17 @@ class Store:
             context = CommandContext(
                 incoming.id, incoming.instance, incoming.account, incoming.scope, settings.epoch, 0
             )
-            parsed, result, state = prepare(context)
+            parsed, result, state = prepare(context, db)
+            notice = ""
+            if parsed is not None and result is None and parsed.spec.family != "core":
+                from .interactions import replace_file_waits
+
+                notice = replace_file_waits(db, context)
             command = parsed.canonical() if parsed else None
             path = canonical(parsed.spec.path) if parsed else None
             permission = parsed.spec.permission if parsed and result is None else "public"
             db.execute(
-                "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,attachments_json,quoted_message_id,notice) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (
                     incoming.id,
                     incoming.instance,
@@ -154,6 +162,9 @@ class Store:
                     permission,
                     state,
                     result.to_json() if result else None,
+                    canonical(incoming.attachments),
+                    incoming.quoted_message_id,
+                    notice,
                 ),
             )
             if result and state == "completed":
@@ -162,14 +173,22 @@ class Store:
 
     @staticmethod
     def enqueue(db, context, result, now):
-        if not result.text:
+        if result.code == "job_queued":
             return
-        text = result.text + "\n/estado " + context.receipt_id
+        text = result.text + "\n/estado " + context.receipt_id if result.text else ""
+        count = 0
         for position, start in enumerate(range(0, len(text), PART_CHARS)):
             db.execute(
                 "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms) VALUES(?,?,?,'pending',?)",
                 (context.receipt_id, position, text[start : start + PART_CHARS], now),
             )
+            count = position + 1
+        for artifact_id in result.data.get("artifacts", ()):
+            db.execute(
+                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json) VALUES(?,?,'','pending',?,?)",
+                (context.receipt_id, count, now, canonical([artifact_id])),
+            )
+            count += 1
 
     def execute(self, receipt_id, settings, now, handler):
         with self.transaction() as db:
@@ -187,6 +206,10 @@ class Store:
             result = rejection or handler(
                 db, context, tuple(json.loads(row["path_json"])), command, effect_id, now
             )
+            if row["notice"]:
+                from dataclasses import replace
+
+                result = replace(result, text=row["notice"] + result.text)
             db.execute(
                 "INSERT INTO effects VALUES(?,?,?,?,?,?)",
                 (
@@ -238,15 +261,18 @@ class Store:
                 "SELECT position,state FROM outbox WHERE receipt_id=? ORDER BY position", (target,)
             )
         ]
+        job = db.execute("SELECT state,revision FROM jobs WHERE id=?", (target,)).fetchone()
+        visible_state = job["state"] if job else row["state"]
         return Result(
             "ok",
             "receipt_state",
-            "Encargo " + target + ": " + row["state"] + ".",
+            "Encargo " + target + ": " + visible_state + ".",
             {
                 "id": target,
                 "state": row["state"],
                 "revision": row["revision"],
                 "delivery": deliveries,
+                "job": dict(job) if job else None,
             },
         )
 
@@ -262,6 +288,10 @@ class Store:
             return Result(
                 "empty", "receipt_not_found", "No hay un encargo propio con ese ID en este chat."
             )
+        from .jobs import cancel_job
+
+        if job_result := cancel_job(db, context, target):
+            return job_result
         if row["state"] != "queued":
             return Result(
                 "empty",
@@ -298,6 +328,26 @@ class Store:
                 ("pending", "failed") if retry_failed else ("pending",)
             ):
                 return None
+            artifact_ids = tuple(json.loads(row["artifacts_json"]))
+            if artifact_ids:
+                from .artifacts import ArtifactProblem, Artifacts
+
+                try:
+                    Artifacts(self, settings.root / "private/artifacts").lease(
+                        db,
+                        artifact_ids,
+                        context,
+                        f"delivery-{receipt_id}-{row['position']}",
+                        str(row["revision"] + 1),
+                        now + 86400000,
+                        now,
+                    )
+                except ArtifactProblem as exc:
+                    db.execute(
+                        "UPDATE outbox SET state='failed',error_code=?,revision=revision+1 WHERE receipt_id=? AND position=?",
+                        (exc.code, receipt_id, row["position"]),
+                    )
+                    return None
             changed = db.execute(
                 "UPDATE outbox SET state='sending',revision=revision+1,updated_ms=? WHERE receipt_id=? AND position=? AND revision=? AND state=?",
                 (now, receipt_id, row["position"], row["revision"], row["state"]),
@@ -306,19 +356,32 @@ class Store:
                 return None
             from .contracts import DeliveryPart
 
-            return DeliveryPart(receipt_id, row["position"], context, row["payload"]), row[
-                "revision"
-            ] + 1
+            return DeliveryPart(
+                receipt_id, row["position"], context, row["payload"], artifact_ids
+            ), row["revision"] + 1
 
     def finish_part(self, part, revision, settings, state, provider_id, code, now):
         with self.transaction() as db:
             parent = db.execute("SELECT * FROM inbox WHERE id=?", (part.receipt_id,)).fetchone()
-            if parent is None or parent["epoch"] != settings.epoch:
+            if (
+                parent is None
+                or parent["epoch"] != settings.epoch
+                or parent["revision"] != part.context.revision
+            ):
                 state, code = "uncertain", "stale_delivery"
+            db.execute(
+                "INSERT OR IGNORE INTO delivery_attempts VALUES(?,?,?,?,?,?,?)",
+                (part.receipt_id, part.position, revision, state, provider_id, code, now),
+            )
             changed = db.execute(
                 "UPDATE outbox SET state=?,provider_message_id=?,error_code=?,revision=revision+1,updated_ms=? WHERE receipt_id=? AND position=? AND state='sending' AND revision=?",
                 (state, provider_id, code, now, part.receipt_id, part.position, revision),
             ).rowcount
+            if changed and state != "uncertain":
+                db.execute(
+                    "DELETE FROM artifact_leases WHERE holder=? AND token=?",
+                    (f"delivery-{part.receipt_id}-{part.position}", str(revision)),
+                )
             if (
                 changed
                 and state == "accepted"
@@ -329,6 +392,10 @@ class Store:
             ):
                 db.execute(
                     "UPDATE note_views SET accepted=1 WHERE receipt_id=? AND epoch=? AND expires_ms>?",
+                    (part.receipt_id, settings.epoch, now),
+                )
+                db.execute(
+                    "UPDATE interactions SET state='active',revision=revision+1 WHERE receipt_id=? AND state='pending_delivery' AND epoch=? AND expires_ms>?",
                     (part.receipt_id, settings.epoch, now),
                 )
             return bool(changed)

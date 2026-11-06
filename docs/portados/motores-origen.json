@@ -1,0 +1,80 @@
+{
+  "process.py": {
+    "source": "src/zhana/media.py",
+    "source_sha256": "37bbdfd74462a20c1c7a559167a129ee79088b7dad1e4d807df502dd990437a1",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "image_validation.py": {
+    "source": "src/zhana/media.py",
+    "source_sha256": "37bbdfd74462a20c1c7a559167a129ee79088b7dad1e4d807df502dd990437a1",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "formats.py": {
+    "source": "src/zhana/document_formats.py",
+    "source_sha256": "50c627ed87a506bcafdd44c915c0e0d5a75b59625b5786cbf2e00020e51e0bf6",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "document_worker.py": {
+    "source": "src/zhana/document_worker.py",
+    "source_sha256": "2f84fa1de80bf195f2f13713b1e12d64ac4dd7c61b2c6eb07a3a460f010242db",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "variety_worker.py": {
+    "source": "src/zhana/variety_worker.py",
+    "source_sha256": "eb40c8d5f895e8775ec1396be6e4f44258051ac65505eee4cf562fa17d8837a8",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "pdf_ops_worker.py": {
+    "source": "src/zhana/pdf_ops_worker.py",
+    "source_sha256": "9f487352e100d4de85095b78c9afbf7afc83d80b9035865b94f227819f071eec",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "limits.py": {
+    "source": "src/zhana/media_limits.py",
+    "source_sha256": "0ba57e5044579c5abe53918d8b3c69d9e5ee1c5a4632ed0efed65feb8d4acded",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "documents.py": {
+    "source": "src/zhana/documents.py",
+    "source_sha256": "95d84215db9a40ea2dc61abedfe5744647d176a546dbaf2f24f92a47052fcad8",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "media_edit.py": {
+    "source": "src/zhana/media_edit.py",
+    "source_sha256": "a97ca1d7215a66d7d8d234425a140f5aae88572bb9345d6473b7e049d586a603",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "pdf.py": {
+    "source": "src/zhana/pdf_operations.py",
+    "source_sha256": "3735b0406399cdb9373aa6ab6c92773beabf06290c4700201db8db6ecf4ce397",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "componente técnico acotado adaptado; no runtime, entrada, autoridad ni persistencia antigua"
+  },
+  "downloads.py": {
+    "source": "src/zhana/downloads.py",
+    "source_sha256": "0e95f50fa00a7b32ccbd8a0ebe89b8ecc046e08fdfdbee9317232c9ffe965948",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "extractores y proxy CONNECT acotados; sin Args/Pydantic ni runtime; habilitación explícita en adaptador Botsky, nunca automática"
+  },
+  "remote_subtitles.py": {
+    "source": "src/zhana/remote_subtitles.py",
+    "source_sha256": "61a5e3f36b39d2f6d287360a81ebdde043c6d42c4a8b93564b60e3b124b95003",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "extractores y proxy CONNECT acotados; sin Args/Pydantic ni runtime; habilitación explícita en adaptador Botsky, nunca automática"
+  },
+  "web_results.py": {
+    "source": "src/zhana/web_search.py",
+    "source_sha256": "527f884aa659477d5d7fb4809beebbb0cf6ca94aed655e4d8da780a67e50dffd",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "solo parser RSS/URL; cliente nuevo y args del registro, sin Backend ni proveedor conversacional"
+  }
+}

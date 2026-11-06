@@ -661,7 +661,7 @@
           "min_items": 1,
           "max_items": 10,
           "original": "url",
-          "example": "https://media.w3.org/sintel/trailer.mp4"
+          "example": "https://media.w3.org/2010/05/bunny/trailer.mp4"
         }
       ],
       "constants": [
@@ -675,7 +675,7 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/dl mp3 https://media.w3.org/sintel/trailer.mp4",
+      "example": "/dl mp3 https://media.w3.org/2010/05/bunny/trailer.mp4",
       "block": "R3",
       "usage": "/dl mp3 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
       "acceptance": "NOT_TESTED"
@@ -779,7 +779,7 @@
           "min_items": 1,
           "max_items": 10,
           "original": "url",
-          "example": "https://media.w3.org/sintel/trailer.mp4"
+          "example": "https://media.w3.org/2010/05/bunny/trailer.mp4"
         }
       ],
       "constants": [
@@ -793,7 +793,7 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/dl mp4 https://media.w3.org/sintel/trailer.mp4",
+      "example": "/dl mp4 https://media.w3.org/2010/05/bunny/trailer.mp4",
       "block": "R3",
       "usage": "/dl mp4 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
       "acceptance": "NOT_TESTED"
@@ -897,7 +897,7 @@
           "min_items": 1,
           "max_items": 10,
           "original": "url",
-          "example": "https://media.w3.org/sintel/trailer.mp4"
+          "example": "https://media.w3.org/2010/05/bunny/trailer.mp4"
         }
       ],
       "constants": [
@@ -911,7 +911,7 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/dl webm https://media.w3.org/sintel/trailer.mp4",
+      "example": "/dl webm https://media.w3.org/2010/05/bunny/trailer.mp4",
       "block": "R3",
       "usage": "/dl webm [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
       "acceptance": "NOT_TESTED"
@@ -1015,7 +1015,7 @@
           "min_items": 1,
           "max_items": 10,
           "original": "url",
-          "example": "https://media.w3.org/sintel/trailer.mp4"
+          "example": "https://media.w3.org/2010/05/bunny/trailer.mp4"
         }
       ],
       "constants": [
@@ -1029,7 +1029,7 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/dl srt https://media.w3.org/sintel/trailer.mp4",
+      "example": "/dl srt https://media.w3.org/2010/05/bunny/trailer.mp4",
       "block": "R3",
       "usage": "/dl srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
       "acceptance": "NOT_TESTED"

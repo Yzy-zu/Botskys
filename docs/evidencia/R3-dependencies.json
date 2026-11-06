@@ -1,0 +1,184 @@
+{
+  "reportlab": {
+    "version": "4.5.1",
+    "wheel": "reportlab-4.5.1-py3-none-any.whl",
+    "sha256": "19ec49ad827a915d394703b6da82261ab2134c876269c80ded9b6da9030a7608",
+    "files": 196,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "charset-normalizer": {
+    "version": "3.5.2",
+    "wheel": "charset_normalizer-3.5.2-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "1dc02a739278ad15b3f392af7846c19508e30785f990c5678aa54929ade1ae5f",
+    "files": 21,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pillow": {
+    "version": "13.0.0",
+    "wheel": "pillow-13.0.0-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "ff05d16bfed2313c6b7d49fe70b0f82a0de4d0f3b03037c0b5e0b1288a9b7303",
+    "files": 139,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "markdown-it-py": {
+    "version": "4.2.0",
+    "wheel": "markdown_it_py-4.2.0-py3-none-any.whl",
+    "sha256": "65de2b447ff0e2c92b1c511529e611927d032a9ab6f5677c39ec82592e236f38",
+    "files": 74,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "mdurl": {
+    "version": "0.1.2",
+    "wheel": "mdurl-0.1.2-py3-none-any.whl",
+    "sha256": "6ff764d474a0f53dba02d89b407295f4b8c4b9a3675edc9ddf37c141900c077a",
+    "files": 11,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "olefile": {
+    "version": "0.47",
+    "wheel": "olefile-0.47-py3-none-any.whl",
+    "sha256": "7d7c688357be5a1fd806f1e459b2f15e04841fd1a4771051d9a241098d54354c",
+    "files": 28,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pdfplumber": {
+    "version": "0.11.10",
+    "wheel": "pdfplumber-0.11.10-py3-none-any.whl",
+    "sha256": "d7a479267a39b8abd83ffe9f9b25f63427d482c52c948b688c568d80d20bef43",
+    "files": 27,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pypdfium2": {
+    "version": "5.14.0",
+    "wheel": "pypdfium2-5.14.0-py3-none-manylinux_2_17_aarch64.whl",
+    "sha256": "85a3a0b3a40d27857a580357f4368428bddc0e0a25ca0551406c55508f10dab6",
+    "files": 71,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pdfminer.six": {
+    "version": "20260107",
+    "wheel": "pdfminer_six-20260107-py3-none-any.whl",
+    "sha256": "847415d7523822ca2b87f24810ad5e64b47351bbfb2f5808691816b224217f1a",
+    "files": 187,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "cryptography": {
+    "version": "50.0.2",
+    "wheel": "cryptography-50.0.2-cp311-abi3-manylinux_2_34_aarch64.whl",
+    "sha256": "03b768e349142032378c6da628126336aa52b1196958445b4beee25b6e95ef7a",
+    "files": 120,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "cffi": {
+    "version": "2.1.1",
+    "wheel": "cffi-2.1.1-cp314-cp314-manylinux_2_17_aarch64.whl",
+    "sha256": "2e09a369461ac06d8a91e3634bee82e7bb1df1eec7cee9197480cae7bf430dbe",
+    "files": 31,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pycparser": {
+    "version": "3.12",
+    "wheel": "pycparser-3.12-py3-none-any.whl",
+    "sha256": "946497d1370df3c63c8f60e15c26372ea11d3bdfa4c94be9603236fe68dc549a",
+    "files": 13,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "python-pptx": {
+    "version": "1.0.2",
+    "wheel": "python_pptx-1.0.2-py3-none-any.whl",
+    "sha256": "32badb4c4f2505fd79fd249ef596d60ddae89bf725667f4ae7eb73af2a24c75b",
+    "files": 115,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "typing_extensions": {
+    "version": "4.16.0",
+    "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+    "sha256": "66ed8ebaa94af9ca0a1d2e49be983115f94b7efa13ad9f22cfc9518f49c49c83",
+    "files": 5,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "lxml": {
+    "version": "6.1.3",
+    "wheel": "lxml-6.1.3-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "6ce50e09eca1722c37375ec7dc12f270f596042ca0c912eae3d6a86f80cdaf4c",
+    "files": 174,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "xlsxwriter": {
+    "version": "3.3.0",
+    "wheel": "xlsxwriter-3.3.0-py3-none-any.whl",
+    "sha256": "532ca05b59dff518871e35bca945f553c9b54a170e6748b6b8330582292e8d6a",
+    "files": 47,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "openpyxl": {
+    "version": "3.1.5",
+    "wheel": "openpyxl-3.1.5-py3-none-any.whl",
+    "sha256": "b477d058e938825b22f60f9d248e2f2f02a30fe151ed465abbb4f6d80d5d24ba",
+    "files": 195,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "et_xmlfile": {
+    "version": "2.0.0",
+    "wheel": "et_xmlfile-2.0.0-py3-none-any.whl",
+    "sha256": "06823fd889583363d54f43efb8d6cb694ea6727172c6ff3f002ddda8ad0e0992",
+    "files": 10,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "python-docx": {
+    "version": "1.2.0",
+    "wheel": "python_docx-1.2.0-py3-none-any.whl",
+    "sha256": "430520d65b700edc01a38cef4ec8dbc4da15f2103e382bf5dbbfe65da3b9f41e",
+    "files": 124,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pypdf": {
+    "version": "6.21.3",
+    "wheel": "pypdf-6.21.3-py3-none-any.whl",
+    "sha256": "a4eb743f0342364ecf102bd2f394015cbf34aeba82ed6f724b232bafef64d035",
+    "files": 64,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "httpx": {
+    "version": "0.28.1",
+    "wheel": "httpx-0.28.1-py3-none-any.whl",
+    "sha256": "b534491c4e23a08dfb46f7d368fe1e74f1fdef8dcaef761d91f8655e873c3313",
+    "files": 29,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "idna": {
+    "version": "3.20",
+    "wheel": "idna-3.20-py3-none-any.whl",
+    "sha256": "cd07f0aed315cd14e613fd09e013f5a3ecc232bc9a973775377822a1196923de",
+    "files": 16,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "httpcore": {
+    "version": "1.0.9",
+    "wheel": "httpcore-1.0.9-py3-none-any.whl",
+    "sha256": "0bc234057e91c80969da5f28825f324ad6a156369db4521b7fcf3d28e54ec640",
+    "files": 36,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "h11": {
+    "version": "0.16.0",
+    "wheel": "h11-0.16.0-py3-none-any.whl",
+    "sha256": "12b6f3f1cb7f65d8ee414d3cca3414dd32d489a76be24f5a76940465a095b3b6",
+    "files": 17,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "certifi": {
+    "version": "2026.10.23",
+    "wheel": "certifi-2026.10.23-py3-none-any.whl",
+    "sha256": "b5cf9622a3230cc7892341dcce63ce79564388c2d497d2fa4f0b99ca6972713a",
+    "files": 12,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "anyio": {
+    "version": "4.15.1",
+    "wheel": "anyio-4.15.1-py3-none-any.whl",
+    "sha256": "de1445b7579c48600da0f5576392f4920b834f111d3236053587c80a910edb95",
+    "files": 53,
+    "origin": "repacked local installed distribution; no network"
+  }
+}

@@ -1,0 +1,23 @@
+# Componente técnico adaptado de Zhana 7e12d54, media_limits.py.
+# Origen, decisiones y límites en docs/portados/motores-origen.json.
+"""Byte limits for the Baileys video path; MB here are decimal."""
+
+MAX_VIDEO_BYTES = 100_000_000
+MAX_VIDEO_SOURCE_BYTES = 1_000_000_000
+VIDEO_SEND_TIMEOUT = 120
+
+# Explicit owner limits, decimal bytes. Unrelated tools keep their own budgets.
+MEDIA_INPUT_BYTES = 1_000_000_000
+MEDIA_DURATION_SECONDS = 10_800
+MEDIA_PROCESS_SECONDS = 10_800
+DOCUMENT_INPUT_BYTES = 100_000_000
+DOCUMENT_OUTPUT_BYTES = 2_000_000_000
+DOCUMENT_PAGES = 500
+DOCUMENT_PROCESS_SECONDS = 1800
+PDF_TOTAL_BYTES = 20 * DOCUMENT_INPUT_BYTES
+DRIVE_UPLOAD_BYTES = 2_000_000_000
+LARGE_TRANSFER_SECONDS = 3600
+MULTIMEDIA_CHOICES = 6
+TRANSCRIPTION_SECONDS = 1200
+
+TRANSCRIPT_MAX_CHARS = 100_000

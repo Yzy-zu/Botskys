@@ -251,16 +251,16 @@ Permiso: friend; implementación: R7.
 
 ```text
 /dl mp3 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL
-Ejemplo: /dl mp3 https://media.w3.org/sintel/trailer.mp4
+Ejemplo: /dl mp3 https://media.w3.org/2010/05/bunny/trailer.mp4
 Permiso: friend; implementación: R3.
 /dl mp4 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL
-Ejemplo: /dl mp4 https://media.w3.org/sintel/trailer.mp4
+Ejemplo: /dl mp4 https://media.w3.org/2010/05/bunny/trailer.mp4
 Permiso: friend; implementación: R3.
 /dl webm [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL
-Ejemplo: /dl webm https://media.w3.org/sintel/trailer.mp4
+Ejemplo: /dl webm https://media.w3.org/2010/05/bunny/trailer.mp4
 Permiso: friend; implementación: R3.
 /dl srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL
-Ejemplo: /dl srt https://media.w3.org/sintel/trailer.mp4
+Ejemplo: /dl srt https://media.w3.org/2010/05/bunny/trailer.mp4
 Permiso: friend; implementación: R3.
 /dl buscar mp3|mp4|webm|srt [--fuente youtube|soundcloud|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY
 Ejemplo: /dl buscar mp3 ejemplo

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "origin": "Original illustrations generated for Zhana with built-in image_gen on 2026-10-27; no chat assets used.",
+  "stickers": {
+    "saludo": {
+      "sha256": "f02093f1fef6e7a9f10e41e93dec6b71d64c0e4883932cec8a257f9641e614fe",
+      "bytes": 37968
+    },
+    "risa": {
+      "sha256": "bab2960c6ae70b5bc1f5e3846bd842586c11ceb05be8fd6e1494b0b5118fb842",
+      "bytes": 37672
+    },
+    "pensando": {
+      "sha256": "937c925a2c9b5e5833e16e2d0b7369c3c715f0ba07fdef1bb28361ba2a794aa8",
+      "bytes": 36600
+    },
+    "sonrojo": {
+      "sha256": "d00848ea793fa61e7a8156c08e25a015acb5f3d9cc5e829f5e927083911c36c7",
+      "bytes": 38912
+    }
+  }
+}

@@ -1,0 +1,7 @@
+test_nineteen_document_targets_have_real_output_of_the_declared_format (test_media.MediaTest.test_nineteen_document_targets_have_real_output_of_the_declared_format) ... Executing <Task pending name='Task-2' coro=<MediaTest.test_nineteen_document_targets_have_real_output_of_the_declared_format() running at /home/petrov/botsky/tests/test_media.py:540> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at /usr/lib/python3.14/asyncio/tasks.py:991, Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.195 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 18.456s
+
+OK
