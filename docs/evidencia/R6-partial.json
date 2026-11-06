@@ -1,0 +1,24 @@
+{
+  "block": "R6",
+  "status": "REVIEW",
+  "completion": "partial; NOT_CLOSED",
+  "drive_client_tests": 7,
+  "drive_log": "R6-drive-final-local-2.txt",
+  "contacts_tests": 2,
+  "contacts_log": "R6-contacts-development.txt",
+  "level": "HTTPX real + MockTransport, filesystem temporal; no network",
+  "implemented": [
+    "cliente Drive acotado, scope obligatorio, ID previo y conciliación sin repost",
+    "subida streaming y URL restringida; descarga tamaño/metadata",
+    "directorio explícito sin resolución parcial/fuzzy; fingerprint de destinos"
+  ],
+  "pending": [
+    "OAuth propio",
+    "persistencia Drive y selección por vista entregada",
+    "borradores/confirmación recados y partes durables",
+    "cliente de transporte y fronteras locales",
+    "integración en comandos de Application"
+  ],
+  "remote": "NOT_TESTED; no authorization",
+  "production": "untouched"
+}

@@ -1,5 +1,35 @@
 # Relevo Botsky
 
+## 06/11/2026 · R6 parcial guardado; R0–R5 cerrados localmente
+
+R5 cierre9beff13 y corrección78cdbc6. Diez pruebas focales posteriores pasan:
+revalidación del dueño de digest, revocación de amigo antes de entregar y retirada
+de aviso reservado por cancelación. Logs R5-owner-revalidation.txt y
+R5-cancel-access-revalidation.txt; regresión completa previa65tests preservada.
+
+R6 iniciado, NO cerrado: cliente técnico Drive adaptado, sin importar Zhana ni
+leer OAuth/config/private antiguos. Scope obligatorio botsky_scope, carpeta
+única, ID reservado por futuro llamador, streaming/resumable hasta2GB, descarga
+16MiB, conciliación por GET sin segundo POST; URL de upload restringida, sin
+redirecciones. Función de token y carpeta explícitas; no configurado por defecto.
+Directorio nuevo de recados, aliases exactos normalizados, colisiones rechazadas,
+sin lista parcial ni destinatario inferido; hash para ligar futuras vistas.
+
+Siete pruebas de cliente HTTPX con MockTransport y archivos temporales reales;
+dos de directorio pasan. Esto no es Google remoto ni entrega de mensajes.
+R6 sigue SIN handlers integrados: las rutas continúan indicando no construido.
+Faltan OAuth/almacenamiento propio, vistas/selecciones Drive, trabajos/leases,
+borradores de recados, confirmación privada de dueño con preview entregado,
+reserva por destino/parte, cancelación, cliente y conciliación sin duplicados.
+Ficha docs/portados/drive-recados.md; estado docs/evidencia/R6-partial.json.
+
+Retomar R6 por esos contratos del único plan rebuildbotsky.md; no ejecutar otros
+planes. R7–R9 pendientes. R10 local espera cierreR3–R9; remoto/R11 requieren otro
+encargo. Instalación activa, DB31, configuración, sesiones, transportes, cambios y
+auditorías anteriores intactos; solo laboratorio sintético. Sin NLP, GitHub,
+navegador ni envíos remotos. Última cuota6% primaria/40% semanal; al5% guardar y
+parar sin reanudación automática.
+
 ## 06/11/2026 · R5 cerrado localmente; sigue R6
 
 R4 commit30aad3f; R5 commit9beff13. R5 esquema propio v5: memoria explícita literal, filtros/páginas,
