@@ -1,5 +1,41 @@
 # Relevo Botsky
 
+## 06/11 · Punto4 Minecraft: mods corregidos; fallo nativo separado
+
+Encargo nuevo del propietario: mods reales y presentación clara. Correcciones:
+JSON de paquetes0644 legible por contenedor (antes0600/Permission denied), flags
+por tipo+UUID+versión, conservación de subpack/posición al reactivar, dependencias
+externas protegidas y conjuntos de dependencias mutuas alternados conjuntamente.
+Rechazos previos a escritura no bloquean siguientes cambios como inciertos;
+fallos entre archivos conservan incertidumbre sin reenvío. Lista legible con
+comandos exactos, base agrupada y carga positiva del arranque actual, sin inventar
+carga de recursos ni compatibilidad Android. Estado exige arranque real del juego;
+contenedor running solo no demuestra Minecraft online. Sondeo jugadores espera
+log sin reenviar list. Worker propio separado actualizado; Zhana worker intacto.
+
+Evidencia MODS-P4-20261106: tres intentos iniciales conservados (primero fallo de
+permisos+fixture; dos oracles corregidos tras observar ejecución del juego).
+21:52:32 PASS paquete individual: carga+función real, reinicio por StartedAt,
+desactivación, JSON restaurado byte a byte, mismo mundo/cero jugadores.
+21:56:19 conjunto behavior/resource mutuamente dependiente: activación/carga/
+función PASS; reinicio FALLÓ con free(): invalid next size (normal), sin cierre
+sano del juego. No atribuir causa al addon/ciclo/Box64 sin prueba. Recuperación
+separada: parada tras observar fallo de arranque, desactivación del conjunto por
+Botsky, ambos JSON restaurados exactos, fixtures retirados y arranque sano,
+mismo mundo/cero jugadores. Ver paired-native-recovery.json. Intento original
+no se modifica ni se reanuda. No proclamar punto4/R10 cerrados.
+
+244 tests generales PASS tras conjuntos;24 focales finales PASS incluyendo nueva
+guardia de arranque. Ruff/format/diffcheck registrados al cierre. Permisos write
+operativos previos Drive/grupos/Minecraft false. Solo permisos/DB efímeros propios;
+0 envíos WhatsApp, sin transición, llamadas, navegador, servicios Zhana, NLP,
+DB31, sesiones/perfiles o GitHub. Informe docs/MODS_P4_20261106.md. Scripts ops
+con efectos reales solo por encargo de operador, nunca por leer el relevo.
+Pendiente: estabilidad del reinicio del conjunto sintético (fallo nativo), acciones
+sobre participantes sin objetivos elegibles, punto3 audiovisualreal y punto5.
+Cuota vigente al cierre en evidencia/checks.json; umbral5% sigue obligatorio.
+
+
 ## 06/11 · Respaldo ampliado por encargo expreso
 
 Propietario pidió corregir límite1GB. Ahora50GiB de origen/100000entradas,

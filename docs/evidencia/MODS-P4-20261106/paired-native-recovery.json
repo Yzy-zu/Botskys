@@ -1,0 +1,43 @@
+{
+  "world_behavior_packs.json": true,
+  "world_resource_packs.json": true,
+  "fixtures_removed": true,
+  "paired_disable_result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "disable_mod",
+      "response": {
+        "action": "disable_mod",
+        "affected": [
+          {
+            "name": "Botsky synthetic acceptance probe",
+            "pack_id": "3fffec70-9045-41bd-8ac9-4374410c95fe",
+            "pack_type": "behavior"
+          },
+          {
+            "name": "Botsky synthetic resources probe",
+            "pack_id": "320d7ade-b308-44e4-85a8-6713cade6d64",
+            "pack_type": "resource"
+          }
+        ],
+        "changed": true,
+        "configured": false,
+        "loaded_known": false,
+        "name": "Botsky synthetic acceptance probe",
+        "pack_id": "3fffec70-9045-41bd-8ac9-4374410c95fe",
+        "permissions_repaired": false,
+        "restart_required": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Desactivación de Botsky synthetic acceptance probe: cambió. Conjunto de dependencias mutuas: Botsky synthetic acceptance probe (behavior), Botsky synthetic resources probe (resource). Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+  },
+  "fresh_recovery_start": {
+    "status": "ok",
+    "action": "start"
+  },
+  "online_restored": true,
+  "players_zero": true,
+  "world_unchanged": true
+}

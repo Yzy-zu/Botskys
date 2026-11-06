@@ -135,11 +135,14 @@ def _json_file(path: Path) -> list[dict[str, Any]]:
     return value
 
 
-def _atomic_json(path: Path, value: list[dict[str, Any]]) -> None:
+def _atomic_json(path: Path, value: list[dict[str, Any]], *, mode: int = 0o644) -> None:
     if path.is_symlink():
         raise WorkerError("unsafe_pack_file")
     fd, temp_name = tempfile.mkstemp(prefix=".zhana-packs-", dir=path.parent)
     try:
+        # World pack configuration contains public pack IDs, not credentials.
+        # mkstemp's 0600 makes it unreadable to the container's game user.
+        os.fchmod(fd, mode)
         with os.fdopen(fd, "w", encoding="utf-8") as stream:
             json.dump(value, stream, ensure_ascii=False, indent=2)
             stream.flush()
@@ -278,21 +281,24 @@ def _players(root: Path, container: str, *, run: Callable[..., str]) -> dict[str
         try:
             sent_at = time.time()
             run(["docker", "exec", container, "send-command", "list"], timeout=10)
-            time.sleep(0.25)
-            log = run(["docker", "logs", "--since", f"{sent_at:.6f}", "--timestamps", container], timeout=10)
-            matches: list[tuple[int, int, str]] = []
-            pattern = re.compile(r"^(\S+)\s+.*?There are\s+(\d+)/(\d+)\s+players online:([^\r\n]*)", re.IGNORECASE)
-            for line in log.splitlines():
-                match = pattern.match(line)
-                if not match:
-                    continue
-                try:
-                    timestamp = datetime.fromisoformat(match.group(1).replace("Z", "+00:00")).timestamp()
-                except ValueError:
-                    continue
-                if timestamp + 0.001 < sent_at:
-                    continue
-                matches.append((int(match.group(2)), int(match.group(3)), match.group(4)))
+            for delay in (0.25, 0.5, 1.0):
+                time.sleep(delay)
+                log = run(["docker", "logs", "--since", f"{sent_at:.6f}", "--timestamps", container], timeout=10)
+                matches: list[tuple[int, int, str]] = []
+                pattern = re.compile(r"^(\S+)\s+.*?There are\s+(\d+)/(\d+)\s+players online:([^\r\n]*)", re.IGNORECASE)
+                for line in log.splitlines():
+                    match = pattern.match(line)
+                    if not match:
+                        continue
+                    try:
+                        timestamp = datetime.fromisoformat(match.group(1).replace("Z", "+00:00")).timestamp()
+                    except ValueError:
+                        continue
+                    if timestamp + 0.001 < sent_at:
+                        continue
+                    matches.append((int(match.group(2)), int(match.group(3)), match.group(4)))
+                if len(matches) == 1:
+                    break
             if len(matches) != 1:
                 return {"status": "online", "online": True, "players_known": False, "count": None, "max": None, "players": []}
             count, maximum, raw_names = matches[0]
@@ -312,13 +318,45 @@ def _players(root: Path, container: str, *, run: Callable[..., str]) -> dict[str
         os.close(fd)
 
 
+def _game_status(container: str, state: dict[str, Any], *, run: Callable[..., str]) -> str:
+    if state.get("Status") != "running":
+        return "offline"
+    started = state.get("StartedAt")
+    if not isinstance(started, str) or not started:
+        return "unknown"
+    try:
+        log = run(["docker", "logs", "--since", started, container], timeout=10)
+    except (WorkerError, OSError, subprocess.SubprocessError):
+        return "unknown"
+    if "free(): invalid next size" in log or "Fatal glibc error" in log:
+        return "failed"
+    if "Server started." in log and "Stopping server" not in log and "Server stop requested" not in log:
+        return "ready"
+    return "starting"
+
+
+def _observed_packs(container: str, *, run: Callable[..., str]) -> set[tuple[str, str]]:
+    """Positive evidence only, scoped to this container's current startup."""
+    try:
+        raw = run(["docker", "inspect", "--format", "{{json .State}}", container], check=False)
+        state = json.loads(raw)
+        started = state.get("StartedAt")
+        if state.get("Status") != "running" or not isinstance(started, str) or not started:
+            return set()
+        log = run(["docker", "logs", "--since", started, container], timeout=10)
+        pattern = re.compile(r"Pack Stack - .*?\(id: ([0-9a-fA-F-]{36}), version: ([0-9]+\.[0-9]+\.[0-9]+)\)")
+        return {(identity.casefold(), version) for identity, version in pattern.findall(log)}
+    except (WorkerError, ValueError, OSError, subprocess.SubprocessError):
+        return set()
+
+
 def _installed_packs(data: Path) -> list[dict[str, Any]]:
     found: list[dict[str, Any]] = []
     for pack_type, folder in (("behavior", "behavior_packs"), ("resource", "resource_packs")):
         manifests = data / folder
         if not manifests.is_dir() or manifests.is_symlink():
             continue
-        for entry in list(manifests.iterdir())[:MAX_SCAN]:
+        for entry in sorted(manifests.iterdir(), key=lambda child: child.name)[:MAX_SCAN]:
             if not entry.is_dir() or entry.is_symlink():
                 continue
             manifest = entry / "manifest.json"
@@ -334,11 +372,19 @@ def _installed_packs(data: Path) -> list[dict[str, Any]]:
             pack_id = str(header.get("uuid", ""))
             if not PACK_ID.fullmatch(pack_id):
                 continue
+            version = header.get("version")
+            dependencies = content.get("dependencies", [])
+            if (not isinstance(version, list) or len(version) != 3
+                    or any(type(part) is not int or part < 0 for part in version)
+                    or not isinstance(dependencies, list)):
+                continue
             raw_name = header.get("name")
             name = raw_name if isinstance(raw_name, str) and raw_name not in {"", "pack.name"} else entry.name
             found.append({
                 "pack_id": pack_id.lower(), "name": name[:128], "folder": entry.name[:128],
-                "pack_type": pack_type, "version": header.get("version", [1, 0, 0]),
+                "pack_type": pack_type, "version": version,
+                "dependencies": [dep for dep in content.get("dependencies", [])
+                                 if isinstance(dep, dict) and PACK_ID.fullmatch(str(dep.get("uuid", "")))],
             })
     return found
 
@@ -357,6 +403,124 @@ def _find_pack(data: Path, name: str) -> tuple[Path, dict[str, Any]]:
     active_file = "world_behavior_packs.json" if item["pack_type"] == "behavior" else "world_resource_packs.json"
     world_path = data / "worlds" / _active_world(data) / active_file
     return world_path, item
+
+
+def _mod_plan(data: Path, name: str, action: str) -> dict[str, Any]:
+    path, target = _find_pack(data, name)
+    installed = _installed_packs(data)
+    def key(pack):
+        return (pack["pack_type"], pack["pack_id"], tuple(pack["version"]))
+    packs = {key(pack): pack for pack in installed}
+    def dependencies(pack):
+        return [(dep["uuid"].casefold(), dep.get("version")) for dep in pack["dependencies"]]
+    graph = {identity: {other for other, candidate in packs.items()
+                       if any(candidate["pack_id"] == dep_id and candidate["version"] == version
+                              for dep_id, version in dependencies(pack))}
+             for identity, pack in packs.items()}
+    def reachable(start, graph):
+        seen, pending = set(), [start]
+        while pending:
+            item = pending.pop()
+            if item not in seen:
+                seen.add(item)
+                pending.extend(graph[item] - seen)
+        return seen
+    start = key(target)
+    reverse = {identity: {other for other, edges in graph.items() if identity in edges}
+               for identity in packs}
+    # A strongly connected group cannot be toggled one half at a time.
+    component = reachable(start, graph) & reachable(start, reverse)
+    if any(sum(key(pack) == identity for pack in installed) != 1 for identity in component):
+        raise WorkerError("duplicate_installed_pack")
+    selected = [packs[identity] for identity in sorted(component)]
+    world = path.parent
+    paths = {kind: world / filename for kind, filename in
+             (("behavior", "world_behavior_packs.json"), ("resource", "world_resource_packs.json"))}
+    originals = {kind: _json_file(file) for kind, file in paths.items()}
+    configured = originals["behavior"] + originals["resource"]
+    def configured_pack(pack):
+        return any(str(row.get("pack_id", "")).casefold() == pack["pack_id"]
+                   and row.get("version") == pack["version"] for row in configured)
+    for pack in selected:
+        existing = [row for row in originals[pack["pack_type"]]
+                    if str(row.get("pack_id", "")).casefold() == pack["pack_id"]]
+        if len(existing) > 1:
+            raise WorkerError("duplicate_configured_pack")
+        if action == "enable_mod":
+            if existing and existing[0].get("version") != pack["version"]:
+                raise WorkerError("pack_version_conflict")
+            for dep_id, version in dependencies(pack):
+                candidates = [other for identity, other in packs.items()
+                              if other["pack_id"] == dep_id and other["version"] == version]
+                if len(candidates) != 1 or not (key(candidates[0]) in component or configured_pack(candidates[0])):
+                    raise WorkerError("pack_dependency_not_configured")
+    if action == "disable_mod":
+        removed_ids = {pack["pack_id"] for pack in selected}
+        for identity, pack in packs.items():
+            if identity not in component and configured_pack(pack):
+                if any(dep_id in removed_ids for dep_id, _version in dependencies(pack)):
+                    raise WorkerError("pack_required_by_configured")
+    history_path = world / ".botsky-disabled-packs.json"
+    history = _json_file(history_path)
+    rows = {kind: list(values) for kind, values in originals.items()}
+    changed = False
+    touched = set()
+    def restore_order(pack):
+        positions = [item.get("position") for item in history
+                     if item.get("pack_type") == pack["pack_type"]
+                     and str(item.get("pack_id", "")).casefold() == pack["pack_id"]
+                     and type(item.get("position")) is int]
+        return (pack["pack_type"], positions[0] if len(positions) == 1 else 100000, pack["pack_id"])
+    ordered = sorted(selected, key=restore_order) if action == "enable_mod" else selected
+    for pack in ordered:
+        kind, pack_id = pack["pack_type"], pack["pack_id"]
+        touched.add(kind)
+        existing = [row for row in originals[kind] if str(row.get("pack_id", "")).casefold() == pack_id]
+        saved = [item for item in history if item.get("pack_type") == kind
+                 and str(item.get("pack_id", "")).casefold() == pack_id]
+        remaining = [item for item in history if item not in saved]
+        if action == "disable_mod" and existing:
+            history = remaining + [{"pack_id": pack_id, "pack_type": kind,
+                                    "position": originals[kind].index(existing[0]), "row": existing[0]}]
+            rows[kind] = [row for row in rows[kind] if str(row.get("pack_id", "")).casefold() != pack_id]
+            changed = True
+        elif action == "enable_mod" and not existing:
+            row, position = {"pack_id": pack_id, "version": pack["version"]}, len(rows[kind])
+            if len(saved) == 1:
+                previous = saved[0].get("row")
+                if (isinstance(previous, dict) and str(previous.get("pack_id", "")).casefold() == pack_id
+                        and previous.get("version") == pack["version"]):
+                    row = previous
+                    if type(saved[0].get("position")) is int:
+                        position = max(0, min(len(rows[kind]), saved[0]["position"]))
+            rows[kind].insert(position, row)
+            history = remaining
+            changed = True
+    repaired = any(paths[kind].exists() and stat.S_IMODE(paths[kind].stat().st_mode) != 0o644 for kind in touched)
+    return {"paths": paths, "originals": originals, "rows": rows, "touched": touched,
+            "history_path": history_path, "history": history, "history_before": _json_file(history_path),
+            "target": target, "selected": selected, "changed": changed, "repaired": repaired}
+
+
+def _apply_mod_plan(plan: dict[str, Any], action: str) -> dict[str, Any]:
+    # Record restoration metadata before deleting any configured row. A failure
+    # between the two atomic world files is uncertain, never a safe-to-retry error.
+    if action == "disable_mod" and plan["history"] != plan["history_before"]:
+        _atomic_json(plan["history_path"], plan["history"], mode=0o600)
+    for kind in sorted(plan["touched"]):
+        path = plan["paths"][kind]
+        if plan["rows"][kind] != plan["originals"][kind] or plan["repaired"]:
+            _atomic_json(path, plan["rows"][kind])
+            if _json_file(path) != plan["rows"][kind]:
+                raise WorkerError("pack_write_not_verified")
+    if action == "enable_mod" and plan["history"] != plan["history_before"]:
+        _atomic_json(plan["history_path"], plan["history"], mode=0o600)
+    target = plan["target"]
+    return {"status": "ok", "action": action, "pack_id": target["pack_id"], "name": target["name"],
+            "affected": [{"name": pack["name"], "pack_id": pack["pack_id"], "pack_type": pack["pack_type"]}
+                         for pack in plan["selected"]], "changed": plan["changed"],
+            "configured": action == "enable_mod", "restart_required": plan["changed"] or plan["repaired"],
+            "permissions_repaired": plan["repaired"], "loaded_known": False}
 
 
 def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[str, Any]:
@@ -395,8 +559,10 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
         except json.JSONDecodeError as exc:
             raise WorkerError("invalid_status") from exc
         status = str(state.get("Status", "unknown"))
-        result: dict[str, Any] = {"status": "ok", "online": status == "running", "container_status": status,
-                                  "started_at": state.get("StartedAt"), "telemetry": "not_collected"}
+        game_status = _game_status(container, state, run=run)
+        result: dict[str, Any] = {"status": "ok", "online": True if game_status == "ready" else False if status in {"exited", "created", "paused"} else None,
+                                  "container_status": status, "game_status": game_status,
+                                  "started_at": state.get("StartedAt"), "telemetry": "current_startup_log"}
         if data.is_dir() and not data.is_symlink():
             props = _props(data)
             result["active_world"] = props.get("level-name")
@@ -425,13 +591,13 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
             raise WorkerError("data_unavailable")
         world = data / "worlds" / _active_world(data)
         output: dict[str, Any] = {"status": "ok", "active_world": world.name, "behavior": [], "resource": [], "installed": []}
-        active_ids: set[tuple[str, str]] = set()
+        active_ids: set[tuple[str, str, str]] = set()
         for pack_type, filename in (("behavior", "world_behavior_packs.json"), ("resource", "world_resource_packs.json")):
             rows = _json_file(world / filename)
             output[pack_type] = rows
-            active_ids.update((pack_type, str(row.get("pack_id", "")).casefold()) for row in rows)
+            active_ids.update((pack_type, str(row.get("pack_id", "")).casefold(), json.dumps(row.get("version"))) for row in rows)
         output["installed"] = [
-            {**pack, "active": (pack["pack_type"], pack["pack_id"].casefold()) in active_ids}
+            {**pack, "active": (pack["pack_type"], pack["pack_id"].casefold(), json.dumps(pack["version"])) in active_ids}
             for pack in _installed_packs(data)
         ]
         for pack_type in ("behavior", "resource"):
@@ -444,6 +610,16 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
                 row["installed"] = bool(matches)
                 row["configured"] = True
                 row["loaded"] = None
+        observed = _observed_packs(container, run=run)
+        for pack in output["installed"]:
+            pack["loaded"] = True if (pack["pack_id"], ".".join(map(str, pack["version"]))) in observed else None
+        for pack_type in ("behavior", "resource"):
+            for row in output[pack_type]:
+                version = row.get("version")
+                if isinstance(version, list):
+                    row["loaded"] = True if (str(row.get("pack_id", "")).casefold(), ".".join(map(str, version))) in observed else None
+        output["load_evidence"] = "current_startup_pack_stack_positive_only"
+        output["installed"].sort(key=lambda pack: (not pack["active"], pack["name"].casefold(), pack["pack_type"], pack["folder"]))
         output["loaded_known"] = False
         return output
 
@@ -456,16 +632,11 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run) -> dict[s
         name = params.get("name")
         if not isinstance(name, str):
             raise WorkerError("invalid_mod_params")
-        path, pack = _find_pack(data, name)
-        pack_id = str(pack["pack_id"])
-        rows = _json_file(path)
-        exists = any(str(row.get("pack_id", "")).lower() == pack_id.lower() for row in rows)
-        if action == "enable_mod" and not exists:
-            rows.append({"pack_id": pack_id, "version": pack["version"]})
-        elif action == "disable_mod":
-            rows = [row for row in rows if str(row.get("pack_id", "")).lower() != pack_id.lower()]
-        _atomic_json(path, rows)
-        return {"status": "ok", "action": action, "pack_id": pack_id, "name": pack["name"], "changed": exists != (action == "enable_mod")}
+        try:
+            plan = _mod_plan(data, name, action)
+        except WorkerError as exc:
+            return {"status": "needs_input", "code": str(exc), "dispatched": False}
+        return _apply_mod_plan(plan, action)
     if action == "console":
         command = params.get("command")
         if command not in {"list", "save", "time query daytime", "weather query"}:

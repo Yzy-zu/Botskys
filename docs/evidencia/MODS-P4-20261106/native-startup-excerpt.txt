@@ -1,0 +1,5 @@
+[2026-11-06 21:56:31:604 INFO] Pack Stack - [02] Botsky synthetic acceptance probe (id: 3fffec70-9045-41bd-8ac9-4374410c95fe, version: 1.0.0) @ behavior_packs/botsky-probe-20261106T215619Z
+[2026-11-06 21:56:41:491 INFO] Server started.
+[2026-11-06 21:56:49:861 INFO] Successfully executed 1 function entries.
+free(): invalid next size (normal)
+[2026-11-06 22:00:22:652 INFO] Server started.

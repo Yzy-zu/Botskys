@@ -164,3 +164,15 @@ docs/evidencia/BACKUP-AMPLIADO-20261106/. No serviciosBotsky,transición,mensaje
 NLP,DB31,perfiles/sesiones oGitHub. Permisos write operativos siguenfalse.
 El bloqueo de respaldo del punto4 queda resuelto; participantes/mods/reinicio
 específico y audiovisualreal mantienen sus límites anteriores.
+
+### 06/11 · Mods y reinicio, continuación del punto4
+
+Worker propio actualizado: paquetes legibles por Bedrock, conservación subpack/
+orden, versiones/dependencias y conjuntos mutuos, presentación legible y carga
+positiva del arranque actual. El estado no confunde contenedor activo con juego
+listo. Prueba individual completa PASS; conjunto sintético activó y ejecutó función,
+pero su reinicio sufrió fallo nativo. Recuperación separada completada con JSON
+originales exactos, fixtures retirados, mismo mundo y cero jugadores. No afirmar
+estabilidad del conjunto ni cierre completo punto4. Informe y límites en
+[MODS_P4_20261106.md](MODS_P4_20261106.md). Permisos operativos write siguen false;
+no transición ni nuevos servicios. 244 generales y24 focales finales PASS.

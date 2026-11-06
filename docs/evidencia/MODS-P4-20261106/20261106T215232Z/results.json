@@ -1,0 +1,3076 @@
+{
+  "cases": [
+    {
+      "command": "/mc mods",
+      "state": "returned",
+      "receipt": "13556115670f340c403c890149edc913",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "mods",
+          "response": {
+            "active_world": "Supervivencia",
+            "base_pack_count": 124,
+            "behavior": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": true,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": true,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": true,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": true,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": true,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              }
+            ],
+            "installed": [
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "Actions And Stuff 1.9",
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "loaded": true,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "loaded": true,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "pack_type": "behavior",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "pack_type": "resource",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "loaded": true,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "loaded": true,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "pack_type": "behavior",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "pack_type": "resource",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "loaded": true,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_library",
+                "loaded": null,
+                "name": "@minecraft/server TS Library",
+                "pack_id": "37ca4282-69e9-4402-b40b-0b07de579f02",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_ui_library",
+                "loaded": null,
+                "name": "@minecraft/server-ui TS Library",
+                "pack_id": "f53f490f-9d47-45ca-86de-0946b6d1c366",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0fba4063-dba1-4281-9b89-ff9390653530",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "0fba4063-dba1-4281-9b89-ff9390653530",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.50",
+                "loaded": null,
+                "name": "chemistry_1.20.50",
+                "pack_id": "91b9e624-dda6-43f3-a567-8025c53860b5",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  50
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "e977cd13-0a11-4618-96fb-03dfe9c43608",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.60",
+                "loaded": null,
+                "name": "chemistry_1.20.60",
+                "pack_id": "5017d347-e962-47c0-9ace-d377321afd23",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  60
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "85d5603d-2824-4b21-8044-34f441f4fce1",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.0",
+                "loaded": null,
+                "name": "chemistry_1.21.0",
+                "pack_id": "86b72e11-be78-4802-95cf-1dd70a46ee1f",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d19adffe-a2e1-4b02-8436-ca4583368c89",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.10",
+                "loaded": null,
+                "name": "chemistry_1.21.10",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4df0cb3-17be-4163-88d7-fcf7002b935d",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.20",
+                "loaded": null,
+                "name": "chemistry_1.21.20",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  20
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "b41c2785-c512-4a49-af56-3a87afd47c57",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.30",
+                "loaded": null,
+                "name": "chemistry_1.21.30",
+                "pack_id": "006c322a-5634-4591-8803-ef704ee5593a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  30
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d34cfa4b-2ad1-453d-a0db-668b429a3ea0",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.26.40",
+                "loaded": null,
+                "name": "chemistry_1.26.40",
+                "pack_id": "86b1dfd4-049f-465a-a62a-6bc196550499",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  26,
+                  40
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_y_2026_drop_4",
+                "loaded": null,
+                "name": "Drop 4 of 2026",
+                "pack_id": "463a758b-b207-41d2-88ed-50b4bc034e03",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_creator_cameras",
+                "loaded": null,
+                "name": "Experimental Creator Cameras",
+                "pack_id": "05112080-727b-4ed4-98d4-b099fc75f2be",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "8e430597-42b0-4075-a97c-917743c8fdd3",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "JennyModBeh_942b5fa8",
+                "loaded": null,
+                "name": "JennyModBeh",
+                "pack_id": "942b5fa8-4e20-47cf-b71a-43df28e01b5a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_BP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_RP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "RandS_Overgrown_Cities_0a4c4fe9",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_BP_9dbd96cc",
+                "loaded": null,
+                "name": "RPG V0.7.1 BP",
+                "pack_id": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_RP_9c7b3916",
+                "loaded": null,
+                "name": "RPG V0.7.1 RP",
+                "pack_id": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_editor_library",
+                "loaded": null,
+                "name": "Server Editor Library",
+                "pack_id": "bd153b33-db00-4da4-8a6f-293371711e97",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "19dec373-6065-42e3-a692-2298a5eb282d",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_f0338eba",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_19dec373",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "19dec373-6065-42e3-a692-2298a5eb282d",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__f3a8c21e",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__a4c9e6d2",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_vanilla_shapes",
+                "loaded": null,
+                "name": "Vanilla Voxel Shapes",
+                "pack_id": "0ffb286d-6ee3-4243-a640-b46898344a8e",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_villager_trade",
+                "loaded": null,
+                "name": "Villager Trade Rebalancing",
+                "pack_id": "0127bd67-dc5b-45c2-8d5b-1d65876d5679",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_Visuals_87892df1",
+                "loaded": null,
+                "name": "§l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag)",
+                "pack_id": "87892df1-d216-43a4-9507-4433e4d85750",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_RP_ada14474",
+                "loaded": null,
+                "name": "§l§aRanzie's §4R-and-S Resources Pack 1.2.0",
+                "pack_id": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_BP_67a97188",
+                "loaded": null,
+                "name": "§l§aRanzie's §4Rise & Survive 1.2.0",
+                "pack_id": "67a97188-7b20-46f0-9b4f-88a493c38b60",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_UI_c148f8d5",
+                "loaded": null,
+                "name": "§l§aRanzie's §6Visual Effects for §cRise&Survive",
+                "pack_id": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              }
+            ],
+            "installed_total": 42,
+            "installed_truncated": false,
+            "load_evidence": "current_startup_pack_stack_positive_only",
+            "loaded_known": false,
+            "resource": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "subpack": "2_e",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              }
+            ],
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Mods del servidor\nMundo: Supervivencia\nPaquetes base del servidor: 124 (omitidos del listado de mods).\n• Actions And Stuff 1.9: configurado · recursos · v1.1.24 · `/mc mod desactivar \"2cf066eb-1254-4b7d-affb-80fe3216b18c\"`\n• Better Foliage Addon BP: configurado · comportamiento · v1.5.0 · carga observada · `/mc mod desactivar \"24f60c72-d8f6-477c-b2e4-eda1ecfeb07c\"`\n• Better Foliage Addon RP: configurado · recursos · v1.5.0 · `/mc mod desactivar \"3c512529-397a-4104-855d-4e08ceb9fff0\"`\n• Better Foliage Texture Pack NG: configurado · recursos · v2.9.3 · `/mc mod desactivar \"4148afa7-b1c1-4d29-9454-80a75ea73233\"`\n• Billey's Mobs 5.3.0: configurado · comportamiento · v5.3.0 · carga observada · Requiere: bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce@5.3.0 · `/mc mod desactivar \"b5feb5d2-78b5-4753-ac22-dd37f271b279\"`\n• Billey's Mobs 5.3.0: configurado · recursos · v5.3.0 · Requiere: b5feb5d2-78b5-4753-ac22-dd37f271b279@5.3.0 · `/mc mod desactivar \"bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce\"`\n• Estruturas Mundiais: configurado · comportamiento · v1.2.1 · carga observada · `/mc mod desactivar \"a29497f0-0f80-58dd-9685-9d73e3f66925\"`\n• Simple Waystone v9.4 (Addon): configurado · comportamiento · v9.4.0 · carga observada · Requiere: 4d6ce949-1de7-41ec-87ab-3068434459a4@9.4.0 · `/mc mod desactivar \"e05afa0d-aa45-46bd-82d0-243c605d9737\"`\n• Simple Waystone v9.4 (Texture): configurado · recursos · v9.4.0 · Requiere: e05afa0d-aa45-46bd-82d0-243c605d9737@9.4.0 · `/mc mod desactivar \"4d6ce949-1de7-41ec-87ab-3068434459a4\"`\n• §6Gravestones (V0.1.3) [Behaviour Pack]: configurado · comportamiento · v0.0.1 · carga observada · `/mc mod desactivar \"89fdf763-42f1-435e-b8c0-3bf30ee56cdd\"`\n• §6Gravestones (V0.1.3) [Resource Pack]: configurado · recursos · v0.0.1 · `/mc mod desactivar \"9ff6715d-c84f-4f15-97ee-15c7c1a8b638\"`\n• @minecraft/server TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"37ca4282-69e9-4402-b40b-0b07de579f02\"`\n• @minecraft/server-ui TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"f53f490f-9d47-45ca-86de-0946b6d1c366\"`\n• chemistry: desactivado · comportamiento · v1.0.0 · Requiere: 0fba4063-dba1-4281-9b89-ff9390653530@1.0.0 · `/mc mod activar \"6baf8b62-8948-4c99-bb1e-a0cb35dc4579\"`\n• chemistry: desactivado · recursos · v1.0.0 · Requiere: 6baf8b62-8948-4c99-bb1e-a0cb35dc4579@1.0.0 · `/mc mod activar \"0fba4063-dba1-4281-9b89-ff9390653530\"`\n• chemistry_1.20.50: desactivado · comportamiento · v1.20.50 · Requiere: 0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed@1.0.0 · `/mc mod activar \"91b9e624-dda6-43f3-a567-8025c53860b5\"`\n• chemistry_1.20.60: desactivado · comportamiento · v1.20.60 · Requiere: e977cd13-0a11-4618-96fb-03dfe9c43608@1.0.0 · `/mc mod activar \"5017d347-e962-47c0-9ace-d377321afd23\"`\n• chemistry_1.21.0: desactivado · comportamiento · v1.21.0 · Requiere: 85d5603d-2824-4b21-8044-34f441f4fce1@1.0.0 · `/mc mod activar \"86b72e11-be78-4802-95cf-1dd70a46ee1f\"`\n• chemistry_1.21.10: desactivado · comportamiento · v1.21.10 · Requiere: d19adffe-a2e1-4b02-8436-ca4583368c89@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.10\"`\n• chemistry_1.21.20: desactivado · comportamiento · v1.21.20 · Requiere: a4df0cb3-17be-4163-88d7-fcf7002b935d@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.20\"`\n• chemistry_1.21.30: desactivado · comportamiento · v1.21.30 · Requiere: b41c2785-c512-4a49-af56-3a87afd47c57@1.0.0 · `/mc mod activar \"006c322a-5634-4591-8803-ef704ee5593a\"`\n• chemistry_1.26.40: desactivado · comportamiento · v1.26.40 · Requiere: d34cfa4b-2ad1-453d-a0db-668b429a3ea0@1.0.0 · `/mc mod activar \"86b1dfd4-049f-465a-a62a-6bc196550499\"`\n• Drop 4 of 2026: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"463a758b-b207-41d2-88ed-50b4bc034e03\"`\n• Experimental Creator Cameras: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"05112080-727b-4ed4-98d4-b099fc75f2be\"`\n• JennyModBeh: desactivado · comportamiento · v1.0.0 · Requiere: 8e430597-42b0-4075-a97c-917743c8fdd3@1.0.0 · `/mc mod activar \"942b5fa8-4e20-47cf-b71a-43df28e01b5a\"`\n• Peppa Maldita Addon: desactivado · comportamiento · v2.2.10 · Requiere: 0f9596b8-4df0-494b-9049-49c0320175d2@2.2.10 · `/mc mod activar \"4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca\"`\n• Peppa Maldita Addon: desactivado · recursos · v2.2.10 · Requiere: 4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca@2.2.10 · `/mc mod activar \"0f9596b8-4df0-494b-9049-49c0320175d2\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"RandS_Overgrown_Cities_0a4c4fe9\"`\n• RPG V0.7.1 BP: desactivado · comportamiento · v0.7.1 · Requiere: 9c7b3916-259b-434d-a06d-c524701b29bd@0.7.1 · `/mc mod activar \"9dbd96cc-ad61-47b1-9b43-c00bfcd9f191\"`\n• RPG V0.7.1 RP: desactivado · recursos · v0.7.1 · Requiere: 9dbd96cc-ad61-47b1-9b43-c00bfcd9f191@0.7.1 · `/mc mod activar \"9c7b3916-259b-434d-a06d-c524701b29bd\"`\n• Server Editor Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"bd153b33-db00-4da4-8a6f-293371711e97\"`\n• Skibidi Toilet Characters: desactivado · comportamiento · v0.0.1 · Requiere: 19dec373-6065-42e3-a692-2298a5eb282d@0.0.1 · `/mc mod activar \"f0338eba-f40b-4080-ba23-696ec40a8282\"`\n• Skibidi Toilet Characters: desactivado · recursos · v0.0.1 · Requiere: f0338eba-f40b-4080-ba23-696ec40a8282@0.0.1 · `/mc mod activar \"19dec373-6065-42e3-a692-2298a5eb282d\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · comportamiento · v2.1.0 · Requiere: a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154@2.1.0 · `/mc mod activar \"f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · recursos · v2.1.0 · Requiere: f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931@2.1.0 · `/mc mod activar \"a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154\"`\n• Vanilla Voxel Shapes: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0ffb286d-6ee3-4243-a640-b46898344a8e\"`\n• Villager Trade Rebalancing: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0127bd67-dc5b-45c2-8d5b-1d65876d5679\"`\n• §l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag): desactivado · comportamiento · v1.2.0 · Requiere: c148f8d5-cfc2-49cc-8405-e977a612a1e1@1.2.0 · `/mc mod activar \"87892df1-d216-43a4-9507-4433e4d85750\"`\n• §l§aRanzie's §4R-and-S Resources Pack 1.2.0: desactivado · recursos · v1.2.0 · `/mc mod activar \"ada14474-e05b-47f6-9f18-bb70288a990d\"`\n• §l§aRanzie's §4Rise & Survive 1.2.0: desactivado · comportamiento · v1.2.0 · Requiere: ada14474-e05b-47f6-9f18-bb70288a990d@1.2.0 · `/mc mod activar \"67a97188-7b20-46f0-9b4f-88a493c38b60\"`\n• §l§aRanzie's §6Visual Effects for §cRise&Survive: desactivado · recursos · v1.2.0 · `/mc mod activar \"c148f8d5-cfc2-49cc-8405-e977a612a1e1\"`\nCarga en juego: observada en los paquetes indicados; el resto sigue sin confirmar."
+      }
+    },
+    {
+      "command": "/mc parar",
+      "state": "returned",
+      "receipt": "26e030018f5818f632043e7899c79406",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "stop",
+          "response": {
+            "action": "stop",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft stop:\n{\"status\": \"ok\", \"action\": \"stop\"}"
+      }
+    },
+    {
+      "command": "/mc mod activar 6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+      "state": "returned",
+      "receipt": "453b629e9ddb77ed55fafef99b341fb0",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "enable_mod",
+          "response": {
+            "action": "enable_mod",
+            "changed": true,
+            "configured": true,
+            "loaded_known": false,
+            "name": "Botsky synthetic acceptance probe",
+            "pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+            "permissions_repaired": false,
+            "restart_required": true,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Activación de Botsky synthetic acceptance probe: cambió. Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+      }
+    },
+    {
+      "command": "/mc mods",
+      "state": "returned",
+      "receipt": "4a36209ca869602d4d3b9019b16b3348",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "mods",
+          "response": {
+            "active_world": "Supervivencia",
+            "base_pack_count": 124,
+            "behavior": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Botsky synthetic acceptance probe",
+                "pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            ],
+            "installed": [
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "Actions And Stuff 1.9",
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "loaded": null,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "pack_type": "behavior",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "pack_type": "resource",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "botsky-probe-20261106T215232Z",
+                "loaded": null,
+                "name": "Botsky synthetic acceptance probe",
+                "pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "loaded": null,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "pack_type": "behavior",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "pack_type": "resource",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_library",
+                "loaded": null,
+                "name": "@minecraft/server TS Library",
+                "pack_id": "37ca4282-69e9-4402-b40b-0b07de579f02",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_ui_library",
+                "loaded": null,
+                "name": "@minecraft/server-ui TS Library",
+                "pack_id": "f53f490f-9d47-45ca-86de-0946b6d1c366",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0fba4063-dba1-4281-9b89-ff9390653530",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "0fba4063-dba1-4281-9b89-ff9390653530",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.50",
+                "loaded": null,
+                "name": "chemistry_1.20.50",
+                "pack_id": "91b9e624-dda6-43f3-a567-8025c53860b5",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  50
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "e977cd13-0a11-4618-96fb-03dfe9c43608",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.60",
+                "loaded": null,
+                "name": "chemistry_1.20.60",
+                "pack_id": "5017d347-e962-47c0-9ace-d377321afd23",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  60
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "85d5603d-2824-4b21-8044-34f441f4fce1",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.0",
+                "loaded": null,
+                "name": "chemistry_1.21.0",
+                "pack_id": "86b72e11-be78-4802-95cf-1dd70a46ee1f",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d19adffe-a2e1-4b02-8436-ca4583368c89",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.10",
+                "loaded": null,
+                "name": "chemistry_1.21.10",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4df0cb3-17be-4163-88d7-fcf7002b935d",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.20",
+                "loaded": null,
+                "name": "chemistry_1.21.20",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  20
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "b41c2785-c512-4a49-af56-3a87afd47c57",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.30",
+                "loaded": null,
+                "name": "chemistry_1.21.30",
+                "pack_id": "006c322a-5634-4591-8803-ef704ee5593a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  30
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d34cfa4b-2ad1-453d-a0db-668b429a3ea0",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.26.40",
+                "loaded": null,
+                "name": "chemistry_1.26.40",
+                "pack_id": "86b1dfd4-049f-465a-a62a-6bc196550499",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  26,
+                  40
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_y_2026_drop_4",
+                "loaded": null,
+                "name": "Drop 4 of 2026",
+                "pack_id": "463a758b-b207-41d2-88ed-50b4bc034e03",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_creator_cameras",
+                "loaded": null,
+                "name": "Experimental Creator Cameras",
+                "pack_id": "05112080-727b-4ed4-98d4-b099fc75f2be",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "8e430597-42b0-4075-a97c-917743c8fdd3",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "JennyModBeh_942b5fa8",
+                "loaded": null,
+                "name": "JennyModBeh",
+                "pack_id": "942b5fa8-4e20-47cf-b71a-43df28e01b5a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_BP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_RP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "RandS_Overgrown_Cities_0a4c4fe9",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_BP_9dbd96cc",
+                "loaded": null,
+                "name": "RPG V0.7.1 BP",
+                "pack_id": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_RP_9c7b3916",
+                "loaded": null,
+                "name": "RPG V0.7.1 RP",
+                "pack_id": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_editor_library",
+                "loaded": null,
+                "name": "Server Editor Library",
+                "pack_id": "bd153b33-db00-4da4-8a6f-293371711e97",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "19dec373-6065-42e3-a692-2298a5eb282d",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_f0338eba",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_19dec373",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "19dec373-6065-42e3-a692-2298a5eb282d",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__f3a8c21e",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__a4c9e6d2",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_vanilla_shapes",
+                "loaded": null,
+                "name": "Vanilla Voxel Shapes",
+                "pack_id": "0ffb286d-6ee3-4243-a640-b46898344a8e",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_villager_trade",
+                "loaded": null,
+                "name": "Villager Trade Rebalancing",
+                "pack_id": "0127bd67-dc5b-45c2-8d5b-1d65876d5679",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_Visuals_87892df1",
+                "loaded": null,
+                "name": "§l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag)",
+                "pack_id": "87892df1-d216-43a4-9507-4433e4d85750",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_RP_ada14474",
+                "loaded": null,
+                "name": "§l§aRanzie's §4R-and-S Resources Pack 1.2.0",
+                "pack_id": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_BP_67a97188",
+                "loaded": null,
+                "name": "§l§aRanzie's §4Rise & Survive 1.2.0",
+                "pack_id": "67a97188-7b20-46f0-9b4f-88a493c38b60",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_UI_c148f8d5",
+                "loaded": null,
+                "name": "§l§aRanzie's §6Visual Effects for §cRise&Survive",
+                "pack_id": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              }
+            ],
+            "installed_total": 43,
+            "installed_truncated": false,
+            "load_evidence": "current_startup_pack_stack_positive_only",
+            "loaded_known": false,
+            "resource": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "subpack": "2_e",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              }
+            ],
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Mods del servidor\nMundo: Supervivencia\nPaquetes base del servidor: 124 (omitidos del listado de mods).\n• Actions And Stuff 1.9: configurado · recursos · v1.1.24 · `/mc mod desactivar \"2cf066eb-1254-4b7d-affb-80fe3216b18c\"`\n• Better Foliage Addon BP: configurado · comportamiento · v1.5.0 · `/mc mod desactivar \"24f60c72-d8f6-477c-b2e4-eda1ecfeb07c\"`\n• Better Foliage Addon RP: configurado · recursos · v1.5.0 · `/mc mod desactivar \"3c512529-397a-4104-855d-4e08ceb9fff0\"`\n• Better Foliage Texture Pack NG: configurado · recursos · v2.9.3 · `/mc mod desactivar \"4148afa7-b1c1-4d29-9454-80a75ea73233\"`\n• Billey's Mobs 5.3.0: configurado · comportamiento · v5.3.0 · Requiere: bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce@5.3.0 · `/mc mod desactivar \"b5feb5d2-78b5-4753-ac22-dd37f271b279\"`\n• Billey's Mobs 5.3.0: configurado · recursos · v5.3.0 · Requiere: b5feb5d2-78b5-4753-ac22-dd37f271b279@5.3.0 · `/mc mod desactivar \"bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce\"`\n• Botsky synthetic acceptance probe: configurado · comportamiento · v1.0.0 · `/mc mod desactivar \"6f080c4d-a9b6-4683-ae0f-8ddf87051e7f\"`\n• Estruturas Mundiais: configurado · comportamiento · v1.2.1 · `/mc mod desactivar \"a29497f0-0f80-58dd-9685-9d73e3f66925\"`\n• Simple Waystone v9.4 (Addon): configurado · comportamiento · v9.4.0 · Requiere: 4d6ce949-1de7-41ec-87ab-3068434459a4@9.4.0 · `/mc mod desactivar \"e05afa0d-aa45-46bd-82d0-243c605d9737\"`\n• Simple Waystone v9.4 (Texture): configurado · recursos · v9.4.0 · Requiere: e05afa0d-aa45-46bd-82d0-243c605d9737@9.4.0 · `/mc mod desactivar \"4d6ce949-1de7-41ec-87ab-3068434459a4\"`\n• §6Gravestones (V0.1.3) [Behaviour Pack]: configurado · comportamiento · v0.0.1 · `/mc mod desactivar \"89fdf763-42f1-435e-b8c0-3bf30ee56cdd\"`\n• §6Gravestones (V0.1.3) [Resource Pack]: configurado · recursos · v0.0.1 · `/mc mod desactivar \"9ff6715d-c84f-4f15-97ee-15c7c1a8b638\"`\n• @minecraft/server TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"37ca4282-69e9-4402-b40b-0b07de579f02\"`\n• @minecraft/server-ui TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"f53f490f-9d47-45ca-86de-0946b6d1c366\"`\n• chemistry: desactivado · comportamiento · v1.0.0 · Requiere: 0fba4063-dba1-4281-9b89-ff9390653530@1.0.0 · `/mc mod activar \"6baf8b62-8948-4c99-bb1e-a0cb35dc4579\"`\n• chemistry: desactivado · recursos · v1.0.0 · Requiere: 6baf8b62-8948-4c99-bb1e-a0cb35dc4579@1.0.0 · `/mc mod activar \"0fba4063-dba1-4281-9b89-ff9390653530\"`\n• chemistry_1.20.50: desactivado · comportamiento · v1.20.50 · Requiere: 0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed@1.0.0 · `/mc mod activar \"91b9e624-dda6-43f3-a567-8025c53860b5\"`\n• chemistry_1.20.60: desactivado · comportamiento · v1.20.60 · Requiere: e977cd13-0a11-4618-96fb-03dfe9c43608@1.0.0 · `/mc mod activar \"5017d347-e962-47c0-9ace-d377321afd23\"`\n• chemistry_1.21.0: desactivado · comportamiento · v1.21.0 · Requiere: 85d5603d-2824-4b21-8044-34f441f4fce1@1.0.0 · `/mc mod activar \"86b72e11-be78-4802-95cf-1dd70a46ee1f\"`\n• chemistry_1.21.10: desactivado · comportamiento · v1.21.10 · Requiere: d19adffe-a2e1-4b02-8436-ca4583368c89@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.10\"`\n• chemistry_1.21.20: desactivado · comportamiento · v1.21.20 · Requiere: a4df0cb3-17be-4163-88d7-fcf7002b935d@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.20\"`\n• chemistry_1.21.30: desactivado · comportamiento · v1.21.30 · Requiere: b41c2785-c512-4a49-af56-3a87afd47c57@1.0.0 · `/mc mod activar \"006c322a-5634-4591-8803-ef704ee5593a\"`\n• chemistry_1.26.40: desactivado · comportamiento · v1.26.40 · Requiere: d34cfa4b-2ad1-453d-a0db-668b429a3ea0@1.0.0 · `/mc mod activar \"86b1dfd4-049f-465a-a62a-6bc196550499\"`\n• Drop 4 of 2026: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"463a758b-b207-41d2-88ed-50b4bc034e03\"`\n• Experimental Creator Cameras: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"05112080-727b-4ed4-98d4-b099fc75f2be\"`\n• JennyModBeh: desactivado · comportamiento · v1.0.0 · Requiere: 8e430597-42b0-4075-a97c-917743c8fdd3@1.0.0 · `/mc mod activar \"942b5fa8-4e20-47cf-b71a-43df28e01b5a\"`\n• Peppa Maldita Addon: desactivado · comportamiento · v2.2.10 · Requiere: 0f9596b8-4df0-494b-9049-49c0320175d2@2.2.10 · `/mc mod activar \"4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca\"`\n• Peppa Maldita Addon: desactivado · recursos · v2.2.10 · Requiere: 4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca@2.2.10 · `/mc mod activar \"0f9596b8-4df0-494b-9049-49c0320175d2\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"RandS_Overgrown_Cities_0a4c4fe9\"`\n• RPG V0.7.1 BP: desactivado · comportamiento · v0.7.1 · Requiere: 9c7b3916-259b-434d-a06d-c524701b29bd@0.7.1 · `/mc mod activar \"9dbd96cc-ad61-47b1-9b43-c00bfcd9f191\"`\n• RPG V0.7.1 RP: desactivado · recursos · v0.7.1 · Requiere: 9dbd96cc-ad61-47b1-9b43-c00bfcd9f191@0.7.1 · `/mc mod activar \"9c7b3916-259b-434d-a06d-c524701b29bd\"`\n• Server Editor Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"bd153b33-db00-4da4-8a6f-293371711e97\"`\n• Skibidi Toilet Characters: desactivado · comportamiento · v0.0.1 · Requiere: 19dec373-6065-42e3-a692-2298a5eb282d@0.0.1 · `/mc mod activar \"f0338eba-f40b-4080-ba23-696ec40a8282\"`\n• Skibidi Toilet Characters: desactivado · recursos · v0.0.1 · Requiere: f0338eba-f40b-4080-ba23-696ec40a8282@0.0.1 · `/mc mod activar \"19dec373-6065-42e3-a692-2298a5eb282d\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · comportamiento · v2.1.0 · Requiere: a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154@2.1.0 · `/mc mod activar \"f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · recursos · v2.1.0 · Requiere: f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931@2.1.0 · `/mc mod activar \"a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154\"`\n• Vanilla Voxel Shapes: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0ffb286d-6ee3-4243-a640-b46898344a8e\"`\n• Villager Trade Rebalancing: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0127bd67-dc5b-45c2-8d5b-1d65876d5679\"`\n• §l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag): desactivado · comportamiento · v1.2.0 · Requiere: c148f8d5-cfc2-49cc-8405-e977a612a1e1@1.2.0 · `/mc mod activar \"87892df1-d216-43a4-9507-4433e4d85750\"`\n• §l§aRanzie's §4R-and-S Resources Pack 1.2.0: desactivado · recursos · v1.2.0 · `/mc mod activar \"ada14474-e05b-47f6-9f18-bb70288a990d\"`\n• §l§aRanzie's §4Rise & Survive 1.2.0: desactivado · comportamiento · v1.2.0 · Requiere: ada14474-e05b-47f6-9f18-bb70288a990d@1.2.0 · `/mc mod activar \"67a97188-7b20-46f0-9b4f-88a493c38b60\"`\n• §l§aRanzie's §6Visual Effects for §cRise&Survive: desactivado · recursos · v1.2.0 · `/mc mod activar \"c148f8d5-cfc2-49cc-8405-e977a612a1e1\"`\nCarga en juego: desconocida (el puente no la informa)."
+      }
+    },
+    {
+      "command": "/mc iniciar",
+      "state": "returned",
+      "receipt": "81606838931bb06f03a3be00e4941bf5",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "start",
+          "response": {
+            "action": "start",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft start:\n{\"status\": \"ok\", \"action\": \"start\"}"
+      }
+    },
+    {
+      "command": "/mc reiniciar",
+      "state": "returned",
+      "receipt": "9eeddf41100181a9d85ba61ba84ff755",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "restart",
+          "response": {
+            "action": "restart",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "El puente confirmó la solicitud de reinicio del servidor. Esto confirma solo la aceptación del puente; no la disponibilidad posterior ni la carga de mods."
+      }
+    },
+    {
+      "command": "/mc parar",
+      "state": "returned",
+      "receipt": "c79a6fbf328a2ca10d678c5365bb54c8",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "stop",
+          "response": {
+            "action": "stop",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft stop:\n{\"status\": \"ok\", \"action\": \"stop\"}"
+      }
+    },
+    {
+      "command": "/mc mod desactivar 6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+      "state": "returned",
+      "receipt": "20e9d0cdf55eb205a48e14d32af0a83c",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "disable_mod",
+          "response": {
+            "action": "disable_mod",
+            "changed": true,
+            "configured": false,
+            "loaded_known": false,
+            "name": "Botsky synthetic acceptance probe",
+            "pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+            "permissions_repaired": false,
+            "restart_required": true,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Desactivación de Botsky synthetic acceptance probe: cambió. Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+      }
+    },
+    {
+      "command": "/mc mods",
+      "state": "returned",
+      "receipt": "503a3e01a9a5c4263ec9b1785b9f3168",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "mods",
+          "response": {
+            "active_world": "Supervivencia",
+            "base_pack_count": 124,
+            "behavior": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              }
+            ],
+            "installed": [
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "Actions And Stuff 1.9",
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "loaded": null,
+                "name": "Better Foliage Addon BP",
+                "pack_id": "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                "pack_type": "behavior",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "b5feb5d2-78b5-4753-ac22-dd37f271b279",
+                    "version": [
+                      5,
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "pack_type": "resource",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "loaded": null,
+                "name": "Estruturas Mundiais",
+                "pack_id": "a29497f0-0f80-58dd-9685-9d73e3f66925",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Addon)",
+                "pack_id": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                "pack_type": "behavior",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [
+                  {
+                    "uuid": "e05afa0d-aa45-46bd-82d0-243c605d9737",
+                    "version": [
+                      9,
+                      4,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "pack_type": "resource",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Behaviour Pack]",
+                "pack_id": "89fdf763-42f1-435e-b8c0-3bf30ee56cdd",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": true,
+                "dependencies": [],
+                "folder": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_library",
+                "loaded": null,
+                "name": "@minecraft/server TS Library",
+                "pack_id": "37ca4282-69e9-4402-b40b-0b07de579f02",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_ui_library",
+                "loaded": null,
+                "name": "@minecraft/server-ui TS Library",
+                "pack_id": "f53f490f-9d47-45ca-86de-0946b6d1c366",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "botsky-probe-20261106T215232Z",
+                "loaded": null,
+                "name": "Botsky synthetic acceptance probe",
+                "pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0fba4063-dba1-4281-9b89-ff9390653530",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "6baf8b62-8948-4c99-bb1e-a0cb35dc4579",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry",
+                "loaded": null,
+                "name": "chemistry",
+                "pack_id": "0fba4063-dba1-4281-9b89-ff9390653530",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.50",
+                "loaded": null,
+                "name": "chemistry_1.20.50",
+                "pack_id": "91b9e624-dda6-43f3-a567-8025c53860b5",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  50
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "e977cd13-0a11-4618-96fb-03dfe9c43608",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.20.60",
+                "loaded": null,
+                "name": "chemistry_1.20.60",
+                "pack_id": "5017d347-e962-47c0-9ace-d377321afd23",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  20,
+                  60
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "85d5603d-2824-4b21-8044-34f441f4fce1",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.0",
+                "loaded": null,
+                "name": "chemistry_1.21.0",
+                "pack_id": "86b72e11-be78-4802-95cf-1dd70a46ee1f",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d19adffe-a2e1-4b02-8436-ca4583368c89",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.10",
+                "loaded": null,
+                "name": "chemistry_1.21.10",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4df0cb3-17be-4163-88d7-fcf7002b935d",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.20",
+                "loaded": null,
+                "name": "chemistry_1.21.20",
+                "pack_id": "34a4d6dd-3b78-48c8-88cd-ff6dfe36458c",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  20
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "b41c2785-c512-4a49-af56-3a87afd47c57",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.21.30",
+                "loaded": null,
+                "name": "chemistry_1.21.30",
+                "pack_id": "006c322a-5634-4591-8803-ef704ee5593a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  21,
+                  30
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "d34cfa4b-2ad1-453d-a0db-668b429a3ea0",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "chemistry_1.26.40",
+                "loaded": null,
+                "name": "chemistry_1.26.40",
+                "pack_id": "86b1dfd4-049f-465a-a62a-6bc196550499",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  26,
+                  40
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_y_2026_drop_4",
+                "loaded": null,
+                "name": "Drop 4 of 2026",
+                "pack_id": "463a758b-b207-41d2-88ed-50b4bc034e03",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_creator_cameras",
+                "loaded": null,
+                "name": "Experimental Creator Cameras",
+                "pack_id": "05112080-727b-4ed4-98d4-b099fc75f2be",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "8e430597-42b0-4075-a97c-917743c8fdd3",
+                    "version": [
+                      1,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "JennyModBeh_942b5fa8",
+                "loaded": null,
+                "name": "JennyModBeh",
+                "pack_id": "942b5fa8-4e20-47cf-b71a-43df28e01b5a",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_BP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca",
+                    "version": [
+                      2,
+                      2,
+                      10
+                    ]
+                  }
+                ],
+                "folder": "Peppa_Maldita_RP",
+                "loaded": null,
+                "name": "Peppa Maldita Addon",
+                "pack_id": "0f9596b8-4df0-494b-9049-49c0320175d2",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  2,
+                  10
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "RandS_Overgrown_Cities_0a4c4fe9",
+                "loaded": null,
+                "name": "R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE",
+                "pack_id": "0a4c4fe9-b385-4d89-89e9-18e299059701",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  3,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_BP_9dbd96cc",
+                "loaded": null,
+                "name": "RPG V0.7.1 BP",
+                "pack_id": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191",
+                    "version": [
+                      0,
+                      7,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "RPG_V0_7_1_RP_9c7b3916",
+                "loaded": null,
+                "name": "RPG V0.7.1 RP",
+                "pack_id": "9c7b3916-259b-434d-a06d-c524701b29bd",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "server_editor_library",
+                "loaded": null,
+                "name": "Server Editor Library",
+                "pack_id": "bd153b33-db00-4da4-8a6f-293371711e97",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "19dec373-6065-42e3-a692-2298a5eb282d",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_f0338eba",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f0338eba-f40b-4080-ba23-696ec40a8282",
+                    "version": [
+                      0,
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "folder": "Skibidi_Toilet_Characters_19dec373",
+                "loaded": null,
+                "name": "Skibidi Toilet Characters",
+                "pack_id": "19dec373-6065-42e3-a692-2298a5eb282d",
+                "pack_type": "resource",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__f3a8c21e",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                "pack_type": "behavior",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931",
+                    "version": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Twixxel_s_Stalkers__2_1_0__a4c9e6d2",
+                "loaded": null,
+                "name": "Twixxel's Stalkers [2.1.0]",
+                "pack_id": "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154",
+                "pack_type": "resource",
+                "version": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_vanilla_shapes",
+                "loaded": null,
+                "name": "Vanilla Voxel Shapes",
+                "pack_id": "0ffb286d-6ee3-4243-a640-b46898344a8e",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "experimental_villager_trade",
+                "loaded": null,
+                "name": "Villager Trade Rebalancing",
+                "pack_id": "0127bd67-dc5b-45c2-8d5b-1d65876d5679",
+                "pack_type": "behavior",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_Visuals_87892df1",
+                "loaded": null,
+                "name": "§l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag)",
+                "pack_id": "87892df1-d216-43a4-9507-4433e4d85750",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_RP_ada14474",
+                "loaded": null,
+                "name": "§l§aRanzie's §4R-and-S Resources Pack 1.2.0",
+                "pack_id": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [
+                  {
+                    "uuid": "ada14474-e05b-47f6-9f18-bb70288a990d",
+                    "version": [
+                      1,
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "folder": "Rise_And_Survive_BP_67a97188",
+                "loaded": null,
+                "name": "§l§aRanzie's §4Rise & Survive 1.2.0",
+                "pack_id": "67a97188-7b20-46f0-9b4f-88a493c38b60",
+                "pack_type": "behavior",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "active": false,
+                "dependencies": [],
+                "folder": "Rise_And_Survive_UI_c148f8d5",
+                "loaded": null,
+                "name": "§l§aRanzie's §6Visual Effects for §cRise&Survive",
+                "pack_id": "c148f8d5-cfc2-49cc-8405-e977a612a1e1",
+                "pack_type": "resource",
+                "version": [
+                  1,
+                  2,
+                  0
+                ]
+              }
+            ],
+            "installed_total": 43,
+            "installed_truncated": false,
+            "load_evidence": "current_startup_pack_stack_positive_only",
+            "loaded_known": false,
+            "resource": [
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Texture Pack NG",
+                "pack_id": "4148afa7-b1c1-4d29-9454-80a75ea73233",
+                "version": [
+                  2,
+                  9,
+                  3
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Simple Waystone v9.4 (Texture)",
+                "pack_id": "4d6ce949-1de7-41ec-87ab-3068434459a4",
+                "version": [
+                  9,
+                  4,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Billey's Mobs 5.3.0",
+                "pack_id": "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce",
+                "version": [
+                  5,
+                  3,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "§6Gravestones (V0.1.3) [Resource Pack]",
+                "pack_id": "9ff6715d-c84f-4f15-97ee-15c7c1a8b638",
+                "version": [
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Better Foliage Addon RP",
+                "pack_id": "3c512529-397a-4104-855d-4e08ceb9fff0",
+                "version": [
+                  1,
+                  5,
+                  0
+                ]
+              },
+              {
+                "configured": true,
+                "installed": true,
+                "loaded": null,
+                "name": "Actions And Stuff 1.9",
+                "pack_id": "2cf066eb-1254-4b7d-affb-80fe3216b18c",
+                "subpack": "2_e",
+                "version": [
+                  1,
+                  1,
+                  24
+                ]
+              }
+            ],
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Mods del servidor\nMundo: Supervivencia\nPaquetes base del servidor: 124 (omitidos del listado de mods).\n• Actions And Stuff 1.9: configurado · recursos · v1.1.24 · `/mc mod desactivar \"2cf066eb-1254-4b7d-affb-80fe3216b18c\"`\n• Better Foliage Addon BP: configurado · comportamiento · v1.5.0 · `/mc mod desactivar \"24f60c72-d8f6-477c-b2e4-eda1ecfeb07c\"`\n• Better Foliage Addon RP: configurado · recursos · v1.5.0 · `/mc mod desactivar \"3c512529-397a-4104-855d-4e08ceb9fff0\"`\n• Better Foliage Texture Pack NG: configurado · recursos · v2.9.3 · `/mc mod desactivar \"4148afa7-b1c1-4d29-9454-80a75ea73233\"`\n• Billey's Mobs 5.3.0: configurado · comportamiento · v5.3.0 · Requiere: bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce@5.3.0 · `/mc mod desactivar \"b5feb5d2-78b5-4753-ac22-dd37f271b279\"`\n• Billey's Mobs 5.3.0: configurado · recursos · v5.3.0 · Requiere: b5feb5d2-78b5-4753-ac22-dd37f271b279@5.3.0 · `/mc mod desactivar \"bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce\"`\n• Estruturas Mundiais: configurado · comportamiento · v1.2.1 · `/mc mod desactivar \"a29497f0-0f80-58dd-9685-9d73e3f66925\"`\n• Simple Waystone v9.4 (Addon): configurado · comportamiento · v9.4.0 · Requiere: 4d6ce949-1de7-41ec-87ab-3068434459a4@9.4.0 · `/mc mod desactivar \"e05afa0d-aa45-46bd-82d0-243c605d9737\"`\n• Simple Waystone v9.4 (Texture): configurado · recursos · v9.4.0 · Requiere: e05afa0d-aa45-46bd-82d0-243c605d9737@9.4.0 · `/mc mod desactivar \"4d6ce949-1de7-41ec-87ab-3068434459a4\"`\n• §6Gravestones (V0.1.3) [Behaviour Pack]: configurado · comportamiento · v0.0.1 · `/mc mod desactivar \"89fdf763-42f1-435e-b8c0-3bf30ee56cdd\"`\n• §6Gravestones (V0.1.3) [Resource Pack]: configurado · recursos · v0.0.1 · `/mc mod desactivar \"9ff6715d-c84f-4f15-97ee-15c7c1a8b638\"`\n• @minecraft/server TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"37ca4282-69e9-4402-b40b-0b07de579f02\"`\n• @minecraft/server-ui TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"f53f490f-9d47-45ca-86de-0946b6d1c366\"`\n• Botsky synthetic acceptance probe: desactivado · comportamiento · v1.0.0 · `/mc mod activar \"6f080c4d-a9b6-4683-ae0f-8ddf87051e7f\"`\n• chemistry: desactivado · comportamiento · v1.0.0 · Requiere: 0fba4063-dba1-4281-9b89-ff9390653530@1.0.0 · `/mc mod activar \"6baf8b62-8948-4c99-bb1e-a0cb35dc4579\"`\n• chemistry: desactivado · recursos · v1.0.0 · Requiere: 6baf8b62-8948-4c99-bb1e-a0cb35dc4579@1.0.0 · `/mc mod activar \"0fba4063-dba1-4281-9b89-ff9390653530\"`\n• chemistry_1.20.50: desactivado · comportamiento · v1.20.50 · Requiere: 0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed@1.0.0 · `/mc mod activar \"91b9e624-dda6-43f3-a567-8025c53860b5\"`\n• chemistry_1.20.60: desactivado · comportamiento · v1.20.60 · Requiere: e977cd13-0a11-4618-96fb-03dfe9c43608@1.0.0 · `/mc mod activar \"5017d347-e962-47c0-9ace-d377321afd23\"`\n• chemistry_1.21.0: desactivado · comportamiento · v1.21.0 · Requiere: 85d5603d-2824-4b21-8044-34f441f4fce1@1.0.0 · `/mc mod activar \"86b72e11-be78-4802-95cf-1dd70a46ee1f\"`\n• chemistry_1.21.10: desactivado · comportamiento · v1.21.10 · Requiere: d19adffe-a2e1-4b02-8436-ca4583368c89@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.10\"`\n• chemistry_1.21.20: desactivado · comportamiento · v1.21.20 · Requiere: a4df0cb3-17be-4163-88d7-fcf7002b935d@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar \"chemistry_1.21.20\"`\n• chemistry_1.21.30: desactivado · comportamiento · v1.21.30 · Requiere: b41c2785-c512-4a49-af56-3a87afd47c57@1.0.0 · `/mc mod activar \"006c322a-5634-4591-8803-ef704ee5593a\"`\n• chemistry_1.26.40: desactivado · comportamiento · v1.26.40 · Requiere: d34cfa4b-2ad1-453d-a0db-668b429a3ea0@1.0.0 · `/mc mod activar \"86b1dfd4-049f-465a-a62a-6bc196550499\"`\n• Drop 4 of 2026: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"463a758b-b207-41d2-88ed-50b4bc034e03\"`\n• Experimental Creator Cameras: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"05112080-727b-4ed4-98d4-b099fc75f2be\"`\n• JennyModBeh: desactivado · comportamiento · v1.0.0 · Requiere: 8e430597-42b0-4075-a97c-917743c8fdd3@1.0.0 · `/mc mod activar \"942b5fa8-4e20-47cf-b71a-43df28e01b5a\"`\n• Peppa Maldita Addon: desactivado · comportamiento · v2.2.10 · Requiere: 0f9596b8-4df0-494b-9049-49c0320175d2@2.2.10 · `/mc mod activar \"4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca\"`\n• Peppa Maldita Addon: desactivado · recursos · v2.2.10 · Requiere: 4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca@2.2.10 · `/mc mod activar \"0f9596b8-4df0-494b-9049-49c0320175d2\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704\"`\n• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar \"RandS_Overgrown_Cities_0a4c4fe9\"`\n• RPG V0.7.1 BP: desactivado · comportamiento · v0.7.1 · Requiere: 9c7b3916-259b-434d-a06d-c524701b29bd@0.7.1 · `/mc mod activar \"9dbd96cc-ad61-47b1-9b43-c00bfcd9f191\"`\n• RPG V0.7.1 RP: desactivado · recursos · v0.7.1 · Requiere: 9dbd96cc-ad61-47b1-9b43-c00bfcd9f191@0.7.1 · `/mc mod activar \"9c7b3916-259b-434d-a06d-c524701b29bd\"`\n• Server Editor Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"bd153b33-db00-4da4-8a6f-293371711e97\"`\n• Skibidi Toilet Characters: desactivado · comportamiento · v0.0.1 · Requiere: 19dec373-6065-42e3-a692-2298a5eb282d@0.0.1 · `/mc mod activar \"f0338eba-f40b-4080-ba23-696ec40a8282\"`\n• Skibidi Toilet Characters: desactivado · recursos · v0.0.1 · Requiere: f0338eba-f40b-4080-ba23-696ec40a8282@0.0.1 · `/mc mod activar \"19dec373-6065-42e3-a692-2298a5eb282d\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · comportamiento · v2.1.0 · Requiere: a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154@2.1.0 · `/mc mod activar \"f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931\"`\n• Twixxel's Stalkers [2.1.0]: desactivado · recursos · v2.1.0 · Requiere: f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931@2.1.0 · `/mc mod activar \"a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154\"`\n• Vanilla Voxel Shapes: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0ffb286d-6ee3-4243-a640-b46898344a8e\"`\n• Villager Trade Rebalancing: desactivado · comportamiento · v0.0.1 · `/mc mod activar \"0127bd67-dc5b-45c2-8d5b-1d65876d5679\"`\n• §l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag): desactivado · comportamiento · v1.2.0 · Requiere: c148f8d5-cfc2-49cc-8405-e977a612a1e1@1.2.0 · `/mc mod activar \"87892df1-d216-43a4-9507-4433e4d85750\"`\n• §l§aRanzie's §4R-and-S Resources Pack 1.2.0: desactivado · recursos · v1.2.0 · `/mc mod activar \"ada14474-e05b-47f6-9f18-bb70288a990d\"`\n• §l§aRanzie's §4Rise & Survive 1.2.0: desactivado · comportamiento · v1.2.0 · Requiere: ada14474-e05b-47f6-9f18-bb70288a990d@1.2.0 · `/mc mod activar \"67a97188-7b20-46f0-9b4f-88a493c38b60\"`\n• §l§aRanzie's §6Visual Effects for §cRise&Survive: desactivado · recursos · v1.2.0 · `/mc mod activar \"c148f8d5-cfc2-49cc-8405-e977a612a1e1\"`\nCarga en juego: desconocida (el puente no la informa)."
+      }
+    }
+  ],
+  "checks": {
+    "worker_sha256": "b693799ad6ad85df35c240d7a4db9f223b96028f3f7665d9aa8cb4b301e8a7bc",
+    "original_sha256": "db5d4aa39d0e5fdeb7f22b60891203880198923df3eaea77a410cf6026896e5f",
+    "fixture_load_observed": true,
+    "function_execution_confirmed": true,
+    "game_confirmation": "Successfully executed 1 function entries.",
+    "restart_observed": true,
+    "enable_disable_verified": true,
+    "configuration_restored_exactly": true,
+    "fixture_removed": true,
+    "recovery_start": {
+      "status": "ok",
+      "action": "start"
+    },
+    "online_restored": true,
+    "world_unchanged": true
+  },
+  "fixture_pack_id": "6f080c4d-a9b6-4683-ae0f-8ddf87051e7f",
+  "fixture_function": "botsky_probe_a4e82c786c0e48e694b1a42ca2f42f4d",
+  "oracle": "unique installed function executes list; game reports one executed function entry; zero players independently verified",
+  "scope": "real Bedrock; own synthetic pack; simulated owner; no WhatsApp sends"
+}

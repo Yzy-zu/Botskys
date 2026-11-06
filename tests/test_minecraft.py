@@ -199,3 +199,20 @@ class MinecraftTest(IsolatedAsyncioTestCase):
         self.assertEqual(self.result(receipt).code, "minecraft_completed")
         self.assertEqual(self.calls[-1][1]["action"], "disable_mod")
         self.assertEqual(self.calls[-1][1]["params"], {"name": "Nombre sintético"})
+
+    async def test_mod_rejection_is_actionable_and_does_not_lock_next_change(self):
+        self.outcome = {
+            "status": "needs_input",
+            "dispatched": False,
+            "code": "pack_dependency_not_configured",
+        }
+        receipt = self.receive('/mc mod activar "fixture"')
+        await self.app.jobs.run_pending()
+        result = self.result(receipt)
+        self.assertEqual(result.status, "needs_input")
+        self.assertIn("dependencia", result.text)
+        self.assertEqual(self.rows("SELECT state FROM external_operations")[0]["state"], "failed")
+        self.outcome = {"status": "ok", "name": "fixture", "changed": True}
+        receipt = self.receive('/mc mod activar "dependency"')
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt).status, "ok")

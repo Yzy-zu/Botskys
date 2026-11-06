@@ -1,0 +1,16 @@
+{
+  "worker_sha256": "80c6de8698bec4000cdae0e384e52a6f37e6b562bb12c9a9230fe49c643f2024",
+  "real_billey_pair_plan_only_count": 2,
+  "real_billey_not_mutated": true,
+  "configured_behavior": 5,
+  "configured_resource": 6,
+  "observed_behavior": 5,
+  "custom_packs": 42,
+  "base_packs": 124,
+  "operational_writes": {
+    "drive": false,
+    "groups": false,
+    "minecraft": false
+  },
+  "fixture_present": false
+}

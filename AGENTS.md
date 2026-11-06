@@ -123,3 +123,11 @@ El propietario encargó ampliar respaldo y comprobarlo realmente. Autoriza worke
 propio remoto separado y referencia privada propia, sin sustituir workerZhana.
 Parada/backup/arranque bajo estado verificado y evidencia; límites50GiB/20min.
 Cuota5% y exclusiones de transición/NLP/perfiles/GitHub siguen vigentes.
+
+## 06/11 · Continuación del punto4, mods y presentación
+
+El propietario encargó proseguir especialmente mods: funcionamiento real y salida
+clara al usuario. Continúan los permisos acotados anteriores para el Minecraft
+configurado y fixtures propios, con restauración y recibos. No habilita transición,
+servicios Botsky/Zhana, llamadas/navegador, perfiles, NLP o GitHub. Conservar fallos
+nativos y oracles fallidos separados; una aceptación Docker no certifica el juego.

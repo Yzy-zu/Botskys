@@ -1,0 +1,58 @@
+{
+  "full_suite_before_game_readiness_guard": {
+    "tests": 244,
+    "result": "PASS"
+  },
+  "final_focal_with_readiness_guard": {
+    "tests": 24,
+    "result": "PASS"
+  },
+  "ruff_check": "PASS",
+  "ruff_format_files": 142,
+  "diff_check": "PASS",
+  "quota_remaining": {
+    "primary": 79,
+    "weekly": 33
+  },
+  "labs": [
+    {
+      "run": "mods-p4-20261106T214615Z",
+      "active_jobs": 0,
+      "pending_outbox": 0,
+      "integrity": "ok",
+      "closed": true
+    },
+    {
+      "run": "mods-p4-20261106T214844Z",
+      "active_jobs": 0,
+      "pending_outbox": 0,
+      "integrity": "ok",
+      "closed": true
+    },
+    {
+      "run": "mods-p4-20261106T215109Z",
+      "active_jobs": 0,
+      "pending_outbox": 0,
+      "integrity": "ok",
+      "closed": true
+    },
+    {
+      "run": "mods-p4-20261106T215232Z",
+      "active_jobs": 0,
+      "pending_outbox": 0,
+      "integrity": "ok",
+      "closed": true
+    },
+    {
+      "run": "mods-p4-20261106T215619Z",
+      "active_jobs": 0,
+      "pending_outbox": 0,
+      "integrity": "ok",
+      "closed": true
+    }
+  ],
+  "native_pair_restart": "FAIL; restored separately; not retried",
+  "individual_restart": "PASS",
+  "real_pair_enable_disable": "PASS",
+  "global_point4": "PARTIAL"
+}

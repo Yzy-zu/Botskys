@@ -1,0 +1,46 @@
+Mods del servidor
+Mundo: Supervivencia
+Paquetes base del servidor: 124 (omitidos del listado de mods).
+• Actions And Stuff 1.9: configurado · recursos · v1.1.24 · `/mc mod desactivar "2cf066eb-1254-4b7d-affb-80fe3216b18c"`
+• Better Foliage Addon BP: configurado · comportamiento · v1.5.0 · carga observada · `/mc mod desactivar "24f60c72-d8f6-477c-b2e4-eda1ecfeb07c"`
+• Better Foliage Addon RP: configurado · recursos · v1.5.0 · `/mc mod desactivar "3c512529-397a-4104-855d-4e08ceb9fff0"`
+• Better Foliage Texture Pack NG: configurado · recursos · v2.9.3 · `/mc mod desactivar "4148afa7-b1c1-4d29-9454-80a75ea73233"`
+• Billey's Mobs 5.3.0: configurado · comportamiento · v5.3.0 · carga observada · Requiere: bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce@5.3.0 · `/mc mod desactivar "b5feb5d2-78b5-4753-ac22-dd37f271b279"`
+• Billey's Mobs 5.3.0: configurado · recursos · v5.3.0 · Requiere: b5feb5d2-78b5-4753-ac22-dd37f271b279@5.3.0 · `/mc mod desactivar "bd3853a7-d812-4c65-ab9c-e5b0a4b3fbce"`
+• Estruturas Mundiais: configurado · comportamiento · v1.2.1 · carga observada · `/mc mod desactivar "a29497f0-0f80-58dd-9685-9d73e3f66925"`
+• Simple Waystone v9.4 (Addon): configurado · comportamiento · v9.4.0 · carga observada · Requiere: 4d6ce949-1de7-41ec-87ab-3068434459a4@9.4.0 · `/mc mod desactivar "e05afa0d-aa45-46bd-82d0-243c605d9737"`
+• Simple Waystone v9.4 (Texture): configurado · recursos · v9.4.0 · Requiere: e05afa0d-aa45-46bd-82d0-243c605d9737@9.4.0 · `/mc mod desactivar "4d6ce949-1de7-41ec-87ab-3068434459a4"`
+• §6Gravestones (V0.1.3) [Behaviour Pack]: configurado · comportamiento · v0.0.1 · carga observada · `/mc mod desactivar "89fdf763-42f1-435e-b8c0-3bf30ee56cdd"`
+• §6Gravestones (V0.1.3) [Resource Pack]: configurado · recursos · v0.0.1 · `/mc mod desactivar "9ff6715d-c84f-4f15-97ee-15c7c1a8b638"`
+• @minecraft/server TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar "37ca4282-69e9-4402-b40b-0b07de579f02"`
+• @minecraft/server-ui TS Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar "f53f490f-9d47-45ca-86de-0946b6d1c366"`
+• chemistry: desactivado · comportamiento · v1.0.0 · Requiere: 0fba4063-dba1-4281-9b89-ff9390653530@1.0.0 · `/mc mod activar "6baf8b62-8948-4c99-bb1e-a0cb35dc4579"`
+• chemistry: desactivado · recursos · v1.0.0 · Requiere: 6baf8b62-8948-4c99-bb1e-a0cb35dc4579@1.0.0 · `/mc mod activar "0fba4063-dba1-4281-9b89-ff9390653530"`
+• chemistry_1.20.50: desactivado · comportamiento · v1.20.50 · Requiere: 0674721c-a0aa-41a1-9ba8-1ed33ea3e7ed@1.0.0 · `/mc mod activar "91b9e624-dda6-43f3-a567-8025c53860b5"`
+• chemistry_1.20.60: desactivado · comportamiento · v1.20.60 · Requiere: e977cd13-0a11-4618-96fb-03dfe9c43608@1.0.0 · `/mc mod activar "5017d347-e962-47c0-9ace-d377321afd23"`
+• chemistry_1.21.0: desactivado · comportamiento · v1.21.0 · Requiere: 85d5603d-2824-4b21-8044-34f441f4fce1@1.0.0 · `/mc mod activar "86b72e11-be78-4802-95cf-1dd70a46ee1f"`
+• chemistry_1.21.10: desactivado · comportamiento · v1.21.10 · Requiere: d19adffe-a2e1-4b02-8436-ca4583368c89@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar "chemistry_1.21.10"`
+• chemistry_1.21.20: desactivado · comportamiento · v1.21.20 · Requiere: a4df0cb3-17be-4163-88d7-fcf7002b935d@1.0.0 · UUID repetido; selector por carpeta · `/mc mod activar "chemistry_1.21.20"`
+• chemistry_1.21.30: desactivado · comportamiento · v1.21.30 · Requiere: b41c2785-c512-4a49-af56-3a87afd47c57@1.0.0 · `/mc mod activar "006c322a-5634-4591-8803-ef704ee5593a"`
+• chemistry_1.26.40: desactivado · comportamiento · v1.26.40 · Requiere: d34cfa4b-2ad1-453d-a0db-668b429a3ea0@1.0.0 · `/mc mod activar "86b1dfd4-049f-465a-a62a-6bc196550499"`
+• Drop 4 of 2026: desactivado · comportamiento · v0.0.1 · `/mc mod activar "463a758b-b207-41d2-88ed-50b4bc034e03"`
+• Experimental Creator Cameras: desactivado · comportamiento · v0.0.1 · `/mc mod activar "05112080-727b-4ed4-98d4-b099fc75f2be"`
+• JennyModBeh: desactivado · comportamiento · v1.0.0 · Requiere: 8e430597-42b0-4075-a97c-917743c8fdd3@1.0.0 · `/mc mod activar "942b5fa8-4e20-47cf-b71a-43df28e01b5a"`
+• Peppa Maldita Addon: desactivado · comportamiento · v2.2.10 · Requiere: 0f9596b8-4df0-494b-9049-49c0320175d2@2.2.10 · `/mc mod activar "4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca"`
+• Peppa Maldita Addon: desactivado · recursos · v2.2.10 · Requiere: 4fa2d72e-4edb-4569-ba2d-1b8e84d2b7ca@2.2.10 · `/mc mod activar "0f9596b8-4df0-494b-9049-49c0320175d2"`
+• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar "R_S_Overgrown_Cities_1_3_-_EAC__Aplok__TacZBE_1788301259704"`
+• R&S Overgrown Cities 1.3 - EAC, Aplok, TacZBE: desactivado · comportamiento · v1.3.0 · UUID repetido; selector por carpeta · `/mc mod activar "RandS_Overgrown_Cities_0a4c4fe9"`
+• RPG V0.7.1 BP: desactivado · comportamiento · v0.7.1 · Requiere: 9c7b3916-259b-434d-a06d-c524701b29bd@0.7.1 · `/mc mod activar "9dbd96cc-ad61-47b1-9b43-c00bfcd9f191"`
+• RPG V0.7.1 RP: desactivado · recursos · v0.7.1 · Requiere: 9dbd96cc-ad61-47b1-9b43-c00bfcd9f191@0.7.1 · `/mc mod activar "9c7b3916-259b-434d-a06d-c524701b29bd"`
+• Server Editor Library: desactivado · comportamiento · v0.0.1 · `/mc mod activar "bd153b33-db00-4da4-8a6f-293371711e97"`
+• Skibidi Toilet Characters: desactivado · comportamiento · v0.0.1 · Requiere: 19dec373-6065-42e3-a692-2298a5eb282d@0.0.1 · `/mc mod activar "f0338eba-f40b-4080-ba23-696ec40a8282"`
+• Skibidi Toilet Characters: desactivado · recursos · v0.0.1 · Requiere: f0338eba-f40b-4080-ba23-696ec40a8282@0.0.1 · `/mc mod activar "19dec373-6065-42e3-a692-2298a5eb282d"`
+• Twixxel's Stalkers [2.1.0]: desactivado · comportamiento · v2.1.0 · Requiere: a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154@2.1.0 · `/mc mod activar "f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931"`
+• Twixxel's Stalkers [2.1.0]: desactivado · recursos · v2.1.0 · Requiere: f3a8c21e-9b4d-4e7f-a1c6-8d2e5f704931@2.1.0 · `/mc mod activar "a4c9e6d2-1f8b-4a5c-b7e3-9d0f2a8c6154"`
+• Vanilla Voxel Shapes: desactivado · comportamiento · v0.0.1 · `/mc mod activar "0ffb286d-6ee3-4243-a640-b46898344a8e"`
+• Villager Trade Rebalancing: desactivado · comportamiento · v0.0.1 · `/mc mod activar "0127bd67-dc5b-45c2-8d5b-1d65876d5679"`
+• §l§aRanzie's Visual Effects for §cRise&Survive 1.2 (Might cause lag): desactivado · comportamiento · v1.2.0 · Requiere: c148f8d5-cfc2-49cc-8405-e977a612a1e1@1.2.0 · `/mc mod activar "87892df1-d216-43a4-9507-4433e4d85750"`
+• §l§aRanzie's §4R-and-S Resources Pack 1.2.0: desactivado · recursos · v1.2.0 · `/mc mod activar "ada14474-e05b-47f6-9f18-bb70288a990d"`
+• §l§aRanzie's §4Rise & Survive 1.2.0: desactivado · comportamiento · v1.2.0 · Requiere: ada14474-e05b-47f6-9f18-bb70288a990d@1.2.0 · `/mc mod activar "67a97188-7b20-46f0-9b4f-88a493c38b60"`
+• §l§aRanzie's §6Visual Effects for §cRise&Survive: desactivado · recursos · v1.2.0 · `/mc mod activar "c148f8d5-cfc2-49cc-8405-e977a612a1e1"`
+Carga en juego: observada en los paquetes indicados; el resto sigue sin confirmar.
