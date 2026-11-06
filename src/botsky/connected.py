@@ -1,8 +1,9 @@
-"""Entrada local optativa con proveedores explícitos. No webhook, browser ni env heredado."""
+"""Entradas de operador y proceso continuo con configuración propia explícita."""
 
 import argparse
 import asyncio
 import json
+import signal
 from pathlib import Path
 
 from .adapters.local import LocalAdapter, clock_ms
@@ -26,12 +27,35 @@ async def run(args):
                         "messenger": app.messenger.available,
                         "groups": app.groups.available,
                         "minecraft": app.minecraft is not None,
-                        "calls": False,
-                        "incoming_transport": False,
+                        "calls": app.calls is not None,
+                        "calls_configured": providers.profile.get("call_service", {}).get(
+                            "enabled", False
+                        ),
+                        "incoming_transport_configured": settings.transport == "evolution"
+                        and "runtime" in providers.profile,
+                        "incoming_transport_running": False,
                         "mutations_enabled": providers.profile.get("mutations_enabled", False),
                     }
                 )
             )
+        elif args.action == "serve":
+            from .runtime import Runtime
+
+            runtime = Runtime(app, providers.profile, providers.http, services=providers)
+            stop = asyncio.Event()
+            loop = asyncio.get_running_loop()
+            for sig in (signal.SIGTERM, signal.SIGINT):
+                loop.add_signal_handler(sig, stop.set)
+            try:
+                await runtime.run(
+                    stop,
+                    on_ready=lambda port: print(
+                        json.dumps({"ready": True, "host": "127.0.0.1", "port": port}), flush=True
+                    ),
+                )
+            finally:
+                for sig in (signal.SIGTERM, signal.SIGINT):
+                    loop.remove_signal_handler(sig)
         elif args.action == "work":
             print(json.dumps({"processed": await app.jobs.run_pending()}))
         else:
@@ -59,6 +83,9 @@ def main():
     sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("status")
     sub.add_parser("work")
+    sub.add_parser(
+        "serve", help="proceso continuo propio; requiere configuración runtime explícita"
+    )
     local = sub.add_parser("local")
     local.add_argument("text")
     local.add_argument("--id", default="operator-" + str(clock_ms()))

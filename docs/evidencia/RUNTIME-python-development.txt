@@ -1,0 +1,69 @@
+test_crash_after_media_admission_reuses_attachments (test_runtime.RuntimeTest.test_crash_after_media_admission_reuses_attachments) ... ok
+test_durable_enqueue_restart_duplicate_and_changed_payload (test_runtime.RuntimeTest.test_durable_enqueue_restart_duplicate_and_changed_payload) ... ok
+test_http_auth_limits_durable_ack_and_continuous_shutdown (test_runtime.RuntimeTest.test_http_auth_limits_durable_ack_and_continuous_shutdown) ... ok
+test_media_error_reports_without_executing_command (test_runtime.RuntimeTest.test_media_error_reports_without_executing_command) ... ok
+test_media_quote_ownership_and_real_pdf_delivered (test_runtime.RuntimeTest.test_media_quote_ownership_and_real_pdf_delivered) ... ok
+test_normalization_aliases_ambiguity_mentions_wrappers_and_cutoff (test_runtime.RuntimeTest.test_normalization_aliases_ambiguity_mentions_wrappers_and_cutoff) ... ok
+test_partial_uncertainty_does_not_starve_other_receipts (test_runtime.RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts) ... Executing <Task finished name='Task-64' coro=<RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts() done, defined at /home/petrov/botsky/tests/test_runtime.py:398> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.411 seconds
+ok
+test_rejected_ack_and_disabled_delivery_have_no_retry (test_runtime.RuntimeTest.test_rejected_ack_and_disabled_delivery_have_no_retry) ... ok
+test_runtime_scheduler_notices_and_failure_stop_other_loops (test_runtime.RuntimeTest.test_runtime_scheduler_notices_and_failure_stop_other_loops) ... ok
+test_sticker_uses_native_endpoint_and_scoped_output (test_runtime.RuntimeTest.test_sticker_uses_native_endpoint_and_scoped_output) ... ok
+test_stopping_runtime_cleans_incomplete_http_connections (test_runtime.RuntimeTest.test_stopping_runtime_cleans_incomplete_http_connections) ... ERROR
+test_stopping_runtime_cleans_incomplete_http_connections (test_runtime.RuntimeTest.test_stopping_runtime_cleans_incomplete_http_connections) ... ERROR
+test_uncertain_ack_cancel_and_restart_never_repeat_send (test_runtime.RuntimeTest.test_uncertain_ack_cancel_and_restart_never_repeat_send) ... ok
+
+======================================================================
+ERROR: test_stopping_runtime_cleans_incomplete_http_connections (test_runtime.RuntimeTest.test_stopping_runtime_cleans_incomplete_http_connections)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/petrov/botsky/src/botsky/runtime.py", line 264, in run
+    await self.webhook.close()
+  File "/home/petrov/botsky/src/botsky/runtime.py", line 85, in close
+    await self.server.wait_closed()
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 414, in wait_closed
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_runtime.py", line 435, in test_stopping_runtime_cleans_incomplete_http_connections
+    await asyncio.wait_for(task, 3)
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 487, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/timeouts.py", line 114, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+======================================================================
+ERROR: test_stopping_runtime_cleans_incomplete_http_connections (test_runtime.RuntimeTest.test_stopping_runtime_cleans_incomplete_http_connections)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_runtime.py", line 350, in stop_runtime
+    await asyncio.wait_for(running, 3)
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 488, in wait_for
+    return await fut
+           ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+----------------------------------------------------------------------
+Ran 12 tests in 4.710s
+
+FAILED (errors=2)

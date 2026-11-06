@@ -1,0 +1,8 @@
+test_external_client_injected_revision_checked_without_call_dispatch (test_call_service_composition.CallCompositionTest.test_external_client_injected_revision_checked_without_call_dispatch) ... ok
+test_owned_process_ready_pipe_cleanup_and_bad_revision (test_call_service_composition.CallCompositionTest.test_owned_process_ready_pipe_cleanup_and_bad_revision) ... ok
+test_wrong_policy_and_managed_browser_permission_fail_closed (test_call_service_composition.CallCompositionTest.test_wrong_policy_and_managed_browser_permission_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.091s
+
+OK

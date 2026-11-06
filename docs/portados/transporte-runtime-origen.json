@@ -1,0 +1,27 @@
+{
+  "source_revision": "b3c16ace14bffa1db04a85651cbb3885c4773685",
+  "source_files": [
+    {
+      "path": "src/zhana/inbox.py",
+      "sha256": "d2c8efe59813754392f5dc62845bc9651adad7c62d5ed3274f116927106acaee"
+    },
+    {
+      "path": "src/zhana/media_stream.py",
+      "sha256": "346633dbd2ea17e3cbf454dcc66dab62724e7ce32dc0194ba2bcc663a5d03adb"
+    },
+    {
+      "path": "src/zhana/providers/evolution.py",
+      "sha256": "48f1708b3dcdd51b3fa85d19914a29a4c24a433684f9d3836bcb57a7071c9366"
+    },
+    {
+      "path": "calls/service/main.cjs",
+      "sha256": "2e93c25f3c317064bef1e03a2248c8a4ddbedd427de7090584c0d0e699203a12"
+    }
+  ],
+  "scope": "Technical reference only; no source runtime/config/services imported or started",
+  "copies": {
+    "src/botsky/engines/media_stream.py": "adapted incremental base64 codec; outbound field selectable",
+    "src/botsky/adapters/evolution_normalize.py": "adapted technical helpers and identity handling; own contracts, no conversational routing",
+    "calls/main.cjs": "own explicit composition using existing ported runtime/driver"
+  }
+}

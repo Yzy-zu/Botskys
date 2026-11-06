@@ -1,6 +1,6 @@
 """Composición optativa con secretos propios importados por encargo explícito.
 
-No lee Zhana, entorno global, DB ajena ni sesiones; no inicia transporte o llamadas.
+No lee Zhana, entorno global, DB ajena ni sesiones. Servicios solo al invocar serve.
 """
 
 import json
@@ -10,6 +10,7 @@ from pathlib import Path
 
 import httpx
 
+from .adapters.calls import CallsClient
 from .adapters.downloads import NetworkDownloads
 from .adapters.drive import DriveClient
 from .adapters.gemini import GeminiContent
@@ -46,6 +47,7 @@ def read_profile(path):
         "drive",
         "call_service",
         "mutations_enabled",
+        "runtime",
     }
     if (
         not isinstance(value, dict)
@@ -63,6 +65,20 @@ def read_profile(path):
         isinstance(v, str) and v.strip() for v in value["gemini"].values()
     ):
         raise ValueError("single_explicit_gemini_required")
+    for key in ("live", "call_service", "runtime"):
+        if key in value and not isinstance(value[key], dict):
+            raise ValueError("integration_profile_invalid")
+    if "live" in value and (
+        set(value["live"]) != {"key", "model"}
+        or not all(isinstance(v, str) and v.strip() for v in value["live"].values())
+    ):
+        raise ValueError("single_explicit_live_required")
+    for block, keys in (
+        (value["evolution"], ("delivery_enabled",)),
+        (value.get("call_service", {}), ("enabled", "allow_browser_launch", "agenda_timers")),
+    ):
+        if any(k in block and type(block[k]) is not bool for k in keys):
+            raise ValueError("integration_profile_invalid")
     return value
 
 
@@ -90,6 +106,7 @@ class Integrations:
         self.http = http or httpx.AsyncClient(trust_env=False, follow_redirects=False, timeout=20)
         self._owned_http = http is None
         self.app = None
+        self.call_process = None
 
     async def __aenter__(self):
         p = self.profile
@@ -150,15 +167,64 @@ class Integrations:
                 minecraft=minecraft,
                 downloads=NetworkDownloads(**p.get("downloads", {})),
                 web=NetworkWeb(**p.get("web", {})),
+                calls=self.calls_client(),
             )
             return self.app
         except BaseException:
             await self.aclose()
             raise
 
+    def calls_client(self, base_url=None):
+        c = self.profile.get("call_service", {})
+        if c.get("enabled", False) is not True:
+            return None
+        if set(c) - {
+            "enabled",
+            "mode",
+            "base_url",
+            "token",
+            "port",
+            "executable",
+            "allow_browser_launch",
+            "agenda_timers",
+        } or c.get("mode", "external") not in ("external", "managed"):
+            raise ValueError("call_service_configuration_invalid")
+        if self.settings.calls is None or self.settings.transport != "evolution":
+            raise ValueError("call_policy_required")
+        if c.get("mode") == "managed" and base_url is None:
+            return None  # starting services is reserved to the explicit serve command
+        return CallsClient(
+            self.http,
+            base_url or c.get("base_url", ""),
+            c.get("token", ""),
+            self.settings.calls.revision,
+            self.settings.calls.targets,
+        )
+
+    async def start_calls(self):
+        c = self.profile.get("call_service", {})
+        if c.get("enabled") is not True:
+            return
+        if c.get("mode") == "managed":
+            from .call_service import ManagedCalls
+
+            self.call_process = ManagedCalls(self.settings, c, self.profile.get("live"))
+            self.app.calls = self.calls_client(await self.call_process.start())
+        status = await self.app.calls.status()
+        health = await self.app.calls.health()
+        if (
+            status.get("policyRevision") != self.settings.calls.revision
+            or health.get("ready") is not True
+        ):
+            raise ValueError("call_service_not_ready")
+
     async def aclose(self):
-        if self._owned_http:
-            await self.http.aclose()
+        try:
+            if self.call_process:
+                await self.call_process.close()
+        finally:
+            if self._owned_http:
+                await self.http.aclose()
 
     async def __aexit__(self, *args):
         await self.aclose()

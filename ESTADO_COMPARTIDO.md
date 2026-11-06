@@ -1,5 +1,47 @@
 # Relevo Botsky
 
+## 06/11/2026 15:23 UTC · Programados puntos 1, 2 y 3; transporte/proceso/servicio AV
+
+Encargo posterior del propietario para implementar WhatsApp, proceso continuo y
+unión del servicio de llamadas. Rebuildbotsky vigente; no ejecución de otros planes.
+Transporte Evolution propio: normalización de identidad/contexto/citas/menciones,
+recibo durable antes de HTTP202, cola128, frescura/corte/época, medios incrementales
+por API autenticada y referencias propias. Entrega asíncrona por partes con CAS,
+leases y ACK/uncertidumbre; no repite envíos inciertos ni bloquea otros encargos.
+SQLite propia18; historial de construcción y evidencias previos conservados.
+
+Proceso serve optativo con HTTP autenticado solo loopback y límites. Bucles de texto,
+medios, jobs, scheduler/avisos y GC; un medio lento no retiene comandos de otros chats.
+Exclusión propia, reinicio, SIGTERM/SIGINT, cierre de conexiones incompletas y
+cancelación durante arranque AV. Plantilla systemd preparada sin instalar/activar.
+
+Integrations inyecta CallsClient con política verificada; modo externo propio o
+subproceso Node administrado por pipe secreto/ready/revisión y supervisión. Main
+Node propio compone runtime/driver/Live/componentes portados; verifica cuenta,
+inicia runtime dentro del lock antes de driver y libera recursos ante fallos.
+Navegador/entrantes/vinculación cerrados por defecto. IA no decide comandos; sin NLP.
+
+188Python regresión completa PASS, cero intentos fuera de loopback. Focales finales
+14runtime+3composición+1CLI real PASS incluyen tres métodos adicionales:191distintos.
+282Node completos PASS +4focales (uno nuevo):283distintos verificados. Ruff/format,
+pipcheck, diffcheck, SQLite18/integrityok y hashes de cuatro fuentes consultadas
+sin cambios. Fallos/oracles de desarrollo y primer timeout de clip bajo carga
+paralela conservados; regresión Python repetida sin esa carga pasa sin ampliar5s.
+Ver docs/RUNTIME.md, ficha portados/transporte-runtime.md y evidencia RUNTIME.json.
+
+Configuración propia0600 prepara tokens independientes y policy de llamadas para
+dueño, sin grupos/features. Copias previas guardadas mecánicamente. Se conservan
+transporte local, corte previo y ubicación de DB/artefactos; delivery/scheduler/
+notices/call_service/allow_browser_launch/agenda_timers false. Estado local CLI
+verificado; no arranca servicios ni proveedores. No webhook del proveedor cambiado,
+ningún envío/llamada real, navegador, transición, GitHub o instalación activa tocados.
+Zhana/DB31/perfiles/datos y cambios anteriores intactos; aquí solo construcción propia.
+
+Puntos 1–3 cerrados a nivel programación/integración LOCAL. R10 remoto/R11 abiertos;
+recepción WhatsApp/Android humana y activación necesitan encargo posterior. Galería,
+VRM/licencias y permisos operativos restantes mantienen pendientes de producto previos.
+Última cuota74%primaria/81%semanal; al5%guardar y parar sin reanudación automática.
+
 ## 06/11/2026 10:41 UTC · Punto1: credenciales válidas e integraciones propias
 
 Permiso expreso posterior para leer/reutilizar credenciales/env Zhana, validar e

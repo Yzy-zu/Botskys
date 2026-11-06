@@ -75,8 +75,8 @@ class Settings:
                 not isinstance(v, str) or not v.strip() or v == "*" for v in values
             ):
                 raise ValueError(f"{key} requiere lista explícita de identidades")
-        if data.get("transport", "local") != "local":
-            raise ValueError("Transporte real todavía no habilitado.")
+        if data.get("transport", "local") not in ("local", "evolution"):
+            raise ValueError("transporte desconocido")
         zone = data.get("timezone", "America/Mexico_City")
         if zone != "America/Mexico_City":
             raise ValueError("zona v1 requerida: America/Mexico_City")
@@ -100,6 +100,7 @@ class Settings:
             zone,
             data.get("max_age_seconds", 300),
             data.get("max_future_seconds", 30),
+            transport=data.get("transport", "local"),
             bot_ids=frozenset(data.get("bot_ids", ["botsky-local"])),
         )
         if "calls" in data:

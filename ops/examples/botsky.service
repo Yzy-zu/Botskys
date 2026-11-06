@@ -1,0 +1,19 @@
+# Plantilla sin instalar. No iniciar antes del encargo de activación/transición.
+[Unit]
+Description=Botsky - comandos y herramientas
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/petrov/botsky
+ExecStart=/home/petrov/botsky/.venv/bin/python -m botsky.connected --config /home/petrov/botsky/private/config.integrations.toml --providers /home/petrov/botsky/private/integrations.json serve
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+KillMode=mixed
+UMask=0077
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

@@ -5,7 +5,7 @@
   "description": "Frontera audiovisual propia; portado t\u00e9cnico de Zhana",
   "scripts": {
     "test": "node --test test/*.test.cjs",
-    "start": "node bootstrap.cjs"
+    "start": "node main.cjs"
   },
   "dependencies": {
     "@pixiv/three-vrm": "3.5.5",

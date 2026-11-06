@@ -8,6 +8,8 @@ Python 3.14 y SQLite propios. El núcleo arranca sin IA ni clasificador. No hay
 dependencia del runtime de Zhana ni acceso a sus datos privados. Repositorio solo
 local. Transporte productivo, sesiones y transición siguen apagados.
 Integraciones optativas propias validadas por encargo posterior: [estado](docs/INTEGRACIONES.md).
+Transporte WhatsApp, proceso continuo y composición de llamadas implementados:
+[configuración y límites](docs/RUNTIME.md). Preparados, sin activar producción.
 
 Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
 hashes, límites, formatos, dependencias y superficie audiovisual. Tener una

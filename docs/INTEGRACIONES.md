@@ -51,3 +51,11 @@ núcleo pasan. Los dos fallos iniciales del runner (atributo MIME y extensión d
 audio esperada) eran oracles; se corrigieron y conservaron las trazas privadas.
 No se modificó instalación/configuración/servicios activos de Zhana, DB31 ni NLP.
 Solo se añade su relevo documental. No GitHub ni transición.
+# Ampliación posterior: transporte y ciclo de servicio
+
+Los puntos 1–3 de programación del encargo posterior incorporan webhook Evolution,
+entrega asíncrona durable, proceso continuo y composición del servicio AV propio.
+Ver [RUNTIME.md](RUNTIME.md) para configuración, evidencias y límites actuales.
+Perfil propio actualizado con tokens independientes y política restringida;
+transporte continúa local, envíos y automatismos apagados, servicio/navegador sin
+activar. El estado siguiente conserva la validación previa de proveedores.

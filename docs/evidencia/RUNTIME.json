@@ -1,0 +1,45 @@
+{
+  "scope": "Programming points 1,2,3; R10 local follow-up, no activation or transition",
+  "at": "2026-11-06T15:23:28.892910+00:00",
+  "local_status": "PASS",
+  "production_status": "NOT_ACTIVATED",
+  "sqlite": {
+    "schema": 18,
+    "integrity": "ok"
+  },
+  "python_full_regression": 188,
+  "python_final_focal_runtime": 14,
+  "python_final_focal_composition": 3,
+  "python_additional_real_cli": 1,
+  "python_unique_methods_verified": 191,
+  "node_full_regression": 282,
+  "node_final_focal": 4,
+  "node_unique_methods_verified": 283,
+  "python_non_loopback_attempts": 0,
+  "source_files_unchanged": true,
+  "real_remote_tests_this_turn": false,
+  "browser_started": false,
+  "messages_sent_to_whatsapp": false,
+  "calls_made": false,
+  "active_installation_changed": false,
+  "private_configuration": "own 0600; tokens independent; transport local; send/scheduler/AV/browser disabled",
+  "limitations": [
+    "R10 remote and R11 still require later explicit commission",
+    "no real WhatsApp/Evolution delivery, WPP session, Android or human audio/video reception acceptance",
+    "AV runtime/driver exercised with synthetic controller; real process IPC checked separately",
+    "gallery and VRM/assets/licenses retain prior pending state"
+  ],
+  "development_evidence_retained": true,
+  "proofs": {
+    "RUNTIME-python-regression.txt": "496aba167f16b227a6a5da063a58868f0ff6892c376575a2b18af99667ee0423",
+    "RUNTIME-python-focal.txt": "199340b2009487bbb53610cfb05559f60836e92a240e25ed9b5dd58e22d3cdce",
+    "RUNTIME-call-composition.txt": "322d26969af8ecd3521f0446879f2db030c730ecc559bb9020a371d981746d1e",
+    "RUNTIME-process-cli.txt": "04ac31c4cf2a890c858a7c04ec612b0babd373906c291e29f6be50c87e827ff1",
+    "RUNTIME-node-regression.txt": "cd4bcd6bd0b88c8e9398733722bbd4ed0bc18703dda88c839a57339bce95983e",
+    "RUNTIME-node-focal.txt": "c9a749c4181f870836ba83d71af77eceb193985f5c98f8ae5522a1cf5958a955",
+    "RUNTIME-configured-status.json": "558e871c99afa31c63d71e7272eed9a5ee8bd53d4e7d93fc8843b73b206d6627",
+    "RUNTIME-ruff.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "RUNTIME-format.txt": "cafa7c5a1693e3113785dde7c8ea539245576e1e61cf368219dab32d2dba8315",
+    "RUNTIME-pip-check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  }
+}

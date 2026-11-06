@@ -1,0 +1,1420 @@
+TAP version 13
+# Subtest: Real FFmpeg conversion produces bounded mono PCM, deduplicates and detects corruption
+ok 1 - Real FFmpeg conversion produces bounded mono PCM, deduplicates and detects corruption
+  ---
+  duration_ms: 405.125025
+  ...
+# Subtest: Compressed music is decoded by content instead of a filename extension
+ok 2 - Compressed music is decoded by content instead of a filename extension
+  ---
+  duration_ms: 524.223705
+  ...
+# Subtest: Empty, oversized, overlong and playlist inputs are rejected and cleaned up
+ok 3 - Empty, oversized, overlong and playlist inputs are rejected and cleaned up
+  ---
+  duration_ms: 2554.13314
+  ...
+# Subtest: Only one preparation job runs at a time
+ok 4 - Only one preparation job runs at a time
+  ---
+  duration_ms: 377.154567
+  ...
+# Subtest: Ten-minute compressed audio is normalized and read completely, beyond the old PCM limit
+ok 5 - Ten-minute compressed audio is normalized and read completely, beyond the old PCM limit
+  ---
+  duration_ms: 1951.715056
+  ...
+# Subtest: PM05A: cancellation interrupts an upload waiting for the next chunk
+ok 6 - PM05A: cancellation interrupts an upload waiting for the next chunk
+  ---
+  duration_ms: 203.294937
+  ...
+# Subtest: Botsky policy: actors, same chat and exact allowlists remain independent of owner authority
+ok 7 - Botsky policy: actors, same chat and exact allowlists remain independent of owner authority
+  ---
+  duration_ms: 30.254633
+  ...
+# Subtest: Botsky loopback service: auth, revision, one dispatch, tombstone and exact cancellation
+ok 8 - Botsky loopback service: auth, revision, one dispatch, tombstone and exact cancellation
+  ---
+  duration_ms: 426.605002
+  ...
+# Subtest: Botsky linking/QR/diagnostic routes cannot access any profile
+ok 9 - Botsky linking/QR/diagnostic routes cannot access any profile
+  ---
+  duration_ms: 324.248509
+  ...
+# Subtest: Browser start is rejected before filesystem or Playwright work
+ok 10 - Browser start is rejected before filesystem or Playwright work
+  ---
+  duration_ms: 1.172807
+  ...
+# Subtest: Live rejects multiple credentials and never probes a fallback
+ok 11 - Live rejects multiple credentials and never probes a fallback
+  ---
+  duration_ms: 0.538203
+  ...
+# Subtest: Botsky verification of real-driver account fails closed before its first start
+ok 12 - Botsky verification of real-driver account fails closed before its first start
+  ---
+  duration_ms: 13.510487
+  ...
+# Subtest: Botsky avatar client bundles locally; absent private VRM remains unconfigured
+ok 13 - Botsky avatar client bundles locally; absent private VRM remains unconfigured
+  ---
+  duration_ms: 374.921433
+  ...
+# Subtest: Botsky storage rejects symlinks before touching their destination
+ok 14 - Botsky storage rejects symlinks before touching their destination
+  ---
+  duration_ms: 8.289573
+  ...
+# Subtest: Botsky startup failure closes the driver and releases its service lock
+ok 15 - Botsky startup failure closes the driver and releases its service lock
+  ---
+  duration_ms: 183.26161
+  ...
+# Subtest: Botsky policy snapshots cannot acquire actors or features through caller mutation
+ok 16 - Botsky policy snapshots cannot acquire actors or features through caller mutation
+  ---
+  duration_ms: 1.095447
+  ...
+# Subtest: Botsky a retired Live callback cannot replace its backend-bound avatar call ID
+ok 17 - Botsky a retired Live callback cannot replace its backend-bound avatar call ID
+  ---
+  duration_ms: 176.787129
+  ...
+# Subtest: PM10: schedule is durable, retains the selected audio and makes one call at its time
+ok 18 - PM10: schedule is durable, retains the selected audio and makes one call at its time
+  ---
+  duration_ms: 56.41756
+  ...
+# Subtest: PM10: future agenda is private to its source and requester and reprogramming is idempotent
+ok 19 - PM10: future agenda is private to its source and requester and reprogramming is idempotent
+  ---
+  duration_ms: 13.261564
+  ...
+# Subtest: PM10: cancellation during a claimed dispatch prevents the late call
+ok 20 - PM10: cancellation during a claimed dispatch prevents the late call
+  ---
+  duration_ms: 12.007956
+  ...
+# Subtest: PM10: restart after claiming cannot replay an uncertain offer, with or without a call receipt
+ok 21 - PM10: restart after claiming cannot replay an uncertain offer, with or without a call receipt
+  ---
+  duration_ms: 47.420543
+  ...
+# Subtest: PM10: overdue, busy and outside-hours events fail once without moving themselves or calling anyone
+ok 22 - PM10: overdue, busy and outside-hours events fail once without moving themselves or calling anyone
+  ---
+  duration_ms: 36.578474
+  ...
+# Subtest: PM10: failed claim persistence and corrupt agenda cannot dispatch
+ok 23 - PM10: failed claim persistence and corrupt agenda cannot dispatch
+  ---
+  duration_ms: 10.120984
+  ...
+# Subtest: PM10: timezone and daytime checks are independent of the server timezone
+ok 24 - PM10: timezone and daytime checks are independent of the server timezone
+  ---
+  duration_ms: 1.54793
+  ...
+# Subtest: PM10: a delayed manager queue cannot turn an expired schedule into a late offer
+ok 25 - PM10: a delayed manager queue cannot turn an expired schedule into a late offer
+  ---
+  duration_ms: 9.477461
+  ...
+# Subtest: PM10: source privacy and destination permissions still apply after creation
+ok 26 - PM10: source privacy and destination permissions still apply after creation
+  ---
+  duration_ms: 7.79881
+  ...
+# Subtest: PM10: a concurrent move to a later date invalidates the old due-time snapshot
+ok 27 - PM10: a concurrent move to a later date invalidates the old due-time snapshot
+  ---
+  duration_ms: 12.5082
+  ...
+# Subtest: PM10: an archived schedule key stays spent even after call history and agenda detail are pruned
+ok 28 - PM10: an archived schedule key stays spent even after call history and agenda detail are pruned
+  ---
+  duration_ms: 6.912844
+  ...
+# Subtest: PM11: paused agenda preserves pending work, never dispatches while disabled, and does not replay missed events
+ok 29 - PM11: paused agenda preserves pending work, never dispatches while disabled, and does not replay missed events
+  ---
+  duration_ms: 6.872964
+  ...
+# Subtest: agenda list follows the current due date without reordering stored events or exposing another source
+ok 30 - agenda list follows the current due date without reordering stored events or exposing another source
+  ---
+  duration_ms: 8.071812
+  ...
+# Subtest: PM11: failed reservation and journal writes are retried only as bookkeeping, even while paused
+ok 31 - PM11: failed reservation and journal writes are retried only as bookkeeping, even while paused
+  ---
+  duration_ms: 7.422047
+  ...
+# Subtest: PM11: result queries normalize pasted IDs, stay source scoped and never dial
+ok 32 - PM11: result queries normalize pasted IDs, stay source scoped and never dial
+  ---
+  duration_ms: 6.351321
+  ...
+# Subtest: PM11: result explanations are bounded, private and do not invent a successful call
+ok 33 - PM11: result explanations are bounded, private and do not invent a successful call
+  ---
+  duration_ms: 0.963006
+  ...
+# Subtest: Owner any-group schedules store the verified name and recheck membership at dispatch
+ok 34 - Owner any-group schedules store the verified name and recheck membership at dispatch
+  ---
+  duration_ms: 7.614608
+  ...
+# Subtest: Group lookup cannot overwrite a call that arrives while membership is being verified
+ok 35 - Group lookup cannot overwrite a call that arrives while membership is being verified
+  ---
+  duration_ms: 5.029192
+  ...
+# Subtest: High audit: a confirmed cancellation during membership lookup cannot create a call reservation
+ok 36 - High audit: a confirmed cancellation during membership lookup cannot create a call reservation
+  ---
+  duration_ms: 3.711823
+  ...
+# Subtest: Medium audit: an ordinary failed schedule retries its notice after journal recovery without dispatching again
+ok 37 - Medium audit: an ordinary failed schedule retries its notice after journal recovery without dispatching again
+  ---
+  duration_ms: 12.344279
+  ...
+# Subtest: Medium audit: both failed-state and notice persistence recover without turning the event pending again
+ok 38 - Medium audit: both failed-state and notice persistence recover without turning the event pending again
+  ---
+  duration_ms: 9.45538
+  ...
+# Subtest: Medium audit: startup reconstructs failed-notice work and can finish it after a transient journal outage
+ok 39 - Medium audit: startup reconstructs failed-notice work and can finish it after a transient journal outage
+  ---
+  duration_ms: 7.569128
+  ...
+# Subtest: Medium audit: an old failed event awaiting its notice is not pruned by a new schedule
+ok 40 - Medium audit: an old failed event awaiting its notice is not pruned by a new schedule
+  ---
+  duration_ms: 9.835862
+  ...
+# Subtest: LIVE-1: a scheduled Live topic survives restart, remains outside visible agenda data and reaches the intended call
+ok 41 - LIVE-1: a scheduled Live topic survives restart, remains outside visible agenda data and reaches the intended call
+  ---
+  duration_ms: 14.384772
+  ...
+# Subtest: LIVE-2: unlimited scheduled Live survives reload and ends at the local closing hour
+ok 42 - LIVE-2: unlimited scheduled Live survives reload and ends at the local closing hour
+  ---
+  duration_ms: 14.737094
+  ...
+# Subtest: LIVE-2: explicit long scheduled Live must fit the window and indefinite Live needs answer margin
+ok 43 - LIVE-2: explicit long scheduled Live must fit the window and indefinite Live needs answer margin
+  ---
+  duration_ms: 4.70723
+  ...
+# Subtest: LIVE-2: scheduled closing hour follows the configured timezone across a DST change
+ok 44 - LIVE-2: scheduled closing hour follows the configured timezone across a DST change
+  ---
+  duration_ms: 0.862206
+  ...
+# Subtest: Native connected audience excludes self, invitees and duplicate devices
+ok 45 - Native connected audience excludes self, invitees and duplicate devices
+  ---
+  duration_ms: 4.959792
+  ...
+# Subtest: ConnectedLonely is connected transport with no listeners, including during a missing list
+ok 46 - ConnectedLonely is connected transport with no listeners, including during a missing list
+  ---
+  duration_ms: 1.422209
+  ...
+# Subtest: Missing or unfamiliar group telemetry cannot be mistaken for zero or a peer call
+ok 47 - Missing or unfamiliar group telemetry cannot be mistaken for zero or a peer call
+  ---
+  duration_ms: 9.022178
+  ...
+# Subtest: Native peer representation of a two-member group and incoming private calls remain supported
+ok 48 - Native peer representation of a two-member group and incoming private calls remain supported
+  ---
+  duration_ms: 3.488782
+  ...
+# Subtest: Terminal audience diagnostics expose counts without native IDs, phones or participant identities
+ok 49 - Terminal audience diagnostics expose counts without native IDs, phones or participant identities
+  ---
+  duration_ms: 2.959538
+  ...
+# Subtest: The three-member Lab trial requires an explicit configuration and cannot bypass the selected chat check
+ok 50 - The three-member Lab trial requires an explicit configuration and cannot bypass the selected chat check
+  ---
+  duration_ms: 88.947567
+  ...
+# Subtest: Cancel by old call ID never ends a later call and retains identity without exposing keys
+ok 51 - Cancel by old call ID never ends a later call and retains identity without exposing keys
+  ---
+  duration_ms: 120.912292
+  ...
+# Subtest: V4 names, aliases and scoped choices never play ambiguous or missing clips
+ok 52 - V4 names, aliases and scoped choices never play ambiguous or missing clips
+  ---
+  duration_ms: 17.806634
+  ...
+# Subtest: V4 next/replay, real relative volume, idempotency and call changes preserve intent
+ok 53 - V4 next/replay, real relative volume, idempotency and call changes preserve intent
+  ---
+  duration_ms: 2.819138
+  ...
+# Subtest: V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+ok 54 - V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+  ---
+  duration_ms: 1.064807
+  ...
+# Subtest: N12b a later stop invalidates queued play commands before they reach the manager
+ok 55 - N12b a later stop invalidates queued play commands before they reach the manager
+  ---
+  duration_ms: 0.533044
+  ...
+# Subtest: local clips normalize with audio, persist, deduplicate the demo and release failed imports
+ok 56 - local clips normalize with audio, persist, deduplicate the demo and release failed imports
+  ---
+  duration_ms: 3646.706032
+  ...
+# Subtest: configured composition starts own runtime before verified driver and releases both on close
+ok 57 - configured composition starts own runtime before verified driver and releases both on close
+  ---
+  duration_ms: 284.671337
+  ...
+# Subtest: unauthorized browser and multi-key Live are rejected before runtime or storage
+ok 58 - unauthorized browser and multi-key Live are rejected before runtime or storage
+  ---
+  duration_ms: 1.988013
+  ...
+# Subtest: runtime startup failure closes owned resources and releases lock
+ok 59 - runtime startup failure closes owned resources and releases lock
+  ---
+  duration_ms: 196.841736
+  ...
+# Subtest: PM05C: receipt is scoped to its verified source, with no text, destination change or extra fields
+ok 60 - PM05C: receipt is scoped to its verified source, with no text, destination change or extra fields
+  ---
+  duration_ms: 3.0955
+  ...
+# Subtest: Live protocol authenticates server-side and exchanges PCM without exposing transcripts
+ok 61 - Live protocol authenticates server-side and exchanges PCM without exposing transcripts
+  ---
+  duration_ms: 32.93117
+  ...
+# Subtest: Group interruption is opt-in and discards audio bundled with the provider interruption
+ok 62 - Group interruption is opt-in and discards audio bundled with the provider interruption
+  ---
+  duration_ms: 1.69449
+  ...
+# Subtest: Live rejects a provider setup error without leaking the error body or key
+ok 63 - Live rejects a provider setup error without leaking the error body or key
+  ---
+  duration_ms: 7.85265
+  ...
+# Subtest: Group PCM stays closed until a current named intervention is semantically authorized and resets for the next input
+ok 64 - Group PCM stays closed until a current named intervention is semantically authorized and resets for the next input
+  ---
+  duration_ms: 3.815905
+  ...
+# Subtest: LIVE-1: native setup uses natural-length answers and explicit silence drops late audio until the next voice turn
+ok 65 - LIVE-1: native setup uses natural-length answers and explicit silence drops late audio until the next voice turn
+  ---
+  duration_ms: 2.115454
+  ...
+# Subtest: LIVE-1: silence received while idle does not wait forever for a nonexistent old turn
+ok 66 - LIVE-1: silence received while idle does not wait forever for a nonexistent old turn
+  ---
+  duration_ms: 1.443169
+  ...
+# Subtest: LIVE-2: GoAway waits for a safe checkpoint, resumes the same session and flushes input once
+ok 67 - LIVE-2: GoAway waits for a safe checkpoint, resumes the same session and flushes input once
+  ---
+  duration_ms: 38.913648
+  ...
+# Subtest: LIVE-2: an unavailable checkpoint closes cleanly instead of starting a context-free session
+ok 68 - LIVE-2: an unavailable checkpoint closes cleanly instead of starting a context-free session
+  ---
+  duration_ms: 9.756782
+  ...
+# Subtest: LIVE-2: hanging up during resumption cancels setup and cannot resurrect the session
+ok 69 - LIVE-2: hanging up during resumption cancels setup and cannot resurrect the session
+  ---
+  duration_ms: 29.857711
+  ...
+# Subtest: LIVE-2: unexpected transport loss resumes only a checkpoint covering all sent input
+ok 70 - LIVE-2: unexpected transport loss resumes only a checkpoint covering all sent input
+  ---
+  duration_ms: 24.945199
+  ...
+# Subtest: LIVE-2: repeated renewal notices are bounded and do not create parallel successors
+ok 71 - LIVE-2: repeated renewal notices are bounded and do not create parallel successors
+  ---
+  duration_ms: 19.734406
+  ...
+# Subtest: LIVE-2: silence during renewal stays queued and listening continues on the successor
+ok 72 - LIVE-2: silence during renewal stays queued and listening continues on the successor
+  ---
+  duration_ms: 15.196297
+  ...
+# Subtest: LIVE-2: an early checkpoint cannot discard pending generation, but completed queued audio can cross renewal
+ok 73 - LIVE-2: an early checkpoint cannot discard pending generation, but completed queued audio can cross renewal
+  ---
+  duration_ms: 14.585973
+  ...
+# Subtest: LIVE-2: a retained provider handle is usable after generation without requiring a redundant token update
+ok 74 - LIVE-2: a retained provider handle is usable after generation without requiring a redundant token update
+  ---
+  duration_ms: 19.587325
+  ...
+# Subtest: LIVE-2: rejected resumption closes and releases buffered input without retrying or losing context silently
+ok 75 - LIVE-2: rejected resumption closes and releases buffered input without retrying or losing context silently
+  ---
+  duration_ms: 14.166331
+  ...
+# Subtest: LIVE-2: excessive input while waiting to renew is bounded and shuts down once
+ok 76 - LIVE-2: excessive input while waiting to renew is bounded and shuts down once
+  ---
+  duration_ms: 25.635044
+  ...
+# Subtest: LIVE-2C: JSON setup errors expose only classified codes, not provider messages or key IDs
+ok 77 - LIVE-2C: JSON setup errors expose only classified codes, not provider messages or key IDs
+  ---
+  duration_ms: 10.300466
+  ...
+# Subtest: LIVE-2C: handshake HTTP rejection is classified and the response is drained
+ok 78 - LIVE-2C: handshake HTTP rejection is classified and the response is drained
+  ---
+  duration_ms: 3.492902
+  ...
+# Subtest: LIVE-2C: WebSocket setup rejection distinguishes key problems from invalid configuration
+ok 79 - LIVE-2C: WebSocket setup rejection distinguishes key problems from invalid configuration
+  ---
+  duration_ms: 11.489474
+  ...
+# Subtest: Director ties queued output to its call and input generation, including after provider turn completion
+ok 80 - Director ties queued output to its call and input generation, including after provider turn completion
+  ---
+  duration_ms: 3.561063
+  ...
+# Subtest: A delayed authorization cannot move the director after a newer intervention or end
+ok 81 - A delayed authorization cannot move the director after a newer intervention or end
+  ---
+  duration_ms: 1.734491
+  ...
+# Subtest: Any-group directory resolves joined groups by exact/accent-insensitive name, partial name or ID
+ok 82 - Any-group directory resolves joined groups by exact/accent-insensitive name, partial name or ID
+  ---
+  duration_ms: 6.036638
+  ...
+# Subtest: Any-group directory rejects ambiguous names, former groups, communities and unverifiable membership
+ok 83 - Any-group directory rejects ambiguous names, former groups, communities and unverifiable membership
+  ---
+  duration_ms: 5.842517
+  ...
+# Subtest: Directory does not use an old positive membership flag after metadata refresh
+ok 84 - Directory does not use an old positive membership flag after metadata refresh
+  ---
+  duration_ms: 1.60125
+  ...
+# Subtest: Group resolver authorizes the owner before browser lookup and never calls dial
+ok 85 - Group resolver authorizes the owner before browser lookup and never calls dial
+  ---
+  duration_ms: 3.15774
+  ...
+# Subtest: Group resolver still requires the explicit any-group policy for owner searches
+ok 86 - Group resolver still requires the explicit any-group policy for owner searches
+  ---
+  duration_ms: 0.556523
+  ...
+# Subtest: Native dispatch rechecks membership immediately before offering even for large joined groups
+ok 87 - Native dispatch rechecks membership immediately before offering even for large joined groups
+  ---
+  duration_ms: 2.075853
+  ...
+# Subtest: Only the Live semantic decision with current speech opens voice; arbitrary addresses need no name list
+ok 88 - Only the Live semantic decision with current speech opens voice; arbitrary addresses need no name list
+  ---
+  duration_ms: 2.550377
+  ...
+# Subtest: Late split transcription can authorize only its current intervention; superseded or aborted decisions stay closed
+ok 89 - Late split transcription can authorize only its current intervention; superseded or aborted decisions stay closed
+  ---
+  duration_ms: 1.141047
+  ...
+# Subtest: The initial greeting is authorized and ends without leaving voice open
+ok 90 - The initial greeting is authorized and ends without leaving voice open
+  ---
+  duration_ms: 0.217041
+  ...
+# Subtest: runtime verifies configured linked account without exporting identity
+ok 91 - runtime verifies configured linked account without exporting identity
+  ---
+  duration_ms: 6.966804
+  ...
+# Subtest: Live waits for answer before capturing, uses the dedicated monitor and stops on hangup
+ok 92 - Live waits for answer before capturing, uses the dedicated monitor and stops on hangup
+  ---
+  duration_ms: 19.643205
+  ...
+# Subtest: A failure in credentials releases the reservation and unrelated calls cannot stop Live
+ok 93 - A failure in credentials releases the reservation and unrelated calls cannot stop Live
+  ---
+  duration_ms: 3.509782
+  ...
+# Subtest: H4: a bridge failure keeps its origin even when its code starts with LIVE
+ok 94 - H4: a bridge failure keeps its origin even when its code starts with LIVE
+  ---
+  duration_ms: 2.352055
+  ...
+# Subtest: PM05B: Live preserves the same Gemini session through suspend/rebind and drops stale output
+ok 95 - PM05B: Live preserves the same Gemini session through suspend/rebind and drops stale output
+  ---
+  duration_ms: 4.293227
+  ...
+# Subtest: PM05C: a late Live start after suspend cannot create a capture or duplicate the greeting
+ok 96 - PM05C: a late Live start after suspend cannot create a capture or duplicate the greeting
+  ---
+  duration_ms: 1.069047
+  ...
+# Subtest: LIVE-1: long native responses exceed the old queue cap without failing or using a TTS provider
+ok 97 - LIVE-1: long native responses exceed the old queue cap without failing or using a TTS provider
+  ---
+  duration_ms: 11.475593
+  ...
+# Subtest: LIVE-1: explicit silence fences pending and in-flight chunks, keeps capture alive and accepts the next reply
+ok 98 - LIVE-1: explicit silence fences pending and in-flight chunks, keeps capture alive and accepts the next reply
+  ---
+  duration_ms: 6.081639
+  ...
+# Subtest: Group interruption clears scheduled and queued audio while preserving the Live capture
+ok 99 - Group interruption clears scheduled and queued audio while preserving the Live capture
+  ---
+  duration_ms: 3.036699
+  ...
+# Subtest: LIVE-1: playback backpressure waits locally and cancellation discards the remaining response
+ok 100 - LIVE-1: playback backpressure waits locally and cancellation discards the remaining response
+  ---
+  duration_ms: 1.51169
+  ...
+# Subtest: Group director fences delayed PCM when the input changes without relying on provider interruption
+ok 101 - Group director fences delayed PCM when the input changes without relying on provider interruption
+  ---
+  duration_ms: 7.726489
+  ...
+# Subtest: Pending question waits for queued output and browser playback before starting its window
+ok 102 - Pending question waits for queued output and browser playback before starting its window
+  ---
+  duration_ms: 4.760911
+  ...
+# Subtest: LIVE-1: only the explicit initial request is passed to the native greeting
+ok 103 - LIVE-1: only the explicit initial request is passed to the native greeting
+  ---
+  duration_ms: 0.677685
+  ...
+# Subtest: LIVE-1: a new reply received during the browser clear waits instead of losing its first words
+ok 104 - LIVE-1: a new reply received during the browser clear waits instead of losing its first words
+  ---
+  duration_ms: 1.977813
+  ...
+# Subtest: LIVE-2: provider renewal preserves the native call, capture and original greeting
+ok 105 - LIVE-2: provider renewal preserves the native call, capture and original greeting
+  ---
+  duration_ms: 40.841901
+  ...
+# Subtest: LIVE-2C: provider statuses distinguish credential failures from invalid input and unavailable models
+ok 106 - LIVE-2C: provider statuses distinguish credential failures from invalid input and unavailable models
+  ---
+  duration_ms: 2.022773
+  ...
+# Subtest: LIVE-2C: setup close reasons are classified without retaining sensitive text
+ok 107 - LIVE-2C: setup close reasons are classified without retaining sensitive text
+  ---
+  duration_ms: 1.50609
+  ...
+# Subtest: V4 Live tool protocol sends actual results and does not repeat duplicate actions
+ok 108 - V4 Live tool protocol sends actual results and does not repeat duplicate actions
+  ---
+  duration_ms: 51.513688
+  ...
+# Subtest: V4 Live cancellations and closure abort pending tool work without a late confirmation
+ok 109 - V4 Live cancellations and closure abort pending tool work without a late confirmation
+  ---
+  duration_ms: 37.293038
+  ...
+# Subtest: Private outbound calls stop on remote hangup, never redial a retry and restart narration for a fresh request
+ok 110 - Private outbound calls stop on remote hangup, never redial a retry and restart narration for a fresh request
+  ---
+  duration_ms: 87.945121
+  ...
+# Subtest: Service authorization rejects disabled private targets and cross-chat orders from groups before reservation or dialing
+ok 111 - Service authorization rejects disabled private targets and cross-chat orders from groups before reservation or dialing
+  ---
+  duration_ms: 11.601474
+  ...
+# Subtest: A private rejection before dispatch acknowledgement closes its journal entry and never recovers or redials
+ok 112 - A private rejection before dispatch acknowledgement closes its journal entry and never recovers or redials
+  ---
+  duration_ms: 14.757615
+  ...
+# Subtest: Group audience keeps a single playback through initiator departure, late join and an empty grace period
+ok 113 - Group audience keeps a single playback through initiator departure, late join and an empty grace period
+  ---
+  duration_ms: 37.767161
+  ...
+# Subtest: The requested group and the observed native representation are recorded separately
+ok 114 - The requested group and the observed native representation are recorded separately
+  ---
+  duration_ms: 23.50307
+  ...
+# Subtest: Unknown audience is distinct from empty, clears its countdown, and closes after a bounded loss of telemetry
+ok 115 - Unknown audience is distinct from empty, clears its countdown, and closes after a bounded loss of telemetry
+  ---
+  duration_ms: 32.617528
+  ...
+# Subtest: Live starts only with an audience and is stopped and disarmed when the last human leaves
+ok 116 - Live starts only with an audience and is stopped and disarmed when the last human leaves
+  ---
+  duration_ms: 21.112494
+  ...
+# Subtest: An owned incoming voice call is journaled, accepted once and receives Live after connecting
+ok 117 - An owned incoming voice call is journaled, accepted once and receives Live after connecting
+  ---
+  duration_ms: 16.839708
+  ...
+# Subtest: A private call becoming natively lonely stops Live immediately without the group grace
+ok 118 - A private call becoming natively lonely stops Live immediately without the group grace
+  ---
+  duration_ms: 14.293972
+  ...
+# Subtest: Owned incoming video reserves video Live, accepts once and cleans up on remote hangup
+ok 119 - Owned incoming video reserves video Live, accepts once and cleans up on remote hangup
+  ---
+  duration_ms: 18.899041
+  ...
+# Subtest: Incoming callers outside policy and missing durable storage cannot trigger acceptance
+ok 120 - Incoming callers outside policy and missing durable storage cannot trigger acceptance
+  ---
+  duration_ms: 3.265701
+  ...
+# Subtest: Incoming Live provider failure or a changed call cannot lead to answering another caller
+ok 121 - Incoming Live provider failure or a changed call cannot lead to answering another caller
+  ---
+  duration_ms: 14.11005
+  ...
+# Subtest: Live prepares before dialing, captures only after answer and stops on remote hangup
+ok 122 - Live prepares before dialing, captures only after answer and stops on remote hangup
+  ---
+  duration_ms: 17.780273
+  ...
+# Subtest: A Live preparation failure cannot dial, and Live cannot mix with a prepared narration
+ok 123 - A Live preparation failure cannot dial, and Live cannot mix with a prepared narration
+  ---
+  duration_ms: 9.683142
+  ...
+# Subtest: Narration gets its full budget after answer and hangs up when the audio ends
+ok 124 - Narration gets its full budget after answer and hangs up when the audio ends
+  ---
+  duration_ms: 29.365068
+  ...
+# Subtest: An unanswered narration has a short ringing timeout and never emits audio
+ok 125 - An unanswered narration has a short ringing timeout and never emits audio
+  ---
+  duration_ms: 8.862457
+  ...
+# Subtest: Audio policy is part of idempotency and audio failure closes a narration call
+ok 126 - Audio policy is part of idempotency and audio failure closes a narration call
+  ---
+  duration_ms: 27.637976
+  ...
+# Subtest: Concurrent retries persist one reservation and dispatch one call
+ok 127 - Concurrent retries persist one reservation and dispatch one call
+  ---
+  duration_ms: 18.81032
+  ...
+# Subtest: Other groups, invalid duration and invalid keys cannot dispatch
+ok 128 - Other groups, invalid duration and invalid keys cannot dispatch
+  ---
+  duration_ms: 4.878911
+  ...
+# Subtest: Remote hangup clears ownership and old deadline cannot end the next call
+ok 129 - Remote hangup clears ownership and old deadline cannot end the next call
+  ---
+  duration_ms: 17.617112
+  ...
+# Subtest: A deadline ends an unanswered owned call
+ok 130 - A deadline ends an unanswered owned call
+  ---
+  duration_ms: 13.743247
+  ...
+# Subtest: A changed native call is never terminated as the owned call
+ok 131 - A changed native call is never terminated as the owned call
+  ---
+  duration_ms: 7.970731
+  ...
+# Subtest: Browser loss interrupts the journal and recovery never redials
+ok 132 - Browser loss interrupts the journal and recovery never redials
+  ---
+  duration_ms: 15.517459
+  ...
+# Subtest: An ambiguous dispatch closes the browser and is not retried
+ok 133 - An ambiguous dispatch closes the browser and is not retried
+  ---
+  duration_ms: 11.628634
+  ...
+# Subtest: Emergency watchdog closes a hung dial independently of its command queue
+ok 134 - Emergency watchdog closes a hung dial independently of its command queue
+  ---
+  duration_ms: 11.320993
+  ...
+# Subtest: Restart restores idempotency and marks an unfinished reservation interrupted
+ok 135 - Restart restores idempotency and marks an unfinished reservation interrupted
+  ---
+  duration_ms: 13.891489
+  ...
+# Subtest: A corrupt journal fails closed instead of silently forgetting request keys
+ok 136 - A corrupt journal fails closed instead of silently forgetting request keys
+  ---
+  duration_ms: 6.049399
+  ...
+# Subtest: Shutdown terminates an owned call and prevents future calls
+ok 137 - Shutdown terminates an owned call and prevents future calls
+  ---
+  duration_ms: 15.058857
+  ...
+# Subtest: A failed durable reservation cannot dispatch a call
+ok 138 - A failed durable reservation cannot dispatch a call
+  ---
+  duration_ms: 6.931404
+  ...
+# Subtest: A new incoming call observed during dispatch is preserved
+ok 139 - A new incoming call observed during dispatch is preserved
+  ---
+  duration_ms: 7.277727
+  ...
+# Subtest: Linking is polled in the same browser without rotating the QR session
+ok 140 - Linking is polled in the same browser without rotating the QR session
+  ---
+  duration_ms: 8.074652
+  ...
+# Subtest: Autoplay waits for answer, executes once, supports volume and preserves call idempotency
+ok 141 - Autoplay waits for answer, executes once, supports volume and preserves call idempotency
+  ---
+  duration_ms: 25.883285
+  ...
+# Subtest: Stop/replay does not repeat a playback after a retry or a remote hangup
+ok 142 - Stop/replay does not repeat a playback after a retry or a remote hangup
+  ---
+  duration_ms: 33.252812
+  ...
+# Subtest: Unknown audio and invalid volume fail before dialing; disconnected audio never plays
+ok 143 - Unknown audio and invalid volume fail before dialing; disconnected audio never plays
+  ---
+  duration_ms: 19.251843
+  ...
+# Subtest: Uncertain audio commands are recorded and cannot be automatically replayed
+ok 144 - Uncertain audio commands are recorded and cannot be automatically replayed
+  ---
+  duration_ms: 14.900255
+  ...
+# Subtest: A failed playback reservation emits no audio and does not leave a phantom busy player
+ok 145 - A failed playback reservation emits no audio and does not leave a phantom busy player
+  ---
+  duration_ms: 27.595656
+  ...
+# Subtest: PM05A: cancelled offer key survives restart and blocks a delayed start
+ok 146 - PM05A: cancelled offer key survives restart and blocks a delayed start
+  ---
+  duration_ms: 8.505134
+  ...
+# Subtest: PM05A: cancellation during preload is visible before native dispatch
+ok 147 - PM05A: cancellation during preload is visible before native dispatch
+  ---
+  duration_ms: 11.325593
+  ...
+# Subtest: PM05A: cancelled playback cannot start later and stops only its own audio
+ok 148 - PM05A: cancelled playback cannot start later and stops only its own audio
+  ---
+  duration_ms: 36.234591
+  ...
+# Subtest: H4: scheduled poll closes a failed Live session without treating it as browser loss
+ok 149 - H4: scheduled poll closes a failed Live session without treating it as browser loss
+  ---
+  duration_ms: 23.402749
+  ...
+# Subtest: PM05B: restores the same native call once and resumes its confirmed audio position without redial
+ok 150 - PM05B: restores the same native call once and resumes its confirmed audio position without redial
+  ---
+  duration_ms: 24.428796
+  ...
+# Subtest: H4: a failed recovery snapshot stays bounded and never invents another offer
+ok 151 - H4: a failed recovery snapshot stays bounded and never invents another offer
+  ---
+  duration_ms: 16.539865
+  ...
+# Subtest: N12a: an absent audience pauses a recado at its observed position and rejoin resumes it once
+ok 152 - N12a: an absent audience pauses a recado at its observed position and rejoin resumes it once
+  ---
+  duration_ms: 34.692302
+  ...
+# Subtest: N12a: a recado ending as audience leaves is completed instead of paused at an invalid offset
+ok 153 - N12a: a recado ending as audience leaves is completed instead of paused at an invalid offset
+  ---
+  duration_ms: 16.508786
+  ...
+# Subtest: PM05B: two confirmed native failures permit one guarded redial with the same target and audio checkpoint
+ok 154 - PM05B: two confirmed native failures permit one guarded redial with the same target and audio checkpoint
+  ---
+  duration_ms: 40.176856
+  ...
+# Subtest: PM05B: remote hangup, rejection, no answer and locally ended FAILED never redial
+ok 155 - PM05B: remote hangup, rejection, no answer and locally ended FAILED never redial
+  ---
+  duration_ms: 78.780783
+  ...
+# Subtest: PM05B: a temporary browser observation failure reuses the existing page without restarting or redialing
+ok 156 - PM05B: a temporary browser observation failure reuses the existing page without restarting or redialing
+  ---
+  duration_ms: 16.428825
+  ...
+# Subtest: PM05B: unavailable browser and expired recovery window cannot authorize a new offer
+ok 157 - PM05B: unavailable browser and expired recovery window cannot authorize a new offer
+  ---
+  duration_ms: 14.875695
+  ...
+# Subtest: PM05B: cancelling during recovery prevents a late FAILED snapshot from redialing
+ok 158 - PM05B: cancelling during recovery prevents a late FAILED snapshot from redialing
+  ---
+  duration_ms: 14.754774
+  ...
+# Subtest: PM05B: restart preserves the spent attempt and interrupts unfinished recovery without dispatch
+ok 159 - PM05B: restart preserves the spent attempt and interrupts unfinished recovery without dispatch
+  ---
+  duration_ms: 10.94639
+  ...
+# Subtest: PM05B: disappearance or another native call during the recovery probe never redials or hangs up that call
+ok 160 - PM05B: disappearance or another native call during the recovery probe never redials or hangs up that call
+  ---
+  duration_ms: 18.383477
+  ...
+# Subtest: PM05B: a failed connection before answer gets one attempt but an unanswered call does not
+ok 161 - PM05B: a failed connection before answer gets one attempt but an unanswered call does not
+  ---
+  duration_ms: 7.571889
+  ...
+# Subtest: PM05B: failed persistence cannot authorize a recovery offer
+ok 162 - PM05B: failed persistence cannot authorize a recovery offer
+  ---
+  duration_ms: 25.761885
+  ...
+# Subtest: PM05B: a browser loss followed by FAILED needs two explicit failed observations before redial
+ok 163 - PM05B: a browser loss followed by FAILED needs two explicit failed observations before redial
+  ---
+  duration_ms: 19.563525
+  ...
+# Subtest: PM05B: a cancellation received during a slow recovery probe invalidates its late FAILED result
+ok 164 - PM05B: a cancellation received during a slow recovery probe invalidates its late FAILED result
+  ---
+  duration_ms: 10.385706
+  ...
+# Subtest: PM05B: recovery before any answer still gives the requested conversation budget after the first answer
+ok 165 - PM05B: recovery before any answer still gives the requested conversation budget after the first answer
+  ---
+  duration_ms: 9.095658
+  ...
+# Subtest: PM05C: reservation stays occupied through cleanup; duplicate finish coalesces cleanup
+ok 166 - PM05C: reservation stays occupied through cleanup; duplicate finish coalesces cleanup
+  ---
+  duration_ms: 6.651642
+  ...
+# Subtest: PM05C: late playback result cannot resurrect an ended call or affect its successor
+ok 167 - PM05C: late playback result cannot resurrect an ended call or affect its successor
+  ---
+  duration_ms: 17.445152
+  ...
+# Subtest: PM05C: definitive failure has one durable leased receipt in the original private chat, not the target group
+ok 168 - PM05C: definitive failure has one durable leased receipt in the original private chat, not the target group
+  ---
+  duration_ms: 6.618242
+  ...
+# Subtest: PM05C: failure-reaction retries are bounded and never retry the call
+ok 169 - PM05C: failure-reaction retries are bounded and never retry the call
+  ---
+  duration_ms: 10.876069
+  ...
+# Subtest: PM05C: voluntary close, no answer, rejection and an ordinary completed call have no failure reaction
+ok 170 - PM05C: voluntary close, no answer, rejection and an ordinary completed call have no failure reaction
+  ---
+  duration_ms: 32.85453
+  ...
+# Subtest: PM05C: an unacknowledged failure receipt survives restart with a lease, without starting any calls
+ok 171 - PM05C: an unacknowledged failure receipt survives restart with a lease, without starting any calls
+  ---
+  duration_ms: 6.681603
+  ...
+# Subtest: Call notice: begin is a durable one-shot POST permit; restart turns sending into terminal uncertain
+ok 172 - Call notice: begin is a durable one-shot POST permit; restart turns sending into terminal uncertain
+  ---
+  duration_ms: 9.199059
+  ...
+# Subtest: Call notice: an expired claim cannot authorize the delayed sender
+ok 173 - Call notice: an expired claim cannot authorize the delayed sender
+  ---
+  duration_ms: 22.825626
+  ...
+# Subtest: PM05C: unconfirmed microphone cleanup closes the owned browser before releasing the reservation
+ok 174 - PM05C: unconfirmed microphone cleanup closes the owned browser before releasing the reservation
+  ---
+  duration_ms: 6.064679
+  ...
+# Subtest: PM05C: cleanup never closes a known unrelated call and blocks new automated calls if release is unconfirmed
+ok 175 - PM05C: cleanup never closes a known unrelated call and blocks new automated calls if release is unconfirmed
+  ---
+  duration_ms: 4.213347
+  ...
+# Subtest: PM05C: a failed single recovery queues exactly one final failure notice
+ok 176 - PM05C: a failed single recovery queues exactly one final failure notice
+  ---
+  duration_ms: 9.163219
+  ...
+# Subtest: PM05C: failure before any answer still reports a spent recovery once, without a third offer
+ok 177 - PM05C: failure before any answer still reports a spent recovery once, without a third offer
+  ---
+  duration_ms: 9.4655
+  ...
+# Subtest: PM11: disabling outgoing blocks new reservations while preserving current calls and replay receipts
+ok 178 - PM11: disabling outgoing blocks new reservations while preserving current calls and replay receipts
+  ---
+  duration_ms: 8.573054
+  ...
+# Subtest: PM11: disabling live or incoming cannot reserve a new Gemini session or answer
+ok 179 - PM11: disabling live or incoming cannot reserve a new Gemini session or answer
+  ---
+  duration_ms: 2.175814
+  ...
+# Subtest: PM11: late outgoing disable during preload invalidates the offer instead of dialing
+ok 180 - PM11: late outgoing disable during preload invalidates the offer instead of dialing
+  ---
+  duration_ms: 3.554663
+  ...
+# Subtest: PM11: live usage survives normal hangup as numeric counters without conversation content
+ok 181 - PM11: live usage survives normal hangup as numeric counters without conversation content
+  ---
+  duration_ms: 4.611829
+  ...
+# Subtest: PM11: unavailable optional usage telemetry cannot prevent hangup or release
+ok 182 - PM11: unavailable optional usage telemetry cannot prevent hangup or release
+  ---
+  duration_ms: 5.696276
+  ...
+# Subtest: High audit: a failed close receipt retries persistence without replaying cleanup or the call
+ok 183 - High audit: a failed close receipt retries persistence without replaying cleanup or the call
+  ---
+  duration_ms: 6.485922
+  ...
+# Subtest: High audit: transient microphone cleanup failure is retried before releasing the reservation
+ok 184 - High audit: transient microphone cleanup failure is retried before releasing the reservation
+  ---
+  duration_ms: 3.633463
+  ...
+# Subtest: High audit: cleanup receipt recovery can recover the browser after a fatal storage error
+ok 185 - High audit: cleanup receipt recovery can recover the browser after a fatal storage error
+  ---
+  duration_ms: 10.904149
+  ...
+# Subtest: High audit: a close receipt failure after hangup does not close the browser or repeat hangup
+ok 186 - High audit: a close receipt failure after hangup does not close the browser or repeat hangup
+  ---
+  duration_ms: 4.536789
+  ...
+# Subtest: High audit: a storage failure during unconfirmed cleanup never closes the known foreign call
+ok 187 - High audit: a storage failure during unconfirmed cleanup never closes the known foreign call
+  ---
+  duration_ms: 4.976352
+  ...
+# Subtest: LIVE-1: initial context is private, durable, validated and included in the idempotency fingerprint
+ok 188 - LIVE-1: initial context is private, durable, validated and included in the idempotency fingerprint
+  ---
+  duration_ms: 8.037131
+  ...
+# Subtest: LIVE-1: silence is scoped to the current connected Live call and does not hang up or alter its volume
+ok 189 - LIVE-1: silence is scoped to the current connected Live call and does not hang up or alter its volume
+  ---
+  duration_ms: 11.914956
+  ...
+# Subtest: LIVE-2: indefinite outgoing Live survives old caps and still stops when the human hangs up
+ok 190 - LIVE-2: indefinite outgoing Live survives old caps and still stops when the human hangs up
+  ---
+  duration_ms: 5.761757
+  ...
+# Subtest: LIVE-2: explicit Live duration above sixteen minutes closes at the requested time
+ok 191 - LIVE-2: explicit Live duration above sixteen minutes closes at the requested time
+  ---
+  duration_ms: 5.725957
+  ...
+# Subtest: LIVE-2: incoming Live has no conversation timer but retains the answer deadline
+ok 192 - LIVE-2: incoming Live has no conversation timer but retains the answer deadline
+  ---
+  duration_ms: 6.2666
+  ...
+# Subtest: LIVE-2: very long explicit timers are chunked instead of overflowing Node timers
+ok 193 - LIVE-2: very long explicit timers are chunked instead of overflowing Node timers
+  ---
+  duration_ms: 5.614956
+  ...
+# Subtest: LIVE-2: native recovery of unlimited Live keeps an answer timeout without inventing a duration limit
+ok 194 - LIVE-2: native recovery of unlimited Live keeps an answer timeout without inventing a duration limit
+  ---
+  duration_ms: 11.203312
+  ...
+# Subtest: Botsky: a credential pool is rejected before any native offer
+ok 195 - Botsky: a credential pool is rejected before any native offer
+  ---
+  duration_ms: 23.886232
+  ...
+# Subtest: LIVE-2C: invalid destinations cannot probe configured keys
+ok 196 - LIVE-2C: invalid destinations cannot probe configured keys
+  ---
+  duration_ms: 1.962132
+  ...
+# Subtest: V1 private video still requires owner Live and remains idempotent
+ok 197 - V1 private video still requires owner Live and remains idempotent
+  ---
+  duration_ms: 6.025038
+  ...
+# Subtest: V2 Lab video keeps one Live session through 2-1-2 listeners and ends after everyone leaves
+ok 198 - V2 Lab video keeps one Live session through 2-1-2 listeners and ends after everyone leaves
+  ---
+  duration_ms: 9.662742
+  ...
+# Subtest: V3 clip requests are scoped to connected video, idempotent and never execute after hangup
+ok 199 - V3 clip requests are scoped to connected video, idempotent and never execute after hangup
+  ---
+  duration_ms: 7.77313
+  ...
+# Subtest: V5 avatar commands affect only a connected video call and stop when cancelled
+ok 200 - V5 avatar commands affect only a connected video call and stop when cancelled
+  ---
+  duration_ms: 4.777351
+  ...
+# Subtest: N12a keeps one Live session for 2→1→2 and suspends/resumes it through 0→1 within audience grace
+ok 201 - N12a keeps one Live session for 2→1→2 and suspends/resumes it through 0→1 within audience grace
+  ---
+  duration_ms: 35.406386
+  ...
+# Subtest: N12a ends and cleans Live after sustained empty audience without a late reappearance
+ok 202 - N12a ends and cleans Live after sustained empty audience without a late reappearance
+  ---
+  duration_ms: 24.763638
+  ...
+# Subtest: N12a browser failure rebinding Live enters bounded H4 recovery without closing the call
+ok 203 - N12a browser failure rebinding Live enters bounded H4 recovery without closing the call
+  ---
+  duration_ms: 44.979527
+  ...
+# Subtest: N12b pause and stop reach a pending clip load before the browser queue is released
+ok 204 - N12b pause and stop reach a pending clip load before the browser queue is released
+  ---
+  duration_ms: 5.615836
+  ...
+# Subtest: N12b a manual pause can supersede a pending resume without waiting for play()
+ok 205 - N12b a manual pause can supersede a pending resume without waiting for play()
+  ---
+  duration_ms: 0.613844
+  ...
+# Subtest: N12b abort during pending clip load rejects promptly and stops late completion
+ok 206 - N12b abort during pending clip load rejects promptly and stops late completion
+  ---
+  duration_ms: 4.129386
+  ...
+# Subtest: N12b abort during pending resume rejects promptly and stops late completion
+ok 207 - N12b abort during pending resume rejects promptly and stops late completion
+  ---
+  duration_ms: 0.964326
+  ...
+# Subtest: N12b late aborted completion cannot stop a successor call
+ok 208 - N12b late aborted completion cannot stop a successor call
+  ---
+  duration_ms: 0.665604
+  ...
+# Subtest: N12b spoken pause bypasses a pending clip command while preserving call identity
+ok 209 - N12b spoken pause bypasses a pending clip command while preserving call identity
+  ---
+  duration_ms: 17.897715
+  ...
+# Subtest: N12b resume of an ended clip asks before replaying and sends no playback command
+ok 210 - N12b resume of an ended clip asks before replaying and sends no playback command
+  ---
+  duration_ms: 3.438102
+  ...
+# Subtest: N12b renderer replaces one crashed worker in the same canvas and fences late frames and controls
+ok 211 - N12b renderer replaces one crashed worker in the same canvas and fences late frames and controls
+  ---
+  duration_ms: 20.195928
+  ...
+# Subtest: N12b renderer stops retrying after the one recovery and exposes failure without losing the canvas
+ok 212 - N12b renderer stops retrying after the one recovery and exposes failure without losing the canvas
+  ---
+  duration_ms: 4.787631
+  ...
+# Subtest: N12b renderer watchdog bounds a silent worker and its stalled replacement
+ok 213 - N12b renderer watchdog bounds a silent worker and its stalled replacement
+  ---
+  duration_ms: 7.089006
+  ...
+# Subtest: N12b renderer hangup during recovery cannot resurrect a worker or frame
+ok 214 - N12b renderer hangup during recovery cannot resurrect a worker or frame
+  ---
+  duration_ms: 1.991813
+  ...
+# Subtest: N12b renderer failure before any frame rejects preparation after the bounded attempt
+ok 215 - N12b renderer failure before any frame rejects preparation after the bounded attempt
+  ---
+  duration_ms: 1.002246
+  ...
+# Subtest: N13a capabilities resolve real expression names case-insensitively and require live morph binds
+ok 216 - N13a capabilities resolve real expression names case-insensitively and require live morph binds
+  ---
+  duration_ms: 3.813944
+  ...
+# Subtest: N13a zero-weight, hidden, or detached morph binds cannot claim an expression capability
+ok 217 - N13a zero-weight, hidden, or detached morph binds cannot claim an expression capability
+  ---
+  duration_ms: 0.339482
+  ...
+# Subtest: N13a reset clears every registered expression, including capitalized/custom names
+ok 218 - N13a reset clears every registered expression, including capitalized/custom names
+  ---
+  duration_ms: 0.456003
+  ...
+# Subtest: N13a applied status reports the post-update morph influence rather than requested weight alone
+ok 219 - N13a applied status reports the post-update morph influence rather than requested weight alone
+  ---
+  duration_ms: 1.239848
+  ...
+# Subtest: N13a neutral is verifiable as a reset and reports the previous controlled expression cleared
+ok 220 - N13a neutral is verifiable as a reset and reports the previous controlled expression cleared
+  ---
+  duration_ms: 0.410842
+  ...
+# Subtest: N13a worker confirms an expression only after the compositor acknowledges its own frame
+ok 221 - N13a worker confirms an expression only after the compositor acknowledges its own frame
+  ---
+  duration_ms: 5.208554
+  ...
+# Subtest: N13a a cancelled queued expression is never applied and a cancelled in-flight frame is never confirmed
+ok 222 - N13a a cancelled queued expression is never applied and a cancelled in-flight frame is never confirmed
+  ---
+  duration_ms: 1.315168
+  ...
+# Subtest: N13a manager requires applied expression evidence and rejects a late result from another call
+ok 223 - N13a manager requires applied expression evidence and rejects a late result from another call
+  ---
+  duration_ms: 3.566342
+  ...
+# Subtest: N13a abort forwards the exact visual control ID and cannot report a cancelled gesture as success
+ok 224 - N13a abort forwards the exact visual control ID and cannot report a cancelled gesture as success
+  ---
+  duration_ms: 1.56577
+  ...
+# Subtest: N13a avatar actions use SILENT scheduling and never open group voice or undeclared tools
+ok 225 - N13a avatar actions use SILENT scheduling and never open group voice or undeclared tools
+  ---
+  duration_ms: 16.405144
+  ...
+# Subtest: N13a pending avatar work is aborted and suppressed when its group generation is superseded
+ok 226 - N13a pending avatar work is aborted and suppressed when its group generation is superseded
+  ---
+  duration_ms: 6.18936
+  ...
+# Subtest: N13a toolCallCancellation aborts pending avatar work without a late result
+ok 227 - N13a toolCallCancellation aborts pending avatar work without a late result
+  ---
+  duration_ms: 6.102559
+  ...
+# Subtest: N13a call closure aborts pending avatar work without a late result
+ok 228 - N13a call closure aborts pending avatar work without a late result
+  ---
+  duration_ms: 3.110459
+  ...
+# Subtest: N13a new private input cancels only the pending avatar control
+ok 229 - N13a new private input cancels only the pending avatar control
+  ---
+  duration_ms: 7.486488
+  ...
+# Subtest: N13b exposes the bounded gesture and blush controls and requires applied frame evidence
+ok 230 - N13b exposes the bounded gesture and blush controls and requires applied frame evidence
+  ---
+  duration_ms: 4.432988
+  ...
+# Subtest: N13b validates action names and timed-control duration before dispatch
+ok 231 - N13b validates action names and timed-control duration before dispatch
+  ---
+  duration_ms: 0.472203
+  ...
+# Subtest: N13b gesture layer preserves base, overrides idle and returns without accumulated rotations
+ok 232 - N13b gesture layer preserves base, overrides idle and returns without accumulated rotations
+  ---
+  duration_ms: 117.218108
+  ...
+# Subtest: N13b missing hand withdraws gestures that depend on it
+ok 233 - N13b missing hand withdraws gestures that depend on it
+  ---
+  duration_ms: 1.122927
+  ...
+# Subtest: N13b replacement fades the old gesture and resets all touched bones
+ok 234 - N13b replacement fades the old gesture and resets all touched bones
+  ---
+  duration_ms: 2.946059
+  ...
+# Subtest: N13b chest gesture is unavailable when this rig cannot fit a chest target
+ok 235 - N13b chest gesture is unavailable when this rig cannot fit a chest target
+  ---
+  duration_ms: 0.721245
+  ...
+# Subtest: N15: a new group intervention clears bridge playback and fences queued Live PCM
+ok 236 - N15: a new group intervention clears bridge playback and fences queued Live PCM
+  ---
+  duration_ms: 5.835917
+  ...
+# Subtest: N15: suspending a group aborts pending turn tools before the director retires that turn
+ok 237 - N15: suspending a group aborts pending turn tools before the director retires that turn
+  ---
+  duration_ms: 2.565816
+  ...
+# Subtest: N15: suspension does not invoke group turn cancellation for a private Live session
+ok 238 - N15: suspension does not invoke group turn cancellation for a private Live session
+  ---
+  duration_ms: 1.516329
+  ...
+# Subtest: N15 question opens after real drain when output transcription arrives before PCM
+ok 239 - N15 question opens after real drain when output transcription arrives before PCM
+  ---
+  duration_ms: 3.03686
+  ...
+# Subtest: N15 question opens after real drain when output transcription arrives late
+ok 240 - N15 question opens after real drain when output transcription arrives late
+  ---
+  duration_ms: 0.319482
+  ...
+# Subtest: N15 expired question and incidental mention cannot authorize unrelated voice
+ok 241 - N15 expired question and incidental mention cannot authorize unrelated voice
+  ---
+  duration_ms: 2.114333
+  ...
+# Subtest: N15 interrupted and reconnecting turns cannot retain or regain old permission
+ok 242 - N15 interrupted and reconnecting turns cannot retain or regain old permission
+  ---
+  duration_ms: 1.226968
+  ...
+# Subtest: N15 unspoken transcription never creates a pending question
+ok 243 - N15 unspoken transcription never creates a pending question
+  ---
+  duration_ms: 0.367322
+  ...
+# Subtest: N15 an intervening topic consumes the question even if Live stays silent
+ok 244 - N15 an intervening topic consumes the question even if Live stays silent
+  ---
+  duration_ms: 0.566884
+  ...
+# Subtest: N15 a delayed invocation authorization cannot override a newer rejection
+ok 245 - N15 a delayed invocation authorization cannot override a newer rejection
+  ---
+  duration_ms: 0.348842
+  ...
+# Subtest: N15 a delayed answer authorization cannot override a newer rejection
+ok 246 - N15 a delayed answer authorization cannot override a newer rejection
+  ---
+  duration_ms: 1.010927
+  ...
+# Subtest: N15 fresh group input cuts admitted playback once; late provider interruption cannot erase the new answer
+ok 247 - N15 fresh group input cuts admitted playback once; late provider interruption cannot erase the new answer
+  ---
+  duration_ms: 7.549489
+  ...
+# Subtest: N15 provider-only interruption revokes turn/tools and does not permit late PCM
+ok 248 - N15 provider-only interruption revokes turn/tools and does not permit late PCM
+  ---
+  duration_ms: 1.999652
+  ...
+# Subtest: N15 final turnComplete observes drain even without generationComplete and opens the spoken question
+ok 249 - N15 final turnComplete observes drain even without generationComplete and opens the spoken question
+  ---
+  duration_ms: 1.57733
+  ...
+# Subtest: N15 explicit silence aborts pending visual work and keeps the gate closed
+ok 250 - N15 explicit silence aborts pending visual work and keeps the gate closed
+  ---
+  duration_ms: 2.816698
+  ...
+# Subtest: PM11: feature rollback persists, composes concurrent edits and cannot enable environment-disabled functions
+ok 251 - PM11: feature rollback persists, composes concurrent edits and cannot enable environment-disabled functions
+  ---
+  duration_ms: 22.891906
+  ...
+# Subtest: PM11: failed persistence does not publish feature changes and corrupt controls fail closed
+ok 252 - PM11: failed persistence does not publish feature changes and corrupt controls fail closed
+  ---
+  duration_ms: 6.686083
+  ...
+# Subtest: PM11: report exposes aggregate measurements and never identifiers, content or arbitrary error strings
+ok 253 - PM11: report exposes aggregate measurements and never identifiers, content or arbitrary error strings
+  ---
+  duration_ms: 1.695331
+  ...
+# Subtest: PM11: detects stale observation, idle audio and low disk without attempting repair or making a call
+ok 254 - PM11: detects stale observation, idle audio and low disk without attempting repair or making a call
+  ---
+  duration_ms: 0.884246
+  ...
+# Subtest: PM11: resource observation counts audio files and temporary jobs without reading or deleting their content
+ok 255 - PM11: resource observation counts audio files and temporary jobs without reading or deleting their content
+  ---
+  duration_ms: 19.754846
+  ...
+# Subtest: LIVE-2C: live renewal evidence is a numeric aggregate without session or key identifiers
+ok 256 - LIVE-2C: live renewal evidence is a numeric aggregate without session or key identifiers
+  ---
+  duration_ms: 0.749245
+  ...
+# Subtest: PCM real conserva muestras, copia entrada y aísla llamada/sesión/epoch
+ok 257 - PCM real conserva muestras, copia entrada y aísla llamada/sesión/epoch
+  ---
+  duration_ms: 5.053872
+  ...
+# Subtest: presión acotada y drenaje no pierden ni aceptan paquetes extra
+ok 258 - presión acotada y drenaje no pierden ni aceptan paquetes extra
+  ---
+  duration_ms: 8.772776
+  ...
+# Subtest: A pending question starts from confirmed playback end and accepts a contextual answer once, without a name
+ok 259 - A pending question starts from confirmed playback end and accepts a contextual answer once, without a name
+  ---
+  duration_ms: 5.263674
+  ...
+# Subtest: Expired questions, unrelated speech, interrupted playback and retired calls cannot authorize name-free speech
+ok 260 - Expired questions, unrelated speech, interrupted playback and retired calls cannot authorize name-free speech
+  ---
+  duration_ms: 0.759604
+  ...
+# Subtest: A declared question may have a spoken invitation after it, but an unspoken declared question cannot open a window
+ok 261 - A declared question may have a spoken invitation after it, but an unspoken declared question cannot open a window
+  ---
+  duration_ms: 2.048933
+  ...
+# Subtest: PM05B: group native dispatch rechecks a confirmed failed call atomically before its only recovery offer
+ok 262 - PM05B: group native dispatch rechecks a confirmed failed call atomically before its only recovery offer
+  ---
+  duration_ms: 11.959877
+  ...
+# Subtest: PM05B: private native dispatch rechecks a confirmed failed call atomically before its only recovery offer
+ok 263 - PM05B: private native dispatch rechecks a confirmed failed call atomically before its only recovery offer
+  ---
+  duration_ms: 10.834469
+  ...
+# Subtest: Service lock excludes a second instance and recovers a dead owner
+ok 264 - Service lock excludes a second instance and recovers a dead owner
+  ---
+  duration_ms: 37.192917
+  ...
+# Subtest: A runtime that never acquired ownership cannot erase old process metadata
+ok 265 - A runtime that never acquired ownership cannot erase old process metadata
+  ---
+  duration_ms: 10.899709
+  ...
+# Subtest: Private audio starts without login paths, coexists with another session and cleans up independently
+ok 266 - Private audio starts without login paths, coexists with another session and cleans up independently
+  ---
+  duration_ms: 1314.66571
+  ...
+# Subtest: Botsky real private Pulse capture receives a synthetic tone and releases its own processes
+ok 267 - Botsky real private Pulse capture receives a synthetic tone and releases its own processes
+  ---
+  duration_ms: 4104.560034
+  ...
+# Subtest: A1 intermediate provider turn cannot close; final audio waits for its output queue
+ok 268 - A1 intermediate provider turn cannot close; final audio waits for its output queue
+  ---
+  duration_ms: 11.382113
+  ...
+# Subtest: A2 expiry closes the exact recovering call even with suspended audio
+ok 269 - A2 expiry closes the exact recovering call even with suspended audio
+  ---
+  duration_ms: 20.659212
+  ...
+# Subtest: A2 expiry never closes a replacement call
+ok 270 - A2 expiry never closes a replacement call
+  ---
+  duration_ms: 20.017647
+  ...
+# Subtest: A3 cancellation before checkpoint keeps voice and flushes buffered input once
+ok 271 - A3 cancellation before checkpoint keeps voice and flushes buffered input once
+  ---
+  duration_ms: 4.093106
+  ...
+# Subtest: A3 cancelling voice preserves a renewal requested independently by provider
+ok 272 - A3 cancelling voice preserves a renewal requested independently by provider
+  ---
+  duration_ms: 0.831445
+  ...
+# Subtest: H1 aborted playback drain can observe a later recovered turn
+ok 273 - H1 aborted playback drain can observe a later recovered turn
+  ---
+  duration_ms: 3.279901
+  ...
+# Subtest: H7 asking for active voice cancels only a deferred switch and preserves provider renewal
+ok 274 - H7 asking for active voice cancels only a deferred switch and preserves provider renewal
+  ---
+  duration_ms: 0.515923
+  ...
+# Subtest: H7 cannot report unchanged while a submitted voice switch is connecting
+ok 275 - H7 cannot report unchanged while a submitted voice switch is connecting
+  ---
+  duration_ms: 0.274322
+  ...
+# Subtest: spoken controls close only after farewell audio queue and browser playback drain
+ok 276 - spoken controls close only after farewell audio queue and browser playback drain
+  ---
+  duration_ms: 11.08727
+  ...
+# Subtest: spoken controls reject stale or group sessions and cannot close a later call
+ok 277 - spoken controls reject stale or group sessions and cannot close a later call
+  ---
+  duration_ms: 0.659564
+  ...
+# Subtest: keep_call cancels the existing goodbye timer and does not end the call later
+ok 278 - keep_call cancels the existing goodbye timer and does not end the call later
+  ---
+  duration_ms: 20.564291
+  ...
+# Subtest: volume is bounded, persisted by manager and closed arguments cannot redirect calls
+ok 279 - volume is bounded, persisted by manager and closed arguments cannot redirect calls
+  ---
+  duration_ms: 0.853045
+  ...
+# Subtest: Live voice switch resumes with chosen setup, same checkpoint and no implicit fallback
+ok 280 - Live voice switch resumes with chosen setup, same checkpoint and no implicit fallback
+  ---
+  duration_ms: 8.667615
+  ...
+# Subtest: Live de-duplicates volume tool calls and cancellation disarms pending goodbye
+ok 281 - Live de-duplicates volume tool calls and cancellation disarms pending goodbye
+  ---
+  duration_ms: 0.938406
+  ...
+# Subtest: H8 volume reports actual endpoints with stable decimal steps
+ok 282 - H8 volume reports actual endpoints with stable decimal steps
+  ---
+  duration_ms: 0.509123
+  ...
+1..282
+# tests 282
+# suites 0
+# pass 282
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26146.045578

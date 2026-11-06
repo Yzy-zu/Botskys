@@ -67,7 +67,7 @@ function bindAccount(driver, document, privateDir) {
 }
 
 async function createService({ projectRoot, document, token, driver, runtime, live = {},
-  clock, log = () => {}, port = 0, agendaTimers = false } = {}) {
+  clock, log = () => {}, port = 0, agendaTimers = false, startRuntime = false } = {}) {
   if (!projectRoot || !driver || !runtime || typeof token !== 'string' ||
       !/^[a-f0-9]{64}$/.test(token) || !Number.isInteger(port) || port < 0 || port > 65535) {
     throw Error('CALLS_EXPLICIT_CONFIGURATION_REQUIRED');
@@ -131,6 +131,7 @@ async function createService({ projectRoot, document, token, driver, runtime, li
     if (driver.isFixture === true && driver.liveController) manager.liveController = driver.liveController;
     manager.operations = new Operations({ manager, audioStore, runtime, privateDir });
     manager.incomingPolicy = { enabled: false, allows: () => false };
+    if (startRuntime) await runtime.start();
     await manager.boot();
     manager.agenda = new CallAgenda({ file: path.join(privateDir, 'agenda.json'), manager,
       policy: policy.schedulePolicy, ...(clock ? { now: clock.now } : {}), log });

@@ -1,0 +1,6 @@
+test_cli_serve_sigterm_and_restart_keep_single_note (test_runtime_process.RuntimeProcessTest.test_cli_serve_sigterm_and_restart_keep_single_note) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.629s
+
+OK

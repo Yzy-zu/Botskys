@@ -1,0 +1,1 @@
+{"gemini": true, "tts": true, "asr": true, "drive": true, "messenger": true, "groups": true, "minecraft": true, "calls": false, "calls_configured": false, "incoming_transport_configured": false, "incoming_transport_running": false, "mutations_enabled": false}

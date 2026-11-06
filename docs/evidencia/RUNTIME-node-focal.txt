@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: configured composition starts own runtime before verified driver and releases both on close
+ok 1 - configured composition starts own runtime before verified driver and releases both on close
+  ---
+  duration_ms: 277.947014
+  ...
+# Subtest: unauthorized browser and multi-key Live are rejected before runtime or storage
+ok 2 - unauthorized browser and multi-key Live are rejected before runtime or storage
+  ---
+  duration_ms: 2.180974
+  ...
+# Subtest: runtime startup failure closes owned resources and releases lock
+ok 3 - runtime startup failure closes owned resources and releases lock
+  ---
+  duration_ms: 250.503038
+  ...
+# Subtest: real CLI rejects disabled browser and oversized pipe without touching a profile
+ok 4 - real CLI rejects disabled browser and oversized pipe without touching a profile
+  ---
+  duration_ms: 1007.53739
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2090.606381
