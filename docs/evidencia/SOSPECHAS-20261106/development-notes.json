@@ -1,0 +1,22 @@
+[
+  {
+    "event": "initial_httpx_capture",
+    "run": "20261106T211144Z",
+    "remote_generations": 2,
+    "content_controls_pass": true,
+    "capture_count": 0,
+    "reason": "SDK usa transporte aiohttp; hook HTTPX no ve requests. No se presenta como captura válida."
+  },
+  {
+    "event": "capture_hook_signature_error",
+    "error": "http_request keyword mismatch",
+    "remote_generations": 0,
+    "reason": "Fallo antes de llamar al transporte original."
+  },
+  {
+    "event": "capture_mime_field_error",
+    "error": "SDK usa mime_type en vez de mimeType en este punto",
+    "remote_generations": 0,
+    "reason": "Fallo de instrumentación antes de llamar al transporte original; corregido lector de captura, no producto."
+  }
+]

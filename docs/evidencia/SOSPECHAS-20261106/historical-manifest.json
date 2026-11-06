@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/evidencia/STRESS-20261106/claims-for-contrast.json",
+    "sha256": "aada0a84332f2e04991ad9118f0bcb1ef67ae325cdef32c02b85ed34e247b9ae"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/results.json",
+    "sha256": "1164562492c33be104a26b6caa3bb00ca2e2e97b9ee1ee408475880710f1b8d1"
+  },
+  {
+    "path": "docs/evidencia/CONTRASTE-20261106/adjudications.json",
+    "sha256": "ea744921b83e295d08ee2744d99f808bb705bda83dfe1d5068a3e95505ce4eaa"
+  }
+]

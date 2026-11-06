@@ -1,0 +1,115 @@
+[
+  {
+    "fixture": "pptx",
+    "expected_marker": "BOTSKY92B5806043C94712A3BF825C58850123",
+    "prompt": "Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.",
+    "oracle": "Exact marker from file, absent from prompt/history",
+    "preprocessed": [
+      {
+        "mime": "text/plain",
+        "bytes": 38,
+        "sha256": "20ec18db75f642ebcadaf1946f69df752fea2530d11d4a4a1e7508d6f4e6b302"
+      }
+    ],
+    "response": "BOTSKY92B5806043C94712A3BF825C58850123",
+    "marker_matches": true,
+    "wire_requests": [
+      {
+        "capture_boundary": "SDK serialized request before HTTP transport",
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "{\"message\": \"Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.\", \"history\": [], \"requested_seconds\": null, \"quoted_text\": null, \"explicit_memory\": []}"
+              },
+              {
+                "inlineData": {
+                  "data": "Qk9UU0tZOTJCNTgwNjA0M0M5NDcxMkEzQkY4MjVDNTg4NTAxMjM=",
+                  "mime_type": "text/plain"
+                }
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "files": [
+          {
+            "mime": "text/plain",
+            "bytes": 38,
+            "sha256": "20ec18db75f642ebcadaf1946f69df752fea2530d11d4a4a1e7508d6f4e6b302",
+            "synthetic_content": "BOTSKY92B5806043C94712A3BF825C58850123"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "fixture": "invalid_json",
+    "expected_marker": "BOTSKYBC3C67F1379949F1830E3D77D7A6017F",
+    "prompt": "Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.",
+    "oracle": "Exact marker from file, absent from prompt/history",
+    "preprocessed": [
+      {
+        "mime": "text/plain",
+        "bytes": 68,
+        "sha256": "00e5c794a777c16e8ba0c0f92a1606d54aa11d3adafd51d93182d06d3bef8a47"
+      }
+    ],
+    "response": "BOTSKYBC3C67F1379949F1830E3D77D7A6017F",
+    "marker_matches": true,
+    "wire_requests": [
+      {
+        "capture_boundary": "SDK serialized request before HTTP transport",
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "{\"message\": \"Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.\", \"history\": [], \"requested_seconds\": null, \"quoted_text\": null, \"explicit_memory\": []}"
+              },
+              {
+                "inlineData": {
+                  "data": "eyJyZWZlcmVuY2UiOiAiQk9UU0tZQkMzQzY3RjEzNzk5NDlGMTgzMEUzRDc3RDdBNjAxN0YiLCAiYnJva2VuIjogW30=",
+                  "mime_type": "text/plain"
+                }
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "files": [
+          {
+            "mime": "text/plain",
+            "bytes": 68,
+            "sha256": "00e5c794a777c16e8ba0c0f92a1606d54aa11d3adafd51d93182d06d3bef8a47",
+            "synthetic_content": "{\"reference\": \"BOTSKYBC3C67F1379949F1830E3D77D7A6017F\", \"broken\": [}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "fixture": "no_attachment",
+    "expected_marker": "AUSENTE",
+    "prompt": "Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.",
+    "oracle": "No file: must return AUSENTE",
+    "preprocessed": [],
+    "response": "AUSENTE",
+    "marker_matches": true,
+    "wire_requests": [
+      {
+        "capture_boundary": "SDK serialized request before HTTP transport",
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "{\"message\": \"Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.\", \"history\": [], \"requested_seconds\": null, \"quoted_text\": null, \"explicit_memory\": []}"
+              }
+            ],
+            "role": "user"
+          }
+        ],
+        "files": []
+      }
+    ]
+  }
+]

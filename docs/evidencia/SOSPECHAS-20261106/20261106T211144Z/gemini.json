@@ -1,0 +1,34 @@
+[
+  {
+    "fixture": "pptx",
+    "expected_marker": "BOTSKYB7AC7780F9134F47A429216084D39CF5",
+    "prompt": "Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.",
+    "oracle": "Exact marker from file, absent from prompt/history",
+    "preprocessed": [
+      {
+        "mime": "text/plain",
+        "bytes": 38,
+        "sha256": "4cf435671d69685a5806d43e88cf0eed87761a8929c4a889de1245e600c88a38"
+      }
+    ],
+    "response": "BOTSKYB7AC7780F9134F47A429216084D39CF5",
+    "marker_matches": true,
+    "wire_requests": []
+  },
+  {
+    "fixture": "invalid_json",
+    "expected_marker": "BOTSKY25FEBCD977E645658C3B95FD680053B7",
+    "prompt": "Devuelve únicamente el identificador que empieza por BOTSKY dentro del archivo adjunto. No lo inventes; si falta el archivo responde AUSENTE.",
+    "oracle": "Exact marker from file, absent from prompt/history",
+    "preprocessed": [
+      {
+        "mime": "text/plain",
+        "bytes": 68,
+        "sha256": "c023d523cbe79e891af2db6762ad514c7d15ae9ea0f717e3710ca99688c304c5"
+      }
+    ],
+    "response": "BOTSKY25FEBCD977E645658C3B95FD680053B7",
+    "marker_matches": true,
+    "wire_requests": []
+  }
+]

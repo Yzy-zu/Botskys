@@ -1,0 +1,58 @@
+{
+  "review": "search_web-02",
+  "reviewed_at_utc": "2026-11-06T21:13:20Z",
+  "classification": "NO_REPRODUCIDO; resultados remotos capturados no contenían coincidencias para ALLterms",
+  "contract": {
+    "source": "rebuildbotsky.md §6 search_web; docs/R1.md",
+    "behavior": "Consulta literal, site: conservado, términos explícitos obligatorios; no atribuir relevancia antes de ver resultados.",
+    "filter": "Coincidencia literal case-insensitive de todos los términos en título + descripción limpiados de HTML. Se inspeccionan como máximo los primeros 10 items RSS y se devuelven como máximo 5.",
+    "note": "No hay promesa de que el proveedor encuentre resultados para una consulta ni de que una muestra de publicación tenga un resultado relevante."
+  },
+  "captures": [
+    {
+      "case": "c02",
+      "query": "Botsky testing guide",
+      "required_terms": [
+        "Python",
+        "tutorial"
+      ],
+      "http_status": 200,
+      "fixture": "20261106T211144Z/c02.rss",
+      "sha256": "20a9e406e193be07f2286550ef146fcf3a0f72292f40a9073b8aae5d2fc3ba04",
+      "rss_items_inspected": 10,
+      "matches": [],
+      "finding": "Los diez items son resultados de WhatsApp y ninguno contiene Python ni tutorial en título/descripción. El filtro debía producir vacío."
+    },
+    {
+      "case": "c03",
+      "query": "HTML standards specification",
+      "required_terms": [
+        "W3C",
+        "HTML"
+      ],
+      "http_status": 200,
+      "fixture": "20261106T211144Z/c03.rss",
+      "sha256": "90f233fde2c850fc67b54b4cf740f45b24041e609366a18c9301f88d141bc1e5",
+      "rss_items_inspected": 10,
+      "matches": [],
+      "finding": "Los diez items contienen HTML en título o descripción, pero ninguno contiene W3C; el filtro ALLterms debía producir vacío."
+    }
+  ],
+  "local_regressions": {
+    "file": "tests/test_search_suspicion.py",
+    "cases": [
+      "Todos los términos se pueden repartir entre título y descripción; coincidencia case-insensitive; HTML/XML entities y tags se limpian; site: acepta subdominio y excluye otros hosts.",
+      "Un término obligatorio ausente rechaza un resultado parcialmente coincidente.",
+      "El corte de 10 items se fija: un resultado en el item 11 no forma parte de los items inspeccionados.",
+      "Las dos respuestas RSS capturadas se reproducen por HTTP MockTransport y vuelven a producir vacío."
+    ],
+    "command": "PYTHONPATH=tests .venv/bin/python -m unittest test_search_suspicion -v",
+    "result": "4 tests passed"
+  },
+  "product_change": false,
+  "limitations": [
+    "Las capturas HTTP 200 fueron tomadas por el agente principal; esta revisión solo las reprodujo localmente, sin red.",
+    "El proveedor solo expuso 10 items RSS en cada fixture; las pruebas confirman el comportamiento de esos items, no la relevancia global de la web ni páginas completas.",
+    "La evidencia histórica de la campaña y el oráculo original permanecen intactos."
+  ]
+}

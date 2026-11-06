@@ -1,5 +1,39 @@
 # Relevo Botsky
 
+## 06/11/2026 21:16 UTC · Punto2 contrastado con proveedores
+
+Encargo expreso continuar a dos sospechas. Nueva comprobación acotada propia:
+Gemini una clave/modelo, fixtures PPTX/JSON malformado con identificadores aleatorios
+exclusivos del archivo, control sin adjunto; dos GET RSS Bing de consultas originales.
+No reabre campañas ni hace envíos/llamadas/navegador o cambios de servicios. AGENTS
+registra excepción acotada. Subagente Luna revisó búsqueda sin hacer red; principal
+ejecutó proveedores y revisó evidencia/oracles.
+
+conversation-02: no omisión reproducida. Dos controles finales recuperan marcadores
+exactos; sin archivo AUSENTE. Tres requests SDK capturados antes del transporte,
+hashes iguales a contenido preparado, marcadores ausentes de prompt/historial.
+Dos controles iniciales también correctos, hookHTTPX no veía aiohttp y no se cuenta
+como captura. Dos errores intermedios del hook previos al transporte conservados
+en development-notes. Total5invocaciones de generación;3requests finales capturados,
+0FilesAPIuploads. Sin afirmar causa retrospectiva de respuesta histórica sinrequest.
+
+search_web-02: vacío correcto en las capturas nuevas. c02:10items sinPython/tutorial;
+c03:10items sinW3C. Hashes/RSS guardados; replay HTTPMockTransport reproducevacío.
+ALLterms literal conserva coincidencias y filtra faltas; no se relaja para conseguir
+un ok. Ningún defecto nuevo confirmado ni cambio src/calls.
+
+26tests focales IA/descargas/búsqueda PASS,0fallos/errores/omisiones,0intentos locales
+fuera de loopback. Cuatro regresiones nuevas; Ruff/format/pipcheck/diffcheck correctos.
+Regresión completa224 anterior intacta, no repetida sin cambio producto. Informe
+docs/RESOLUCION_SOSPECHAS_20261106.md; evidencia docs/evidencia/SOSPECHAS-20261106/
+(summary,gemini-review,search-review,capturas,payloads,logs,checks y manifests).
+Ops/resolver_sospechas.py solooperador: hace red real, NO ejecutar automáticamente.
+Claims/resultados/adjudicaciones históricos intactos. Punto2contraste cerrado con
+estas limitaciones; no se promete semántica universal. Siguen puntos3AVreal,4otras
+integraciones y5transición; R10global abierto/R11no iniciado. Cuota33%/23%;
+umbral5% vigente, guardar y parar sin reanudación automática. Commit selectivo local.
+
+
 ## 06/11/2026 21:02 UTC · Punto1 cobertura local cerrado
 
 Encargo explícito cubrir18rutas y44campos ausentes en campaña134/152. Dos

@@ -1,0 +1,24 @@
+{
+  "point2_contrasted": true,
+  "new_product_defects_confirmed": 0,
+  "product_modified": false,
+  "conversation_02": "No omisión reproducida; dos marcadores exclusivos de archivo exactos y control negativo correcto; payloads/hashes SDK capturados",
+  "search_web_02": "Vacío contractual correcto en nuevas capturas:0/10 candidatos cumplen todos los términos en cada consulta",
+  "gemini_generate_invocations": 5,
+  "final_captured_requests": 3,
+  "rss_get_requests": 2,
+  "provider_files_api_uploads": 0,
+  "whatsapp_sends": 0,
+  "browser_or_calls": false,
+  "campaign_reopened": false,
+  "local_tests": {
+    "tests": 26,
+    "success": true,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "non_loopback_attempts": 0
+  },
+  "static_checks_success": true,
+  "original_claims_rewritten": false
+}

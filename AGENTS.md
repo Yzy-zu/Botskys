@@ -94,3 +94,13 @@ fixtures propios, SQLite, motores y dobles; conservar evidencia histórica y
 registrar suplemento separado. Un parseo, sondeo frío o guardia no acredita éxito
 del efecto ni proveedor/recepción humana. No reanudar campañas, envíos, llamadas,
 navegador, mutaciones reales, servicios o transición. Mantener umbral5%.
+
+## 06/11 · Resolución de sospechas, punto2
+
+El propietario encargó continuar al punto2: resolver conversation-02 y
+search_web-02. Comprobación nueva acotada con Gemini configurado (una clave/modelo)
+y RSS, documentos exclusivamente sintéticos y oracles de contenido fijados antes;
+capturar payloads sin cabeceras/secretos y RSS para reproducción local. No reabre
+campañas cerradas ni habilita entregas, WhatsApp, llamadas, navegador, mutaciones
+de grupo/servidor, servicios, transición, NLP o GitHub. Evidencia separada,
+correcciones solo demostradas y cuota5% vigente.

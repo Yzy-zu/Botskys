@@ -1,0 +1,16 @@
+{
+  "claim_id": "conversation-02",
+  "classification": "NO_OMISION_REPRODUCIDA_EN_BACKEND; controles de contenido reales satisfactorios",
+  "evidence": "20261106T211329Z/gemini.json",
+  "local_reference": "tests/test_ai.py:test_analysis_forwards_presentation_and_malformed_json_content",
+  "remote_positive_controls": 2,
+  "remote_negative_controls": 1,
+  "oracle": "Marcador aleatorio completo presente solo en adjunto; hash carga=hash texto convertido. Sin archivo: AUSENTE. No se acepta autoinforme del modelo como oracle.",
+  "result": "PPTX y JSON malformado:2/2 exactos; sin adjunto AUSENTE. SDKcaptura3requests,2archivos, cero archivos en controlnegativo.",
+  "limitations": [
+    "El snapshot es del payload del SDK previo al transporte HTTP, sin cabeceras; la respuesta exacta del marcador corrobora lectura remota.",
+    "No hay request remoto original de campaña para atribuir retrospectivamente la negativa del modelo a una causa exacta.",
+    "La generación puede equivocarse: no se garantiza corrección semántica universal."
+  ],
+  "product_change": false
+}

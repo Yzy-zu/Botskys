@@ -1,0 +1,80 @@
+[
+  {
+    "case": "c02",
+    "query": "Botsky testing guide",
+    "required_terms": [
+      "Python",
+      "tutorial"
+    ],
+    "http_status": 200,
+    "sha256": "20a9e406e193be07f2286550ef146fcf3a0f72292f40a9073b8aae5d2fc3ba04",
+    "bytes": 4986,
+    "unfiltered": [
+      {
+        "title": "WhatsApp Web",
+        "url": "https://web.whatsapp.com/",
+        "snippet": "Log in to WhatsApp Web for simple, reliable and private messaging on your desktop. Send and receive messages and files with ease, all for free."
+      },
+      {
+        "title": "WhatsApp | Mensajería y llamadas gratuitas, privadas, seguras y confiables",
+        "url": "https://www.whatsapp.com/?l=login&lang=es",
+        "snippet": "Usa WhatsApp Messenger para mantenerte en contacto con amigos y familiares. WhatsApp es gratuito y permite enviar mensajes y hacer llamadas de manera simple, segura y confiable, y está disponible en los teléfonos de todo el mundo."
+      },
+      {
+        "title": "HOUSAB - WhatsApp",
+        "url": "https://wa.me/",
+        "snippet": "Hosted by WhatsApp 2026 © WhatsApp LLC Privacy & Terms"
+      },
+      {
+        "title": "WhatsApp | Secure and Reliable Free Private Messaging and Calling",
+        "url": "https://www.whatsapp.com/",
+        "snippet": "Now you can make and receive video or voice calls — one-on-one or in groups — right from your browser. With private messaging and calling, you can be yourself, speak freely and feel close to the most important people in your life no matter where they are."
+      },
+      {
+        "title": "WhatsApp Web - WhatsApp Blog",
+        "url": "https://blog.whatsapp.com/whats-app-web",
+        "snippet": "Today, for the first time, millions of you will have the ability to use WhatsApp on your web browser. Our web client is simply an extension of your phone: the web browser mirrors conversations and messages from your mobile device -- this means all of your messages still live on your phone."
+      }
+    ],
+    "filtered": []
+  },
+  {
+    "case": "c03",
+    "query": "HTML standards specification",
+    "required_terms": [
+      "W3C",
+      "HTML"
+    ],
+    "http_status": 200,
+    "sha256": "90f233fde2c850fc67b54b4cf740f45b24041e609366a18c9301f88d141bc1e5",
+    "bytes": 4821,
+    "unfiltered": [
+      {
+        "title": "HTML Tutorial - W3Schools",
+        "url": "https://www.w3schools.com/html/",
+        "snippet": "Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more."
+      },
+      {
+        "title": "HTML Online Editor (Compiler, Interpreter & Runner)",
+        "url": "https://onecompiler.com/html",
+        "snippet": "HTML (Hyper Text Markup language) is the standard markup language for Web pages, was created by Berners-Lee in the year 1991. Almost every web page over internet might be using HTML."
+      },
+      {
+        "title": "HTML: Lenguaje de Marcado de Hipertexto | MDN - MDN Web Docs",
+        "url": "https://developer.mozilla.org/es/docs/Web/HTML",
+        "snippet": "HTML (Lenguaje de Marcado de Hipertexto, del inglés HyperText Markup Language) es el componente más básico de la Web. Define el significado y la estructura del contenido web."
+      },
+      {
+        "title": "HTML - Wikipedia, la enciclopedia libre",
+        "url": "https://es.wikipedia.org/wiki/HTML",
+        "snippet": "El término HTML, también se refiere al contenido del tipo de MIME text/html o de manera más amplia, como un término genérico para el HTML. Esto puede ser en forma derivada del XML (como XHTML 1.0 y versiones posteriores) o directamente derivado de SGML (como HTML 4.01 y versiones anteriores)."
+      },
+      {
+        "title": "HTML - Concepto, historia, cómo funciona y etiquetas",
+        "url": "https://concepto.de/html/",
+        "snippet": "Te explicamos qué es el HTML, para qué sirve y su historia. Además, cómo funciona este lenguaje y qué son las etiquetas html."
+      }
+    ],
+    "filtered": []
+  }
+]

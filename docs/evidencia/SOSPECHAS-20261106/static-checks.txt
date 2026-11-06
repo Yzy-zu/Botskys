@@ -1,0 +1,10 @@
+$ /home/petrov/zhana/.venv/bin/ruff check src tests ops
+All checks passed!
+
+$ /home/petrov/zhana/.venv/bin/ruff format --check src tests ops
+137 files already formatted
+
+$ .venv/bin/pip check
+No broken requirements found.
+
+$ git diff --check
