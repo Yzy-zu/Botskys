@@ -1,0 +1,32 @@
+[
+  {
+    "source": "src/zhana/admin.py",
+    "sha256": "663eee12396572b1625baa04def8a2e9e4f78be172980d6cc2b98b0ecc8130a5",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/admin_store.py",
+    "sha256": "9f0066ea71da4d1fc06176e6a7ef5ce33728d9850fc57cec93bc21c46db42b20",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/minecraft.py",
+    "sha256": "cb1f539e9636923e6c80b6ff8cc971e9eb77cf03c6501c7055a9649d3a0c7a90",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/minecraft_remote.py",
+    "sha256": "7e2eac135165bf2583d223c64cde347d3738067b287b35666d3a0a34bd7c27ab",
+    "decision": "bounded component adapted"
+  },
+  {
+    "source": "src/zhana/minecraft_worker.py",
+    "sha256": "e3387526ff90d29b26c32073d909f0baf1637b6d9f280750c7e176163ba03f52",
+    "decision": "bounded component adapted"
+  },
+  {
+    "source": "src/zhana/providers/evolution.py",
+    "sha256": "48f1708b3dcdd51b3fa85d19914a29a4c24a433684f9d3836bcb57a7071c9366",
+    "decision": "technical reference; own implementation"
+  }
+]

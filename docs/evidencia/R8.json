@@ -1,0 +1,31 @@
+{
+  "block": "R8",
+  "status": "PASS",
+  "level": "local implementation; actual external services/effects NOT_TESTED",
+  "at": "2026-11-06T04:29:46.488447+00:00",
+  "schema": 16,
+  "regression_tests": 134,
+  "regression_log": "R8-final-tests.txt",
+  "final_admin_focal_tests": 11,
+  "focal_log": "R8-admin-final-tests.txt",
+  "checks": [
+    "denegación de amigo antes de cliente",
+    "avisos ajenos sin saldo y escritura local durable tras crash",
+    "XP por cuenta/miembro verificado y límite",
+    "roles/targets/bots protegidos, ban antes de POST y aliases para unban",
+    "HTTPX real con MockTransport: roles ambiguos, identidad conflictiva, ACK target y lectura settings",
+    "nuclear preview entregado, confirmación posterior, snapshot sin admins/dueño/bots, coste5000 único",
+    "cambio de rol/cancelación/fallo conocido/incertidumbre y devoluciones nucleares",
+    "Minecraft consola allowlist y nombre de mod en JSON sin shell",
+    "revocación, servidor ocupado/incierto y reinicio sin repetir cambio",
+    "proceso local Python real para IPC y timeout/limpieza, no SSH remoto",
+    "ruff/diffcheck e integridad SQLite propia"
+  ],
+  "limits": [
+    "conectores y nuclear apagados por defecto",
+    "no API/grupo/host/Bedrock real ni credenciales antiguas",
+    "worker solo trasladado; despliegue/versión y efecto en juego NOT_TESTED",
+    "roles externos sin CAS; recepción humana no probada",
+    "R9 y R10 pendientes; R10 remoto/R11 requieren encargo"
+  ]
+}

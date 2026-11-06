@@ -1,5 +1,38 @@
 # Relevo Botsky
 
+## 06/11/2026 · R8 cerrado localmente; siguiente R9 audiovisual
+
+R6 commit353d57c; R7 commit1c08f1a. R8 esquema propio16, administración de dueño,
+objetivos y roles verificados, avisos propios por persona/ID, ajustes XP de cuenta
+verificada con límites/reservas. Mutación local y recibo atómicos; crash entre
+escritura y publicación no duplica aviso. Ban previo al POST con aliases probados;
+unban revoca registro sin añadir miembro. Incertidumbre bloquea nuevas mutaciones.
+
+Nuclear implementado pero DESHABILITADO por defecto. Snapshot cerrado excluye
+dueño/bots/admins, preview completo aceptado5min y confirmación posterior a entrega.
+Reserva5000XP única; revalidación por objetivo; partes aceptadas/inciertas no se
+repiten, restantes omitidas. Sin aceptados/inciertos devuelve coste completo;
+algunos aceptados/inciertos conservan coste. Cancelación/crash preservan estado.
+
+Cliente Groups nuevo HTTPX acotado y solución Minecraft SSH JSON/worker técnico
+adaptados sin configurar servicios ni copiar claves. Minecraft controles cerrados,
+consola allowlist, nombre de mod fuera de argv SSH; queries de amigos, mutaciones
+de dueño y recibo/server_id que impide repetir cambio incierto. Worker trasladado,
+no instalado ni ejecutado en servidor. Ningún import/runtime/configuración Zhana.
+
+134tests completos y11focales finales de administración pasan; HTTPX MockTransport,
+miembros/acciones dobles, SQLite real y proceso Python local real para IPC/timeout.
+No SSH/grupos/servidor reales, recepción humana ni proveedor remoto. Ruff ydiffcheck
+correctos; docs/R8.md y fichas/hashes/evidencia R8.json. Oracles/logs de desarrollo
+anteriores preservados. Nuclear/conectores optativos apagados, sin datos activos.
+
+Siguiente R9 (dependeR2–R4): frontera audiovisual nueva, contratos/agenda/audio/Live/
+audiencia/video/clips/avatar. No abrir navegador ni copiar perfiles activos; buscar
+frontera WebRTC local sin navegador si permite cumplir comprobaciones autorizadas.
+R10 local espera R3–R9; remoto/R11 necesitan encargo posterior. No activar producción,
+DB31/servicios/sesiones/transporte ni GitHub. Cuota última9% primaria/49% semanal;
+al5%guardar y parar sin reanudación automática. Construcción autónoma vigente.
+
 ## 06/11/2026 · R7 cerrado localmente; sigue R8
 
 R6 commit353d57c. R7 incorpora wallets por identidad verificada/cuenta/época,

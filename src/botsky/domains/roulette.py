@@ -21,11 +21,11 @@ def players(db, identifier):
     ).fetchall()
 
 
-def validated(info, group):
+def validated(info, group, require_admin=True):
     if (
         not isinstance(info, dict)
         or info.get("group_id") != group
-        or info.get("bot_is_admin") is not True
+        or (require_admin and info.get("bot_is_admin") is not True)
         or not isinstance(info.get("participants"), list)
         or len(info["participants"]) > 512
     ):

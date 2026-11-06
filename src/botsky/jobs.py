@@ -58,6 +58,18 @@ def cancel_job(db, context, target):
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
+        if row["operation"].startswith("manage_admin."):
+            from time import time_ns
+
+            from .domains.admin import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
+        if row["operation"].startswith("manage_minecraft."):
+            from time import time_ns
+
+            from .domains.minecraft import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
         if row["operation"].startswith("manage_roulette."):
             from time import time_ns
 
@@ -112,6 +124,8 @@ class Jobs:
         messages=None,
         gallery=None,
         groups=None,
+        minecraft=None,
+        nuclear_enabled=None,
         roulette_policy=None,
     ):
         self.store, self.artifacts, self.clock = store, artifacts, clock
@@ -123,6 +137,8 @@ class Jobs:
         self.messages = messages or (lambda: (None, None))
         self.gallery = gallery or (lambda: (None, None, frozenset()))
         self.groups = groups or (lambda: None)
+        self.minecraft = minecraft or (lambda: None)
+        self.nuclear_enabled = nuclear_enabled or (lambda: False)
         self.roulette_policy = roulette_policy or (lambda: (frozenset(), False, None))
         self.root = private_directory(settings.root, "tmp/jobs")
 
@@ -187,6 +203,14 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
+                if row["operation"].startswith("manage_admin."):
+                    from .domains.admin import retire_job
+
+                    retire_job(db, row["id"], now)
+                if row["operation"].startswith("manage_minecraft."):
+                    from .domains.minecraft import retire_job
+
+                    retire_job(db, row["id"], now)
                 if row["operation"].startswith("manage_roulette."):
                     from .domains.roulette import retire_job
 
@@ -344,6 +368,14 @@ class Jobs:
                 return False
             context = context_of(parent)
             args = json.loads(row["arguments_json"])
+            if row["operation"].startswith("manage_admin."):
+                from .domains.admin import retire_job
+
+                retire_job(db, job["id"], now)
+            if row["operation"].startswith("manage_minecraft."):
+                from .domains.minecraft import retire_job
+
+                retire_job(db, job["id"], now)
             if row["operation"].startswith("manage_roulette."):
                 from .domains.roulette import retire_job
 
@@ -646,6 +678,18 @@ class Jobs:
             if digest.hexdigest() != expected:
                 raise ArtifactProblem("artifact_changed")
         op = job["operation"]
+        if op.startswith("manage_admin.nuclear_"):
+            from .domains.nuclear import run
+
+            return await run(job, directory, self)
+        if op.startswith("manage_admin."):
+            from .domains.admin import run
+
+            return await run(job, directory, self)
+        if op.startswith("manage_minecraft."):
+            from .domains.minecraft import run
+
+            return await run(job, directory, self)
         if op == "manage_roulette.return":
             from .domains.roulette_return import run
 

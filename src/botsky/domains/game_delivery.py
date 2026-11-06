@@ -4,6 +4,11 @@ from . import blackjack, happy_hour
 
 
 def retired(db, receipt_id, settings, now):
+    nuclear = db.execute(
+        "SELECT * FROM nuclear_drafts WHERE preview_receipt_id=?", (receipt_id,)
+    ).fetchone()
+    if nuclear and (nuclear["state"] != "pending" or nuclear["expires_ms"] <= now):
+        return True
     from .cooperacha import expire
 
     expire(db, settings, now)

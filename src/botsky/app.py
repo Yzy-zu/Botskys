@@ -41,6 +41,8 @@ class Application:
         roulette_chats=frozenset(),
         allow_roulette_admins=False,
         roulette_choice=None,
+        minecraft=None,
+        nuclear_enabled=False,
     ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
@@ -59,6 +61,8 @@ class Application:
             frozenset(gallery_chats),
         )
         self.store = Store(settings.database)
+        self.minecraft = minecraft
+        self.nuclear_enabled = bool(nuclear_enabled)
         self.groups, self.roulette_chats, self.allow_roulette_admins, self.roulette_choice = (
             groups,
             frozenset(roulette_chats),
@@ -79,6 +83,8 @@ class Application:
             messages=lambda: (self.messenger, self.directory),
             gallery=lambda: (self.gallery, self.photo_transport, self.gallery_chats),
             groups=lambda: self.groups,
+            minecraft=lambda: self.minecraft,
+            nuclear_enabled=lambda: self.nuclear_enabled,
             roulette_policy=lambda: (
                 self.roulette_chats,
                 self.allow_roulette_admins,
@@ -159,6 +165,14 @@ class Application:
             return denied
         args = command["arguments"]
         operation = command["operation"]
+        if spec.family == "manage_admin":
+            from .domains import admin
+
+            return admin.execute(db, context, spec, args, now, self)
+        if spec.family == "manage_minecraft":
+            from .domains import minecraft
+
+            return minecraft.execute(db, context, spec, args, now, self)
         if spec.family == "manage_roulette":
             from .domains import roulette
 
