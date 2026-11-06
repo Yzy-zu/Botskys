@@ -302,3 +302,19 @@ class OrganizationTest(TestCase):
         settings = replace(self.settings, owner="bob", friends=frozenset({"alice", "owner"}))
         restarted = Application(settings, clock=lambda: self.now)
         self.assertEqual(restarted.deliver(notice, CollectingTransport()), 0)
+
+    def test_reserved_reminder_cancel_and_permission_revocation_prevent_transport(self):
+        from dataclasses import replace
+
+        first = self.receive("/recordar en 30s revocado").result.data["reminder_id"]
+        self.now += 30000
+        notice = self.app.scheduler.tick()[0]
+        denied = Application(
+            replace(self.settings, friends=frozenset({"bob"})), clock=lambda: self.now
+        )
+        self.assertEqual(denied.deliver(notice, CollectingTransport()), 0)
+        self.assertEqual(
+            self.receive("/recordatorio cancelar " + str(first)).result.code, "reminder_cancelled"
+        )
+        self.assertEqual(self.app.deliver(notice, CollectingTransport()), 0)
+        self.assertEqual(self.app.scheduler.tick(), [])

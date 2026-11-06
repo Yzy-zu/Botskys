@@ -29,5 +29,13 @@
     "tests": 9,
     "log": "R5-owner-revalidation.txt",
     "change": "digest delivery retains owner permission and revalidates a changed owner before client"
+  },
+  "cancel_access_followup": {
+    "tests": 10,
+    "log": "R5-cancel-access-revalidation.txt",
+    "checks": [
+      "cancelar aviso reservado impide transporte",
+      "revocar amigo antes de entrega impide transporte"
+    ]
   }
 }
