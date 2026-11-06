@@ -58,10 +58,34 @@ def cancel_job(db, context, target):
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
+        if row["operation"].startswith("manage_roulette."):
+            from time import time_ns
+
+            from .domains.roulette import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
+        if row["operation"].startswith("manage_happy_hour."):
+            from time import time_ns
+
+            from .domains.happy_media import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
+        if row["operation"].startswith("manage_cooperacha."):
+            from time import time_ns
+
+            from .domains.cooperacha import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
         if row["operation"] == "manage_messages.send":
             from time import time_ns
 
             from .domains.messages import retire_job
+
+            retire_job(db, target, time_ns() // 1000000)
+        if row["operation"] == "manage_pack.buy":
+            from time import time_ns
+
+            from .domains.packs import retire_job
 
             retire_job(db, target, time_ns() // 1000000)
         args = json.loads(row["arguments_json"])
@@ -86,6 +110,9 @@ class Jobs:
         content=None,
         drive=None,
         messages=None,
+        gallery=None,
+        groups=None,
+        roulette_policy=None,
     ):
         self.store, self.artifacts, self.clock = store, artifacts, clock
         self._policy = policy or (lambda: settings)
@@ -94,6 +121,9 @@ class Jobs:
         self.content = content or (lambda: (None, None, None))
         self.drive = drive or (lambda: None)
         self.messages = messages or (lambda: (None, None))
+        self.gallery = gallery or (lambda: (None, None, frozenset()))
+        self.groups = groups or (lambda: None)
+        self.roulette_policy = roulette_policy or (lambda: (frozenset(), False, None))
         self.root = private_directory(settings.root, "tmp/jobs")
 
     @property
@@ -157,6 +187,22 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
+                if row["operation"].startswith("manage_roulette."):
+                    from .domains.roulette import retire_job
+
+                    retire_job(db, row["id"], now)
+                if row["operation"].startswith("manage_happy_hour."):
+                    from .domains.happy_media import retire_job
+
+                    retire_job(db, row["id"], now)
+                if row["operation"].startswith("manage_cooperacha."):
+                    from .domains.cooperacha import retire_job
+
+                    retire_job(db, row["id"], now)
+                if row["operation"] == "manage_pack.buy":
+                    from .domains.packs import retire_job
+
+                    retire_job(db, row["id"], now)
                 if row["operation"] == "manage_messages.send":
                     from .domains.messages import retire_job
 
@@ -298,6 +344,22 @@ class Jobs:
                 return False
             context = context_of(parent)
             args = json.loads(row["arguments_json"])
+            if row["operation"].startswith("manage_roulette."):
+                from .domains.roulette import retire_job
+
+                retire_job(db, job["id"], now)
+            if row["operation"].startswith("manage_happy_hour."):
+                from .domains.happy_media import retire_job
+
+                retire_job(db, job["id"], now)
+            if row["operation"] == "manage_cooperacha.complete":
+                from .domains.cooperacha import retire_job
+
+                retire_job(db, job["id"], now)
+            if row["operation"] == "manage_pack.buy":
+                from .domains.packs import retire_job
+
+                retire_job(db, job["id"], now)
             if row["operation"] == "manage_messages.send":
                 from .domains.messages import retire_job
 
@@ -364,6 +426,10 @@ class Jobs:
                 from .domains.drive import finish_choices
 
                 result = finish_choices(db, context, parent, result, now)
+            if result.code == "coop_preview":
+                from .domains.cooperacha import finish_preview
+
+                result = finish_preview(db, context, result)
             if row["operation"].startswith("download_media.") and ids:
                 identifier = uuid4().hex
                 db.execute(
@@ -580,6 +646,26 @@ class Jobs:
             if digest.hexdigest() != expected:
                 raise ArtifactProblem("artifact_changed")
         op = job["operation"]
+        if op == "manage_roulette.return":
+            from .domains.roulette_return import run
+
+            return await run(job, directory, self)
+        if op.startswith("manage_roulette."):
+            from .domains.roulette import run
+
+            return await run(job, directory, self)
+        if op.startswith("manage_happy_hour."):
+            from .domains.happy_media import run
+
+            return await run(job, directory, self)
+        if op.startswith("manage_cooperacha."):
+            from .domains.cooperacha import run
+
+            return await run(job, directory, self)
+        if op == "manage_pack.buy":
+            from .domains.packs import run
+
+            return await run(job, directory, self)
         if op.startswith("manage_drive."):
             from .domains.drive import run
 

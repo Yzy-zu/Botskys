@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 6
+SCHEMA_VERSION = 13
 PART_CHARS = 3500
 
 
@@ -86,6 +86,41 @@ class Store:
                     (Path(__file__).parent / "migrations/006_integrations.sql").read_text()
                 )
                 version = 6
+            if version == 6 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/007_economy_blackjack.sql").read_text()
+                )
+                version = 7
+            if version == 7 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/008_happy_hour.sql").read_text()
+                )
+                version = 8
+            if version == 8 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/009_gallery_orders.sql").read_text()
+                )
+                version = 9
+            if version == 9 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/010_cooperacha.sql").read_text()
+                )
+                version = 10
+            if version == 10 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/011_happy_media.sql").read_text()
+                )
+                version = 11
+            if version == 11 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/012_roulette.sql").read_text()
+                )
+                version = 12
+            if version == 12 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/013_coop_seen.sql").read_text()
+                )
+                version = 13
             if version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -354,6 +389,14 @@ class Store:
             context = context_of(parent)
             if access.authorize(parent["permission"], context, settings):
                 return None
+            from .domains.game_delivery import retired
+
+            if retired(db, receipt_id, settings, now):
+                db.execute(
+                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
+                    (receipt_id,),
+                )
+                return None
             if parent["origin"] == "internal":
                 from .domains.bot import current
 
@@ -472,6 +515,24 @@ class Store:
                 db.execute(
                     "UPDATE polls SET published_ms=coalesce(published_ms,?) WHERE receipt_id=? AND state='open'",
                     (now, part.receipt_id),
+                )
+                db.execute(
+                    "UPDATE game_views SET accepted_ms=coalesce(accepted_ms,?) WHERE receipt_id=?",
+                    (now, part.receipt_id),
+                )
+                from .domains.happy_hour import delivered
+
+                delivered(db, part.receipt_id, now)
+                from .domains.cooperacha import delivered as coop_delivered
+
+                coop_delivered(db, part.receipt_id, now)
+                db.execute(
+                    "UPDATE roulette_views SET accepted_ms=coalesce(accepted_ms,?) WHERE receipt_id=?",
+                    (now, part.receipt_id),
+                )
+                db.execute(
+                    "UPDATE blackjack_games SET deadline_ms=(SELECT min(accepted_ms) FROM game_views WHERE game_id=blackjack_games.id AND revision=blackjack_games.revision)+CASE WHEN state='lobby' THEN 35000 WHEN mode='individual' THEN 60000 ELSE 30000 END WHERE id IN (SELECT game_id FROM game_views WHERE receipt_id=? AND revision=blackjack_games.revision) AND state IN ('lobby','playing')",
+                    (part.receipt_id,),
                 )
                 db.execute(
                     "UPDATE reminders SET state='sent',revision=revision+1 WHERE delivery_receipt_id=?",

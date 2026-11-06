@@ -1,0 +1,10 @@
+test_known_effect_failure_refunds_everyone_and_expiry_is_once (test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once) ... ok
+test_one_effect_payout_and_return_after_twenty_minutes_once (test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once) ... ok
+test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain (test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain) ... ok
+test_rules_must_be_delivered_before_acceptance_and_stake_is_own (test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own) ... ok
+test_uncertain_effect_retains_stakes_and_restart_does_not_repeat (test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.854s
+
+OK

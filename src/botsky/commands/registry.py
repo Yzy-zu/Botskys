@@ -807,7 +807,7 @@ def build_specs():
         ("cancelar", "cancel"),
     ]:
         fields = (
-            [integer("bet", 20, 1000, required=False, default=50)]
+            [integer("bet", 20, 1000, required=False, default=None)]
             if action in ("start", "table")
             else [identity("game_id", required=False)]
         )

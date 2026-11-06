@@ -60,7 +60,7 @@ class Scheduler:
                 now,
                 hashlib.sha256(command.encode()).hexdigest(),
                 command,
-                "owner" if kind == "digest" else "friend",
+                "owner" if kind in ("digest", "happy_drop", "happy_rain") else "friend",
                 result.to_json(),
                 row["receipt_id"],
             ),
@@ -78,6 +78,18 @@ class Scheduler:
         settings = self.app.settings
         emitted = []
         with self.app.store.transaction() as db:
+            from .domains.blackjack import tick
+
+            tick(db, now, settings)
+            from .domains.happy_hour import expire
+
+            expire(db, now, settings)
+            from .domains.cooperacha import expire as expire_coops
+
+            expire_coops(db, settings, now)
+            from .domains.roulette import tick as tick_roulette
+
+            tick_roulette(db, settings, now)
             db.execute(
                 "UPDATE reminders SET state='expired',revision=revision+1 WHERE instance=? AND account=? AND epoch=? AND state='pending' AND due_ms<?",
                 (settings.instance, settings.account, settings.epoch, now - 600000),
@@ -180,4 +192,10 @@ class Scheduler:
                     (key, "digest", target, identifier, now, int(at.timestamp() * 1000) + 600000),
                 )
                 emitted.append(identifier)
+            from .domains.happy_scheduling import tick as tick_happy
+
+            emitted.extend(tick_happy(self, db, now, max(0, limit - len(emitted))))
+            from .domains.roulette_return import tick as tick_returns
+
+            emitted.extend(tick_returns(self, db, now, max(0, limit - len(emitted))))
         return emitted

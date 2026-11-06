@@ -1,0 +1,12 @@
+test_blackjack_board_publication_turn_double_and_restart_saved_cards (test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards) ... ok
+test_blackjack_natural_payout_single_receipt_and_rescue_default (test_games.GamesTest.test_blackjack_natural_payout_single_receipt_and_rescue_default) ... ok
+test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once (test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once) ... ok
+test_blackjack_timeout_refunds_unpublished_and_settles_published (test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published) ... ok
+test_daily_race_scope_global_cooldown_streak_and_maximum_hold (test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold) ... ok
+test_group_message_credit_duplicate_old_and_commands_excluded (test_games.GamesTest.test_group_message_credit_duplicate_old_and_commands_excluded) ... ok
+test_prank_safe_fiction_never_looks_up_or_mutates_foreign_data (test_games.GamesTest.test_prank_safe_fiction_never_looks_up_or_mutates_foreign_data) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.211s
+
+OK

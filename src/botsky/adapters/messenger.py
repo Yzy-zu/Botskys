@@ -64,6 +64,37 @@ class Messenger:
             }
         else:
             raise MessageError("invalid_message_part", False)
+        return await self._post(endpoint, body)
+
+    async def send_photo(self, target, data, mime, *, view_once=False, caption=""):
+        if not self.available:
+            raise MessageError("messenger_not_configured", False)
+        try:
+            Contact("destino", target)
+        except ValueError:
+            raise MessageError("photo_target_invalid", False) from None
+        if (
+            not isinstance(data, bytes)
+            or not 0 < len(data) <= 10 * 1024 * 1024
+            or mime not in ("image/jpeg", "image/png", "image/webp")
+            or type(view_once) is not bool
+            or not isinstance(caption, str)
+            or len(caption) > 1000
+        ):
+            raise MessageError("photo_invalid", False)
+        extension = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}[mime]
+        body = {
+            "number": target,
+            "mediatype": "image",
+            "mimetype": mime,
+            "fileName": "foto." + extension,
+            "media": base64.b64encode(data).decode("ascii"),
+            "viewOnce": view_once,
+            "caption": caption,
+        }
+        return await self._post("sendMedia", body)
+
+    async def _post(self, endpoint, body):
         try:
             async with self.http.stream(
                 "POST",

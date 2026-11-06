@@ -1,0 +1,29 @@
+test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched (test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched) ... ok
+test_coop_expiry_aggregate_rounding_and_cancellation_ownership (test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership) ... ok
+test_coop_missing_original_refunds_known_failure_and_preview_is_censored (test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored) ... ERROR
+test_coop_publication_own_contributions_goal_and_single_settlement (test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement) ... ok
+test_coop_uncertain_keeps_escrow_and_never_repeats_photo (test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo) ... ok
+test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge (test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge) ... ok
+test_library_actual_images_catalog_exact_category_and_symlinks (test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks) ... ok
+test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase (test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase) ... ok
+test_partial_refund_uncertain_hold_and_restart_do_not_send_again (test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again) ... ok
+
+======================================================================
+ERROR: test_coop_missing_original_refunds_known_failure_and_preview_is_censored (test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_packs.py", line 299, in test_coop_missing_original_refunds_known_failure_and_preview_is_censored
+    photo = json.loads(row["photo_json"])
+            ^^^^
+NameError: name 'json' is not defined. Did you forget to import 'json'?
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.669s
+
+FAILED (errors=1)

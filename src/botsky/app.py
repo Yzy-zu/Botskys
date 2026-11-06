@@ -32,6 +32,15 @@ class Application:
         drive=None,
         directory=None,
         messenger=None,
+        daily_roll=None,
+        blackjack_deck=None,
+        gallery=None,
+        photo_transport=None,
+        gallery_chats=frozenset(),
+        groups=None,
+        roulette_chats=frozenset(),
+        allow_roulette_admins=False,
+        roulette_choice=None,
     ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
@@ -43,7 +52,19 @@ class Application:
         self.drive = drive
         self.directory = directory if directory is not None else Directory()
         self.messenger = messenger
+        self.daily_roll, self.blackjack_deck = daily_roll, blackjack_deck
+        self.gallery, self.photo_transport, self.gallery_chats = (
+            gallery,
+            photo_transport,
+            frozenset(gallery_chats),
+        )
         self.store = Store(settings.database)
+        self.groups, self.roulette_chats, self.allow_roulette_admins, self.roulette_choice = (
+            groups,
+            frozenset(roulette_chats),
+            bool(allow_roulette_admins),
+            roulette_choice,
+        )
         self.artifacts = Artifacts(self.store, settings.root / "private/artifacts")
         self.jobs = Jobs(
             self.store,
@@ -56,6 +77,13 @@ class Application:
             content=lambda: (self.gemini, self.tts, self.asr),
             drive=lambda: self.drive,
             messages=lambda: (self.messenger, self.directory),
+            gallery=lambda: (self.gallery, self.photo_transport, self.gallery_chats),
+            groups=lambda: self.groups,
+            roulette_policy=lambda: (
+                self.roulette_chats,
+                self.allow_roulette_admins,
+                self.roulette_choice,
+            ),
         )
         from .scheduler import Scheduler
 
@@ -77,6 +105,10 @@ class Application:
         def prepare(context, db):
             if denied := ingress.freshness(incoming, self.settings, self.clock()):
                 return None, denied, "rejected"
+            if not access.authorize("friend", context, self.settings):
+                from .domains.economy import credit_message
+
+                credit_message(db, context, incoming, self.clock())
             try:
                 command = self.router.parse(incoming.text)
             except CommandError as exc:
@@ -127,6 +159,34 @@ class Application:
             return denied
         args = command["arguments"]
         operation = command["operation"]
+        if spec.family == "manage_roulette":
+            from .domains import roulette
+
+            return roulette.execute(db, context, spec, args, now, self)
+        if spec.family == "manage_cooperacha":
+            from .domains import cooperacha
+
+            return cooperacha.execute(db, context, spec, args, now, self)
+        if spec.family == "manage_pack":
+            from .domains import packs
+
+            return packs.execute(db, context, spec, args, now, self)
+        if spec.family == "manage_happy_hour":
+            from .domains import happy_hour
+
+            return happy_hour.execute(db, context, spec.original_action, args, now, self)
+        if spec.family == "manage_economy":
+            from .domains import economy
+
+            return economy.execute(db, context, spec.original_action, now, self.daily_roll)
+        if spec.family == "manage_blackjack":
+            from .domains import blackjack
+
+            return blackjack.execute(db, context, spec.original_action, args, now, self)
+        if spec.family == "make_prank":
+            from .domains.prank import execute
+
+            return execute(context, args)
         if spec.family == "manage_drive":
             from .domains import drive
 

@@ -1,0 +1,10 @@
+test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched (test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched) ... ok
+test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge (test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge) ... ok
+test_library_actual_images_catalog_exact_category_and_symlinks (test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks) ... ok
+test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase (test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase) ... ok
+test_partial_refund_uncertain_hold_and_restart_do_not_send_again (test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.350s
+
+OK

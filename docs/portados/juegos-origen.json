@@ -1,0 +1,87 @@
+[
+  {
+    "source": "src/zhana/economy.py",
+    "sha256": "3c438f03c9d46584e59261778913c0afc67b00f8989b98b747ebd66cc4e4ab95",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/economy_store.py",
+    "sha256": "a80d5f68ea2d78a0dbc7521704098eb3f4d099ffb5a4afbf99b79d681ba1d167",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/blackjack.py",
+    "sha256": "ec8c7e743a266315c4ec28c7a584c3bed6f8181e759468b2594e5179e6843183",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/blackjack_store.py",
+    "sha256": "e895ad23ffe03d0f84248d0d66d600f4f94438de1efb2f29ada2680645db542c",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/blackjack_limits.py",
+    "sha256": "c6a98419b88f5e4b92e0504ad1be07be84207cc691135b194ba5baea0bbb6f84",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/roulette.py",
+    "sha256": "129914971645ece811984ebd030b0cb9cf4eb64fc1620d46cbe3819846311d4b",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/roulette_store.py",
+    "sha256": "232f5f74642fc935252741da654c6d218d4e2de800ef079f4513d225817ee146",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/roulette_effects.py",
+    "sha256": "0ea911bdb105db441d9a3056b35e413cf701dba58fc8934bbb05dcdb47a6e399",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/cooperacha.py",
+    "sha256": "a97e73aece18efb692974bf241c1d2af14932e7c17329db0d51692cfd24ad53d",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/cooperacha_store.py",
+    "sha256": "e13f6c33e641070aab8b1daa8cff0bc1e02229d2685a252e6bcddb651f5d139a",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/cooperacha_image.py",
+    "sha256": "2f9081881716654660d860ffc3095db8fdfb52275e7cb3ed6012455f9037460e",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/happy_hour.py",
+    "sha256": "dbea08bc818a0cacf354237d4772b048c758f65be1f95a2f3249868afba72f8f",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/happy_hour_store.py",
+    "sha256": "90c32076c341905a599961c25fa1b4e54d7c1e8d109d2808708d1870fd6e408a",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/packs.py",
+    "sha256": "d2caf562b51c49415139e7e80df9aeb8a87379ca2dd434e0034288412e5175b2",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/packs_store.py",
+    "sha256": "eee56dd6ace005fd502d9784c6e13801e5b79c58661d401f55fabd63a24d670e",
+    "decision": "technical rules/reference; own implementation"
+  },
+  {
+    "source": "src/zhana/rikolino.py",
+    "sha256": "0d60cf91aeb92b0c30a80f45d6c029aa1fe87af620f6ed5821149ca3e7e6cfc9",
+    "decision": "bounded library component adapted"
+  },
+  {
+    "source": "src/zhana/broma.py",
+    "sha256": "0244c41c8055fa1e955a1ebdc227bdc0bb8a6835786fd0b203138ce4bd7db0e2",
+    "decision": "technical rules/reference; own implementation"
+  }
+]

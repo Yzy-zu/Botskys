@@ -1,5 +1,41 @@
 # Relevo Botsky
 
+## 06/11/2026 · R7 cerrado localmente; sigue R8
+
+R6 commit353d57c. R7 incorpora wallets por identidad verificada/cuenta/época,
+ledger y reservas de margen, XP grupo normal1/HH20, daily24h/racha hasta48h.
+Blackjack individual/mesa6, límites/pagos/natural/doble, tablero entregado vigente,
+plazos y reembolso/liquidación única; reinicio continúa baraja persistida sin
+sortear otra. Default de apuesta adaptativo20/50, corrige constante50 de R1.
+
+Packs optativos: biblioteca publicada propia nueva, stock real sintético en pruebas,
+oferta entregada5min, confirmación, fotos viewOnce al privado verificado, cargo
+por partes y devoluciones; inciertas retenidas sin repetir. Cooperacha con vista
+censurada real, aportes explícitos propios, original por ID/hash al completar,
+80% al vencer agregado por persona,100% al cancelar/fallar conocido, incierto
+retenido sin reenvío. Biblioteca técnica acotada adaptada de Zhana, sin ruta vieja
+predeterminada ni copia de originales privados. Marca de vistos por ámbito.
+
+HH: activación tras aviso, dueño para mutaciones, AirDrop500XP único, lluvia1–2
+y premio privado4–6 (mínimo3), scheduler tick optativo con claves durables y partes;
+cierre retira futuros efectos. Ruleta reglas/roster aceptados, apuesta propia,
+miembros/roles/número verificados por frontera doble, protecciones, elección y
+mutación reservada una vez. Fallo devuelve; incierto retiene sin repetir; pozo y
+aviso privado de retorno20min con recibo. Broma ficticia sin lookup ni terceros.
+
+Regresión116tests y12focales de fotos pasan; cierre completo117tests en log
+R7-closure-final-tests.txt. Ruff/pipcheck/diffcheck y CLI init propios. Evidencia
+R7.json, decisiones docs/R7.md, ficha/hashes en docs/portados/economia-juegos.md.
+Proveedores/fotos/efectos de grupo reales, viewOnce recibido y recepción humana
+NOT_TESTED. Conectores optativos apagados por defecto, sin datos anteriores/NLP.
+
+Siguiente R8: acciones de dueño, objetivos verificados, advertencias/ban/nuclear
+con preview+confirmación y cliente Minecraft acotado. R9 audiovisual después de
+R2–R4; R10 local tras R3–R9, remoto/R11 requieren encargo posterior. Instalación
+activa, DB31, servicios/sesiones/configuración y auditorías previas intactos. Solo
+commits locales, nada GitHub. Cuota última23% primaria/51% semanal; al5% guardar
+y detener sin reanudación automática. Continuación autónoma autorizada vigente.
+
 ## 06/11/2026 · Reanudación expresa; R6 cerrado localmente, sigue R7
 
 «Prosigue» del propietario revoca parada anterior; consulta nueva56% primaria y

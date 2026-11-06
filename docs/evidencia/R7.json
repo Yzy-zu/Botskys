@@ -1,0 +1,33 @@
+{
+  "block": "R7",
+  "status": "PASS",
+  "level": "local implementation; real remote providers/effects NOT_TESTED",
+  "at": "2026-11-06T04:16:19.370877+00:00",
+  "schema": 13,
+  "regression_tests": 117,
+  "log": "R7-closure-final-tests.txt",
+  "prior_full_log": "R7-final-tests.txt",
+  "prior_full_count": 116,
+  "focal_photo_tests": 12,
+  "focal_photo_log": "R7-photo-final-tests.txt",
+  "checks": [
+    "ledger/reservas y límite de saldo con margen de devoluciones",
+    "daily concurrente, cooldown, racha, probabilidades y XP de grupo idempotente",
+    "blackjack individual/mesa, natural/doble/asientos/turnos/tiempos, baraja persistida al reiniciar",
+    "vista vigente y origen/admisión posteriores a publicación",
+    "biblioteca nueva con SQLite real, PNGs sintéticos y sin symlinks; ningún original privado copiado",
+    "packs cargo posterior a confirmar, viewOnce en HTTPX mock, devolución/retención por foto",
+    "cooperacha aportes propios, meta, censura, hash original, devolución80% agregada/100% conocida",
+    "HH lluvia/premio con partes y schedulerdurable, AirDrop único concurrente, cierre del evento",
+    "ruleta reglas/roster aceptados, miembros/roles dobles, un efecto, pozo y retorno único20min",
+    "cancelación/reinicio y resultado incierto sin repetir",
+    "ficción broma, sin lookup ni IA"
+  ],
+  "limits": [
+    "clientes/fotos/grupos remotos y recepción humana NOT_TESTED",
+    "biblioteca/transportes/HH fotos/ruleta optativos y apagados por defecto",
+    "cliente de miembros/mutaciones grupo pertenece a R8; R7 usa protocolo con doble",
+    "mapeo verificado LID/teléfono de transporte pendiente R10",
+    "R8–R9 pendientes; R10 remoto/R11 sin encargo"
+  ]
+}
