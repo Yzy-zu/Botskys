@@ -1,0 +1,6774 @@
+{
+  "parser_version": 1,
+  "aliases": {
+    "descargar": "dl",
+    "conv": "convertir",
+    "web": "buscar"
+  },
+  "commands": [
+    {
+      "path": [
+        "ayuda"
+      ],
+      "operation": "core.help",
+      "family": "core",
+      "original_action": "help",
+      "fields": [
+        {
+          "name": "topic",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 64,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "topic",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "public",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "Lista familias o detalla un comando.",
+      "example": "/ayuda",
+      "block": "R2",
+      "usage": "/ayuda [TOPIC]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "estado"
+      ],
+      "operation": "core.estado",
+      "family": "core",
+      "original_action": "estado",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/estado ID_REAL",
+      "block": "R2",
+      "usage": "/estado ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "cancelar"
+      ],
+      "operation": "core.cancelar",
+      "family": "core",
+      "original_action": "cancelar",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/cancelar ID_REAL",
+      "block": "R2",
+      "usage": "/cancelar ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "confirmar"
+      ],
+      "operation": "core.confirmar",
+      "family": "core",
+      "original_action": "confirmar",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/confirmar ID_REAL",
+      "block": "R2",
+      "usage": "/confirmar ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bot",
+        "estado"
+      ],
+      "operation": "manage_conversation.status",
+      "family": "manage_conversation",
+      "original_action": "status",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bot estado",
+      "block": "R2",
+      "usage": "/bot estado",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bot",
+        "modo"
+      ],
+      "operation": "manage_conversation.mode",
+      "family": "manage_conversation",
+      "original_action": "mode",
+      "fields": [
+        {
+          "name": "mode",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "apagado",
+            "discreto",
+            "activo"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "value",
+          "example": "apagado"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bot modo apagado",
+      "block": "R2",
+      "usage": "/bot modo apagado|discreto|activo",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bot",
+        "pausa"
+      ],
+      "operation": "manage_conversation.pause",
+      "family": "manage_conversation",
+      "original_action": "pause",
+      "fields": [
+        {
+          "name": "minutes",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "15",
+            "30",
+            "60"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "value",
+          "example": "15"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bot pausa 15",
+      "block": "R2",
+      "usage": "/bot pausa 15|30|60",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bot",
+        "reanudar"
+      ],
+      "operation": "manage_conversation.resume",
+      "family": "manage_conversation",
+      "original_action": "resume",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bot reanudar",
+      "block": "R2",
+      "usage": "/bot reanudar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "reaccion"
+      ],
+      "operation": "send_sticker.run",
+      "family": "send_sticker",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "sticker_id",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "saludo",
+            "risa",
+            "pensando",
+            "sonrojo"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "sticker_id",
+          "example": "saludo"
+        }
+      ],
+      "constants": [
+        [
+          "requested",
+          true
+        ]
+      ],
+      "permission": "friend",
+      "effect": "deliver",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/reaccion saludo",
+      "block": "R3",
+      "usage": "/reaccion saludo|risa|pensando|sonrojo",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "sticker"
+      ],
+      "operation": "make_sticker.run",
+      "family": "make_sticker",
+      "original_action": "",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/sticker",
+      "block": "R3",
+      "usage": "/sticker + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ia"
+      ],
+      "operation": "conversation.respond",
+      "family": "conversation",
+      "original_action": "respond",
+      "fields": [
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "generate",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/ia ejemplo",
+      "block": "R4",
+      "usage": "/ia TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "nota",
+        "guardar"
+      ],
+      "operation": "save_note.run",
+      "family": "save_note",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text_lines",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/nota guardar ejemplo",
+      "block": "R2",
+      "usage": "/nota guardar TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "notas"
+      ],
+      "operation": "find_notes.run",
+      "family": "find_notes",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "page",
+          "kind": "int",
+          "required": false,
+          "default": 1,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 10000,
+          "max_length": 8000,
+          "option": "--pagina",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "page",
+          "example": "1"
+        },
+        {
+          "name": "query",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 200,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "query",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/notas",
+      "block": "R2",
+      "usage": "/notas [--pagina PAGE] [QUERY]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ocr"
+      ],
+      "operation": "read_image.run",
+      "family": "read_image",
+      "original_action": "",
+      "fields": [],
+      "constants": [
+        [
+          "mode",
+          "text"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/ocr",
+      "block": "R3",
+      "usage": "/ocr + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "qr"
+      ],
+      "operation": "read_image.run",
+      "family": "read_image",
+      "original_action": "",
+      "fields": [],
+      "constants": [
+        [
+          "mode",
+          "qr"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/qr",
+      "block": "R3",
+      "usage": "/qr + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "transcribir"
+      ],
+      "operation": "transcribe_media.run",
+      "family": "transcribe_media",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "output_mode",
+          "kind": "enum",
+          "required": false,
+          "default": "texto",
+          "choices": [
+            "texto",
+            "resumen",
+            "ambos"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--salida",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "output_mode",
+          "example": "texto"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/transcribir",
+      "block": "R4",
+      "usage": "/transcribir [--salida texto|resumen|ambos] + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "mp3"
+      ],
+      "operation": "download_media.url",
+      "family": "download_media",
+      "original_action": "url",
+      "fields": [
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        },
+        {
+          "name": "url",
+          "kind": "url",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 2000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "url",
+          "example": "https://media.w3.org/sintel/trailer.mp4"
+        }
+      ],
+      "constants": [
+        [
+          "container",
+          "mp3"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl mp3 https://media.w3.org/sintel/trailer.mp4",
+      "block": "R3",
+      "usage": "/dl mp3 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "mp4"
+      ],
+      "operation": "download_media.url",
+      "family": "download_media",
+      "original_action": "url",
+      "fields": [
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        },
+        {
+          "name": "url",
+          "kind": "url",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 2000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "url",
+          "example": "https://media.w3.org/sintel/trailer.mp4"
+        }
+      ],
+      "constants": [
+        [
+          "container",
+          "mp4"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl mp4 https://media.w3.org/sintel/trailer.mp4",
+      "block": "R3",
+      "usage": "/dl mp4 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "webm"
+      ],
+      "operation": "download_media.url",
+      "family": "download_media",
+      "original_action": "url",
+      "fields": [
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        },
+        {
+          "name": "url",
+          "kind": "url",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 2000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "url",
+          "example": "https://media.w3.org/sintel/trailer.mp4"
+        }
+      ],
+      "constants": [
+        [
+          "container",
+          "webm"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl webm https://media.w3.org/sintel/trailer.mp4",
+      "block": "R3",
+      "usage": "/dl webm [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "srt"
+      ],
+      "operation": "download_media.url",
+      "family": "download_media",
+      "original_action": "url",
+      "fields": [
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        },
+        {
+          "name": "url",
+          "kind": "url",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 2000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "url",
+          "example": "https://media.w3.org/sintel/trailer.mp4"
+        }
+      ],
+      "constants": [
+        [
+          "container",
+          "srt"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl srt https://media.w3.org/sintel/trailer.mp4",
+      "block": "R3",
+      "usage": "/dl srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] URL",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "buscar"
+      ],
+      "operation": "download_media.search",
+      "family": "download_media",
+      "original_action": "search",
+      "fields": [
+        {
+          "name": "container",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "mp3",
+            "mp4",
+            "webm",
+            "srt"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.container",
+          "example": "mp3"
+        },
+        {
+          "name": "source",
+          "kind": "enum",
+          "required": false,
+          "default": "youtube",
+          "choices": [
+            "youtube",
+            "soundcloud",
+            "dailymotion",
+            "vimeo",
+            "facebook",
+            "instagram",
+            "tiktok",
+            "spotify",
+            "pornhub",
+            "xnxx",
+            "adult"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--fuente",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "source",
+          "example": "youtube"
+        },
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        },
+        {
+          "name": "query",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 300,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "query",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl buscar mp3 ejemplo",
+      "block": "R3",
+      "usage": "/dl buscar mp3|mp4|webm|srt [--fuente youtube|soundcloud|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "elegir"
+      ],
+      "operation": "download_media.choose",
+      "family": "download_media",
+      "original_action": "choose",
+      "fields": [
+        {
+          "name": "view_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice_view",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "choice",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 6,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl elegir ID_REAL 1",
+      "block": "R3",
+      "usage": "/dl elegir VIEW_ID CHOICE",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "anterior"
+      ],
+      "operation": "download_media.previous",
+      "family": "download_media",
+      "original_action": "previous",
+      "fields": [
+        {
+          "name": "container",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "mp3",
+            "mp4",
+            "webm",
+            "srt"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.container",
+          "example": "mp3"
+        },
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        }
+      ],
+      "constants": [
+        [
+          "previous",
+          true
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/dl anterior mp3",
+      "block": "R3",
+      "usage": "/dl anterior mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "editar"
+      ],
+      "operation": "edit_media.run",
+      "family": "edit_media",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "container",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "mp3",
+            "mp4",
+            "webm",
+            "srt"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.container",
+          "example": "mp3"
+        },
+        {
+          "name": "quality",
+          "kind": "enum",
+          "required": false,
+          "default": "standard",
+          "choices": [
+            "small",
+            "standard",
+            "high"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--calidad",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.quality",
+          "example": "small"
+        },
+        {
+          "name": "start_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": 0.0,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--desde",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.start_seconds",
+          "example": "0"
+        },
+        {
+          "name": "end_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 10800,
+          "max_length": 8000,
+          "option": "--hasta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.end_seconds",
+          "example": "5"
+        },
+        {
+          "name": "subtitle_language",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "es",
+            "en"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--idioma",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "options.subtitle_language",
+          "example": "es"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/editar mp3",
+      "block": "R3",
+      "usage": "/editar mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "voz"
+      ],
+      "operation": "make_voice.verbatim",
+      "family": "make_voice",
+      "original_action": "verbatim",
+      "fields": [
+        {
+          "name": "voice",
+          "kind": "enum",
+          "required": false,
+          "default": "botsky",
+          "choices": [
+            "botsky",
+            "mexicana",
+            "colombiana",
+            "argentina",
+            "espanola",
+            "mexicano",
+            "colombiano",
+            "argentino",
+            "espanol",
+            "chileno",
+            "venezolano",
+            "peruano",
+            "anime"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--voz",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "voice",
+          "example": "botsky"
+        },
+        {
+          "name": "effect",
+          "kind": "enum",
+          "required": false,
+          "default": "none",
+          "choices": [
+            "none",
+            "robot",
+            "radio",
+            "ardilla",
+            "demonio"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--efecto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "effect",
+          "example": "none"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [
+        [
+          "mode",
+          "verbatim"
+        ],
+        [
+          "source",
+          "provided"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/voz ejemplo",
+      "block": "R4",
+      "usage": "/voz [--voz botsky|mexicana|colombiana|argentina|espanola|mexicano|colombiano|argentino|espanol|chileno|venezolano|peruano|anime] [--efecto none|robot|radio|ardilla|demonio] TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "voz",
+        "crear"
+      ],
+      "operation": "make_voice.compose",
+      "family": "make_voice",
+      "original_action": "compose",
+      "fields": [
+        {
+          "name": "voice",
+          "kind": "enum",
+          "required": false,
+          "default": "botsky",
+          "choices": [
+            "botsky",
+            "mexicana",
+            "colombiana",
+            "argentina",
+            "espanola",
+            "mexicano",
+            "colombiano",
+            "argentino",
+            "espanol",
+            "chileno",
+            "venezolano",
+            "peruano",
+            "anime"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--voz",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "voice",
+          "example": "botsky"
+        },
+        {
+          "name": "effect",
+          "kind": "enum",
+          "required": false,
+          "default": "none",
+          "choices": [
+            "none",
+            "robot",
+            "radio",
+            "ardilla",
+            "demonio"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--efecto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "effect",
+          "example": "none"
+        },
+        {
+          "name": "requested_seconds",
+          "kind": "seconds",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 0.01,
+          "maximum": 600,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": null,
+          "example": "10"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [
+        [
+          "mode",
+          "compose"
+        ],
+        [
+          "source",
+          "provided"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/voz crear ejemplo",
+      "block": "R4",
+      "usage": "/voz crear [--voz botsky|mexicana|colombiana|argentina|espanola|mexicano|colombiano|argentino|espanol|chileno|venezolano|peruano|anime] [--efecto none|robot|radio|ardilla|demonio] [--duracion REQUESTED_SECONDS] TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "voz",
+        "cita"
+      ],
+      "operation": "make_voice.verbatim",
+      "family": "make_voice",
+      "original_action": "verbatim",
+      "fields": [
+        {
+          "name": "voice",
+          "kind": "enum",
+          "required": false,
+          "default": "botsky",
+          "choices": [
+            "botsky",
+            "mexicana",
+            "colombiana",
+            "argentina",
+            "espanola",
+            "mexicano",
+            "colombiano",
+            "argentino",
+            "espanol",
+            "chileno",
+            "venezolano",
+            "peruano",
+            "anime"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--voz",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "voice",
+          "example": "botsky"
+        },
+        {
+          "name": "effect",
+          "kind": "enum",
+          "required": false,
+          "default": "none",
+          "choices": [
+            "none",
+            "robot",
+            "radio",
+            "ardilla",
+            "demonio"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--efecto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "effect",
+          "example": "none"
+        }
+      ],
+      "constants": [
+        [
+          "mode",
+          "verbatim"
+        ],
+        [
+          "source",
+          "quote"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/voz cita",
+      "block": "R4",
+      "usage": "/voz cita [--voz botsky|mexicana|colombiana|argentina|espanola|mexicano|colombiano|argentino|espanol|chileno|venezolano|peruano|anime] [--efecto none|robot|radio|ardilla|demonio]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "voz",
+        "ultima"
+      ],
+      "operation": "make_voice.verbatim",
+      "family": "make_voice",
+      "original_action": "verbatim",
+      "fields": [
+        {
+          "name": "voice",
+          "kind": "enum",
+          "required": false,
+          "default": "botsky",
+          "choices": [
+            "botsky",
+            "mexicana",
+            "colombiana",
+            "argentina",
+            "espanola",
+            "mexicano",
+            "colombiano",
+            "argentino",
+            "espanol",
+            "chileno",
+            "venezolano",
+            "peruano",
+            "anime"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--voz",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "voice",
+          "example": "botsky"
+        },
+        {
+          "name": "effect",
+          "kind": "enum",
+          "required": false,
+          "default": "none",
+          "choices": [
+            "none",
+            "robot",
+            "radio",
+            "ardilla",
+            "demonio"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--efecto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "effect",
+          "example": "none"
+        }
+      ],
+      "constants": [
+        [
+          "mode",
+          "verbatim"
+        ],
+        [
+          "source",
+          "last_reply"
+        ]
+      ],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/voz ultima",
+      "block": "R4",
+      "usage": "/voz ultima [--voz botsky|mexicana|colombiana|argentina|espanola|mexicano|colombiano|argentino|espanol|chileno|venezolano|peruano|anime] [--efecto none|robot|radio|ardilla|demonio]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "voces"
+      ],
+      "operation": "make_voice.catalog",
+      "family": "make_voice",
+      "original_action": "catalog",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/voces",
+      "block": "R4",
+      "usage": "/voces",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamar"
+      ],
+      "operation": "control_call.start",
+      "family": "control_call",
+      "original_action": "start",
+      "fields": [
+        {
+          "name": "video",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--video",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "video",
+          "example": "ejemplo"
+        },
+        {
+          "name": "max_seconds",
+          "kind": "duration",
+          "required": false,
+          "default": 300,
+          "choices": [],
+          "minimum": 5,
+          "maximum": 3600,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "max_seconds",
+          "example": "10m"
+        },
+        {
+          "name": "topic",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--tema",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "topic",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamar",
+      "block": "R9",
+      "usage": "/llamar [--video] [--duracion MAX_SECONDS] [--tema TOPIC]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "estado"
+      ],
+      "operation": "control_call.status",
+      "family": "control_call",
+      "original_action": "status",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada estado",
+      "block": "R9",
+      "usage": "/llamada estado",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "colgar"
+      ],
+      "operation": "control_call.hangup",
+      "family": "control_call",
+      "original_action": "hangup",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada colgar",
+      "block": "R9",
+      "usage": "/llamada colgar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "cancelar"
+      ],
+      "operation": "control_call.cancel",
+      "family": "control_call",
+      "original_action": "cancel",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada cancelar",
+      "block": "R9",
+      "usage": "/llamada cancelar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "iniciar"
+      ],
+      "operation": "manage_pdf.start",
+      "family": "manage_pdf",
+      "original_action": "start",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/pdf iniciar",
+      "block": "R3",
+      "usage": "/pdf iniciar + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "agregar"
+      ],
+      "operation": "manage_pdf.add",
+      "family": "manage_pdf",
+      "original_action": "add",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/pdf agregar",
+      "block": "R3",
+      "usage": "/pdf agregar + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "terminar"
+      ],
+      "operation": "manage_pdf.finish",
+      "family": "manage_pdf",
+      "original_action": "finish",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/pdf terminar",
+      "block": "R3",
+      "usage": "/pdf terminar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "cancelar"
+      ],
+      "operation": "manage_pdf.cancel",
+      "family": "manage_pdf",
+      "original_action": "cancel",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/pdf cancelar",
+      "block": "R3",
+      "usage": "/pdf cancelar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "extraer"
+      ],
+      "operation": "manage_pdf.extract",
+      "family": "manage_pdf",
+      "original_action": "extract",
+      "fields": [
+        {
+          "name": "pages",
+          "kind": "pages",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "pages",
+          "example": "1,3-5"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/pdf extraer 1,3-5",
+      "block": "R3",
+      "usage": "/pdf extraer PAGES + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pdf",
+        "reintentar"
+      ],
+      "operation": "manage_pdf.retry",
+      "family": "manage_pdf",
+      "original_action": "retry",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "confirm_uncertain",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--confirmar-incierto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "confirm_uncertain",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "explicit_uncertain_retry",
+      "attachment": false,
+      "summary": "",
+      "example": "/pdf reintentar ID_REAL",
+      "block": "R3",
+      "usage": "/pdf reintentar ID [--confirmar-incierto]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "convertir"
+      ],
+      "operation": "convert_document.run",
+      "family": "convert_document",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "pdf",
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "txt",
+            "png",
+            "jpg",
+            "webp",
+            "json",
+            "html",
+            "md"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "pdf"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/convertir pdf",
+      "block": "R3",
+      "usage": "/convertir pdf|docx|doc|odt|rtf|xlsx|xls|ods|csv|pptx|ppt|odp|txt|png|jpg|webp|json|html|md + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "tarea",
+        "crear"
+      ],
+      "operation": "manage_school.add_task",
+      "family": "manage_school",
+      "original_action": "add_task",
+      "fields": [
+        {
+          "name": "subject",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 100,
+          "option": "--materia",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "subject",
+          "example": "ejemplo"
+        },
+        {
+          "name": "due_date",
+          "kind": "date",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--fecha",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "due_date",
+          "example": "2026-12-01"
+        },
+        {
+          "name": "due_time",
+          "kind": "clock",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--hora",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "due_time",
+          "example": "12:00"
+        },
+        {
+          "name": "attach",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--adjunto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "attach",
+          "example": "ejemplo"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/tarea crear --fecha 2026-12-01 ejemplo",
+      "block": "R5",
+      "usage": "/tarea crear [--materia SUBJECT] --fecha DUE_DATE [--hora DUE_TIME] [--adjunto] TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "tareas"
+      ],
+      "operation": "manage_school.list_tasks",
+      "family": "manage_school",
+      "original_action": "list_tasks",
+      "fields": [
+        {
+          "name": "page",
+          "kind": "int",
+          "required": false,
+          "default": 1,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 10000,
+          "max_length": 8000,
+          "option": "--pagina",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "page",
+          "example": "1"
+        },
+        {
+          "name": "include_closed",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--cerradas",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "include_closed",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/tareas",
+      "block": "R5",
+      "usage": "/tareas [--pagina PAGE] [--cerradas]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "tarea",
+        "completar"
+      ],
+      "operation": "manage_school.complete_task",
+      "family": "manage_school",
+      "original_action": "complete_task",
+      "fields": [
+        {
+          "name": "task_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "task_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/tarea completar 1",
+      "block": "R5",
+      "usage": "/tarea completar TASK_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "tarea",
+        "borrar"
+      ],
+      "operation": "manage_school.delete_task",
+      "family": "manage_school",
+      "original_action": "delete_task",
+      "fields": [
+        {
+          "name": "task_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "task_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/tarea borrar 1",
+      "block": "R5",
+      "usage": "/tarea borrar TASK_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "tarea",
+        "archivo"
+      ],
+      "operation": "manage_school.get_attachment",
+      "family": "manage_school",
+      "original_action": "get_attachment",
+      "fields": [
+        {
+          "name": "task_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "task_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/tarea archivo 1",
+      "block": "R5",
+      "usage": "/tarea archivo TASK_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "horario",
+        "agregar"
+      ],
+      "operation": "manage_school.set_lesson",
+      "family": "manage_school",
+      "original_action": "set_lesson",
+      "fields": [
+        {
+          "name": "subject",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 100,
+          "option": "--materia",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "subject",
+          "example": "ejemplo"
+        },
+        {
+          "name": "weekday",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 7,
+          "max_length": 8000,
+          "option": "--dia",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "weekday",
+          "example": "1"
+        },
+        {
+          "name": "start_time",
+          "kind": "clock",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--inicio",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "start_time",
+          "example": "12:00"
+        },
+        {
+          "name": "end_time",
+          "kind": "clock",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--fin",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "end_time",
+          "example": "13:00"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/horario agregar --materia ejemplo --dia 1 --inicio 12:00 --fin 13:00",
+      "block": "R5",
+      "usage": "/horario agregar --materia SUBJECT --dia WEEKDAY --inicio START_TIME --fin END_TIME",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "horario",
+        "listar"
+      ],
+      "operation": "manage_school.list_schedule",
+      "family": "manage_school",
+      "original_action": "list_schedule",
+      "fields": [
+        {
+          "name": "weekday",
+          "kind": "int",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 7,
+          "max_length": 8000,
+          "option": "--dia",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "weekday",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/horario listar",
+      "block": "R5",
+      "usage": "/horario listar [--dia WEEKDAY]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "horario",
+        "borrar"
+      ],
+      "operation": "manage_school.delete_lesson",
+      "family": "manage_school",
+      "original_action": "delete_lesson",
+      "fields": [
+        {
+          "name": "lesson_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "lesson_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/horario borrar 1",
+      "block": "R5",
+      "usage": "/horario borrar LESSON_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "escuela",
+        "resumen",
+        "configurar"
+      ],
+      "operation": "manage_school.configure_digest",
+      "family": "manage_school",
+      "original_action": "configure_digest",
+      "fields": [
+        {
+          "name": "enabled",
+          "kind": "bool",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "enabled",
+          "example": "si"
+        },
+        {
+          "name": "digest_time",
+          "kind": "clock",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--hora",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "digest_time",
+          "example": "12:00"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/escuela resumen configurar si --hora 18:00",
+      "block": "R5",
+      "usage": "/escuela resumen configurar ENABLED [--hora DIGEST_TIME]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "escuela",
+        "resumen",
+        "estado"
+      ],
+      "operation": "manage_school.status_digest",
+      "family": "manage_school",
+      "original_action": "status_digest",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/escuela resumen estado",
+      "block": "R5",
+      "usage": "/escuela resumen estado",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "encuesta",
+        "crear"
+      ],
+      "operation": "manage_poll.create",
+      "family": "manage_poll",
+      "original_action": "create",
+      "fields": [
+        {
+          "name": "question",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 300,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "question",
+          "example": "\"¿Hora?\""
+        },
+        {
+          "name": "options",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 100,
+          "option": null,
+          "tail": false,
+          "repeated": true,
+          "min_items": 2,
+          "max_items": 10,
+          "original": "options",
+          "example": "\"Opción 1\" \"Opción 2\""
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/encuesta crear \"¿Hora?\" \"Opción 1\" \"Opción 2\"",
+      "block": "R5",
+      "usage": "/encuesta crear QUESTION OPTIONS ...",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "encuesta",
+        "votar"
+      ],
+      "operation": "manage_poll.vote",
+      "family": "manage_poll",
+      "original_action": "vote",
+      "fields": [
+        {
+          "name": "poll_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "poll_id",
+          "example": "1"
+        },
+        {
+          "name": "choice",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 10,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/encuesta votar 1 1",
+      "block": "R5",
+      "usage": "/encuesta votar POLL_ID CHOICE",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "encuesta",
+        "resultados"
+      ],
+      "operation": "manage_poll.results",
+      "family": "manage_poll",
+      "original_action": "results",
+      "fields": [
+        {
+          "name": "poll_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "poll_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/encuesta resultados 1",
+      "block": "R5",
+      "usage": "/encuesta resultados POLL_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "encuesta",
+        "cerrar"
+      ],
+      "operation": "manage_poll.close",
+      "family": "manage_poll",
+      "original_action": "close",
+      "fields": [
+        {
+          "name": "poll_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "poll_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/encuesta cerrar 1",
+      "block": "R5",
+      "usage": "/encuesta cerrar POLL_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recado",
+        "preparar"
+      ],
+      "operation": "manage_messages.prepare",
+      "family": "manage_messages",
+      "original_action": "prepare",
+      "fields": [
+        {
+          "name": "recipients",
+          "kind": "contacts",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--para",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "recipients",
+          "example": "Amiga"
+        },
+        {
+          "name": "source",
+          "kind": "enum",
+          "required": false,
+          "default": "actual",
+          "choices": [
+            "actual",
+            "cita"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--fuente",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "source",
+          "example": "actual"
+        },
+        {
+          "name": "attach",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--adjunto",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "attach",
+          "example": "ejemplo"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 4000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "preview",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recado preparar --para Amiga -- hola",
+      "block": "R6",
+      "usage": "/recado preparar --para RECIPIENTS [--fuente actual|cita] [--adjunto] [TEXT]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recado",
+        "estado"
+      ],
+      "operation": "manage_messages.status",
+      "family": "manage_messages",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "draft_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "draft_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recado estado ID_REAL",
+      "block": "R6",
+      "usage": "/recado estado DRAFT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recado",
+        "enviar"
+      ],
+      "operation": "manage_messages.send",
+      "family": "manage_messages",
+      "original_action": "send",
+      "fields": [
+        {
+          "name": "draft_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "draft_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "deliver",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/recado enviar ID_REAL",
+      "block": "R6",
+      "usage": "/recado enviar DRAFT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recado",
+        "cancelar"
+      ],
+      "operation": "manage_messages.cancel",
+      "family": "manage_messages",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "draft_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "draft_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recado cancelar ID_REAL",
+      "block": "R6",
+      "usage": "/recado cancelar DRAFT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "contactos"
+      ],
+      "operation": "manage_messages.contacts",
+      "family": "manage_messages",
+      "original_action": "contacts",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/contactos",
+      "block": "R6",
+      "usage": "/contactos",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pack",
+        "catalogo"
+      ],
+      "operation": "manage_pack.catalog",
+      "family": "manage_pack",
+      "original_action": "catalog",
+      "fields": [
+        {
+          "name": "category",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 120,
+          "option": "--categoria",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "category",
+          "example": "ejemplo"
+        },
+        {
+          "name": "page",
+          "kind": "int",
+          "required": false,
+          "default": 1,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 20,
+          "max_length": 8000,
+          "option": "--pagina",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "page",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/pack catalogo",
+      "block": "R7",
+      "usage": "/pack catalogo [--categoria CATEGORY] [--pagina PAGE]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pack",
+        "comprar"
+      ],
+      "operation": "manage_pack.buy",
+      "family": "manage_pack",
+      "original_action": "buy",
+      "fields": [
+        {
+          "name": "category",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 120,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "category",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "purchase",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/pack comprar ejemplo",
+      "block": "R7",
+      "usage": "/pack comprar CATEGORY",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pack",
+        "confirmar"
+      ],
+      "operation": "manage_pack.buy",
+      "family": "manage_pack",
+      "original_action": "buy",
+      "fields": [
+        {
+          "name": "purchase_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "purchase_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "purchase",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/pack confirmar ID_REAL",
+      "block": "R7",
+      "usage": "/pack confirmar PURCHASE_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "pack",
+        "estado"
+      ],
+      "operation": "manage_pack.status",
+      "family": "manage_pack",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "purchase_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "purchase_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/pack estado ID_REAL",
+      "block": "R7",
+      "usage": "/pack estado PURCHASE_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "coop",
+        "crear"
+      ],
+      "operation": "manage_cooperacha.start",
+      "family": "manage_cooperacha",
+      "original_action": "start",
+      "fields": [
+        {
+          "name": "category",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 120,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "category",
+          "example": "ejemplo"
+        },
+        {
+          "name": "target_xp",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 50,
+          "maximum": 50000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target_xp",
+          "example": "50"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/coop crear ejemplo 50",
+      "block": "R7",
+      "usage": "/coop crear CATEGORY TARGET_XP",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "coop",
+        "aportar"
+      ],
+      "operation": "manage_cooperacha.contribute",
+      "family": "manage_cooperacha",
+      "original_action": "contribute",
+      "fields": [
+        {
+          "name": "challenge_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "challenge_id",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "amount",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 50000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "amount",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "spend_own_xp",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/coop aportar ID_REAL 1",
+      "block": "R7",
+      "usage": "/coop aportar CHALLENGE_ID AMOUNT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "coop",
+        "estado"
+      ],
+      "operation": "manage_cooperacha.status",
+      "family": "manage_cooperacha",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "challenge_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "challenge_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/coop estado",
+      "block": "R7",
+      "usage": "/coop estado [CHALLENGE_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "coop",
+        "cancelar"
+      ],
+      "operation": "manage_cooperacha.cancel",
+      "family": "manage_cooperacha",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "challenge_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "challenge_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/coop cancelar ID_REAL",
+      "block": "R7",
+      "usage": "/coop cancelar CHALLENGE_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "iniciar"
+      ],
+      "operation": "manage_happy_hour.start",
+      "family": "manage_happy_hour",
+      "original_action": "start",
+      "fields": [
+        {
+          "name": "duration_seconds",
+          "kind": "duration",
+          "required": false,
+          "default": 3600,
+          "choices": [],
+          "minimum": 60,
+          "maximum": 86400,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "duration_minutes",
+          "example": "10m"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh iniciar",
+      "block": "R7",
+      "usage": "/hh iniciar [--duracion DURATION_SECONDS]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "parar"
+      ],
+      "operation": "manage_happy_hour.stop",
+      "family": "manage_happy_hour",
+      "original_action": "stop",
+      "fields": [
+        {
+          "name": "event_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "event_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh parar",
+      "block": "R7",
+      "usage": "/hh parar [EVENT_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "estado"
+      ],
+      "operation": "manage_happy_hour.status",
+      "family": "manage_happy_hour",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "event_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "event_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh estado",
+      "block": "R7",
+      "usage": "/hh estado [EVENT_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "lluvia"
+      ],
+      "operation": "manage_happy_hour.rain",
+      "family": "manage_happy_hour",
+      "original_action": "rain",
+      "fields": [
+        {
+          "name": "event_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "event_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh lluvia",
+      "block": "R7",
+      "usage": "/hh lluvia [EVENT_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "airdrop"
+      ],
+      "operation": "manage_happy_hour.airdrop",
+      "family": "manage_happy_hour",
+      "original_action": "airdrop",
+      "fields": [
+        {
+          "name": "event_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "event_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh airdrop",
+      "block": "R7",
+      "usage": "/hh airdrop [EVENT_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "hh",
+        "reclamar"
+      ],
+      "operation": "manage_happy_hour.claim",
+      "family": "manage_happy_hour",
+      "original_action": "claim",
+      "fields": [
+        {
+          "name": "event_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "event_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/hh reclamar ID_REAL",
+      "block": "R7",
+      "usage": "/hh reclamar EVENT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mem",
+        "guardar"
+      ],
+      "operation": "manage_memory.remember",
+      "family": "manage_memory",
+      "original_action": "remember",
+      "fields": [
+        {
+          "name": "kind",
+          "kind": "enum",
+          "required": false,
+          "default": "preferencia",
+          "choices": [
+            "preferencia",
+            "dato"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--tipo",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "kind",
+          "example": "preferencia"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mem guardar ejemplo",
+      "block": "R5",
+      "usage": "/mem guardar [--tipo preferencia|dato] TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mem",
+        "listar"
+      ],
+      "operation": "manage_memory.list",
+      "family": "manage_memory",
+      "original_action": "list",
+      "fields": [
+        {
+          "name": "kind",
+          "kind": "enum",
+          "required": false,
+          "default": null,
+          "choices": [
+            "preferencia",
+            "dato"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--tipo",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "kind",
+          "example": "preferencia"
+        },
+        {
+          "name": "page",
+          "kind": "int",
+          "required": false,
+          "default": 1,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 10000,
+          "max_length": 8000,
+          "option": "--pagina",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "page",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mem listar",
+      "block": "R5",
+      "usage": "/mem listar [--tipo preferencia|dato] [--pagina PAGE]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mem",
+        "corregir"
+      ],
+      "operation": "manage_memory.correct",
+      "family": "manage_memory",
+      "original_action": "correct",
+      "fields": [
+        {
+          "name": "memory_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "memory_id",
+          "example": "1"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mem corregir 1 ejemplo",
+      "block": "R5",
+      "usage": "/mem corregir MEMORY_ID TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mem",
+        "olvidar"
+      ],
+      "operation": "manage_memory.forget",
+      "family": "manage_memory",
+      "original_action": "forget",
+      "fields": [
+        {
+          "name": "memory_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "memory_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mem olvidar 1",
+      "block": "R5",
+      "usage": "/mem olvidar MEMORY_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mem",
+        "borrar-todo"
+      ],
+      "operation": "manage_memory.forget_all",
+      "family": "manage_memory",
+      "original_action": "forget_all",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "preview",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/mem borrar-todo",
+      "block": "R5",
+      "usage": "/mem borrar-todo",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "estado"
+      ],
+      "operation": "manage_minecraft.status",
+      "family": "manage_minecraft",
+      "original_action": "status",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc estado",
+      "block": "R8",
+      "usage": "/mc estado",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "jugadores"
+      ],
+      "operation": "manage_minecraft.players",
+      "family": "manage_minecraft",
+      "original_action": "players",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc jugadores",
+      "block": "R8",
+      "usage": "/mc jugadores",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "mundos"
+      ],
+      "operation": "manage_minecraft.worlds",
+      "family": "manage_minecraft",
+      "original_action": "worlds",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc mundos",
+      "block": "R8",
+      "usage": "/mc mundos",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "mods"
+      ],
+      "operation": "manage_minecraft.mods",
+      "family": "manage_minecraft",
+      "original_action": "mods",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc mods",
+      "block": "R8",
+      "usage": "/mc mods",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "config"
+      ],
+      "operation": "manage_minecraft.config",
+      "family": "manage_minecraft",
+      "original_action": "config",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc config",
+      "block": "R8",
+      "usage": "/mc config",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "iniciar"
+      ],
+      "operation": "manage_minecraft.start",
+      "family": "manage_minecraft",
+      "original_action": "start",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc iniciar",
+      "block": "R8",
+      "usage": "/mc iniciar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "parar"
+      ],
+      "operation": "manage_minecraft.stop",
+      "family": "manage_minecraft",
+      "original_action": "stop",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc parar",
+      "block": "R8",
+      "usage": "/mc parar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "reiniciar"
+      ],
+      "operation": "manage_minecraft.restart",
+      "family": "manage_minecraft",
+      "original_action": "restart",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc reiniciar",
+      "block": "R8",
+      "usage": "/mc reiniciar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "backup"
+      ],
+      "operation": "manage_minecraft.backup",
+      "family": "manage_minecraft",
+      "original_action": "backup",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc backup",
+      "block": "R8",
+      "usage": "/mc backup",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "mod",
+        "activar"
+      ],
+      "operation": "manage_minecraft.enable_mod",
+      "family": "manage_minecraft",
+      "original_action": "enable_mod",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 100,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc mod activar ejemplo",
+      "block": "R8",
+      "usage": "/mc mod activar NAME",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "mod",
+        "desactivar"
+      ],
+      "operation": "manage_minecraft.disable_mod",
+      "family": "manage_minecraft",
+      "original_action": "disable_mod",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 100,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc mod desactivar ejemplo",
+      "block": "R8",
+      "usage": "/mc mod desactivar NAME",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "consola"
+      ],
+      "operation": "manage_minecraft.console",
+      "family": "manage_minecraft",
+      "original_action": "console",
+      "fields": [
+        {
+          "name": "command",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "command",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_console",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc consola ejemplo",
+      "block": "R8",
+      "usage": "/mc consola COMMAND",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "advertir"
+      ],
+      "operation": "manage_admin.warn",
+      "family": "manage_admin",
+      "original_action": "warn",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin advertir ID_REAL",
+      "block": "R8",
+      "usage": "/admin advertir TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "quitar-aviso"
+      ],
+      "operation": "manage_admin.unwarn",
+      "family": "manage_admin",
+      "original_action": "unwarn",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "warning_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "warning_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin quitar-aviso ID_REAL 1",
+      "block": "R8",
+      "usage": "/admin quitar-aviso TARGET WARNING_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "avisos"
+      ],
+      "operation": "manage_admin.warnings",
+      "family": "manage_admin",
+      "original_action": "warnings",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin avisos",
+      "block": "R8",
+      "usage": "/admin avisos [TARGET]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "expulsar"
+      ],
+      "operation": "manage_admin.kick",
+      "family": "manage_admin",
+      "original_action": "kick",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin expulsar ID_REAL",
+      "block": "R8",
+      "usage": "/admin expulsar TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "ban"
+      ],
+      "operation": "manage_admin.ban",
+      "family": "manage_admin",
+      "original_action": "ban",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin ban ID_REAL",
+      "block": "R8",
+      "usage": "/admin ban TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "unban"
+      ],
+      "operation": "manage_admin.unban",
+      "family": "manage_admin",
+      "original_action": "unban",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin unban ID_REAL",
+      "block": "R8",
+      "usage": "/admin unban TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "promover"
+      ],
+      "operation": "manage_admin.promote",
+      "family": "manage_admin",
+      "original_action": "promote",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin promover ID_REAL",
+      "block": "R8",
+      "usage": "/admin promover TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "degradar"
+      ],
+      "operation": "manage_admin.demote",
+      "family": "manage_admin",
+      "original_action": "demote",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin degradar ID_REAL",
+      "block": "R8",
+      "usage": "/admin degradar TARGET",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "silenciar"
+      ],
+      "operation": "manage_admin.mute",
+      "family": "manage_admin",
+      "original_action": "mute",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin silenciar",
+      "block": "R8",
+      "usage": "/admin silenciar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "desilenciar"
+      ],
+      "operation": "manage_admin.unmute",
+      "family": "manage_admin",
+      "original_action": "unmute",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin desilenciar",
+      "block": "R8",
+      "usage": "/admin desilenciar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "cerrar"
+      ],
+      "operation": "manage_admin.lock",
+      "family": "manage_admin",
+      "original_action": "lock",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin cerrar",
+      "block": "R8",
+      "usage": "/admin cerrar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "abrir"
+      ],
+      "operation": "manage_admin.unlock",
+      "family": "manage_admin",
+      "original_action": "unlock",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin abrir",
+      "block": "R8",
+      "usage": "/admin abrir",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "xp-dar"
+      ],
+      "operation": "manage_admin.xp_grant",
+      "family": "manage_admin",
+      "original_action": "xp_grant",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--objetivo",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "account_id",
+          "kind": "int",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": "--cuenta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "account_id",
+          "example": "1"
+        },
+        {
+          "name": "amount",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 50000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "amount",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin xp-dar --cuenta 1 1",
+      "block": "R8",
+      "usage": "/admin xp-dar [--objetivo TARGET] [--cuenta ACCOUNT_ID] AMOUNT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "xp-quitar"
+      ],
+      "operation": "manage_admin.xp_remove",
+      "family": "manage_admin",
+      "original_action": "xp_remove",
+      "fields": [
+        {
+          "name": "target",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--objetivo",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "target",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "account_id",
+          "kind": "int",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": "--cuenta",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "account_id",
+          "example": "1"
+        },
+        {
+          "name": "amount",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 50000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "amount",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin xp-quitar --cuenta 1 1",
+      "block": "R8",
+      "usage": "/admin xp-quitar [--objetivo TARGET] [--cuenta ACCOUNT_ID] AMOUNT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "nuclear-preparar"
+      ],
+      "operation": "manage_admin.nuclear_prepare",
+      "family": "manage_admin",
+      "original_action": "nuclear_prepare",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "preview",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin nuclear-preparar",
+      "block": "R8",
+      "usage": "/admin nuclear-preparar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "nuclear-confirmar"
+      ],
+      "operation": "manage_admin.nuclear_confirm",
+      "family": "manage_admin",
+      "original_action": "nuclear_confirm",
+      "fields": [
+        {
+          "name": "draft_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "draft_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin nuclear-confirmar ID_REAL",
+      "block": "R8",
+      "usage": "/admin nuclear-confirmar DRAFT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "admin",
+        "nuclear-cancelar"
+      ],
+      "operation": "manage_admin.nuclear_cancel",
+      "family": "manage_admin",
+      "original_action": "nuclear_cancel",
+      "fields": [
+        {
+          "name": "draft_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "draft_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/admin nuclear-cancelar ID_REAL",
+      "block": "R8",
+      "usage": "/admin nuclear-cancelar DRAFT_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "iniciar"
+      ],
+      "operation": "manage_blackjack.start",
+      "family": "manage_blackjack",
+      "original_action": "start",
+      "fields": [
+        {
+          "name": "bet",
+          "kind": "int",
+          "required": false,
+          "default": 50,
+          "choices": [],
+          "minimum": 20,
+          "maximum": 1000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "bet",
+          "example": "20"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj iniciar",
+      "block": "R7",
+      "usage": "/bj iniciar [BET]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "mesa"
+      ],
+      "operation": "manage_blackjack.table",
+      "family": "manage_blackjack",
+      "original_action": "table",
+      "fields": [
+        {
+          "name": "bet",
+          "kind": "int",
+          "required": false,
+          "default": 50,
+          "choices": [],
+          "minimum": 20,
+          "maximum": 1000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "bet",
+          "example": "20"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj mesa",
+      "block": "R7",
+      "usage": "/bj mesa [BET]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "entrar"
+      ],
+      "operation": "manage_blackjack.join",
+      "family": "manage_blackjack",
+      "original_action": "join",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj entrar",
+      "block": "R7",
+      "usage": "/bj entrar [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "repartir"
+      ],
+      "operation": "manage_blackjack.deal",
+      "family": "manage_blackjack",
+      "original_action": "deal",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj repartir",
+      "block": "R7",
+      "usage": "/bj repartir [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "pedir"
+      ],
+      "operation": "manage_blackjack.hit",
+      "family": "manage_blackjack",
+      "original_action": "hit",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj pedir",
+      "block": "R7",
+      "usage": "/bj pedir [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "plantarse"
+      ],
+      "operation": "manage_blackjack.stand",
+      "family": "manage_blackjack",
+      "original_action": "stand",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj plantarse",
+      "block": "R7",
+      "usage": "/bj plantarse [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "doblar"
+      ],
+      "operation": "manage_blackjack.double",
+      "family": "manage_blackjack",
+      "original_action": "double",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj doblar",
+      "block": "R7",
+      "usage": "/bj doblar [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "estado"
+      ],
+      "operation": "manage_blackjack.status",
+      "family": "manage_blackjack",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj estado",
+      "block": "R7",
+      "usage": "/bj estado [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "bj",
+        "cancelar"
+      ],
+      "operation": "manage_blackjack.cancel",
+      "family": "manage_blackjack",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "game_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "game_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/bj cancelar",
+      "block": "R7",
+      "usage": "/bj cancelar [GAME_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ruleta",
+        "crear"
+      ],
+      "operation": "manage_roulette.create",
+      "family": "manage_roulette",
+      "original_action": "create",
+      "fields": [
+        {
+          "name": "bet",
+          "kind": "int",
+          "required": false,
+          "default": 50,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 1000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "bet",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/ruleta crear",
+      "block": "R7",
+      "usage": "/ruleta crear [BET]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ruleta",
+        "entrar"
+      ],
+      "operation": "manage_roulette.join",
+      "family": "manage_roulette",
+      "original_action": "join",
+      "fields": [
+        {
+          "name": "room_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "room_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "rules_acceptance",
+      "attachment": false,
+      "summary": "",
+      "example": "/ruleta entrar ID_REAL",
+      "block": "R7",
+      "usage": "/ruleta entrar ROOM_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ruleta",
+        "jugar"
+      ],
+      "operation": "manage_roulette.play",
+      "family": "manage_roulette",
+      "original_action": "play",
+      "fields": [
+        {
+          "name": "room_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "room_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "rules_acceptance",
+      "attachment": false,
+      "summary": "",
+      "example": "/ruleta jugar ID_REAL",
+      "block": "R7",
+      "usage": "/ruleta jugar ROOM_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ruleta",
+        "estado"
+      ],
+      "operation": "manage_roulette.status",
+      "family": "manage_roulette",
+      "original_action": "status",
+      "fields": [
+        {
+          "name": "room_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "room_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/ruleta estado",
+      "block": "R7",
+      "usage": "/ruleta estado [ROOM_ID]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "ruleta",
+        "cancelar"
+      ],
+      "operation": "manage_roulette.cancel",
+      "family": "manage_roulette",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "room_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "room_id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/ruleta cancelar ID_REAL",
+      "block": "R7",
+      "usage": "/ruleta cancelar ROOM_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "broma"
+      ],
+      "operation": "make_prank.run",
+      "family": "make_prank",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "label",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 40,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "label",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "fiction",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/broma",
+      "block": "R7",
+      "usage": "/broma [LABEL]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "daily"
+      ],
+      "operation": "manage_economy.daily",
+      "family": "manage_economy",
+      "original_action": "daily",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/daily",
+      "block": "R7",
+      "usage": "/daily",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "saldo"
+      ],
+      "operation": "manage_economy.balance",
+      "family": "manage_economy",
+      "original_action": "balance",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/saldo",
+      "block": "R7",
+      "usage": "/saldo",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "top"
+      ],
+      "operation": "manage_economy.top",
+      "family": "manage_economy",
+      "original_action": "top",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/top",
+      "block": "R7",
+      "usage": "/top",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recordar",
+        "en"
+      ],
+      "operation": "manage_reminder.create",
+      "family": "manage_reminder",
+      "original_action": "create",
+      "fields": [
+        {
+          "name": "duration_seconds",
+          "kind": "duration",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 31536000,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "after_seconds",
+          "example": "10m"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recordar en 10m ejemplo",
+      "block": "R5",
+      "usage": "/recordar en DURATION_SECONDS TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recordar",
+        "el"
+      ],
+      "operation": "manage_reminder.create",
+      "family": "manage_reminder",
+      "original_action": "create",
+      "fields": [
+        {
+          "name": "date",
+          "kind": "date",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "2026-12-01"
+        },
+        {
+          "name": "time",
+          "kind": "clock",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "12:00"
+        },
+        {
+          "name": "text",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 1000,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "text",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recordar el 2026-12-01 12:00 ejemplo",
+      "block": "R5",
+      "usage": "/recordar el DATE TIME TEXT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recordatorios"
+      ],
+      "operation": "manage_reminder.list",
+      "family": "manage_reminder",
+      "original_action": "list",
+      "fields": [
+        {
+          "name": "page",
+          "kind": "int",
+          "required": false,
+          "default": 1,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 10000,
+          "max_length": 8000,
+          "option": "--pagina",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "page",
+          "example": "1"
+        },
+        {
+          "name": "include_closed",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--cerradas",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "include_closed",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recordatorios",
+      "block": "R5",
+      "usage": "/recordatorios [--pagina PAGE] [--cerradas]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recordatorio",
+        "cancelar"
+      ],
+      "operation": "manage_reminder.cancel",
+      "family": "manage_reminder",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "reminder_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "reminder_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recordatorio cancelar 1",
+      "block": "R5",
+      "usage": "/recordatorio cancelar REMINDER_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "recordatorio",
+        "archivar"
+      ],
+      "operation": "manage_reminder.archive",
+      "family": "manage_reminder",
+      "original_action": "archive",
+      "fields": [
+        {
+          "name": "reminder_id",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 9223372036854775807,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "reminder_id",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/recordatorio archivar 1",
+      "block": "R5",
+      "usage": "/recordatorio archivar REMINDER_ID",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "buscar"
+      ],
+      "operation": "search_web.run",
+      "family": "search_web",
+      "original_action": "",
+      "fields": [
+        {
+          "name": "required_terms",
+          "kind": "terms",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 800,
+          "option": "--terminos",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "required_terms",
+          "example": "Python,docs"
+        },
+        {
+          "name": "query",
+          "kind": "text",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 300,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "query",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/buscar ejemplo",
+      "block": "R3",
+      "usage": "/buscar [--terminos REQUIRED_TERMS] QUERY",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "drive",
+        "guardar"
+      ],
+      "operation": "manage_drive.save",
+      "family": "manage_drive",
+      "original_action": "save",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "remote_write",
+      "confirmation": "none",
+      "attachment": true,
+      "summary": "",
+      "example": "/drive guardar",
+      "block": "R6",
+      "usage": "/drive guardar + adjunto o cita exacta",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "drive",
+        "buscar"
+      ],
+      "operation": "manage_drive.search",
+      "family": "manage_drive",
+      "original_action": "search",
+      "fields": [
+        {
+          "name": "query",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 200,
+          "option": null,
+          "tail": true,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "query",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/drive buscar",
+      "block": "R6",
+      "usage": "/drive buscar [QUERY]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "drive",
+        "elegir"
+      ],
+      "operation": "manage_drive.choose",
+      "family": "manage_drive",
+      "original_action": "choose",
+      "fields": [
+        {
+          "name": "view_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "view_id",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "choice",
+          "kind": "int",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 5,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "remote_read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/drive elegir ID_REAL 1",
+      "block": "R6",
+      "usage": "/drive elegir VIEW_ID CHOICE",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "drive",
+        "cuota"
+      ],
+      "operation": "manage_drive.capacity",
+      "family": "manage_drive",
+      "original_action": "capacity",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/drive cuota",
+      "block": "R6",
+      "usage": "/drive cuota",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "lista"
+      ],
+      "operation": "audiovisual.clip.list",
+      "family": "audiovisual.clip",
+      "original_action": "list",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip lista",
+      "block": "R9",
+      "usage": "/clip lista",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "poner"
+      ],
+      "operation": "audiovisual.clip.play",
+      "family": "audiovisual.clip",
+      "original_action": "play",
+      "fields": [
+        {
+          "name": "clip_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "selection",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "query",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 200,
+          "option": "--nombre",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "query",
+          "example": "ejemplo"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip poner ID_REAL",
+      "block": "R9",
+      "usage": "/clip poner [CLIP_ID] [--nombre QUERY]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "pausa"
+      ],
+      "operation": "audiovisual.clip.pause",
+      "family": "audiovisual.clip",
+      "original_action": "pause",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip pausa",
+      "block": "R9",
+      "usage": "/clip pausa",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "seguir"
+      ],
+      "operation": "audiovisual.clip.resume",
+      "family": "audiovisual.clip",
+      "original_action": "resume",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip seguir",
+      "block": "R9",
+      "usage": "/clip seguir",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "repetir"
+      ],
+      "operation": "audiovisual.clip.replay",
+      "family": "audiovisual.clip",
+      "original_action": "replay",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip repetir",
+      "block": "R9",
+      "usage": "/clip repetir",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "siguiente"
+      ],
+      "operation": "audiovisual.clip.next",
+      "family": "audiovisual.clip",
+      "original_action": "next",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip siguiente",
+      "block": "R9",
+      "usage": "/clip siguiente",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "parar"
+      ],
+      "operation": "audiovisual.clip.stop",
+      "family": "audiovisual.clip",
+      "original_action": "stop",
+      "fields": [],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip parar",
+      "block": "R9",
+      "usage": "/clip parar",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "volumen"
+      ],
+      "operation": "audiovisual.clip.volume",
+      "family": "audiovisual.clip",
+      "original_action": "volume",
+      "fields": [
+        {
+          "name": "volume",
+          "kind": "float",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 1,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "volume",
+          "example": "0.7"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip volumen 0.7",
+      "block": "R9",
+      "usage": "/clip volumen VOLUME",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "clip",
+        "ajustar"
+      ],
+      "operation": "audiovisual.clip.volume",
+      "family": "audiovisual.clip",
+      "original_action": "volume",
+      "fields": [
+        {
+          "name": "direction",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "subir",
+            "bajar"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "direction",
+          "example": "subir"
+        },
+        {
+          "name": "adjustment",
+          "kind": "float",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": 0.01,
+          "maximum": 1,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "adjustment",
+          "example": "0.1"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/clip ajustar subir 0.1",
+      "block": "R9",
+      "usage": "/clip ajustar subir|bajar ADJUSTMENT",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "avatar",
+        "fondo"
+      ],
+      "operation": "audiovisual.avatar.background",
+      "family": "audiovisual.avatar",
+      "original_action": "background",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "studio",
+            "neon",
+            "sunset",
+            "night"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "studio"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/avatar fondo studio",
+      "block": "R9",
+      "usage": "/avatar fondo studio|neon|sunset|night",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "avatar",
+        "expresion"
+      ],
+      "operation": "audiovisual.avatar.expression",
+      "family": "audiovisual.avatar",
+      "original_action": "expression",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "neutral",
+            "relaxed",
+            "happy",
+            "angry",
+            "sad",
+            "surprised",
+            "wink",
+            "laugh"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "neutral"
+        },
+        {
+          "name": "duration",
+          "kind": "seconds",
+          "required": false,
+          "default": 3.0,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 15,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "duration",
+          "example": "3"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/avatar expresion neutral",
+      "block": "R9",
+      "usage": "/avatar expresion neutral|relaxed|happy|angry|sad|surprised|wink|laugh [--duracion DURATION]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "avatar",
+        "gesto"
+      ],
+      "operation": "audiovisual.avatar.gesture",
+      "family": "audiovisual.avatar",
+      "original_action": "gesture",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "wave",
+            "nod",
+            "shake_head",
+            "hand_to_chest"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "wave"
+        },
+        {
+          "name": "duration",
+          "kind": "seconds",
+          "required": false,
+          "default": 3.0,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 15,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "duration",
+          "example": "3"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/avatar gesto wave",
+      "block": "R9",
+      "usage": "/avatar gesto wave|nod|shake_head|hand_to_chest [--duracion DURATION]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "avatar",
+        "rubor"
+      ],
+      "operation": "audiovisual.avatar.blush",
+      "family": "audiovisual.avatar",
+      "original_action": "blush",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "enum",
+          "required": true,
+          "default": null,
+          "choices": [
+            "suave"
+          ],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "name",
+          "example": "suave"
+        },
+        {
+          "name": "duration",
+          "kind": "seconds",
+          "required": false,
+          "default": 3.0,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 15,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "duration",
+          "example": "3"
+        }
+      ],
+      "constants": [],
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/avatar rubor suave",
+      "block": "R9",
+      "usage": "/avatar rubor suave [--duracion DURATION]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "programar"
+      ],
+      "operation": "audiovisual.agenda.create",
+      "family": "audiovisual.agenda",
+      "original_action": "create",
+      "fields": [
+        {
+          "name": "date",
+          "kind": "date",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "2026-12-01"
+        },
+        {
+          "name": "time",
+          "kind": "clock",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "12:00"
+        },
+        {
+          "name": "max_seconds",
+          "kind": "duration",
+          "required": false,
+          "default": 300,
+          "choices": [],
+          "minimum": 5,
+          "maximum": 3600,
+          "max_length": 8000,
+          "option": "--duracion",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "maxSeconds",
+          "example": "10m"
+        },
+        {
+          "name": "live_request",
+          "kind": "text",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--tema",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "liveRequest",
+          "example": "ejemplo"
+        },
+        {
+          "name": "audio_id",
+          "kind": "id",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--audio",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "audioId",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "end_after_audio",
+          "kind": "flag",
+          "required": false,
+          "default": false,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": "--terminar-audio",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "endAfterAudio",
+          "example": "ejemplo"
+        },
+        {
+          "name": "volume",
+          "kind": "float",
+          "required": false,
+          "default": 0.7,
+          "choices": [],
+          "minimum": 0,
+          "maximum": 1,
+          "max_length": 8000,
+          "option": "--volumen",
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "volume",
+          "example": "0.7"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada programar 2026-12-01 12:00",
+      "block": "R9",
+      "usage": "/llamada programar DATE TIME [--duracion MAX_SECONDS] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "agenda"
+      ],
+      "operation": "audiovisual.agenda.list",
+      "family": "audiovisual.agenda",
+      "original_action": "list",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada agenda",
+      "block": "R9",
+      "usage": "/llamada agenda",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "reprogramar"
+      ],
+      "operation": "audiovisual.agenda.update",
+      "family": "audiovisual.agenda",
+      "original_action": "update",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "date",
+          "kind": "date",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "2026-12-01"
+        },
+        {
+          "name": "time",
+          "kind": "clock",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "at",
+          "example": "12:00"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada reprogramar ID_REAL 2026-12-01 12:00",
+      "block": "R9",
+      "usage": "/llamada reprogramar ID DATE TIME",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "llamada",
+        "cancelar-agenda"
+      ],
+      "operation": "audiovisual.agenda.cancel",
+      "family": "audiovisual.agenda",
+      "original_action": "cancel",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "id",
+          "example": "ID_REAL"
+        }
+      ],
+      "constants": [],
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/llamada cancelar-agenda ID_REAL",
+      "block": "R9",
+      "usage": "/llamada cancelar-agenda ID",
+      "acceptance": "NOT_TESTED"
+    }
+  ]
+}

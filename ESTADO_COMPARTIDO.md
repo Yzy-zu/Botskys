@@ -1,5 +1,25 @@
 # Relevo Botsky
 
+## 06/11/2026 · R1 cerrado; avanza R2
+
+R0 commit ee22c2e. R1 implementa lexer incremental, registro de 152 rutas / tres
+alias sin colisiones, argumentos tipados inmutables, spans y forma canónica v1,
+errores por campo con uso/ejemplo y ayuda generada. Matriz 794 filas de acciones y
+campos (30 familias más audiovisual). No clasificador, IA ni efectos en el parser.
+
+11 pruebas contractuales pasan; incluyen todos los ejemplos de registro con I/O
+prohibido, literalidad, opciones duplicadas/incompatibles, fechas/horas y selección
+explícita. Ruff y diffcheck correctos; ayuda/matriz reproducibles. Evidencia:
+docs/evidencia/R1.json y R1-tests.txt. Decisiones y límites en docs/R1.md.
+No contar parsing como aceptación de negocio: matriz mantiene NOT_TESTED.
+
+Siguiente R2: ingreso local verificado, configuración, ámbito/época/frescura,
+recibos SQLite propios, permisos, estado/cancelación exactos, notas/búsqueda con
+filtro; recuperación y duplicados sin repetir escrituras. Proveedores y transporte
+real deshabilitados. Continuar autónomamente conforme a dependencias del plan.
+Cuota comprobada 89 % primaria / 53 % semanal; umbral de parada 5 % sin reanudación.
+Instalación activa y evidencia anterior intactas. Solo pruebas y commits locales.
+
 ## 06/11/2026 · R0 cerrado; R1 siguiente
 
 Construcción autorizada en /home/petrov/botsky por encargo expreso. Único plan:
