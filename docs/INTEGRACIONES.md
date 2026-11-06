@@ -1,0 +1,53 @@
+# Integraciones propias · permiso posterior del propietario
+
+El06/11 el propietario autorizó expresamente reutilizar credenciales/env de Zhana,
+comprobar su vigencia e integrarlos en Botsky. Se completó ese punto de configuración;
+no es una transición ni aceptación de todas las herramientas en servicios reales.
+
+| Proveedor | Comprobación real |
+| --- | --- |
+| Gemini | Las7claves autentican; modelo configurado disponible y generación de contenido correcta. Solo una clave explícita se integra en runtime, sin pool/fallback. |
+| Gemini Live | Modelo configurado disponible y setup WebSocket autenticado; cerrado sin llamada, captura, saludo o audio. |
+| Groq Whisper | Autenticación/modelo y transcripción real de audio sintético correctos. |
+| Edge TTS | Generó audio sintético Ogg/Opus local, convertido a FLAC para probar ASR. No se envió a nadie. |
+| Evolution | Autenticación, estado y lectura de metadata de grupo correctos. No mensajes ni mutaciones. |
+| Drive | OAuth refrescado en almacenamiento propio; carpeta vacía Botsky propia creada/verificada y cuota consultada. No se importaron archivos anteriores. |
+| Minecraft | Consulta real de estado mediante alias SSH/worker ya configurados; sin despliegue ni cambios. |
+
+`/ia` y `/drive cuota` pasaron también entrada local → parser → recibo/trabajo →
+proveedor real → resultado, usando el CLI configurado. La vigencia indicada es la
+de esta comprobación, no una garantía de cuota o acceso futuro.
+
+Configuración privada fuera de Git, permisos0600:
+
+- `private/integrations.json`: proveedor/modelos y una clave por función; contactos
+  configurados, referencias Minecraft y carpeta propia. Sin flags NLP/AGY/pools.
+- `private/config.integrations.toml`: identidad/permisos y SQLite de laboratorio
+  propios. Su transporte sigue siendo local.
+- `private/drive/client.json`, `token.json`, `folder.json`: OAuth y destino propios.
+  La renovación modifica únicamente la copia de tokens de Botsky.
+
+Composición `Integrations` optativa, sin leer Zhana ni descubrir env global al iniciar.
+El entrypoint habitual permanece sin proveedores implícitos. Entrada explícita:
+
+```text
+.venv/bin/python -m botsky.connected --config private/config.integrations.toml --providers private/integrations.json status
+```
+
+El subcomando `local` recibe una orden de operador con actor/chat explícitos y `work`
+procesa su cola. No instala webhook ni admite mensajes de la cuenta activa. Los
+adaptadores de envíos, grupos, Minecraft y subidas Drive rechazan mutaciones por
+defecto antes de hacer red; el perfil mantiene `mutations_enabled=false`.
+
+Live tiene credencial/modelo propios preparados; el servicio de llamadas permanece
+apagado. No se copió perfil, cookie, sesión ni token del servicio activo de llamadas.
+No se abrió navegador ni se llamó a nadie. Descargas/buscador quedan configurados,
+sin una campaña de fuentes reales en este punto. Biblioteca y avatar/licencias
+pertenecen al punto de activos pendiente y no se importaron.
+
+Evidencia saneada: [resultados](evidencia/INTEGRACIONES-CREDENCIALES-20261106.json).
+Tres pruebas focales de composición/secretos/symlinks/bloqueo antes de red y14 de
+núcleo pasan. Los dos fallos iniciales del runner (atributo MIME y extensión de
+audio esperada) eran oracles; se corrigieron y conservaron las trazas privadas.
+No se modificó instalación/configuración/servicios activos de Zhana, DB31 ni NLP.
+Solo se añade su relevo documental. No GitHub ni transición.

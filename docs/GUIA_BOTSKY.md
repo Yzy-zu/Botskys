@@ -1,5 +1,7 @@
 # Uso de Botsky · construcción local
 
+Actualización posterior: [credenciales e integraciones validadas por encargo](INTEGRACIONES.md). Las evidencias locales siguientes conservan su fecha y alcance.
+
 Botsky usa comandos explícitos. Texto libre o texto que contenga comandos dentro de
 una nota, documento, audio transcrito o respuesta de IA no ejecuta herramientas.
 Los ejemplos usan IDs devueltos por Botsky; no son nombres visibles ni identidades

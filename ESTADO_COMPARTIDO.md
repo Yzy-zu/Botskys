@@ -1,5 +1,40 @@
 # Relevo Botsky
 
+## 06/11/2026 10:41 UTC · Punto1: credenciales válidas e integraciones propias
+
+Permiso expreso posterior para leer/reutilizar credenciales/env Zhana, validar e
+integrar proveedores. Se aplica solo a ese ámbito; no transición ni mensajes/
+llamadas/mutaciones de grupo/servidor. Se leyó configuración/JSON de credenciales,
+OAuth y variables Gemini seleccionadas de metadatos PM2, sin arrancar procesos,
+importar runtime, NLP/AGY, DB31, historiales, perfiles/cookies o datos de usuario.
+
+Siete claves Gemini autentican; modelo3.5flashlite válido y generación real correcta.
+Runtime usa solo primera clave explícita, sin pool/rotación. Live3.8 autenticó setup
+WebSocket sin llamar/capturar/saludar/enviar audio. Groq Whisper autentica y transcribe
+un audio sintético generado por EdgeTTS. Evolution autentica y permite consulta de
+estado/metadata de grupo; Minecraft consulta status real vía SSH sin cambios.
+Drive OAuth refresca en copia propia; carpeta Botsky vacía independiente creada y
+verificada, cuota consultada. CLI configurado /ia y /drive cuota funcionan de extremo
+a extremo sin entrega externa. Todos los checks finales pasan. Sin afirmar recepción
+humana ni campaña completa de funciones por comprobar credenciales.
+
+Copias0600 ignoradas: private/integrations.json, private/config.integrations.toml,
+private/drive/{client,token,folder}.json. Datos/SQLite/artefactos propios separados.
+Composición optativa src/botsky/integrations.py y entrada python -m botsky.connected;
+requiere rutas explícitas, no autodetecta fuentes. Envíos/mutaciones remotas bloqueados
+por defecto; no webhook, navegador o servicio de llamadas iniciado. Live key/modelo
+preparados en perfil propio; no se conecta al servicio activo de Zhana.
+
+Tres pruebas de configuración/permissions/clave única/symlinks/denegación antes de
+red y14pruebas de núcleo pasan. Evidencia pública saneada INTEGRACIONES-CREDENCIALES-
+20261106.json y docs/INTEGRACIONES.md. Probes y audios sintéticos privados conservados.
+Ningún secreto en Git. Zhana activa intacta; solo relevo documental adicional.
+
+Punto1 completado en su ámbito. Quedan activos/licencias y campaña real de herramientas/
+WhatsApp/Android/aceptación humana, y transición posterior; no avanzarlos sin encargo.
+Cuota última9%primaria/34%semanal: conservar umbral5% con guardado y parada sin
+reanudación automática si se alcanza. Este cierre no activa producción.
+
 ## 06/11/2026 10:29 UTC · Construcción autorizada local completa; R10 global abierto
 
 R9 commits3a19e03/7ef1259; relevo documental Zhana7591fd3. R0–R9 mantienen su

@@ -1,0 +1,122 @@
+{
+  "at": "2026-11-06T10:35:33.279524+00:00",
+  "checks": {
+    "gemini_credential_1": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_2": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_3": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_4": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_5": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_6": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_credential_7": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_model": {
+      "http_status": 200,
+      "ok": true
+    },
+    "live_model": {
+      "http_status": 200,
+      "ok": true
+    },
+    "groq_auth": {
+      "http_status": 200,
+      "ok": true
+    },
+    "groq_asr_model": {
+      "http_status": 200,
+      "ok": true
+    },
+    "evolution_session": {
+      "http_status": 200,
+      "ok": true
+    },
+    "drive_oauth": {
+      "ok": true
+    },
+    "drive_account": {
+      "http_status": 200,
+      "ok": true
+    },
+    "drive_generate_folder_id": {
+      "http_status": 200,
+      "ok": true
+    },
+    "drive_own_folder": {
+      "http_status": 200,
+      "ok": true
+    },
+    "drive_folder_access": {
+      "http_status": 200,
+      "ok": true
+    },
+    "gemini_content_real": {
+      "ok": true
+    },
+    "drive_own_adapter": {
+      "ok": true
+    },
+    "minecraft_status_read_only": {
+      "ok": true
+    },
+    "group_metadata_read_only": {
+      "ok": true
+    },
+    "tts_real": {
+      "ok": true
+    },
+    "asr_real": {
+      "ok": true,
+      "status": "ok",
+      "code": "asr_text"
+    },
+    "configured_cli_ia": {
+      "ok": true,
+      "code": "ai_reply"
+    },
+    "configured_cli_drive": {
+      "ok": true,
+      "code": "drive_capacity"
+    },
+    "live_authenticated_setup": {
+      "ok": true,
+      "scope": "authenticated Live setup only; no call, capture, greeting or audio sent"
+    }
+  },
+  "scope": "credential validation and own configuration only; no messages/calls/group/server mutations",
+  "live_runtime": "single explicit key; no pool",
+  "source_files_unchanged": true,
+  "no_source_writes_performed": true,
+  "scope_authorized_by_user": "Explicit point 1: reuse Zhana credentials/env, validate them and integrate in Botsky; no transition",
+  "configuration": "own ignored private files, one explicit Gemini key; no source runtime imports",
+  "limits": [
+    "Live authenticated setup only, no call/capture/audio",
+    "Evolution authenticated status and group metadata only; no send or mutation",
+    "Minecraft read-only status through existing SSH alias; no deployment",
+    "Drive: new empty own configuration folder created; no old files imported",
+    "no browser, webhook, active session transfer or NLP",
+    "gallery/avatar assets remain outside point 1"
+  ],
+  "local_tests": {
+    "new_integration_tests": 3,
+    "core_regression_tests": 14
+  }
+}

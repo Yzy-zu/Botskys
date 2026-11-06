@@ -6,7 +6,8 @@ Estado real y siguiente trabajo en [ESTADO_COMPARTIDO.md](ESTADO_COMPARTIDO.md).
 
 Python 3.14 y SQLite propios. El núcleo arranca sin IA ni clasificador. No hay
 dependencia del runtime de Zhana ni acceso a sus datos privados. Repositorio solo
-local: ningún transporte, proveedor, sesión ni transición activados.
+local. Transporte productivo, sesiones y transición siguen apagados.
+Integraciones optativas propias validadas por encargo posterior: [estado](docs/INTEGRACIONES.md).
 
 Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
 hashes, límites, formatos, dependencias y superficie audiovisual. Tener una

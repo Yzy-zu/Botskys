@@ -20,3 +20,14 @@ R11 necesitan encargo posterior. No abrir navegador ni copiar perfiles activos.
 Cuota: `python3 /home/petrov/zhana/ops/consultar_uso_codex.py`. Al 5 % restante de
 cualquier ventana, guardar cambios, evidencia, relevo y commits y detenerse sin
 reanudación automática. Resolver decisiones técnicas rutinarias autónomamente.
+
+## 06/11 · Permiso posterior para configuración de proveedores
+
+El propietario autorizó explícitamente el punto1: leer/reutilizar credenciales y
+entorno de Zhana, comprobar su vigencia contra los proveedores e integrarlos en
+Botsky. Esta excepción sustituye las prohibiciones anteriores para esas lecturas
+y pruebas concretas. Mantener secretos en private/ propio 0600, sin publicarlos.
+No importa NLP, historial/DB31, perfiles/cookies ni datos de usuario; no altera
+servicios activos ni hace transición. No autoriza mensajes/llamadas, mutaciones
+de grupos/servidor o navegador. Una clave Gemini explícita en runtime; sin pools.
+Estado y límites en docs/INTEGRACIONES.md y último relevo. Umbral5% sigue vigente.
