@@ -1,0 +1,15 @@
+{
+  "source": "Petrovsky encrypted Drive connection",
+  "refresh_http": 400,
+  "error": "invalid_grant",
+  "historical_quota": {
+    "limit": 5497558138880,
+    "usage": 59833432609,
+    "usageInDrive": 59797104339,
+    "usageInDriveTrash": 0
+  },
+  "historical_source": "/home/petrov/zhana/private/three-repairs-20261101/google-quota.json",
+  "petrovsky_token_matches_zhana": true,
+  "historical_limit_TiB": 5.0,
+  "historical_used_GiB": 55.724
+}

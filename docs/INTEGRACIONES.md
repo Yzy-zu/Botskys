@@ -117,3 +117,16 @@ papelera0. Scope confirmado drive.file: cuota global consultable, pero no otorga
 acceso general a todos los archivos. El404 previo no invalida el OAuth.
 No se modificó runtime/destino ni se escribieron archivos remotos. Evidencia
 OAUTH-CUOTA-20261106.json.
+
+## Búsqueda cuenta5TiB · 06/11 20:16 UTC
+
+El propietario confirma que busca5TB, no la cuenta400GiB recuperada. Encontrada
+evidencia histórica en Zhana private/three-repairs-20261101/google-quota.json:
+5497558138880B (5TiB),59833432609B usados (55.724GiB); es evidencia histórica,
+no cuota actual. Conexión cifrada Petrovsky examinada solo para OAuth Drive,
+sin importar runtime/perfiles/sesiones: token coincide con Zhana actual y también
+devuelve invalid_grant. Cruces de tokens31oct/anterior con secretos del mismo
+client_id tampoco recuperan acceso; respaldo27oct válido sigue siendo400GiB.
+Búsqueda ampliada JSON anidados/nombres alternativos y respaldos no encontró
+otro token Drive distinto utilizable. Candidatos privados0600; fuentes intactas.
+Sin sustitución runtime ni escrituras remotas. Evidencia OAUTH-BUSQUEDA-5TB*.json.

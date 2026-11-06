@@ -1,0 +1,39 @@
+[
+  {
+    "token_source": "/home/petrov/zhana/private/drive",
+    "client_source": "/home/petrov/zhana/private/drive",
+    "http": 400,
+    "error": "invalid_grant"
+  },
+  {
+    "token_source": "/home/petrov/zhana/private/drive",
+    "client_source": "/home/petrov/zhana/private/drive-connection-20261031/before",
+    "http": 401,
+    "error": "invalid_client"
+  },
+  {
+    "token_source": "/home/petrov/zhana/private/drive-connection-20261031/before",
+    "client_source": "/home/petrov/zhana/private/drive",
+    "http": 400,
+    "error": "invalid_grant"
+  },
+  {
+    "token_source": "/home/petrov/zhana/private/drive-connection-20261031/before",
+    "client_source": "/home/petrov/zhana/private/drive-connection-20261031/before",
+    "http": 401,
+    "error": "invalid_client"
+  },
+  {
+    "token_source": "/home/petrov/zhana/private/drive/previous-20261027T220317Z",
+    "client_source": "/home/petrov/zhana/private/drive/previous-20261027T220317Z",
+    "http": 200,
+    "error": null,
+    "quota_http": 200,
+    "quota": {
+      "limit": "429496729600",
+      "usage": "267262954681",
+      "usageInDrive": "252155613675",
+      "usageInDriveTrash": "0"
+    }
+  }
+]
