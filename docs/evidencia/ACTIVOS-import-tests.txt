@@ -1,0 +1,9 @@
+test_exact_model_and_static_gallery_copy_preserve_publication_without_other_tables (test_assets_import.AssetImportTest.test_exact_model_and_static_gallery_copy_preserve_publication_without_other_tables) ... ok
+test_external_resource_in_model_is_rejected_before_copy (test_assets_import.AssetImportTest.test_external_resource_in_model_is_rejected_before_copy) ... ok
+test_gallery_photo_symlink_and_avatar_symlink_rejected (test_assets_import.AssetImportTest.test_gallery_photo_symlink_and_avatar_symlink_rejected) ... ok
+test_wrong_hash_or_license_does_not_publish_partial_gallery (test_assets_import.AssetImportTest.test_wrong_hash_or_license_does_not_publish_partial_gallery) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.036s
+
+OK

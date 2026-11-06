@@ -31,3 +31,15 @@ No importa NLP, historial/DB31, perfiles/cookies ni datos de usuario; no altera
 servicios activos ni hace transición. No autoriza mensajes/llamadas, mutaciones
 de grupos/servidor o navegador. Una clave Gemini explícita en runtime; sin pools.
 Estado y límites en docs/INTEGRACIONES.md y último relevo. Umbral5% sigue vigente.
+
+## 06/11 · Permiso posterior para activos y configuración operativa
+
+El propietario encargó integrar galería/avatar y permisos por integración/chat.
+Pidió expresamente conservar los activos de Zhana y buscar el VRM a profundidad.
+Se autoriza copiar únicamente galería/índice de álbumes y VRM/metadatos/licencias a
+almacenamiento privado propio. El VRM exacto se recuperó de un respaldo, sin abrir
+perfiles/sesiones. No importa DB31, historial, XP, compras o tablas de usuario.
+Conservar publicación original de álbumes y restricción de redistribución del VRM;
+no añadir los archivos privados a Git. Ninguna lectura de fuentes al arrancar:
+importación es una operación de operador con rutas explícitas. Este permiso no
+activa mensajes, llamadas, mutaciones remotas, navegador, servicios o transición.

@@ -1,5 +1,52 @@
 # Relevo Botsky
 
+## 06/11/2026 15:50 UTC · Galería/VRM conservados; permisos por integración/chat completos
+
+Encargo posterior de programar activos y configuración operativa. El propietario
+eligió conservar activos de Zhana y profundizar búsqueda del VRM (pendiente solo si
+no aparecía). Encontrado: dos copias regulares offline de Kazumi coinciden con
+SHA2567f216a0d…332f683 declarado por Zhana. Copia propia18.433.312B, regular0600;
+manifiesto/licencia/metadatos/procedencia privados. AutorSashTheDee, licencia
+Redistribution_Prohibited conservada; modelo fuera de Git. No se arregló el enlace
+roto de Zhana ni se abrió/copió perfil o sesión.
+
+Galería original conservada: tres álbumes exactos, cero fotos, cero publicados.
+Índice/álbumes/metadata propios; sin cambiar publicación o inventar imágenes.
+Importación explícita por rutas de operador, sin fuentes antiguas al arrancar,
+DB31/XP/compras/historial/tablas ajenas. Catálogo conectado y consultable con envío
+apagado. Photo transport separado de recados; se inyecta biblioteca/configuración,
+además de ámbitos de ruleta, admins optativos y nuclear con política.
+
+Permisos cerrados versión1 por messages/drive/groups/minecraft/gallery/roulette/
+nuclear/delivery. Listas explícitas sin comodines o ampliación de autoridad.
+Switch global true rechazado; false solo compatibilidad. Perfil propio migrado y
+copia previa mecánica. Validación antes de OAuth/HTTP/SSH, al admitir/procesar y
+antes del motor. Job pendiente revocado se retira por cancelación existente sin
+cargo/envío. Entregas fuera de permiso quedan pendientes. Instantánea inmutable
+por proceso: cambios requieren reinicio, sin hot reload implícito.
+
+Loader AV valida ruta propia0600/hash/GLB/licencia y recursos autocontenidos. VRM
+real cargado offline:97mallas/1.264.796vértices,10mallas morph, siete expresiones
+aplicadas y cuatro gestos/huesos. Texturas placeholder; noGPU/render/frameACK ni
+recepción Android acreditados. Bundle781.976B. No navegador o proveedor iniciado.
+
+202Python completos y286Node completos PASS, cero omisiones. Cero intentos fuera
+de loopback en harness Python. Nuevas pruebas de copia/privacidad/paths/licencias,
+catálogo, compra con confirmación/XP/duplicados, separación de permisos y revocación.
+Ruff/format/pipcheck/diffcheck, SQLite18/integrityok, fuente/álbumes/hash conservados.
+Evidencia docs/evidencia/ACTIVOS*; docs/ACTIVOS_Y_PERMISOS.md. RUNTIME/R9/R10 previos
+intactos. CLI status propio reconoce VRM/biblioteca sin Node o proveedores. Catálogo
+real local vacío coincide con origen, sin compra; DB de check separada.
+
+Puntos de programación1y2 cerrados LOCAL. Permisos preparados; envíos/escritura/
+galería-send/ruleta/nuclear/scheduler/avisos/agenda/AV/navegador apagados. Transporte
+sigue local. Nada instalado/activado: sin pruebas remotas, mensajes/llamadas/cambios
+de grupo/servidor, transición o GitHub. Zhana activa/código/config/DB31/datos y
+cambios anteriores intactos; allí solo relevo documental posterior. Modelo/galería
+propios privados ignorados. R10 remoto/Android/aceptación humana y R11 necesitan
+encargo posterior. No falta programar contenido fotográfico: se conservó la galería
+vacía existente. Cuota94%primaria/78%semanal; al5%guardar/parar sin reanudación.
+
 ## 06/11/2026 15:23 UTC · Programados puntos 1, 2 y 3; transporte/proceso/servicio AV
 
 Encargo posterior del propietario para implementar WhatsApp, proceso continuo y

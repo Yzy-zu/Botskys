@@ -12,7 +12,8 @@ import httpx
 
 from .adapters.calls import CallsClient
 from .adapters.downloads import NetworkDownloads
-from .adapters.drive import DriveClient
+from .adapters.drive import DriveClient, DriveError
+from .adapters.gallery import PublishedLibrary
 from .adapters.gemini import GeminiContent
 from .adapters.groups import GroupError, Groups
 from .adapters.messenger import MessageError, Messenger
@@ -23,6 +24,7 @@ from .adapters.web import NetworkWeb
 from .adapters.whisper import WhisperProvider
 from .app import Application
 from .domains.contacts import Contact, Directory
+from .operational import OperationalPolicy, PermissionGate
 
 
 def read_profile(path):
@@ -48,6 +50,7 @@ def read_profile(path):
         "call_service",
         "mutations_enabled",
         "runtime",
+        "permissions",
     }
     if (
         not isinstance(value, dict)
@@ -82,27 +85,12 @@ def read_profile(path):
     return value
 
 
-class Restricted:
-    """Distingue integración preparada de autorización para producir efectos remotos."""
-
-    def __init__(self, backend, denied, error):
-        self._backend, self._denied, self._error = backend, frozenset(denied), error
-
-    def __getattr__(self, name):
-        if name in self._denied:
-
-            async def reject(*args, **kwargs):
-                raise self._error("integration_read_only", uncertain=False)
-
-            return reject
-        return getattr(self._backend, name)
-
-
 class Integrations:
     def __init__(self, settings, profile, *, http=None):
         self.settings = settings
         self.path = Path(profile).absolute()
         self.profile = read_profile(self.path)
+        self.policy = OperationalPolicy.build(self.profile, settings)
         self.http = http or httpx.AsyncClient(trust_env=False, follow_redirects=False, timeout=20)
         self._owned_http = http is None
         self.app = None
@@ -138,17 +126,77 @@ class Integrations:
                 if p["drive"].get("folder_id")
                 else None
             )
-            if not p.get("mutations_enabled", False):
-                messenger = Restricted(messenger, {"send", "send_photo"}, MessageError)
-                groups = Restricted(groups, {"change", "setting"}, GroupError)
-                if minecraft:
-                    minecraft = Restricted(
-                        minecraft, {"change", "change_validated"}, MinecraftRemoteError
-                    )
-                if drive:
-                    from .adapters.drive import DriveError
+            permissions = self.policy.document
 
-                    drive = Restricted(drive, {"upload", "upload_file"}, DriveError)
+            def message_target(target, *args, **kwargs):
+                return (
+                    permissions["messages"]["send"] and target in permissions["messages"]["targets"]
+                )
+
+            photo_targets = {
+                self.settings.owner,
+                *self.settings.friends,
+                *permissions["gallery"]["chats"],
+            }
+
+            def photo_target(target, *args, **kwargs):
+                return permissions["gallery"]["send"] and target in photo_targets
+
+            photo_transport = PermissionGate(
+                messenger,
+                {"send_photo": photo_target},
+                MessageError,
+                available=permissions["gallery"]["send"],
+            )
+            messenger = PermissionGate(
+                messenger,
+                {"send": message_target, "send_photo": False},
+                MessageError,
+                available=permissions["messages"]["send"],
+            )
+
+            def group_read(group, *args, **kwargs):
+                return permissions["groups"]["read"] and group in permissions["groups"]["chats"]
+
+            def group_write(group, *args, **kwargs):
+                return permissions["groups"]["write"] and group in permissions["groups"]["chats"]
+
+            groups = PermissionGate(
+                groups,
+                {
+                    "snapshot": group_read,
+                    "invite_link": group_read,
+                    "change": group_write,
+                    "setting": group_write,
+                },
+                GroupError,
+                available=permissions["groups"]["read"],
+            )
+            if minecraft:
+                minecraft = PermissionGate(
+                    minecraft,
+                    {
+                        "query": permissions["minecraft"]["read"],
+                        "change": permissions["minecraft"]["write"],
+                        "change_validated": permissions["minecraft"]["write"],
+                    },
+                    MinecraftRemoteError,
+                )
+            if drive:
+                drive = PermissionGate(
+                    drive,
+                    {
+                        **dict.fromkeys(
+                            ("storage_quota", "folder", "search", "metadata", "download"),
+                            permissions["drive"]["read"],
+                        ),
+                        **dict.fromkeys(
+                            ("generate_id", "upload", "upload_file"), permissions["drive"]["write"]
+                        ),
+                    },
+                    DriveError,
+                    available=permissions["drive"]["read"],
+                )
             contacts = Directory(
                 tuple(
                     Contact(v["name"], v["jid"], tuple(v.get("aliases", ())))
@@ -168,6 +216,15 @@ class Integrations:
                 downloads=NetworkDownloads(**p.get("downloads", {})),
                 web=NetworkWeb(**p.get("web", {})),
                 calls=self.calls_client(),
+                operations=self.policy,
+                gallery=PublishedLibrary(self.settings.root)
+                if permissions["gallery"]["enabled"]
+                else None,
+                photo_transport=photo_transport,
+                gallery_chats=permissions["gallery"]["chats"],
+                roulette_chats=permissions["roulette"]["chats"],
+                allow_roulette_admins=permissions["roulette"]["allow_admins"],
+                nuclear_enabled=permissions["nuclear"]["enabled"],
             )
             return self.app
         except BaseException:

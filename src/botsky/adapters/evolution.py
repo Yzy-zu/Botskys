@@ -30,7 +30,11 @@ class EvolutionTransport:
         from urllib.parse import quote
 
         self.instance_path = quote(self.instance, safe="")
-        self.delivery_enabled = config.get("delivery_enabled", False) is True
+        self.delivery_enabled = (
+            app.operations.document["delivery"]["send"]
+            if app.operations
+            else config.get("delivery_enabled", False) is True
+        )
 
     def enqueue(self, payload):
         found = normalize(payload, self.settings, self.instance, self.app.clock())
@@ -220,6 +224,8 @@ class EvolutionTransport:
             s.account,
             s.epoch,
         ):
+            return DeliveryAck(False)
+        if self.app.operations and not self.app.operations.delivers(c.scope.chat):
             return DeliveryAck(False)
         if not part.artifacts:
             try:

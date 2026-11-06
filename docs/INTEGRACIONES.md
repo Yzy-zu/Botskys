@@ -59,3 +59,10 @@ Ver [RUNTIME.md](RUNTIME.md) para configuración, evidencias y límites actuales
 Perfil propio actualizado con tokens independientes y política restringida;
 transporte continúa local, envíos y automatismos apagados, servicio/navegador sin
 activar. El estado siguiente conserva la validación previa de proveedores.
+# Cierre posterior de activos y permisos
+
+Galería y avatar conservados por instrucción expresa; Kazumi recuperado de respaldo
+con SHA256 exacto y licencia privada preservada. Galería original de tres álbumes,
+sin fotos y sin publicación. Composición conectada y permisos explícitos por
+integración/chat sustituyen el interruptor global. Estado actualizado y evidencia
+en [ACTIVOS_Y_PERMISOS.md](ACTIVOS_Y_PERMISOS.md). Ninguna activación o efecto remoto.

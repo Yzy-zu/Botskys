@@ -1,0 +1,12 @@
+test_composed_catalog_is_readable_without_any_send_permission (test_operational.OperationalTest.test_composed_catalog_is_readable_without_any_send_permission) ... ok
+test_explicit_games_and_nuclear_scope_never_enlarge_general_group_access (test_operational.OperationalTest.test_explicit_games_and_nuclear_scope_never_enlarge_general_group_access) ... ok
+test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope (test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope) ... ok
+test_method_permissions_deny_before_oauth_http_and_ssh (test_operational.OperationalTest.test_method_permissions_deny_before_oauth_http_and_ssh) ... ok
+test_policy_revocation_retires_queued_purchase_without_debit_or_delivery (test_operational.OperationalTest.test_policy_revocation_retires_queued_purchase_without_debit_or_delivery) ... ok
+test_recados_targets_and_group_chats_are_checked_independently (test_operational.OperationalTest.test_recados_targets_and_group_chats_are_checked_independently) ... ok
+test_unknown_fields_wildcards_global_switch_and_inconsistent_flags_rejected (test_operational.OperationalTest.test_unknown_fields_wildcards_global_switch_and_inconsistent_flags_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.235s
+
+OK

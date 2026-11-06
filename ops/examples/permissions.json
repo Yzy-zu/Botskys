@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "messages": {"send": false, "targets": []},
+  "drive": {"read": true, "write": false},
+  "groups": {"read": true, "write": false, "chats": []},
+  "minecraft": {"read": true, "write": false},
+  "gallery": {"enabled": true, "send": false, "chats": []},
+  "roulette": {"chats": [], "allow_admins": false},
+  "nuclear": {"enabled": false, "chats": []},
+  "delivery": {"send": false, "chats": []}
+}

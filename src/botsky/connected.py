@@ -7,6 +7,7 @@ import signal
 from pathlib import Path
 
 from .adapters.local import LocalAdapter, clock_ms
+from .assets_import import avatar_status
 from .config import Settings
 from .integrations import Integrations
 
@@ -34,7 +35,9 @@ async def run(args):
                         "incoming_transport_configured": settings.transport == "evolution"
                         and "runtime" in providers.profile,
                         "incoming_transport_running": False,
-                        "mutations_enabled": providers.profile.get("mutations_enabled", False),
+                        "permissions": providers.policy.document,
+                        "gallery_configured": app.gallery is not None,
+                        "avatar": avatar_status(settings),
                     }
                 )
             )

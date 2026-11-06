@@ -134,6 +134,7 @@ class Jobs:
         calls=None,
         nuclear_enabled=None,
         roulette_policy=None,
+        operations=None,
     ):
         self.store, self.artifacts, self.clock = store, artifacts, clock
         self._policy = policy or (lambda: settings)
@@ -145,6 +146,7 @@ class Jobs:
         self.gallery = gallery or (lambda: (None, None, frozenset()))
         self.groups = groups or (lambda: None)
         self.calls = calls or (lambda: None)
+        self.operations = operations or (lambda: None)
         self.minecraft = minecraft or (lambda: None)
         self.nuclear_enabled = nuclear_enabled or (lambda: False)
         self.roulette_policy = roulette_policy or (lambda: (frozenset(), False, None))
@@ -552,6 +554,11 @@ class Jobs:
             if job["early_result"]:
                 output = EngineOutput(job["early_result"])
             else:
+                policy = self.operations()
+                if policy and policy.authorize(job["context"], job["operation"]):
+                    with self.store.transaction() as db:
+                        cancel_job(db, job["context"], job["id"])
+                    return
                 task = asyncio.create_task(self.execute_engine(job, directory))
                 async with asyncio.timeout(job["budget"]):
                     while not task.done():

@@ -44,6 +44,7 @@ class Application:
         minecraft=None,
         nuclear_enabled=False,
         calls=None,
+        operations=None,
     ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
@@ -63,6 +64,7 @@ class Application:
         )
         self.store = Store(settings.database)
         self.calls = calls
+        self.operations = operations
         self.minecraft = minecraft
         self.nuclear_enabled = bool(nuclear_enabled)
         self.groups, self.roulette_chats, self.allow_roulette_admins, self.roulette_choice = (
@@ -87,6 +89,7 @@ class Application:
             groups=lambda: self.groups,
             minecraft=lambda: self.minecraft,
             calls=lambda: self.calls,
+            operations=lambda: self.operations,
             nuclear_enabled=lambda: self.nuclear_enabled,
             roulette_policy=lambda: (
                 self.roulette_chats,
@@ -139,6 +142,10 @@ class Application:
                 return None, None, "ignored"
             if denied := access.authorize(command.spec.permission, context, self.settings):
                 return command, denied, "completed"
+            if self.operations and (
+                denied := self.operations.authorize(context, command.spec.operation)
+            ):
+                return command, denied, "completed"
             if denied := bot.gate(db, context, command.spec, self.clock()):
                 return command, denied, "completed"
             return command, None, "queued"
@@ -168,6 +175,8 @@ class Application:
                 "La versión de este comando no está disponible; no se reinterpretó.",
             )
         if denied := access.authorize(spec.permission, context, self.settings):
+            return denied
+        if self.operations and (denied := self.operations.authorize(context, spec.operation)):
             return denied
         if denied := bot.gate(db, context, spec, now):
             return denied

@@ -1,0 +1,8 @@
+test_explicit_composition_makes_no_network_requests_and_blocks_remote_writes (test_configured_integrations.ConfiguredIntegrationsTest.test_explicit_composition_makes_no_network_requests_and_blocks_remote_writes) ... ok
+test_profile_rejects_pool_unknown_fields_and_unsafe_permissions (test_configured_integrations.ConfiguredIntegrationsTest.test_profile_rejects_pool_unknown_fields_and_unsafe_permissions) ... ok
+test_symlink_profile_is_rejected_and_defaults_never_read_zhana (test_configured_integrations.ConfiguredIntegrationsTest.test_symlink_profile_is_rejected_and_defaults_never_read_zhana) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.022s
+
+OK

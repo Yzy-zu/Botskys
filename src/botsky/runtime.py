@@ -200,6 +200,11 @@ class Runtime:
                 (self.app.settings.instance, self.app.settings.account, self.app.settings.epoch),
             ).fetchall()
         for row in rows:
+            if self.app.operations:
+                with self.app.store.transaction() as db:
+                    chat = db.execute("SELECT chat FROM inbox WHERE id=?", (row[0],)).fetchone()[0]
+                if not self.app.operations.delivers(chat):
+                    continue
             await deliver_async(
                 self.app.store, row[0], self.app.settings, self.transport, self.app.clock
             )

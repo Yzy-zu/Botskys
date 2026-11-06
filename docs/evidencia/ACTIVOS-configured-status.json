@@ -1,0 +1,56 @@
+{
+  "catalog_status": "empty",
+  "catalog_code": "pack_catalog",
+  "albums": 3,
+  "published_albums": 0,
+  "photos": 0,
+  "avatar": {
+    "configured": true,
+    "bytes": 18433312,
+    "sha256": "7f216a0d81f0933d3c3b9a9508cacd254fa4a54570d0b9fd323a6ddac332f683",
+    "license": "Redistribution_Prohibited",
+    "private_only": true
+  },
+  "permissions": {
+    "delivery": {
+      "chats": 2,
+      "send": false
+    },
+    "drive": {
+      "read": true,
+      "write": false
+    },
+    "gallery": {
+      "chats": 2,
+      "enabled": true,
+      "send": false
+    },
+    "groups": {
+      "chats": 1,
+      "read": true,
+      "write": false
+    },
+    "messages": {
+      "send": false,
+      "targets": 2
+    },
+    "minecraft": {
+      "read": true,
+      "write": false
+    },
+    "nuclear": {
+      "chats": 0,
+      "enabled": false
+    },
+    "roulette": {
+      "allow_admins": false,
+      "chats": 0
+    }
+  },
+  "configured_transport": "local",
+  "call_service_enabled": false,
+  "browser_launch": false,
+  "scheduler_enabled": false,
+  "gallery_purchase_created": false,
+  "network_requests": 0
+}

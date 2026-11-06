@@ -1,0 +1,137 @@
+{
+  "sha256": "7f216a0d81f0933d3c3b9a9508cacd254fa4a54570d0b9fd323a6ddac332f683",
+  "bytes": 18433312,
+  "meshes": 97,
+  "vertices": 1264796,
+  "morphMeshes": 10,
+  "expressions": [
+    {
+      "name": "neutral",
+      "supported": true,
+      "bindCount": 1
+    },
+    {
+      "name": "relaxed",
+      "supported": true,
+      "bindCount": 1
+    },
+    {
+      "name": "happy",
+      "supported": true,
+      "bindCount": 2
+    },
+    {
+      "name": "angry",
+      "supported": true,
+      "bindCount": 2
+    },
+    {
+      "name": "sad",
+      "supported": true,
+      "bindCount": 1
+    },
+    {
+      "name": "surprised",
+      "supported": true,
+      "bindCount": 1
+    },
+    {
+      "name": "wink",
+      "supported": true,
+      "bindCount": 1
+    },
+    {
+      "name": "laugh",
+      "supported": true,
+      "bindCount": 2
+    }
+  ],
+  "expressionEffects": [
+    {
+      "name": "relaxed",
+      "applied": true
+    },
+    {
+      "name": "happy",
+      "applied": true
+    },
+    {
+      "name": "angry",
+      "applied": true
+    },
+    {
+      "name": "sad",
+      "applied": true
+    },
+    {
+      "name": "surprised",
+      "applied": true
+    },
+    {
+      "name": "wink",
+      "applied": true
+    },
+    {
+      "name": "laugh",
+      "applied": true
+    }
+  ],
+  "gestures": [
+    {
+      "name": "wave",
+      "supported": true,
+      "bones": [
+        "rightUpperArm",
+        "rightLowerArm",
+        "rightHand"
+      ]
+    },
+    {
+      "name": "nod",
+      "supported": true,
+      "bones": [
+        "head"
+      ]
+    },
+    {
+      "name": "shake_head",
+      "supported": true,
+      "bones": [
+        "head"
+      ]
+    },
+    {
+      "name": "hand_to_chest",
+      "supported": true,
+      "bones": [
+        "head",
+        "rightUpperArm",
+        "rightLowerArm",
+        "rightHand",
+        "chest"
+      ]
+    }
+  ],
+  "gestureEffects": [
+    {
+      "name": "wave",
+      "applied": true
+    },
+    {
+      "name": "nod",
+      "applied": true
+    },
+    {
+      "name": "shake_head",
+      "applied": true
+    },
+    {
+      "name": "hand_to_chest",
+      "applied": true
+    }
+  ],
+  "bundle_bytes": 781976,
+  "textures": "placeholders only; no GPU/render tested",
+  "browser_started": false,
+  "providers_started": false
+}

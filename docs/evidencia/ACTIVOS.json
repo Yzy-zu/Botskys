@@ -1,0 +1,68 @@
+{
+  "scope": "Programming gallery/avatar composition and per-integration/chat permissions; preserve exact existing assets",
+  "at": "2026-11-06T15:50:11.423791+00:00",
+  "local_status": "PASS",
+  "production_status": "NOT_ACTIVATED",
+  "avatar": {
+    "recovered_from_offline_backups": true,
+    "matching_backups": 2,
+    "sha256": "7f216a0d81f0933d3c3b9a9508cacd254fa4a54570d0b9fd323a6ddac332f683",
+    "bytes": 18433312,
+    "license": "Redistribution_Prohibited",
+    "author": "SashTheDee",
+    "private_only": true,
+    "regular_file": true,
+    "permissions": "0600",
+    "source_symlink_repaired": false
+  },
+  "gallery": {
+    "albums": 3,
+    "photos": 0,
+    "published_albums": 0,
+    "original_album_fields_equal": true,
+    "publication_preserved": true,
+    "unrelated_user_tables_imported": false
+  },
+  "python_full_tests": 202,
+  "node_full_tests": 286,
+  "python_non_loopback_attempts": 0,
+  "sqlite": {
+    "schema": 18,
+    "integrity": "ok"
+  },
+  "remote_bot_provider_requests": 0,
+  "browser_started": false,
+  "whatsapp_messages_sent": false,
+  "calls_made": false,
+  "active_installation_changed": false,
+  "global_mutation_switch_removed": true,
+  "independent_permissions": [
+    "messages",
+    "drive",
+    "groups",
+    "minecraft",
+    "gallery",
+    "roulette",
+    "nuclear",
+    "delivery"
+  ],
+  "default_effects": "disabled; local transport retained; no installed service",
+  "limitations": [
+    "Gallery genuinely contains no photos; no invented replacement content",
+    "CPU model compatibility uses placeholder textures; GPU/render/frame ACK/Android reception not tested",
+    "R10 remote and R11 remain pending subsequent explicit commission"
+  ],
+  "proofs": {
+    "ACTIVOS-avatar-cpu.json": "25d9e0250b605ea68fc886f81565428be280361e8267147c315a19fb7790638c",
+    "ACTIVOS-permissions-tests.txt": "ef5a8235458c8f084785950344b3acccff590ed069398a20dbec3a3c91403c30",
+    "ACTIVOS-import-tests.txt": "ea64129669c887987d0b9f68cd862c39082ca76dde2035e3f2620198f5d5de6a",
+    "ACTIVOS-node-focal.txt": "8e8aa9c22acfce059d37eccad7ac34a81f926bec93b46de36154e615caa9e854",
+    "ACTIVOS-python-regression.txt": "261db997e12d4d468e4fabd35e0a93d8e46605a775148a124684c5f8504f323f",
+    "ACTIVOS-node-regression.txt": "07981d9dbdf3f76da8060b263cf7c6e4641a7a8aeaf9913f05781faacfa99b0e",
+    "ACTIVOS-configured-tests.txt": "648c73d21006cb01006be1d4f8bc9b47628326ab1f3be72fc7cfc757b13b2390",
+    "ACTIVOS-configured-status.json": "fa1c1e600422944754f49b8116ac2a5bda535b67505c8889c70e57f6f32250bb",
+    "ACTIVOS-ruff.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "ACTIVOS-format.txt": "b475fc29aee3dc5c262c478029ac7795c29dadad3668bc877eb3a0357103a4e3",
+    "ACTIVOS-pip-check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  }
+}

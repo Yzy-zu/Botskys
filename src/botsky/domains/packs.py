@@ -101,7 +101,12 @@ def execute(db, context, spec, args, now, app):
             if row
             else Result("empty", "pack_not_found", "No hay una compra propia con ese ID aquí.")
         )
-    if not configured(context, app):
+    catalog_ready = (
+        spec.original_action == "catalog"
+        and context.scope.chat in app.gallery_chats
+        and app.gallery is not None
+    )
+    if not catalog_ready and not configured(context, app):
         return Result(
             "failed",
             "packs_not_configured",
