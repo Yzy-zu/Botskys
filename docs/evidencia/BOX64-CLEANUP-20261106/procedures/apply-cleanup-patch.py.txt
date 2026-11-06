@@ -1,0 +1,29 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+import base64
+async def main():
+ patch=Path('ops/patches/box64-9f285eab-cleanup-lock.patch').read_bytes()
+ code='''from pathlib import Path
+import subprocess,json,base64,hashlib,shutil,os
+root=Path(BASE)/'.botsky-native-fix-20261106'
+source=root/'box64-9f285eab00ebee49e034914436d0bd37c335c9e7'
+assert 'Built target box64' in (root/'build.log').read_text(), 'stock_build_not_finished'
+binary=root/'build/box64';shutil.copy2(binary,root/'box64-unpatched-built')
+env=dict(os.environ,HOME=str(root),BOX64_DYNACACHE='0',BOX64_DYNAREC='1')
+args=['gdb','--batch','-ex','set pagination off','-ex','handle SIGSEGV nostop noprint pass','-ex','handle SIGILL nostop noprint pass','-ex','handle SIGABRT stop print nopass','-ex','run','-ex','bt 16','--args',str(binary),str(root/'probe/atexit-race')]
+r=subprocess.run(args,capture_output=True,text=True,env=env,timeout=20)
+text=r.stdout+r.stderr
+assert 'AddCleanup1Arg' in text and 'my___cxa_atexit' in text and 'SIGABRT' in text,text[-2000:]
+(root/'stock-built-gdb.txt').write_text(text)
+p=root/'cleanup-lock.patch';p.write_bytes(base64.b64decode(PATCH));p.chmod(0o600)
+r=subprocess.run(['patch','--dry-run','--batch','-p1','-i',str(p)],cwd=source,capture_output=True,text=True);assert r.returncode==0,r.stdout+r.stderr
+r=subprocess.run(['patch','--batch','-p1','-i',str(p)],cwd=source,capture_output=True,text=True);assert r.returncode==0,r.stdout+r.stderr
+with open(root/'patched-build.log','w') as log:
+ p=subprocess.Popen(['nice','-n','10','cmake','--build',str(root/'build'),'-j2'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+(root/'patched-build.pid').write_text(str(p.pid))
+print(json.dumps({'stock_built_gdb':text,'stock_binary_sha256':hashlib.sha256((root/'box64-unpatched-built').read_bytes()).hexdigest(),'patch_sha256':hashlib.sha256((root/'cleanup-lock.patch').read_bytes()).hexdigest(),'patched_build_pid':p.pid}))
+'''.replace('BASE',repr(config.base_path)).replace('PATCH',repr(base64.b64encode(patch).decode()))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/stock-built.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print({k:v for k,v in result.items() if k!='stock_built_gdb'})
+ print(result['stock_built_gdb'][-2000:])
+asyncio.run(main())

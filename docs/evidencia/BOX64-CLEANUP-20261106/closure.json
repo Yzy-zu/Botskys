@@ -1,0 +1,41 @@
+{
+  "backup_gzip_crc_verified": true,
+  "backup_members": 62391,
+  "backup_source_bytes": 1679453247,
+  "removed_containers": [
+    "botsky-cleanup-baseline-20261106",
+    "botsky-native-exact-baseline-20261106",
+    "botsky-native-fixed-20261106"
+  ],
+  "lab_world_removed": true,
+  "bedrock_binary_unchanged": true,
+  "world_pack_hashes": {
+    "world_behavior_packs.json": "db5d4aa39d0e5fdeb7f22b60891203880198923df3eaea77a410cf6026896e5f",
+    "world_resource_packs.json": "d267c5e0161b24e25985e8f97ea4c64ec95e2b4d29ad8e5d903e181f14832338"
+  },
+  "docker_health": "healthy",
+  "final_status": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T23:20:28.360314569Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Supervivencia",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "1549b3200edb8c016b538cd7d13d90926fd320d1f03088931b39dc9b70d4fff1",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    },
+    "reconciliation": "recovered"
+  },
+  "final_players": {
+    "status": "online",
+    "online": true,
+    "players_known": true,
+    "count": 0,
+    "max": 10,
+    "players": []
+  },
+  "main_minecraft_write": false
+}

@@ -1,0 +1,29 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''from pathlib import Path
+import subprocess,json,hashlib,shutil,os,stat
+base=Path(BASE);work=base/'.botsky-native-fix-20261106'
+binary=work/'build/box64';sha=hashlib.sha256(binary.read_bytes()).hexdigest()
+assert sha==EXPECTED
+runtime=base/'.botsky-native-runtime';runtime.mkdir(mode=0o700,exist_ok=True)
+artifact=runtime/('box64-'+sha[:16]);assert not artifact.exists()
+shutil.copy2(binary,artifact);artifact.chmod(0o755)
+shutil.copy2(work/'box64-9f285eab00ebee49e034914436d0bd37c335c9e7/LICENSE',runtime/'BOX64-LICENSE')
+compose=base/'docker-compose.yml';text=compose.read_text();needle='      - ./data:/data'
+assert text.splitlines().count(needle)==1
+candidate=text.replace(needle,needle+'\\n      - '+json.dumps(str(artifact)+':/usr/local/bin/box64:ro'))
+p=runtime/'candidate.yml';p.write_text(candidate);p.chmod(0o600)
+original=runtime/'compose-before.yml';assert not original.exists();original.write_bytes(compose.read_bytes());original.chmod(0o600)
+args=['docker','compose','--project-directory',str(base),'--project-name','minecraft']
+before=json.loads(subprocess.check_output(args+['-f',str(compose),'config','--format','json']))
+after=json.loads(subprocess.check_output(args+['-f',str(p),'config','--format','json']))
+rows=after['services']['bedrock-server']['volumes'];new=[v for v in rows if v['target']=='/usr/local/bin/box64']
+assert len(new)==1 and new[0]['read_only'] is True and new[0]['source']==str(artifact)
+rows.remove(new[0]);assert after==before, 'unexpected_compose_change'
+record={'runtime_sha256':sha,'artifact':str(artifact),'compose_before_sha256':hashlib.sha256(compose.read_bytes()).hexdigest(),'candidate_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'only_change':'readonly mount of own tested Box64 artifact','mode':stat.S_IMODE(compose.stat().st_mode),'uid':compose.stat().st_uid,'gid':compose.stat().st_gid}
+(runtime/'deployment.json').write_text(json.dumps(record));(runtime/'deployment.json').chmod(0o600)
+print(json.dumps(record))
+'''.replace('BASE',repr(config.base_path)).replace('EXPECTED',repr(json.loads(Path('docs/evidencia/BOX64-CLEANUP-20261106/patched-tests.json').read_text())['sha256']))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/staged.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600);print(result)
+asyncio.run(main())

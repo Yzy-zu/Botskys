@@ -1,0 +1,4 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ print(await remote("import json,shutil,subprocess\nprint(json.dumps({'cross':shutil.which('x86_64-linux-gnu-gcc'),'gdb_version':subprocess.check_output(['gdb','--version'],text=True).splitlines()[0],'gcc':subprocess.check_output(['gcc','--version'],text=True).splitlines()[0],'cmake':subprocess.check_output(['cmake','--version'],text=True).splitlines()[0]}))"))
+asyncio.run(main())

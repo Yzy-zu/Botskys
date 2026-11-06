@@ -1,0 +1,18 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''import subprocess,json,os,hashlib
+from pathlib import Path
+root=Path(BASE)/'.botsky-native-fix-20261106'
+p=root/'box64-original'
+subprocess.run(['docker','cp','botsky-cleanup-baseline-20261106:/usr/local/bin/box64',str(p)],check=True)
+p.chmod(0o700)
+env=dict(os.environ,HOME=str(root),BOX64_DYNAREC='1',BOX64_DYNACACHE='0')
+args=['gdb','--batch','-ex','set pagination off','-ex','set confirm off','-ex','handle SIGSEGV nostop noprint pass','-ex','handle SIGILL nostop noprint pass','-ex','handle SIGABRT stop print nopass','-ex','run','-ex','thread apply all bt 8','--args',str(p),str(root/'probe/atexit-race')]
+r=subprocess.run(args,capture_output=True,text=True,env=env,timeout=30)
+p=root/'baseline-gdb.txt';p.write_text(r.stdout+r.stderr);p.chmod(0o600)
+print(json.dumps({'returncode':r.returncode,'backtrace':r.stdout+r.stderr,'original_box64_sha256':hashlib.sha256((root/'box64-original').read_bytes()).hexdigest()}))
+'''.replace('BASE',repr(config.base_path))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/baseline-gdb.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps(result,indent=2))
+asyncio.run(main())

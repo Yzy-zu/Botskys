@@ -1,0 +1,35 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ deploy=json.loads(Path('docs/evidencia/BOX64-CLEANUP-20261106/deployment.json').read_text())
+ backup=deploy['steps'][1]['response']
+ code='''from pathlib import Path
+import subprocess,json,hashlib,tarfile,gzip,shutil
+base=Path(BASE);work=base/'.botsky-native-fix-20261106';work.chmod(0o700)
+p=base/'zhana-backups'/BACKUP
+with tarfile.open(p,'r:gz') as archive:
+ entries=archive.getmembers();count=len(entries);size=sum(e.size for e in entries if e.isfile())
+assert count==COUNT and size==SIZE,(count,size)
+with gzip.open(p,'rb') as stream:
+ while stream.read(1024*1024):pass
+closed=[]
+for name in ('botsky-cleanup-baseline-20261106','botsky-native-exact-baseline-20261106','botsky-native-fixed-20261106'):
+ i=json.loads(subprocess.check_output(['docker','inspect',name]))[0]
+ assert i['State']['Status']=='exited' and i['HostConfig']['NetworkMode']=='none'
+ subprocess.run(['docker','rm',name],check=True,stdout=subprocess.DEVNULL);closed.append(name)
+lab=work/'minecraft-lab';assert lab.parent==work
+shutil.rmtree(lab)
+i=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+data=Path(next(m['Source'] for m in i['Mounts'] if m['Destination']=='/data'))
+props=dict(line.split('=',1) for line in (data/'server.properties').read_text().splitlines() if '=' in line and not line.startswith('#'))
+world=data/'worlds'/props['level-name']
+hashes={name:hashlib.sha256((world/name).read_bytes()).hexdigest() for name in ('world_behavior_packs.json','world_resource_packs.json')}
+bedrock=next(data.glob('bedrock_server-1.26.63.1'))
+assert hashlib.sha256(bedrock.read_bytes()).hexdigest()=='dc9b3c566a014cf53930eb1b54c6b599a99a81cc32c68aba06a5d73a0fd63179'
+print(json.dumps({'backup_gzip_crc_verified':True,'backup_members':count,'backup_source_bytes':size,'removed_containers':closed,'lab_world_removed':not lab.exists(),'bedrock_binary_unchanged':True,'world_pack_hashes':hashes,'docker_health':i['State'].get('Health',{}).get('Status')}))
+'''.replace('BASE',repr(config.base_path)).replace('BACKUP',repr(backup['backup'])).replace('COUNT',repr(backup['files'])).replace('SIZE',repr(backup['bytes'])).replace('CONTAINER',repr(config.container))
+ result=await remote(code)
+ mc=MinecraftRemote(config);result['final_status']=await mc.query('status');result['final_players']=await mc.query('players')
+ profile=json.loads(Path('private/integrations.json').read_text());result['main_minecraft_write']=profile['permissions']['minecraft']['write']
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/closure.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps(result))
+asyncio.run(main())

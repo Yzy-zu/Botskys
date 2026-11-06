@@ -1,0 +1,30 @@
+{
+  "result": {
+    "status": "ok",
+    "action": "start",
+    "requires_healthcheck": true,
+    "game_status": "ready",
+    "verified": true
+  },
+  "state": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T23:12:11.764759433Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Synthetic",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "7757da8024fa36341f74f2566681f2cf5a9abd13e912fd747aa0fbb91cb47a5e",
+      "mount": "545800b8ad0bb66e7c31ccd9a593deb439bcf182cecd276bf0cba8ac3aab5898"
+    },
+    "reconciliation": "no_pending_change"
+  },
+  "stop": {
+    "status": "ok",
+    "action": "stop",
+    "requires_healthcheck": false
+  },
+  "container": "botsky-native-exact-baseline-20261106"
+}

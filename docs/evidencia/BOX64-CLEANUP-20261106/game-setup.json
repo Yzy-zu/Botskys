@@ -1,0 +1,21 @@
+{
+  "base": "/home/petrov/docker/minecraft/.botsky-native-fix-20261106/minecraft-lab",
+  "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+  "environment": [
+    "BOX64_DYNAREC=1",
+    "BOX64_DYNAREC_BIGBLOCK=1",
+    "BOX64_DYNAREC_X87=2",
+    "BOX64_DYNAREC_FASTNAN=1",
+    "BOX64_DYNAREC_FASTROUND=1"
+  ],
+  "world_copied": false,
+  "cache_files": [
+    "libgcc_s.so.1-52903092c29-3555175855.box64",
+    "bedrock_server-1.26.63.1-52903092c29-3188394130.box64",
+    "libgcc_s.so.1-52903092c31-3555175855.box64"
+  ],
+  "ids": [
+    "5020e474-49d4-4841-9d2e-709e94ce60d4",
+    "d62587f5-1eed-494c-b66d-7d33906c801e"
+  ]
+}

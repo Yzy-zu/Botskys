@@ -1,0 +1,27 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+from dataclasses import replace
+info=json.loads(Path('docs/evidencia/BOX64-CLEANUP-20261106/game-setup.json').read_text())
+async def main():
+ name='botsky-native-exact-baseline-20261106'
+ code='''import subprocess,json
+from pathlib import Path
+name=NAME
+args=['docker','create','--name',name,'--network','none','--restart','no','--memory','3g','--cpus','1.5','--workdir','/data','--mount','type=bind,src='+str(Path(BASE)/'data')+',dst=/data','-e','EULA=TRUE','-e','VERSION=EXISTING','-e','LEVEL_NAME=Synthetic']
+for e in ENV:args.extend(['-e',e])
+args.append(IMAGE)
+subprocess.run(args,check=True,stdout=subprocess.DEVNULL)
+print(json.dumps({'container':name}))
+'''.replace('name=NAME','name='+repr(name)).replace('BASE',repr(info['base'])).replace('ENV',repr(info['environment'])).replace('IMAGE',repr(info['image']))
+ print(await remote(code),flush=True)
+ lab=MinecraftRemote(replace(config,container=name,base_path=info['base']))
+ result=await lab.change('start')
+ state=await lab.query('status')
+ logs=await remote("import subprocess,json\nr=subprocess.run(['docker','logs','--timestamps',"+repr(name)+"],capture_output=True,text=True)\nprint(json.dumps({'stdout':r.stdout,'stderr':r.stderr}))")
+ import gzip
+ for channel,raw in logs.items():
+  p=Path('docs/evidencia/BOX64-CLEANUP-20261106/game-baseline-'+channel+'.txt.gz');p.write_bytes(gzip.compress(raw.encode(),mtime=0));p.chmod(0o600)
+ stop=await lab.change('stop')
+ d={'result':result,'state':state,'stop':stop,'container':name}
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/game-baseline.json');p.write_text(json.dumps(d,indent=2));p.chmod(0o600)
+ print(json.dumps(d),flush=True)
+asyncio.run(main())

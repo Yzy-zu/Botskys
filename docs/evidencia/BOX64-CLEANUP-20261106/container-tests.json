@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "fixture": "atexit-race",
+      "run": 1,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 2,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 3,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 1,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 2,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 3,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    }
+  ],
+  "same_image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c"
+}

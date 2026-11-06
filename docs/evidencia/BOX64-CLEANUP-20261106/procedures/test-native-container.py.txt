@@ -1,0 +1,19 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ staged=json.loads(Path('docs/evidencia/BOX64-CLEANUP-20261106/staged.json').read_text())
+ code='''from pathlib import Path
+import subprocess,json
+base=Path(BASE);probe=base/'.botsky-native-fix-20261106/probe'
+i=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+results=[]
+for name,marker in [('atexit-race','ATEXIT_RACE_PASS'),('cleanup-lifecycle','CLEANUP_LIFECYCLE_PASS')]:
+ for n in range(3):
+  args=['docker','run','--rm','--network','none','--memory','512m','--pids-limit','64','--mount','type=bind,src='+str(probe)+',dst=/probe,readonly','--mount','type=bind,src='+ARTIFACT+',dst=/usr/local/bin/box64,readonly','--entrypoint','/usr/local/bin/box64',i['Image'],'/probe/'+name]
+  r=subprocess.run(args,capture_output=True,text=True,timeout=15)
+  results.append({'fixture':name,'run':n+1,'returncode':r.returncode,'stdout':r.stdout,'stderr':r.stderr})
+  assert r.returncode==0 and marker in r.stdout,results[-1]
+print(json.dumps({'results':results,'same_image':i['Image']}))
+'''.replace('BASE',repr(config.base_path)).replace('CONTAINER',repr(config.container)).replace('ARTIFACT',repr(staged['artifact']))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/container-tests.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600);print({'passed':len(result['results'])})
+asyncio.run(main())

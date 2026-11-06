@@ -1,0 +1,12 @@
+{
+  "quota_remaining_primary": 8,
+  "quota_remaining_secondary": 22,
+  "native_fixture_passes": 19,
+  "minecraft_local_tests": 37,
+  "patched_game_lab_healthy_boots": 3,
+  "production": "backup verified; same image/Bedrock/world/pack JSON hashes; readonly runtime mount; start+restart ready; Docker healthy; zero players",
+  "worker_sha256": "463937b546112717479f048b2d8be954e8e361c882004b3a6cb0a272b3483eab",
+  "ruff": "PASS",
+  "format": "PASS",
+  "historical_attribution": "no historical core; confirmed and removed native cleanup race; not universal crash freedom"
+}

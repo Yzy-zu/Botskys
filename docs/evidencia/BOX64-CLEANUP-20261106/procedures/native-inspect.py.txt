@@ -1,0 +1,14 @@
+import asyncio,json,shlex,sys
+from pathlib import Path
+from botsky.adapters.minecraft import MinecraftConfig,MinecraftRemote
+config=MinecraftConfig(**json.loads(Path('private/integrations.json').read_text())['minecraft'])
+async def remote(code):
+ p=await asyncio.create_subprocess_exec('ssh','-o','BatchMode=yes','-o','StrictHostKeyChecking=yes',config.host_alias,('sudo -n ' if config.use_sudo else '')+'python3 -I -c '+shlex.quote(code),stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
+ out,err=await asyncio.wait_for(p.communicate(),45)
+ if p.returncode: raise RuntimeError('remote_failed:'+err.decode()[-500:])
+ return json.loads(out)
+async def main():
+ mc=MinecraftRemote(config)
+ info=await remote("import subprocess,json,hashlib\nc="+repr(config.container)+"\ni=json.loads(subprocess.check_output(['docker','inspect',c]))[0]\nr=subprocess.run(['docker','logs','--timestamps','--since','2026-11-06T21:56:45Z','--until','2026-11-06T21:59:30Z',c],capture_output=True,text=True)\nprint(json.dumps({'image':i['Config']['Image'],'architecture':subprocess.check_output(['uname','-m'],text=True).strip(),'state':i['State'],'restart_policy':i['HostConfig']['RestartPolicy'],'stop_signal':i['Config'].get('StopSignal'),'stop_timeout':i['Config'].get('StopTimeout'),'command':i['Config']['Cmd'],'entrypoint':i['Config']['Entrypoint'],'logs':r.stdout+r.stderr}))")
+ print(json.dumps({'inspection':info,'status':await mc.query('status'),'players':await mc.query('players')},indent=2))
+asyncio.run(main())

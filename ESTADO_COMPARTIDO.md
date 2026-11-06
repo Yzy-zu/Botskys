@@ -1,5 +1,31 @@
 # Relevo Botsky
 
+## 06/11 · Box64 corregido y aplicado al Minecraft configurado
+
+Usuario encargó resolver fallo nativo y reiteró proseguir. Reproductor propio
+x86_64 sin mundos/mods falla en Box64 original; GDB y build exacto9f285eab sin
+parche confirman realloc→AddCleanup1Arg→my___cxa_atexit concurrentes. Parche4archivos
+protege tablas, callbacks fuera de lock, LIFO, fork/clone. Mismo build parcheado:
+19fixtures PASS (callbacks32768, reentrada, fork/clone); Minecraft aislado con
+catálogo/caché/entorno efectivos y mundo sintético:3arranques sanos. No hay core
+histórico: no atribuir retrospectivamente una línea exacta ni prometer cero fallos.
+
+Aplicado mediante único bind readonly en Compose Minecraft original, configuración
+normalizada comparada para descartar cambios ajenos. Imagen/Bedrock/datos conservados;
+backup nuevo1679453247B/62391entradas, TAR y CRCgzip verificados. Recreación sin
+arranque y luego start/restart verificados; mismo mundo/JSON exactos/cero jugadores,
+Docker healthy. Artefacto1979d98d…87feac3 propio en .botsky-native-runtime con licencia,
+metadatos y Compose anterior privado para reversión. Montaje persiste con ese Compose;
+no garantiza compatibilidad con cualquier imagen futura. Laboratorios retirados;
+fuente/build originales privados conservados. Mainwritefalse, Zhana intacto.
+
+Worker propio reconoce además realloc(): invalid old size;37testsMC PASS, Ruff/format
+PASS. Informe docs/MINECRAFT_BOX64_CORREGIDO_20261106.md, evidencia BOX64-CLEANUP-20261106.
+Scripts de operador en evidencia son texto, no ejecutarlos por leer el relevo.
+Cuota al cierre8%/22%; umbral5% obligatorio. R10global/R11 y otros pendientes sin
+cambios. Sin NLP/DB31/perfiles/sesiones/mensajes/llamadas/transición ni publicación.
+
+
 ## 06/11 · Diagnóstico nativo y recuperación real: recuperación PASS, causa nativa abierta
 
 Encargo explícito del propietario puntos1y2. Recuperación de configuración real

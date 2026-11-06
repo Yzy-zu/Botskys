@@ -247,3 +247,14 @@ class ModsWorkerTest(TestCase):
                 run=run_real_log,
             )
         self.assertEqual(result, "ready")
+
+    def test_detects_reproduced_realloc_corruption_after_ready_marker(self):
+        state = {"Status": "running", "StartedAt": "2026-11-06T23:00:00Z"}
+        self.assertEqual(
+            worker._game_status(
+                "fixture",
+                state,
+                run=lambda *args, **kwargs: "Server started.\nrealloc(): invalid old size\n",
+            ),
+            "failed",
+        )

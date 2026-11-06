@@ -420,7 +420,7 @@ def _game_status(container: str, state: dict[str, Any], *, run: Callable[..., st
         log = run(["docker", "logs", "--since", started, container], timeout=10, merge_stderr=True, max_output_bytes=MAX_LOG_BYTES)
     except (WorkerError, OSError, subprocess.SubprocessError):
         return "unknown"
-    if "free(): invalid next size" in log or "Fatal glibc error" in log:
+    if any(signature in log for signature in ("free(): invalid next size", "Fatal glibc error", "realloc(): invalid old size")):
         return "failed"
     if "Server started." in log and "Stopping server" not in log and "Server stop requested" not in log:
         return "ready"

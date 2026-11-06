@@ -1,0 +1,53 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+import hashlib,time
+out=Path('docs/evidencia/BOX64-CLEANUP-20261106/deployment.json')
+doc={'scope':'new explicit native correction; no world restore; no messages','steps':[]}
+def save():out.write_text(json.dumps(doc,indent=2));out.chmod(0o600)
+async def main():
+ mc=MinecraftRemote(config)
+ state=await mc.query('status');players=await mc.query('players')
+ assert state['game_status']=='ready' and players['players_known'] is True and players['count']==0
+ doc['initial']=state;doc['players_before']=players;save()
+ async def action(name):
+  row={'action':name,'state':'before_dispatch'};doc['steps'].append(row);save()
+  r=await mc.change(name);row.update(state='returned',response=r);save()
+  assert r.get('status')=='ok', 'uncertain_operation_no_retry'
+  return r
+ await action('stop')
+ backup=await action('backup')
+ doc['configuration']=await remote('''from pathlib import Path
+import json,subprocess,os,hashlib,tempfile
+base=Path(BASE);runtime=base/'.botsky-native-runtime'
+record=json.loads((runtime/'deployment.json').read_text())
+compose=base/'docker-compose.yml';candidate=runtime/'candidate.yml'
+assert hashlib.sha256(compose.read_bytes()).hexdigest()==record['compose_before_sha256']
+assert hashlib.sha256(candidate.read_bytes()).hexdigest()==record['candidate_sha256']
+i=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+assert i['State']['Status']=='exited'
+assert json.loads(subprocess.check_output(['docker','image','inspect',i['Config']['Image']]))[0]['Id']==i['Image'], 'image_tag_drift'
+original_image=i['Image'];original_data=next(m['Source'] for m in i['Mounts'] if m['Destination']=='/data')
+fd,temp=tempfile.mkstemp(dir=base,prefix='.botsky-compose-')
+with os.fdopen(fd,'wb') as stream:
+ stream.write(candidate.read_bytes());os.fchmod(stream.fileno(),record['mode']);os.fchown(stream.fileno(),record['uid'],record['gid']);stream.flush();os.fsync(stream.fileno())
+os.replace(temp,compose)
+r=subprocess.run(['docker','compose','--project-directory',str(base),'--project-name','minecraft','-f',str(compose),'up','--no-deps','--no-build','--pull','never','--force-recreate','--no-start','bedrock-server'],capture_output=True,text=True,timeout=30)
+assert r.returncode==0,'compose_recreate_failed'
+i=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+assert i['Image']==original_image and next(m['Source'] for m in i['Mounts'] if m['Destination']=='/data')==original_data
+mount=next(m for m in i['Mounts'] if m['Destination']=='/usr/local/bin/box64');assert mount['RW'] is False and mount['Source']==record['artifact']
+print(json.dumps({'same_base_image':True,'same_data_mount':True,'readonly_native_mount':True,'container_status':i['State']['Status'],'container_id':i['Id'],'runtime_sha256':record['runtime_sha256']}))
+'''.replace('BASE',repr(config.base_path)).replace('CONTAINER',repr(config.container)))
+ save()
+ await action('start')
+ first=await mc.query('status');players=await mc.query('players')
+ assert first['game_status']=='ready' and players['players_known'] and players['count']==0
+ await action('restart')
+ final=await mc.query('status');players=await mc.query('players')
+ assert final['game_status']=='ready' and final['started_at']!=first['started_at']
+ assert final['active_world']==state['active_world'] and players['players_known'] and players['count']==0
+ proof=await remote("import subprocess,json,hashlib\nfrom pathlib import Path\nc="+repr(config.container)+"\ni=json.loads(subprocess.check_output(['docker','inspect',c]))[0]\nsha=subprocess.check_output(['docker','exec',c,'sha256sum','/usr/local/bin/box64'],text=True).split()[0]\nprint(json.dumps({'runtime_sha256':sha,'image_id':i['Image'],'health':i['State'].get('Health',{}).get('Status')}))")
+ assert proof['runtime_sha256']==doc['configuration']['runtime_sha256']
+ doc.update(final=final,players_final=players,runtime_proof=proof,closed=True);save()
+ print(json.dumps(doc,indent=2))
+save()
+asyncio.run(main())

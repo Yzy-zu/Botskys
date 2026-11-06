@@ -1,0 +1,26 @@
+{
+  "state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 133,
+    "Error": "",
+    "StartedAt": "2026-11-06T23:04:46.570283767Z",
+    "FinishedAt": "2026-11-06T23:04:46.814752923Z",
+    "Health": {
+      "Status": "unhealthy",
+      "FailingStreak": 0,
+      "Log": []
+    }
+  },
+  "stdout": "ATEXIT_RACE_BEGIN\n",
+  "stderr": "realloc(): invalid old size\n",
+  "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+  "binary_sha256": "ef7f35034daba4be73747d681748fe3de1691504aacd37b130f5a62ae3006881",
+  "container": "botsky-cleanup-baseline-20261106",
+  "root": "/home/petrov/docker/minecraft/.botsky-native-fix-20261106"
+}

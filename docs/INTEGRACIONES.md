@@ -197,3 +197,10 @@ inciertos bajo exclusión; conserva inbox y bloquea otros efectos hasta concilia
 histórico. Causa abierta; sin cambios especulativos de imagen/binario/Box64.
 Laboratorio aislado propio retirado; main writeflags false. Informe y límites:
 [Minecraft nativo/recuperación](MINECRAFT_NATIVO_RECUPERACION_20261106.md).
+
+### Box64 corregido 06/11
+
+Carrera nativa reproducida y corregida en revisión exacta;19fixtures y37testsMC PASS.
+Runtime propio readonly persistido en Compose del Minecraft; respaldo verificado,
+arranque/reinicio reales sanos, mismo mundo/paquetes y cero jugadores. Ver
+[Minecraft Box64 corregido](MINECRAFT_BOX64_CORREGIDO_20261106.md) para evidencia, límites y reversión.

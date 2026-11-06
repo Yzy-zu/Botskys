@@ -1,0 +1,106 @@
+{
+  "scope": "new explicit native correction; no world restore; no messages",
+  "steps": [
+    {
+      "action": "stop",
+      "state": "returned",
+      "response": {
+        "status": "ok",
+        "action": "stop",
+        "requires_healthcheck": false
+      }
+    },
+    {
+      "action": "backup",
+      "state": "returned",
+      "response": {
+        "status": "ok",
+        "backup": "minecraft-63118955e2254e218624ff26d47f5f42.tar.gz",
+        "bytes": 1679453247,
+        "files": 62391
+      }
+    },
+    {
+      "action": "start",
+      "state": "returned",
+      "response": {
+        "status": "ok",
+        "action": "start",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      }
+    },
+    {
+      "action": "restart",
+      "state": "returned",
+      "response": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      }
+    }
+  ],
+  "initial": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T22:33:46.632915414Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Supervivencia",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    },
+    "reconciliation": "recovered"
+  },
+  "players_before": {
+    "status": "online",
+    "online": true,
+    "players_known": true,
+    "count": 0,
+    "max": 10,
+    "players": []
+  },
+  "configuration": {
+    "same_base_image": true,
+    "same_data_mount": true,
+    "readonly_native_mount": true,
+    "container_status": "created",
+    "container_id": "1549b3200edb8c016b538cd7d13d90926fd320d1f03088931b39dc9b70d4fff1",
+    "runtime_sha256": "1979d98d290610f94ac4ad187c3a55c8a045c9b1a927940fe3b50bebb87feac3"
+  },
+  "final": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T23:20:28.360314569Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Supervivencia",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "1549b3200edb8c016b538cd7d13d90926fd320d1f03088931b39dc9b70d4fff1",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    },
+    "reconciliation": "recovered"
+  },
+  "players_final": {
+    "status": "online",
+    "online": true,
+    "players_known": true,
+    "count": 0,
+    "max": 10,
+    "players": []
+  },
+  "runtime_proof": {
+    "runtime_sha256": "1979d98d290610f94ac4ad187c3a55c8a045c9b1a927940fe3b50bebb87feac3",
+    "image_id": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+    "health": "healthy"
+  },
+  "closed": true
+}

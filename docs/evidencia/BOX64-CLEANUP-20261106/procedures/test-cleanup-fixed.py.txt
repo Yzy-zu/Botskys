@@ -1,0 +1,25 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+import base64
+async def main():
+ raw=Path('private/native-fix-20261106/cleanup-lifecycle-x86_64').read_bytes()
+ code='''from pathlib import Path
+import subprocess,json,os,base64,hashlib
+root=Path(BASE)/'.botsky-native-fix-20261106'
+assert 'Built target box64' in (root/'patched-build.log').read_text(), 'patched_build_not_finished'
+binary=root/'build/box64'
+p=root/'probe/cleanup-lifecycle';p.write_bytes(base64.b64decode(FIXTURE));p.chmod(0o755)
+env=dict(os.environ,HOME=str(root),BOX64_DYNACACHE='0',BOX64_DYNAREC='1')
+results=[]
+for name,count,marker in [('atexit-race',10,'ATEXIT_RACE_PASS'),('cleanup-lifecycle',3,'CLEANUP_LIFECYCLE_PASS')]:
+ for n in range(count):
+  r=subprocess.run([str(binary),str(root/'probe'/name)],capture_output=True,text=True,env=env,timeout=10)
+  row={'fixture':name,'run':n+1,'returncode':r.returncode,'stdout':r.stdout,'stderr':r.stderr}
+  results.append(row)
+  if r.returncode or marker not in r.stdout:break
+ if results[-1]['returncode'] or marker not in results[-1]['stdout']:break
+print(json.dumps({'results':results,'sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'build_tail':(root/'patched-build.log').read_text()[-500:]}))
+'''.replace('BASE',repr(config.base_path)).replace('FIXTURE',repr(base64.b64encode(raw).decode()))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/patched-tests.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps(result,indent=2))
+asyncio.run(main())

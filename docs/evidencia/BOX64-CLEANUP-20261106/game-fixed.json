@@ -1,0 +1,85 @@
+{
+  "cycles": [
+    {
+      "cycle": 1,
+      "result": {
+        "status": "ok",
+        "action": "start",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T23:17:32.401485146Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "14eead006b73bd19cb9cbfe447bbfba73336b70bd3e4ead035ae24ac54090b41",
+          "mount": "545800b8ad0bb66e7c31ccd9a593deb439bcf182cecd276bf0cba8ac3aab5898"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 2,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T23:17:53.497849565Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "14eead006b73bd19cb9cbfe447bbfba73336b70bd3e4ead035ae24ac54090b41",
+          "mount": "545800b8ad0bb66e7c31ccd9a593deb439bcf182cecd276bf0cba8ac3aab5898"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 3,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T23:18:14.372358338Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "14eead006b73bd19cb9cbfe447bbfba73336b70bd3e4ead035ae24ac54090b41",
+          "mount": "545800b8ad0bb66e7c31ccd9a593deb439bcf182cecd276bf0cba8ac3aab5898"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    }
+  ],
+  "stop": {
+    "status": "ok",
+    "action": "stop",
+    "requires_healthcheck": false
+  },
+  "container": "botsky-native-fixed-20261106"
+}

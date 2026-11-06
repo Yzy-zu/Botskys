@@ -1,0 +1,10 @@
+{
+  "runtime_sha256": "1979d98d290610f94ac4ad187c3a55c8a045c9b1a927940fe3b50bebb87feac3",
+  "artifact": "/home/petrov/docker/minecraft/.botsky-native-runtime/box64-1979d98d290610f9",
+  "compose_before_sha256": "e89fefd7577cae28486341a93e2ad9f6cf06d6205acb5c290abdd617f01325d2",
+  "candidate_sha256": "f53a8245ad6e62174b5f84c73aaff376263f7b27a6c94f6bb7a8ca0e9382ded0",
+  "only_change": "readonly mount of own tested Box64 artifact",
+  "mode": 436,
+  "uid": 1002,
+  "gid": 1002
+}

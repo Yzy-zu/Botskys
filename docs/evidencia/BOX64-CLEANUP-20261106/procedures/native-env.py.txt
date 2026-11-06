@@ -1,0 +1,25 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''import subprocess,json
+from pathlib import Path
+c=CONTAINER
+i=json.loads(subprocess.check_output(['docker','inspect',c]))[0]
+keys={'HOME','LD_LIBRARY_PATH','LD_PRELOAD','ENABLE_BDS_V6BIND_FIX','VERSION','USE_BOX64','GLIBC_TUNABLES','MALLOC_CHECK_','MALLOC_PERTURB_'}
+safe=lambda v:{k:x for k,x in v.items() if k in keys or k.startswith('BOX64_')}
+env=safe(dict(x.split('=',1) for x in i['Config']['Env']))
+top=subprocess.check_output(['docker','top',c,'-eo','pid,comm'],text=True)
+process=[]
+for line in top.splitlines()[1:]:
+ pid,comm=line.strip().split(None,1)
+ if 'box64' in comm or 'bedrock' in comm:
+  p=Path('/proc')/pid
+  e=safe(dict(x.split('=',1) for x in p.joinpath('environ').read_bytes().decode().split('\\0') if '=' in x))
+  process.append({'comm':comm,'environment':e})
+r=subprocess.run(['docker','exec',c,'sh','-c','for p in /data/.box64rc /etc/box64.box64rc; do if test -f "$p"; then echo FILE:$p; cat "$p"; fi; done'],capture_output=True,text=True)
+# Config is solely emulator parameters; no generic environment dump.
+print(json.dumps({'image_id':i['Image'],'environment':env,'process':process,'rc':r.stdout}))
+'''.replace('CONTAINER',repr(config.container))
+ result=await remote(code)
+ Path('/tmp/botsky-native-environment.json').write_text(json.dumps(result,indent=2));Path('/tmp/botsky-native-environment.json').chmod(0o600)
+ print(json.dumps(result,indent=2))
+asyncio.run(main())

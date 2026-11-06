@@ -1,0 +1,24 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+import base64,hashlib
+from datetime import datetime,UTC
+out=Path('docs/evidencia/BOX64-CLEANUP-20261106');out.mkdir(parents=True,exist_ok=True)
+async def main():
+ raw=Path('private/native-fix-20261106/atexit-race-x86_64').read_bytes()
+ code='''from pathlib import Path
+import subprocess,json,base64,hashlib,time
+original=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+root=Path(BASE)/'.botsky-native-fix-20261106'
+probe=root/'probe';probe.mkdir(parents=True,exist_ok=True,mode=0o755);probe.chmod(0o755)
+p=probe/'atexit-race';raw=base64.b64decode(BINARY);p.write_bytes(raw);p.chmod(0o755)
+name='botsky-cleanup-baseline-20261106'
+subprocess.run(['docker','create','--name',name,'--network','none','--restart','no','--memory','512m','--cpus','1.5','--pids-limit','64','--mount','type=bind,src='+str(probe)+',dst=/probe,readonly','--entrypoint','/usr/local/bin/box64',original['Image'],'/probe/atexit-race'],check=True,stdout=subprocess.DEVNULL)
+subprocess.run(['docker','start',name],check=True,stdout=subprocess.DEVNULL)
+time.sleep(5)
+i=json.loads(subprocess.check_output(['docker','inspect',name]))[0]
+r=subprocess.run(['docker','logs',name],capture_output=True,text=True)
+print(json.dumps({'state':i['State'],'stdout':r.stdout,'stderr':r.stderr,'image':original['Image'],'binary_sha256':hashlib.sha256(raw).hexdigest(),'container':name,'root':str(root)}))
+'''.replace('CONTAINER',repr(config.container)).replace('BASE',repr(config.base_path)).replace('BINARY',repr(base64.b64encode(raw).decode()))
+ result=await remote(code)
+ p=out/'baseline.json';p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps(result,indent=2))
+asyncio.run(main())

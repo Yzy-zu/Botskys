@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "fixture": "atexit-race",
+      "run": 1,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 2,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 3,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 4,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 5,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 6,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 7,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 8,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 9,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "atexit-race",
+      "run": 10,
+      "returncode": 0,
+      "stdout": "ATEXIT_RACE_BEGIN\nREGISTRATION_FINISHED\nCALLBACKS=32768 EXPECTED=32768\nATEXIT_RACE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 1,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 2,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "fixture": "cleanup-lifecycle",
+      "run": 3,
+      "returncode": 0,
+      "stdout": "CLEANUP_LIFECYCLE_PASS\n",
+      "stderr": ""
+    }
+  ],
+  "sha256": "1979d98d290610f94ac4ad187c3a55c8a045c9b1a927940fe3b50bebb87feac3",
+  "build_tail": "ect CMakeFiles/mainobj.dir/src/build_info.c.o\n[ 40%] Building C object CMakeFiles/mainobj.dir/src/elfs/elfloader.c.o\n[ 40%] Building C object CMakeFiles/mainobj.dir/src/emu/x64syscall.c.o\n[ 40%] Building C object CMakeFiles/mainobj.dir/src/tools/cleanup.c.o\n[ 40%] Building C object CMakeFiles/mainobj.dir/src/wrapped/wrappedlibc.c.o\n[ 40%] Building C object CMakeFiles/mainobj.dir/src/wrapped/wrappedvulkan.c.o\n[100%] Built target mainobj\n[100%] Linking C executable box64\n[100%] Built target box64\n"
+}

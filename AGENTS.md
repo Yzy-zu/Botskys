@@ -152,3 +152,16 @@ No reanudar campañas anteriores ni repetir efectos inciertos; mantener evidenci
 históricas y permisos operativos. No actualizar imagen/binario productivo sin causa
 contrastada; exclusiones de Zhana, NLP, perfiles, llamadas, navegador, transición,
 GitHub y umbral5% siguen vigentes.
+
+## 06/11 · Corrección nativa Minecraft encargada
+
+El propietario pidió resolver el fallo nativo y reiteró proseguir. Se autoriza
+reproductor sintético x86_64 de concurrencia en el Box64 instalado, depuración del
+proceso propio aislado, toolchain extraída en private/ sin instalación de sistema,
+compilación propia de la revisión exacta con parche mínimo, controles antes/después
+y validación Minecraft. Aplicar solo corrección contrastada al runtime Minecraft,
+con respaldo/reversión propios, estado/cero jugadores y salud observados; conservar
+imagen/binario originales y no tocar servicios de Zhana. Configuración del Docker
+Minecraft dentro de su base autorizada puede incorporar referencia propia estable.
+Sin mundos/historial importados al laboratorio, sin mensajes/llamadas/navegador,
+NLP, DB31, sesiones, perfiles, GitHub remoto mutable o transición. Cuota5% vigente.

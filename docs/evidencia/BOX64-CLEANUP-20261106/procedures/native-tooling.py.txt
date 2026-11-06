@@ -1,0 +1,4 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ print(await remote("import subprocess,json,shutil\nc="+repr(config.container)+"\nr=subprocess.run(['docker','exec',c,'sh','-c','for x in gdb gcc cmake readelf objdump; do command -v $x || true; done; ls -lh /usr/local/bin/box64; cat /proc/sys/kernel/core_pattern'],capture_output=True,text=True)\nprint(json.dumps({'host_tools':{x:shutil.which(x) for x in ('gdb','gcc','cmake','objdump','readelf','curl')},'container_tools':r.stdout,'cpus':__import__('os').cpu_count(),'disk_free':shutil.disk_usage('/tmp').free}))"))
+asyncio.run(main())

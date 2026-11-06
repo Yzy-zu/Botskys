@@ -1,0 +1,304 @@
+From: Botsky technical review
+Subject: [PATCH] cleanup: synchronize cleanup registry mutations
+
+Base: ptitSeb/box64 commit 9f285eab00ebee49e034914436d0bd37c335c9e7
+
+Serialize appends, growth, and atomic LIFO pops for process-wide cleanup arrays.
+The mutex is held only while touching registry storage; guest callbacks and
+freeing detached arrays run after unlocking. This avoids callback reentrancy
+deadlocks and retains reverse registration order. Native fork uses pthread_atfork
+prepare/parent/child handlers to acquire before fork and release in both branches.
+The explicit reset helper is called in clone child trampolines only when the
+actual host clone does not share VM, and in direct raw-clone child returns; normal
+CLONE_VM threads keep the shared mutex intact. The wrapped clone path stores the
+post-adjustment host CLONE_VM bit because it can turn a VM+VFORK request into a
+separate process.
+
+Limits: Registry locking does not pin elfheader_t/my_context lifetime or make
+concurrent teardown safe; registrations must quiesce before those objects are
+destroyed. ResetCleanupMutex is valid only in a private non-CLONE_VM child. This
+patch intentionally leaves unrelated context/loader mutexes unchanged.
+--- a/src/tools/cleanup.c
++++ b/src/tools/cleanup.c
+@@ -1,5 +1,6 @@
+ // SPDX-License-Identifier: MIT
+ #include <string.h>
++#include <pthread.h>
+ 
+ #include "cleanup.h"
+ #include "elfs/elfloader_private.h"
+@@ -13,10 +14,41 @@
+     void*       a;
+ } cleanup_t;
+ 
++/* Protect the shared cleanup registries; callbacks run without this lock. */
++static pthread_mutex_t cleanup_mutex = PTHREAD_MUTEX_INITIALIZER;
++
++static void cleanup_fork_prepare(void)
++{
++    pthread_mutex_lock(&cleanup_mutex);
++}
++
++static void cleanup_fork_parent(void)
++{
++    pthread_mutex_unlock(&cleanup_mutex);
++}
++
++static void cleanup_fork_child(void)
++{
++    pthread_mutex_unlock(&cleanup_mutex);
++}
++
++__attribute__((constructor))
++static void register_cleanup_atfork(void)
++{
++    pthread_atfork(cleanup_fork_prepare, cleanup_fork_parent, cleanup_fork_child);
++}
++
++void ResetCleanupMutex(void)
++{
++    /* A non-CLONE_VM child has a private copy and no surviving lock owner. */
++    pthread_mutex_init(&cleanup_mutex, NULL);
++}
++
+ void AddCleanup(x64emu_t *emu, void *p)
+ {
+     (void)emu;
+ 
++    pthread_mutex_lock(&cleanup_mutex);
+     if(my_context->clean_sz == my_context->clean_cap) {
+         my_context->clean_cap += 32;
+         my_context->cleanups = (cleanup_t*)box_realloc(my_context->cleanups, sizeof(cleanup_t)*my_context->clean_cap);
+@@ -24,11 +56,13 @@
+     my_context->cleanups[my_context->clean_sz].arg = 0;
+     my_context->cleanups[my_context->clean_sz].a = NULL;
+     my_context->cleanups[my_context->clean_sz++].f = p;
++    pthread_mutex_unlock(&cleanup_mutex);
+ }
+ 
+ void AddCleanup1Arg(x64emu_t *emu, void *p, void* a, elfheader_t* h)
+ {
+     (void)emu;
++    pthread_mutex_lock(&cleanup_mutex);
+     if (!h)
+         h = my_context->elfs[0];
+ 
+@@ -39,12 +73,14 @@
+     h->cleanups[h->clean_sz].arg = 1;
+     h->cleanups[h->clean_sz].a = a;
+     h->cleanups[h->clean_sz++].f = p;
++    pthread_mutex_unlock(&cleanup_mutex);
+ }
+ 
+ void AddQuickCleanup(x64emu_t *emu, void *p)
+ {
+     (void)emu;
+ 
++    pthread_mutex_lock(&cleanup_mutex);
+     if(my_context->quick_clean_sz == my_context->quick_clean_cap) {
+         my_context->quick_clean_cap += 32;
+         my_context->quick_cleanups = (cleanup_t*)box_realloc(my_context->quick_cleanups, sizeof(cleanup_t) * my_context->quick_clean_cap);
+@@ -52,6 +88,7 @@
+     my_context->quick_cleanups[my_context->quick_clean_sz].arg = 0;
+     my_context->quick_cleanups[my_context->quick_clean_sz].a = NULL;
+     my_context->quick_cleanups[my_context->quick_clean_sz++].f = p;
++    pthread_mutex_unlock(&cleanup_mutex);
+ }
+ 
+ void CallCleanup(x64emu_t *emu, elfheader_t* h)
+@@ -59,38 +96,60 @@
+     printf_log(LOG_DEBUG, "Calling atexit registered functions for elf: %p/%s\n", h, h?h->name:"(nil)");
+     if(!h)
+         return;
+-    for(int i=h->clean_sz-1; i>=0; --i) {
+-        printf_log(LOG_DEBUG, "Call cleanup #%d (args:%d, arg:%p)\n", i, h->cleanups[i].arg, h->cleanups[i].a);
+-        RunFunctionWithEmu(emu, 0, (uintptr_t)(h->cleanups[i].f), h->cleanups[i].arg, h->cleanups[i].a );
+-        // now remove the cleanup
+-        if(i!=h->clean_sz-1)
+-            memmove(h->cleanups+i, h->cleanups+i+1, (h->clean_sz-i-1)*sizeof(cleanup_t));
+-        --h->clean_sz;
++
++    for(;;) {
++        pthread_mutex_lock(&cleanup_mutex);
++        if(!h->clean_sz) {
++            pthread_mutex_unlock(&cleanup_mutex);
++            break;
++        }
++        cleanup_t cleanup = h->cleanups[--h->clean_sz];
++        int index = h->clean_sz;
++        pthread_mutex_unlock(&cleanup_mutex);
++
++        printf_log(LOG_DEBUG, "Call cleanup #%d (args:%d, arg:%p)\n", index, cleanup.arg, cleanup.a);
++        RunFunctionWithEmu(emu, 0, (uintptr_t)cleanup.f, cleanup.arg, cleanup.a);
+     }
+ }
+ 
+ void CallAllCleanup(x64emu_t *emu)
+ {
+     printf_log(LOG_DEBUG, "Calling atexit registered functions\n");
+-    for(int i=my_context->clean_sz-1; i>=0; --i) {
+-        printf_log(LOG_DEBUG, "Call cleanup #%d\n", i);
+-        --my_context->clean_sz;
+-        RunFunctionWithEmu(emu, 0, (uintptr_t)(my_context->cleanups[i].f), my_context->cleanups[i].arg, my_context->cleanups[i].a );
+-    }
+-    box_free(my_context->cleanups);
+-    my_context->cleanups = NULL;
+-    my_context->clean_sz = 0;
+-    my_context->clean_cap = 0;
++    for(;;) {
++        pthread_mutex_lock(&cleanup_mutex);
++        if(!my_context->clean_sz) {
++            cleanup_t *cleanups = my_context->cleanups;
++            my_context->cleanups = NULL;
++            my_context->clean_cap = 0;
++            pthread_mutex_unlock(&cleanup_mutex);
++            box_free(cleanups);
++            break;
++        }
++        cleanup_t cleanup = my_context->cleanups[--my_context->clean_sz];
++        int index = my_context->clean_sz;
++        pthread_mutex_unlock(&cleanup_mutex);
++
++        printf_log(LOG_DEBUG, "Call cleanup #%d\n", index);
++        RunFunctionWithEmu(emu, 0, (uintptr_t)cleanup.f, cleanup.arg, cleanup.a);
++    }
+ }
+ 
+ void CallQuickCleanup(x64emu_t *emu, int status)
+ {
+     printf_log(LOG_DEBUG, "Calling at_quick_exit registered functions\n");
+-    while(my_context->quick_clean_sz) {
++    for(;;) {
++        pthread_mutex_lock(&cleanup_mutex);
++        if(!my_context->quick_clean_sz) {
++            cleanup_t *cleanups = my_context->quick_cleanups;
++            my_context->quick_cleanups = NULL;
++            my_context->quick_clean_cap = 0;
++            pthread_mutex_unlock(&cleanup_mutex);
++            box_free(cleanups);
++            break;
++        }
+         cleanup_t cleanup = my_context->quick_cleanups[--my_context->quick_clean_sz];
++        pthread_mutex_unlock(&cleanup_mutex);
++
+         RunFunctionWithEmu(emu, 0, (uintptr_t)cleanup.f, 2, NULL, status);
+     }
+-    box_free(my_context->quick_cleanups);
+-    my_context->quick_cleanups = NULL;
+-    my_context->quick_clean_cap = 0;
+ }
+--- a/src/include/cleanup.h
++++ b/src/include/cleanup.h
+@@ -12,5 +12,6 @@
+ void CallCleanup(x64emu_t *emu, elfheader_t* h);
+ void CallAllCleanup(x64emu_t *emu);
+ void CallQuickCleanup(x64emu_t *emu, int status);
++void ResetCleanupMutex(void);
+ 
+ #endif // __CLEANUP_H_
+--- a/src/wrapped/wrappedlibc.c
++++ b/src/wrapped/wrappedlibc.c
+@@ -4877,11 +4877,14 @@
+  int flags;
+  void* tls;
+  int new_process;
++ int host_clone_vm;
+ } clone_arg_t;
+ void init_mutexes(box64context_t* context);
+ static int clone_fn(void* p)
+ {
+     clone_arg_t* arg = (clone_arg_t*)p;
++    if(!arg->host_clone_vm)
++        ResetCleanupMutex();
+     updateGlibcTidCache();  // update cache tid if needed
+     x64emu_t *emu = arg->emu;
+     R_RSP = arg->stack;
+@@ -4941,6 +4944,7 @@
+         }
+     }
+     flags &=~ CLONE_SETTLS;   // guest TLS is applied to the emulated FS base in clone_fn
++    arg->host_clone_vm = !!(flags & CLONE_VM);
+     int64_t ret = clone(clone_fn, (void*)((uintptr_t)mystack+1024*1024), flags, arg, parent, NULL, child);
+     return (uintptr_t)ret;
+ }
+--- a/src/emu/x64syscall.c
++++ b/src/emu/x64syscall.c
+@@ -37,6 +37,7 @@
+ //#include "myalign.h"
+ #include "box64context.h"
+ #include "callback.h"
++#include "cleanup.h"
+ #include "signals.h"
+ #include "emit_signals.h"
+ #include "x64tls.h"
+@@ -508,11 +509,14 @@
+     void* stack2free;
+     void* tls;
+     int set_tls;
++    uint64_t flags;
+ } clone_t;
+ 
+ static int clone_fn_syscall(void* arg)
+ {
+     clone_t* args = arg;
++    if(!(args->flags & CLONE_VM))
++        ResetCleanupMutex();
+     x64emu_t *emu = args->emu;
+     thread_forget_emu();
+     thread_set_emu(emu);
+@@ -778,6 +782,7 @@
+                     clone_t* args = box_calloc(1, sizeof(clone_t));
+                     newemu->regs[_SP].q[0] = sp;  // setup new stack pointer
+                     args->emu = newemu;
++                    args->flags = flags;
+                     if(flags & CLONE_SETTLS) {
+                         args->tls = (void*)R_R8;
+                         args->set_tls = 1;
+@@ -795,12 +800,16 @@
+                     int64_t ret = clone(clone_fn_syscall, (void*)((uintptr_t)mystack+1024*1024), flags, args, R_RDX, NULL, R_R10);
+                     S_RAX = ret;
+                 }
+-                else
++                else {
++                    uint64_t flags = R_RDI;
+                     #ifdef NOALIGN
+                     S_RAX = syscall(__NR_clone, R_RDI, R_RSI, R_RDX, R_R10, R_R8);
+                     #else
+                     S_RAX = syscall(__NR_clone, R_RDI, R_RSI, R_RDX, R_R8, R_R10);    // invert R_R8/R_R10 on Aarch64 and most other
+                     #endif
++                    if(S_RAX == 0 && !(flags & CLONE_VM))
++                        ResetCleanupMutex();
++                }
+             }
+             break;
+         #ifndef __NR_fork
+@@ -1247,6 +1256,7 @@
+                 newemu->regs[_SP].q[0] = sp;  // setup new stack pointer
+                 clone_t* args = box_calloc(1, sizeof(clone_t));
+                 args->emu = newemu;
++                args->flags = flags;
+                 if(flags & CLONE_SETTLS) {
+                     args->tls = (void*)R_R9;
+                     args->set_tls = 1;
+@@ -1265,12 +1275,18 @@
+                 long ret = clone(clone_fn_syscall, (void*)((uintptr_t)mystack+1024*1024), flags, args, R_RCX, NULL, R_R8);
+                 return ret;
+             }
+-            else
++            else {
++                uint64_t flags = R_RSI;
++                long ret;
+                 #ifdef NOALIGN
+-                return syscall(__NR_clone, R_RSI, R_RDX, R_RCX, R_R8, R_R9);
++                ret = syscall(__NR_clone, R_RSI, R_RDX, R_RCX, R_R8, R_R9);
+                 #else
+-                return syscall(__NR_clone, R_RSI, R_RDX, R_RCX, R_R9, R_R8);    // invert R_R8/R_R9 on Aarch64 and most other
++                ret = syscall(__NR_clone, R_RSI, R_RDX, R_RCX, R_R9, R_R8);    // invert R_R8/R_R9 on Aarch64 and most other
+                 #endif
++                if(ret == 0 && !(flags & CLONE_VM))
++                    ResetCleanupMutex();
++                return ret;
++            }
+             break;
+         #ifndef __NR_fork
+         case 57:

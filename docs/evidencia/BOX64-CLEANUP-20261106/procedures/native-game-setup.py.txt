@@ -1,0 +1,43 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''from pathlib import Path
+import subprocess,json,shutil,uuid,os,hashlib
+c=CONTAINER
+original=json.loads(subprocess.check_output(['docker','inspect',c]))[0]
+source=Path(next(m['Source'] for m in original['Mounts'] if m['Destination']=='/data'))
+base=Path(BASE)/'.botsky-native-fix-20261106/minecraft-lab'
+data=base/'data'
+assert not data.exists()
+data.mkdir(parents=True,mode=0o755)
+for p in source.iterdir():
+ if p.is_file() and not p.is_symlink() and (p.name.startswith('bedrock_server-') or p.suffix=='.so' or p.name=='valid_known_packs.json'):
+  shutil.copy2(p,data/p.name)
+for name in ('definitions','structures','treatments','behavior_packs','resource_packs'):
+ if (source/name).is_dir():
+  shutil.copytree(source/name,data/name,ignore=lambda folder,names:[n for n in names if (Path(folder)/n).is_symlink()])
+props=dict(line.split('=',1) for line in (source/'server.properties').read_text().splitlines() if '=' in line and not line.startswith('#'))
+world=data/'worlds/Synthetic';world.mkdir(parents=True)
+ids=[str(uuid.uuid4()),str(uuid.uuid4())]
+for index,(kind,module) in enumerate([('behavior','data'),('resource','resources')]):
+ p=data/(kind+'_packs')/'botsky-native-acceptance';p.mkdir()
+ m={'format_version':2,'header':{'name':'Botsky own native probe '+kind,'description':'Synthetic','uuid':ids[index],'version':[1,0,0],'min_engine_version':[1,21,0]},'modules':[{'type':module,'uuid':str(uuid.uuid4()),'version':[1,0,0]}],'dependencies':[{'uuid':ids[1-index],'version':[1,0,0]}]}
+ (p/'manifest.json').write_text(json.dumps(m))
+ name='world_'+kind+'_packs.json'
+ rows=json.loads((source/'worlds'/props['level-name']/name).read_text());rows.append({'pack_id':ids[index],'version':[1,0,0]})
+ (world/name).write_text(json.dumps(rows))
+(data/'server.properties').write_text('server-name=Botsky isolated native check\\nlevel-name=Synthetic\\nlevel-seed=12345\\nlevel-type=FLAT\\nonline-mode=false\\nenable-lan-visibility=false\\nmax-threads=2\\nview-distance=4\\ntick-distance=4\\ncontent-log-console-output-enabled=true\\n')
+# Reuse only translation caches of the exact executable and libgcc, not world data.
+cache=data/'.cache/box64';cache.mkdir(parents=True)
+for p in (source/'.cache/box64').glob('*'):
+ if p.is_file() and not p.is_symlink() and (p.name.startswith('bedrock_server-1.26.63.1-') or p.name.startswith('libgcc_s.so.1-')):
+  shutil.copy2(p,cache/p.name)
+owner=source.stat()
+for p in [data,*data.rglob('*')]:os.chown(p,owner.st_uid,owner.st_gid)
+boxenv=[e for e in original['Config']['Env'] if e.startswith('BOX64_')]
+record={'base':str(base),'image':original['Image'],'environment':boxenv,'world_copied':False,'cache_files':[p.name for p in cache.iterdir()],'ids':ids}
+print(json.dumps(record))
+'''.replace('CONTAINER',repr(config.container)).replace('BASE',repr(config.base_path))
+ result=await remote(code)
+ p=Path('docs/evidencia/BOX64-CLEANUP-20261106/game-setup.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps({k:v for k,v in result.items() if k!='base'}))
+asyncio.run(main())

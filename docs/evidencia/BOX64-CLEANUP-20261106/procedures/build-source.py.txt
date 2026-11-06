@@ -1,0 +1,16 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''import subprocess,json
+from pathlib import Path
+root=Path(BASE)/'.botsky-native-fix-20261106'
+source=root/'box64-9f285eab00ebee49e034914436d0bd37c335c9e7'
+r=subprocess.run(['cmake','-S',str(source),'-B',str(root/'build'),'-DARM_DYNAREC=ON','-DCMAKE_BUILD_TYPE=RelWithDebInfo'],capture_output=True,text=True,timeout=30)
+(root/'configure.txt').write_text(r.stdout+r.stderr)
+assert r.returncode==0,(r.stdout+r.stderr)[-2000:]
+log=open(root/'build.log','w')
+p=subprocess.Popen(['nice','-n','10','cmake','--build',str(root/'build'),'-j2'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+(root/'build.pid').write_text(str(p.pid))
+print(json.dumps({'build_pid':p.pid,'configure':r.stdout[-800:]}))
+'''.replace('BASE',repr(config.base_path))
+ print(await remote(code))
+asyncio.run(main())

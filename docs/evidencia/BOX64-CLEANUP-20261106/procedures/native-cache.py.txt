@@ -1,0 +1,4 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ print(await remote("import subprocess,json\nfrom pathlib import Path\ni=json.loads(subprocess.check_output(['docker','inspect',"+repr(config.container)+"]))[0]\ndata=Path(next(m['Source'] for m in i['Mounts'] if m['Destination']=='/data'))\npaths=[]\nfor root in (data/'.cache/box64',data/'.cache',data/'.box64',data/'.dynacache'):\n if root.is_dir() and not root.is_symlink():\n  for p in list(root.rglob('*'))[:200]:\n   if p.is_file() and not p.is_symlink():paths.append({'path':str(p.relative_to(data)),'bytes':p.stat().st_size})\nprint(json.dumps({'cache':paths,'direct_files':[p.name for p in data.iterdir() if p.name.startswith('.')]}))"))
+asyncio.run(main())
