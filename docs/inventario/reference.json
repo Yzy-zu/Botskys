@@ -1,0 +1,589 @@
+{
+  "head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+  "files": {
+    "pyproject.toml": {
+      "sha256": "a568a451e26fa23065f026cd4b76bf7486a1b21553aba1efd64c1dfab0dbea25",
+      "modified": false
+    },
+    "calls/package.json": {
+      "sha256": "f147d53cd4dfa2f7852df0aa96cbbf9e74219fdd87327ec37bfc4430bfa83de0",
+      "modified": false
+    },
+    "calls/package-lock.json": {
+      "sha256": "952326ea3fc940b37031a57e922782b1ca7c084a6faa6b974c13b02f38efc440",
+      "modified": false
+    },
+    "src/zhana/__init__.py": {
+      "sha256": "71e5ef5f364be5ee538f1acd6ffa1193c2a39db7cc25185295f8ec3946e85c41",
+      "modified": false
+    },
+    "src/zhana/admin.py": {
+      "sha256": "663eee12396572b1625baa04def8a2e9e4f78be172980d6cc2b98b0ecc8130a5",
+      "modified": false
+    },
+    "src/zhana/admin_store.py": {
+      "sha256": "9f0066ea71da4d1fc06176e6a7ef5ce33728d9850fc57cec93bc21c46db42b20",
+      "modified": false
+    },
+    "src/zhana/audio.py": {
+      "sha256": "5cf99bfffa90619bba86e54fd3232683145e6679dcddcce3299b66ac9b293417",
+      "modified": false
+    },
+    "src/zhana/blackjack.py": {
+      "sha256": "ec8c7e743a266315c4ec28c7a584c3bed6f8181e759468b2594e5179e6843183",
+      "modified": false
+    },
+    "src/zhana/blackjack_limits.py": {
+      "sha256": "c6a98419b88f5e4b92e0504ad1be07be84207cc691135b194ba5baea0bbb6f84",
+      "modified": false
+    },
+    "src/zhana/blackjack_store.py": {
+      "sha256": "e895ad23ffe03d0f84248d0d66d600f4f94438de1efb2f29ada2680645db542c",
+      "modified": false
+    },
+    "src/zhana/broma.py": {
+      "sha256": "0244c41c8055fa1e955a1ebdc227bdc0bb8a6835786fd0b203138ce4bd7db0e2",
+      "modified": false
+    },
+    "src/zhana/call_notices.py": {
+      "sha256": "3d6c6485c8b8ee603d6bc37057519194fb7905590213586557353ebcc7db6380",
+      "modified": false
+    },
+    "src/zhana/call_tools.py": {
+      "sha256": "37e0c1e67aa26af3e2a73159faf547734ae50f61cb2a82c033202052283971d1",
+      "modified": false
+    },
+    "src/zhana/calls.py": {
+      "sha256": "1806b53ac00d89009ab621d6140226619bb359320de6118fdf4c97a2efbee805",
+      "modified": false
+    },
+    "src/zhana/calls_config.py": {
+      "sha256": "43ced84bdddb3db2d1ee2d80546adacbde77dffe531335da9384db7a641792b3",
+      "modified": false
+    },
+    "src/zhana/cli.py": {
+      "sha256": "867ceda00d70a60c66f8548b41acd6ba3d7773ca2c3ad80b4b7f3dd6ab4fe1a6",
+      "modified": false
+    },
+    "src/zhana/config.py": {
+      "sha256": "cb18e61bb2955a7148bb24bf5e691818979e0dc39173994b010e437572f4d778",
+      "modified": false
+    },
+    "src/zhana/contracts.py": {
+      "sha256": "f77db227b80020b7617b7d92bbe799a2af258d9e6251e23113a85f8b977e8dfa",
+      "modified": false
+    },
+    "src/zhana/cooperacha.py": {
+      "sha256": "a97e73aece18efb692974bf241c1d2af14932e7c17329db0d51692cfd24ad53d",
+      "modified": false
+    },
+    "src/zhana/cooperacha_image.py": {
+      "sha256": "2f9081881716654660d860ffc3095db8fdfb52275e7cb3ed6012455f9037460e",
+      "modified": false
+    },
+    "src/zhana/cooperacha_store.py": {
+      "sha256": "e13f6c33e641070aab8b1daa8cff0bc1e02229d2685a252e6bcddb651f5d139a",
+      "modified": false
+    },
+    "src/zhana/dialogue.py": {
+      "sha256": "4c216f3c95b171c7ceab8834f1da1d82e22c9c5b90d6a5507f2f2d1c95d97e94",
+      "modified": false
+    },
+    "src/zhana/document_formats.py": {
+      "sha256": "50c627ed87a506bcafdd44c915c0e0d5a75b59625b5786cbf2e00020e51e0bf6",
+      "modified": false
+    },
+    "src/zhana/document_names.py": {
+      "sha256": "8ba04406422d4e8b031348060039e3a0045b24e1125da3285582bae561a1e0b1",
+      "modified": false
+    },
+    "src/zhana/document_worker.py": {
+      "sha256": "2f84fa1de80bf195f2f13713b1e12d64ac4dd7c61b2c6eb07a3a460f010242db",
+      "modified": false
+    },
+    "src/zhana/documents.py": {
+      "sha256": "95d84215db9a40ea2dc61abedfe5744647d176a546dbaf2f24f92a47052fcad8",
+      "modified": false
+    },
+    "src/zhana/downloads.py": {
+      "sha256": "0e95f50fa00a7b32ccbd8a0ebe89b8ecc046e08fdfdbee9317232c9ffe965948",
+      "modified": false
+    },
+    "src/zhana/drive.py": {
+      "sha256": "3d21583b3cec8cbbe7effdf3517c4ed30c47d3ad80acf63de150ce7351591b13",
+      "modified": false
+    },
+    "src/zhana/drive_runtime.py": {
+      "sha256": "401fecc22e4c869fcc494daca6f3c01566fa32b1e36bb3106d8f6d9508b61877",
+      "modified": false
+    },
+    "src/zhana/drive_store.py": {
+      "sha256": "6a7e7515a8a23726aa0af634d64f5b762b78561d308aa9d796fbb9f3aed7c289",
+      "modified": false
+    },
+    "src/zhana/economy.py": {
+      "sha256": "3c438f03c9d46584e59261778913c0afc67b00f8989b98b747ebd66cc4e4ab95",
+      "modified": false
+    },
+    "src/zhana/economy_import.py": {
+      "sha256": "f273538748c776b18cc1b234eb0151f16bbeb604a6bf39338fe44366040d8928",
+      "modified": false
+    },
+    "src/zhana/economy_store.py": {
+      "sha256": "a80d5f68ea2d78a0dbc7521704098eb3f4d099ffb5a4afbf99b79d681ba1d167",
+      "modified": false
+    },
+    "src/zhana/group_access.py": {
+      "sha256": "f4e335ea0df21db796bc37fe4170c6dea55b4bce0002afe5a482bba1e0325052",
+      "modified": false
+    },
+    "src/zhana/happy_hour.py": {
+      "sha256": "dbea08bc818a0cacf354237d4772b048c758f65be1f95a2f3249868afba72f8f",
+      "modified": false
+    },
+    "src/zhana/happy_hour_store.py": {
+      "sha256": "90c32076c341905a599961c25fa1b4e54d7c1e8d109d2808708d1870fd6e408a",
+      "modified": false
+    },
+    "src/zhana/identity.py": {
+      "sha256": "27747290da718611681587ee1431cbd32198a470a48c7947e12f36f7548d0369",
+      "modified": false
+    },
+    "src/zhana/inbox.py": {
+      "sha256": "d2c8efe59813754392f5dc62845bc9651adad7c62d5ed3274f116927106acaee",
+      "modified": false
+    },
+    "src/zhana/intent.py": {
+      "sha256": "ab7f482991804e122335f2ac1363d0caf9fd1d110c6f45a1c7e3a057ad6a80e1",
+      "modified": false
+    },
+    "src/zhana/jobs.py": {
+      "sha256": "c4556d22dc67666f324b090440bf0a67bba518968b2f33895529faa912dfb9f0",
+      "modified": false
+    },
+    "src/zhana/jobs_store.py": {
+      "sha256": "56b9e99142f7e210ed012f2127d81d8ddf34e2c36644edd330ca2df1454cda3a",
+      "modified": false
+    },
+    "src/zhana/main.py": {
+      "sha256": "8882372c3b9f76f472a3d72b2bc365cf4f96143d96b0b5f09ec71b000a38cb37",
+      "modified": false
+    },
+    "src/zhana/media.py": {
+      "sha256": "37bbdfd74462a20c1c7a559167a129ee79088b7dad1e4d807df502dd990437a1",
+      "modified": false
+    },
+    "src/zhana/media_edit.py": {
+      "sha256": "a97ca1d7215a66d7d8d234425a140f5aae88572bb9345d6473b7e049d586a603",
+      "modified": false
+    },
+    "src/zhana/media_limits.py": {
+      "sha256": "0ba57e5044579c5abe53918d8b3c69d9e5ee1c5a4632ed0efed65feb8d4acded",
+      "modified": false
+    },
+    "src/zhana/media_stream.py": {
+      "sha256": "346633dbd2ea17e3cbf454dcc66dab62724e7ce32dc0194ba2bcc663a5d03adb",
+      "modified": false
+    },
+    "src/zhana/memory.py": {
+      "sha256": "894ddc0d713921b87f7755f1104fe1e2eedba570ce430db5351540e888558b07",
+      "modified": false
+    },
+    "src/zhana/memory_store.py": {
+      "sha256": "c1b60988b52031ed1dc07c85910a70f51b1a4fc800c74790354167b6fbd4981f",
+      "modified": false
+    },
+    "src/zhana/messages.py": {
+      "sha256": "800a24d13d10b531770979ad6d73a9852dd368fa197b1a9151734e3dbadd4d94",
+      "modified": false
+    },
+    "src/zhana/minecraft.py": {
+      "sha256": "cb1f539e9636923e6c80b6ff8cc971e9eb77cf03c6501c7055a9649d3a0c7a90",
+      "modified": false
+    },
+    "src/zhana/minecraft_remote.py": {
+      "sha256": "7e2eac135165bf2583d223c64cde347d3738067b287b35666d3a0a34bd7c27ab",
+      "modified": false
+    },
+    "src/zhana/minecraft_worker.py": {
+      "sha256": "e3387526ff90d29b26c32073d909f0baf1637b6d9f280750c7e176163ba03f52",
+      "modified": false
+    },
+    "src/zhana/observer.py": {
+      "sha256": "f13ca0e6c9ff2144fda55a344783abb7fa7afbfc4fabc2090aab3c906069f816",
+      "modified": false
+    },
+    "src/zhana/packs.py": {
+      "sha256": "d2caf562b51c49415139e7e80df9aeb8a87379ca2dd434e0034288412e5175b2",
+      "modified": false
+    },
+    "src/zhana/packs_store.py": {
+      "sha256": "eee56dd6ace005fd502d9784c6e13801e5b79c58661d401f55fabd63a24d670e",
+      "modified": false
+    },
+    "src/zhana/participation.py": {
+      "sha256": "4f2a37a118c62a89b191e29a4bbdfee8f1ba143f5dbb8d9b85bb5fc90934551c",
+      "modified": false
+    },
+    "src/zhana/pdf_args.py": {
+      "sha256": "4190396c47066c80721b5f9ace7dbc06927a9002f7a1d01c61e58f93101cccfd",
+      "modified": false
+    },
+    "src/zhana/pdf_assets.py": {
+      "sha256": "f8fd173339904f0981713e81a0a4f16986ecfbfce9b53d6cee4c910e3fd07920",
+      "modified": false
+    },
+    "src/zhana/pdf_operations.py": {
+      "sha256": "3735b0406399cdb9373aa6ab6c92773beabf06290c4700201db8db6ecf4ce397",
+      "modified": false
+    },
+    "src/zhana/pdf_ops_worker.py": {
+      "sha256": "9f487352e100d4de85095b78c9afbf7afc83d80b9035865b94f227819f071eec",
+      "modified": false
+    },
+    "src/zhana/pdf_retry.py": {
+      "sha256": "6597caf4bd8fa4cdb7e81b001cccb681cc364102064e0b6577ecaf2eb3c62f4d",
+      "modified": false
+    },
+    "src/zhana/pdf_sessions.py": {
+      "sha256": "37373f3e58eb1540af7315e0f843637cd77008dfed49251dafb0073d58b6f784",
+      "modified": false
+    },
+    "src/zhana/persistence_migration.py": {
+      "sha256": "4cd2c9301d361fe0e0c76a53a16486b93560bb97de0269e42a5e1ffef781718f",
+      "modified": false
+    },
+    "src/zhana/personality.py": {
+      "sha256": "2b38547be97f6d514c15111dc6d4c76c9c6ab2fda723b8fa496b9ec24f9543c6",
+      "modified": false
+    },
+    "src/zhana/polls.py": {
+      "sha256": "4b75df38677fb65e12ac91e04d632f22af1b601d6883e8cb538526caa85e006b",
+      "modified": false
+    },
+    "src/zhana/polls_store.py": {
+      "sha256": "0eef3a71a6ffa4ef99ce3408030d357feb866b538f83450375dda1a90cea878a",
+      "modified": false
+    },
+    "src/zhana/provider_failure.py": {
+      "sha256": "2a49de9714f115920006a449b2632c5fa024fba02b13258555656c1521b45936",
+      "modified": false
+    },
+    "src/zhana/prune_indexes.py": {
+      "sha256": "27679ca0589e8769a86ecce0de9abd1e39a928138d501211094a46d9a0192759",
+      "modified": false
+    },
+    "src/zhana/reminder_scheduler.py": {
+      "sha256": "1dafbc0b7597daa8d613454fc235af66afb68ed66e12b8b58531b2e3057a9ec3",
+      "modified": false
+    },
+    "src/zhana/reminder_store.py": {
+      "sha256": "7ad531e199a7d5925a8393aa636fd3a7fcafe446c9a794a906e711493814bdf0",
+      "modified": false
+    },
+    "src/zhana/reminder_time.py": {
+      "sha256": "15a91c25a052650c90f461c88d41ff5241ed4b2d664f5f4f77c66bfca8754235",
+      "modified": false
+    },
+    "src/zhana/reminders.py": {
+      "sha256": "7ccd9fd28fa097357ce3f323def291b8a7655e3b850678f49ee2df4f26c07d7a",
+      "modified": false
+    },
+    "src/zhana/remote_subtitles.py": {
+      "sha256": "61a5e3f36b39d2f6d287360a81ebdde043c6d42c4a8b93564b60e3b124b95003",
+      "modified": false
+    },
+    "src/zhana/rich_delivery.py": {
+      "sha256": "515a4d2fd7900f344e1381022f07058428295a3ccb06cae085fe1b466d08fc7c",
+      "modified": false
+    },
+    "src/zhana/rich_text.py": {
+      "sha256": "0a17b8f0e7f36438c2c0b1f419812b1283b2ec72bc95e12287f3a4087490b22b",
+      "modified": false
+    },
+    "src/zhana/rikolino.py": {
+      "sha256": "0d60cf91aeb92b0c30a80f45d6c029aa1fe87af620f6ed5821149ca3e7e6cfc9",
+      "modified": false
+    },
+    "src/zhana/roulette.py": {
+      "sha256": "129914971645ece811984ebd030b0cb9cf4eb64fc1620d46cbe3819846311d4b",
+      "modified": false
+    },
+    "src/zhana/roulette_effects.py": {
+      "sha256": "0ea911bdb105db441d9a3056b35e413cf701dba58fc8934bbb05dcdb47a6e399",
+      "modified": false
+    },
+    "src/zhana/roulette_store.py": {
+      "sha256": "232f5f74642fc935252741da654c6d218d4e2de800ef079f4513d225817ee146",
+      "modified": false
+    },
+    "src/zhana/schema.py": {
+      "sha256": "d0c9f1858061d9f7d137e0d2db044b0ffd4e92ae0ac353ab1bd4829f14672da0",
+      "modified": false
+    },
+    "src/zhana/schema_compaction.py": {
+      "sha256": "3900c1e83ebfc4e056c69ba4f3fa12cc3f01d54d08aeae1b3677094ccc0b8bad",
+      "modified": false
+    },
+    "src/zhana/school.py": {
+      "sha256": "62be891aae1ed32fe90c2a75282e8798dd360442026cbaf1ccff6ef1bf87104f",
+      "modified": false
+    },
+    "src/zhana/school_attachments.py": {
+      "sha256": "85fc530b7f6d3c47102725ba1190e3114f526c5eb14fd80a844cd0663bd528a0",
+      "modified": false
+    },
+    "src/zhana/school_scheduler.py": {
+      "sha256": "e17514d564dc16607b74ef49e6e29ee54ff238ff0ee6e48b2bae6a398a38c5bc",
+      "modified": false
+    },
+    "src/zhana/school_store.py": {
+      "sha256": "8e681288eae9150e442672c7c15da49944b32da6e0bf683eda4a4084efdfcca5",
+      "modified": false
+    },
+    "src/zhana/search_collage.py": {
+      "sha256": "fb0b08954fed3679349aa8c9aafca918b940b1cdddd19466f81bc6d4802fa4e0",
+      "modified": false
+    },
+    "src/zhana/speech.py": {
+      "sha256": "fb65a723cfa1c629721aae9feab8397ef15c2e6a6ef0b6f06eb2d19f9105268a",
+      "modified": false
+    },
+    "src/zhana/stickers.py": {
+      "sha256": "bc1a1466b4ebdd61a7ac06e8500c9c7589b6d4f91eaac24fe24202040f97a576",
+      "modified": false
+    },
+    "src/zhana/store.py": {
+      "sha256": "42ac0674ba8e2389fb87ef5aacb28b1aa3670306707ed92f7e5903e03d690223",
+      "modified": false
+    },
+    "src/zhana/timing.py": {
+      "sha256": "e5d4113442b8b2cd1b26a9df5ab874bfb6d475d82f9f8be08a3a63f22e21340d",
+      "modified": false
+    },
+    "src/zhana/tool_questions.py": {
+      "sha256": "f68479ad04b19e6ef8cf2b9145057da305ac659096318d363a24cf82b9f7d7a1",
+      "modified": false
+    },
+    "src/zhana/variety_worker.py": {
+      "sha256": "eb40c8d5f895e8775ec1396be6e4f44258051ac65505eee4cf562fa17d8837a8",
+      "modified": false
+    },
+    "src/zhana/visual.py": {
+      "sha256": "9fd29a69c6fde40f0e443e536e1b5ac6d1e3713bdb020aa660704f4bfc5d7467",
+      "modified": false
+    },
+    "src/zhana/web_search.py": {
+      "sha256": "527f884aa659477d5d7fb4809beebbb0cf6ca94aed655e4d8da780a67e50dffd",
+      "modified": false
+    },
+    "src/zhana/tools/__init__.py": {
+      "sha256": "1e8e5b2aa82cd79dd7097c1a421439a407d9d932b59cd22070f23dcb8575d6aa",
+      "modified": false
+    },
+    "src/zhana/tools/catalog.py": {
+      "sha256": "40a56ed702c52f5760d32d75e752c30096f5b5e04410d1997590e70096d66c9e",
+      "modified": false
+    },
+    "src/zhana/tools/executor.py": {
+      "sha256": "887970b884d61be7c91f6f2daa714d75e05ebaac9cd59d552ad6d1d501a7cdd7",
+      "modified": false
+    },
+    "src/zhana/tools/notes.py": {
+      "sha256": "1d4cb62fdb5449bae7e6480a990f8d29edaaf4457a021ffbe476c832f237f4c0",
+      "modified": false
+    },
+    "calls/service/audio-bridge.cjs": {
+      "sha256": "74f6b00dcad9cdf709a31229b2144d5adf593014526574660baa574142abee10",
+      "modified": false
+    },
+    "calls/service/audio-store.cjs": {
+      "sha256": "7a8ea9ee265224543158768cedddde3e09af84491c20ceeea381d06032f751e6",
+      "modified": false
+    },
+    "calls/service/avatar-assets.cjs": {
+      "sha256": "db3743c1de9865e48a914359e5ddfb8adcf624550f1e27ab0d1b887241c52519",
+      "modified": false
+    },
+    "calls/service/avatar-client.mjs": {
+      "sha256": "c5b0bce55ecac12d0c91abedabc7a98dc617b79aa2b1fab2a7a3a4e0069f9436",
+      "modified": false
+    },
+    "calls/service/avatar-expressions.mjs": {
+      "sha256": "418d2fea5983f4cf7b31f32b87bbff9fd9f80bceac142aeeef2badb5c0d6779b",
+      "modified": false
+    },
+    "calls/service/avatar-geometry.mjs": {
+      "sha256": "b4e3c382a5be6644e45b62f9aca2dfb580f1b1ac2ee99d14641f60a0b328585d",
+      "modified": false
+    },
+    "calls/service/avatar-motion.mjs": {
+      "sha256": "9a46bb024466c57d8ac6c2507e29f014e7b3aab8516d2753ee8e27183eba84b7",
+      "modified": false
+    },
+    "calls/service/avatar-quality.mjs": {
+      "sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+      "modified": false
+    },
+    "calls/service/avatar-renderer.mjs": {
+      "sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+      "modified": false
+    },
+    "calls/service/avatar-tools.cjs": {
+      "sha256": "4f8f1634defc7a9a3585726731fd1ad981b1ea6ec43aab4cfbb3c9d6095aea2d",
+      "modified": false
+    },
+    "calls/service/avatar-worker.mjs": {
+      "sha256": "17cc6a52cac9d7bed8009a0e7397d2ed1b481d4af5f4730864bf126fb9e999b9",
+      "modified": false
+    },
+    "calls/service/browser.cjs": {
+      "sha256": "b886f8610de959a6fa7f9adb12f7b2adfcff56b826de7834156d3672764c8411",
+      "modified": false
+    },
+    "calls/service/call-agenda.cjs": {
+      "sha256": "de8bf39b6744bfe36f5b353e5638791eddc3fceb60df98fe77916d20ed9c3413",
+      "modified": false
+    },
+    "calls/service/call-snapshot.cjs": {
+      "sha256": "430c1c71f279a1e888aff5c9f389646b1d850fafad7b32a153972034a3eacd4a",
+      "modified": false
+    },
+    "calls/service/clip-commands.cjs": {
+      "sha256": "d8b2b07a3009c4058bed188b180fa94f44c6bf773451c841c422429b0b86ca4f",
+      "modified": false
+    },
+    "calls/service/clip-store.cjs": {
+      "sha256": "2c1a8cef59564397552088a27fd4f1442363e6b1c4ee31722ba2c63032f3f9d9",
+      "modified": false
+    },
+    "calls/service/common.cjs": {
+      "sha256": "b92b31d847902cfb2e50ba705776805d5e18ffb993596fa9ec228497f391fe87",
+      "modified": false
+    },
+    "calls/service/config.cjs": {
+      "sha256": "69680290c875484abd77fcc1c32ceb60e73878114e2f3fd0d9a6dd2ed81f2bc1",
+      "modified": false
+    },
+    "calls/service/failure-notices.cjs": {
+      "sha256": "67e56f341347e06c4cfc628687ce646e946ad91cca19a4b133cd3d2956bf5148",
+      "modified": false
+    },
+    "calls/service/feature-controls.cjs": {
+      "sha256": "8d83787532c9bcdf62e9562635f7a84c4673bbdc87426ecfaf8ad6c205520b7b",
+      "modified": false
+    },
+    "calls/service/gemini-live.cjs": {
+      "sha256": "f01de9c55c0f2717bbcfc2f2159a76cd447725d24a0681026e4e93582d87ff60",
+      "modified": false
+    },
+    "calls/service/group-call.cjs": {
+      "sha256": "b606529e7975ad856e2279405241e3cda40a01704cd604c0636d022ec5983e34",
+      "modified": false
+    },
+    "calls/service/group-director.cjs": {
+      "sha256": "a810329cb4efae82546450784507342b03389bf4b9c91491ca4287bfcc0b651e",
+      "modified": false
+    },
+    "calls/service/group-directory.cjs": {
+      "sha256": "373aa48d6fc395eb1a77b8df955b6eb3baf0a51c3eb26b819a04f6aea6eaa593",
+      "modified": false
+    },
+    "calls/service/group-voice-gate.cjs": {
+      "sha256": "90406fdca199fed5b9a39eec108cc305143ab2fd5dc3a72af87e8b997cdaba9a",
+      "modified": false
+    },
+    "calls/service/http.cjs": {
+      "sha256": "4afc2d9414e5468a07a86fda0ab5f43724bbdc0751f7fb73dceb0e255aa87e09",
+      "modified": false
+    },
+    "calls/service/incoming-policy.cjs": {
+      "sha256": "3ec7bb1fe0a8e7cb512804225520f245bfcdcc56f0e7fed439737120c4b77a85",
+      "modified": false
+    },
+    "calls/service/journal.cjs": {
+      "sha256": "4b0419f2e7084843c4b858bbc9733a49638e85d1225f09c3d1d40f20be530dae",
+      "modified": false
+    },
+    "calls/service/live-controller.cjs": {
+      "sha256": "cd8bfa58270014c74d6efe0223642bf289d000357816c272dbaf560da662f7b2",
+      "modified": false
+    },
+    "calls/service/live-credentials.cjs": {
+      "sha256": "7bba42115c2f9c70e7dc5687a627be6d8c9a5a65da94bf8241a0e7b31b0f858f",
+      "modified": false
+    },
+    "calls/service/live-errors.cjs": {
+      "sha256": "794d9896db42e852a5e879101878de50df05ec1cbbb80c6d631f86bc98c6498e",
+      "modified": false
+    },
+    "calls/service/main.cjs": {
+      "sha256": "2e93c25f3c317064bef1e03a2248c8a4ddbedd427de7090584c0d0e699203a12",
+      "modified": false
+    },
+    "calls/service/manager.cjs": {
+      "sha256": "4278658001162e192142c1ff8906bea24bcffc94c09169f5c92ab67eb819c842",
+      "modified": false
+    },
+    "calls/service/native-video.cjs": {
+      "sha256": "381a01a133a89bde8474217211b0c2699f8da86d929509bda63d893779855ff0",
+      "modified": false
+    },
+    "calls/service/operations.cjs": {
+      "sha256": "72069a852c90b5830ad021aa4368d63cc9133f43e8fc1bc59e91e5c106ef451e",
+      "modified": false
+    },
+    "calls/service/private-call.cjs": {
+      "sha256": "cf68ec25a53098319a2060d1aae8ca816eef413f21b75fa9b037c43580919b0d",
+      "modified": false
+    },
+    "calls/service/runtime.cjs": {
+      "sha256": "a481151e0573449e347db9c81bc4e4553d753733f5c46200d21b851fcf2ed75e",
+      "modified": false
+    },
+    "calls/service/schedule-result.cjs": {
+      "sha256": "40c6a49a4c9e8c4d0960fbfded34d27162e845afc882466864ece0e951a345ba",
+      "modified": false
+    },
+    "calls/service/spoken-controls.cjs": {
+      "sha256": "0fe3716679627e71a0116d64230e08a56dfdf3d1ea89c9bb86bd72f49ebc4f2e",
+      "modified": false
+    },
+    "calls/service/video-bridge.cjs": {
+      "sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+      "modified": false
+    },
+    "calls/service/voice-click.cjs": {
+      "sha256": "e926f4aa18df4a8dc0337a9912e80ca07520bfade939ee758fb09de7beb5c4c4",
+      "modified": false
+    },
+    "calls/policy/auth.js": {
+      "sha256": "70171c0dc45457a95b8610d9158d7ef013e9f3aaaf92472463b3669c4560ae64",
+      "modified": false
+    },
+    "calls/policy/callDestinations.js": {
+      "sha256": "8f51d6c6197a1eeac65eb233e393667505fbe9f1f64ef011a294b03aea37dd25",
+      "modified": false
+    },
+    "calls/policy/callDuration.js": {
+      "sha256": "6773bd6548cb3682f5c2f59b40aa44e9c52da0cc75084be8269212a9699a6f77",
+      "modified": false
+    },
+    "calls/policy/callScheduleId.js": {
+      "sha256": "324d39697435f2a23ad7bf5408fd60142361f6019b92ca517b543053cfc6717c",
+      "modified": false
+    },
+    "calls/policy/callScheduleTime.js": {
+      "sha256": "59528615f9e417fe11fca9440b32b2e158e48d5354a468a1a5dd21f8d5e21329",
+      "modified": false
+    },
+    "calls/policy/clipRequest.js": {
+      "sha256": "f0f6f304b08f74157c2ac97551846bd5a8f735fe6c3d65190e7934ce280e6345",
+      "modified": false
+    },
+    "calls/policy/liveCallRequest.js": {
+      "sha256": "09714e62b79ecbf758d4d748719784b979f88c5968ba4607d4f5c95345602ef8",
+      "modified": false
+    }
+  }
+}

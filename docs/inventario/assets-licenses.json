@@ -1,0 +1,225 @@
+{
+  "assets": {
+    "src/zhana/assets/personality/es.txt": {
+      "bytes": 5016,
+      "sha256": "d5727f72a05cef4b4652f29323217d061e7b45e73a1662020f85a6f6c8d1072e",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    },
+    "src/zhana/assets/stickers/v1/pensando.webp": {
+      "bytes": 36600,
+      "sha256": "937c925a2c9b5e5833e16e2d0b7369c3c715f0ba07fdef1bb28361ba2a794aa8",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    },
+    "src/zhana/assets/stickers/v1/risa.webp": {
+      "bytes": 37672,
+      "sha256": "bab2960c6ae70b5bc1f5e3846bd842586c11ceb05be8fd6e1494b0b5118fb842",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    },
+    "src/zhana/assets/stickers/v1/saludo.webp": {
+      "bytes": 37968,
+      "sha256": "f02093f1fef6e7a9f10e41e93dec6b71d64c0e4883932cec8a257f9641e614fe",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    },
+    "src/zhana/assets/stickers/v1/sonrojo.webp": {
+      "bytes": 38912,
+      "sha256": "d00848ea793fa61e7a8156c08e25a015acb5f3d9cc5e829f5e927083911c36c7",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    },
+    "src/zhana/assets/stickers/v1/catalog.json": {
+      "bytes": 670,
+      "sha256": "3c1df29685044326e069eb2add1c3b45e990cbc5f46eefa007ef37eae612d656",
+      "status": "referencia; no trasladado; revisar derecho de uso antes del portado"
+    }
+  },
+  "node_packages": {
+    "": {
+      "version": "0.19.9"
+    },
+    "node_modules/@esbuild/aix-ppc64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/android-arm": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/android-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/android-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/darwin-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/darwin-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/freebsd-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/freebsd-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-arm": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-ia32": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-loong64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-mips64el": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-ppc64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-riscv64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-s390x": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/linux-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/netbsd-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/netbsd-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/openbsd-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/openbsd-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/openharmony-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/sunos-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/win32-arm64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/win32-ia32": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@esbuild/win32-x64": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-core": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-materials-hdr-emissive-multiplier": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-materials-mtoon": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-materials-v0compat": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-node-constraint": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/three-vrm-springbone": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrm-0.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-materials-hdr-emissive-multiplier-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-materials-mtoon-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-node-constraint-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-springbone-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-springbone-extended-collider-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@pixiv/types-vrmc-vrm-1.0": {
+      "version": "3.5.5",
+      "license": "MIT"
+    },
+    "node_modules/@wppconnect/wa-js": {
+      "version": "4.7.2",
+      "license": "Apache-2.0"
+    },
+    "node_modules/esbuild": {
+      "version": "0.28.2",
+      "license": "MIT"
+    },
+    "node_modules/playwright": {
+      "version": "1.64.1",
+      "license": "Apache-2.0"
+    },
+    "node_modules/playwright-core": {
+      "version": "1.64.1",
+      "license": "Apache-2.0"
+    },
+    "node_modules/three": {
+      "version": "0.186.1",
+      "license": "MIT"
+    },
+    "node_modules/ws": {
+      "version": "8.22.0",
+      "license": "MIT"
+    }
+  },
+  "private_vrm": "no inspeccionado, no copiado; requiere autorización/licencia al integrar",
+  "source_license": "sin LICENSE raíz en referencia; no presumir permiso de publicación"
+}

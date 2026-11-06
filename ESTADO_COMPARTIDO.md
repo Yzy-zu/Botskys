@@ -1,0 +1,28 @@
+# Relevo Botsky
+
+## 06/11/2026 · R0 cerrado; R1 siguiente
+
+Construcción autorizada en /home/petrov/botsky por encargo expreso. Único plan:
+rebuildbotsky.md. La restricción documental inicial de ese archivo queda superada
+por el encargo de ejecución; R10 remoto/R11 siguen sin autorizar.
+
+R0: Git nuevo, entorno virtual propio, configuración sin secretos, DB SQLite propia
+vacía con user_version=1 (solo metadatos de esquema). Inventario 30 declaraciones,
+29 modelos con campos/validadores y 48 archivos audiovisuales. Dependencias,
+activos/licencias y discrepancias documentados. No runtime prestado ni NLP.
+
+Checkpoint mecánico previo separado: Zhana ref refs/checkpoints/botsky-r0-nlp-20261106,
+commit 4efd99a. Patch y archivo de evidencia privados con manifiesto SHA256.
+Conservados HEAD/index/worktree y auditorías ajenas. No se ha ejecutado ni
+investigado NLP, ni instalado candidata alguna.
+
+Comprobación de cierre: docs/evidencia/R0.json. No pruebas de motor, proveedor,
+WhatsApp, navegador o recepción humana. Instalación activa no tocada; DB31,
+servicios, configuración, sesiones y transportes intactos. Sin GitHub.
+
+Siguiente: R1 matriz de cada acción/campo, lexer determinista con spans, registro
+sin colisiones, argumentos tipados, ayuda y errores específicos. Cero efectos
+en parser. Tras cierre, R2 según dependencias. R3–R11 aún pendientes.
+
+Cuota inicial 99 % primaria / 55 % semanal. Consultar periódicamente; al 5 % de
+cualquier ventana guardar y parar sin reanudación automática.

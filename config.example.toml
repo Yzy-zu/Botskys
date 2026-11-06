@@ -1,0 +1,13 @@
+instance = "botsky-local"
+epoch = 1
+database = "private/botsky.sqlite3"
+timezone = "America/Mexico_City"
+# Instante de corte explícito; ajustar al iniciar cada laboratorio.
+activation_at = "2026-11-06T00:00:00Z"
+max_age_seconds = 300
+max_future_seconds = 30
+owner = "owner-local"
+friends = ["friend-local"]
+allowed_groups = ["lab-local"]
+transport = "local"
+# Proveedores deshabilitados: no heredan secretos ni configuración de Zhana.

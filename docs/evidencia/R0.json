@@ -1,0 +1,22 @@
+{
+  "block": "R0",
+  "status": "PASS",
+  "at": "2026-11-06T01:57:21.458746+00:00",
+  "source_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+  "checkpoint_commit": "4efd99a1b68f51f27f226c147eab2fbab7918179",
+  "checks": {
+    "30_unique_catalog_entries": true,
+    "source_hashes": true,
+    "evidence_archive_hashes": 2655,
+    "zhana_worktree_unchanged": true,
+    "db_own_empty_v1": true,
+    "runtime_no_zhana_import": true,
+    "synthetic_config_no_credentials": true
+  },
+  "limits": [
+    "sin motores/proveedores",
+    "sin pruebas remotas",
+    "sin cambios productivos",
+    "R1 todavía pendiente"
+  ]
+}

@@ -1,0 +1,673 @@
+{
+  "AdminArgs": {
+    "file": "src/zhana/admin.py",
+    "line": 26,
+    "fields": {
+      "action": {
+        "type": "Literal['warn', 'unwarn', 'warnings', 'kick', 'ban', 'unban', 'promote', 'demote', 'mute', 'unmute', 'lock', 'unlock', 'xp_grant', 'xp_remove', 'nuclear_prepare', 'nuclear_confirm', 'nuclear_cancel']",
+        "default_constraint": null
+      },
+      "target": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      },
+      "warning_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "account_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "amount": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=50000)"
+      },
+      "draft_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      }
+    },
+    "contract": "class AdminArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\n        \"warn\", \"unwarn\", \"warnings\", \"kick\", \"ban\", \"unban\", \"promote\", \"demote\",\n        \"mute\", \"unmute\", \"lock\", \"unlock\", \"xp_grant\", \"xp_remove\",\n        \"nuclear_prepare\", \"nuclear_confirm\", \"nuclear_cancel\",\n    ]\n    target: str | None = Field(default=None, min_length=1, max_length=64)\n    warning_id: int | None = Field(default=None, ge=1)\n    account_id: int | None = Field(default=None, ge=1)\n    amount: int | None = Field(default=None, ge=1, le=50000)\n    draft_id: str | None = Field(default=None, min_length=1, max_length=64)\n\n    @model_validator(mode=\"after\")\n    def valid_fields(self) -> AdminArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        target_actions = {\n            \"warn\", \"warnings\", \"kick\", \"ban\", \"unban\", \"promote\", \"demote\",\n        }\n        if self.action == \"warnings\":\n            allowed, required = {\"target\"}, set()\n        elif self.action in target_actions:\n            allowed, required = {\"target\"}, {\"target\"}\n        elif self.action == \"unwarn\":\n            allowed, required = {\"target\", \"warning_id\"}, {\"target\", \"warning_id\"}\n        elif self.action in {\"xp_grant\", \"xp_remove\"}:\n            allowed, required = {\"target\", \"account_id\", \"amount\"}, {\"amount\"}\n            if (self.target is None) == (self.account_id is None):\n                raise ValueError(\"provide exactly one verified account target\")\n            required = required | ({\"target\"} if self.target is not None else {\"account_id\"})\n        elif self.action in {\"mute\", \"unmute\", \"lock\", \"unlock\", \"nuclear_prepare\"}:\n            allowed, required = set(), set()\n        else:\n            allowed, required = {\"draft_id\"}, {\"draft_id\"}\n        if supplied - allowed or not required <= supplied:\n            raise ValueError(\"inconsistent admin arguments\")\n        if any(getattr(self, key) is None for key in supplied):\n            raise ValueError(\"admin arguments cannot be null\")\n        return self"
+  },
+  "BlackjackArgs": {
+    "file": "src/zhana/blackjack.py",
+    "line": 28,
+    "fields": {
+      "action": {
+        "type": "Literal['start', 'table', 'join', 'deal', 'hit', 'stand', 'double', 'status', 'cancel']",
+        "default_constraint": null
+      },
+      "bet": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=MIN_BET, le=MAX_BET)"
+      },
+      "game_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      }
+    },
+    "contract": "class BlackjackArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    action: Literal[\"start\", \"table\", \"join\", \"deal\", \"hit\", \"stand\", \"double\", \"status\", \"cancel\"]\n    bet: int | None = Field(default=None, ge=MIN_BET, le=MAX_BET)\n    game_id: str | None = Field(default=None, min_length=1, max_length=64)\n\n    @model_validator(mode=\"after\")\n    def valid_fields(self) -> BlackjackArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        if \"bet\" in supplied and self.action not in {\"start\", \"table\"}:\n            raise ValueError(\"bet is only valid when starting a game or table\")\n        if any(getattr(self, key) is None for key in supplied):\n            raise ValueError(\"Blackjack optional fields cannot be null\")\n        return self"
+  },
+  "PrankArgs": {
+    "file": "src/zhana/broma.py",
+    "line": 15,
+    "fields": {
+      "label": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=40)"
+      }
+    },
+    "contract": "class PrankArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    label: str | None = Field(default=None, max_length=40)\n\n    @model_validator(mode=\"after\")\n    def validate_label(self) -> PrankArgs:\n        if \"label\" in self.model_fields_set:\n            if self.label is None or not _safe_label(self.label):\n                raise ValueError(\"label must be a safe literal label\")\n        return self"
+  },
+  "CallArgs": {
+    "file": "src/zhana/call_tools.py",
+    "line": 13,
+    "fields": {
+      "action": {
+        "type": "Literal['start', 'status', 'hangup', 'cancel']",
+        "default_constraint": null
+      },
+      "topic": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=8000)"
+      },
+      "max_seconds": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=5, le=3600)"
+      },
+      "video": {
+        "type": "bool",
+        "default_constraint": "False"
+      }
+    },
+    "contract": "class CallArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    action: Literal[\"start\", \"status\", \"hangup\", \"cancel\"]\n    topic: str | None = Field(default=None, max_length=8000)\n    max_seconds: int | None = Field(default=None, ge=5, le=3600)\n    video: bool = False\n\n    @model_validator(mode=\"after\")\n    def validate_options(self) -> CallArgs:\n        if self.action != \"start\" and (\n            self.topic is not None or self.max_seconds is not None or self.video\n        ):\n            raise ValueError(\"Call options apply only to start\")\n        if self.topic is not None and not self.topic.strip():\n            raise ValueError(\"Empty call topic\")\n        return self"
+  },
+  "CooperachaArgs": {
+    "file": "src/zhana/cooperacha.py",
+    "line": 23,
+    "fields": {
+      "action": {
+        "type": "Literal['start', 'contribute', 'status', 'cancel']",
+        "default_constraint": null
+      },
+      "challenge_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      },
+      "category": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=120)"
+      },
+      "target_xp": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=50, le=50000)"
+      },
+      "amount": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=50000)"
+      }
+    },
+    "contract": "class CooperachaArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"start\", \"contribute\", \"status\", \"cancel\"]\n    challenge_id: str | None = Field(default=None, min_length=1, max_length=64)\n    category: str | None = Field(default=None, min_length=1, max_length=120)\n    target_xp: int | None = Field(default=None, ge=50, le=50000)\n    amount: int | None = Field(default=None, ge=1, le=50000)\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> CooperachaArgs:\n        fields = self.model_fields_set - {\"action\"}\n        allowed = {\n            \"start\": {\"category\", \"target_xp\"},\n            \"contribute\": {\"challenge_id\", \"amount\"},\n            \"status\": {\"challenge_id\"},\n            \"cancel\": {\"challenge_id\"},\n        }[self.action]\n        if fields - allowed or any(getattr(self, k) is None for k in fields):\n            raise ValueError(\"inconsistent cooperacha args\")\n        if self.action == \"contribute\" and self.amount is None:\n            raise ValueError(\"amount required\")\n        if self.category and (not self.category.strip() or not self.category.isprintable()):\n            raise ValueError(\"invalid category\")\n        return self"
+  },
+  "DocumentArgs": {
+    "file": "src/zhana/documents.py",
+    "line": 40,
+    "fields": {
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=256)"
+      },
+      "target": {
+        "type": "DocumentTarget",
+        "default_constraint": null
+      }
+    },
+    "contract": "class DocumentArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    attachment_id: str | None = Field(default=None, max_length=256)\n    target: DocumentTarget\n\n    @field_validator(\"target\", mode=\"before\")\n    @classmethod\n    def normalize_format(cls, value: object) -> object:\n        return normalize_target(value) if isinstance(value, str) else value\n\n    @field_validator(\"attachment_id\", mode=\"before\")\n    @classmethod\n    def normalize_attachment(cls, value: object) -> object:\n        return None if isinstance(value, str) and not value.strip() else value"
+  },
+  "DownloadArgs": {
+    "file": "src/zhana/downloads.py",
+    "line": 102,
+    "fields": {
+      "query": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=300)"
+      },
+      "url": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=2000)"
+      },
+      "format": {
+        "type": "Literal['audio', 'video']",
+        "default_constraint": "'audio'"
+      },
+      "source": {
+        "type": "Literal['youtube', 'pornhub', 'xnxx', 'adult'] | None",
+        "default_constraint": "None"
+      },
+      "choice": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=MULTIMEDIA_CHOICES)"
+      },
+      "previous": {
+        "type": "bool",
+        "default_constraint": "False"
+      },
+      "options": {
+        "type": "MediaOptions | None",
+        "default_constraint": "None"
+      }
+    },
+    "contract": "class DownloadArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    query: str | None = Field(default=None, min_length=1, max_length=300)\n    url: str | None = Field(default=None, min_length=1, max_length=2000)\n    format: Literal[\"audio\", \"video\"] = \"audio\"\n    source: Literal[\"youtube\", \"pornhub\", \"xnxx\", \"adult\"] | None = None\n    choice: int | None = Field(default=None, ge=1, le=MULTIMEDIA_CHOICES)\n    previous: bool = False\n    options: MediaOptions | None = None\n\n    @model_validator(mode=\"after\")\n    def one_source(self) -> DownloadArgs:\n        if sum(x is not None for x in (self.query, self.url, self.choice)) + self.previous != 1:\n            raise ValueError(\"exactly one source is required\")\n        if self.query is not None and not self.query.strip():\n            raise ValueError(\"empty query\")\n        return self"
+  },
+  "DriveArgs": {
+    "file": "src/zhana/drive.py",
+    "line": 38,
+    "fields": {
+      "action": {
+        "type": "Literal['save', 'search', 'choose', 'capacity']",
+        "default_constraint": null
+      },
+      "query": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=200)"
+      },
+      "choice": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=5)"
+      },
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      }
+    },
+    "contract": "class DriveArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"save\", \"search\", \"choose\", \"capacity\"]\n    query: str | None = Field(default=None, min_length=1, max_length=200)\n    choice: int | None = Field(default=None, ge=1, le=5)\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)\n\n    @model_validator(mode=\"after\")\n    def valid_combination(self) -> DriveArgs:\n        if self.action == \"capacity\" and any(v is not None for v in (self.query, self.choice, self.attachment_id)):\n            raise ValueError(\"capacity arguments\")\n        if self.action == \"save\" and (self.query is not None or self.choice is not None):\n            raise ValueError(\"save arguments\")\n        if self.action == \"search\" and (\n            self.choice is not None\n            or self.attachment_id is not None\n            or (self.query is not None and not self.query.strip())\n        ):\n            raise ValueError(\"search arguments\")\n        if self.action == \"choose\" and (\n            self.choice is None or self.query is not None or self.attachment_id is not None\n        ):\n            raise ValueError(\"choose arguments\")\n        return self"
+  },
+  "EconomyArgs": {
+    "file": "src/zhana/economy.py",
+    "line": 18,
+    "fields": {
+      "action": {
+        "type": "Literal['daily', 'balance', 'top']",
+        "default_constraint": null
+      }
+    },
+    "contract": "class EconomyArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"daily\", \"balance\", \"top\"]"
+  },
+  "HappyArgs": {
+    "file": "src/zhana/happy_hour.py",
+    "line": 25,
+    "fields": {
+      "action": {
+        "type": "Literal['start', 'stop', 'status', 'rain', 'airdrop', 'claim']",
+        "default_constraint": null
+      },
+      "duration_minutes": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=1440)"
+      },
+      "event_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      }
+    },
+    "contract": "class HappyArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"start\", \"stop\", \"status\", \"rain\", \"airdrop\", \"claim\"]\n    duration_minutes: int | None = Field(default=None, ge=1, le=1440)\n    event_id: str | None = Field(default=None, min_length=1, max_length=64)\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> HappyArgs:\n        if self.action != \"start\" and self.duration_minutes is not None:\n            raise ValueError(\"duration only for start\")\n        if self.action == \"start\" and self.event_id is not None:\n            raise ValueError(\"start has no existing event\")\n        return self"
+  },
+  "StickerArgs": {
+    "file": "src/zhana/jobs.py",
+    "line": 60,
+    "fields": {
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      }
+    },
+    "contract": "class StickerArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)"
+  },
+  "ReadImageArgs": {
+    "file": "src/zhana/jobs.py",
+    "line": 65,
+    "fields": {
+      "mode": {
+        "type": "Literal['text', 'qr']",
+        "default_constraint": null
+      },
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      }
+    },
+    "contract": "class ReadImageArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    mode: Literal[\"text\", \"qr\"]\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)"
+  },
+  "TranscribeArgs": {
+    "file": "src/zhana/jobs.py",
+    "line": 71,
+    "fields": {
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      },
+      "summarize": {
+        "type": "bool",
+        "default_constraint": "False"
+      },
+      "output_mode": {
+        "type": "Literal['transcript', 'summary', 'both'] | None",
+        "default_constraint": "None"
+      }
+    },
+    "contract": "class TranscribeArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)\n    summarize: bool = False\n    output_mode: Literal[\"transcript\", \"summary\", \"both\"] | None = None"
+  },
+  "EditMediaArgs": {
+    "file": "src/zhana/jobs.py",
+    "line": 78,
+    "fields": {
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      },
+      "options": {
+        "type": "MediaOptions",
+        "default_constraint": "Field(default_factory=MediaOptions)"
+      }
+    },
+    "contract": "class EditMediaArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)\n    options: MediaOptions = Field(default_factory=MediaOptions)"
+  },
+  "MediaOptions": {
+    "file": "src/zhana/media_edit.py",
+    "line": 22,
+    "fields": {
+      "container": {
+        "type": "Literal['mp3', 'mp4', 'webm', 'srt']",
+        "default_constraint": "'mp4'"
+      },
+      "quality": {
+        "type": "Literal['small', 'standard', 'high']",
+        "default_constraint": "'standard'"
+      },
+      "start_seconds": {
+        "type": "float",
+        "default_constraint": "Field(default=0, ge=0, le=MEDIA_DURATION_SECONDS)"
+      },
+      "end_seconds": {
+        "type": "float | None",
+        "default_constraint": "Field(default=None, le=MEDIA_DURATION_SECONDS)"
+      },
+      "subtitle_language": {
+        "type": "Literal['es', 'en'] | None",
+        "default_constraint": "None"
+      }
+    },
+    "contract": "class MediaOptions(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True, allow_inf_nan=False)\n    container: Literal[\"mp3\", \"mp4\", \"webm\", \"srt\"] = \"mp4\"\n    quality: Literal[\"small\", \"standard\", \"high\"] = \"standard\"\n    start_seconds: float = Field(default=0, ge=0, le=MEDIA_DURATION_SECONDS)\n    end_seconds: float | None = Field(default=None, le=MEDIA_DURATION_SECONDS)\n    subtitle_language: Literal[\"es\", \"en\"] | None = None\n\n    @model_validator(mode=\"after\")\n    def validate_range(self) -> MediaOptions:\n        if self.end_seconds is not None and self.end_seconds <= self.start_seconds:\n            raise ValueError(\"end must follow start\")\n        if self.subtitle_language is not None and self.container != \"srt\":\n            raise ValueError(\"subtitle language requires srt\")\n        return self"
+  },
+  "MemoryArgs": {
+    "file": "src/zhana/memory.py",
+    "line": 18,
+    "fields": {
+      "action": {
+        "type": "Literal['remember', 'list', 'correct', 'forget', 'forget_all']",
+        "default_constraint": null
+      },
+      "memory_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "kind": {
+        "type": "Literal['preference', 'lore'] | None",
+        "default_constraint": "None"
+      },
+      "text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=1000)"
+      },
+      "page": {
+        "type": "int",
+        "default_constraint": "Field(default=1, ge=1, le=10000)"
+      }
+    },
+    "contract": "class MemoryArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    action: Literal[\"remember\", \"list\", \"correct\", \"forget\", \"forget_all\"]\n    memory_id: int | None = Field(default=None, ge=1)\n    kind: Literal[\"preference\", \"lore\"] | None = None\n    text: str | None = Field(default=None, min_length=1, max_length=1000)\n    page: int = Field(default=1, ge=1, le=10000)\n\n    @field_validator(\"text\", mode=\"before\")\n    @classmethod\n    def trim_text(cls, value: Any) -> Any:\n        if isinstance(value, str):\n            return value.strip()\n        return value\n\n    @field_validator(\"text\")\n    @classmethod\n    def safe_text(cls, value: str | None) -> str | None:\n        if value is not None and any(\n            unicodedata.category(char).startswith(\"C\") and char not in \"\\n\\t\"\n            for char in value\n        ):\n            raise ValueError(\"invalid memory text\")\n        if value is not None and re.search(\n            r\"\\b[^\\s@]{1,128}@(s\\.whatsapp\\.net|lid)\\b\", value, re.IGNORECASE\n        ):\n            raise ValueError(\"identifiers are not memory facts\")\n        return value\n\n    @model_validator(mode=\"after\")\n    def consistent(self) -> MemoryArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        allowed: dict[str, tuple[set[str], set[str]]] = {\n            \"remember\": ({\"kind\", \"text\"}, {\"text\"}),\n            \"list\": ({\"kind\", \"page\"}, set()),\n            \"correct\": ({\"memory_id\", \"text\"}, {\"text\"}),\n            \"forget\": ({\"memory_id\"}, set()),\n            \"forget_all\": (set(), set()),\n        }\n        permitted, required = allowed[self.action]\n        if supplied - permitted or not required <= supplied:\n            raise ValueError(\"inconsistent memory arguments\")\n        if self.action == \"remember\" and \"kind\" not in supplied:\n            self.kind = \"preference\"\n        if self.action == \"remember\" and (self.kind is None or self.text is None):\n            raise ValueError(\"remember requires a kind and literal text\")\n        if self.action == \"correct\" and self.text is None:\n            raise ValueError(\"correct requires replacement text\")\n        if self.action == \"forget\" and self.memory_id is None:\n            # A unique exact-content match can authorize the target in the backend.\n            return self\n        if self.action == \"correct\" and self.memory_id is None:\n            return self\n        return self"
+  },
+  "MessageArgs": {
+    "file": "src/zhana/messages.py",
+    "line": 50,
+    "fields": {
+      "action": {
+        "type": "Literal['prepare', 'status', 'send', 'cancel', 'contacts']",
+        "default_constraint": null
+      },
+      "draft_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      },
+      "recipients": {
+        "type": "list[str] | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=10)"
+      },
+      "text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=4000)"
+      },
+      "source": {
+        "type": "Literal['current', 'quote'] | None",
+        "default_constraint": "None"
+      },
+      "attach": {
+        "type": "bool",
+        "default_constraint": "False"
+      }
+    },
+    "contract": "class MessageArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"prepare\", \"status\", \"send\", \"cancel\", \"contacts\"]\n    draft_id: str | None = Field(default=None, min_length=1, max_length=64)\n    recipients: list[str] | None = Field(default=None, min_length=1, max_length=10)\n    text: str | None = Field(default=None, min_length=1, max_length=4000)\n    source: Literal[\"current\", \"quote\"] | None = None\n    attach: bool = False\n\n    @model_validator(mode=\"before\")\n    @classmethod\n    def omit_optional_nulls(cls, value: Any) -> Any:\n        if not isinstance(value, dict):\n            return value\n        action = value.get(\"action\")\n        optional = {\"draft_id\"}\n        if action == \"prepare\":\n            optional |= {\"recipients\", \"text\", \"source\"}\n        return {k: v for k, v in value.items() if not (k in optional and v is None)}\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> MessageArgs:\n        if self.action != \"prepare\" and self.model_fields_set - {\"action\", \"draft_id\"}:\n            raise ValueError(\"inconsistent message arguments\")\n        if self.action == \"contacts\" and self.draft_id is not None:\n            raise ValueError(\"contacts takes no draft\")\n        if self.attach and self.source is None:\n            raise ValueError(\"explicit attachment source required\")\n        if self.text and any(\n            unicodedata.category(c).startswith(\"C\") and c not in \"\\n\\t\" for c in self.text\n        ):\n            raise ValueError(\"invalid text\")\n        if self.recipients and any(not normalized(r) or len(r) > 80 for r in self.recipients):\n            raise ValueError(\"invalid recipient\")\n        return self"
+  },
+  "MinecraftArgs": {
+    "file": "src/zhana/minecraft.py",
+    "line": 24,
+    "fields": {
+      "action": {
+        "type": "Literal['status', 'players', 'worlds', 'mods', 'config', 'start', 'stop', 'restart', 'backup', 'enable_mod', 'disable_mod', 'console']",
+        "default_constraint": null
+      },
+      "name": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=100)"
+      },
+      "command": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=1000)"
+      }
+    },
+    "contract": "class MinecraftArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\n        \"status\", \"players\", \"worlds\", \"mods\", \"config\",\n        \"start\", \"stop\", \"restart\", \"backup\", \"enable_mod\", \"disable_mod\", \"console\",\n    ]\n    name: str | None = Field(default=None, min_length=1, max_length=100)\n    command: str | None = Field(default=None, min_length=1, max_length=1000)\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> MinecraftArgs:\n        if self.action in {\"enable_mod\", \"disable_mod\"}:\n            if self.name is None or self.command is not None or not self.name.strip():\n                raise ValueError(\"mod name required\")\n        elif self.action == \"console\":\n            if self.command is None or self.name is not None or not self.command.strip():\n                raise ValueError(\"literal console command required\")\n        elif self.name is not None or self.command is not None:\n            raise ValueError(\"unexpected Minecraft argument\")\n        for value in (self.name, self.command):\n            if value and any(unicodedata.category(char).startswith(\"C\") for char in value):\n                raise ValueError(\"control characters are forbidden\")\n        return self"
+  },
+  "PackArgs": {
+    "file": "src/zhana/packs.py",
+    "line": 22,
+    "fields": {
+      "action": {
+        "type": "Literal['catalog', 'buy', 'status']",
+        "default_constraint": null
+      },
+      "category": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=120)"
+      },
+      "purchase_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=64)"
+      },
+      "page": {
+        "type": "int",
+        "default_constraint": "Field(default=1, ge=1, le=20)"
+      }
+    },
+    "contract": "class PackArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"catalog\", \"buy\", \"status\"]\n    category: str | None = Field(default=None, min_length=1, max_length=120)\n    purchase_id: str | None = Field(default=None, min_length=1, max_length=64)\n    page: int = Field(default=1, ge=1, le=20)\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> PackArgs:\n        if self.category is not None:\n            self.category = self.category.strip()\n            if not self.category or any(\n                unicodedata.category(c).startswith(\"C\") for c in self.category\n            ):\n                raise ValueError(\"invalid category\")\n        fields = self.model_fields_set - {\"action\"}\n        if self.action == \"catalog\" and fields - {\"page\"}:\n            raise ValueError(\"catalog only takes page\")\n        if self.action == \"status\" and (fields != {\"purchase_id\"} or not self.purchase_id):\n            raise ValueError(\"status requires purchase_id\")\n        if self.action == \"buy\" and (\n            \"page\" in fields or (self.category is not None and self.purchase_id is not None)\n        ):\n            raise ValueError(\"buy takes category or purchase_id\")\n        return self"
+  },
+  "PdfArgs": {
+    "file": "src/zhana/pdf_args.py",
+    "line": 8,
+    "fields": {
+      "action": {
+        "type": "Literal['start', 'add', 'finish', 'extract', 'retry', 'cancel']",
+        "default_constraint": null
+      },
+      "attachment_ids": {
+        "type": "list[str] | None",
+        "default_constraint": "Field(default=None, max_length=20)"
+      },
+      "pages": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=1000)"
+      },
+      "confirm_uncertain": {
+        "type": "bool",
+        "default_constraint": "False"
+      }
+    },
+    "contract": "class PdfArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"start\", \"add\", \"finish\", \"extract\", \"retry\", \"cancel\"]\n    attachment_ids: list[str] | None = Field(default=None, max_length=20)\n    pages: str | None = Field(default=None, min_length=1, max_length=1000)\n    confirm_uncertain: bool = False\n\n    @model_validator(mode=\"after\")\n    def validate_operation(self) -> Self:\n        if self.attachment_ids is not None and (\n            not self.attachment_ids\n            or any(not x or len(x) > 256 for x in self.attachment_ids)\n            or len(set(self.attachment_ids)) != len(self.attachment_ids)\n        ):\n            raise ValueError(\"invalid attachment ids\")\n        if self.action not in {\"start\", \"add\", \"extract\"} and self.attachment_ids is not None:\n            raise ValueError(\"attachments not allowed\")\n        if self.action == \"extract\" and (self.pages is None or len(self.attachment_ids or []) > 1):\n            raise ValueError(\"extraction requires pages and one source\")\n        if self.action != \"extract\" and self.pages is not None:\n            raise ValueError(\"pages not allowed\")\n        if self.action != \"retry\" and self.confirm_uncertain:\n            raise ValueError(\"confirmation not allowed\")\n        return self"
+  },
+  "PollArgs": {
+    "file": "src/zhana/polls.py",
+    "line": 18,
+    "fields": {
+      "action": {
+        "type": "Literal['create', 'vote', 'results', 'close']",
+        "default_constraint": null
+      },
+      "question": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=300)"
+      },
+      "options": {
+        "type": "list[str] | None",
+        "default_constraint": "Field(default=None, min_length=2, max_length=10)"
+      },
+      "poll_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=9223372036854775807)"
+      },
+      "choice": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=10)"
+      }
+    },
+    "contract": "class PollArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"create\", \"vote\", \"results\", \"close\"]\n    question: str | None = Field(default=None, min_length=1, max_length=300)\n    options: list[str] | None = Field(default=None, min_length=2, max_length=10)\n    poll_id: int | None = Field(default=None, ge=1, le=9_223_372_036_854_775_807)\n    choice: int | None = Field(default=None, ge=1, le=10)\n\n    @field_validator(\"question\")\n    @classmethod\n    def clean_question(cls, value: str | None) -> str | None:\n        if value is None:\n            return value\n        value = value.strip()\n        if not value or any(unicodedata.category(c).startswith(\"C\") for c in value):\n            raise ValueError(\"invalid poll question\")\n        return value\n\n    @field_validator(\"options\")\n    @classmethod\n    def clean_options(cls, value: list[str] | None) -> list[str] | None:\n        if value is None:\n            return value\n        cleaned = [item.strip() for item in value]\n        if any(\n            not text\n            or len(text) > 100\n            or any(unicodedata.category(c).startswith(\"C\") for c in text)\n            for text in cleaned\n        ):\n            raise ValueError(\"invalid option\")\n        if len({unicodedata.normalize(\"NFKC\", text).casefold() for text in cleaned}) != len(\n            cleaned\n        ):\n            raise ValueError(\"duplicate options\")\n        return cleaned\n\n    @model_validator(mode=\"after\")\n    def valid_action(self) -> PollArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        if self.action == \"create\":\n            if supplied != {\"question\", \"options\"} or self.question is None or self.options is None:\n                raise ValueError(\"question/options required\")\n        elif self.action == \"vote\":\n            if supplied != {\"poll_id\", \"choice\"} or self.poll_id is None or self.choice is None:\n                raise ValueError(\"poll/choice required\")\n        elif supplied != {\"poll_id\"} or self.poll_id is None:\n            raise ValueError(\"poll required\")\n        return self"
+  },
+  "ReminderArgs": {
+    "file": "src/zhana/reminders.py",
+    "line": 28,
+    "fields": {
+      "action": {
+        "type": "Literal['create', 'list', 'cancel', 'archive']",
+        "default_constraint": null
+      },
+      "text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=1000)"
+      },
+      "at": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=32)"
+      },
+      "time_text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=180)"
+      },
+      "after_seconds": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=31536000)"
+      },
+      "reminder_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "include_closed": {
+        "type": "bool",
+        "default_constraint": "False"
+      },
+      "page": {
+        "type": "int",
+        "default_constraint": "Field(default=1, ge=1, le=10000)"
+      }
+    },
+    "contract": "class ReminderArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\"create\", \"list\", \"cancel\", \"archive\"]\n    text: str | None = Field(default=None, min_length=1, max_length=1000)\n    at: str | None = Field(default=None, max_length=32)\n    time_text: str | None = Field(default=None, min_length=1, max_length=180)\n    after_seconds: int | None = Field(default=None, ge=1, le=31_536_000)\n    reminder_id: int | None = Field(default=None, ge=1)\n    include_closed: bool = False\n    page: int = Field(default=1, ge=1, le=10000)\n\n    @field_validator(\"text\")\n    @classmethod\n    def clean_text(cls, value: str | None) -> str | None:\n        if value is not None:\n            value = value.strip()\n            if not value or any(\n                unicodedata.category(c).startswith(\"C\") and c != \"\\n\" for c in value\n            ):\n                raise ValueError(\"invalid reminder text\")\n        return value\n\n    @model_validator(mode=\"after\")\n    def consistent(self) -> ReminderArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        if self.action == \"create\":\n            if (\n                supplied - {\"text\", \"at\", \"after_seconds\", \"time_text\"}\n                or self.text is None\n                or self.time_text is None\n                or ((self.at is None) == (self.after_seconds is None))\n            ):\n                raise ValueError(\"content and exactly one date are required\")\n            if self.at is not None:\n                parse_local(self.at)\n        elif self.action == \"list\":\n            if supplied - {\"include_closed\", \"page\"}:\n                raise ValueError(\"unexpected list arguments\")\n        elif supplied != {\"reminder_id\"} or self.reminder_id is None:\n            raise ValueError(\"a verified reminder number is required\")\n        return self"
+  },
+  "RouletteArgs": {
+    "file": "src/zhana/roulette.py",
+    "line": 36,
+    "fields": {
+      "action": {
+        "type": "Literal['create', 'join', 'play', 'status', 'cancel']",
+        "default_constraint": null
+      },
+      "bet": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=MIN_BET, le=MAX_BET)"
+      },
+      "room_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=12, max_length=64)"
+      }
+    },
+    "contract": "class RouletteArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    action: Literal[\"create\", \"join\", \"play\", \"status\", \"cancel\"]\n    bet: int | None = Field(default=None, ge=MIN_BET, le=MAX_BET)\n    room_id: str | None = Field(default=None, min_length=12, max_length=64)\n\n    @model_validator(mode=\"after\")\n    def valid_fields(self) -> RouletteArgs:\n        supplied = self.model_fields_set - {\"action\"}\n        if \"bet\" in supplied and self.action != \"create\":\n            raise ValueError(\"bet is only valid when creating a Roulette room\")\n        if any(getattr(self, key) is None for key in supplied):\n            raise ValueError(\"Roulette optional fields cannot be null\")\n        if self.action in {\"join\", \"play\", \"cancel\"} and self.room_id is None:\n            raise ValueError(\"room_id is required for this Roulette action\")\n        return self"
+  },
+  "SchoolArgs": {
+    "file": "src/zhana/school.py",
+    "line": 24,
+    "fields": {
+      "action": {
+        "type": "Literal['add_task', 'list_tasks', 'complete_task', 'delete_task', 'set_lesson', 'list_schedule', 'delete_lesson', 'configure_digest', 'status_digest', 'get_attachment']",
+        "default_constraint": null
+      },
+      "text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=1000)"
+      },
+      "subject": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=100)"
+      },
+      "due_date": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=10)"
+      },
+      "due_time": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=5)"
+      },
+      "time_text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=240)"
+      },
+      "task_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "weekday": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1, le=7)"
+      },
+      "start_time": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=5)"
+      },
+      "end_time": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=5)"
+      },
+      "lesson_id": {
+        "type": "int | None",
+        "default_constraint": "Field(default=None, ge=1)"
+      },
+      "enabled": {
+        "type": "bool | None",
+        "default_constraint": "None"
+      },
+      "digest_time": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=5)"
+      },
+      "page": {
+        "type": "int",
+        "default_constraint": "Field(default=1, ge=1, le=10000)"
+      },
+      "include_closed": {
+        "type": "bool",
+        "default_constraint": "False"
+      },
+      "attach": {
+        "type": "bool",
+        "default_constraint": "False"
+      },
+      "attachment_id": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, min_length=1, max_length=256)"
+      }
+    },
+    "contract": "class SchoolArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    action: Literal[\n        \"add_task\",\n        \"list_tasks\",\n        \"complete_task\",\n        \"delete_task\",\n        \"set_lesson\",\n        \"list_schedule\",\n        \"delete_lesson\",\n        \"configure_digest\",\n        \"status_digest\",\n        \"get_attachment\",\n    ]\n    text: str | None = Field(default=None, min_length=1, max_length=1000)\n    subject: str | None = Field(default=None, min_length=1, max_length=100)\n    due_date: str | None = Field(default=None, max_length=10)\n    due_time: str | None = Field(default=None, max_length=5)\n    time_text: str | None = Field(default=None, min_length=1, max_length=240)\n    task_id: int | None = Field(default=None, ge=1)\n    weekday: int | None = Field(default=None, ge=1, le=7)\n    start_time: str | None = Field(default=None, max_length=5)\n    end_time: str | None = Field(default=None, max_length=5)\n    lesson_id: int | None = Field(default=None, ge=1)\n    enabled: bool | None = None\n    digest_time: str | None = Field(default=None, max_length=5)\n    page: int = Field(default=1, ge=1, le=10000)\n    include_closed: bool = False\n    attach: bool = False\n    attachment_id: str | None = Field(default=None, min_length=1, max_length=256)\n\n    @model_validator(mode=\"before\")\n    @classmethod\n    def omit_optional_nulls(cls, value: Any) -> Any:\n        if not isinstance(value, dict):\n            return value\n        action = value.get(\"action\")\n        if not isinstance(action, str):\n            return value\n        optional = {\n            \"add_task\": {\"subject\", \"due_time\", \"attachment_id\"},\n            \"list_schedule\": {\"weekday\"},\n            \"configure_digest\": {\"digest_time\", \"time_text\"},\n        }.get(action, set())\n        return {k: v for k, v in value.items() if not (k in optional and v is None)}\n\n    @field_validator(\"due_time\", \"start_time\", \"end_time\", \"digest_time\")\n    @classmethod\n    def normalize_clock(cls, value: str | None) -> str | None:\n        if value is None:\n            return None\n        return parse_clock(value).strftime(\"%H:%M\")\n\n    @field_validator(\"text\", \"subject\", \"time_text\")\n    @classmethod\n    def clean(cls, value: str | None) -> str | None:\n        if value is not None:\n            value = value.strip()\n            if not value or any(\n                unicodedata.category(c).startswith(\"C\") and c != \"\\n\" for c in value\n            ):\n                raise ValueError(\"invalid school text\")\n        return value\n\n    @model_validator(mode=\"after\")\n    def valid(self) -> SchoolArgs:\n        fields = self.model_fields_set - {\"action\"}\n        allowed = {\n            \"add_task\": (\n                {\"text\", \"subject\", \"due_date\", \"due_time\", \"time_text\", \"attachment_id\", \"attach\"},\n                {\"text\", \"due_date\", \"time_text\"},\n            ),\n            \"list_tasks\": ({\"page\", \"include_closed\"}, set()),\n            \"complete_task\": ({\"task_id\"}, {\"task_id\"}),\n            \"delete_task\": ({\"task_id\"}, {\"task_id\"}),\n            \"set_lesson\": (\n                {\"subject\", \"weekday\", \"start_time\", \"end_time\", \"time_text\"},\n                {\"subject\", \"weekday\", \"start_time\", \"end_time\", \"time_text\"},\n            ),\n            \"list_schedule\": ({\"weekday\"}, set()),\n            \"delete_lesson\": ({\"lesson_id\"}, {\"lesson_id\"}),\n            \"configure_digest\": ({\"enabled\", \"digest_time\", \"time_text\"}, {\"enabled\"}),\n            \"status_digest\": (set(), set()),\n            \"get_attachment\": ({\"task_id\"}, {\"task_id\"}),\n        }\n        permitted, required = allowed[self.action]\n        if (\n            fields - permitted\n            or not required <= fields\n            or any(getattr(self, key) is None for key in fields)\n        ):\n            raise ValueError(\"inconsistent school arguments\")\n        for value in [self.due_time, self.start_time, self.end_time, self.digest_time]:\n            if value is not None:\n                parse_clock(value)\n        if self.due_date is not None:\n            if not re.fullmatch(r\"\\d{4}-\\d{2}-\\d{2}\", self.due_date):\n                raise ValueError(\"date required\")\n        if self.action == \"set_lesson\" and (self.start_time or \"\") >= (self.end_time or \"\"):\n            raise ValueError(\"lesson must end later\")\n        if self.action == \"configure_digest\":\n            if self.enabled and not {\"digest_time\", \"time_text\"} <= fields:\n                raise ValueError(\"explicit time required\")\n            if not self.enabled and fields != {\"enabled\"}:\n                raise ValueError(\"disable takes no time\")\n        if self.attachment_id is not None and not self.attach:\n            raise ValueError(\"attachment_id requires attach\")\n        return self"
+  },
+  "SpeechArgs": {
+    "file": "src/zhana/speech.py",
+    "line": 75,
+    "fields": {
+      "mode": {
+        "type": "Literal['compose', 'verbatim']",
+        "default_constraint": null
+      },
+      "text": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=8000)"
+      },
+      "voice": {
+        "type": "Voice",
+        "default_constraint": "'zhana'"
+      },
+      "effect": {
+        "type": "Effect",
+        "default_constraint": "'none'"
+      },
+      "source": {
+        "type": "Literal['provided', 'quote', 'last_reply']",
+        "default_constraint": "'provided'"
+      },
+      "requested_seconds": {
+        "type": "float | None",
+        "default_constraint": "Field(default=None, gt=0, le=600)"
+      }
+    },
+    "contract": "class SpeechArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True, allow_inf_nan=False)\n    mode: Literal[\"compose\", \"verbatim\"]\n    text: str | None = Field(default=None, max_length=8000)\n    voice: Voice = \"zhana\"\n    effect: Effect = \"none\"\n    source: Literal[\"provided\", \"quote\", \"last_reply\"] = \"provided\"\n    requested_seconds: float | None = Field(default=None, gt=0, le=600)\n\n    @model_validator(mode=\"after\")\n    def validate_text(self) -> SpeechArgs:\n        if self.text is not None and any(\n            unicodedata.category(c) == \"Cc\" and c not in \"\\n\\r\\t\" for c in self.text\n        ):\n            raise ValueError(\"text contains control characters\")\n        if self.mode == \"compose\" and (self.text is None or not self.text.strip()):\n            raise ValueError(\"compose requires text\")\n        if self.mode != \"compose\" and self.requested_seconds is not None:\n            raise ValueError(\"requested_seconds only applies to compose\")\n        return self"
+  },
+  "ExpressionArgs": {
+    "file": "src/zhana/stickers.py",
+    "line": 22,
+    "fields": {
+      "sticker_id": {
+        "type": "StickerId",
+        "default_constraint": null
+      },
+      "requested": {
+        "type": "bool",
+        "default_constraint": "False"
+      }
+    },
+    "contract": "class ExpressionArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n\n    sticker_id: StickerId\n    requested: bool = False"
+  },
+  "SearchArgs": {
+    "file": "src/zhana/web_search.py",
+    "line": 25,
+    "fields": {
+      "query": {
+        "type": "str",
+        "default_constraint": "Field(min_length=1, max_length=300)"
+      },
+      "required_terms": {
+        "type": "list[str]",
+        "default_constraint": "Field(default_factory=list, max_length=8)"
+      }
+    },
+    "contract": "class SearchArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    query: str = Field(min_length=1, max_length=300)\n    required_terms: list[str] = Field(default_factory=list, max_length=8)\n\n    @field_validator(\"required_terms\")\n    @classmethod\n    def valid_terms(cls, values: list[str]) -> list[str]:\n        if any(\n            not value.strip() or len(value) > 100\n            or any(unicodedata.category(c).startswith(\"C\") for c in value)\n            for value in values\n        ):\n            raise ValueError(\"invalid required term\")\n        return list(dict.fromkeys(value.strip() for value in values))\n\n    @field_validator(\"query\")\n    @classmethod\n    def valid_query(cls, value: str) -> str:\n        value = value.strip()\n        if not value or any(unicodedata.category(c).startswith(\"C\") for c in value):\n            raise ValueError(\"invalid query\")\n        return value"
+  },
+  "SaveArgs": {
+    "file": "src/zhana/tools/notes.py",
+    "line": 17,
+    "fields": {
+      "text": {
+        "type": "str",
+        "default_constraint": "Field(min_length=1, max_length=8000)"
+      }
+    },
+    "contract": "class SaveArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    text: str = Field(min_length=1, max_length=8000)\n\n    @field_validator(\"text\", mode=\"before\")\n    @classmethod\n    def strip_text(cls, value: Any) -> Any:\n        return value.strip() if isinstance(value, str) else value"
+  },
+  "FindArgs": {
+    "file": "src/zhana/tools/notes.py",
+    "line": 27,
+    "fields": {
+      "query": {
+        "type": "str | None",
+        "default_constraint": "Field(default=None, max_length=200)"
+      },
+      "page": {
+        "type": "int",
+        "default_constraint": "Field(default=1, ge=1, le=10000)"
+      }
+    },
+    "contract": "class FindArgs(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", strict=True)\n    query: str | None = Field(default=None, max_length=200)\n    page: int = Field(default=1, ge=1, le=10000)\n\n    @field_validator(\"query\", mode=\"before\")\n    @classmethod\n    def strip_query(cls, value: Any) -> Any:\n        return value.strip() if isinstance(value, str) else value\n\n    @model_validator(mode=\"before\")\n    @classmethod\n    def omit_null_query(cls, value: Any) -> Any:\n        if isinstance(value, dict) and \"query\" in value and value[\"query\"] is None:\n            return {k: v for k, v in value.items() if k != \"query\"}\n        return value"
+  }
+}

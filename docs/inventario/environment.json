@@ -1,0 +1,56 @@
+{
+  "python": "3.14.4",
+  "sqlite": "3.46.1",
+  "core_dependencies": [],
+  "virtualenv": "/home/petrov/botsky/.venv",
+  "tools": {
+    "ffmpeg": {
+      "path": "/usr/bin/ffmpeg",
+      "version": "ffmpeg version 8.0.1-3ubuntu2 Copyright (c) 2000-2025 the FFmpeg developers",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "ffprobe": {
+      "path": "/usr/bin/ffprobe",
+      "version": "ffprobe version 8.0.1-3ubuntu2 Copyright (c) 2007-2025 the FFmpeg developers",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "libreoffice": {
+      "path": "/usr/bin/libreoffice",
+      "version": "LibreOffice 26.2.6.3 620(Build:3)",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "tesseract": {
+      "path": "/usr/bin/tesseract",
+      "version": "tesseract 5.5.0",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "zbarimg": {
+      "path": "/usr/bin/zbarimg",
+      "version": "0.23.93",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "node": {
+      "path": "/usr/bin/node",
+      "version": "v20.20.2",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "bwrap": {
+      "path": "/usr/bin/bwrap",
+      "version": "bubblewrap 0.11.1",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    },
+    "prlimit": {
+      "path": "/usr/bin/prlimit",
+      "version": "prlimit from util-linux 2.41.3",
+      "exit": 0,
+      "usage": "disponible; motor no probado por --version"
+    }
+  }
+}

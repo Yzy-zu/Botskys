@@ -1,0 +1,4671 @@
+[
+  {
+    "name": "manage_conversation",
+    "description": "Cancela encargos propios o consulta/controla la participación espontánea. Interpreta el lenguaje natural; el backend verifica identidad, grupo, ámbito, permisos y orden temporal. value es modo off/discreet/active o minutos de pausa permitidos; no inventes valores.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "cancel",
+            "mode",
+            "pause",
+            "resume",
+            "status"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "off",
+            "discreet",
+            "active",
+            "15",
+            "30",
+            "60"
+          ]
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "send_sticker",
+    "description": "Envía un sticker propio del catálogo como reacción ocasional o por pedido explícito. Úsala sola, sin texto de éxito. requested es una sugerencia; el backend comprueba la petición actual y la entrega propia reciente, conserva cooldown automático y evita repetir el sticker solicitado. Otro ambiguo pide aclaración. Para convertir un adjunto usa make_sticker.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sticker_id": {
+          "type": "string",
+          "enum": [
+            "saludo",
+            "risa",
+            "pensando",
+            "sonrojo"
+          ]
+        },
+        "requested": {
+          "type": "boolean"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "sticker_id",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "make_sticker",
+    "description": "Convierte una imagen o sticker estático solicitado en un sticker WebP. Úsala sola. El backend elige la imagen citada antes que la actual/reciente del solicitante; si falta pregunta. Normalmente omite attachment_id. No permite rutas, URLs, video ni animación. Una cita a una salida propia del bot no sustituye el adjunto para esta herramienta: pide adjuntar exactamente el archivo, sin volver a pedir que cite la misma salida.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "attachment_id": {
+          "type": "string"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "conversation",
+    "description": "Conversa, pide un dato o guarda silencio. Para respuesta social generada usa literal_span=null e interpretation.literals=[]; no inventes anclas de copia ni evidencias de un texto que tú compones. Para ask de un encargo incompleto actual, incluye clarification_tool y evidencia field=text del pedido actual; preguntar no autoriza ejecutarlo. Para comparaciones/listados útiles en columnas usa table tipada con headers/rows y título breve: el backend la entrega como tabla nativa. text_lines son las líneas de la introducción antes de table y footer es cierre opcional después; no dupliques las filas en text_lines ni dibujes tablas con espacios. Para contenido literal solicitado usa solo text_lines, sin table; una string por línea y líneas vacías conservadas. Para silent usa text_lines con una string vacía. Usa ask si falta texto de una nota; silent ante menciones incidentales. No confirmes herramientas sin ejecutarlas. Explica errores sin diagnósticos internos y pide solo el dato faltante; no repitas una cita ya rechazada. No inventes aprobaciones de pruebas ni entregas al cerrar la conversación.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "respond",
+            "ask",
+            "silent"
+          ]
+        },
+        "text_lines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "maxItems": 8000
+        },
+        "table": {
+          "additionalProperties": false,
+          "description": "Native functions use named rows instead of anonymous nested arrays.",
+          "properties": {
+            "headers": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "minItems": 1,
+              "title": "Headers",
+              "type": "array"
+            },
+            "rows": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "cells": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 20,
+                    "minItems": 1,
+                    "title": "Cells",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "cells"
+                ],
+                "title": "ProviderRow",
+                "type": "object"
+              },
+              "maxItems": 100,
+              "minItems": 1,
+              "title": "Rows",
+              "type": "array"
+            },
+            "title": {
+              "default": "",
+              "maxLength": 300,
+              "title": "Title",
+              "type": "string"
+            }
+          },
+          "required": [
+            "headers",
+            "rows"
+          ],
+          "title": "ProviderTable",
+          "type": "object"
+        },
+        "footer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 8000
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Solo pie de una table. Sin table, omitir o usar null/cadena vacía; nunca añadir un cierre separado a una respuesta de texto."
+        },
+        "literal_span": {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "description": "Exact, unique anchors in the current source; no language interpretation.",
+              "properties": {
+                "first": {
+                  "maxLength": 300,
+                  "minLength": 1,
+                  "title": "First",
+                  "type": "string"
+                },
+                "last": {
+                  "maxLength": 300,
+                  "minLength": 1,
+                  "title": "Last",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "first",
+                "last"
+              ],
+              "title": "LiteralSpan",
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Para copiar literalmente del mensaje actual, first y last son fragmentos exactos únicos al inicio y final del contenido. El backend copia desde first hasta last inclusive, sin decodificar escapes. text_lines debe ser una string vacía y sin table/footer. Para conversación generada usa null."
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "text_lines",
+        "literal_span",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "save_note",
+    "description": "Guarda una nota explícitamente solicitada en este chat. Para contenido con saltos/barras prefiere literal_span: first/last son fragmentos únicos exactos al inicio/final del contenido actual y text_lines contiene solo una string vacía; el backend copia el tramo completo. Sin span, text_lines contiene líneas exactas, una string por línea, incluidas vacías. No serialices saltos dentro de una string. En interpretation.literals cita solo un fragmento corto exacto actual, nunca una versión escapada o un bloque. Si falta el contenido, pregunta antes de llamar. No cambia destinatario ni chat.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text_lines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 8000
+        },
+        "literal_span": {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "description": "Exact, unique anchors in the current source; no language interpretation.",
+              "properties": {
+                "first": {
+                  "maxLength": 300,
+                  "minLength": 1,
+                  "title": "First",
+                  "type": "string"
+                },
+                "last": {
+                  "maxLength": 300,
+                  "minLength": 1,
+                  "title": "Last",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "first",
+                "last"
+              ],
+              "title": "LiteralSpan",
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "text_lines",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "find_notes",
+    "description": "Lista o busca notas reales de este chat. Omite query si no se indica: query vacío o una consulta nueva sin query lista todas; para page mayor que 1 omitir query conserva el filtro de la lista vigente. page empieza por 1. No inventes notas ni resultados sin llamar.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "page": {
+          "type": "integer"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "read_image",
+    "description": "Extrae texto literal o lee un QR de una imagen solicitada. Úsala sola; normalmente omite attachment_id. El backend resuelve la imagen o pregunta si falta. No admite rutas ni URLs. Una cita a una salida propia del bot no sustituye el adjunto para esta herramienta: pide adjuntar exactamente el archivo, sin volver a pedir que cite la misma salida.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "text",
+            "qr"
+          ]
+        },
+        "attachment_id": {
+          "type": "string"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "mode",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "transcribe_media",
+    "description": "Transcribe un audio o video adjunto de hasta 20 minutos y 1 GB a petición de la persona. Úsala sola; normalmente omite attachment_id. El backend resuelve el adjunto citado, actual o reciente y pregunta si falta. output_mode elige transcript (solo transcripción), summary (solo resumen) o both (ambos solicitados). summarize=true es compatibilidad para solo resumen; no lo combines con transcript. No admite rutas, URLs ni destinatarios. Una cita a una salida propia del bot no sustituye el adjunto para esta herramienta: pide adjuntar exactamente el archivo, sin volver a pedir que cite la misma salida.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "attachment_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "summarize": {
+          "type": "boolean",
+          "default": false
+        },
+        "output_mode": {
+          "type": "string",
+          "enum": [
+            "transcript",
+            "summary",
+            "both"
+          ]
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "download_media",
+    "description": "Busca audio/video con opciones o descarga un enlace exacto proporcionado por la persona. Úsala sola. Usa SOLO uno: query para buscar, url para enlace actual/citado, choice (1-6) para elegir la lista vigente propia, previous=true para una petición explícita de volver a descargar el mismo contenido reciente propio en otro formato. Nunca elijas el primero automáticamente ni inventes URLs. Conserva el formato de la lista al elegir. Enlaces públicos individuales de Facebook (videos/reels y enlaces compartidos), Instagram (reels o publicaciones con un solo video) y TikTok (videos y enlaces cortos), además de W3/SoundCloud/Dailymotion/Vimeo. Facebook/Instagram/TikTok usan video por defecto si no se pide audio. Sin perfiles, historias, álbumes, fotos ni directos; no elegir un elemento de un carrusel. El proveedor puede bloquear o exigir acceso; no prometas descarga antes del resultado. YouTube aplazado y Spotify omitido. Sin importar cookies ni listas de reproducción. options fija contenedor, calidad y recorte del encargo; se conservan al elegir. Video MP4 hasta 100 MB; sin options, completo hasta cuatro horas, sin recodificar si es compatible y cabe; de lo contrario se comprime con posible pérdida de calidad; sin recorte automático ni entrega garantizada. Audio directo hasta 10 minutos; edición y conversión hasta 1 GB y 3 horas; límites de tamaño y tiempo pueden impedir entrega. También admite búsqueda en catálogos y descargas de Pornhub y XNXX para contenido explícito o cuando se solicita esa fuente; usa format=video por defecto.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "url": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "choice": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "previous": {
+          "type": "boolean"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "audio",
+            "video"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "youtube",
+            "pornhub",
+            "xnxx",
+            "adult"
+          ]
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "container": {
+              "type": "string",
+              "enum": [
+                "mp3",
+                "mp4",
+                "webm",
+                "srt"
+              ]
+            },
+            "quality": {
+              "type": "string",
+              "enum": [
+                "small",
+                "standard",
+                "high"
+              ]
+            },
+            "start_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10800
+            },
+            "end_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10800
+            },
+            "subtitle_language": {
+              "type": "string",
+              "enum": [
+                "es",
+                "en"
+              ]
+            }
+          }
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "edit_media",
+    "description": "Recorta, comprime o convierte un audio/video adjunto o citado de hasta 1 GB y 3 horas. Úsala sola. options conserva contenedor mp3/mp4/webm, quality small/standard/high y segundos inicio/final pedidos. container=srt extrae subtítulos de texto incrustados, no transcribe. Normalmente omite attachment_id: el backend resuelve la cita o el adjunto; nunca envíes un ID vacío o inventado. Si falta archivo pregunta. No inventes rutas ni mezcles herramientas. Puede editar una salida propia MP3/MP4/WebM de descarga/edición si su recibo completo y copia retenida siguen disponibles; el backend lo comprueba por cita exacta.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "attachment_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "container": {
+              "type": "string",
+              "enum": [
+                "mp3",
+                "mp4",
+                "webm",
+                "srt"
+              ]
+            },
+            "quality": {
+              "type": "string",
+              "enum": [
+                "small",
+                "standard",
+                "high"
+              ]
+            },
+            "start_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10800
+            },
+            "end_seconds": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10800
+            },
+            "subtitle_language": {
+              "type": "string",
+              "enum": [
+                "es",
+                "en"
+              ]
+            }
+          }
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "make_voice",
+    "description": "Prepara una nota de voz solicitada. Úsala sola, sin texto adicional. Para leer literalmente usa mode=verbatim y source=quote, last_reply o provided; quote exige contexto.quoted real; comillas en el mensaje actual usan provided y text exacto. El backend resuelve la fuente exacta. Para composición usa mode=compose y escribe el guion completo en text. No inventes texto literal ni una voz fuera del catálogo. requested_seconds orienta la composición y no garantiza duración exacta.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "compose",
+            "verbatim"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "voice": {
+          "type": "string",
+          "enum": [
+            "zhana",
+            "mexicana",
+            "colombiana",
+            "argentina",
+            "espanola",
+            "mexicano",
+            "colombiano",
+            "argentino",
+            "espanol",
+            "chileno",
+            "venezolano",
+            "peruano",
+            "anime"
+          ]
+        },
+        "effect": {
+          "type": "string",
+          "enum": [
+            "none",
+            "robot",
+            "radio",
+            "ardilla",
+            "demonio"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "provided",
+            "quote",
+            "last_reply"
+          ]
+        },
+        "requested_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "mode",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "control_call",
+    "description": "Inicia o controla una llamada solicitada en este chat, con máximo técnico de una hora. Úsala sola y sin texto adicional. El backend determina destino e identidad. action=start, status, hangup o cancel; video=true solo si pidieron explícitamente videollamada o llamar con video, omite video para voz. topic solo texto literal del pedido actual, max_seconds solo duración solicitada en segundos. Nunca inventes destinatarios ni confirmes conexión, imagen recibida o acceso a cámaras ajenas.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "start",
+            "status",
+            "hangup",
+            "cancel"
+          ]
+        },
+        "topic": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "max_seconds": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
+        },
+        "video": {
+          "type": "boolean"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_pdf",
+    "description": "Une PDFs e imágenes o extrae páginas de un PDF. Úsala sola. start abre una colección de 20 minutos; add añade los adjuntos actuales en su orden de recepción; finish genera el PDF cuando la persona pide terminar. extract requiere pages, por ejemplo 1-3,5. retry vuelve a enviar únicamente el documento retenido tras un fallo, sin convertirlo otra vez. Si el envío anterior es incierto, primero advierte del posible duplicado y solo usa confirm_uncertain=true tras una confirmación explícita posterior. cancel descarta la colección. Omite attachment_ids salvo referencias conocidas; nunca inventes IDs, rutas ni destinatarios. Una cita a una salida propia del bot no sustituye el adjunto para esta herramienta: pide adjuntar exactamente el archivo, sin volver a pedir que cite la misma salida.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "start",
+            "add",
+            "finish",
+            "extract",
+            "retry",
+            "cancel"
+          ]
+        },
+        "attachment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "maxItems": 20
+        },
+        "pages": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "confirm_uncertain": {
+          "type": "boolean"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "convert_document",
+    "description": "Convierte un documento o imagen adjunta/citada al formato solicitado. Word=docx, Excel=xlsx, PowerPoint=pptx. Úsala sola. PDF a Word reconstruye el diseño, PDF a Excel extrae tablas sin fórmulas, PDF a PowerPoint crea diapositivas en imagen. CSV de varias hojas se entrega como ZIP. También convierte PNG/JPG/WebP entre sí y a PDF, TIFF a PDF; PDF a PNG/JPG (ZIP con varias páginas); CSV/JSON/XLSX tabulares y DOCX/HTML/Markdown. No une archivos ni hace OCR. Si falta archivo, pregunta. Una cita a una salida propia del bot no sustituye el adjunto para esta herramienta: pide adjuntar exactamente el archivo, sin volver a pedir que cite la misma salida.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "pdf",
+            "png",
+            "jpg",
+            "webp",
+            "json",
+            "html",
+            "md",
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "txt"
+          ]
+        },
+        "attachment_id": {
+          "type": "string",
+          "maxLength": 256,
+          "description": "Opcional: omítelo si el adjunto actual o citado es claro; no inventes un ID."
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "target",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_school",
+    "description": "Gestiona únicamente tareas y horario registrados en este chat. No guarda equipos de compañeros, turnos de exposición ni anuncios del profesor: si preguntan por esos datos ausentes, conversation ask por el dato decisivo, sin consultar tareas/horario como sustituto ni buscar personas públicas. Úsala sola. Omite campos que no correspondan a la acción o no se hayan indicado. add_task requiere text,due_date,time_text (cita temporal exacta); si no dieron hora omite due_time y vence al fin del día localCDMX. Solo autor cambia su tarea; horario y digest solo propietario. configure_digest no es implícito: enabled y hora explícita para activar. No prometas adjunto/publicación sin confirmación backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "add_task",
+            "list_tasks",
+            "complete_task",
+            "delete_task",
+            "set_lesson",
+            "list_schedule",
+            "delete_lesson",
+            "configure_digest",
+            "status_digest",
+            "get_attachment"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "due_date": {
+          "type": "string",
+          "description": "YYYY-MM-DD local de Ciudad de México"
+        },
+        "due_time": {
+          "type": "string",
+          "description": "HH:MM de24horas; omitir si solo dieron fecha"
+        },
+        "time_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "task_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "weekday": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        },
+        "start_time": {
+          "type": "string",
+          "description": "HH:MM de24horas"
+        },
+        "end_time": {
+          "type": "string",
+          "description": "HH:MM de24horas"
+        },
+        "lesson_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "digest_time": {
+          "type": "string",
+          "description": "HH:MM de24horas"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "include_closed": {
+          "type": "boolean"
+        },
+        "attach": {
+          "type": "boolean"
+        },
+        "attachment_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_poll",
+    "description": "Crea encuesta de texto, vota, consulta recuentos o cierra. Úsala sola y omite campos que no correspondan a la acción. create necesita question y2a10options distintas. vote usa poll_id publicado y choice1basada; solo voto del solicitante. No encuesta nativa ni botones de WhatsApp. close solo autor/propietario, sin otro chat/actor como argumento.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "create",
+            "vote",
+            "results",
+            "close"
+          ]
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "poll_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "choice": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_messages",
+    "description": "Prepara, consulta, envía o cancela un recado privado; también lista los contactos literales disponibles. Solo el propietario desde su chat privado puede usarla. En grupo o ante otra persona, explica que el propietario debe continuar en su privado, sin preparar borradores, listar contactos ni enviar nada. Úsala sola y sin texto adicional; omite campos no indicados o ajenos a la acción. Solo el backend resuelve nombres contra el directorio permitido: nunca inventes IDs ni destinos. prepare puede pedir aclaración y draft_id solo retoma un borrador propio aceptado vigente. Envía únicamente contenido literal del mensaje actual (text) o una referencia actual/citada verificada (source=current/quote); no redactes desde historial ni memoria. attach=true solo reenvía el adjunto verificado. send requiere confirmación explícita actual de una vista previa aceptada; una llamada o texto del modelo no es confirmación. No afirmes entrega salvo resultado del backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "prepare",
+            "status",
+            "send",
+            "cancel",
+            "contacts"
+          ]
+        },
+        "draft_id": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "recipients": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "current",
+            "quote"
+          ]
+        },
+        "attach": {
+          "type": "boolean"
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_pack",
+    "description": "Consulta el catálogo publicado de packs, compra un pack por 150 XP o consulta una compra propia. Úsala sola y sin texto adicional. catalog lista solo packs publicados y su metadata, con page opcional. buy solo ante pedido explícito de comprar; category debe ser el nombre o slug literal proporcionado ahora o en una aclaración vigente. Si la persona pide comprar un pack sin especificar cuál, omite category para que el backend seleccione uno al azar. status consulta una compra propia con purchase_id. buy sin purchase_id prepara una oferta sin cargo. buy con purchase_id exige confirmación actual posterior a la oferta entregada y su ID exacto; nunca inventes esa confirmación. El backend resuelve identidad, precio y selección; no indiques destinatario, cantidad, costo, descuento, rutas ni contenido web. No afirmes compra ni entrega hasta recibir el resultado del backend; catálogo vacío o saldo insuficiente significa que no hubo compra.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "catalog",
+            "buy",
+            "status"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "purchase_id": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_cooperacha",
+    "description": "Crea, consulta, recibe aportes o cancela una cooperacha. Úsala sola y sin texto adicional. start solo en un grupo permitido; puede elegir una foto estática publicada y censurada de Rikolino. target_xp opcional entre 50 y 50000, default backend 500; el plazo es 10 minutos, sin horario ni auto48h. contribute requiere amount explícito, literal del mensaje actual, entre 1 y 50000 XP; el backend verifica el anuncio previo y reserva saldo propio. status consulta solo el grupo actual. cancel solo autor del reto o propietario comprobado. Al vencer sin meta se devuelve floor(80% del aporte acumulado de cada persona), reteniendo 20% como Legacy; cancelación/fallo conocido devuelve 100%. Una foto aceptada cobra su parte; una incierta queda retenida sin reenvío. No inventes IDs, montos ni confirmes efectos sin resultado del backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "start",
+            "contribute",
+            "status",
+            "cancel"
+          ]
+        },
+        "challenge_id": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "target_xp": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 50000
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50000
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_happy_hour",
+    "description": "Inicia, detiene o consulta happy hour, sortea fotos grupales o prepara un AirDrop. Úsala sola y sin texto adicional. Solo el propietario comprobado puede start/stop/rain/airdrop en grupos permitidos; no admite actor, permisos ni destino. start activa 20 XP por mensaje normal único y packs de 75 XP con 4–6 fotos estáticas. rain publica 1–2 fotos grupales cada 10 segundos durante 4 minutos solo con actividad de al menos 5 mensajes en 90 segundos. airdrop ofrece 500 XP y un pack privado gratis al primer pedido válido posterior al anuncio aceptado. claim solicita participación; la adjudicación atómica la hace SQL; el modelo no otorga premios. duration_minutes opcional 1–1440; si se omite, backend usa 60 minutos. Sin auto48h. La biblioteca Rikolino actual está vacía, es local RO y sin fallback web; no prometas fotos reales. stop cancela futuros envíos; aceptados o inciertos nunca se reenvían. No afirmes efectos sin resultado del backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "start",
+            "stop",
+            "status",
+            "rain",
+            "airdrop",
+            "claim"
+          ]
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1440
+        },
+        "event_id": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_memory",
+    "description": "Gestiona memoria social atribuida de este chat únicamente ante una petición explícita. Úsala sola y sin texto adicional; no guarda nada automáticamente ni administra notas durables. remember requiere texto literal autorizado por backend; interpretation.self_preference debe decidirse explícitamente y ser true para preferencias de quien habla. text copia solo el hecho literal, sin la instrucción de guardarlo. kind puede ser preference o lore y, si se omite, es preference. correct y forget requieren el memory_id real y literal correspondiente. forget_all solo ante una solicitud explícita de olvidar todo. list pagina los registros reales, opcionalmente por kind. No admite actor, chat, scope, tono, afinidad ni permisos; el backend fija procedencia y ámbito. No afirmes efectos sin resultado del backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "remember",
+            "list",
+            "correct",
+            "forget",
+            "forget_all"
+          ]
+        },
+        "memory_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "preference",
+            "lore"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_minecraft",
+    "description": "Consulta o administra el servidor Minecraft configurado; úsala sola y sin texto adicional. Acciones de consulta: status, players, worlds, mods y config; reporta solo datos devueltos ahora por el backend. Si no se puede consultar, no inventes estado offline, TPS, jugadores ni configuración. start/stop/restart/backup y enable_mod/disable_mod requieren pedido explícito; solo el backend autoriza cambios. name solo es el nombre literal solicitado del mod; command solo texto literal pedido para console, nunca lo redactes ni amplíes. No admite host, ruta, contenedor, actor ni destinatarios. No afirmes éxito sin resultado y no reintentes un efecto reservado con otro proveedor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "status",
+            "players",
+            "worlds",
+            "mods",
+            "config",
+            "start",
+            "stop",
+            "restart",
+            "backup",
+            "enable_mod",
+            "disable_mod",
+            "console"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_admin",
+    "description": "Administra el grupo actual admitido con acciones de moderación, avisos, XP y el flujo nuclear. Úsala sola y sin texto adicional, únicamente cuando la petición actual del propietario lo autorice. La autorización se vuelve a comprobar en el backend. target debe ser un JID literal o una mención comprobable del mensaje actual; nunca elijas personas por nombre, cargo o historial. No inventes IDs, cuentas, montos ni razones. warnings sin target consulta solo al solicitante verificado; para consultar a otra persona exige su objetivo literal o mención. Las mutaciones siempre requieren los campos de su acción. XP requiere objetivo propio explícito y cantidad literal; no concedas permisos ni deduzcas alias. El flujo nuclear requiere su vista previa y confirmación textual posterior emitidas por el backend. No afirmes efectos sin resultado comprobado y no reintentes una operación reservada con otro proveedor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "warn",
+            "unwarn",
+            "warnings",
+            "kick",
+            "ban",
+            "unban",
+            "promote",
+            "demote",
+            "mute",
+            "unmute",
+            "lock",
+            "unlock",
+            "xp_grant",
+            "xp_remove",
+            "nuclear_prepare",
+            "nuclear_confirm",
+            "nuclear_cancel"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "warning_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "account_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50000
+        },
+        "draft_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_blackjack",
+    "description": "Inicia una partida de blackjack individual o una mesa grupal de hasta seis jugadores, y gestiona turnos y estado. Úsala sola y sin texto adicional. start/table requieren petición explícita actual de apostar; una charla casual o cita no autoriza apuesta. bet solo si el usuario indicó esa cantidad literal; si se omite, el backend aplica 50 XP o el mínimo de 20 XP cuando el saldo propio está entre 20 y 49. Sin saldo mínimo no inicia ronda ni cobra. table solo funciona en grupo. En acciones sobre partida propia omite game_id si no está escrito en el mensaje actual; el backend resuelve la partida vigente. No inventes ID, cartas, turno, resultado ni premio. El backend controla cartas y liquidación. No confirmes efectos ni resultados sin respuesta real del backend.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "start",
+            "table",
+            "join",
+            "deal",
+            "hit",
+            "stand",
+            "double",
+            "status",
+            "cancel"
+          ]
+        },
+        "bet": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 1000
+        },
+        "game_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "ID escrito en el mensaje actual. Si no está escrito, omite este campo; el backend resuelve la partida propia vigente. Nunca copiar del historial a literals."
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_roulette",
+    "description": "Gestiona una ruleta grupal. Úsala sola y sin texto adicional. create solo publica una oferta sin cobrar; bet solo si fue indicada literalmente y, si se omite, el backend usa 50 XP. join requiere aceptación actual inequívoca de ruleta ID' después de entregar reglas que explican la expulsión temporal y el retorno privado (o la posible degradación permanente de administradores). play requiere un pedido actual del anfitrión con el ID de la sala; el backend revalida elegibilidad y elige víctima y premio. No envíes actor, víctima ni resultado inventados.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "create",
+            "join",
+            "play",
+            "status",
+            "cancel"
+          ]
+        },
+        "bet": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 64
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "make_prank",
+    "description": "Genera una broma de texto local claramente ficticia. Úsala sola, sin texto adicional, solo por petición actual inequívoca de broma ficticia, sin negaciones. label solo puede ser una etiqueta literal segura del mensaje actual; no uses nombres, números, IDs ni datos de citas. El backend entrega ficción inocua con IPs reservadas y dominios .invalid; no investiga, envía ni accede a historial, memoria o red.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_economy",
+    "description": "Reclama el daily, consulta saldo/nivel propios o muestra top global de XP de esta instancia. Úsala sola, sin texto adicional. daily tiene cooldown de24horas; balance consulta solo al solicitante; top muestra cuentas anónimas sin teléfonos. No acepta cantidades ni destinatarios, no concede XP administrativa ni permisos.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "balance",
+            "top"
+          ]
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_reminder",
+    "description": "Crea, consulta, cancela o archiva un recordatorio propio de este chat. create requiere interpretation.literals field=text con un fragmento exacto que identifique el contenido del pedido actual o de su aclaración propia aceptada; permite redactar text sin copiarlo literalmente. Nunca heredes un recordatorio de otro actor del historial; si falta el encargo propio pregunta. Úsala sola y sin texto adicional. create requiere text, time_text (cita literal del fragmento temporal del mensaje actual o respuesta propia a pregunta pendiente; debe contener hora o intervalo explícitos, no inventados) y exactamente uno de at (fecha y hora local completas de Ciudad de México, YYYY-MM-DDTHH:MM[:SS]) o after_seconds (intervalo explícito). Si falta hora o es ambigua, pregunta antes. list acepta include_closed para incluir terminados; cancel/archive requieren un reminder_id real del backend. No admite destinatarios distintos ni avisos recurrentes.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "create",
+            "list",
+            "cancel",
+            "archive"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "time_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180
+        },
+        "at": {
+          "type": "string",
+          "minLength": 16,
+          "maxLength": 19
+        },
+        "after_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31536000,
+          "description": "Intervalo interpretado en segundos. Adjunta interpretation.literals field=after_seconds con la cita original completa de cantidad y unidad; time_precision=minute."
+        },
+        "reminder_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "include_closed": {
+          "type": "boolean"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "search_web",
+    "description": "Busca información o enlaces actuales en internet mediante Bing RSS experimental. Úsala sola y sin texto adicional. query conserva identificadores específicos, idioma y restricciones de fuente del pedido actual, nunca historial privado. Para fuentes oficiales usa site:dominio solo si lo conoces, sin inventarlo. required_terms son hasta ocho nombres o identificadores literales imprescindibles del pedido: se exige que aparezcan en título/fragmento, sin inferir pertinencia semántica. No añadas términos genéricos ni traducciones inventadas. Los dominios se restringen con site: y no se incluyen en required_terms; idioma tampoco es un término literal de títulos/fragmentos. Si no hay una coincidencia, informa el límite; no presentes una página general como la referencia exacta. Devuelve candidatos con títulos, fragmentos y enlaces reales sin afirmar lectura de páginas. No descarga medios ni busca archivos de Drive.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "required_terms": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "query",
+        "interpretation"
+      ]
+    }
+  },
+  {
+    "name": "manage_drive",
+    "description": "Guarda un adjunto solicitado o busca y elige archivos de la carpeta privada configurada para este chat. Úsala sola y sin texto adicional. action=save guarda el adjunto citado, actual o reciente del solicitante; normalmente omite attachment_id. action=search sin query lista hasta cinco archivos; query solo filtra un nombre concreto pedido. Interpreta el listado general, sin usar términos genéricos como nombres literales. Muestra solo opciones reales. action=choose requiere choice 1-5 de la vista propia vigente y descarga esa opción exacta. Nunca elijas automáticamente ni inventes resultados, IDs de Drive, URLs, rutas o acceso a toda la cuenta. capacity consulta espacio real de la cuenta conectada, solo para el propietario, sin query/choice/adjunto. No inventes cifras ni confundas cuota global con archivos del chat.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "save",
+            "search",
+            "choose",
+            "capacity"
+          ]
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "choice": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "attachment_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "interpretation": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "enum": [
+                "directed",
+                "continuation",
+                "incidental"
+              ],
+              "title": "Audience",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "request",
+                "clarification",
+                "confirmation",
+                "conversation",
+                "feedback",
+                "refusal"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "turn_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Turn Id",
+              "type": "string"
+            },
+            "uses_previous": {
+              "title": "Uses Previous",
+              "type": "boolean"
+            },
+            "close_dialogue": {
+              "title": "Close Dialogue",
+              "type": "boolean"
+            },
+            "time_precision": {
+              "enum": [
+                "none",
+                "date",
+                "minute"
+              ],
+              "title": "Time Precision",
+              "type": "string"
+            },
+            "literals": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "title": "Field",
+                    "type": "string"
+                  },
+                  "quote": {
+                    "description": "Fragmento corto exacto de UNA SOLA línea del mensaje actual o fuente_aclaracion autorizada; no copies bloques ni escapes los saltos. Nunca historial ni cita del bot.",
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "title": "Quote",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "field",
+                  "quote"
+                ],
+                "title": "LiteralEvidence",
+                "type": "object"
+              },
+              "title": "Literals",
+              "type": "array"
+            },
+            "clarification_tool": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clarification Tool"
+            },
+            "unambiguous": {
+              "title": "Unambiguous",
+              "type": "boolean"
+            },
+            "self_preference": {
+              "default": false,
+              "description": "Decide explícitamente si el hecho es una preferencia de quien habla ahora, incluso en remember/correct. No omitas esta decisión.",
+              "title": "Self Preference",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "audience",
+            "kind",
+            "turn_id",
+            "uses_previous",
+            "close_dialogue",
+            "time_precision",
+            "literals",
+            "unambiguous",
+            "self_preference"
+          ],
+          "title": "Interpretation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "action",
+        "interpretation"
+      ]
+    }
+  }
+]

@@ -1,0 +1,171 @@
+{
+  "FORMAT_TARGETS": {
+    "pdf": [
+      "pdf",
+      "application/pdf"
+    ],
+    "png": [
+      "image",
+      "image/png"
+    ],
+    "jpg": [
+      "image",
+      "image/jpeg"
+    ],
+    "webp": [
+      "image",
+      "image/webp"
+    ],
+    "json": [
+      "json",
+      "application/json"
+    ],
+    "html": [
+      "html",
+      "text/html"
+    ],
+    "md": [
+      "markdown",
+      "text/markdown"
+    ],
+    "docx": [
+      "writer",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ],
+    "doc": [
+      "writer",
+      "application/msword"
+    ],
+    "odt": [
+      "writer",
+      "application/vnd.oasis.opendocument.text"
+    ],
+    "rtf": [
+      "writer",
+      "application/rtf"
+    ],
+    "xlsx": [
+      "spreadsheet",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ],
+    "xls": [
+      "spreadsheet",
+      "application/vnd.ms-excel"
+    ],
+    "ods": [
+      "spreadsheet",
+      "application/vnd.oasis.opendocument.spreadsheet"
+    ],
+    "csv": [
+      "spreadsheet",
+      "text/csv"
+    ],
+    "pptx": [
+      "presentation",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    ],
+    "ppt": [
+      "presentation",
+      "application/vnd.ms-powerpoint"
+    ],
+    "odp": [
+      "presentation",
+      "application/vnd.oasis.opendocument.presentation"
+    ],
+    "txt": [
+      "text",
+      "text/plain"
+    ]
+  },
+  "ALIASES": {
+    "word": "docx",
+    "documento": "docx",
+    "excel": "xlsx",
+    "powerpoint": "pptx",
+    "texto": "txt",
+    "jpeg": "jpg",
+    "markdown": "md"
+  },
+  "NEW_CONVERSION_ROUTES": [
+    [
+      "csv",
+      "json"
+    ],
+    [
+      "docx",
+      "html"
+    ],
+    [
+      "docx",
+      "md"
+    ],
+    [
+      "html",
+      "docx"
+    ],
+    [
+      "jpg",
+      "pdf"
+    ],
+    [
+      "jpg",
+      "png"
+    ],
+    [
+      "jpg",
+      "webp"
+    ],
+    [
+      "json",
+      "csv"
+    ],
+    [
+      "json",
+      "xlsx"
+    ],
+    [
+      "md",
+      "html"
+    ],
+    [
+      "pdf",
+      "jpg"
+    ],
+    [
+      "pdf",
+      "png"
+    ],
+    [
+      "png",
+      "jpg"
+    ],
+    [
+      "png",
+      "pdf"
+    ],
+    [
+      "png",
+      "webp"
+    ],
+    [
+      "tiff",
+      "pdf"
+    ],
+    [
+      "webp",
+      "jpg"
+    ],
+    [
+      "webp",
+      "pdf"
+    ],
+    [
+      "webp",
+      "png"
+    ],
+    [
+      "xlsx",
+      "json"
+    ]
+  ]
+}
