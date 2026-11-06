@@ -1,0 +1,9 @@
+{
+  "refresh_success": true,
+  "quota_http": 200,
+  "own_folder_http": 404,
+  "own_folder_valid": false,
+  "can_add_children": null,
+  "remote_writes": 0,
+  "integrated": false
+}

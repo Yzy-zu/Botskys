@@ -95,3 +95,15 @@ Drive mantiene bloqueo OAuth; no se intentó reconectar por cuenta propia. Perfi
 base y30herramientas con efectos retirados al cerrar, autenticación AGY temporal
 eliminada. Perfil operativo anterior intacto; no sesiones/navegador/llamadas,
 mutaciones grupo/servidor, servicio/webhook, transición o GitHub. R10 global abierto.
+
+# Revisión OAuth posterior · 06/11 19:53 UTC
+
+Búsqueda explícita del propietario: token vigente/candidato31oct coincide con
+Botsky y devuelve400 invalid_grant. Respaldo before31oct:401 invalid_client.
+Respaldo27oct: renovación200 y consulta de cuota200, pero carpeta propia Botsky
+devuelve404 con esa identidad/aplicación. No prueba borrado: puede ser acceso
+limitado por cuenta/aplicación/scopes. Copia alternativa conservada privada0600
+en private/drive/recovered-20261027; no sustituye runtime ni carpeta por falta
+de acceso. No escritura remota ni cambios en Zhana. Evidencia OAUTH-REVISION y
+OAUTH-RECUPERACION-20261106.json. Pendiente resolver acceso a carpeta con OAuth
+compatible; no es correcto afirmar que todas las credenciales estén caducadas.

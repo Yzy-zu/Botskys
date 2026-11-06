@@ -1,0 +1,39 @@
+[
+  {
+    "source": "/home/petrov/zhana/private/drive",
+    "token_fingerprint": "67543946cdd4",
+    "modified_utc": "2026-11-03T15:56:47.358609+00:00",
+    "http_status": 400,
+    "error": "invalid_grant",
+    "description": "Token has been expired or revoked.",
+    "refresh_success": false
+  },
+  {
+    "source": "/home/petrov/zhana/private/drive-connection-20261031/candidate",
+    "token_fingerprint": "67543946cdd4",
+    "modified_utc": "2026-10-31T17:47:31.616775+00:00",
+    "duplicate": true
+  },
+  {
+    "source": "/home/petrov/zhana/private/drive-connection-20261031/before",
+    "token_fingerprint": "03ad10c10a05",
+    "modified_utc": "2026-10-31T17:47:57.555970+00:00",
+    "http_status": 401,
+    "error": "invalid_client",
+    "description": "The provided client secret is invalid.",
+    "refresh_success": false
+  },
+  {
+    "source": "/home/petrov/zhana/private/drive/previous-20261027T220317Z",
+    "token_fingerprint": "fd69407fa8ba",
+    "modified_utc": "2026-10-27T21:51:06.407729+00:00",
+    "http_status": 200,
+    "error": null,
+    "description": null,
+    "refresh_success": true
+  },
+  {
+    "source": "Botsky propio",
+    "token_fingerprint": "67543946cdd4"
+  }
+]

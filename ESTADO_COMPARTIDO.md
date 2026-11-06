@@ -1,5 +1,13 @@
 # Relevo Botsky
 
+## 06/11/2026 19:53 UTC · OAuth alternativo encontrado
+
+Encargo expreso buscar OAuth en Zhana. Respaldo27oct renueva200 y cuota200,
+pero carpeta propia Botsky404. Token31oct actual sigue invalid_grant; before31oct
+invalid_client. Alternativa privada0600 conservada, sin sustituir runtime ni
+crear carpeta/escribir remoto. Fuentes Zhana intactas. Detalle INTEGRACIONES.md
+y evidencia OAUTH-*-20261106.json. Cuota última79%/30%; umbral5% vigente.
+
 ## 06/11/2026 19:07 UTC · Contraste terminado; cinco causas confirmadas corregidas
 
 Encargo posterior del propietario: el principal es el agente de contraste y puede
