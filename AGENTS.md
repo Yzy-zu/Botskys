@@ -85,3 +85,12 @@ no altera sus resultados históricos ni autoriza reanudarla. Validación local s
 fixtures propios y dobles; adjudicaciones nuevas, relevo y commits selectivos.
 Se mantienen exclusiones de envíos/pruebas remotas, llamadas/navegador, mutaciones
 de grupo/servidor, servicios, transición, NLP y GitHub. Umbral5% vigente.
+
+## 06/11 · Cierre de cobertura local encargado por el propietario
+
+El propietario encargó el punto1: cubrir las18rutas y44campos explícitos ausentes
+de la campaña cerrada134/152. Ejecutar pruebas locales de dominio/integración con
+fixtures propios, SQLite, motores y dobles; conservar evidencia histórica y
+registrar suplemento separado. Un parseo, sondeo frío o guardia no acredita éxito
+del efecto ni proveedor/recepción humana. No reanudar campañas, envíos, llamadas,
+navegador, mutaciones reales, servicios o transición. Mantener umbral5%.

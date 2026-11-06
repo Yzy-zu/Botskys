@@ -1,0 +1,6510 @@
+[
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin ban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin ban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "admin_uncertain"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin expulsar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "admin_operation_pending"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin avisos",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin avisos",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "admin_warnings"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin unban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+    "route": "/admin unban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_unban"
+  },
+  {
+    "test": "test_admin.AdminTest.test_local_warning_receipt_survives_crash_before_job_publication",
+    "route": "/admin advertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_local_warning_receipt_survives_crash_before_job_publication",
+    "route": "/admin advertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_warning_added"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin promover",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin promover",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin degradar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin degradar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin degradar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "admin_failed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin silenciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin silenciar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin desilenciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin desilenciar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin cerrar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin cerrar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin abrir",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+    "route": "/admin abrir",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin nuclear-cancelar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "nuclear_preview_required"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "uncertain",
+    "code": "nuclear_status"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin advertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin advertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_warning_added"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin avisos",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin avisos",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_warnings"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin quitar-aviso",
+    "explicit_fields": [
+      "target",
+      "warning_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin quitar-aviso",
+    "explicit_fields": [
+      "target",
+      "warning_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_warning_revoked"
+  },
+  {
+    "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+    "route": "/admin avisos",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "admin_group_required"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin expulsar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin expulsar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "admin_failed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin ban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin ban",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "admin_failed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin nuclear-preparar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "nuclear_preview"
+  },
+  {
+    "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+    "route": "/admin nuclear-confirmar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "nuclear_disabled"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+    "route": "/admin xp-quitar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+    "route": "/admin xp-quitar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "amount",
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-quitar",
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-quitar",
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "admin_xp_limit"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-quitar",
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_xp_changed"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+    "route": "/admin xp-dar",
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "admin_failed"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_forwards_presentation_and_malformed_json_content",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_forwards_presentation_and_malformed_json_content",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_preserves_valid_audio_and_video_for_provider",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_preserves_valid_audio_and_video_for_provider",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_rejects_corrupt_audio_before_provider_dispatch",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_analysis_rejects_corrupt_audio_before_provider_dispatch",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "invalid_audio"
+  },
+  {
+    "test": "test_ai.AITest.test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript",
+    "route": "/transcribir",
+    "explicit_fields": [
+      "output_mode"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript",
+    "route": "/transcribir",
+    "explicit_fields": [
+      "output_mode"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "transcript_summary_ready"
+  },
+  {
+    "test": "test_ai.AITest.test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript",
+    "route": "/transcribir",
+    "explicit_fields": [
+      "output_mode"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "summary_unavailable"
+  },
+  {
+    "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+    "route": "/bot modo",
+    "explicit_fields": [
+      "mode"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_mode_updated"
+  },
+  {
+    "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+    "route": "/bot reanudar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_mode_updated"
+  },
+  {
+    "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+    "route": "/bot pausa",
+    "explicit_fields": [
+      "minutes"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_mode_updated"
+  },
+  {
+    "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+    "route": "/mem guardar",
+    "explicit_fields": [
+      "kind",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+    "route": "/mem guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+    "route": "/mem olvidar",
+    "explicit_fields": [
+      "memory_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_forgotten"
+  },
+  {
+    "test": "test_ai.AITest.test_history_and_continuation_require_own_accepted_current_reply",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_history_and_continuation_require_own_accepted_current_reply",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_history_and_continuation_require_own_accepted_current_reply",
+    "route": "/ia",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_history_and_continuation_require_own_accepted_current_reply",
+    "route": "/ia",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_history_and_continuation_require_own_accepted_current_reply",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_mentions_are_explicit_outside_quotes_code_urls_and_native_identity",
+    "route": "/ia",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_mentions_are_explicit_outside_quotes_code_urls_and_native_identity",
+    "route": "/ia",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_owned_attachment_sdk_upload_and_cleanup_without_remote_access",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_owned_attachment_sdk_upload_and_cleanup_without_remote_access",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_owned_attachment_sdk_upload_and_cleanup_without_remote_access",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "artifact_access_denied"
+  },
+  {
+    "test": "test_ai.AITest.test_provider_deadlines_and_asr_cooldown_are_isolated",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "gemini_rate_limited"
+  },
+  {
+    "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+    "route": "/estado",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "receipt_state"
+  },
+  {
+    "test": "test_ai.AITest.test_sdk_disables_tools_rejects_function_calls_and_does_not_dispatch_generated_text",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_sdk_disables_tools_rejects_function_calls_and_does_not_dispatch_generated_text",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "ai_reply"
+  },
+  {
+    "test": "test_ai.AITest.test_sdk_disables_tools_rejects_function_calls_and_does_not_dispatch_generated_text",
+    "route": "/ia",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "gemini_invalid_response"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+    "route": "/voz",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+    "route": "/voz",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "voice_ready"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+    "route": "/voz crear",
+    "explicit_fields": [
+      "effect",
+      "requested_seconds",
+      "text",
+      "voice"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+    "route": "/voz crear",
+    "explicit_fields": [
+      "effect",
+      "requested_seconds",
+      "text",
+      "voice"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "voice_ready"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+    "route": "/voz cita",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+    "route": "/voz cita",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "voice_ready"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+    "route": "/voz cita",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "voice_source_unavailable"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+    "route": "/voz ultima",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+    "route": "/voz ultima",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "voice_ready"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "date",
+      "live_request",
+      "max_seconds",
+      "time"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "date",
+      "live_request",
+      "max_seconds",
+      "time"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_create"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada agenda",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada agenda",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_list"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada reprogramar",
+    "explicit_fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada reprogramar",
+    "explicit_fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_update"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada cancelar-agenda",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+    "route": "/llamada cancelar-agenda",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_cancel"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamar",
+    "explicit_fields": [
+      "video"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamar",
+    "explicit_fields": [
+      "video"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip lista",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip lista",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip poner",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip poner",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip poner",
+    "explicit_fields": [
+      "clip_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip poner",
+    "explicit_fields": [
+      "clip_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip pausa",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip pausa",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip seguir",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip seguir",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip volumen",
+    "explicit_fields": [
+      "volume"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip volumen",
+    "explicit_fields": [
+      "volume"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip ajustar",
+    "explicit_fields": [
+      "adjustment",
+      "direction"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip ajustar",
+    "explicit_fields": [
+      "adjustment",
+      "direction"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip repetir",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip repetir",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip siguiente",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip siguiente",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "av_control_unconfirmed"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip parar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip parar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar fondo",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar fondo",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar gesto",
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar gesto",
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar rubor",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/avatar rubor",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_end_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_status"
+  },
+  {
+    "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+    "route": "/clip repetir",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "call_ended"
+  },
+  {
+    "test": "test_calls.CallsTest.test_backend_removed_after_admission_does_not_lose_cancellation_or_start",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_backend_removed_after_admission_does_not_lose_cancellation_or_start",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "calls_not_configured"
+  },
+  {
+    "test": "test_calls.CallsTest.test_cancel_after_provider_acceptance_closes_exact_call_and_suppresses_late_result",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_cancel_after_provider_acceptance_closes_exact_call_and_suppresses_late_result",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_calls.CallsTest.test_cancel_before_dispatch_persists_tombstone_across_application_restart",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_cancel_before_dispatch_persists_tombstone_across_application_restart",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_calls.CallsTest.test_expired_dispatched_worker_is_cancelled_without_second_offer",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamar",
+    "explicit_fields": [
+      "topic",
+      "video"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamar",
+    "explicit_fields": [
+      "topic",
+      "video"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "call_busy"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_status"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/clip lista",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/clip lista",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "av_control_applied"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/avatar expresion",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/avatar expresion",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "av_control_unconfirmed"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_end_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_failure_notice_is_own_outbox_and_ack_does_not_redial",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_failure_notice_is_own_outbox_and_ack_does_not_redial",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "no_current_call"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamada cancelar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+    "route": "/llamada cancelar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_end_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "time",
+      "volume"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "time",
+      "volume"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_create"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "date",
+      "time"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada programar",
+    "explicit_fields": [
+      "date",
+      "time"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_create"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada agenda",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada agenda",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "agenda_list"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada estado",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_status"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_calls.CallsTest.test_schedule_ids_are_delivered_and_pending_agenda_does_not_hide_active_call",
+    "route": "/llamada colgar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "call_end_requested"
+  },
+  {
+    "test": "test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "calls_not_configured"
+  },
+  {
+    "test": "test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider",
+    "route": "/llamar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "calls_policy_changed"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/estado",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "receipt_state"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "receipt_not_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/estado",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "receipt_not_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "already_finished"
+  },
+  {
+    "test": "test_core.CoreTest.test_delivery_cas_prevents_parallel_send_and_keeps_network_outside_transaction",
+    "route": "/notas",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "notes_empty"
+  },
+  {
+    "test": "test_core.CoreTest.test_delivery_cas_prevents_parallel_send_and_keeps_network_outside_transaction",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_duplicate_restart_collision_and_concurrent_writes",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_newer_unaccepted_view_does_not_replace_delivered_filter",
+    "route": "/notas",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "notes_empty"
+  },
+  {
+    "test": "test_core.CoreTest.test_newer_unaccepted_view_does_not_replace_delivered_filter",
+    "route": "/notas",
+    "explicit_fields": [
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "note_page_out_of_range"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/notas",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/notas",
+    "explicit_fields": [
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "note_filter_required"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/notas",
+    "explicit_fields": [
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/notas",
+    "explicit_fields": [
+      "page",
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+    "route": "/notas",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "notes_empty"
+  },
+  {
+    "test": "test_core.CoreTest.test_part_receipts_restart_and_explicit_known_failure_retry",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_part_receipts_restart_and_explicit_known_failure_retry",
+    "route": "/notas",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_permissions_before_dispatch_and_revalidated_after_admission",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "actor_denied"
+  },
+  {
+    "test": "test_core.CoreTest.test_recovery_executes_saved_canonical_command_without_reparsing",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_rollback_between_note_and_receipt_preserves_atomicity",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_scope_and_epoch_isolation_with_same_group",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_scope_and_epoch_isolation_with_same_group",
+    "route": "/notas",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "notes_empty"
+  },
+  {
+    "test": "test_core.CoreTest.test_scope_and_epoch_isolation_with_same_group",
+    "route": "/notas",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_core.CoreTest.test_uncertain_delivery_restart_does_not_repeat_effect_or_send",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_vertical_notes_literal_filter_and_real_delivery_receipt",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_core.CoreTest.test_vertical_notes_literal_filter_and_real_delivery_receipt",
+    "route": "/notas",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "notes_found"
+  },
+  {
+    "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+    "route": "/admin expulsar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+    "route": "/admin expulsar",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "admin_completed"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl mp3",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl mp3",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl mp4",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl mp4",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl webm",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl webm",
+    "explicit_fields": [
+      "end_seconds",
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "start_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "start_seconds"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container",
+      "subtitle_language"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container",
+      "subtitle_language"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "subtitles_unavailable"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl buscar",
+    "explicit_fields": [
+      "container",
+      "query",
+      "subtitle_language"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "route": "/dl buscar",
+    "explicit_fields": [
+      "container",
+      "query",
+      "subtitle_language"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "download_choices"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance",
+    "route": "/buscar",
+    "explicit_fields": [
+      "query",
+      "required_terms"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance",
+    "route": "/buscar",
+    "explicit_fields": [
+      "query",
+      "required_terms"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "web_results"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance",
+    "route": "/buscar",
+    "explicit_fields": [
+      "query",
+      "required_terms"
+    ],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "web_empty"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back",
+    "route": "/dl mp4",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "downloads_not_configured"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back",
+    "route": "/dl buscar",
+    "explicit_fields": [
+      "container",
+      "query",
+      "source"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "source_search_unavailable"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back",
+    "route": "/dl mp4",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "adult_sources_disabled"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced",
+    "route": "/dl mp3",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced",
+    "route": "/dl mp3",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "download_choices"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced",
+    "route": "/dl elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "download_view_unavailable"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+    "route": "/dl webm",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+    "route": "/dl webm",
+    "explicit_fields": [
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+    "route": "/dl srt",
+    "explicit_fields": [
+      "subtitle_language",
+      "url"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+    "route": "/dl srt",
+    "explicit_fields": [
+      "subtitle_language",
+      "url"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl buscar",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl buscar",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "query"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "download_choices"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "download_view_unavailable"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "download_choice_out_of_range"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "download_ready"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+    "route": "/dl anterior",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/bj iniciar",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/bj doblar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "blackjack_board_required"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/bj doblar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+    "route": "/bj estado",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "blackjack_not_found"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+    "route": "/bj iniciar",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "blackjack_invalid_deck"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+    "route": "/bj iniciar",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+    "route": "/bj doblar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "blackjack_board_required"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_natural_payout_single_receipt_and_rescue_default",
+    "route": "/bj iniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_natural_payout_single_receipt_and_rescue_default",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj mesa",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj entrar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj repartir",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj pedir",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "blackjack_not_your_turn"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj doblar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "route": "/bj estado",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/bj mesa",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/bj entrar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/bj cancelar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "blackjack_host_required"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+    "route": "/bj cancelar",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "blackjack_cancelled"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+    "route": "/bj iniciar",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+    "route": "/bj estado",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "blackjack_expired"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+    "route": "/bj estado",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_cooldown"
+  },
+  {
+    "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+    "route": "/top",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_top"
+  },
+  {
+    "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "xp_limit"
+  },
+  {
+    "test": "test_games.GamesTest.test_group_message_credit_duplicate_old_and_commands_excluded",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_group_message_credit_duplicate_old_and_commands_excluded",
+    "route": "/ayuda",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "help"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh iniciar",
+    "explicit_fields": [
+      "duration_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_started"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh estado",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_status"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh airdrop",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_drop_announced"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "happy_drop_unavailable"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_drop_claimed"
+  },
+  {
+    "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "route": "/hh airdrop",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "happy_drop_exists"
+  },
+  {
+    "test": "test_games.GamesTest.test_prank_safe_fiction_never_looks_up_or_mutates_foreign_data",
+    "route": "/broma",
+    "explicit_fields": [
+      "label"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "prank_fiction"
+  },
+  {
+    "test": "test_games.GamesTest.test_prank_safe_fiction_never_looks_up_or_mutates_foreign_data",
+    "route": "/broma",
+    "explicit_fields": [
+      "label"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "prank_invalid_label"
+  },
+  {
+    "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+    "route": "/bj iniciar",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+    "route": "/bj estado",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_board"
+  },
+  {
+    "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+    "route": "/bj plantarse",
+    "explicit_fields": [
+      "game_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "blackjack_settled"
+  },
+  {
+    "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+    "route": "/hh iniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_started"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_cancelled_message_or_changed_directory_between_parts_cannot_continue",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_cancelled_message_or_changed_directory_between_parts_cannot_continue",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_cancelled_message_or_changed_directory_between_parts_cannot_continue",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+    "route": "/contactos",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_contacts"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+    "route": "/recado estado",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+    "route": "/drive cuota",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+    "route": "/drive cuota",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "drive_capacity"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+    "route": "/drive guardar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+    "route": "/drive buscar",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+    "route": "/drive buscar",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "drive_choices"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+    "route": "/drive elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "drive_configuration_changed"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_revoked_authorization_has_actionable_message_without_claiming_upload",
+    "route": "/drive cuota",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_revoked_authorization_has_actionable_message_without_claiming_upload",
+    "route": "/drive cuota",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "oauth_refresh_rejected"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_save_reserved_identity_hash_and_no_repeat_after_restart",
+    "route": "/drive guardar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_save_reserved_identity_hash_and_no_repeat_after_restart",
+    "route": "/drive guardar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "drive_saved"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive buscar",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive buscar",
+    "explicit_fields": [
+      "query"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "drive_choices"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "drive_view_unavailable"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "drive_choice_out_of_range"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "route": "/drive elegir",
+    "explicit_fields": [
+      "choice",
+      "view_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "drive_downloaded"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "owner_required"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "message_directory_changed"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "message_preview_expired"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado cancelar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview_required"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "uncertain",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "message_private_required"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_recipient_unknown"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview_required"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "attach",
+      "recipients",
+      "source"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "attach",
+      "recipients",
+      "source"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "quoted_attachment_unavailable"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts",
+    "route": "/recado preparar",
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "message_preview"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts",
+    "route": "/recado enviar",
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "message_status"
+  },
+  {
+    "test": "test_media.MediaTest.test_cancelled_motor_and_late_output_do_not_publish_or_deliver",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_cancelled_motor_and_late_output_do_not_publish_or_deliver",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_media.MediaTest.test_current_attachment_priority_foreign_quote_symlink_and_expiry",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_current_attachment_priority_foreign_quote_symlink_and_expiry",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "quoted_attachment_unavailable"
+  },
+  {
+    "test": "test_media.MediaTest.test_current_attachment_priority_foreign_quote_symlink_and_expiry",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "artifact_access_denied"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+    "route": "/pdf extraer",
+    "explicit_fields": [
+      "pages"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "quoted_attachment_unavailable"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+    "route": "/pdf extraer",
+    "explicit_fields": [
+      "pages"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+    "route": "/pdf extraer",
+    "explicit_fields": [
+      "pages"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "pdf_extracted"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "attachment_required"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+    "route": "/convertir",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+    "route": "/convertir",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+    "route": "/sticker",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "attachment_required"
+  },
+  {
+    "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/sticker",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/sticker",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "sticker_created"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/ocr",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/ocr",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "image_read"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/qr",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+    "route": "/qr",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "image_read"
+  },
+  {
+    "test": "test_media.MediaTest.test_multiple_sheet_csv_keeps_sheets_and_neutralizes_formula_text",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_multiple_sheet_csv_keeps_sheets_and_neutralizes_formula_text",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "document_no_text"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf iniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pdf_session_started"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf agregar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pdf_sources_added"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf terminar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf agregar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pdf_session_busy"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf terminar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "pdf_assembled"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf cancelar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "pdf_session_cancelled"
+  },
+  {
+    "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+    "route": "/pdf iniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "pdf_source_format"
+  },
+  {
+    "test": "test_media.MediaTest.test_restart_recovers_queue_and_old_token_cannot_publish",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_restart_recovers_queue_and_old_token_cannot_publish",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_same_video_mp3_actual_stream_and_clip_duration",
+    "route": "/editar",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_same_video_mp3_actual_stream_and_clip_duration",
+    "route": "/editar",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_media.MediaTest.test_same_video_mp3_actual_stream_and_clip_duration",
+    "route": "/editar",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "start_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_same_video_mp3_actual_stream_and_clip_duration",
+    "route": "/editar",
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "start_seconds"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "retry_preview_required"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "delivery_retry_preview"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "delivery_retry_authorized"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "no_retryable_delivery"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "retry_preview_required"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/pdf reintentar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "delivery_retry_preview"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/confirmar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "confirmation_unavailable"
+  },
+  {
+    "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "route": "/confirmar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "delivery_retry_authorized"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/editar",
+    "explicit_fields": [
+      "container",
+      "subtitle_language"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/editar",
+    "explicit_fields": [
+      "container",
+      "subtitle_language"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/editar",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/editar",
+    "explicit_fields": [
+      "container"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "media_edited"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/reaccion",
+    "explicit_fields": [
+      "sticker_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+    "route": "/reaccion",
+    "explicit_fields": [
+      "sticker_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "reaction_ready"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_cancel_during_remote_call_is_uncertain_and_configuration_is_explicit",
+    "route": "/mc parar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_cancel_during_remote_call_is_uncertain_and_configuration_is_explicit",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+    "route": "/mc mod activar",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+    "route": "/mc mod activar",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+    "route": "/mc consola",
+    "explicit_fields": [
+      "command"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+    "route": "/mc consola",
+    "explicit_fields": [
+      "command"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+    "route": "/mc consola",
+    "explicit_fields": [
+      "command"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "minecraft_local_validation"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+    "route": "/mc estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+    "route": "/mc estado",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc jugadores",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc jugadores",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mundos",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mundos",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mods",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mods",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc config",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc config",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mod desactivar",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+    "route": "/mc mod desactivar",
+    "explicit_fields": [
+      "name"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_revocation_after_admission_and_interrupted_dispatch_never_replays",
+    "route": "/mc backup",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_revocation_after_admission_and_interrupted_dispatch_never_replays",
+    "route": "/mc backup",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "owner_required"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_revocation_after_admission_and_interrupted_dispatch_never_replays",
+    "route": "/mc reiniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_revocation_after_admission_and_interrupted_dispatch_never_replays",
+    "route": "/mc parar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "minecraft_resource_busy"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+    "route": "/mc reiniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+    "route": "/mc reiniciar",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "minecraft_uncertain"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+    "route": "/mc iniciar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "minecraft_resource_busy"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+    "route": "/mc estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+    "route": "/mc estado",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "minecraft_completed"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_composed_catalog_is_readable_without_any_send_permission",
+    "route": "/pack catalogo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pack_catalog"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_preview_required"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_policy_revocation_retires_queued_purchase_without_debit_or_delivery",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_policy_revocation_retires_queued_purchase_without_debit_or_delivery",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_policy_revocation_retires_queued_purchase_without_debit_or_delivery",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_operational.OperationalTest.test_policy_revocation_retires_queued_purchase_without_debit_or_delivery",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_digest_delivery_rechecks_current_owner",
+    "route": "/escuela resumen configurar",
+    "explicit_fields": [
+      "digest_time",
+      "enabled"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_digest_status"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/mem guardar",
+    "explicit_fields": [
+      "kind",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_saved"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/mem listar",
+    "explicit_fields": [
+      "kind",
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/mem listar",
+    "explicit_fields": [
+      "kind",
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "page_out_of_range"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/recordar en",
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/recordatorio cancelar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_cancelled"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/recordatorios",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+    "route": "/recordatorios",
+    "explicit_fields": [
+      "include_closed"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem guardar",
+    "explicit_fields": [
+      "kind",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_saved"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem listar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem olvidar",
+    "explicit_fields": [
+      "memory_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "memory_not_found"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem borrar-todo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "memory_delete_preview"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/confirmar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "confirmation_unavailable"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem corregir",
+    "explicit_fields": [
+      "memory_id",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_corrected"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/confirmar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "confirmation_stale"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/confirmar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memories_deleted"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem listar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+    "route": "/mem guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "memory_saved"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_pending_notice_expiry_pause_and_sent_receipt_are_preserved",
+    "route": "/recordar en",
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_pending_notice_expiry_pause_and_sent_receipt_are_preserved",
+    "route": "/bot pausa",
+    "explicit_fields": [
+      "minutes"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_mode_updated"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_pending_notice_expiry_pause_and_sent_receipt_are_preserved",
+    "route": "/bot reanudar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_mode_updated"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta crear",
+    "explicit_fields": [
+      "options",
+      "question"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "poll_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta votar",
+    "explicit_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "poll_not_published"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta votar",
+    "explicit_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "poll_results"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta resultados",
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "poll_results"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta cerrar",
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "poll_author_required"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta cerrar",
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "poll_results"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta votar",
+    "explicit_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "poll_closed"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+    "route": "/encuesta resultados",
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "poll_not_found"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat",
+    "route": "/recordar en",
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat",
+    "route": "/recordar el",
+    "explicit_fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat",
+    "route": "/recordar el",
+    "explicit_fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "invalid_reminder_date"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+    "route": "/recordar en",
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+    "route": "/recordatorio cancelar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "reminder_not_found"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+    "route": "/recordatorio archivar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "reminder_still_pending"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+    "route": "/recordatorio cancelar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_cancelled"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+    "route": "/recordatorio archivar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_archived"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reserved_reminder_cancel_and_permission_revocation_prevent_transport",
+    "route": "/recordar en",
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_reserved_reminder_cancel_and_permission_revocation_prevent_transport",
+    "route": "/recordatorio cancelar",
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "reminder_cancelled"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/horario agregar",
+    "explicit_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_lesson_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/horario agregar",
+    "explicit_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "school_lesson_overlap"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/horario listar",
+    "explicit_fields": [
+      "weekday"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_schedule"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/escuela resumen configurar",
+    "explicit_fields": [
+      "digest_time",
+      "enabled"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_digest_status"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/escuela resumen configurar",
+    "explicit_fields": [
+      "enabled"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_digest_status"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+    "route": "/escuela resumen estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_digest_status"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea crear",
+    "explicit_fields": [
+      "attach",
+      "due_date",
+      "subject",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_task_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea completar",
+    "explicit_fields": [
+      "task_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "task_not_found"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea archivo",
+    "explicit_fields": [
+      "task_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "task_attachment"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea archivo",
+    "explicit_fields": [
+      "task_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "task_not_found"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea completar",
+    "explicit_fields": [
+      "task_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_task_completed"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+    "route": "/tarea borrar",
+    "explicit_fields": [
+      "task_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_task_deleted"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/bot estado",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "bot_status"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/ayuda",
+    "explicit_fields": [
+      "topic"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "help"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/voces",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "voice_catalog"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/tarea crear",
+    "explicit_fields": [
+      "due_date",
+      "due_time",
+      "subject",
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_task_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/tareas",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "organization_list"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/horario agregar",
+    "explicit_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_lesson_created"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/horario borrar",
+    "explicit_fields": [
+      "lesson_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "school_lesson_deleted"
+  },
+  {
+    "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+    "route": "/horario listar",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "school_schedule"
+  },
+  {
+    "test": "test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_packs.PacksTest.test_category_normalization_and_azar_remain_available",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_category_normalization_and_azar_remain_available",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_preview"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop cancelar",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "coop_creator_required"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop estado",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+    "route": "/coop cancelar",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_preview"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_preview"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "coop_over_target"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop cancelar",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+    "route": "/coop estado",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "coop_group_required"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/coop crear",
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "coop_preview"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/coop aportar",
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+    "route": "/coop cancelar",
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "uncertain",
+    "code": "coop_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/hh iniciar",
+    "explicit_fields": [
+      "duration_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_started"
+  },
+  {
+    "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_discount_expired"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/hh iniciar",
+    "explicit_fields": [
+      "duration_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_started"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "happy_drop_unavailable"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/hh parar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_stopped"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "happy_photos_result"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "finished_worker",
+    "status": "empty",
+    "code": "happy_photos_result"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh iniciar",
+    "explicit_fields": [
+      "duration_seconds"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_started"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh lluvia",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh lluvia",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "happy_photos_result"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh airdrop",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "happy_drop_announced"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/hh reclamar",
+    "explicit_fields": [
+      "event_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "happy_photos_result"
+  },
+  {
+    "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+    "route": "/",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "happy_photos_result"
+  },
+  {
+    "test": "test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks",
+    "route": "/pack catalogo",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pack_catalog"
+  },
+  {
+    "test": "test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks",
+    "route": "/pack catalogo",
+    "explicit_fields": [
+      "page"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "page_out_of_range"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_preview_required"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "pack_not_found"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+    "route": "/pack confirmar",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "uncertain",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_offer"
+  },
+  {
+    "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+    "route": "/pack estado",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "pack_status"
+  },
+  {
+    "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+    "route": "/pack estado",
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "empty",
+    "code": "pack_not_found"
+  },
+  {
+    "test": "test_packs.PacksTest.test_unpublished_category_is_rejected_before_creating_an_offer",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_packs.PacksTest.test_unpublished_category_is_rejected_before_creating_an_offer",
+    "route": "/saldo",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "xp_balance"
+  },
+  {
+    "test": "test_packs.PacksTest.test_unpublished_category_is_rejected_before_creating_an_offer",
+    "route": "/pack comprar",
+    "explicit_fields": [
+      "category"
+    ],
+    "phase": "committed_receipt",
+    "status": "needs_input",
+    "code": "pack_category_unavailable"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "cancelled",
+    "code": "roulette_failed"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_completed"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+    "route": "/",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_return_accepted"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta estado",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "route": "/ruleta cancelar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "roulette_cancelled"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "cancelled",
+    "code": "roulette_failed"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+    "route": "/cancelar",
+    "explicit_fields": [
+      "id"
+    ],
+    "phase": "committed_receipt",
+    "status": "cancelled",
+    "code": "request_cancelled"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "needs_input",
+    "code": "roulette_rules_required"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "failed",
+    "code": "roulette_preflight_failed"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/daily",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "daily_awarded"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta crear",
+    "explicit_fields": [
+      "bet"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta entrar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "roulette_board"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "roulette_uncertain"
+  },
+  {
+    "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+    "route": "/ruleta jugar",
+    "explicit_fields": [
+      "room_id"
+    ],
+    "phase": "finished_worker",
+    "status": "uncertain",
+    "code": "roulette_status"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_durable_enqueue_restart_duplicate_and_changed_payload",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_http_auth_limits_durable_ack_and_continuous_shutdown",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_media_quote_ownership_and_real_pdf_delivered",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_media_quote_ownership_and_real_pdf_delivered",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "document_converted"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_media_quote_ownership_and_real_pdf_delivered",
+    "route": "/convertir",
+    "explicit_fields": [
+      "target"
+    ],
+    "phase": "committed_receipt",
+    "status": "failed",
+    "code": "quoted_attachment_unavailable"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts",
+    "route": "/ayuda",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "help"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_rejected_ack_and_disabled_delivery_have_no_retry",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_slow_media_does_not_block_text_commands_and_cancels_on_shutdown",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_sticker_uses_native_endpoint_and_scoped_output",
+    "route": "/sticker",
+    "explicit_fields": [],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "job_queued"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_sticker_uses_native_endpoint_and_scoped_output",
+    "route": "/sticker",
+    "explicit_fields": [],
+    "phase": "finished_worker",
+    "status": "ok",
+    "code": "sticker_created"
+  },
+  {
+    "test": "test_runtime.RuntimeTest.test_uncertain_ack_cancel_and_restart_never_repeat_send",
+    "route": "/nota guardar",
+    "explicit_fields": [
+      "text"
+    ],
+    "phase": "committed_receipt",
+    "status": "ok",
+    "code": "note_saved"
+  }
+]

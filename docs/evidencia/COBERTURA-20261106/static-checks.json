@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "/home/petrov/zhana/.venv/bin/ruff",
+      "check",
+      "src",
+      "tests",
+      "ops"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "/home/petrov/zhana/.venv/bin/ruff",
+      "format",
+      "--check",
+      "src",
+      "tests",
+      "ops"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      ".venv/bin/pip",
+      "check"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0
+  }
+]

@@ -389,6 +389,30 @@ class MediaTest(IsolatedAsyncioTestCase):
         self.assertIn("uncertain", {row["state"] for row in attempts})
         self.assertIn("accepted", {row["state"] for row in attempts})
 
+    async def test_uncertain_pdf_retry_flag_consumes_only_delivered_preview(self):
+        _, receipt, result = await self.convert("/convertir pdf", self.png)
+
+        class Timeout:
+            def send(self, part):
+                raise TimeoutError()
+
+        self.app.deliver(receipt.id, Timeout())
+        command = "/pdf reintentar " + receipt.id + " --confirmar-incierto"
+        self.assertEqual(
+            self.app.receive(self.incoming(command)).result.code, "retry_preview_required"
+        )
+        preview = self.app.receive(self.incoming("/pdf reintentar " + receipt.id))
+        self.app.deliver(preview.id, CollectingTransport())
+        confirmed = self.app.receive(self.incoming(command))
+        self.assertEqual(confirmed.result.code, "delivery_retry_authorized")
+        self.assertEqual(
+            self.app.receive(self.incoming(command)).result.code, "no_retryable_delivery"
+        )
+        self.assertEqual(self.app.deliver(receipt.id, CollectingTransport()), 2)
+        self.assertEqual(self.result(receipt.id).data["artifacts"], result.data["artifacts"])
+        self.assertEqual(len(self.rows("SELECT * FROM jobs")), 1)
+        self.assertEqual(await self.app.jobs.run_pending(), 0)
+
     async def test_webm_and_embedded_subtitle_outputs_and_catalog_assets(self):
         source = self.settings.root / "subtitle.srt"
         source.write_text("1\n00:00:00,000 --> 00:00:01,000\nCABLE AZUL\n", encoding="utf-8")

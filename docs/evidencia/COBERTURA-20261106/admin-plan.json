@@ -1,0 +1,240 @@
+{
+  "scope": "Cobertura local de rutas R8 de administración asignadas; SQLite temporal y doubles sintéticos.",
+  "campaign_reference": "Campaña cerrada 134/152 rutas observadas; este plan añade oracles locales seleccionados sin alterar sus resultados históricos.",
+  "suites_to_instrument": [
+    "tests.test_admin.AdminTest",
+    "tests.test_coverage_admin_gaps.AdminCoverageGapsTest"
+  ],
+  "routes": [
+    {
+      "route": "/admin advertir",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Se persiste exactamente un aviso del miembro resuelto; resultado admin_warning_added y ninguna escritura en wallets."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_local_warning_receipt_survives_crash_before_job_publication",
+          "oracle": "Tras recuperar una publicación interrumpida queda un solo admin_warnings y el recibo termina admin_warning_added."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Actor no dueño recibe owner_required antes de snapshot/cliente."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Avisos fuera de grupo reciben admin_group_required."
+        }
+      ]
+    },
+    {
+      "route": "/admin quitar-aviso",
+      "fields": [
+        "target",
+        "warning_id"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "El aviso creado para el objetivo se revoca por su ID exacto; admin_warning_revoked y grupos.calls vacío."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Actor no dueño es denegado antes del snapshot."
+        }
+      ]
+    },
+    {
+      "route": "/admin expulsar",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+          "oracle": "Alias alice resuelve a alice-target y un replay del mismo mensaje genera una sola llamada (group, remove, alice-target), un job y recibo completed."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+          "oracle": "Expulsar al dueño falla sin llamada al doble de grupos."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+          "oracle": "Una operación externa incierta pendiente rechaza otra mutación con admin_operation_pending."
+        }
+      ]
+    },
+    {
+      "route": "/admin ban",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+          "oracle": "El ban local queda activo antes de llamar al doble; resultado externo incierto se conserva sin reintento. Esto acredita el recorrido de incertidumbre, no una expulsión aceptada por proveedor real."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+          "oracle": "No se banea al dueño ni a otro administrador; no se crea fila admin_bans."
+        }
+      ]
+    },
+    {
+      "route": "/admin unban",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+          "oracle": "Tras resolver la incertidumbre, unban revoca el ban del registro local por alias; no reincorpora participantes ni llama al proveedor. La única llamada registrada corresponde al ban previo."
+        }
+      ],
+      "guards": []
+    },
+    {
+      "route": "/admin promover",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+          "oracle": "Se envía exactamente (group, promote, alice-target) y retorna admin_completed."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+          "oracle": "Actor no dueño recibe owner_required antes del cliente para acciones de administración del grupo."
+        }
+      ]
+    },
+    {
+      "route": "/admin degradar",
+      "fields": [
+        "target"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+          "oracle": "Se envía exactamente (group, demote, alice-target) y retorna admin_completed."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+          "oracle": "No se degrada al dueño; no aumenta el número de llamadas al doble."
+        }
+      ]
+    },
+    {
+      "route": "/admin nuclear-confirmar",
+      "fields": [
+        "draft_id"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+          "oracle": "Sin entrega local del preview se rechaza; después de publicar preview y confirmar el draft correcto se ejecutan exactamente dos efectos, state completed y cargo único."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+          "oracle": "Una respuesta incierta produce un solo efecto incierto, omite el resto y el replay no repite llamadas."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+          "oracle": "Con nuclear deshabilitado, un draft válido devuelve nuclear_disabled y no hay mutaciones de grupo."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+          "oracle": "Cambio de rol después del preview omite objetivos, no muta grupos ni cobra."
+        }
+      ]
+    },
+    {
+      "route": "/admin nuclear-cancelar",
+      "fields": [
+        "draft_id"
+      ],
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+          "oracle": "Cancelar el draft propio no cambia saldo/reserva ni llama grupos; confirmarlo después sigue cancelado."
+        }
+      ],
+      "guards": []
+    }
+  ],
+  "fields": [
+    {
+      "route": "/admin avisos",
+      "field": "target",
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Consulta del objetivo devuelve exactamente el warning_id creado para ese miembro."
+        },
+        {
+          "test_id": "tests.test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+          "oracle": "Consulta de avisos sigue disponible mientras una mutación externa está incierta."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+          "oracle": "Consulta fuera de grupo se rechaza con admin_group_required."
+        }
+      ]
+    },
+    {
+      "route": "/admin xp-dar",
+      "field": "target",
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+          "oracle": "--objetivo alice 100 crea la cuenta verificada de alice y aplica saldo exacto 100."
+        }
+      ],
+      "guards": []
+    },
+    {
+      "route": "/admin xp-quitar",
+      "field": "target",
+      "positive": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+          "oracle": "--objetivo alice 3 reduce exactamente tres XP del saldo propio verificado de alice."
+        }
+      ],
+      "guards": [
+        {
+          "test_id": "tests.test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+          "oracle": "La retirada mayor que saldo disponible falla con admin_xp_limit sin saldo negativo."
+        }
+      ]
+    }
+  ],
+  "separation": "positive y guards se instrumentan como observaciones distintas; nuclear usa CollectingTransport/GroupFixture y no difunde a proveedores ni grupos reales.",
+  "not_in_scope": [
+    "proveedores",
+    "mensajes reales",
+    "servicios activos",
+    "NLP",
+    "GitHub"
+  ]
+}

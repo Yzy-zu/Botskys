@@ -174,6 +174,10 @@ class CoreTest(TestCase):
 
     def test_cancel_exact_pending_own_request_and_status_hides_foreign(self):
         pending = self.app.admit(self.incoming("/nota guardar cancelar"))
+        status = self.receive("/estado " + pending.id).result
+        self.assertEqual(status.code, "receipt_state")
+        self.assertEqual(status.data["id"], pending.id)
+        self.assertEqual(status.data["state"], "queued")
         foreign = self.receive("/cancelar " + pending.id, actor="bob")
         self.assertEqual(foreign.result.code, "receipt_not_found")
         self.assertEqual(

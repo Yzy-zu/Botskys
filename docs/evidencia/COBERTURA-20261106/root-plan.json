@@ -1,0 +1,105 @@
+[
+  {
+    "route": "/estado",
+    "fields": [
+      "id"
+    ],
+    "test_id": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "oracle": "Estado propio queued/ID exactos; recibo ajeno no visible.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/cancelar",
+    "fields": [
+      "id"
+    ],
+    "test_id": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+    "oracle": "Retira pedido pendiente sin guardar nota; ajeno denegado y terminado no repetido.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/confirmar",
+    "fields": [
+      "id"
+    ],
+    "test_id": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+    "oracle": "Preview entregado antes de confirmar, ámbito correcto, confirmación consumida y sin repetir motor.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "fields": [
+      "room_id"
+    ],
+    "test_id": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+    "oracle": "Devolución exacta por contribuyente, cero reservas y cero expulsiones.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/drive elegir",
+    "fields": [
+      "view_id",
+      "choice"
+    ],
+    "test_id": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "oracle": "Vista aceptada propia, límite selección/TTL; archivo final contiene abc exactos.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/drive buscar",
+    "fields": [
+      "query"
+    ],
+    "test_id": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+    "oracle": "Búsqueda HTTP doble con ámbito y selección del resultado.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/dl anterior",
+    "fields": [
+      "start_seconds",
+      "end_seconds",
+      "subtitle_language"
+    ],
+    "test_id": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+    "oracle": "Recorte retenido0.1..0.5 verificado ffprobe0.4±0.15s; no redescarga. SRT sin pista da error específico.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/voz crear",
+    "fields": [
+      "voice",
+      "effect"
+    ],
+    "test_id": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+    "oracle": "Texto compuesto distinto de literal; perfil argentino exacto capturado por CLI doble y efecto radio en artefacto Opus real.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/pdf reintentar",
+    "fields": [
+      "confirm_uncertain"
+    ],
+    "test_id": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+    "oracle": "Flag exige vista entregada, confirma una vez, reentrega mismo artefacto con único motor.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/hh iniciar",
+    "fields": [
+      "duration_seconds"
+    ],
+    "test_id": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+    "oracle": "Duración1m, publicación/orden y premio único según prueba existente.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  },
+  {
+    "route": "/bj repartir",
+    "fields": [
+      "game_id"
+    ],
+    "test_id": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+    "oracle": "ID mesa real, reparto de baraja fijada y liquidación exacta por jugador; reservas vacías.",
+    "evidence_level": "LOCAL_FIXTURES_AND_DOUBLES"
+  }
+]

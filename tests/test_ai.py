@@ -416,9 +416,14 @@ subprocess.run(['ffmpeg','-v','error','-nostdin','-f','lavfi','-i','sine=frequen
         self.assertEqual(info["streams"][0]["sample_rate"], "48000")
         self.assertEqual(info["streams"][0]["channels"], 1)
         self.app.gemini = self.model
-        composed = self.receive("/voz crear --duracion 10 explica el cable")
+        composed = self.receive(
+            "/voz crear --voz argentino --efecto radio --duracion 10 explica el cable"
+        )
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(composed.id).data["spoken_text"], "Guion compuesto sintético.")
+        self.assertEqual(self.result(composed.id).data["voice"], "argentino")
+        self.assertEqual(self.result(composed.id).data["effect"], "radio")
+        self.assertEqual(json.loads(log.read_text().splitlines()[-1])["voice"], "es-AR-TomasNeural")
         self.assertEqual(self.model.calls[-1][1]["purpose"], "compose")
         self.assertEqual(self.model.calls[-1][1]["requested_seconds"], 10)
         self.assertEqual(self.rows("SELECT * FROM notes"), [])

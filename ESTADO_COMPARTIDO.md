@@ -1,5 +1,41 @@
 # Relevo Botsky
 
+## 06/11/2026 21:02 UTC · Punto1 cobertura local cerrado
+
+Encargo explícito cubrir18rutas y44campos ausentes en campaña134/152. Dos
+subagentes Luna (admin/AV), revisión del principal y suplemento local separado.
+No reanuda campañas ni efectos remotos. Se reutilizaron pruebas de negocio y se
+añadieron5casos (PDF,admin,3AV), ampliando estado propio,vozcrear voz/efecto,
+recorte retenido desde/hasta medido con ffprobe y query Drive exacta con ámbito.
+
+18/18rutas y44/44campos con entrada explícita y evidencia de dominio vinculada a
+aserciones concretas. Conciliación reviewed-gaps.json:28grupos de ruta/campos,
+excluye sondeos fríos y parser puro. Resultado no significa aceptación remota ni
+combinatoria exhaustiva. Ban cubre incertidumbre; unban revoca solo registro local.
+AV usa servicio Node real con driver sintético: ningún navegador/proveedor/llamada
+real. Agenda Live/audio, IDs, fecha/hora México, volumen y fin comprobados por
+payload/estado; clip ID/nombre distintos y ámbito exacto. PDFretryflag exige
+vista entregada, autoriza una vez y no repite motor.
+
+224tests Python PASS, cero fallos/errores/omisiones y cero intentos fuera de
+loopback. Ruff check/format135archivos, pip check y diffcheck correctos. Primera
+pasada222 con1error de importación del nuevo módulo AV: corregido discovery,
+focal3PASS y completa final224PASS; pasada inicial conservada en runs/. No fue
+defecto de producto. Ningún cambio src/calls ni defecto nuevo confirmado.
+
+Informe docs/COBERTURA_COMPLEMENTARIA_20261106.md; evidencia nueva
+docs/evidencia/COBERTURA-20261106/ con planes/oracles por ruta,observaciones,
+cobertura,reviewed-gaps,logs,checks y ejecuciones archivadas. Reproducir con
+.venv/bin/python ops/cobertura_pendiente_local.py. Cobertura histórica intacta
+(hash31fbf8c0…17ee29f4); sus NOT_TESTED remotos no se reescriben.
+
+Punto1 cerrado LOCAL. Puntos2(sospechas),3AV real,4integraciones y5transición
+conservan su alcance y pendientes; R10global abierto/R11 no iniciado. No mensajes,
+red remota,servicios,mutaciones reales,navegador,GitHub,NLP,DB31 o perfiles/sesiones.
+OAuth5TiB propio y fuentes Zhana intactos. Cuota44%primaria/25%semanal;
+umbral5% vigente, guardar/parar sin reanudación automática. Commit selectivo local.
+
+
 ## OAuth5TiB renovado e integrado · 06/11 20:20 UTC
 
 Tras reconexión del propietario en Petrovsky: renovación200, cuota200 confirma

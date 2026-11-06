@@ -1,0 +1,45 @@
+{
+  "run_directory": "docs/evidencia/COBERTURA-20261106/runs/20261106T205630483504Z",
+  "baseline_sha256": "31fbf8c0d7e54d13c92dfaebc1f7e016a6b5a76458c1b856c448830f17ee29f4",
+  "tests": 222,
+  "success": false,
+  "failures": 0,
+  "errors": 1,
+  "skipped": 0,
+  "non_loopback_attempts": 0,
+  "routes": 152,
+  "baseline_missing_route_count": 18,
+  "baseline_missing_explicit_field_count": 44,
+  "previously_missing_routes": [
+    "/estado",
+    "/cancelar",
+    "/confirmar",
+    "/admin advertir",
+    "/admin quitar-aviso",
+    "/admin expulsar",
+    "/admin ban",
+    "/admin unban",
+    "/admin promover",
+    "/admin degradar",
+    "/admin nuclear-confirmar",
+    "/admin nuclear-cancelar",
+    "/ruleta cancelar",
+    "/drive elegir",
+    "/clip poner",
+    "/llamada programar",
+    "/llamada reprogramar",
+    "/llamada cancelar-agenda"
+  ],
+  "missing_routes_without_local_observation": [],
+  "remaining_explicit_field_gaps": {
+    "/llamar": [
+      "max_seconds"
+    ]
+  },
+  "limits": [
+    "Local doubles/fixtures only; no provider or human acceptance",
+    "Cold route probes and parser-only tests excluded from domain observations",
+    "Passing test plus observation requires review of referenced semantic assertions",
+    "Closed campaign evidence is unchanged"
+  ]
+}

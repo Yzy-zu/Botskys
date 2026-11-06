@@ -1,0 +1,130 @@
+[
+  {
+    "path": "ops/cobertura_pendiente_local.py",
+    "sha256": "ed9712ace48e5b174c938416cabf33e670fccbac4ac17680087800eba7a97aec"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/route-coverage.json",
+    "sha256": "31fbf8c0d7e54d13c92dfaebc1f7e016a6b5a76458c1b856c448830f17ee29f4"
+  },
+  {
+    "path": "tests/test_acceptance_local.py",
+    "sha256": "f9c658da66064908931a8ca8be2c40f9ac46f59273904898beb92f52e53af8be"
+  },
+  {
+    "path": "tests/test_admin.py",
+    "sha256": "2e695f6a067026f11ab3cab624886975cc4362b672a0433366876da05b5750ea"
+  },
+  {
+    "path": "tests/test_ai.py",
+    "sha256": "2f67738e845b25176ba8fbbbe01b55d3e6c5baf7dd2e01f9b417f9409e26f3f7"
+  },
+  {
+    "path": "tests/test_assets_import.py",
+    "sha256": "b7760f36882b8cfaa8bfd50c3517ab2e16a62845a6119de525146d2dbdf48f5f"
+  },
+  {
+    "path": "tests/test_call_policy.py",
+    "sha256": "39fe5737ac7d36ec376f819e74731fd0e8f89f5a4fb270d15f7592f0df2df4d2"
+  },
+  {
+    "path": "tests/test_call_service_composition.py",
+    "sha256": "70c9ab6f6b0d4b486e8a63239c817a745552ca97b5c644fecb25c564d9c327b8"
+  },
+  {
+    "path": "tests/test_calls.py",
+    "sha256": "c6e035fad055e41d69fb4f7a0d58b3375ee5d11096457655ec6cc592ad72a500"
+  },
+  {
+    "path": "tests/test_calls_client.py",
+    "sha256": "21012ec99d560dda1e24a270c83e78e0130f351a6751098023e126f68b896871"
+  },
+  {
+    "path": "tests/test_commands.py",
+    "sha256": "ab7d064a8d56a33d6c5c47b505550079d7b86e61c92867b8564ac9da00fdd6f4"
+  },
+  {
+    "path": "tests/test_configured_integrations.py",
+    "sha256": "62daf129309c5a661508677ec1b82bf2bb06c340cbfcfa3f5d8ab919ab00c59e"
+  },
+  {
+    "path": "tests/test_contacts.py",
+    "sha256": "2bb3dfcb63c0999deddb13c7a98fd59ec8bf1ed91004c72fea5ca118291c9b4c"
+  },
+  {
+    "path": "tests/test_core.py",
+    "sha256": "0891a9b4499f8d91264c1d6c6e09e68e9f9665e4b12a38f0bce3f5610d2b3d2e"
+  },
+  {
+    "path": "tests/test_coverage_admin_gaps.py",
+    "sha256": "5894c948628c39ae700e005e13ce32152f889beb9ed073f783c2131721bf224e"
+  },
+  {
+    "path": "tests/test_coverage_av_gaps.py",
+    "sha256": "7e6a504a395b39a9da0fac230b3baa939c7e3f2c352113edd5e596a007474d18"
+  },
+  {
+    "path": "tests/test_downloads.py",
+    "sha256": "40768a3255eefc521c73b23adf6db7acacb31cb68e88e43179371ea023c34d4c"
+  },
+  {
+    "path": "tests/test_drive_client.py",
+    "sha256": "520a23c5a50a0fb33b7869de7adaf48112681691f118bb9c0eb11e2a85ff4aa5"
+  },
+  {
+    "path": "tests/test_games.py",
+    "sha256": "7e0e29667c380b9beb66276fc02ef632dcfccd7ad1a813cb90800d5d6526ad38"
+  },
+  {
+    "path": "tests/test_integrations.py",
+    "sha256": "9cf581e9ef3079f1c8e75abaa48ccd02410982c29d3e53ec15ab6409d0e2eb8f"
+  },
+  {
+    "path": "tests/test_lab_campaign.py",
+    "sha256": "b9c058a1bca53ee09fc5851c2a00e605bff143959b2c078862416604b55047d9"
+  },
+  {
+    "path": "tests/test_media.py",
+    "sha256": "9f704b35548ba5df3fbfb07316fff88e749dafa3a207070a989acf20fd5b1851"
+  },
+  {
+    "path": "tests/test_minecraft.py",
+    "sha256": "9fe53d1924d9804b6385a99b974afa04c904d0aa6017bbdcc2cc51d17d8441c2"
+  },
+  {
+    "path": "tests/test_operational.py",
+    "sha256": "1f57cd69afce52ff884ee8b56481a17652517a8c382b9bfad3b22901840dbc98"
+  },
+  {
+    "path": "tests/test_organization.py",
+    "sha256": "e9bd97dd0bd6b20cc9fc2913011561fcf268a4e75c4c650cdc619b85637ace9d"
+  },
+  {
+    "path": "tests/test_packs.py",
+    "sha256": "99df555b2ce43ac32510d49b4f2dd33aff31b83f24a9fcc7032636b8cda40a9f"
+  },
+  {
+    "path": "tests/test_process_cancellation.py",
+    "sha256": "e6b2f97d69d210e91484d34cce0cdef8cba4581a9ec8a32c9f0495fe42b68989"
+  },
+  {
+    "path": "tests/test_roulette.py",
+    "sha256": "70904c86e5bbab35bdf720b99110de3369ad355e06c530cda10148b7fe721799"
+  },
+  {
+    "path": "tests/test_runtime.py",
+    "sha256": "8e49d140b89335a7db73bd5fd391f938b8e081d69852c6132978a7244de56d2a"
+  },
+  {
+    "path": "tests/test_runtime_process.py",
+    "sha256": "fae01a23406fc18aaa4bf3f428aaf97dd43f8efe24c0a7fd2a6f44105ca29976"
+  },
+  {
+    "path": "tests/test_stress_campaign.py",
+    "sha256": "dade40a41f11bf54c03d0d68c71a6be0b4fd7a52f84589c61a599317fa437657"
+  },
+  {
+    "path": "tests/test_webrtc.py",
+    "sha256": "4b7f2c7c46abaa254b0d2f80f4ba1c5db782d78471373e989502ca75364ec916"
+  }
+]

@@ -1,0 +1,108 @@
+{
+  "scope": "Cobertura local de cuatro rutas audiovisuales ausentes y campos no observados de /llamar; backend calls propio con calls/test/service-fixture.cjs.",
+  "campaign_source": "docs/evidencia/STRESS-20261106/route-coverage.json",
+  "campaign_status": "La campaña 10+10+10 permanece cerrada; estas pruebas son evidencia correctiva local posterior y no modifican sus resultados.",
+  "routes": [
+    {
+      "route": "/clip poner",
+      "campaign_fields_absent": [
+        "clip_id",
+        "query"
+      ],
+      "test_ids": [
+        "tests.test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "tests.test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+      ],
+      "oracles": [
+        "ID real de catálogo produce clip.play {callId, clipId}; no se confunde con el nombre.",
+        "--nombre etiqueta exacta produce clip.command {callId, scope, request:{action:play, query}}; el payload no contiene clipId.",
+        "Actor no autorizado se rechaza antes de generar otra acción de clip."
+      ],
+      "evidence_level": "backend y servicio audiovisual Node fixture locales; no demuestra reproducción/escucha por proveedor real"
+    },
+    {
+      "route": "/llamada programar",
+      "campaign_fields_absent": [
+        "audio_id",
+        "date",
+        "end_after_audio",
+        "live_request",
+        "max_seconds",
+        "time",
+        "volume"
+      ],
+      "test_ids": [
+        "tests.test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "tests.test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "tests.test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+        "calls/test/call-agenda.test.cjs :: PM10: future agenda is private to its source and requester and reprogramming is idempotent"
+      ],
+      "oracles": [
+        "date/time se convierten a dueAt epoch ms en America/Mexico_City y conservan timeZone.",
+        "Modo Live entrega targetJid, maxSeconds, volume, endAfterAudio=false, durationFromAnswer=true, live=true, liveRequest, sourceReceipt y origin del actor/chat.",
+        "Modo audio preparado entrega audioId, endAfterAudio=true, volume y live=false; no añade liveRequest.",
+        "Crear agenda no marca/dial; Node fixture conserva audioId/volumen/política de fin; clave de entrada evita duplicar creación."
+      ],
+      "evidence_level": "payload y persistencia local contra CallsClient/Node fixture; no prueba timer de producción ni llamada posterior"
+    },
+    {
+      "route": "/llamada reprogramar",
+      "campaign_fields_absent": [
+        "date",
+        "id",
+        "time"
+      ],
+      "test_ids": [
+        "tests.test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "tests.test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "calls/test/call-agenda.test.cjs :: PM10: future agenda is private to its source and requester and reprogramming is idempotent"
+      ],
+      "oracles": [
+        "Payload agenda.update contiene solo origin, id, dueAt y timeZone; ID se conserva y fecha/hora usa zona configurada.",
+        "Actualización repetida con la misma clave es idempotente en el contrato Node local; cambia revisión de la agenda."
+      ],
+      "evidence_level": "doble local y fixture Node; no prueba agenda remota"
+    },
+    {
+      "route": "/llamada cancelar-agenda",
+      "campaign_fields_absent": [
+        "id"
+      ],
+      "test_ids": [
+        "tests.test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "tests.test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "calls/test/call-agenda.test.cjs :: PM10: future agenda is private to its source and requester and reprogramming is idempotent"
+      ],
+      "oracles": [
+        "Payload agenda.cancel contiene el ID seleccionado y origin actor/chat del solicitante.",
+        "La agenda listada queda vacía para la agenda cancelada; cancelación y actualización conservan ámbito, sin marcar."
+      ],
+      "evidence_level": "doble local y fixture Node; no prueba cancelación en servicio externo"
+    },
+    {
+      "route": "/llamar",
+      "campaign_fields_absent": [
+        "max_seconds",
+        "topic",
+        "video"
+      ],
+      "test_ids": [
+        "tests.test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+        "tests.test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+        "tests.test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider",
+        "tests.test_calls.CallsTest.test_cancel_before_dispatch_persists_tombstone_across_application_restart"
+      ],
+      "oracles": [
+        "POST local /v1/calls lleva inputTransport=local, targetJid, origin, live, video, maxSeconds, liveRequest y sourceReceipt; clave del recibo se transporta en Idempotency-Key y X-Call-Job-Key.",
+        "Redelivery del mismo mensaje no repite request/dispatch; el contador dials del driver sintético permanece en uno.",
+        "Actor no autorizado, política no coincidente o backend no configurado bloquean el despacho antes del efecto."
+      ],
+      "evidence_level": "petición interceptada en CallsClient y driver Node sintético; contador 1 no es llamada real ni evidencia de conexión/escucha"
+    }
+  ],
+  "frontiers_pending": [
+    "No se hicieron llamadas a proveedores, transportes, grupos ni servicios activos.",
+    "Pendiente bajo campaña autorizada separada: disponibilidad real, ACK/recepción, conexión, audio oído, reproducción real de clip y ejecución temporizada de agenda.",
+    "Los test fixtures prueban contratos/código y efectos sintéticos locales solamente; no se atribuye ACK de proveedor ni recepción humana."
+  ]
+}

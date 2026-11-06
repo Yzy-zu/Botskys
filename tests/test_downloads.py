@@ -363,9 +363,26 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             )
             self.assertLess(float(info["format"]["duration"]), 0.95)
             self.app.deliver(receipt.id, CollectingTransport())
-        previous = self.receive("/dl anterior mp3 --hasta 0.5")
+        previous = self.receive("/dl anterior mp3 --desde 0.1 --hasta 0.5")
         await self.app.jobs.run_pending()
-        self.assertEqual(self.result(previous.id).code, "media_edited")
+        retained = self.result(previous.id)
+        self.assertEqual(retained.code, "media_edited")
+        info = json.loads(
+            await run_process(
+                [
+                    "ffprobe",
+                    "-v",
+                    "error",
+                    "-show_entries",
+                    "format=duration",
+                    "-of",
+                    "json",
+                    str(self.app.artifacts.path(retained.data["artifacts"][0])),
+                ],
+                10,
+            )
+        )
+        self.assertAlmostEqual(float(info["format"]["duration"]), 0.4, delta=0.15)
         no_subs = self.receive("/dl anterior srt --idioma es")
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(no_subs.id).code, "subtitles_unavailable")

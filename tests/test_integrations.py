@@ -269,6 +269,7 @@ class IntegrationsTest(IsolatedAsyncioTestCase):
     async def drive(self):
         scope = None
         self.drive_calls = []
+        self.drive_queries = []
 
         def meta():
             return {
@@ -300,6 +301,7 @@ class IntegrationsTest(IsolatedAsyncioTestCase):
             if request.url.path.endswith("/files") and request.method == "GET":
                 import re
 
+                self.drive_queries.append(request.url.params["q"])
                 scope = re.search("value='([a-f0-9]+)'", request.url.params["q"])[1]
                 return httpx.Response(200, json={"files": [meta()]})
             if request.url.params.get("alt") == "media":
@@ -330,6 +332,10 @@ class IntegrationsTest(IsolatedAsyncioTestCase):
         search = self.receive("/drive buscar literal")
         await self.app.jobs.run_pending()
         result = self.result(search)
+        self.assertEqual(len(self.drive_queries), 1)
+        self.assertIn("name contains 'literal'", self.drive_queries[0])
+        self.assertIn("'folder1' in parents", self.drive_queries[0])
+        self.assertIn("key='botsky_scope'", self.drive_queries[0])
         identifier = result.data["view_id"]
         self.assertEqual(
             self.receive("/drive elegir " + identifier + " 1").result.code, "drive_view_unavailable"

@@ -1,0 +1,1504 @@
+[
+  {
+    "route": "/estado",
+    "absent_in_campaign": true,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "id",
+        "evidence": [
+          {
+            "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+            "route": "/estado",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "receipt_state"
+          },
+          {
+            "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+            "route": "/estado",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "empty",
+            "code": "receipt_not_found"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/cancelar",
+    "absent_in_campaign": true,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "id",
+        "evidence": [
+          {
+            "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+            "route": "/cancelar",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "empty",
+            "code": "receipt_not_found"
+          },
+          {
+            "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+            "route": "/cancelar",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "cancelled",
+            "code": "request_cancelled"
+          },
+          {
+            "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+            "route": "/cancelar",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "empty",
+            "code": "already_finished"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/confirmar",
+    "absent_in_campaign": true,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "id",
+        "evidence": [
+          {
+            "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+            "route": "/confirmar",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "confirmation_unavailable"
+          },
+          {
+            "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+            "route": "/confirmar",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "delivery_retry_authorized"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/dl anterior",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "end_seconds",
+        "evidence": [
+          {
+            "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+            "route": "/dl anterior",
+            "explicit_fields": [
+              "container",
+              "end_seconds",
+              "start_seconds"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "media_edited"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "start_seconds",
+        "evidence": [
+          {
+            "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+            "route": "/dl anterior",
+            "explicit_fields": [
+              "container",
+              "end_seconds",
+              "start_seconds"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "media_edited"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "subtitle_language",
+        "evidence": [
+          {
+            "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+            "route": "/dl anterior",
+            "explicit_fields": [
+              "container",
+              "subtitle_language"
+            ],
+            "phase": "finished_worker",
+            "status": "failed",
+            "code": "subtitles_unavailable"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/voz crear",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "effect",
+        "evidence": [
+          {
+            "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+            "route": "/voz crear",
+            "explicit_fields": [
+              "effect",
+              "requested_seconds",
+              "text",
+              "voice"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "voice_ready"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "voice",
+        "evidence": [
+          {
+            "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+            "route": "/voz crear",
+            "explicit_fields": [
+              "effect",
+              "requested_seconds",
+              "text",
+              "voice"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "voice_ready"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/llamar",
+    "absent_in_campaign": false,
+    "oracle_source": "av-plan.json",
+    "fields": [
+      {
+        "field": "max_seconds",
+        "evidence": [
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+            "route": "/llamar",
+            "explicit_fields": [
+              "max_seconds",
+              "topic",
+              "video"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "call_requested"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "topic",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+            "route": "/llamar",
+            "explicit_fields": [
+              "topic",
+              "video"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "call_requested"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+            "route": "/llamar",
+            "explicit_fields": [
+              "max_seconds",
+              "topic",
+              "video"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "call_requested"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "video",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+            "route": "/llamar",
+            "explicit_fields": [
+              "topic",
+              "video"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "call_requested"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+            "route": "/llamar",
+            "explicit_fields": [
+              "max_seconds",
+              "topic",
+              "video"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "call_requested"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/pdf reintentar",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "confirm_uncertain",
+        "evidence": [
+          {
+            "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+            "route": "/pdf reintentar",
+            "explicit_fields": [
+              "confirm_uncertain",
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "retry_preview_required"
+          },
+          {
+            "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+            "route": "/pdf reintentar",
+            "explicit_fields": [
+              "confirm_uncertain",
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "delivery_retry_authorized"
+          },
+          {
+            "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+            "route": "/pdf reintentar",
+            "explicit_fields": [
+              "confirm_uncertain",
+              "id"
+            ],
+            "phase": "committed_receipt",
+            "status": "empty",
+            "code": "no_retryable_delivery"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/hh iniciar",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "duration_seconds",
+        "evidence": [
+          {
+            "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+            "route": "/hh iniciar",
+            "explicit_fields": [
+              "duration_seconds"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "happy_started"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin advertir",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_local_warning_receipt_survives_crash_before_job_publication",
+            "route": "/admin advertir",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_warning_added"
+          },
+          {
+            "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+            "route": "/admin advertir",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_warning_added"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin quitar-aviso",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+            "route": "/admin quitar-aviso",
+            "explicit_fields": [
+              "target",
+              "warning_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_warning_revoked"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "warning_id",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+            "route": "/admin quitar-aviso",
+            "explicit_fields": [
+              "target",
+              "warning_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_warning_revoked"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin avisos",
+    "absent_in_campaign": false,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+            "route": "/admin avisos",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "empty",
+            "code": "admin_warnings"
+          },
+          {
+            "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+            "route": "/admin avisos",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_warnings"
+          },
+          {
+            "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+            "route": "/admin avisos",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "committed_receipt",
+            "status": "failed",
+            "code": "admin_group_required"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin expulsar",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+            "route": "/admin expulsar",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "admin_operation_pending"
+          },
+          {
+            "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+            "route": "/admin expulsar",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "failed",
+            "code": "admin_failed"
+          },
+          {
+            "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+            "route": "/admin expulsar",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_completed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin ban",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+            "route": "/admin ban",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "uncertain",
+            "code": "admin_uncertain"
+          },
+          {
+            "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+            "route": "/admin ban",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "failed",
+            "code": "admin_failed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin unban",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+            "route": "/admin unban",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_unban"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin promover",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+            "route": "/admin promover",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_completed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin degradar",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+            "route": "/admin degradar",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_completed"
+          },
+          {
+            "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+            "route": "/admin degradar",
+            "explicit_fields": [
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "failed",
+            "code": "admin_failed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin xp-dar",
+    "absent_in_campaign": false,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+            "route": "/admin xp-dar",
+            "explicit_fields": [
+              "amount",
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_xp_changed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin xp-quitar",
+    "absent_in_campaign": false,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "target",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+            "route": "/admin xp-quitar",
+            "explicit_fields": [
+              "amount",
+              "target"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "admin_xp_changed"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin nuclear-confirmar",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "draft_id",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "nuclear_status"
+          },
+          {
+            "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "nuclear_preview_required"
+          },
+          {
+            "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "nuclear_status"
+          },
+          {
+            "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "nuclear_status"
+          },
+          {
+            "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "finished_worker",
+            "status": "uncertain",
+            "code": "nuclear_status"
+          },
+          {
+            "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "uncertain",
+            "code": "nuclear_status"
+          },
+          {
+            "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+            "route": "/admin nuclear-confirmar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "failed",
+            "code": "nuclear_disabled"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/admin nuclear-cancelar",
+    "absent_in_campaign": true,
+    "oracle_source": "admin-plan.json",
+    "fields": [
+      {
+        "field": "draft_id",
+        "evidence": [
+          {
+            "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+            "route": "/admin nuclear-cancelar",
+            "explicit_fields": [
+              "draft_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "nuclear_status"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/bj repartir",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "game_id",
+        "evidence": [
+          {
+            "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+            "route": "/bj repartir",
+            "explicit_fields": [
+              "game_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "ok",
+            "code": "blackjack_board"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "absent_in_campaign": true,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "room_id",
+        "evidence": [
+          {
+            "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+            "route": "/ruleta cancelar",
+            "explicit_fields": [
+              "room_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "cancelled",
+            "code": "roulette_cancelled"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/drive buscar",
+    "absent_in_campaign": false,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "query",
+        "evidence": [
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive buscar",
+            "explicit_fields": [
+              "query"
+            ],
+            "phase": "finished_worker",
+            "status": "needs_input",
+            "code": "drive_choices"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/drive elegir",
+    "absent_in_campaign": true,
+    "oracle_source": "root-plan.json",
+    "fields": [
+      {
+        "field": "choice",
+        "evidence": [
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "drive_view_unavailable"
+          },
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "drive_choice_out_of_range"
+          },
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "drive_downloaded"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "view_id",
+        "evidence": [
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "drive_view_unavailable"
+          },
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "committed_receipt",
+            "status": "needs_input",
+            "code": "drive_choice_out_of_range"
+          },
+          {
+            "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+            "route": "/drive elegir",
+            "explicit_fields": [
+              "choice",
+              "view_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "drive_downloaded"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/clip poner",
+    "absent_in_campaign": true,
+    "oracle_source": "av-plan.json",
+    "fields": [
+      {
+        "field": "clip_id",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+            "route": "/clip poner",
+            "explicit_fields": [
+              "clip_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "av_control_applied"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+            "route": "/clip poner",
+            "explicit_fields": [
+              "clip_id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "av_control_applied"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "query",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+            "route": "/clip poner",
+            "explicit_fields": [
+              "query"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "av_control_applied"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+            "route": "/clip poner",
+            "explicit_fields": [
+              "query"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "av_control_applied"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/llamada programar",
+    "absent_in_campaign": true,
+    "oracle_source": "av-plan.json",
+    "fields": [
+      {
+        "field": "audio_id",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "date",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "end_after_audio",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "live_request",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "max_seconds",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "time",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "volume",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "date",
+              "live_request",
+              "max_seconds",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada programar",
+            "explicit_fields": [
+              "audio_id",
+              "date",
+              "end_after_audio",
+              "time",
+              "volume"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_create"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/llamada reprogramar",
+    "absent_in_campaign": true,
+    "oracle_source": "av-plan.json",
+    "fields": [
+      {
+        "field": "date",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "id",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      },
+      {
+        "field": "time",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada reprogramar",
+            "explicit_fields": [
+              "date",
+              "id",
+              "time"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_update"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  },
+  {
+    "route": "/llamada cancelar-agenda",
+    "absent_in_campaign": true,
+    "oracle_source": "av-plan.json",
+    "fields": [
+      {
+        "field": "id",
+        "evidence": [
+          {
+            "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+            "route": "/llamada cancelar-agenda",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_cancel"
+          },
+          {
+            "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+            "route": "/llamada cancelar-agenda",
+            "explicit_fields": [
+              "id"
+            ],
+            "phase": "finished_worker",
+            "status": "ok",
+            "code": "agenda_cancel"
+          }
+        ],
+        "status": "LOCAL_ORACLE_REVIEWED"
+      }
+    ],
+    "principal_reviewed": true,
+    "limits": "Only referenced local contract; no remote/human acceptance or exhaustive value combinations"
+  }
+]
