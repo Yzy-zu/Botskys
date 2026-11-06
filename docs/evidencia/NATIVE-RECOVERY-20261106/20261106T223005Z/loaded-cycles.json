@@ -1,0 +1,38 @@
+{
+  "oracle": "6 planned explicit healthy starts/restarts; stop on first uncertainty; active catalogue plus own pair in synthetic world; no network",
+  "setup": {
+    "catalogue_copied": true,
+    "world_data_copied": false,
+    "network": "none"
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "result": {
+        "status": "uncertain",
+        "code": "game_startup_unverified",
+        "recovery_available": true
+      },
+      "state": {
+        "status": "ok",
+        "online": null,
+        "container_status": "running",
+        "game_status": "unknown",
+        "started_at": "2026-11-06T22:36:19.794299585Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    }
+  ],
+  "stop": {
+    "status": "ok",
+    "action": "stop",
+    "requires_healthcheck": false
+  }
+}

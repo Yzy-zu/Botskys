@@ -1,0 +1,89 @@
+{
+  "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+  "binary_sha256": "dc9b3c566a014cf53930eb1b54c6b599a99a81cc32c68aba06a5d73a0fd63179",
+  "container_was_stopped": true,
+  "network": "none",
+  "ports_published": false,
+  "own_manifests": {
+    "behavior": {
+      "format_version": 2,
+      "header": {
+        "name": "Botsky isolated synthetic behavior",
+        "description": "Own disposable fixture",
+        "uuid": "762fe3fd-9371-4943-aad9-64c525fdbdaa",
+        "version": [
+          1,
+          0,
+          0
+        ],
+        "min_engine_version": [
+          1,
+          21,
+          0
+        ]
+      },
+      "modules": [
+        {
+          "type": "data",
+          "uuid": "4571d27b-6276-4701-b4cb-605c22c1bd7b",
+          "version": [
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "uuid": "ba529c1d-94a4-4e29-a543-f6d65bc8afbc",
+          "version": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "resource": {
+      "format_version": 2,
+      "header": {
+        "name": "Botsky isolated synthetic resource",
+        "description": "Own disposable fixture",
+        "uuid": "ba529c1d-94a4-4e29-a543-f6d65bc8afbc",
+        "version": [
+          1,
+          0,
+          0
+        ],
+        "min_engine_version": [
+          1,
+          21,
+          0
+        ]
+      },
+      "modules": [
+        {
+          "type": "resources",
+          "uuid": "b016a0a9-dc60-4741-9623-ffd7a18937e1",
+          "version": [
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "uuid": "762fe3fd-9371-4943-aad9-64c525fdbdaa",
+          "version": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "own_container_removed": true,
+  "own_scratch_removed": true
+}

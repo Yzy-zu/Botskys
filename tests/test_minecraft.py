@@ -110,6 +110,92 @@ class MinecraftTest(IsolatedAsyncioTestCase):
         self.assertEqual(self.result(receipt).text, "Minecraft: apagado.")
         self.assertEqual(len(self.calls), 2)
 
+    async def test_uncertain_restart_allows_serial_stop_and_recovery_then_start(self):
+        self.outcome = {"status": "uncertain"}
+        restart = self.receive("/mc reiniciar")
+        await self.app.jobs.run_pending()
+        original_result = self.result(restart)
+        self.assertEqual(original_result.status, "uncertain")
+
+        self.outcome = {"status": "uncertain", "action": "stop"}
+        stop = self.receive("/mc parar")
+        self.assertEqual(stop.result.code, "job_queued")
+        await self.app.jobs.run_pending()
+        stop_result = self.result(stop)
+        self.assertEqual(stop_result.status, "uncertain")
+
+        self.outcome = {
+            "status": "ok",
+            "recovered": True,
+            "offline_verified": True,
+            "changed": False,
+        }
+        recovery = self.receive("/mc recuperar")
+        self.assertEqual(recovery.result.code, "job_queued")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(recovery).code, "minecraft_completed")
+
+        self.outcome = {"status": "ok", "action": "start", "requires_healthcheck": False}
+        start = self.receive("/mc iniciar")
+        self.assertEqual(start.result.code, "job_queued")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(start).code, "minecraft_completed")
+
+        self.assertEqual(
+            [payload["action"] for _, payload in self.calls],
+            ["restart", "stop", "recover", "start"],
+        )
+        self.assertEqual(self.result(restart).to_json(), original_result.to_json())
+        self.assertEqual(self.result(stop).to_json(), stop_result.to_json())
+        rows = self.rows(
+            "SELECT action,state FROM external_operations WHERE domain='minecraft' ORDER BY rowid"
+        )
+        self.assertEqual(
+            [(row["action"], row["state"]) for row in rows],
+            [
+                ("restart", "failed"),
+                ("stop", "failed"),
+                ("recover", "completed"),
+                ("start", "completed"),
+            ],
+        )
+
+    async def test_failed_or_cancelled_control_keeps_uncertainty_blocking(self):
+        self.outcome = {"status": "uncertain"}
+        restart = self.receive("/mc reiniciar")
+        await self.app.jobs.run_pending()
+
+        self.outcome = {
+            "status": "needs_input",
+            "dispatched": False,
+            "code": "recovery_requires_offline",
+        }
+        failed_stop = self.receive("/mc parar")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(failed_stop).status, "needs_input")
+        self.assertEqual(self.receive("/mc iniciar").result.code, "minecraft_resource_busy")
+
+        queued_stop = self.receive("/mc parar")
+        self.assertEqual(queued_stop.result.code, "job_queued")
+        self.receive("/cancelar " + queued_stop.id)
+        state = self.rows(
+            "SELECT state FROM external_operations WHERE receipt_id=?", (queued_stop.id,)
+        )[0]["state"]
+        self.assertEqual(state, "cancelled")
+        self.assertEqual(self.receive("/mc iniciar").result.code, "minecraft_resource_busy")
+
+        self.outcome = {
+            "status": "ok",
+            "recovered": True,
+            "offline_verified": True,
+            "changed": False,
+        }
+        recovery = self.receive("/mc recuperar")
+        self.assertEqual(recovery.result.code, "job_queued")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(recovery).code, "minecraft_completed")
+        self.assertEqual(self.result(restart).status, "uncertain")
+
     async def test_revocation_after_admission_and_interrupted_dispatch_never_replays(self):
         receipt = self.receive("/mc backup")
         self.app.settings = replace(self.settings, owner="alice", friends=frozenset({"owner"}))
@@ -127,7 +213,9 @@ class MinecraftTest(IsolatedAsyncioTestCase):
         self.now += 1831000
         self.assertIsNone(self.app.jobs.claim())
         self.assertEqual(self.result(receipt).code, "provider_interrupted")
-        self.assertEqual(self.receive("/mc parar").result.code, "minecraft_resource_busy")
+        stop = self.receive("/mc parar")
+        self.assertEqual(stop.result.code, "job_queued")
+        self.assertEqual(self.receive("/mc recuperar").result.code, "minecraft_resource_busy")
         self.assertEqual(self.calls, [])
 
     async def test_cancel_during_remote_call_is_uncertain_and_configuration_is_explicit(self):

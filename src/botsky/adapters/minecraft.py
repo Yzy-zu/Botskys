@@ -206,7 +206,16 @@ class MinecraftRemote:
             raise MinecraftRemoteError(
                 "remote_timeout",
                 uncertain=action
-                in {"start", "stop", "restart", "backup", "enable_mod", "disable_mod", "console"},
+                in {
+                    "start",
+                    "stop",
+                    "restart",
+                    "backup",
+                    "recover",
+                    "enable_mod",
+                    "disable_mod",
+                    "console",
+                },
             ) from exc
         except MinecraftRemoteError as exc:
             mutating = action not in _QUERIES - {"diagnostics"}

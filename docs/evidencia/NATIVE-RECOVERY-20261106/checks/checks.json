@@ -1,0 +1,30 @@
+{
+  "quota_remaining": {
+    "primary": 48,
+    "secondary": 28,
+    "checked_at_utc": "2026-11-06T22:44:38.709447Z"
+  },
+  "tests": {
+    "minecraft": 36,
+    "backup_integrations": 20,
+    "core_cancellation_permissions": 24,
+    "total_pass": 80,
+    "full_suite_rerun": false
+  },
+  "ruff_check": "PASS src tests ops",
+  "ruff_format": "PASS 146 files src tests ops",
+  "diff_check": "PASS",
+  "own_remote_worker_sha256": "5e61ac955518fef38a9b7bb6fc36cd1448a05833213afe1c7b63d589250d721f",
+  "point1_native_root_cause": "OPEN; historical native corruption not reproduced; no speculative runtime changes",
+  "point2_real_configuration_recovery": "PASS applied rollback, interrupted first replacement, pending startup guard, repeated recover, exact bytes/modes/existence, cleanup, same world ready/zero players",
+  "restart_checks": {
+    "configured_server": 1,
+    "isolated_minimal": 3,
+    "isolated_catalogue": 5,
+    "isolated_function": 2,
+    "all_success": true,
+    "native_root_cause_not_proven": true
+  },
+  "lab_cleanup": "own stopped container and synthetic scratch removed",
+  "historical_evidence": "preserved; new evidence separate; no automatic uncertain effect replay"
+}

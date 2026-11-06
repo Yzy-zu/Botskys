@@ -1,0 +1,25 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+out=Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z')
+info=json.loads((out/'isolated.json').read_text())['setup']
+async def main():
+ code='''import subprocess,json,hashlib,shutil
+from pathlib import Path
+name=NAME
+base=Path(LABBASE)
+assert base.parent==Path(AUTHBASE) and base.name.startswith('.botsky-native-lab-')
+i=json.loads(subprocess.check_output(['docker','inspect',name]))[0]
+assert i['Id']==EXPECTED and i['State']['Status']=='exited'
+assert i['HostConfig']['NetworkMode']=='none' and not i['HostConfig']['PortBindings']
+assert len(i['Mounts'])==1 and Path(i['Mounts'][0]['Source'])==base/'data'
+data=base/'data'
+binary=data/BINARY
+record={'image':i['Image'],'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'container_was_stopped':True,'network':'none','ports_published':False,'own_manifests':{kind:json.loads((data/(kind+'_packs')/'botsky-synthetic-pair/manifest.json').read_text()) for kind in ('behavior','resource')}}
+subprocess.run(['docker','rm',name],check=True,stdout=subprocess.DEVNULL)
+shutil.rmtree(base)
+record['own_container_removed']=True;record['own_scratch_removed']=not base.exists()
+print(json.dumps(record))
+'''.replace('NAME',repr(info['container'])).replace('LABBASE',repr(info['base'])).replace('AUTHBASE',repr(config.base_path)).replace('EXPECTED',repr('b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034')).replace('BINARY',repr(info['binary']))
+ result=await remote(code)
+ p=out/'cleanup.json';p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print({k:v for k,v in result.items() if k!='own_manifests'})
+asyncio.run(main())

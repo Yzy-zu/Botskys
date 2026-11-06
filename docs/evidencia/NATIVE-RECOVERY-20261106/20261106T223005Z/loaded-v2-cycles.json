@@ -1,0 +1,164 @@
+{
+  "oracle": "6 planned explicit healthy starts/restarts; stop on first uncertainty; active catalogue plus own pair in synthetic world; no network",
+  "setup": {
+    "catalogue_prepared_previous_phase": true,
+    "new_phase_after_log_cap_fix": true
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "result": {
+        "status": "ok",
+        "action": "start",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:39:22.425908748Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 2,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:39:43.564556449Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 3,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:40:05.176844628Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 4,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:40:26.10778004Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 5,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:40:47.18837096Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    },
+    {
+      "cycle": 6,
+      "result": {
+        "status": "ok",
+        "action": "restart",
+        "requires_healthcheck": true,
+        "game_status": "ready",
+        "verified": true
+      },
+      "state": {
+        "status": "ok",
+        "online": true,
+        "container_status": "running",
+        "game_status": "ready",
+        "started_at": "2026-11-06T22:41:05.86365233Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    }
+  ],
+  "stop": {
+    "status": "ok",
+    "action": "stop",
+    "requires_healthcheck": false
+  }
+}

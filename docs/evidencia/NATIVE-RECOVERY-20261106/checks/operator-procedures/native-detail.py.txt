@@ -1,0 +1,12 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''import subprocess,json
+c=CONTAINER
+i=json.loads(subprocess.check_output(['docker','inspect',c]))[0]
+keys={'VERSION','BOX64_DYNAREC','BOX64_DYNAREC_STRONGMEM','BOX64_DYNAREC_BIGBLOCK','BOX64_DYNAREC_SAFEFLAGS','BOX64_DYNAREC_FASTNAN','BOX64_DYNAREC_FASTROUND','BOX64_DYNAREC_CALLRET','BOX64_DYNAREC_ALIGNED_ATOMICS','BOX64_LOG','UID','GID','DEBUG','ENABLE_SSH','EULA','MEMORY','BOX64_NOBANNER'}
+env={x.split('=',1)[0]:x.split('=',1)[1] for x in i['Config']['Env'] if x.split('=',1)[0] in keys}
+r=subprocess.run(['docker','exec',c,'sh','-c',"command -v box64; box64 --version 2>&1; cat /usr/local/bin/bedrock-entry.sh 2>/dev/null; ls -l /data/bedrock_server*; ls /opt; cat /opt/bedrock-entry.sh 2>/dev/null"],capture_output=True,text=True)
+print(json.dumps({'environment':env,'detail':r.stdout+r.stderr,'limits':{k:i['HostConfig'][k] for k in ('Memory','NanoCpus','PidsLimit')},'mounts':[{'type':m['Type'],'destination':m['Destination']} for m in i['Mounts']]}))
+'''.replace('CONTAINER',repr(config.container))
+ print(json.dumps(await remote(code),indent=2))
+asyncio.run(main())

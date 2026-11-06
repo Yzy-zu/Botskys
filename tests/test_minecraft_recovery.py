@@ -51,6 +51,48 @@ class RecoveryTest(TestCase):
         self.call("recover")
         self.assertEqual(self.path.read_bytes(), before)
 
+    def test_lifecycle_and_recovery_share_world_lock(self):
+        dispatched = []
+
+        def run(argv, **kwargs):
+            dispatched.append((argv, kwargs))
+            return json.dumps({"Status": "exited"})
+
+        held = worker._world_lock(self.world)
+        try:
+            for action in ("start", "restart", "stop", "recover"):
+                result = worker.handle(
+                    {
+                        "action": action,
+                        "params": {},
+                        "container": "fixture",
+                        "base_path": str(self.root),
+                    },
+                    discover_layout=False,
+                    run=run,
+                )
+                self.assertEqual(result["code"], "minecraft_change_busy")
+                self.assertIs(result["dispatched"], False)
+            self.assertEqual(dispatched, [])
+        finally:
+            import os
+
+            os.close(held)
+
+        started = worker.handle(
+            {
+                "action": "start",
+                "params": {},
+                "container": "fixture",
+                "base_path": str(self.root),
+            },
+            discover_layout=False,
+            run=run,
+        )
+        self.assertEqual(started["status"], "ok")
+        self.assertTrue(started["requires_healthcheck"])
+        self.assertEqual([argv[1] for argv, _ in dispatched], ["start"])
+
 
 # Imported TestCase must not be collected twice by unittest.
 del ModsWorkerTest

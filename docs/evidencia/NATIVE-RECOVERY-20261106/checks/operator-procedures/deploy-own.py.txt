@@ -1,0 +1,6 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+import base64,hashlib
+async def main():
+ raw=Path('ops/minecraft_worker.py').read_bytes()
+ print(await remote('from pathlib import Path\nimport base64,json,os,hashlib\np=Path('+repr(config.worker_path)+')\nassert "/botsky/" in str(p)\nb=base64.b64decode('+repr(base64.b64encode(raw).decode())+')\nt=p.with_suffix(".new")\nt.write_bytes(b)\nt.chmod(0o700)\nos.replace(t,p)\nprint(json.dumps({"sha256":hashlib.sha256(p.read_bytes()).hexdigest()}))'))
+asyncio.run(main())

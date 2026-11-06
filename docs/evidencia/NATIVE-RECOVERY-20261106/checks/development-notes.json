@@ -1,0 +1,12 @@
+{
+  "original_native_stdout_hypothesis_corrected": "Capture separated stdout/stderr places historical free() fatal on stdout; stderr fix is independent, not a demonstrated cause of that historical incident.",
+  "lab_preflight_errors": [
+    "Initial own data directory0700 caused OCI chdir permission error. Container remained created. Corrected755 only for own fixture.",
+    "Next new attempt failed creating synthetic LevelDB due own fixture ownership under Docker user namespace. Captured cycles logs, container exited. Matched own fixture ownership to configured data directory, without reading/copying user data.",
+    "First full catalogue preparation stopped on a dangling node_modules symlink. Own partial fixture was completed with all symlinks omitted rather than following external paths. No world data copied."
+  ],
+  "loaded_phase_original_uncertain": "One initial full-catalogue start was unverified because362492bytes exceeded128KiB log cap, not a native failure. Recorded Server started, absence of fatal, stopped explicitly, preserved result. Fresh phase after fix ran6 bounded healthy cycles.",
+  "operator_script_final_hardening": "Final operator script also accepts prior recovered journals (backs them up privately) and reaps the local SSH child on timeout; the real run used the no-prior-journal path. It never automatically resumes.",
+  "broad_lint_history": "An indiscriminate ruff check/format of the entire repository flagged existing docs/evidencia/STRESS-20261106/cancelled-launch-repro.py. Historical evidence preserved. Final scope src/tests/ops passes. Newly touched adapter formatting corrected before final check.",
+  "raw_log_storage": "Captured stdout/stderr logs stored as lossless gzip, preserving exact original bytes including whitespace. Raw SHA256 in raw-log-checksums.json. Decompress to inspect/replay. This avoids modifying raw evidence to satisfy git whitespace checks."
+}

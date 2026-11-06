@@ -139,3 +139,16 @@ recuperación segura. Autoriza código, pruebas locales de fallos con fixtures y
 actualización del worker propio, comprobación real de solo lectura. Conserva
 exclusiones anteriores y permisos operativos; no reanudar campañas ni fallos
 nativos, no restaurar mundos o actualizar imágenes por iniciativa automática.
+
+## 06/11 · Diagnóstico nativo y recuperación remota encargados
+
+El propietario encargó expresamente los puntos1y2 pendientes: investigar el fallo
+nativo al reiniciar con paquetes y validar recuperación segura en Minecraft real.
+Autoriza esta comprobación nueva, fixtures propios, parada/arranque/reinicio bajo
+estado observado, interrupción sintética acotada de configuración estando apagado,
+recuperación explícita, limpieza y worker propio. Laboratorio separado sin red,
+con imagen/binario existentes y mundo sintético, sin copiar mundos ni historial.
+No reanudar campañas anteriores ni repetir efectos inciertos; mantener evidencias
+históricas y permisos operativos. No actualizar imagen/binario productivo sin causa
+contrastada; exclusiones de Zhana, NLP, perfiles, llamadas, navegador, transición,
+GitHub y umbral5% siguen vigentes.

@@ -1,0 +1,22 @@
+{
+  "architecture": "aarch64",
+  "image_id": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+  "worker_sha256": "d2f5ce1e7ae62c2ecc3ac2d4e845afe1e7de820c7bed18a42ab19ce16995574e",
+  "historical_excerpt": {
+    "stdout": [
+      "2026-11-06T21:56:50.972216183Z \u001b[37mDEBU\u001b[0m[0025] Forwarding signal                             \u001b[37msignal\u001b[0m=terminated",
+      "2026-11-06T21:56:50.972241303Z \u001b[37mDEBU\u001b[0m[0025] Sending message on stdin due to SIGTERM       \u001b[37mmessage\u001b[0m=stop",
+      "2026-11-06T21:56:51.016660822Z [2026-11-06 21:56:51:016 INFO] Server stop requested.",
+      "2026-11-06T21:56:51.063583529Z [2026-11-06 21:56:51:063 INFO] Stopping server...",
+      "2026-11-06T21:56:51.447558169Z Quit correctly",
+      "2026-11-06T21:56:56.212962853Z Starting Bedrock server...",
+      "2026-11-06T21:57:00.029442912Z [2026-11-06 21:57:00:029 INFO] Starting Server",
+      "2026-11-06T21:57:00.029456232Z [2026-11-06 21:57:00:029 INFO] Version: 1.26.63.1",
+      "2026-11-06T21:57:00.043386355Z [2026-11-06 21:57:00:043 INFO] Content logging to console is enabled.",
+      "2026-11-06T21:57:00.046614113Z free(): invalid next size (normal)",
+      "2026-11-06T21:59:17.740255527Z \u001b[37mDEBU\u001b[0m[0141] Forwarding signal                             \u001b[37msignal\u001b[0m=terminated",
+      "2026-11-06T21:59:17.740303968Z \u001b[37mDEBU\u001b[0m[0141] Sending message on stdin due to SIGTERM       \u001b[37mmessage\u001b[0m=stop"
+    ],
+    "stderr": []
+  }
+}

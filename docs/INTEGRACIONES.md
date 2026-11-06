@@ -184,3 +184,16 @@ recuperación explícita de configuración con servidor apagado y comprobación 
 arranque del juego. Nuevos /mc diagnostico y /mc recuperar. Límites/pruebas en
 [MINECRAFT_RESILIENTE.md](MINECRAFT_RESILIENTE.md). No garantiza cualquier futura
 actualización ni corrige el fallo nativo anterior. Permisos operativos intactos.
+
+### 06/11 · Diagnóstico nativo y recuperación remota nueva
+
+Recuperación real de configuración de mods PASS, incluida interrupción sintética
+tras una escritura atómica offline y bloqueo de arranque hasta recuperar. Archivos
+restaurados exactamente; fixtures retirados; mismo mundo ready/cero jugadores.
+Worker propio actualizado con lectura logs8MiB/stdout+stderr, bloqueo lifecycle y
+tratamiento incierto de timeout recover. Admisión permite parar/recuperar efectos
+inciertos bajo exclusión; conserva inbox y bloquea otros efectos hasta conciliación.
+1reinicio real y10aislados sanos no demuestran causa ni solución del fallo nativo
+histórico. Causa abierta; sin cambios especulativos de imagen/binario/Box64.
+Laboratorio aislado propio retirado; main writeflags false. Informe y límites:
+[Minecraft nativo/recuperación](MINECRAFT_NATIVO_RECUPERACION_20261106.md).

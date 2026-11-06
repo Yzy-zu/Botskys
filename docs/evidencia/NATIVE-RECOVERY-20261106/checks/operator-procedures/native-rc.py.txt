@@ -1,0 +1,9 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ code='''import subprocess,json
+c=CONTAINER
+r=subprocess.run(['docker','exec',c,'sh','-c',"sed -n '/\\[bedrock_server/,/^$/p' /etc/box64.box64rc; ls /data/*.so; du -sh /data/definitions /data/resource_packs/vanilla /data/behavior_packs/vanilla* /data/.downloads 2>/dev/null"],capture_output=True,text=True)
+print(json.dumps({'rc':r.stdout,'memory':open('/proc/meminfo').read().splitlines()[:3]}))
+'''.replace('CONTAINER',repr(config.container))
+ print(json.dumps(await remote(code),indent=2))
+asyncio.run(main())

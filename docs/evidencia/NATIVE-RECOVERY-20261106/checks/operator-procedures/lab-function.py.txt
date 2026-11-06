@@ -1,0 +1,28 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+from dataclasses import replace
+import uuid
+out=Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z')
+info=json.loads((out/'isolated.json').read_text())['setup']
+probe='botsky_probe_'+uuid.uuid4().hex
+async def main():
+ lab=MinecraftRemote(replace(config,container=info['container'],base_path=info['base']))
+ assert (await lab.query('status'))['container_status']=='exited'
+ print(await remote("from pathlib import Path\nimport json,os\np=Path("+repr(info['base'])+")/'data/behavior_packs/botsky-synthetic-pair/functions'\np.mkdir(exist_ok=True,mode=0o755)\nf=p/"+repr(probe+'.mcfunction')+"\nf.write_text('list\\n');f.chmod(0o644)\nowner=p.parent.stat();os.chown(p,owner.st_uid,owner.st_gid);os.chown(f,owner.st_uid,owner.st_gid)\nprint(json.dumps({'own_function_installed':True}))"),flush=True)
+ doc={'oracle':'3 starts/restarts, unique function list execution confirmed after each healthy boot; never repeat uncertain action','function':probe,'cycles':[]}
+ for n in range(3):
+  r=await lab.change('start' if n==0 else 'restart')
+  row={'cycle':n+1,'result':r,'status':await lab.query('status')}
+  doc['cycles'].append(row)
+  p=out/'function-cycles.json';p.write_text(json.dumps(doc,indent=2));p.chmod(0o600)
+  print(json.dumps(row),flush=True)
+  if r.get('verified') is not True:break
+  proof=await remote("import subprocess,time,json\nc="+repr(info['container'])+"\nsince=str(time.time())\nsubprocess.run(['docker','exec',c,'send-command',"+repr('function '+probe)+"],check=True,stdout=subprocess.DEVNULL)\nverified=False\nfor delay in (0.5,1,2):\n time.sleep(delay)\n r=subprocess.run(['docker','logs','--since',since,c],capture_output=True,text=True,check=True)\n verified='Successfully executed 1 function entries.' in r.stdout+r.stderr\n if verified:break\nprint(json.dumps({'game_execution_verified':verified}))")
+  row['proof']=proof;p.write_text(json.dumps(doc,indent=2));p.chmod(0o600)
+  if not proof['game_execution_verified']:break
+ logs=await remote("import subprocess,json\nr=subprocess.run(['docker','logs','--timestamps',"+repr(info['container'])+"],capture_output=True,text=True)\nprint(json.dumps({'stdout':r.stdout,'stderr':r.stderr}))")
+ for stream in ('stdout','stderr'):
+  p=out/('function-cycles-'+stream+'.txt');p.write_text(logs[stream]);p.chmod(0o600)
+ doc['stop']=await lab.change('stop')
+ p=out/'function-cycles.json';p.write_text(json.dumps(doc,indent=2));p.chmod(0o600)
+ print(doc['stop'],flush=True)
+asyncio.run(main())

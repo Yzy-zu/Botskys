@@ -1,0 +1,5 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+info=json.loads(Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z/isolated.json').read_text())['setup']
+async def main():
+ print(await remote("from pathlib import Path\nimport json,os,subprocess\ni=json.loads(subprocess.check_output(['docker','inspect',"+repr(info['container'])+"]))[0]\np=Path("+repr(info['base'])+")/'data'\nassert '.botsky-native-lab-' in str(p)\nuser=i['Config']['User'];original=json.loads(subprocess.check_output(['docker','inspect','mc-bedrock']))[0];source=Path(next(m['Source'] for m in original['Mounts'] if m['Destination']=='/data'));owner=source.stat()\nfor item in [p,*p.rglob('*')]:\n assert not item.is_symlink()\n os.chown(item,owner.st_uid,owner.st_gid)\nprint(json.dumps({'user':user,'own_fixture_ownership_corrected':True}))"))
+asyncio.run(main())

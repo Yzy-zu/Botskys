@@ -1,0 +1,6 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ result=await remote("import subprocess,json,hashlib\nfrom pathlib import Path\nc="+repr(config.container)+"\ni=json.loads(subprocess.check_output(['docker','inspect',c]))[0]\nr=subprocess.run(['docker','logs','--timestamps','--since','2026-11-06T21:56:45Z','--until','2026-11-06T21:59:30Z',c],capture_output=True,text=True)\nmarkers=('Forwarding signal','Sending message on stdin','Server stop requested','Stopping server','Quit correctly','Starting Bedrock server','Starting Server','Version:','Content logging','invalid next size','Server started.')\nprint(json.dumps({'architecture':subprocess.check_output(['uname','-m'],text=True).strip(),'image_id':i['Image'],'worker_sha256':hashlib.sha256(Path("+repr(config.worker_path)+").read_bytes()).hexdigest(),'historical_excerpt':{stream:[line for line in raw.splitlines() if any(marker in line for marker in markers)] for stream,raw in [('stdout',r.stdout),('stderr',r.stderr)]}}))")
+ out=Path('docs/evidencia/NATIVE-RECOVERY-20261106/checks/native-review.json');out.write_text(json.dumps(result,indent=2));out.chmod(0o600)
+ print({k:v for k,v in result.items() if k!='historical_excerpt'})
+asyncio.run(main())

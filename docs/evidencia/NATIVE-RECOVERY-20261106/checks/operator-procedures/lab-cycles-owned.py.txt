@@ -1,0 +1,20 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+from dataclasses import replace
+out=Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z')
+info=json.loads((out/'isolated.json').read_text())['setup']
+async def main():
+ print(await remote("from pathlib import Path\nimport json\np=Path("+repr(info['base'])+")/'data'\np.chmod(0o755)\nprint(json.dumps({'own_fixture_directory_readable':True}))"),flush=True)
+ lab=MinecraftRemote(replace(config,container=info['container'],base_path=info['base']))
+ results={'oracle':'4 explicit starts/restarts, stop on first failure; fixture permission preflight corrected separately','cycles':[]}
+ for n in range(4):
+  result=await lab.change('start' if n==0 else 'restart')
+  row={'cycle':n+1,'result':result,'state':await lab.query('status')};results['cycles'].append(row)
+  p=out/'owned-cycles.json';p.write_text(json.dumps(results,indent=2));p.chmod(0o600)
+  print(json.dumps(row),flush=True)
+  if result.get('verified') is not True:break
+  await asyncio.sleep(5)
+ logs=await remote("import json,subprocess\nr=subprocess.run(['docker','logs','--timestamps',"+repr(info['container'])+"],capture_output=True,text=True)\nprint(json.dumps({'stdout':r.stdout,'stderr':r.stderr}))")
+ for stream in ('stdout','stderr'):
+  p=out/('owned-cycles-'+stream+'.txt');p.write_text(logs[stream]);p.chmod(0o600)
+ print(await lab.change('stop'),flush=True)
+asyncio.run(main())

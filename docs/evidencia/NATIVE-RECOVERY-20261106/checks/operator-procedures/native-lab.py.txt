@@ -1,0 +1,62 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+from dataclasses import replace
+from datetime import datetime,UTC
+import uuid
+stamp=datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ')
+out=Path('docs/evidencia/NATIVE-RECOVERY-20261106')/stamp
+out.mkdir(parents=True)
+async def main():
+ code='''from pathlib import Path
+import json,subprocess,shutil,uuid,os
+c=CONTAINER
+base=Path(BASE)
+i=json.loads(subprocess.check_output(['docker','inspect',c]))[0]
+source=next(Path(m['Source']) for m in i['Mounts'] if m['Destination']=='/data')
+lab=base/('.botsky-native-lab-'+STAMP)
+assert not lab.exists()
+data=lab/'data'
+data.mkdir(parents=True,mode=0o700)
+for p in source.iterdir():
+ if p.is_file() and (p.name.startswith('bedrock_server-') or p.suffix=='.so' or p.name=='valid_known_packs.json'):
+  shutil.copy2(p,data/p.name)
+for name in ('definitions','structures','treatments'):
+ if (source/name).is_dir(): shutil.copytree(source/name,data/name)
+for name in ('behavior_packs','resource_packs'):
+ (data/name).mkdir()
+ for p in (source/name).iterdir():
+  if p.is_dir() and p.name.startswith(('vanilla','chemistry','experimental','editor')):
+   shutil.copytree(p,data/name/p.name)
+(data/'server.properties').write_text('server-name=Botsky isolated synthetic lab\\nlevel-name=Synthetic\\nlevel-type=FLAT\\nlevel-seed=12345\\nallow-list=false\\nonline-mode=false\\nenable-lan-visibility=false\\nview-distance=4\\ntick-distance=4\\nmax-threads=2\\nallow-cheats=false\\ncontent-log-console-output-enabled=true\\n')
+world=data/'worlds/Synthetic'
+world.mkdir(parents=True)
+a,b=str(uuid.uuid4()),str(uuid.uuid4())
+for kind,identity,dep,module in [('behavior',a,b,'data'),('resource',b,a,'resources')]:
+ p=data/(kind+'_packs')/'botsky-synthetic-pair'
+ p.mkdir()
+ manifest={'format_version':2,'header':{'name':'Botsky isolated synthetic '+kind,'description':'Own disposable fixture','uuid':identity,'version':[1,0,0],'min_engine_version':[1,21,0]},'modules':[{'type':module,'uuid':str(uuid.uuid4()),'version':[1,0,0]}],'dependencies':[{'uuid':dep,'version':[1,0,0]}]}
+ (p/'manifest.json').write_text(json.dumps(manifest))
+ (world/('world_'+kind+'_packs.json')).write_text(json.dumps([{'pack_id':identity,'version':[1,0,0]}]))
+name='botsky-native-'+STAMP.lower()
+binary=sorted(p.name for p in data.glob('bedrock_server-*'))[-1]
+args=['docker','create','--name',name,'--network','none','--restart','no','--memory','3g','--cpus','1.5','--workdir','/data','--mount','type=bind,src='+str(data)+',dst=/data','--entrypoint','mc-server-runner','-e','LD_LIBRARY_PATH=.','-e','BOX64_DYNAREC=1','-e','BOX64_DYNAREC_BIGBLOCK=1','-e','BOX64_DYNAREC_FASTNAN=1','-e','BOX64_DYNAREC_FASTROUND=1',i['Image'],'box64','./'+binary]
+subprocess.run(args,check=True,stdout=subprocess.DEVNULL)
+print(json.dumps({'container':name,'base':str(lab),'image':i['Image'],'binary':binary,'ids':[a,b]}))
+'''.replace('CONTAINER',repr(config.container)).replace('BASE',repr(config.base_path)).replace('STAMP',repr(stamp))
+ info=await remote(code)
+ lab=MinecraftRemote(replace(config,container=info['container'],base_path=info['base']))
+ results={'scope':'isolated synthetic world; no network; existing image/binary; no active world copy','setup':info,'cycles':[]}
+ def save():
+  p=out/'isolated.json';p.write_text(json.dumps(results,indent=2));p.chmod(0o600)
+ save()
+ for n in range(4):
+  result=await lab.change('start' if n==0 else 'restart')
+  row={'cycle':n+1,'result':result,'status':await lab.query('status')}
+  results['cycles'].append(row);save();print(json.dumps(row),flush=True)
+  if result.get('verified') is not True: break
+  await asyncio.sleep(5)
+ logs=await remote("import json,subprocess\nr=subprocess.run(['docker','logs','--timestamps',"+repr(info['container'])+"],capture_output=True,text=True)\nprint(json.dumps({'stdout':r.stdout,'stderr':r.stderr}))")
+ for stream in ('stdout','stderr'):
+  p=out/('isolated-'+stream+'.txt');p.write_text(logs[stream]);p.chmod(0o600)
+ results['stopped']=await lab.change('stop');save()
+ print('EVIDENCE '+str(out),flush=True)
+asyncio.run(main())

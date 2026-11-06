@@ -1,0 +1,331 @@
+{
+  "scope": "new explicit real check; own fixtures; disposable DB; no sends",
+  "oracles": [
+    "paired activation loaded; restart changes StartedAt and is game ready, or native failure retained",
+    "recover offline restores exact bytes/modes/existence of both world JSONs and history",
+    "injected exception after first atomic replacement leaves durable pending across worker processes",
+    "pending blocks start before dispatch; explicit recover restores all original configuration",
+    "repeat offline recover is unchanged; fixtures removed; same world ready and zero players"
+  ],
+  "cases": [
+    {
+      "command": "/mc parar",
+      "state": "returned",
+      "receipt": "ce5d7115609370f6bffcb31eeb6bb8c0",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "stop",
+          "response": {
+            "action": "stop",
+            "requires_healthcheck": false,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft stop:\n{\"status\": \"ok\", \"action\": \"stop\", \"requires_healthcheck\": false}"
+      }
+    },
+    {
+      "command": "/mc mod activar f61af841-46bc-45f2-95fd-2b7120aa50a4",
+      "state": "returned",
+      "receipt": "6af0cec4d50523612c30d32b2cfa708f",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "enable_mod",
+          "response": {
+            "action": "enable_mod",
+            "affected": [
+              {
+                "name": "Botsky recovery synthetic behavior",
+                "pack_id": "f61af841-46bc-45f2-95fd-2b7120aa50a4",
+                "pack_type": "behavior"
+              },
+              {
+                "name": "Botsky recovery synthetic resource",
+                "pack_id": "ea4e8af0-676d-4c91-aeb5-92c085a0c2a0",
+                "pack_type": "resource"
+              }
+            ],
+            "changed": true,
+            "configured": true,
+            "loaded_known": false,
+            "name": "Botsky recovery synthetic behavior",
+            "pack_id": "f61af841-46bc-45f2-95fd-2b7120aa50a4",
+            "permissions_repaired": false,
+            "restart_required": true,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Activación de Botsky recovery synthetic behavior: cambió. Conjunto de dependencias mutuas: Botsky recovery synthetic behavior (behavior), Botsky recovery synthetic resource (resource). Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+      }
+    },
+    {
+      "command": "/mc iniciar",
+      "state": "returned",
+      "receipt": "74738aa55bee955fa1e5c0dde843fd78",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "start",
+          "response": {
+            "action": "start",
+            "game_status": "ready",
+            "requires_healthcheck": true,
+            "status": "ok",
+            "verified": true
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
+      }
+    },
+    {
+      "command": "/mc reiniciar",
+      "state": "returned",
+      "receipt": "75eccdec4c7534f245fb5633c17d6ab7",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "restart",
+          "response": {
+            "action": "restart",
+            "game_status": "ready",
+            "requires_healthcheck": true,
+            "status": "ok",
+            "verified": true
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
+      }
+    },
+    {
+      "command": "/mc parar",
+      "state": "returned",
+      "receipt": "d4459f1bd9ae82b9b002f4e5687acf00",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "stop",
+          "response": {
+            "action": "stop",
+            "requires_healthcheck": false,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft stop:\n{\"status\": \"ok\", \"action\": \"stop\", \"requires_healthcheck\": false}"
+      }
+    },
+    {
+      "command": "/mc recuperar",
+      "state": "returned",
+      "receipt": "1a6f698c1ec39d5415ce849774de0a89",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "recover",
+          "response": {
+            "changed": true,
+            "offline_verified": true,
+            "recovered": true,
+            "recovery_id": "874add5ba2c442dab63b955a6d944704",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Configuración recuperada y verificada. El servidor permanece apagado; revisa /mc mods antes de iniciarlo."
+      }
+    },
+    {
+      "command": "/mc recuperar",
+      "state": "returned",
+      "receipt": "41e1e9bc3281081f904ec8981a0f58e1",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "recover",
+          "response": {
+            "changed": false,
+            "offline_verified": true,
+            "recovered": true,
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "No hay cambios que recuperar en este mundo."
+      }
+    },
+    {
+      "command": "/mc iniciar",
+      "state": "returned",
+      "receipt": "9da23bed66e9dfbf10d9ea6e596c1ec0",
+      "result": {
+        "code": "minecraft_change_rejected",
+        "data": {
+          "action": "start",
+          "response": {
+            "code": "recovery_required",
+            "dispatched": false,
+            "status": "needs_input"
+          }
+        },
+        "status": "needs_input",
+        "text": "El cambio necesita revisión; no se ejecutó."
+      }
+    },
+    {
+      "command": "/mc recuperar",
+      "state": "returned",
+      "receipt": "a52f978effa74e98ef237c73a025426d",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "recover",
+          "response": {
+            "changed": true,
+            "offline_verified": true,
+            "recovered": true,
+            "recovery_id": "c1921193091343bc84bfdc50d347a39a",
+            "status": "ok"
+          }
+        },
+        "status": "ok",
+        "text": "Configuración recuperada y verificada. El servidor permanece apagado; revisa /mc mods antes de iniciarlo."
+      }
+    },
+    {
+      "command": "/mc iniciar",
+      "state": "returned",
+      "receipt": "f59ae8aa5de61ddf6927ea8a2920b5d1",
+      "result": {
+        "code": "minecraft_completed",
+        "data": {
+          "action": "start",
+          "response": {
+            "action": "start",
+            "game_status": "ready",
+            "requires_healthcheck": true,
+            "status": "ok",
+            "verified": true
+          }
+        },
+        "status": "ok",
+        "text": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
+      }
+    }
+  ],
+  "checks": {
+    "initial": {
+      "status": "ok",
+      "online": true,
+      "container_status": "running",
+      "game_status": "ready",
+      "started_at": "2026-11-06T22:00:06.573836631Z",
+      "telemetry": "current_startup_log",
+      "active_world": "Supervivencia",
+      "environment": {
+        "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+        "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+        "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+      },
+      "reconciliation": "no_pending_change"
+    },
+    "discover": {
+      "status": "ok",
+      "available": true,
+      "active_world": "Supervivencia",
+      "fingerprint": {
+        "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+        "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+        "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+      }
+    },
+    "prepared": {
+      "prepared": true,
+      "world": "Supervivencia"
+    },
+    "pair_behavior_loaded": true,
+    "restart_state": {
+      "status": "ok",
+      "online": true,
+      "container_status": "running",
+      "game_status": "ready",
+      "started_at": "2026-11-06T22:33:10.897304157Z",
+      "telemetry": "current_startup_log",
+      "active_world": "Supervivencia",
+      "environment": {
+        "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+        "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+        "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+      },
+      "reconciliation": "applied"
+    },
+    "restart_result": "ok",
+    "paired_restart_verified": true,
+    "normal_recovery": {
+      "world_behavior_packs.json": {
+        "exact": true,
+        "exists": true,
+        "sha256": "db5d4aa39d0e5fdeb7f22b60891203880198923df3eaea77a410cf6026896e5f"
+      },
+      "world_resource_packs.json": {
+        "exact": true,
+        "exists": true,
+        "sha256": "d267c5e0161b24e25985e8f97ea4c64ec95e2b4d29ad8e5d903e181f14832338"
+      },
+      ".botsky-disabled-packs.json": {
+        "exact": true,
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "fault": {
+      "injected_after_atomic_replacement": true,
+      "phase": "pending",
+      "id": "c1921193091343bc84bfdc50d347a39a"
+    },
+    "interrupted_recovery": {
+      "world_behavior_packs.json": {
+        "exact": true,
+        "exists": true,
+        "sha256": "db5d4aa39d0e5fdeb7f22b60891203880198923df3eaea77a410cf6026896e5f"
+      },
+      "world_resource_packs.json": {
+        "exact": true,
+        "exists": true,
+        "sha256": "d267c5e0161b24e25985e8f97ea4c64ec95e2b4d29ad8e5d903e181f14832338"
+      },
+      ".botsky-disabled-packs.json": {
+        "exact": true,
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "own_fixtures_removed": true,
+    "final": {
+      "status": "ok",
+      "online": true,
+      "container_status": "running",
+      "game_status": "ready",
+      "started_at": "2026-11-06T22:33:46.632915414Z",
+      "telemetry": "current_startup_log",
+      "active_world": "Supervivencia",
+      "environment": {
+        "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+        "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+        "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+      },
+      "reconciliation": "recovered"
+    },
+    "same_world_ready_zero_players": true,
+    "active_jobs": 0
+  },
+  "fixture_ids": [
+    "f61af841-46bc-45f2-95fd-2b7120aa50a4",
+    "ea4e8af0-676d-4c91-aeb5-92c085a0c2a0"
+  ]
+}

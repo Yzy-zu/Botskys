@@ -1,0 +1,5 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ name=json.loads(Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z/isolated.json').read_text())['setup']['container']
+ print(await remote("import subprocess,json\ni=json.loads(subprocess.check_output(['docker','inspect',"+repr(name)+"]))[0]\nprint(json.dumps({'state':i['State'],'path':i['Path'],'args':i['Args']}))"))
+asyncio.run(main())

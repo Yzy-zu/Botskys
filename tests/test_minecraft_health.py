@@ -5,6 +5,15 @@ from botsky.adapters.minecraft import MinecraftConfig, MinecraftRemote
 
 
 class HealthTest(IsolatedAsyncioTestCase):
+    async def test_recover_timeout_is_uncertain_and_not_repeated(self):
+        backend = MinecraftRemote(
+            MinecraftConfig("fixture", "fixture", "/srv/fixture", "/srv/worker.py")
+        )
+        backend._runner = AsyncMock(side_effect=TimeoutError)
+        result = await backend.change("recover")
+        self.assertEqual(result["status"], "uncertain")
+        self.assertEqual(backend._runner.await_count, 1)
+
     async def test_start_requires_game_readiness_and_never_repeats_failed_start(self):
         backend = MinecraftRemote(
             MinecraftConfig("fixture", "fixture", "/srv/fixture", "/srv/worker.py")

@@ -28,13 +28,18 @@ def execute(db, context, spec, args, now, app):
                 "minecraft_local_validation",
                 "El cambio no es admisible. Consola: list, save, time query daytime o weather query; no comandos del host.",
             )
-        if (
-            action != "recover"
-            and db.execute(
-                "SELECT 1 FROM external_operations WHERE domain='minecraft' AND resource=? AND state IN ('reserved','sending','uncertain')",
-                (backend.server_id,),
-            ).fetchone()
-        ):
+        # Stop/recover are reconciliation controls for an uncertain change. They
+        # still serialize against any operation that is currently reserved or
+        # sending; only an old uncertain receipt is bypassed for these actions.
+        busy_states = (
+            "('reserved','sending','uncertain','reconciling')"
+            if action not in {"stop", "recover"}
+            else "('reserved','sending')"
+        )
+        if db.execute(
+            f"SELECT 1 FROM external_operations WHERE domain='minecraft' AND resource=? AND state IN {busy_states}",
+            (backend.server_id,),
+        ).fetchone():
             return Result(
                 "needs_input",
                 "minecraft_resource_busy",
@@ -52,6 +57,13 @@ def execute(db, context, spec, args, now, app):
         resource="minecraft-" + backend.server_id,
     )
     if result.code == "job_queued" and action not in READS:
+        if action in {"stop", "recover"}:
+            # Move the prior uncertain operation out of the active-resource
+            # unique index while this explicit reconciliation job owns it.
+            db.execute(
+                "UPDATE external_operations SET state='reconciling' WHERE domain='minecraft' AND resource=? AND state='uncertain'",
+                (backend.server_id,),
+            )
         db.execute(
             "INSERT INTO external_operations(receipt_id,domain,resource,action,args_json) VALUES(?,?,?,?,?)",
             (context.receipt_id, "minecraft", backend.server_id, action, canonical(params)),
@@ -407,13 +419,13 @@ async def run(job, directory, manager):
         if action == "recover" and data.get("recovery_id") and data.get("recovered") is True:
             with manager.store.transaction() as db:
                 db.execute(
-                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('enable_mod','disable_mod') AND state='uncertain'",
+                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('enable_mod','disable_mod','recover') AND state IN ('uncertain','reconciling')",
                     (backend.server_id,),
                 )
         if action == "recover" and data.get("offline_verified") is True:
             with manager.store.transaction() as db:
                 db.execute(
-                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('start','restart') AND state='uncertain'",
+                    "UPDATE external_operations SET state='failed' WHERE domain='minecraft' AND resource=? AND action IN ('start','restart','stop','recover') AND state IN ('uncertain','reconciling')",
                     (backend.server_id,),
                 )
         safe = public(data)
@@ -430,6 +442,9 @@ async def run(job, directory, manager):
             safe["installed_truncated"] = len(custom) > len(safe["installed"])
         if status == "needs_input" and data.get("dispatched") is False:
             messages = {
+                "minecraft_change_busy": "Hay otra operación sobre este mundo. Espera a que termine y consulta /mc estado; no se ejecutó este cambio.",
+                "recovery_required": "Hay una escritura interrumpida. Mantén el servidor apagado y usa /mc recuperar antes de iniciarlo.",
+                "recovery_environment_changed": "Cambió la imagen, el contenedor o su montaje desde la operación. No sobrescribí archivos; requiere revisión del entorno.",
                 "recovery_requires_offline": "Apaga Minecraft antes de recuperar su configuración. No se modificó nada.",
                 "recovery_conflict": "Hay cambios externos desde la operación. No sobrescribí esos archivos; requiere revisión.",
                 "pack_not_unique_or_installed": "No encuentro un paquete único con ese nombre. Consulta /mc mods y usa el identificador o la carpeta exacta; comportamiento y recursos pueden compartir nombre.",

@@ -1,5 +1,38 @@
 # Relevo Botsky
 
+## 06/11 · Diagnóstico nativo y recuperación real: recuperación PASS, causa nativa abierta
+
+Encargo explícito del propietario puntos1y2. Recuperación de configuración real
+acreditada con DB/permisos efímeros propios: par sintético cargado y reiniciado,
+rollback byte/modo/existencia exactos de ambos JSON e historial, segunda orden
+idempotente; fallo inyectado offline tras primera escritura deja pending durable,
+otro worker bloquea arranque, recuperar restituye todo. Fixtures retirados,
+juego ready/mismo mundo/cero jugadores, entregas locales canceladas y0jobs activos.
+Worker propio actualizado; guardias reales sin efectos para recuperación online
+y start/stop/restart/recover bajo bloqueo ocupado. Writeflags operativos false.
+
+Cinco defectos corregidos: stderr de logs descartado; cap128KiB ocultaba arranque
+sano (repro362492bytes, ahora8MiB internos solo para logs); timeout recover incierto;
+admisión/índice impedían stop/recover tras incierto (estado reconciling conserva
+bloqueo hasta observación y recibos históricos intactos); lifecycle comparte lock
+con recuperar. Revisión principal y correcciones Luna locales.36testsMinecraft,
+20backup/integraciones y24núcleo/cancelación/permisos PASS; Ruff/format146/diffPASS.
+Suite audiovisual no repetida; evidencia histórica de lint intacta.
+
+Fallo nativo histórico free(): invalid next size ocurrió en nuevo arranque tras
+apagado correcto. Captura separada corrige hipótesis inicial: apareció en stdout,
+no stderr; no atribuirle ese defecto ni causa a Box64/addon/ciclo sin prueba.
+HostARM64/Box64 y misma imagen/binario conservados.1reinicio real nuevo y10en
+laboratorio aislado sin red/mundo sintético (incluye catálogo completo y función
+real del juego) sanos; no reproduce ni resuelve la corrupción nativa histórica.
+Laboratorio parado y retirado, scratch propio eliminado; evidencia saneada0600
+NATIVE-RECOVERY-20261106, informe MINECRAFT_NATIVO_RECUPERACION_20261106.md.
+Punto2 cerrado para recuperación de configuración/interrupción; punto1 conserva
+causa nativa abierta. R10global/R11 siguen pendientes. No reanudar campañas,
+fallos nativos o scripts de operador por leer este relevo. Exclusiones vigentes;
+cuota/checks en evidencia, umbral5% obligatorio. Commit selectivo local.
+
+
 ## 06/11 · Bloque Minecraft resiliente implementado
 
 Encargo expreso: descubrimiento desde Docker con montajes/WorkingDir dentro de

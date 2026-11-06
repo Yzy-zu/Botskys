@@ -1,0 +1,28 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+async def main():
+ mc=MinecraftRemote(config)
+ state=await mc.query('status');players=await mc.query('players')
+ assert state['game_status']=='ready' and players['players_known'] and players['count']==0
+ guard=await mc.change('recover');assert guard['code']=='recovery_requires_offline' and guard['dispatched'] is False
+ code='''import importlib.util,json,os,hashlib
+from pathlib import Path
+s=importlib.util.spec_from_file_location('own',WORKER)
+m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+layout=m.discover(CONTAINER,Path(BASE));world=layout['data_path']/'worlds'/layout['active_world']
+fd=m._world_lock(world)
+checks={}
+try:
+ for action in ('start','stop','restart','recover'):
+  result=m.handle({'action':action,'params':{},'container':CONTAINER,'base_path':BASE})
+  assert result=={'status':'needs_input','dispatched':False,'code':'minecraft_change_busy'},result
+  checks[action]=result
+finally:
+ os.close(fd)
+print(json.dumps({'lock_guards':checks,'worker_sha256':hashlib.sha256(Path(WORKER).read_bytes()).hexdigest(),'reconciliation':m._journal_read(world)['phase']}))
+'''.replace('WORKER',repr(config.worker_path)).replace('CONTAINER',repr(config.container)).replace('BASE',repr(config.base_path))
+ checks=await remote(code)
+ profile=json.loads(Path('private/integrations.json').read_text())
+ result={'status':state,'players':players,'live_recovery_guard':guard,**checks,'main_permissions_write':{name:profile['permissions'][name]['write'] for name in ('minecraft','drive','groups')}}
+ p=Path('docs/evidencia/NATIVE-RECOVERY-20261106/checks/final-observation.json');p.write_text(json.dumps(result,indent=2));p.chmod(0o600)
+ print(json.dumps(result))
+asyncio.run(main())

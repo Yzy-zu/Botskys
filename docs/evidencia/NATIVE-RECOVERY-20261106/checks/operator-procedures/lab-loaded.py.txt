@@ -1,0 +1,47 @@
+exec(open('/tmp/botsky-native-inspect.py').read().split('async def main():')[0])
+from dataclasses import replace
+out=Path('docs/evidencia/NATIVE-RECOVERY-20261106/20261106T223005Z')
+info=json.loads((out/'isolated.json').read_text())['setup']
+async def main():
+ code='''from pathlib import Path
+import json,subprocess,shutil,os
+original=json.loads(subprocess.check_output(['docker','inspect',CONTAINER]))[0]
+source=Path(next(m['Source'] for m in original['Mounts'] if m['Destination']=='/data'))
+data=Path(LABBASE)/'data'
+assert '.botsky-native-lab-' in str(data)
+assert shutil.disk_usage(data).free>4*1024**3
+for kind in ('behavior','resource'):
+ for p in (source/(kind+'_packs')).iterdir():
+  target=data/(kind+'_packs')/p.name
+  if p.is_dir() and not p.is_symlink():
+   shutil.copytree(p,target,dirs_exist_ok=True,ignore=lambda folder,names:[name for name in names if (Path(folder)/name).is_symlink()])
+ props=dict(line.split('=',1) for line in (source/'server.properties').read_text().splitlines() if '=' in line and not line.startswith('#'))
+ original_world=source/'worlds'/props['level-name']
+ name='world_'+kind+'_packs.json'
+ rows=json.loads((original_world/name).read_text())
+ identity=IDS[0 if kind=='behavior' else 1]
+ rows.append({'pack_id':identity,'version':[1,0,0]})
+ (data/'worlds/Synthetic'/name).write_text(json.dumps(rows))
+owner=source.stat()
+for p in [data,*data.rglob('*')]:
+ assert not p.is_symlink()
+ os.chown(p,owner.st_uid,owner.st_gid)
+print(json.dumps({'catalogue_copied':True,'world_data_copied':False,'network':'none'}))
+'''.replace('CONTAINER',repr(config.container)).replace('LABBASE',repr(info['base'])).replace('IDS',repr(info['ids']))
+ setup=await remote(code);print(setup,flush=True)
+ lab=MinecraftRemote(replace(config,container=info['container'],base_path=info['base']))
+ results={'oracle':'6 planned explicit healthy starts/restarts; stop on first uncertainty; active catalogue plus own pair in synthetic world; no network','setup':setup,'cycles':[]}
+ for n in range(6):
+  r=await lab.change('start' if n==0 else 'restart')
+  row={'cycle':n+1,'result':r,'state':await lab.query('status')};results['cycles'].append(row)
+  p=out/'loaded-cycles.json';p.write_text(json.dumps(results,indent=2));p.chmod(0o600)
+  print(json.dumps(row),flush=True)
+  if r.get('verified') is not True:break
+  await asyncio.sleep(3)
+ logs=await remote("import subprocess,json\nr=subprocess.run(['docker','logs','--timestamps',"+repr(info['container'])+"],capture_output=True,text=True)\nprint(json.dumps({'stdout':r.stdout,'stderr':r.stderr}))")
+ for stream in ('stdout','stderr'):
+  p=out/('loaded-cycles-'+stream+'.txt');p.write_text(logs[stream]);p.chmod(0o600)
+ results['stop']=await lab.change('stop')
+ p=out/'loaded-cycles.json';p.write_text(json.dumps(results,indent=2));p.chmod(0o600)
+ print(results['stop'],flush=True)
+asyncio.run(main())

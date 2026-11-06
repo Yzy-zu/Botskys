@@ -1,0 +1,59 @@
+{
+  "status": {
+    "status": "ok",
+    "online": true,
+    "container_status": "running",
+    "game_status": "ready",
+    "started_at": "2026-11-06T22:33:46.632915414Z",
+    "telemetry": "current_startup_log",
+    "active_world": "Supervivencia",
+    "environment": {
+      "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+      "id": "9366dedee1c3b8385ecc50f7374022a1ed179b243eba3ad7b9cd05e44b9efa8a",
+      "mount": "63ce2663cabd398023243849c1955e0283e05bc301fd58ee57a3037ee3dc2439"
+    },
+    "reconciliation": "recovered"
+  },
+  "players": {
+    "status": "online",
+    "online": true,
+    "players_known": true,
+    "count": 0,
+    "max": 10,
+    "players": []
+  },
+  "live_recovery_guard": {
+    "status": "needs_input",
+    "dispatched": false,
+    "code": "recovery_requires_offline"
+  },
+  "lock_guards": {
+    "start": {
+      "status": "needs_input",
+      "dispatched": false,
+      "code": "minecraft_change_busy"
+    },
+    "stop": {
+      "status": "needs_input",
+      "dispatched": false,
+      "code": "minecraft_change_busy"
+    },
+    "restart": {
+      "status": "needs_input",
+      "dispatched": false,
+      "code": "minecraft_change_busy"
+    },
+    "recover": {
+      "status": "needs_input",
+      "dispatched": false,
+      "code": "minecraft_change_busy"
+    }
+  },
+  "worker_sha256": "5e61ac955518fef38a9b7bb6fc36cd1448a05833213afe1c7b63d589250d721f",
+  "reconciliation": "recovered",
+  "main_permissions_write": {
+    "minecraft": false,
+    "drive": false,
+    "groups": false
+  }
+}

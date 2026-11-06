@@ -2,6 +2,7 @@
 
 import importlib.util
 import json
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -195,3 +196,54 @@ class ModsWorkerTest(TestCase):
             worker._game_status("fixture", state, run=lambda *a, **kw: "Server started."),
             "ready",
         )
+
+    def test_game_status_reads_native_error_written_to_stderr(self):
+        original_popen = worker.subprocess.Popen
+
+        def popen_with_real_log_process(argv, **kwargs):
+            self.assertTrue(kwargs["stderr"] == worker.subprocess.STDOUT)
+            return original_popen(
+                [
+                    sys.executable,
+                    "-c",
+                    "import sys; sys.stdout.write('warning\\n' * 40000); print('Server started.'); print('free(): invalid next size', file=sys.stderr)",
+                ],
+                **kwargs,
+            )
+
+        def run_real_log(argv, **kwargs):
+            self.assertEqual(kwargs["max_output_bytes"], worker.MAX_LOG_BYTES)
+            return worker._run(argv, **kwargs)
+
+        with patch.object(worker.subprocess, "Popen", side_effect=popen_with_real_log_process):
+            result = worker._game_status(
+                "fixture",
+                {"Status": "running", "StartedAt": "2026-11-06T21:00:00Z"},
+                run=run_real_log,
+            )
+        self.assertEqual(result, "failed")
+
+    def test_large_startup_log_still_confirms_ready(self):
+        original_popen = worker.subprocess.Popen
+
+        def popen_with_real_log_process(argv, **kwargs):
+            return original_popen(
+                [
+                    sys.executable,
+                    "-c",
+                    "import sys; sys.stdout.write('warning\\n' * 40000); print('Server started.')",
+                ],
+                **kwargs,
+            )
+
+        def run_real_log(argv, **kwargs):
+            self.assertEqual(kwargs["max_output_bytes"], worker.MAX_LOG_BYTES)
+            return worker._run(argv, **kwargs)
+
+        with patch.object(worker.subprocess, "Popen", side_effect=popen_with_real_log_process):
+            result = worker._game_status(
+                "fixture",
+                {"Status": "running", "StartedAt": "2026-11-06T21:00:00Z"},
+                run=run_real_log,
+            )
+        self.assertEqual(result, "ready")

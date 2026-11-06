@@ -30,6 +30,7 @@ from typing import Any
 
 MAX_INPUT = 16 * 1024
 MAX_OUTPUT = 128 * 1024
+MAX_LOG_BYTES = 8 * 1024 * 1024
 MAX_SCAN = 1000
 MAX_BACKUP_BYTES = 50 * 1024 * 1024 * 1024
 MAX_BACKUP_FILES = 100_000
@@ -42,13 +43,16 @@ class WorkerError(Exception):
     pass
 
 
-def _run(argv: list[str], *, timeout: int = 15, check: bool = True) -> str:
+def _run(
+    argv: list[str], *, timeout: int = 15, check: bool = True, merge_stderr: bool = False,
+    max_output_bytes: int = MAX_OUTPUT,
+) -> str:
     try:
         process = subprocess.Popen(
             argv,
             stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
+            stderr=subprocess.STDOUT if merge_stderr else subprocess.DEVNULL,
             close_fds=True,
             start_new_session=True,
         )
@@ -65,12 +69,12 @@ def _run(argv: list[str], *, timeout: int = 15, check: bool = True) -> str:
             if remaining <= 0:
                 raise WorkerError("remote_command_timeout")
             for key, _ in selector.select(min(remaining, 0.25)):
-                chunk = os.read(key.fd, min(16384, MAX_OUTPUT + 1 - len(output)))
+                chunk = os.read(key.fd, min(16384, max_output_bytes + 1 - len(output)))
                 if not chunk:
                     selector.unregister(key.fileobj)
                     continue
                 output.extend(chunk)
-                if len(output) > MAX_OUTPUT:
+                if len(output) > max_output_bytes:
                     raise WorkerError("remote_output_too_large")
         returncode = process.wait(timeout=max(0.1, deadline - time.monotonic()))
     except (subprocess.TimeoutExpired, WorkerError) as exc:
@@ -371,7 +375,7 @@ def _players(root: Path, container: str, *, run: Callable[..., str]) -> dict[str
             run(["docker", "exec", container, "send-command", "list"], timeout=10)
             for delay in (0.25, 0.5, 1.0):
                 time.sleep(delay)
-                log = run(["docker", "logs", "--since", f"{sent_at:.6f}", "--timestamps", container], timeout=10)
+                log = run(["docker", "logs", "--since", f"{sent_at:.6f}", "--timestamps", container], timeout=10, merge_stderr=True, max_output_bytes=MAX_LOG_BYTES)
                 matches: list[tuple[int, int, str]] = []
                 pattern = re.compile(r"^(\S+)\s+.*?There are\s+(\d+)/(\d+)\s+players online:([^\r\n]*)", re.IGNORECASE)
                 for line in log.splitlines():
@@ -413,7 +417,7 @@ def _game_status(container: str, state: dict[str, Any], *, run: Callable[..., st
     if not isinstance(started, str) or not started:
         return "unknown"
     try:
-        log = run(["docker", "logs", "--since", started, container], timeout=10)
+        log = run(["docker", "logs", "--since", started, container], timeout=10, merge_stderr=True, max_output_bytes=MAX_LOG_BYTES)
     except (WorkerError, OSError, subprocess.SubprocessError):
         return "unknown"
     if "free(): invalid next size" in log or "Fatal glibc error" in log:
@@ -431,7 +435,7 @@ def _observed_packs(container: str, *, run: Callable[..., str]) -> set[tuple[str
         started = state.get("StartedAt")
         if state.get("Status") != "running" or not isinstance(started, str) or not started:
             return set()
-        log = run(["docker", "logs", "--since", started, container], timeout=10)
+        log = run(["docker", "logs", "--since", started, container], timeout=10, merge_stderr=True, max_output_bytes=MAX_LOG_BYTES)
         pattern = re.compile(r"Pack Stack - .*?\(id: ([0-9a-fA-F-]{36}), version: ([0-9]+\.[0-9]+\.[0-9]+)\)")
         return {(identity.casefold(), version) for identity, version in pattern.findall(log)}
     except (WorkerError, ValueError, OSError, subprocess.SubprocessError):
@@ -626,7 +630,12 @@ def _journal_prepare(plan):
 
 
 def _recover(data, container, *, run, fingerprint=None):
-    fd = _world_lock(data / 'worlds' / _active_world(data))
+    try:
+        fd = _world_lock(data / 'worlds' / _active_world(data))
+    except WorkerError as exc:
+        if str(exc) == 'minecraft_change_busy':
+            return {'status': 'needs_input', 'dispatched': False, 'code': 'minecraft_change_busy'}
+        raise
     try:
         return _recover_locked(data, container, run=run, fingerprint=fingerprint)
     finally:
@@ -845,12 +854,21 @@ def handle(request: dict[str, Any], *, run: Callable[..., str] = _run, discover_
         return output
 
     if action in {"start", "stop", "restart"}:
-        if action != "stop":
-            journal = _journal_read(data / 'worlds' / _active_world(data))
-            if journal and journal['phase'] == 'pending':
-                return {'status': 'needs_input', 'code': 'recovery_required', 'dispatched': False}
-        run(["docker", action, container], timeout=25)
-        return {"status": "ok", "action": action, "requires_healthcheck": action in {"start", "restart"}}
+        try:
+            fd = _world_lock(data / 'worlds' / _active_world(data))
+        except WorkerError as exc:
+            if str(exc) == 'minecraft_change_busy':
+                return {'status': 'needs_input', 'dispatched': False, 'code': 'minecraft_change_busy'}
+            raise
+        try:
+            if action != "stop":
+                journal = _journal_read(data / 'worlds' / _active_world(data))
+                if journal and journal['phase'] == 'pending':
+                    return {'status': 'needs_input', 'code': 'recovery_required', 'dispatched': False}
+            run(["docker", action, container], timeout=25)
+            return {"status": "ok", "action": action, "requires_healthcheck": action in {"start", "restart"}}
+        finally:
+            os.close(fd)
     if action == "backup":
         return _backup(root, data, container, run=run)
     if action == "recover":

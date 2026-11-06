@@ -1,0 +1,42 @@
+{
+  "scope": "isolated synthetic world; no network; existing image/binary; no active world copy",
+  "setup": {
+    "container": "botsky-native-20261106t223005z",
+    "base": "/home/petrov/docker/minecraft/.botsky-native-lab-20261106T223005Z",
+    "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+    "binary": "bedrock_server-1.26.63.1",
+    "ids": [
+      "762fe3fd-9371-4943-aad9-64c525fdbdaa",
+      "ba529c1d-94a4-4e29-a543-f6d65bc8afbc"
+    ]
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "result": {
+        "status": "error",
+        "code": "remote_command_failed"
+      },
+      "status": {
+        "status": "ok",
+        "online": false,
+        "container_status": "created",
+        "game_status": "offline",
+        "started_at": "0001-01-01T00:00:00Z",
+        "telemetry": "current_startup_log",
+        "active_world": "Synthetic",
+        "environment": {
+          "image": "sha256:e4a2e3cbbf9b02af56aef962af85a1462a94f39b3063048ae33b0598b3e84c6c",
+          "id": "b8ae01d9bf2c72613c990b8372fa2872c06538f372f3de0ec5e02a9d40c5c034",
+          "mount": "82bc75208f9543b2d8aec05b2b26ef0ca540a65ccb240830e96b3e4035929226"
+        },
+        "reconciliation": "no_pending_change"
+      }
+    }
+  ],
+  "stopped": {
+    "status": "ok",
+    "action": "stop",
+    "requires_healthcheck": false
+  }
+}
