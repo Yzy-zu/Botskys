@@ -1,0 +1,151 @@
+[
+  {
+    "claim_id": "convert_document-01",
+    "classification": "LÍMITE_CORRECTO",
+    "reason": "El fixture large_txt tiene 8,396,800 bytes y la ruta de conversión produjo más del máximo de 500 páginas. document_pages es el rechazo esperado; el fixture no demuestra que una conversión válida bajo el límite falle.",
+    "evidence": [
+      "results.json: convert_document/c14: /convertir pdf, large_txt (8,396,800 bytes), status failed, code document_pages",
+      "fixture-ledger.json: large_txt bytes=8396800",
+      "src/botsky/engines/documents.py: DocumentEngine._pdf_check comprueba 1..DOCUMENT_PAGES páginas",
+      "src/botsky/engines/limits.py: DOCUMENT_PAGES=500"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6 (formatos/límites de ruta); docs/R3.md: límite PDF de 500 páginas; rebuildbotsky.md §6 (validar páginas y formato de salida).",
+    "root_cause": "Expectativa de paginación sin límite aplicada a un fixture de 8.4 MB que excede el techo de páginas, no un fallo demostrado en la generación dentro de límites.",
+    "validation": "La suite local tests.test_media pasó (15 tests); no se modificó el motor. El test test_nineteen_document_targets_have_real_output_of_the_declared_format comprueba rutas reales de PDF y el límite se aplica en DocumentEngine._pdf_check."
+  },
+  {
+    "claim_id": "convert_document-02",
+    "classification": "ERROR_DE_EXPECTATIVA_DEL_TESTER",
+    "reason": "El contrato dice que un PDF escaneado sin OCR no se anuncia como Word editable. La ruta PDF→DOCX requiere texto extraíble y devuelve document_no_text al recibir un PDF de imagen; no se prometió incrustar páginas como imágenes ni ejecutar OCR desde /convertir.",
+    "evidence": [
+      "results.json: convert_document/c15, fixture scan_pdf, status failed, code document_no_text",
+      "docs/evidencia/R3.json: caso de evidencia 'PDF escaneado sin texto'",
+      "src/botsky/engines/document_worker.py: pdf_to_docx acumula texto y falla document_no_text si no hay texto"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: 'PDF escaneado sin OCR no se anuncia como Word editable'; docs/evidencia/R3.json registra esa comprobación local.",
+    "root_cause": "El oracle exige conservar imágenes/OCR aunque el contrato de conversión PDF→Word limita la promesa a texto extraíble.",
+    "validation": "tests.test_media.test_pdf_all_pages_text_and_scanned_error_is_specific pasó en la suite local; comprueba conversión de PDF textual y error específico para PDF escaneado."
+  },
+  {
+    "claim_id": "edit_media-01",
+    "classification": "ERROR_DE_EXPECTATIVA_DEL_TESTER",
+    "reason": "/editar srt selecciona y extrae una pista de subtítulos de un medio de audio/video; no declara aceptar un archivo .srt como origen para normalizarlo. El demuxer admite contenedores multimedia identificados por firma y rechaza la firma de SRT con unsupported_media.",
+    "evidence": [
+      "results.json: edit_media/c08, origen srt.srt, status failed, code unsupported_media",
+      "src/botsky/engines/media_edit.py: _demuxer reconoce firmas mov/matroska/ogg/wav/flac/mp3/aac; no SRT",
+      "src/botsky/engines/media_edit.py: rama container=='srt' busca codec_type subtitle en streams de entrada",
+      "tests/test_media.py:test_webm_and_embedded_subtitle_outputs_and_catalog_assets extrae SRT de pista embebida"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6 y §6; catálogo §6 especifica /editar mp3|mp4|webm|srt + archivo multimedia. La capacidad SRT es extracción de pista, no edición de archivos SRT.",
+    "root_cause": "La expectativa añadió una conversión de origen no incluida en el contrato ni en la operación tipada.",
+    "validation": "tests.test_media.test_webm_and_embedded_subtitle_outputs_and_catalog_assets pasó; confirma extracción real de una pista mov_text a SRT. No se cambió código."
+  },
+  {
+    "claim_id": "manage_pdf-01",
+    "classification": "ERROR_DE_EXPECTATIVA_DEL_TESTER",
+    "reason": "/pdf iniciar crea y guarda una sesión/fuente; no valida el PDF hasta que el motor trabaja. El contrato conserva la sesión tras error del motor para permitir corrección deliberada. El c17 no se limpió antes de c18/c21, por lo que estos encontraron pdf_session_exists. En pruebas independientes c22/c23 el motor rechazó el PDF corrupto y el protegido con invalid_document/protected_pdf.",
+    "evidence": [
+      "results.json: manage_pdf/c17 devuelve pdf_session_started; c18 y c21 encuentran pdf_session_exists",
+      "results.json: manage_pdf/c22 rechaza broken_pdf con invalid_document; c23 rechaza encrypted_pdf con protected_pdf",
+      "src/botsky/domains/pdf.py: start valida ámbito/formato/tamaño y reserva sesión; la validación del contenido ocurre en el job de finish/extract",
+      "docs/R3.md: 'un fallo de motor deja la sesión abierta para corrección deliberada'"
+    ],
+    "contract": "docs/R3.md, ciclo de sesión PDF: iniciar crea sesión; terminar liga el trabajo; fallo del motor mantiene la sesión abierta. /home/petrov/zhana/rebuildbotsky.md §6 requiere manejo explícito del ciclo, no lectura completa al iniciar.",
+    "root_cause": "Oracle asignó a 'iniciar' la semántica de validar/convertir y el harness permitió que la sesión creada por c17 contaminara los casos c18/c21, sin cancelarla.",
+    "validation": "La suite tests.test_media pasó. tests.test_media.test_pdf_session_restart_multiple_sources_and_cancel_exact_job cubre persistencia/cancelación de sesión; test_pdf_all_pages_text_and_scanned_error_is_specific cubre errores de documentos. Evidencia c22/c23 confirma rechazos de contenido."
+  },
+  {
+    "claim_id": "manage_pdf-02",
+    "classification": "LÍMITE_CORRECTO",
+    "reason": "many_pages_pdf contiene 501 páginas y la operación está limitada explícitamente a 500. Extraer un subconjunto de un origen que excede el techo del motor se rechaza antes de seleccionar páginas.",
+    "evidence": [
+      "results.json: manage_pdf/c11 y c12 devuelven document_pages",
+      "pdfinfo sobre fixture sintético many_pages_pdf.pdf: Pages=501, Encrypted=no",
+      "src/botsky/engines/pdf_ops_worker.py: MAX_PAGES=500; pdf_reader rechaza lectores que exceden el máximo antes de selección",
+      "docs/R3.md: techo de motor de 500 páginas"
+    ],
+    "contract": "docs/R3.md: 500 páginas como techo del motor PDF; /home/petrov/zhana/rebuildbotsky.md §6 exige validar límites de páginas.",
+    "root_cause": "El oracle asumió que seleccionar 1-3 páginas evita el límite de 500 aplicado al documento de entrada completo.",
+    "validation": "pdfinfo confirmó 501 páginas en el fixture; tests.test_media pasó. No se modificó el motor."
+  },
+  {
+    "claim_id": "manage_pdf-03",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "El runner inyectó un artefacto de salida como adjunto actual de otro mensaje. Artifacts.resolve exige origin=incoming y source_message_id actual para esa vía; devuelve attachment_source_mismatch aunque actor/chat coincidan. La vía contratada para reutilizar salida es la cita exacta de su parte aceptada, no la etiqueta output: del harness.",
+    "evidence": [
+      "results.json: manage_pdf/c28 usa fixture output:c04 y recibe attachment_source_mismatch",
+      "src/botsky/domains/pdf.py: la extracción llama artifacts.resolve y exige artifacts.owned para el archivo resuelto",
+      "docs/R3.md: salida propia solo se cita por parte de archivo aceptada y artefacto retenido; autoría/grupo no concede acceso"
+    ],
+    "contract": "docs/R3.md: referencias propias solo con entrega aceptada, ámbito y retención; /home/petrov/zhana/rebuildbotsky.md §4 (ArtifactRef y ámbito verificado).",
+    "root_cause": "HARNESS_OUTPUT_AS_CURRENT_ATTACHMENT (duplicado entre estos dos claims); la guardia del producto es correcta. No se demostró pérdida del artefacto ni imposibilidad de citarlo.",
+    "validation": "tests.test_media.test_current_attachment_priority_foreign_quote_symlink_and_expiry pasó; verifica prioridad, propiedad, citas y vencimiento. No se cambió el control de acceso."
+  },
+  {
+    "claim_id": "make_sticker-01",
+    "classification": "LÍMITE_CORRECTO",
+    "reason": "wide_image mide 4097×16. La política de imagen rechaza el eje mayor por encima de 4096 antes de escalar; el marco 512px se aplica solo a imágenes admisibles.",
+    "evidence": [
+      "results.json: make_sticker/c06 devuelve image_dimensions",
+      "PIL inspeccionó fixture sintético: PNG 4097×16, un frame",
+      "src/botsky/engines/image_validation.py: máximo por eje 4096 y 16,000,000 píxeles",
+      "src/botsky/engines/images.py: sticker escala a 512×512 después de image_source/validate_image"
+    ],
+    "contract": "docs/R3.md y /home/petrov/zhana/rebuildbotsky.md §6: comprobar firma/tamaño y límites efectivos de cada ruta; /sticker acepta imagen admisible.",
+    "root_cause": "El oracle interpretó el reescalado de salida como autorización para aceptar una dimensión de entrada sobre el techo de seguridad.",
+    "validation": "Fixture dimensional y ruta de validación comprobados localmente; tests.test_media pasó, incluyendo verificación del sticker 512×512 para imagen dentro de límites."
+  },
+  {
+    "claim_id": "make_sticker-02",
+    "classification": "LÍMITE_CORRECTO",
+    "reason": "El producto admite imágenes estáticas para /sticker. El validador identifica ANIM/ANMF de WebP y devuelve unsupported_image antes de convertir; no hay contrato para generar stickers animados ni escoger primer frame.",
+    "evidence": [
+      "results.json: make_sticker/c08 devuelve unsupported_image para animated_webp",
+      "src/botsky/engines/image_validation.py:_image_codec rechaza chunks ANIM/ANMF",
+      "tests.test_media.py:test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes valida WebP de un frame"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: /sticker + imagen admisible; ruta implementada para imagen estática en docs/R3.md.",
+    "root_cause": "La expectativa amplió el contrato a salida animada o extracción automática de frame, ambas excluidas por el validador estático.",
+    "validation": "tests.test_media.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes pasó; comprueba sticker estático real de 512×512."
+  },
+  {
+    "claim_id": "make_sticker-03",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "El runner inyectó un artefacto de salida como adjunto actual de otro mensaje. Artifacts.resolve exige origin=incoming y source_message_id actual para esa vía; devuelve attachment_source_mismatch aunque actor/chat coincidan. La vía contratada para reutilizar salida es la cita exacta de su parte aceptada, no la etiqueta output: del harness.",
+    "evidence": [
+      "results.json: make_sticker/c18 devuelve attachment_source_mismatch para output:c01",
+      "docs/R3.md: salida citada exige parte de archivo aceptada y artefacto retenido",
+      "src/botsky/engines/images.py: sticker recibe un Path ya resuelto por la capa de artefactos"
+    ],
+    "contract": "docs/R3.md sobre referencias de artefacto y citas exactas; /home/petrov/zhana/rebuildbotsky.md §4 sobre ArtifactRef y ámbito verificado.",
+    "root_cause": "HARNESS_OUTPUT_AS_CURRENT_ATTACHMENT (duplicado entre estos dos claims); la guardia del producto es correcta. No se demostró pérdida del artefacto ni imposibilidad de citarlo.",
+    "validation": "tests.test_media.test_current_attachment_priority_foreign_quote_symlink_and_expiry pasó. La frontera de artefactos no fue alterada."
+  },
+  {
+    "claim_id": "read_image-01",
+    "classification": "LÍMITE_CORRECTO",
+    "reason": "Es el mismo caso dimensional que make_sticker-01: wide_image es 4097×16, sobre el límite por eje de 4096 de validate_image. No constituye una segunda causa raíz.",
+    "evidence": [
+      "results.json: read_image/c04 devuelve image_dimensions",
+      "Fixture sintético wide_image.png inspeccionado: 4097×16",
+      "src/botsky/engines/image_validation.py: máximo 4096 por eje"
+    ],
+    "contract": "docs/R3.md y /home/petrov/zhana/rebuildbotsky.md §6: límites explícitos de dimensiones de imagen.",
+    "root_cause": "Duplicado de make_sticker-01: el fixture excede el límite común de validación antes del motor OCR.",
+    "validation": "Suite tests.test_media pasó; no se modificó el validador. Recuento de causas raíz: compartida con make_sticker-01."
+  },
+  {
+    "claim_id": "read_image-02",
+    "classification": "ERROR_DE_FIXTURE_Y_ORÁCULO",
+    "reason": "large_image es PNG azul uniforme de 4000×4000, sin texto visible. El caso c05 no declara cadena esperada en expectation.contains. empty/image_empty es la respuesta correcta; tamaño por sí solo no prueba texto omitido.",
+    "evidence": [
+      "results.json: read_image/c05: large_image devuelve empty/image_empty; expectation.contains=null",
+      "fixture-ledger.json: large_image tiene 56,249 bytes",
+      "PIL/view local: large_image.png es 4000×4000, azul uniforme y sin texto",
+      "src/botsky/engines/images.py:read_image devuelve texto vacío cuando Tesseract no detecta contenido"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: OCR sobre imagen admisible; resultado verificable por contenido. docs/R3.md identifica OCR como motor local, sin promesa de lectura en imagen sin texto.",
+    "root_cause": "El agente tester asumió que un fixture de alta resolución contiene texto y convirtió un caso de estrés de tamaño en una aserción de éxito OCR sin evidencia textual/oracle de contenido.",
+    "validation": "Inspección local de fixture sintético y expectation original; tests.test_media pasó. No se alteró OCR ni se repitió ninguna campaña."
+  }
+]

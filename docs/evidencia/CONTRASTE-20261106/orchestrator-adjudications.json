@@ -1,0 +1,40 @@
+[
+  {
+    "observation_id": "ORCH-CANCEL-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "root_cause": "CANCELLED_LAUNCH_BUSY_LOOP",
+    "reason": "asyncio.shield de launch ya cancelada eleva CancelledError inmediatamente; el bucle no cede al event loop ni puede finalizar. Se propaga esa cancelación terminal. La cancelación del padre mantiene shield y retira al hijo al obtener su handle.",
+    "evidence": [
+      "STRESS-20261106/cancelled-launch-repro.py",
+      "CONTRASTE-20261106/root-reproductions.json",
+      "tests/test_process_cancellation.py"
+    ],
+    "contract": [
+      "rebuildbotsky.md §6:motores aislados/plazos; §9:cancelación fiable",
+      "docs/R3.md:cancelación y retiro de motores"
+    ],
+    "validation": "Baseline bajo watchdog3s:timeout; corregido:CancelledError terminal sin timeout. Tres regresiones con watchdog externo, hijo real retirado, cancelaciones repetidas y fallos OSError."
+  },
+  {
+    "observation_id": "ORCH-HARNESS-01",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "root_cause": "QUOTA_HELPER_TIMEOUT_SHARED_RUNNER",
+    "reason": "El helper de cuota agotó20s y el harness canceló la tanda. No es por sí mismo un error del producto. El atasco secundario se cuenta una vez como ORCH-CANCEL-01.",
+    "evidence": [
+      "STRESS-20261106/orchestrator-observations.json",
+      "ESTADO_COMPARTIDO.md:cierre18:35"
+    ],
+    "validation": "Se conservan dos REVIEW originales; no se reanuda la campaña."
+  },
+  {
+    "observation_id": "ORCH-AGY-01",
+    "classification": "DEPENDENCIA_EXTERNA",
+    "root_cause": "AGY_REPORT_REFUSAL",
+    "reason": "El proveedor AGY rechazó el informe final de descargas. Propuesta y25resultados conservados; no es fallo del backend Botsky.",
+    "evidence": [
+      "STRESS-20261106/orchestrator-observations.json",
+      "STRESS-20261106/reports.json"
+    ],
+    "validation": "Sin nueva invocación ni sustitución de modelo. Sin informe original, no se inventan claims para descargas."
+  }
+]

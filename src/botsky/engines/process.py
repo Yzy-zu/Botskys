@@ -57,6 +57,10 @@ async def run_process(
             process = await asyncio.shield(launch)
             break
         except asyncio.CancelledError:
+            # A cancelled launch is terminal: shielding the same cancelled task
+            # again raises synchronously forever and starves the event loop.
+            if launch.cancelled():
+                raise
             cancelled_during_launch = True
         except OSError as exc:
             if cancelled_during_launch:

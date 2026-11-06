@@ -1,0 +1,6 @@
+test_category_lookup_uses_selection_bound_beyond_catalog_page_cap (test_packs.PacksTest.test_category_lookup_uses_selection_bound_beyond_catalog_page_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+OK

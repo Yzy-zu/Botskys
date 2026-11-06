@@ -1,0 +1,351 @@
+[
+  {
+    "claim_id": "search_web-01",
+    "classification": "CONFIRMED_DEFECT_FIXED",
+    "reason": "R1 y el inventario declaran ocho términos. El Registry heredaba Field.max_items=10, exportando un contrato de diez aunque types.py rechazaba nueve. Se fijó max_items=8 en la ruta y se regeneró docs/commands.json para que coincida.",
+    "evidence": [
+      "private/stress-20261106/batch1/search_web/execution/recovery1/results.json (cases c15)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#search_web-01",
+      "docs/commands.json search_web.required_terms.max_items (regenerado)"
+    ],
+    "contract": "docs/R1.md §decisiones (/buscar hasta ocho); docs/inventario/catalog.json search_web.required_terms.maxItems; src/botsky/commands/registry.py y types.py",
+    "root_cause": "Límite publicado/registrado inconsistente, no defecto de aceptación del parser.",
+    "validation": "test_commands: acepta 8 y rechaza 9; `PYTHONPATH=src .venv/bin/python ops/generar_comandos.py` produjo 152 rutas/794 filas y diff de docs/commands.json solo cambia max_items 10→8."
+  },
+  {
+    "claim_id": "search_web-02",
+    "classification": "UNCONFIRMED_PROVIDER_RESULT",
+    "reason": "Solo hay resultados vacíos de búsquedas a proveedor real; la captura no demuestra que debiera existir una coincidencia ni aísla la causa en el filtro.",
+    "evidence": [
+      "private/stress-20261106/batch1/search_web/execution/recovery1/results.json (cases c02,c03)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#search_web-02"
+    ],
+    "contract": "docs/CONTRASTE_STRESS_20261106.md §search_web; contrato de búsqueda docs/R1.md y rebuildbotsky.md tabla search_web",
+    "root_cause": "Disponibilidad/resultado remoto no reproducible localmente; el oráculo califica una consulta de “alta probabilidad” sin criterio determinista.",
+    "validation": "Sin red ni proveedor: no se puede establecer relevancia del contenido ni corregir."
+  },
+  {
+    "claim_id": "manage_conversation-01",
+    "classification": "ORACLE_OUTSIDE_CONTRACT",
+    "reason": "/bot pausa no declara adjunto; su CommandSpec attachment=false y no procesa ni cambia efectos por el archivo. El plan no establece que comandos textuales deban rechazar adjuntos no solicitados.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_conversation/execution/results.json (cases c24)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_conversation-01"
+    ],
+    "contract": "src/botsky/commands/registry.py /bot pausa; rebuildbotsky.md tabla manage_conversation",
+    "root_cause": "Oracle exige rechazo adicional no establecido por sintaxis ni contrato.",
+    "validation": "No se corrigió; resultado muestra pausa según texto explícito del comando."
+  },
+  {
+    "claim_id": "manage_conversation-02",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Los tokens de sintaxis enum son insensibles a mayúsculas por regla general del conversor. El modo se valida contra las tres choices y se normaliza a su forma canónica.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_conversation/execution/results.json (cases c11)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_conversation-02"
+    ],
+    "contract": "src/botsky/commands/types.py Field.convert enum; rebuildbotsky.md tabla manage_conversation",
+    "root_cause": "La prueba esperaba sensibilidad de mayúsculas que el lexer/contrato no exige.",
+    "validation": "La normalización determinista del enum conserva choices permitidos."
+  },
+  {
+    "claim_id": "save_note-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "La cadena supera max_length=8000 y el parser devuelve needs_input/invalid_field con campo, límite, uso y ejemplo; no se acepta ni guarda la nota.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c18)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-01"
+    ],
+    "contract": "src/botsky/commands/registry.py save_note.run; docs/R1.md §ayuda y errores",
+    "root_cause": "Estado de corrección de entrada válido; el contrato de sintaxis no exige status failed para errores corregibles.",
+    "validation": "Comprobación de parser: error pre-efecto con restricción y ejemplo."
+  },
+  {
+    "claim_id": "save_note-02",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Acción desconocida devuelve needs_input/unknown_action y la lista generada de usos; no despacha una acción alternativa.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c20,c21)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-02"
+    ],
+    "contract": "src/botsky/commands/router.py Router.parse unknown_action; src/botsky/commands/registry.py help",
+    "root_cause": "Ayuda correctiva determinista ante subcomando desconocido.",
+    "validation": "Error de parser, sin efectos."
+  },
+  {
+    "claim_id": "save_note-03",
+    "classification": "INVALID_ORACLE",
+    "reason": "/estado, /cancelar y /confirmar requieren un ID real en sus definiciones; invocarlos sin ID es sintaxis incompleta y needs_input es la respuesta de corrección.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c23,c24,c25)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-03"
+    ],
+    "contract": "src/botsky/commands/registry.py core estado/cancelar/confirmar; docs/R1.md",
+    "root_cause": "El oracle describe como válidos comandos sin los campos obligatorios expresos del contrato.",
+    "validation": "Reproducible como missing_field antes de operación; no se cambió."
+  },
+  {
+    "claim_id": "find_notes-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Con cero notas, page=2 excede la única página resultante; page=10000 también está fuera de resultados. needs_input comunica el rango admisible y evita crear una vista vacía engañosa.",
+    "evidence": [
+      "private/stress-20261106/batch2/find_notes/execution/results.json (cases c05,c06,c12)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#find_notes-01"
+    ],
+    "contract": "src/botsky/domains/notes.py find; src/botsky/commands/registry.py PAGE",
+    "root_cause": "Un índice permitido por el tipo no implica que haya datos para esa página. El contrato no define página inexistente como empty.",
+    "validation": "Sin cambios; el rango devuelto es 1–1."
+  },
+  {
+    "claim_id": "manage_memory-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "memory_not_found y el texto identifican ausencia en el ámbito propio. `empty` es coherente con una consulta/mutación que no encontró recurso; no hubo modificación.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_memory/execution/results.json (cases c17,c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_memory-01"
+    ],
+    "contract": "src/botsky/domains/organization.py memory lookup; private evidence result c17/c22",
+    "root_cause": "El oracle impone status failed sin que la API prometa ese status para ausencia.",
+    "validation": "El ID enorme válido se resolvió a “no encontrado”; no hay excepción ni efecto."
+  },
+  {
+    "claim_id": "manage_reminder-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "La segunda cancelación es idempotente y reporta el estado persistido cancelled; no duplica la cancelación ni el efecto.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_reminder/execution/results.json (cases c26)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_reminder-01"
+    ],
+    "contract": "src/botsky/domains/organization.py reminder cancel; rebuildbotsky.md manage_reminder",
+    "root_cause": "Oracle de error de estado no está en contrato; responder el estado final es correcto y estable ante reintento.",
+    "validation": "Resultado c26 conservado; no hay efecto duplicado."
+  },
+  {
+    "claim_id": "manage_poll-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Cerrar una encuesta cerrada devuelve sus resultados finales; la repetición no crea otro cierre ni cambia votos.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_poll/execution/results.json (cases c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_poll-01"
+    ],
+    "contract": "src/botsky/domains/organization.py poll close/results; rebuildbotsky.md manage_poll",
+    "root_cause": "Lectura idempotente del resultado de una encuesta ya cerrada; el oracle espera rechazo no especificado.",
+    "validation": "Resultado c22 contiene poll_results y conteos persistidos."
+  },
+  {
+    "claim_id": "manage_drive-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Longitud inválida, campo requerido ausente y argumento extra son errores sintácticos corregibles; router responde needs_input y no invoca Drive.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_drive/execution/results.json (cases c19,c25,c26)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_drive-01"
+    ],
+    "contract": "src/botsky/commands/router.py; src/botsky/commands/registry.py drive routes; docs/R1.md",
+    "root_cause": "El oracle exige status failed donde la interacción necesita una corrección del usuario.",
+    "validation": "Resultados c19/c25/c26 son errores de parser anteriores a la frontera remota."
+  },
+  {
+    "claim_id": "send_sticker-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "El catálogo `/reaccion` enumera cuatro nombres en minúsculas; las palabras enum de sintaxis son case-insensitive por Field.convert.",
+    "evidence": [
+      "private/stress-20261106/batch2/send_sticker/execution/results.json (cases c07,c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#send_sticker-01"
+    ],
+    "contract": "rebuildbotsky.md tabla send_sticker; src/botsky/commands/types.py enum",
+    "root_cause": "Mayúsculas se aceptan por regla de sintaxis explícita; no se amplía el conjunto de opciones.",
+    "validation": "El resultado conserva identificador canónico en minúscula."
+  },
+  {
+    "claim_id": "send_sticker-02",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Las comillas son delimitadores del lexer para un campo sintáctico y se eliminan al tokenizar; el valor sigue siendo el choice catalogado `saludo`.",
+    "evidence": [
+      "private/stress-20261106/batch2/send_sticker/execution/results.json (cases c12)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#send_sticker-02"
+    ],
+    "contract": "src/botsky/commands/lexer.py; src/botsky/commands/router.py; rebuildbotsky.md tabla send_sticker",
+    "root_cause": "El plan permite comillas como sintaxis de campos; stripping no cambia el nombre del sticker ni autoridad.",
+    "validation": "Entrada quoted resuelve al mismo token tipado; sin diferencia de efecto."
+  },
+  {
+    "claim_id": "manage_pack-01",
+    "classification": "CONFIRMED_DEFECT_FIXED",
+    "reason": "R7 exige elegir una categoría exacta o azar; comprar una categoría inexistente creaba una oferta que solo fallaría al confirmar. Ahora una consulta propia y acotada valida que la categoría publicada exista antes de registrar oferta.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_pack/execution/results.json (cases c19)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_pack-01"
+    ],
+    "contract": "docs/R7.md §Packs; private batch3/manage_pack/execution/results.json case c19; src/botsky/domains/packs.py",
+    "root_cause": "Faltaba validar existencia publicada antes de crear oferta. PublishedLibrary.category_exists usa límite MAX_QUERY_ROWS=10000 y la misma normalización NFKD/casefold/espacios que select; no usa el catálogo visual limitado a 100 ni lee archivos. azar evita consulta y conserva su camino aleatorio. No se añade condición de stock previo.",
+    "validation": "test_packs cubre categoría inexistente con XP suficiente y saldo intacto, nombre con mayúsculas/acentos, azar, categoría existente con count=0 y lookup de la entrada 102 con más de 100 álbumes; positivos existentes pasan sin cambiar oracles."
+  },
+  {
+    "claim_id": "manage_pack-02",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Confirmar una orden terminal devuelve su resumen persistido (incluido failed); no vuelve a cobrar ni repetir envíos. El texto/result data muestran el estado final.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_pack/execution/results.json (cases c18)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_pack-02"
+    ],
+    "contract": "src/botsky/domains/packs.py summary/confirm; docs/R7.md §Packs",
+    "root_cause": "Comportamiento idempotente seguro ante reintento; contrato exige compra incierta protegida por recibos, no error en cada repetición.",
+    "validation": "Sin cambios; el segundo comando no vuelve a dispatch."
+  },
+  {
+    "claim_id": "manage_cooperacha-01",
+    "classification": "INVALID_ORACLE",
+    "reason": "La tanda ejecuta `/coop crear fiesta 100`, pero fixture gallery solo publica `cosplay`, `goticas`, `inventario-publico-botsky` y `lab-sintetico`; únicamente este último tiene fotos (8). El worker no puede publicar fiesta y la cooperacha termina failed, resultado permitido por fallo conocido y reembolso completo.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c02,c04,c05,c09,c10,c13,c14)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-01"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_cooperacha/execution/results.json cases c02/c04/c05/c09/c10/c13/c14; app/private/gallery/library.db; docs/R7.md §Cooperacha",
+    "root_cause": "Fixture/oracle supone categoría y disponibilidad no presentes; no es un fallo al iniciar una categoría válida.",
+    "validation": "Consulté inventario sintético local de álbumes; no se alteró producto ni evidencia histórica."
+  },
+  {
+    "claim_id": "manage_cooperacha-02",
+    "classification": "INVALID_ORACLE",
+    "reason": "El valor del caso c19 tiene 119 caracteres (no 127); el campo se declara limit=120 y el input cae dentro del límite.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c19)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-02"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_cooperacha/execution/frozen-proposal.json case c19; src/botsky/commands/registry.py coop crear",
+    "root_cause": "El caso observado no excede el máximo contractual.",
+    "validation": "Recuento literal del comando y max_length=120: longitud 119."
+  },
+  {
+    "claim_id": "manage_cooperacha-03",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Cancelar un registro ya terminal devuelve su resumen failed y no repite liquidación. El texto/data hacen visible que el reto ya estaba fallido.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-03"
+    ],
+    "contract": "src/botsky/domains/cooperacha.py settle/execute; docs/R7.md §Cooperacha",
+    "root_cause": "Resultado idempotente; no se promete rechazo redundante en el contrato.",
+    "validation": "Resultado c08 refleja failed, sin cambios de XP."
+  },
+  {
+    "claim_id": "manage_happy_hour-01",
+    "classification": "INVALID_ORACLE",
+    "reason": "El comando especifica INTERVALO; la gramática de duración exige unidad s/m/h/d (p.ej. 60s, 1d). Los enteros desnudos no son sintaxis válida.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_happy_hour/execution/results.json (cases c13,c15)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_happy_hour-01"
+    ],
+    "contract": "rebuildbotsky.md tabla manage_happy_hour; src/botsky/commands/types.py duration; src/botsky/commands/registry.py hh iniciar",
+    "root_cause": "El oracle pasa segundos numéricos pese a que el contrato define intervalo con sufijo.",
+    "validation": "La ruta de error informa ejemplos de intervalo y no crea evento."
+  },
+  {
+    "claim_id": "manage_happy_hour-02",
+    "classification": "INVALID_ORACLE",
+    "reason": "c01 produce event_id de la hora feliz, pero `/hh reclamar` requiere el drop_id producido por `/hh airdrop`; no se abrió AirDrop en el caso citado.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_happy_hour/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_happy_hour-02"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_happy_hour/execution/results.json cases c01/c08; src/botsky/domains/happy_hour.py; rebuildbotsky.md tabla manage_happy_hour",
+    "root_cause": "Se usó un ID de recurso distinto al requerido y se esperaba premio sin anuncio AirDrop.",
+    "validation": "Relación de IDs/códigos del resultado c01 y query de drop reclamable en el handler."
+  },
+  {
+    "claim_id": "manage_economy-01",
+    "classification": "ORACLE_OUTSIDE_CONTRACT",
+    "reason": "/daily, /saldo y /top son comandos textuales sin attachment=true. El contrato no exige rechazar medios irrelevantes; el código no usa el adjunto para saldo, daily o ranking.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_economy/execution/results.json (cases c14,c15,c16)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_economy-01"
+    ],
+    "contract": "src/botsky/commands/registry.py economy routes; docs/R7.md §XP",
+    "root_cause": "La prueba impone política de rechazo de adjuntos que no figura en los contratos de esas rutas.",
+    "validation": "No se incorporó un rechazo transversal fuera de alcance."
+  },
+  {
+    "claim_id": "manage_blackjack-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Cancelar una partida ya settled devuelve el resultado liquidado; no puede deshacer la liquidación ni repetir el pago.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_blackjack/execution/results.json (cases c32)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_blackjack-01"
+    ],
+    "contract": "src/botsky/domains/blackjack.py cancel/settlement; docs/R7.md §Blackjack",
+    "root_cause": "Consulta idempotente de estado final; la regla de cancelación es para mesas no repartidas.",
+    "validation": "case c32 muestra dealer, outcome y settled sin movimiento extra."
+  },
+  {
+    "claim_id": "manage_blackjack-02",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "La regla R7 indica que cancelar mesa solo se permite antes de repartir; una mano playing se termina por turno o plazo. Rechazar evita reembolso tras reparto.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_blackjack/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_blackjack-02"
+    ],
+    "contract": "docs/R7.md §Blackjack; src/botsky/domains/blackjack.py blackjack_cancel_playing",
+    "root_cause": "El oracle pide una capacidad expresamente descartada por el contrato.",
+    "validation": "case c08 corresponde a mano ya repartida; se mantiene el rechazo."
+  },
+  {
+    "claim_id": "manage_roulette-01",
+    "classification": "CONFIRMED_DEFECT_FIXED",
+    "reason": "La entrada negativa/no entera se rechazaba, pero Field.kind=int mostraba “número decimal”. El tipo/rango del registro son enteros. Ahora el diagnóstico indica entero y límites cuando están definidos.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_roulette/execution/results.json (cases c05,c08,c09)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_roulette-01"
+    ],
+    "contract": "src/botsky/commands/types.py Field.convert; src/botsky/commands/registry.py ruleta crear; private batch3/manage_roulette/execution/results.json c05/c08/c09",
+    "root_cause": "Mensaje genérico incorrecto para enteros inválidos.",
+    "validation": "test_commands verifica tipo/rango y descarta “decimal”; parser sigue rechazando entradas inválidas."
+  },
+  {
+    "claim_id": "manage_admin-01",
+    "classification": "CONFIRMED_DEFECT_FIXED",
+    "reason": "`amount` de xp-dar es integer 1–50000; para -25 el parser rechazaba correctamente pero afirmaba “decimal”. El mensaje ahora nombra entero y rango.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_admin/execution/results.json (cases c07)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_admin-01"
+    ],
+    "contract": "src/botsky/commands/registry.py xp-dar; src/botsky/commands/types.py Field.convert; private batch3/manage_admin/execution/results.json c07",
+    "root_cause": "Mismo mensaje incorrecto compartido por todos los campos int.",
+    "validation": "test_commands cubre `/admin xp-dar --cuenta 1 -25` y el diagnóstico integer."
+  },
+  {
+    "claim_id": "manage_minecraft-01",
+    "classification": "CONTRACT_COMPLIANT",
+    "reason": "Subcomando desconocido y argumentos extra son errores de parser que devuelven needs_input con usos válidos; no se ejecuta cliente Minecraft.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_minecraft/execution/results.json (cases c21,c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_minecraft-01"
+    ],
+    "contract": "src/botsky/commands/router.py unknown_action/extra_argument; docs/R1.md; src/botsky/domains/minecraft.py",
+    "root_cause": "El oracle considera obligatorio status failed, aunque la capa de sintaxis usa needs_input para corregir entradas.",
+    "validation": "c21/c22 no alcanzan el handler/cliente."
+  },
+  {
+    "claim_id": "make_prank-01",
+    "classification": "ORACLE_OUTSIDE_CONTRACT",
+    "reason": "`/broma [ETIQUETA]` es ficción local; no acepta ni procesa archivo. Los tests adjuntan corruptos/audio/PDF pero el comando solo produce texto según etiqueta y declara que no investigó ni envió.",
+    "evidence": [
+      "private/stress-20261106/batch3/make_prank/execution/results.json (cases c17,c20,c21)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#make_prank-01"
+    ],
+    "contract": "rebuildbotsky.md tabla make_prank; src/botsky/commands/registry.py prank; private batch3/make_prank/execution/results.json cases c17/c20/c21",
+    "root_cause": "El contrato no establece procesamiento o rechazo de adjuntos para make_prank.",
+    "validation": "No se encontró uso de attachments en la especificación/handler; no se añadió validación de archivo."
+  },
+  {
+    "claim_id": "control_call-01",
+    "classification": "INVALID_ORACLE",
+    "reason": "La tabla R9 prescribe `--duracion INTERVALO` y la gramática duration exige sufijo de unidad; `600` o `300` solos no son valores válidos. El esquema numérico alegado no sustituye la gramática real.",
+    "evidence": [
+      "private/stress-20261106/batch3/control_call/execution/results.json (cases c03,c04,c27)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#control_call-01"
+    ],
+    "contract": "rebuildbotsky.md tabla control_call; src/botsky/commands/registry.py llamar/agenda; docs/commands.json control_call.max_seconds.kind=duration",
+    "root_cause": "Oracle contradictorio con el contrato de sintaxis.",
+    "validation": "El parser rechaza valor sin sufijo antes de probar permisos o llamada remota."
+  }
+]

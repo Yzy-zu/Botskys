@@ -123,6 +123,34 @@ class PublishedLibrary:
             finally:
                 db.close()
 
+    def category_exists(self, category: str) -> bool:
+        """Resolve a published category with the same bounded list as select()."""
+        if not isinstance(category, str) or not category.strip():
+            return False
+        deadline = time.monotonic() + MAX_OPERATION_SECONDS
+        db = self._open_db(deadline)
+        try:
+            albums = self._bounded(
+                db.execute(
+                    "SELECT name,slug FROM albums WHERE published=1 ORDER BY id LIMIT ?",
+                    (MAX_QUERY_ROWS + 1,),
+                ).fetchall(),
+                MAX_QUERY_ROWS,
+            )
+            wanted = _normalized(category)
+            self._check_deadline(deadline)
+            return bool(wanted) and any(
+                wanted in {_normalized(str(album["name"])), _normalized(str(album["slug"]))}
+                for album in albums
+            )
+        except sqlite3.Error, TypeError, KeyError:
+            raise LibraryError from None
+        finally:
+            try:
+                db.rollback()
+            finally:
+                db.close()
+
     def select(self, category: str | None, count: int, excluded: set[str]) -> list[LibraryPhoto]:
         if type(count) is not int or count < 1 or count > MAX_COUNT:
             raise LibraryError

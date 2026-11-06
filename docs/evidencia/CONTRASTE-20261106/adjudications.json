@@ -1,0 +1,1101 @@
+[
+  {
+    "claim_id": "convert_document-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "El fixture large_txt tiene 8,396,800 bytes y la ruta de conversión produjo más del máximo de 500 páginas. document_pages es el rechazo esperado; el fixture no demuestra que una conversión válida bajo el límite falle.",
+    "evidence": [
+      "results.json: convert_document/c14: /convertir pdf, large_txt (8,396,800 bytes), status failed, code document_pages",
+      "fixture-ledger.json: large_txt bytes=8396800",
+      "src/botsky/engines/documents.py: DocumentEngine._pdf_check comprueba 1..DOCUMENT_PAGES páginas",
+      "src/botsky/engines/limits.py: DOCUMENT_PAGES=500"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6 (formatos/límites de ruta); docs/R3.md: límite PDF de 500 páginas; rebuildbotsky.md §6 (validar páginas y formato de salida).",
+    "root_cause": "Expectativa de paginación sin límite aplicada a un fixture de 8.4 MB que excede el techo de páginas, no un fallo demostrado en la generación dentro de límites.",
+    "validation": "La suite local tests.test_media pasó (15 tests); no se modificó el motor. El test test_nineteen_document_targets_have_real_output_of_the_declared_format comprueba rutas reales de PDF y el límite se aplica en DocumentEngine._pdf_check.",
+    "tool": "convert_document",
+    "cases": [
+      "c14"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "convert_document-02",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "El contrato dice que un PDF escaneado sin OCR no se anuncia como Word editable. La ruta PDF→DOCX requiere texto extraíble y devuelve document_no_text al recibir un PDF de imagen; no se prometió incrustar páginas como imágenes ni ejecutar OCR desde /convertir.",
+    "evidence": [
+      "results.json: convert_document/c15, fixture scan_pdf, status failed, code document_no_text",
+      "docs/evidencia/R3.json: caso de evidencia 'PDF escaneado sin texto'",
+      "src/botsky/engines/document_worker.py: pdf_to_docx acumula texto y falla document_no_text si no hay texto"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: 'PDF escaneado sin OCR no se anuncia como Word editable'; docs/evidencia/R3.json registra esa comprobación local.",
+    "root_cause": "El oracle exige conservar imágenes/OCR aunque el contrato de conversión PDF→Word limita la promesa a texto extraíble.",
+    "validation": "tests.test_media.test_pdf_all_pages_text_and_scanned_error_is_specific pasó en la suite local; comprueba conversión de PDF textual y error específico para PDF escaneado.",
+    "tool": "convert_document",
+    "cases": [
+      "c15"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "edit_media-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/editar srt selecciona y extrae una pista de subtítulos de un medio de audio/video; no declara aceptar un archivo .srt como origen para normalizarlo. El demuxer admite contenedores multimedia identificados por firma y rechaza la firma de SRT con unsupported_media.",
+    "evidence": [
+      "results.json: edit_media/c08, origen srt.srt, status failed, code unsupported_media",
+      "src/botsky/engines/media_edit.py: _demuxer reconoce firmas mov/matroska/ogg/wav/flac/mp3/aac; no SRT",
+      "src/botsky/engines/media_edit.py: rama container=='srt' busca codec_type subtitle en streams de entrada",
+      "tests/test_media.py:test_webm_and_embedded_subtitle_outputs_and_catalog_assets extrae SRT de pista embebida"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6 y §6; catálogo §6 especifica /editar mp3|mp4|webm|srt + archivo multimedia. La capacidad SRT es extracción de pista, no edición de archivos SRT.",
+    "root_cause": "La expectativa añadió una conversión de origen no incluida en el contrato ni en la operación tipada.",
+    "validation": "tests.test_media.test_webm_and_embedded_subtitle_outputs_and_catalog_assets pasó; confirma extracción real de una pista mov_text a SRT. No se cambió código.",
+    "tool": "edit_media",
+    "cases": [
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_pdf-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/pdf iniciar crea y guarda una sesión/fuente; no valida el PDF hasta que el motor trabaja. El contrato conserva la sesión tras error del motor para permitir corrección deliberada. El c17 no se limpió antes de c18/c21, por lo que estos encontraron pdf_session_exists. En pruebas independientes c22/c23 el motor rechazó el PDF corrupto y el protegido con invalid_document/protected_pdf.",
+    "evidence": [
+      "results.json: manage_pdf/c17 devuelve pdf_session_started; c18 y c21 encuentran pdf_session_exists",
+      "results.json: manage_pdf/c22 rechaza broken_pdf con invalid_document; c23 rechaza encrypted_pdf con protected_pdf",
+      "src/botsky/domains/pdf.py: start valida ámbito/formato/tamaño y reserva sesión; la validación del contenido ocurre en el job de finish/extract",
+      "docs/R3.md: 'un fallo de motor deja la sesión abierta para corrección deliberada'"
+    ],
+    "contract": "docs/R3.md, ciclo de sesión PDF: iniciar crea sesión; terminar liga el trabajo; fallo del motor mantiene la sesión abierta. /home/petrov/zhana/rebuildbotsky.md §6 requiere manejo explícito del ciclo, no lectura completa al iniciar.",
+    "root_cause": "Oracle asignó a 'iniciar' la semántica de validar/convertir y el harness permitió que la sesión creada por c17 contaminara los casos c18/c21, sin cancelarla.",
+    "validation": "La suite tests.test_media pasó. tests.test_media.test_pdf_session_restart_multiple_sources_and_cancel_exact_job cubre persistencia/cancelación de sesión; test_pdf_all_pages_text_and_scanned_error_is_specific cubre errores de documentos. Evidencia c22/c23 confirma rechazos de contenido.",
+    "tool": "manage_pdf",
+    "cases": [
+      "c17",
+      "c18",
+      "c21"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_pdf-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "many_pages_pdf contiene 501 páginas y la operación está limitada explícitamente a 500. Extraer un subconjunto de un origen que excede el techo del motor se rechaza antes de seleccionar páginas.",
+    "evidence": [
+      "results.json: manage_pdf/c11 y c12 devuelven document_pages",
+      "pdfinfo sobre fixture sintético many_pages_pdf.pdf: Pages=501, Encrypted=no",
+      "src/botsky/engines/pdf_ops_worker.py: MAX_PAGES=500; pdf_reader rechaza lectores que exceden el máximo antes de selección",
+      "docs/R3.md: techo de motor de 500 páginas"
+    ],
+    "contract": "docs/R3.md: 500 páginas como techo del motor PDF; /home/petrov/zhana/rebuildbotsky.md §6 exige validar límites de páginas.",
+    "root_cause": "El oracle asumió que seleccionar 1-3 páginas evita el límite de 500 aplicado al documento de entrada completo.",
+    "validation": "pdfinfo confirmó 501 páginas en el fixture; tests.test_media pasó. No se modificó el motor.",
+    "tool": "manage_pdf",
+    "cases": [
+      "c11",
+      "c12"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_pdf-03",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "El runner inyectó un artefacto de salida como adjunto actual de otro mensaje. Artifacts.resolve exige origin=incoming y source_message_id actual para esa vía; devuelve attachment_source_mismatch aunque actor/chat coincidan. La vía contratada para reutilizar salida es la cita exacta de su parte aceptada, no la etiqueta output: del harness.",
+    "evidence": [
+      "results.json: manage_pdf/c28 usa fixture output:c04 y recibe attachment_source_mismatch",
+      "src/botsky/domains/pdf.py: la extracción llama artifacts.resolve y exige artifacts.owned para el archivo resuelto",
+      "docs/R3.md: salida propia solo se cita por parte de archivo aceptada y artefacto retenido; autoría/grupo no concede acceso"
+    ],
+    "contract": "docs/R3.md: referencias propias solo con entrega aceptada, ámbito y retención; /home/petrov/zhana/rebuildbotsky.md §4 (ArtifactRef y ámbito verificado).",
+    "root_cause": "HARNESS_OUTPUT_AS_CURRENT_ATTACHMENT (duplicado entre estos dos claims); la guardia del producto es correcta. No se demostró pérdida del artefacto ni imposibilidad de citarlo.",
+    "validation": "tests.test_media.test_current_attachment_priority_foreign_quote_symlink_and_expiry pasó; verifica prioridad, propiedad, citas y vencimiento. No se cambió el control de acceso.",
+    "tool": "manage_pdf",
+    "cases": [
+      "c28"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_sticker-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "wide_image mide 4097×16. La política de imagen rechaza el eje mayor por encima de 4096 antes de escalar; el marco 512px se aplica solo a imágenes admisibles.",
+    "evidence": [
+      "results.json: make_sticker/c06 devuelve image_dimensions",
+      "PIL inspeccionó fixture sintético: PNG 4097×16, un frame",
+      "src/botsky/engines/image_validation.py: máximo por eje 4096 y 16,000,000 píxeles",
+      "src/botsky/engines/images.py: sticker escala a 512×512 después de image_source/validate_image"
+    ],
+    "contract": "docs/R3.md y /home/petrov/zhana/rebuildbotsky.md §6: comprobar firma/tamaño y límites efectivos de cada ruta; /sticker acepta imagen admisible.",
+    "root_cause": "El oracle interpretó el reescalado de salida como autorización para aceptar una dimensión de entrada sobre el techo de seguridad.",
+    "validation": "Fixture dimensional y ruta de validación comprobados localmente; tests.test_media pasó, incluyendo verificación del sticker 512×512 para imagen dentro de límites.",
+    "tool": "make_sticker",
+    "cases": [
+      "c06"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_sticker-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "El producto admite imágenes estáticas para /sticker. El validador identifica ANIM/ANMF de WebP y devuelve unsupported_image antes de convertir; no hay contrato para generar stickers animados ni escoger primer frame.",
+    "evidence": [
+      "results.json: make_sticker/c08 devuelve unsupported_image para animated_webp",
+      "src/botsky/engines/image_validation.py:_image_codec rechaza chunks ANIM/ANMF",
+      "tests.test_media.py:test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes valida WebP de un frame"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: /sticker + imagen admisible; ruta implementada para imagen estática en docs/R3.md.",
+    "root_cause": "La expectativa amplió el contrato a salida animada o extracción automática de frame, ambas excluidas por el validador estático.",
+    "validation": "tests.test_media.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes pasó; comprueba sticker estático real de 512×512.",
+    "tool": "make_sticker",
+    "cases": [
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_sticker-03",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "El runner inyectó un artefacto de salida como adjunto actual de otro mensaje. Artifacts.resolve exige origin=incoming y source_message_id actual para esa vía; devuelve attachment_source_mismatch aunque actor/chat coincidan. La vía contratada para reutilizar salida es la cita exacta de su parte aceptada, no la etiqueta output: del harness.",
+    "evidence": [
+      "results.json: make_sticker/c18 devuelve attachment_source_mismatch para output:c01",
+      "docs/R3.md: salida citada exige parte de archivo aceptada y artefacto retenido",
+      "src/botsky/engines/images.py: sticker recibe un Path ya resuelto por la capa de artefactos"
+    ],
+    "contract": "docs/R3.md sobre referencias de artefacto y citas exactas; /home/petrov/zhana/rebuildbotsky.md §4 sobre ArtifactRef y ámbito verificado.",
+    "root_cause": "HARNESS_OUTPUT_AS_CURRENT_ATTACHMENT (duplicado entre estos dos claims); la guardia del producto es correcta. No se demostró pérdida del artefacto ni imposibilidad de citarlo.",
+    "validation": "tests.test_media.test_current_attachment_priority_foreign_quote_symlink_and_expiry pasó. La frontera de artefactos no fue alterada.",
+    "tool": "make_sticker",
+    "cases": [
+      "c18"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "read_image-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Es el mismo caso dimensional que make_sticker-01: wide_image es 4097×16, sobre el límite por eje de 4096 de validate_image. No constituye una segunda causa raíz.",
+    "evidence": [
+      "results.json: read_image/c04 devuelve image_dimensions",
+      "Fixture sintético wide_image.png inspeccionado: 4097×16",
+      "src/botsky/engines/image_validation.py: máximo 4096 por eje"
+    ],
+    "contract": "docs/R3.md y /home/petrov/zhana/rebuildbotsky.md §6: límites explícitos de dimensiones de imagen.",
+    "root_cause": "Duplicado de make_sticker-01: el fixture excede el límite común de validación antes del motor OCR.",
+    "validation": "Suite tests.test_media pasó; no se modificó el validador. Recuento de causas raíz: compartida con make_sticker-01.",
+    "tool": "read_image",
+    "cases": [
+      "c04"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "read_image-02",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "large_image es PNG azul uniforme de 4000×4000, sin texto visible. El caso c05 no declara cadena esperada en expectation.contains. empty/image_empty es la respuesta correcta; tamaño por sí solo no prueba texto omitido.",
+    "evidence": [
+      "results.json: read_image/c05: large_image devuelve empty/image_empty; expectation.contains=null",
+      "fixture-ledger.json: large_image tiene 56,249 bytes",
+      "PIL/view local: large_image.png es 4000×4000, azul uniforme y sin texto",
+      "src/botsky/engines/images.py:read_image devuelve texto vacío cuando Tesseract no detecta contenido"
+    ],
+    "contract": "/home/petrov/zhana/rebuildbotsky.md §6: OCR sobre imagen admisible; resultado verificable por contenido. docs/R3.md identifica OCR como motor local, sin promesa de lectura en imagen sin texto.",
+    "root_cause": "El agente tester asumió que un fixture de alta resolución contiene texto y convirtió un caso de estrés de tamaño en una aserción de éxito OCR sin evidencia textual/oracle de contenido.",
+    "validation": "Inspección local de fixture sintético y expectation original; tests.test_media pasó. No se alteró OCR ni se repitió ninguna campaña.",
+    "tool": "read_image",
+    "cases": [
+      "c05"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "media-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "transcribe_media-01",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "Los videos son señales sintéticas sin habla. No existe el contenido verbal esperado por el tester. El punto devuelto es salida del ASR externo; la ausencia de un archivo TXT tampoco prueba fallo: el contrato entrega texto en Result.",
+    "evidence": [
+      "STRESS-20261106/results.json:transcribe_media/c05,c06,c23",
+      "ops/stress_backend.py:make_fixtures (long_video usa sine=frequency=660:duration=12)",
+      "ops/campana_lab.py:fixtures (video sintético)",
+      "src/botsky/adapters/whisper.py:transcribe"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:ASR y calidad del proveedor; R4 texto/resumen/ambos",
+      "rebuildbotsky.md §7: transcripción es contenido"
+    ],
+    "root_cause": "ASR_NON_SPEECH_FIXTURE_AND_ARTIFACT_ORACLE",
+    "validation": "Código de fixtures y resultados contrastados; no se repite ASR remoto ni se añade detector acústico. Calidad con habla real queda sin acreditar.",
+    "tool": "transcribe_media",
+    "cases": [
+      "c05",
+      "c06",
+      "c23"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "transcribe_media-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "El origen excede 10MiB; el límite explícito se aplica antes de normalizar. No se contrató segmentación automática. El techo temporal1200s no elimina el de bytes.",
+    "evidence": [
+      "STRESS-20261106/results.json:transcribe_media/c09",
+      "STRESS-20261106/fixture-ledger.json:large_audio",
+      "src/botsky/engines/content_jobs.py:execute",
+      "src/botsky/engines/audio.py:_MAX_BYTES"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:origen10MiB, duración1200s, salida25MB"
+    ],
+    "root_cause": "ASR_INPUT_BYTE_LIMIT",
+    "validation": "Contrato, ledger y guardia de bytes coherentes; no se cambia el límite.",
+    "tool": "transcribe_media",
+    "cases": [
+      "c09"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_voice-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/voz ultima lee literalmente el último payload propio aceptado, incluido el pie /estado. Eliminar comandos modificaría la fuente literal. No se ejecuta el contenido vocalizado. El oracle además pedía MP3 cuando la entrega contratada es Ogg/Opus.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c21,c22",
+      "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json:spoken_text",
+      "src/botsky/domains/ai.py:literal_source"
+    ],
+    "contract": [
+      "docs/R4.md:voz literal sin Gemini",
+      "docs/portados/ia-voz.md:cita/última exactas, Ogg/Opus mono48k"
+    ],
+    "root_cause": "VOICE_LITERAL_SOURCE_AND_WRONG_MP3_ORACLE",
+    "validation": "tests/test_ai.py:test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied y test_voice_literal_and_composed_are_distinct_and_produce_real_opus pasan.",
+    "tool": "make_voice",
+    "cases": [
+      "c21",
+      "c22"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_voice-02",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "No hubo truncamiento del guion: spoken_text privado tiene2722caracteres y termina una frase completa. El feedback al tester cortó la representación JSON a1700caracteres precisamente en «esfue». No hay evidencia de corte real del audio, cuya escucha no se hizo.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c14",
+      "private/stress-20261106/batch1/make_voice/feedback.json:rows[c14]",
+      "CONTRASTE-20261106/voice-evidence-comparison.json",
+      "ops/stress_backend.py:feedback result [:1700]"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:texto<=8000 y duración orientativa; no promete600s exactos"
+    ],
+    "root_cause": "HARNESS_FEEDBACK_TRUNCATION",
+    "validation": "Comparación de longitud, terminación y SHA256 de fuente completa guardada; no se modifica síntesis ni el histórico.",
+    "tool": "make_voice",
+    "cases": [
+      "c14"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_voice-03",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/voz crear compone un guion a partir de una instrucción; no promete lectura literal ni coincidencia exacta con la duración orientativa. «Hola.» y1.8785s no violan esos contratos; /voz TEXTO es el modo literal.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c13",
+      "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json:c13",
+      "src/botsky/adapters/gemini.py:PURPOSE.compose"
+    ],
+    "contract": [
+      "docs/R4.md:literal y composición diferentes",
+      "docs/portados/ia-voz.md:duración orientativa, máximo600s"
+    ],
+    "root_cause": "COMPOSE_VS_LITERAL_AND_ADVISORY_DURATION",
+    "validation": "Prueba local existente verifica composición, parámetro requested_seconds y modo; no se altera la voz para ajustar duración exacta.",
+    "tool": "make_voice",
+    "cases": [
+      "c13"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "conversation-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "El código gemini_request_failed era un error estable y controlado, no una excepción cruda filtrada. Sí se confirma el defecto subyacente: bastaba la firma OggS para subir un contenedor ilegible al proveedor. Ahora se comprueba localmente contenedor, pistas y duración antes de marcar dispatch; broken_audio devuelve invalid_audio con cero llamadas al modelo.",
+    "evidence": [
+      "STRESS-20261106/results.json:conversation/c16",
+      "CONTRASTE-20261106/root-reproductions.json",
+      "src/botsky/engines/content_jobs.py:analysis_files",
+      "tests/test_ai.py:test_analysis_rejects_corrupt_audio_before_provider_dispatch"
+    ],
+    "contract": [
+      "rebuildbotsky.md §6 condiciones particulares de medios: verificar tipo real, firma y duración",
+      "docs/portados/ia-voz.md:adjuntos propios y análisis del contenido"
+    ],
+    "root_cause": "ANALYSIS_MEDIA_SIGNATURE_WITHOUT_CONTAINER_VALIDATION",
+    "validation": "Reproducción local antes/después:184bytes Ogg corruptos antes aceptados; ahora invalid_audio. Pruebas de audio WAV/video MP4 válidos preservan bytes/MIME y pasan. Es inspección de contenedor/metadatos, no prueba de decodificación íntegra ni de semántica del proveedor.",
+    "tool": "conversation",
+    "cases": [
+      "c16"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "conversation-02",
+    "classification": "NO_REPRODUCIDO",
+    "reason": "La respuesta del modelo no demuestra omisión de archivos. La DB original contiene attachments_json e inputs_json para ambos casos. El camino de análisis convierte PPTX a texto y preserva el JSON malformado como texto; la regresión inspecciona los tipos SDK reales y demuestra que ambas cargas llegan a contents. No se dispone de una captura del request remoto original para adjudicar la percepción del proveedor.",
+    "evidence": [
+      "STRESS-20261106/results.json:conversation/c14,c19",
+      "private/stress-20261106/batch1/conversation/execution/app/lab.sqlite3 (consulta solo lectura)",
+      "tests/test_ai.py:test_analysis_forwards_presentation_and_malformed_json_content",
+      "src/botsky/adapters/gemini.py:generate"
+    ],
+    "contract": [
+      "rebuildbotsky.md §7:/ia con adjunto admisible analiza contenido",
+      "docs/portados/ia-voz.md:Office a texto en sandbox; partes SDK inline"
+    ],
+    "root_cause": "UNVERIFIED_PROVIDER_FILE_INTERPRETATION",
+    "validation": "Prueba local pasa y compara texto de diapositiva y bytes JSON exactos en inline_data text/plain. Sin nueva petición remota; calidad/procesamiento remoto no certificados.",
+    "tool": "conversation",
+    "cases": [
+      "c14",
+      "c19"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "content-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "search_web-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "R1 y el inventario declaran ocho términos. El Registry heredaba Field.max_items=10, exportando un contrato de diez aunque types.py rechazaba nueve. Se fijó max_items=8 en la ruta y se regeneró docs/commands.json para que coincida.",
+    "evidence": [
+      "private/stress-20261106/batch1/search_web/execution/recovery1/results.json (cases c15)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#search_web-01",
+      "docs/commands.json search_web.required_terms.max_items (regenerado)"
+    ],
+    "contract": "docs/R1.md §decisiones (/buscar hasta ocho); docs/inventario/catalog.json search_web.required_terms.maxItems; src/botsky/commands/registry.py y types.py",
+    "root_cause": "SEARCH_TERMS_EXPORTED_LIMIT",
+    "validation": "test_commands: acepta 8 y rechaza 9; `PYTHONPATH=src .venv/bin/python ops/generar_comandos.py` produjo 152 rutas/794 filas y diff de docs/commands.json solo cambia max_items 10→8.",
+    "tool": "search_web",
+    "cases": [
+      "c15"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "search_web-02",
+    "classification": "NO_REPRODUCIDO",
+    "reason": "Solo hay resultados vacíos de búsquedas a proveedor real; la captura no demuestra que debiera existir una coincidencia ni aísla la causa en el filtro.",
+    "evidence": [
+      "private/stress-20261106/batch1/search_web/execution/recovery1/results.json (cases c02,c03)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#search_web-02"
+    ],
+    "contract": "docs/CONTRASTE_STRESS_20261106.md §search_web; contrato de búsqueda docs/R1.md y rebuildbotsky.md tabla search_web",
+    "root_cause": "Disponibilidad/resultado remoto no reproducible localmente; el oráculo califica una consulta de “alta probabilidad” sin criterio determinista.",
+    "validation": "Sin red ni proveedor: no se puede establecer relevancia del contenido ni corregir.",
+    "tool": "search_web",
+    "cases": [
+      "c02",
+      "c03"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_conversation-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/bot pausa no declara adjunto; su CommandSpec attachment=false y no procesa ni cambia efectos por el archivo. El plan no establece que comandos textuales deban rechazar adjuntos no solicitados.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_conversation/execution/results.json (cases c24)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_conversation-01"
+    ],
+    "contract": "src/botsky/commands/registry.py /bot pausa; rebuildbotsky.md tabla manage_conversation",
+    "root_cause": "Oracle exige rechazo adicional no establecido por sintaxis ni contrato.",
+    "validation": "No se corrigió; resultado muestra pausa según texto explícito del comando.",
+    "tool": "manage_conversation",
+    "cases": [
+      "c24"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_conversation-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Los tokens de sintaxis enum son insensibles a mayúsculas por regla general del conversor. El modo se valida contra las tres choices y se normaliza a su forma canónica.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_conversation/execution/results.json (cases c11)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_conversation-02"
+    ],
+    "contract": "src/botsky/commands/types.py Field.convert enum; rebuildbotsky.md tabla manage_conversation",
+    "root_cause": "La prueba esperaba sensibilidad de mayúsculas que el lexer/contrato no exige.",
+    "validation": "La normalización determinista del enum conserva choices permitidos.",
+    "tool": "manage_conversation",
+    "cases": [
+      "c11"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "save_note-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "La cadena supera max_length=8000 y el parser devuelve needs_input/invalid_field con campo, límite, uso y ejemplo; no se acepta ni guarda la nota.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c18)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-01"
+    ],
+    "contract": "src/botsky/commands/registry.py save_note.run; docs/R1.md §ayuda y errores",
+    "root_cause": "Estado de corrección de entrada válido; el contrato de sintaxis no exige status failed para errores corregibles.",
+    "validation": "Comprobación de parser: error pre-efecto con restricción y ejemplo.",
+    "tool": "save_note",
+    "cases": [
+      "c18"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "save_note-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Acción desconocida devuelve needs_input/unknown_action y la lista generada de usos; no despacha una acción alternativa.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c20,c21)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-02"
+    ],
+    "contract": "src/botsky/commands/router.py Router.parse unknown_action; src/botsky/commands/registry.py help",
+    "root_cause": "Ayuda correctiva determinista ante subcomando desconocido.",
+    "validation": "Error de parser, sin efectos.",
+    "tool": "save_note",
+    "cases": [
+      "c20",
+      "c21"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "save_note-03",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/estado, /cancelar y /confirmar requieren un ID real en sus definiciones; invocarlos sin ID es sintaxis incompleta y needs_input es la respuesta de corrección.",
+    "evidence": [
+      "private/stress-20261106/batch2/save_note/execution/results.json (cases c23,c24,c25)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#save_note-03"
+    ],
+    "contract": "src/botsky/commands/registry.py core estado/cancelar/confirmar; docs/R1.md",
+    "root_cause": "El oracle describe como válidos comandos sin los campos obligatorios expresos del contrato.",
+    "validation": "Reproducible como missing_field antes de operación; no se cambió.",
+    "tool": "save_note",
+    "cases": [
+      "c23",
+      "c24",
+      "c25"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "find_notes-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Con cero notas, page=2 excede la única página resultante; page=10000 también está fuera de resultados. needs_input comunica el rango admisible y evita crear una vista vacía engañosa.",
+    "evidence": [
+      "private/stress-20261106/batch2/find_notes/execution/results.json (cases c05,c06,c12)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#find_notes-01"
+    ],
+    "contract": "src/botsky/domains/notes.py find; src/botsky/commands/registry.py PAGE",
+    "root_cause": "Un índice permitido por el tipo no implica que haya datos para esa página. El contrato no define página inexistente como empty.",
+    "validation": "Sin cambios; el rango devuelto es 1–1.",
+    "tool": "find_notes",
+    "cases": [
+      "c05",
+      "c06",
+      "c12"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_memory-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "memory_not_found y el texto identifican ausencia en el ámbito propio. `empty` es coherente con una consulta/mutación que no encontró recurso; no hubo modificación.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_memory/execution/results.json (cases c17,c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_memory-01"
+    ],
+    "contract": "src/botsky/domains/organization.py memory lookup; private evidence result c17/c22",
+    "root_cause": "El oracle impone status failed sin que la API prometa ese status para ausencia.",
+    "validation": "El ID enorme válido se resolvió a “no encontrado”; no hay excepción ni efecto.",
+    "tool": "manage_memory",
+    "cases": [
+      "c17",
+      "c22"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_reminder-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "La segunda cancelación es idempotente y reporta el estado persistido cancelled; no duplica la cancelación ni el efecto.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_reminder/execution/results.json (cases c26)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_reminder-01"
+    ],
+    "contract": "src/botsky/domains/organization.py reminder cancel; rebuildbotsky.md manage_reminder",
+    "root_cause": "Oracle de error de estado no está en contrato; responder el estado final es correcto y estable ante reintento.",
+    "validation": "Resultado c26 conservado; no hay efecto duplicado.",
+    "tool": "manage_reminder",
+    "cases": [
+      "c26"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_school-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "La creación de una tarea adjunta un artefacto propio que ya pasó la admisión y el reconocimiento de tipo; R5 no exige analizar la integridad ni abrir el contenido de archivos que se conservan como adjuntos. La respuesta confirma que la tarea se guardó, sin afirmar que el PDF se leyó o validó.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_school/execution/results.json",
+        "case": "c09",
+        "observation": "status=ok, code=school_task_created, task_id=4; artifact was not separately emitted. Evidence level is providers_real_delivery_fixture and physical_sample=false."
+      },
+      {
+        "source": "docs/evidencia/STRESS-20261106/fixture-ledger.json",
+        "fixture": "broken_pdf",
+        "observation": "synthetic fixture, 45 bytes, SHA256 0f02baa93e169c3ff90db39cac3f4633186aac29191613ad686a76e97cf833df"
+      },
+      {
+        "source": "src/botsky/domains/organization.py",
+        "location": "school.add_task attachment handling",
+        "observation": "resolves and checks ownership, size, format class restrictions, and aggregate storage quota; retains the artifact under a lease. It does not parse PDF structure or extract pages."
+      },
+      {
+        "source": "src/botsky/artifacts.py",
+        "location": "Artifacts.stage and Artifacts._format",
+        "observation": "stages a bounded regular file, hashes it, and detects a format; content-level validation belongs to consumers that process the file."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: manage_school supports task attachments and typed fields.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R5: school/attachments, ownership, pagination and recovery; no PDF-integrity requirement for stored task attachments.",
+      "/home/petrov/zhana/rebuildbotsky.md §11: inspect generated/final artifacts for engine operations; this task stores an attachment and does not process a PDF."
+    ],
+    "root_cause": "The test oracle treats attaching a corrupt PDF as a request to parse and validate it, while this operation only retains an admissible opaque artifact. No contract violation is demonstrated.",
+    "validation": "Compared the original private result metadata and public synthetic fixture ledger with the R5 contract and attachment path in source. No product change or regression test is warranted.",
+    "tool": "manage_school",
+    "cases": [
+      "c09"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "attachments-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_poll-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Cerrar una encuesta cerrada devuelve sus resultados finales; la repetición no crea otro cierre ni cambia votos.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_poll/execution/results.json (cases c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_poll-01"
+    ],
+    "contract": "src/botsky/domains/organization.py poll close/results; rebuildbotsky.md manage_poll",
+    "root_cause": "Lectura idempotente del resultado de una encuesta ya cerrada; el oracle espera rechazo no especificado.",
+    "validation": "Resultado c22 contiene poll_results y conteos persistidos.",
+    "tool": "manage_poll",
+    "cases": [
+      "c22"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_drive-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Longitud inválida, campo requerido ausente y argumento extra son errores sintácticos corregibles; router responde needs_input y no invoca Drive.",
+    "evidence": [
+      "private/stress-20261106/batch2/manage_drive/execution/results.json (cases c19,c25,c26)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_drive-01"
+    ],
+    "contract": "src/botsky/commands/router.py; src/botsky/commands/registry.py drive routes; docs/R1.md",
+    "root_cause": "El oracle exige status failed donde la interacción necesita una corrección del usuario.",
+    "validation": "Resultados c19/c25/c26 son errores de parser anteriores a la frontera remota.",
+    "tool": "manage_drive",
+    "cases": [
+      "c19",
+      "c25",
+      "c26"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_messages-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "The command prepares a draft and renders a preview containing the detected format, byte size, and SHA256. It does not claim to decode or validate the PNG. R6 requires a draft/view/confirmation flow, not image-integrity validation for a file being passed through to a contact.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c19",
+        "observation": "status=needs_input, code=message_preview, with a draft_id and artifact_id; preview states png, 17 bytes, and SHA256 29b978c62617c817f5b0c06542f3e4dc7fcfef1aae90aa2736c674b4f5171c9b. Evidence level is providers_real_delivery_fixture and physical_sample=false."
+      },
+      {
+        "source": "docs/evidencia/STRESS-20261106/fixture-ledger.json",
+        "fixture": "broken_png",
+        "observation": "synthetic fixture, 17 bytes, SHA256 29b978c62617c817f5b0c06542f3e4dc7fcfef1aae90aa2736c674b4f5171c9b"
+      },
+      {
+        "source": "src/botsky/domains/messages.py",
+        "location": "execute.prepare attachment handling and preview construction",
+        "observation": "resolves one owned artifact and enforces a 10 MiB limit; preview reports metadata and requires a later explicit send command. No image decoder is called."
+      },
+      {
+        "source": "src/botsky/artifacts.py",
+        "location": "Artifacts.stage and Artifacts._format",
+        "observation": "detects type from file bytes and records size/hash; detected png type is not a successful decode claim."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: manage_messages accepts an attachment and requires preview before sending.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R6: drafts/views/confirmation and bounded local integration checks; it does not require decoding pass-through attachments.",
+      "/home/petrov/zhana/rebuildbotsky.md §11: final-artifact inspection applies when a tool generates or processes an artifact; this operation previews and retains the supplied artifact."
+    ],
+    "root_cause": "The oracle interprets a signature-based format label as a claim that the PNG is valid and decodable. The preview reports metadata only and still requires explicit confirmation before delivery.",
+    "validation": "Compared the original private result, synthetic fixture hash/size, preview construction and R6 contract. No product change or regression test is warranted.",
+    "tool": "manage_messages",
+    "cases": [
+      "c19"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "attachments-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_messages-02",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "Both attempts return the draft's current terminal state in a message_status response and do not queue or repeat a send. The contract requires stateful, nonduplicating delivery and explicit confirmation; it does not prescribe that a repeated send command against a cancelled/completed draft must use status=failed or a dedicated transition-error code. The text explicitly says cancelled/completed.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c10",
+        "observation": "send against cancelled draft returned status=ok, code=message_status, data.state=cancelled and explicit text; no parts or new send were recorded."
+      },
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c24",
+        "observation": "send against completed draft returned status=ok, code=message_status, data.state=completed and the prior accepted part; it did not create another send."
+      },
+      {
+        "source": "src/botsky/domains/messages.py",
+        "location": "execute state check and state_result",
+        "observation": "when draft.state is not draft, execution returns state_result immediately before expiry checks, job reservation, part insertion, or state mutation."
+      },
+      {
+        "source": "tests/test_integrations.py",
+        "location": "test_message_preview_owner_private_directory_literal_and_duplicate; test_message_directory_change_expiry_cancel_and_stale_confirmation",
+        "observation": "existing local tests verify one send only and that cancelled drafts remain cancelled when a send command is retried."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: /recado preparar, estado, enviar and cancelar are distinct explicit operations; preview precedes sending.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R6: drafts/views/confirmation with explicit local integration checks.",
+      "/home/petrov/zhana/rebuildbotsky.md §9: conditional state/revision transitions, cancellation invalidates work, and external effects must not be repeated to feign success."
+    ],
+    "root_cause": "The tester assumes a particular result status/code for a rejected state transition. The implementation reuses the read-only status formatter for non-draft states; this is not specified as invalid by the contract, and the returned text/data disclose the actual terminal state.",
+    "validation": "Inspected both original private result records, the send path, and existing local lifecycle tests. No new test was run because no contract defect was demonstrated; no product change is warranted.",
+    "tool": "manage_messages",
+    "cases": [
+      "c10",
+      "c24"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "attachments-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "send_sticker-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "El catálogo `/reaccion` enumera cuatro nombres en minúsculas; las palabras enum de sintaxis son case-insensitive por Field.convert.",
+    "evidence": [
+      "private/stress-20261106/batch2/send_sticker/execution/results.json (cases c07,c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#send_sticker-01"
+    ],
+    "contract": "rebuildbotsky.md tabla send_sticker; src/botsky/commands/types.py enum",
+    "root_cause": "Mayúsculas se aceptan por regla de sintaxis explícita; no se amplía el conjunto de opciones.",
+    "validation": "El resultado conserva identificador canónico en minúscula.",
+    "tool": "send_sticker",
+    "cases": [
+      "c07",
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "send_sticker-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Las comillas son delimitadores del lexer para un campo sintáctico y se eliminan al tokenizar; el valor sigue siendo el choice catalogado `saludo`.",
+    "evidence": [
+      "private/stress-20261106/batch2/send_sticker/execution/results.json (cases c12)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#send_sticker-02"
+    ],
+    "contract": "src/botsky/commands/lexer.py; src/botsky/commands/router.py; rebuildbotsky.md tabla send_sticker",
+    "root_cause": "El plan permite comillas como sintaxis de campos; stripping no cambia el nombre del sticker ni autoridad.",
+    "validation": "Entrada quoted resuelve al mismo token tipado; sin diferencia de efecto.",
+    "tool": "send_sticker",
+    "cases": [
+      "c12"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_pack-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "La oferta para categoría inexistente atribuía una compra posible a una categoría no publicada. Se verifica existencia antes de crear oferta con category_exists, misma normalización y techo10000 que select. No se amplía la validación de stock previa; azar y categorías publicadas vacías conservan su flujo.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_pack/execution/results.json (cases c19)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_pack-01"
+    ],
+    "contract": "docs/R7.md §Packs; private batch3/manage_pack/execution/results.json case c19; src/botsky/domains/packs.py",
+    "root_cause": "PACK_UNKNOWN_CATEGORY_OFFER",
+    "validation": "test_packs cubre categoría inexistente con XP suficiente y saldo intacto, nombre con mayúsculas/acentos, azar, categoría existente con count=0 y lookup de la entrada 102 con más de 100 álbumes; positivos existentes pasan sin cambiar oracles.",
+    "tool": "manage_pack",
+    "cases": [
+      "c19"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_pack-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Confirmar una orden terminal devuelve su resumen persistido (incluido failed); no vuelve a cobrar ni repetir envíos. El texto/result data muestran el estado final.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_pack/execution/results.json (cases c18)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_pack-02"
+    ],
+    "contract": "src/botsky/domains/packs.py summary/confirm; docs/R7.md §Packs",
+    "root_cause": "Comportamiento idempotente seguro ante reintento; contrato exige compra incierta protegida por recibos, no error en cada repetición.",
+    "validation": "Sin cambios; el segundo comando no vuelve a dispatch.",
+    "tool": "manage_pack",
+    "cases": [
+      "c18"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_cooperacha-01",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "La tanda ejecuta `/coop crear fiesta 100`, pero fixture gallery solo publica `cosplay`, `goticas`, `inventario-publico-botsky` y `lab-sintetico`; únicamente este último tiene fotos (8). El worker no puede publicar fiesta y la cooperacha termina failed, resultado permitido por fallo conocido y reembolso completo.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c02,c04,c05,c09,c10,c13,c14)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-01"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_cooperacha/execution/results.json cases c02/c04/c05/c09/c10/c13/c14; app/private/gallery/library.db; docs/R7.md §Cooperacha",
+    "root_cause": "Fixture/oracle supone categoría y disponibilidad no presentes; no es un fallo al iniciar una categoría válida.",
+    "validation": "Consulté inventario sintético local de álbumes; no se alteró producto ni evidencia histórica.",
+    "tool": "manage_cooperacha",
+    "cases": [
+      "c02",
+      "c04",
+      "c05",
+      "c09",
+      "c10",
+      "c13",
+      "c14"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_cooperacha-02",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "El valor del caso c19 tiene 119 caracteres (no 127); el campo se declara limit=120 y el input cae dentro del límite.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c19)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-02"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_cooperacha/execution/frozen-proposal.json case c19; src/botsky/commands/registry.py coop crear",
+    "root_cause": "El caso observado no excede el máximo contractual.",
+    "validation": "Recuento literal del comando y max_length=120: longitud 119.",
+    "tool": "manage_cooperacha",
+    "cases": [
+      "c19"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_cooperacha-03",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Cancelar un registro ya terminal devuelve su resumen failed y no repite liquidación. El texto/data hacen visible que el reto ya estaba fallido.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_cooperacha/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_cooperacha-03"
+    ],
+    "contract": "src/botsky/domains/cooperacha.py settle/execute; docs/R7.md §Cooperacha",
+    "root_cause": "Resultado idempotente; no se promete rechazo redundante en el contrato.",
+    "validation": "Resultado c08 refleja failed, sin cambios de XP.",
+    "tool": "manage_cooperacha",
+    "cases": [
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_happy_hour-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "El comando especifica INTERVALO; la gramática de duración exige unidad s/m/h/d (p.ej. 60s, 1d). Los enteros desnudos no son sintaxis válida.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_happy_hour/execution/results.json (cases c13,c15)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_happy_hour-01"
+    ],
+    "contract": "rebuildbotsky.md tabla manage_happy_hour; src/botsky/commands/types.py duration; src/botsky/commands/registry.py hh iniciar",
+    "root_cause": "El oracle pasa segundos numéricos pese a que el contrato define intervalo con sufijo.",
+    "validation": "La ruta de error informa ejemplos de intervalo y no crea evento.",
+    "tool": "manage_happy_hour",
+    "cases": [
+      "c13",
+      "c15"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_happy_hour-02",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "c01 produce event_id de la hora feliz, pero `/hh reclamar` requiere el drop_id producido por `/hh airdrop`; no se abrió AirDrop en el caso citado.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_happy_hour/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_happy_hour-02"
+    ],
+    "contract": "private/stress-20261106/batch3/manage_happy_hour/execution/results.json cases c01/c08; src/botsky/domains/happy_hour.py; rebuildbotsky.md tabla manage_happy_hour",
+    "root_cause": "Se usó un ID de recurso distinto al requerido y se esperaba premio sin anuncio AirDrop.",
+    "validation": "Relación de IDs/códigos del resultado c01 y query de drop reclamable en el handler.",
+    "tool": "manage_happy_hour",
+    "cases": [
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_economy-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/daily, /saldo y /top son comandos textuales sin attachment=true. El contrato no exige rechazar medios irrelevantes; el código no usa el adjunto para saldo, daily o ranking.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_economy/execution/results.json (cases c14,c15,c16)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_economy-01"
+    ],
+    "contract": "src/botsky/commands/registry.py economy routes; docs/R7.md §XP",
+    "root_cause": "La prueba impone política de rechazo de adjuntos que no figura en los contratos de esas rutas.",
+    "validation": "No se incorporó un rechazo transversal fuera de alcance.",
+    "tool": "manage_economy",
+    "cases": [
+      "c14",
+      "c15",
+      "c16"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_blackjack-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Cancelar una partida ya settled devuelve el resultado liquidado; no puede deshacer la liquidación ni repetir el pago.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_blackjack/execution/results.json (cases c32)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_blackjack-01"
+    ],
+    "contract": "src/botsky/domains/blackjack.py cancel/settlement; docs/R7.md §Blackjack",
+    "root_cause": "Consulta idempotente de estado final; la regla de cancelación es para mesas no repartidas.",
+    "validation": "case c32 muestra dealer, outcome y settled sin movimiento extra.",
+    "tool": "manage_blackjack",
+    "cases": [
+      "c32"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_blackjack-02",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "La regla R7 indica que cancelar mesa solo se permite antes de repartir; una mano playing se termina por turno o plazo. Rechazar evita reembolso tras reparto.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_blackjack/execution/results.json (cases c08)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_blackjack-02"
+    ],
+    "contract": "docs/R7.md §Blackjack; src/botsky/domains/blackjack.py blackjack_cancel_playing",
+    "root_cause": "El oracle pide una capacidad expresamente descartada por el contrato.",
+    "validation": "case c08 corresponde a mano ya repartida; se mantiene el rechazo.",
+    "tool": "manage_blackjack",
+    "cases": [
+      "c08"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_roulette-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "La entrada negativa/no entera se rechazaba, pero Field.kind=int mostraba “número decimal”. El tipo/rango del registro son enteros. Ahora el diagnóstico indica entero y límites cuando están definidos.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_roulette/execution/results.json (cases c05,c08,c09)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_roulette-01"
+    ],
+    "contract": "src/botsky/commands/types.py Field.convert; src/botsky/commands/registry.py ruleta crear; private batch3/manage_roulette/execution/results.json c05/c08/c09",
+    "root_cause": "INTEGER_TYPE_DIAGNOSTIC",
+    "validation": "test_commands verifica tipo/rango y descarta “decimal”; parser sigue rechazando entradas inválidas.",
+    "tool": "manage_roulette",
+    "cases": [
+      "c05",
+      "c08",
+      "c09"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_admin-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "`amount` de xp-dar es integer 1–50000; para -25 el parser rechazaba correctamente pero afirmaba “decimal”. El mensaje ahora nombra entero y rango.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_admin/execution/results.json (cases c07)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_admin-01"
+    ],
+    "contract": "src/botsky/commands/registry.py xp-dar; src/botsky/commands/types.py Field.convert; private batch3/manage_admin/execution/results.json c07",
+    "root_cause": "INTEGER_TYPE_DIAGNOSTIC",
+    "validation": "test_commands cubre `/admin xp-dar --cuenta 1 -25` y el diagnóstico integer.",
+    "tool": "manage_admin",
+    "cases": [
+      "c07"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "manage_minecraft-01",
+    "classification": "LIMITE_DENEGACION_CORRECTOS",
+    "reason": "Subcomando desconocido y argumentos extra son errores de parser que devuelven needs_input con usos válidos; no se ejecuta cliente Minecraft.",
+    "evidence": [
+      "private/stress-20261106/batch3/manage_minecraft/execution/results.json (cases c21,c22)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#manage_minecraft-01"
+    ],
+    "contract": "src/botsky/commands/router.py unknown_action/extra_argument; docs/R1.md; src/botsky/domains/minecraft.py",
+    "root_cause": "El oracle considera obligatorio status failed, aunque la capa de sintaxis usa needs_input para corregir entradas.",
+    "validation": "c21/c22 no alcanzan el handler/cliente.",
+    "tool": "manage_minecraft",
+    "cases": [
+      "c21",
+      "c22"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "make_prank-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "`/broma [ETIQUETA]` es ficción local; no acepta ni procesa archivo. Los tests adjuntan corruptos/audio/PDF pero el comando solo produce texto según etiqueta y declara que no investigó ni envió.",
+    "evidence": [
+      "private/stress-20261106/batch3/make_prank/execution/results.json (cases c17,c20,c21)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#make_prank-01"
+    ],
+    "contract": "rebuildbotsky.md tabla make_prank; src/botsky/commands/registry.py prank; private batch3/make_prank/execution/results.json cases c17/c20/c21",
+    "root_cause": "El contrato no establece procesamiento o rechazo de adjuntos para make_prank.",
+    "validation": "No se encontró uso de attachments en la especificación/handler; no se añadió validación de archivo.",
+    "tool": "make_prank",
+    "cases": [
+      "c17",
+      "c20",
+      "c21"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  },
+  {
+    "claim_id": "control_call-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "La tabla R9 prescribe `--duracion INTERVALO` y la gramática duration exige sufijo de unidad; `600` o `300` solos no son valores válidos. El esquema numérico alegado no sustituye la gramática real.",
+    "evidence": [
+      "private/stress-20261106/batch3/control_call/execution/results.json (cases c03,c04,c27)",
+      "docs/evidencia/STRESS-20261106/claims-for-contrast.json#control_call-01"
+    ],
+    "contract": "rebuildbotsky.md tabla control_call; src/botsky/commands/registry.py llamar/agenda; docs/commands.json control_call.max_seconds.kind=duration",
+    "root_cause": "Oracle contradictorio con el contrato de sintaxis.",
+    "validation": "El parser rechaza valor sin sufijo antes de probar permisos o llamada remota.",
+    "tool": "control_call",
+    "cases": [
+      "c03",
+      "c04",
+      "c27"
+    ],
+    "original_claim_source": "../STRESS-20261106/claims-for-contrast.json",
+    "adjudication_source": "contracts-economy-adjudications.json",
+    "principal_reviewed": true
+  }
+]

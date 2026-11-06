@@ -892,6 +892,7 @@ def build_specs():
                 required=False,
                 max_length=800,
                 option="--terminos",
+                max_items=8,
                 original="required_terms",
                 example="Python,docs",
             ),

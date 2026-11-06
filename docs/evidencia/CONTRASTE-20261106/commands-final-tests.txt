@@ -1,0 +1,17 @@
+test_adapted_fields_preserve_explicit_selection_and_complete_options (test_commands.CommandsTest.test_adapted_fields_preserve_explicit_selection_and_complete_options) ... ok
+test_aliases_case_and_data_preserve_meaningful_case (test_commands.CommandsTest.test_aliases_case_and_data_preserve_meaningful_case) ... ok
+test_all_declared_examples_route_to_their_exact_spec_without_io (test_commands.CommandsTest.test_all_declared_examples_route_to_their_exact_spec_without_io) ... ok
+test_catalog_actions_are_accounted_for_and_help_is_generated (test_commands.CommandsTest.test_catalog_actions_are_accounted_for_and_help_is_generated) ... ok
+test_incompatible_fields_and_precise_errors (test_commands.CommandsTest.test_incompatible_fields_and_precise_errors) ... ok
+test_literal_tail_preserves_quotes_newlines_shell_and_option_like_content (test_commands.CommandsTest.test_literal_tail_preserves_quotes_newlines_shell_and_option_like_content) ... ok
+test_noncommands_and_unknown_never_route_by_similarity (test_commands.CommandsTest.test_noncommands_and_unknown_never_route_by_similarity) ... ok
+test_quotes_and_escapes_for_multiple_fields (test_commands.CommandsTest.test_quotes_and_escapes_for_multiple_fields) ... ok
+test_registry_rejects_collisions_and_output_has_no_authority (test_commands.CommandsTest.test_registry_rejects_collisions_and_output_has_no_authority) ... ok
+test_search_terms_follow_registry_limit_and_integer_errors_name_the_type (test_commands.CommandsTest.test_search_terms_follow_registry_limit_and_integer_errors_name_the_type) ... ok
+test_strict_numbers_enums_ranges_and_no_shell_operators (test_commands.CommandsTest.test_strict_numbers_enums_ranges_and_no_shell_operators) ... ok
+test_text_final_stops_option_parsing (test_commands.CommandsTest.test_text_final_stops_option_parsing) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.036s
+
+OK

@@ -257,6 +257,77 @@ class AITest(IsolatedAsyncioTestCase):
         self.assertEqual(denied.result.code, "artifact_access_denied")
         self.assertEqual(len(sdk.calls), 1)
 
+    async def test_analysis_rejects_corrupt_audio_before_provider_dispatch(self):
+        source = self.root / "broken.ogg"
+        source.write_bytes(b"OggS" + b"broken" * 30)
+        receipt = self.app.receive(
+            self.app.attach_local(self.incoming("/ia analiza el audio"), source)
+        )
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt.id).code, "invalid_audio")
+        self.assertEqual(self.model.calls, [])
+        self.assertEqual(
+            self.rows("SELECT provider_dispatched FROM jobs WHERE id=?", (receipt.id,))[0][
+                "provider_dispatched"
+            ],
+            0,
+        )
+
+    async def test_analysis_forwards_presentation_and_malformed_json_content(self):
+        from pptx import Presentation
+
+        presentation = Presentation()
+        slide = presentation.slides.add_slide(presentation.slide_layouts[5])
+        slide.shapes.title.text = "Botsky fixture 31415"
+        pptx = self.root / "source.pptx"
+        presentation.save(pptx)
+        malformed = self.root / "invalid.json"
+        malformed.write_text('{"broken": [}')
+        sdk = SDKFixture("Contenido recibido.")
+        self.app.gemini = GeminiContent(
+            "synthetic-key", "synthetic-model", client_factory=lambda key: sdk
+        )
+        for source, expected in (
+            (pptx, b"Botsky fixture 31415"),
+            (malformed, malformed.read_bytes()),
+        ):
+            with self.subTest(source=source.name):
+                receipt = self.app.receive(
+                    self.app.attach_local(self.incoming("/ia analiza el archivo"), source)
+                )
+                await self.app.jobs.run_pending()
+                self.assertEqual(self.result(receipt.id).code, "ai_reply")
+                parts = sdk.calls[-1]["contents"][0].parts
+                payloads = [p.inline_data for p in parts if p.inline_data]
+                self.assertEqual(len(payloads), 1)
+                self.assertEqual(payloads[0].mime_type, "text/plain")
+                self.assertIn(expected, payloads[0].data)
+
+    async def test_analysis_preserves_valid_audio_and_video_for_provider(self):
+        audio = self.root / "valid.wav"
+        video = self.root / "valid.mp4"
+        for output, inputs in (
+            (audio, ["-f", "lavfi", "-i", "sine=frequency=440:sample_rate=16000"]),
+            (video, ["-f", "lavfi", "-i", "color=red:s=32x32:r=5", "-c:v", "libx264"]),
+        ):
+            await run_process(
+                ["ffmpeg", "-nostdin", "-v", "error", *inputs, "-t", "0.2", str(output)], 10
+            )
+        sdk = SDKFixture("Análisis del medio.")
+        self.app.gemini = GeminiContent(
+            "synthetic-key", "synthetic-model", client_factory=lambda key: sdk
+        )
+        for source, mime in ((audio, "audio/wav"), (video, "video/mp4")):
+            receipt = self.app.receive(
+                self.app.attach_local(self.incoming("/ia analiza el medio"), source)
+            )
+            await self.app.jobs.run_pending()
+            self.assertEqual(self.result(receipt.id).code, "ai_reply")
+            parts = sdk.calls[-1]["contents"][0].parts
+            payload = next(p.inline_data for p in parts if p.inline_data)
+            self.assertEqual(payload.mime_type, mime)
+            self.assertEqual(payload.data, source.read_bytes())
+
     def fake_edge(self):
         binary = self.root / "fake-edge"
         log = self.root / "tts-input.jsonl"

@@ -1,0 +1,104 @@
+[
+  {
+    "claim_id": "manage_school-01",
+    "classification": "Error de expectativa del tester",
+    "reason": "La creación de una tarea adjunta un artefacto propio que ya pasó la admisión y el reconocimiento de tipo; R5 no exige analizar la integridad ni abrir el contenido de archivos que se conservan como adjuntos. La respuesta confirma que la tarea se guardó, sin afirmar que el PDF se leyó o validó.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_school/execution/results.json",
+        "case": "c09",
+        "observation": "status=ok, code=school_task_created, task_id=4; artifact was not separately emitted. Evidence level is providers_real_delivery_fixture and physical_sample=false."
+      },
+      {
+        "source": "docs/evidencia/STRESS-20261106/fixture-ledger.json",
+        "fixture": "broken_pdf",
+        "observation": "synthetic fixture, 45 bytes, SHA256 0f02baa93e169c3ff90db39cac3f4633186aac29191613ad686a76e97cf833df"
+      },
+      {
+        "source": "src/botsky/domains/organization.py",
+        "location": "school.add_task attachment handling",
+        "observation": "resolves and checks ownership, size, format class restrictions, and aggregate storage quota; retains the artifact under a lease. It does not parse PDF structure or extract pages."
+      },
+      {
+        "source": "src/botsky/artifacts.py",
+        "location": "Artifacts.stage and Artifacts._format",
+        "observation": "stages a bounded regular file, hashes it, and detects a format; content-level validation belongs to consumers that process the file."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: manage_school supports task attachments and typed fields.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R5: school/attachments, ownership, pagination and recovery; no PDF-integrity requirement for stored task attachments.",
+      "/home/petrov/zhana/rebuildbotsky.md §11: inspect generated/final artifacts for engine operations; this task stores an attachment and does not process a PDF."
+    ],
+    "root_cause": "The test oracle treats attaching a corrupt PDF as a request to parse and validate it, while this operation only retains an admissible opaque artifact. No contract violation is demonstrated.",
+    "validation": "Compared the original private result metadata and public synthetic fixture ledger with the R5 contract and attachment path in source. No product change or regression test is warranted."
+  },
+  {
+    "claim_id": "manage_messages-01",
+    "classification": "Error de expectativa del tester",
+    "reason": "The command prepares a draft and renders a preview containing the detected format, byte size, and SHA256. It does not claim to decode or validate the PNG. R6 requires a draft/view/confirmation flow, not image-integrity validation for a file being passed through to a contact.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c19",
+        "observation": "status=needs_input, code=message_preview, with a draft_id and artifact_id; preview states png, 17 bytes, and SHA256 29b978c62617c817f5b0c06542f3e4dc7fcfef1aae90aa2736c674b4f5171c9b. Evidence level is providers_real_delivery_fixture and physical_sample=false."
+      },
+      {
+        "source": "docs/evidencia/STRESS-20261106/fixture-ledger.json",
+        "fixture": "broken_png",
+        "observation": "synthetic fixture, 17 bytes, SHA256 29b978c62617c817f5b0c06542f3e4dc7fcfef1aae90aa2736c674b4f5171c9b"
+      },
+      {
+        "source": "src/botsky/domains/messages.py",
+        "location": "execute.prepare attachment handling and preview construction",
+        "observation": "resolves one owned artifact and enforces a 10 MiB limit; preview reports metadata and requires a later explicit send command. No image decoder is called."
+      },
+      {
+        "source": "src/botsky/artifacts.py",
+        "location": "Artifacts.stage and Artifacts._format",
+        "observation": "detects type from file bytes and records size/hash; detected png type is not a successful decode claim."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: manage_messages accepts an attachment and requires preview before sending.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R6: drafts/views/confirmation and bounded local integration checks; it does not require decoding pass-through attachments.",
+      "/home/petrov/zhana/rebuildbotsky.md §11: final-artifact inspection applies when a tool generates or processes an artifact; this operation previews and retains the supplied artifact."
+    ],
+    "root_cause": "The oracle interprets a signature-based format label as a claim that the PNG is valid and decodable. The preview reports metadata only and still requires explicit confirmation before delivery.",
+    "validation": "Compared the original private result, synthetic fixture hash/size, preview construction and R6 contract. No product change or regression test is warranted."
+  },
+  {
+    "claim_id": "manage_messages-02",
+    "classification": "Error de expectativa del tester",
+    "reason": "Both attempts return the draft's current terminal state in a message_status response and do not queue or repeat a send. The contract requires stateful, nonduplicating delivery and explicit confirmation; it does not prescribe that a repeated send command against a cancelled/completed draft must use status=failed or a dedicated transition-error code. The text explicitly says cancelled/completed.",
+    "evidence": [
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c10",
+        "observation": "send against cancelled draft returned status=ok, code=message_status, data.state=cancelled and explicit text; no parts or new send were recorded."
+      },
+      {
+        "source": "private/stress-20261106/batch2/manage_messages/execution/results.json",
+        "case": "c24",
+        "observation": "send against completed draft returned status=ok, code=message_status, data.state=completed and the prior accepted part; it did not create another send."
+      },
+      {
+        "source": "src/botsky/domains/messages.py",
+        "location": "execute state check and state_result",
+        "observation": "when draft.state is not draft, execution returns state_result immediately before expiry checks, job reservation, part insertion, or state mutation."
+      },
+      {
+        "source": "tests/test_integrations.py",
+        "location": "test_message_preview_owner_private_directory_literal_and_duplicate; test_message_directory_change_expiry_cancel_and_stale_confirmation",
+        "observation": "existing local tests verify one send only and that cancelled drafts remain cancelled when a send command is retried."
+      }
+    ],
+    "contract": [
+      "/home/petrov/zhana/rebuildbotsky.md §5: /recado preparar, estado, enviar and cancelar are distinct explicit operations; preview precedes sending.",
+      "/home/petrov/zhana/rebuildbotsky.md §10 R6: drafts/views/confirmation with explicit local integration checks.",
+      "/home/petrov/zhana/rebuildbotsky.md §9: conditional state/revision transitions, cancellation invalidates work, and external effects must not be repeated to feign success."
+    ],
+    "root_cause": "The tester assumes a particular result status/code for a rejected state transition. The implementation reuses the read-only status formatter for non-draft states; this is not specified as invalid by the contract, and the returned text/data disclose the actual terminal state.",
+    "validation": "Inspected both original private result records, the send path, and existing local lifecycle tests. No new test was run because no contract defect was demonstrated; no product change is warranted."
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "original_claims": 50,
+  "adjudicated_claims": 50,
+  "claim_classifications": {
+    "LIMITE_DENEGACION_CORRECTOS": 21,
+    "ERROR_EXPECTATIVA": 14,
+    "FIXTURE_SETUP_HARNESS": 8,
+    "DEFECTO_PRODUCTO_CONFIRMADO": 5,
+    "NO_REPRODUCIDO": 2
+  },
+  "orchestrator_observations": 3,
+  "observation_classifications": {
+    "DEFECTO_PRODUCTO_CONFIRMADO": 1,
+    "FIXTURE_SETUP_HARNESS": 1,
+    "DEPENDENCIA_EXTERNA": 1
+  },
+  "confirmed_claims": 5,
+  "confirmed_observations": 1,
+  "confirmed_distinct_product_root_causes": 5,
+  "fixed_root_causes": [
+    "ANALYSIS_MEDIA_SIGNATURE_WITHOUT_CONTAINER_VALIDATION",
+    "CANCELLED_LAUNCH_BUSY_LOOP",
+    "INTEGER_TYPE_DIAGNOSTIC",
+    "PACK_UNKNOWN_CATEGORY_OFFER",
+    "SEARCH_TERMS_EXPORTED_LIMIT"
+  ],
+  "unresolved_claims": [
+    "conversation-02",
+    "search_web-02"
+  ],
+  "historical_results_rewritten": false,
+  "baseline_product_commit": "b34db69",
+  "baseline_repository_head": "3f6f3d69fc95e694447427b4a4c5e017a24ab35e",
+  "new_remote_requests": 0,
+  "services_or_permissions_activated": false,
+  "python_tests": {
+    "tests": 218,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "success": true,
+    "non_loopback_attempts": 0,
+    "seconds": 95.556
+  },
+  "node_tests": {
+    "tests": 286,
+    "passed": 286,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "network_guard": "ops/restringir_red_local.cjs",
+    "log": "node-tests.txt"
+  },
+  "static_checks_success": true,
+  "python_additional_tests": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "success": true,
+    "reason": "Test for >100 albums added after full-suite discovery; final code unchanged.",
+    "log": "python-additional-test.txt"
+  },
+  "python_distinct_tests_passed": 219,
+  "commands_final_recheck": {
+    "tests": 12,
+    "success": true,
+    "reason": "Explicit regression assertion for Registry max_items=8 added after full suite; no functional change.",
+    "log": "commands-final-tests.txt"
+  },
+  "final_quota": {
+    "checked_at_utc": "2026-11-06T19:07:32.501723Z",
+    "buckets": [
+      {
+        "id": "codex",
+        "primary": {
+          "used_percent": 20,
+          "remaining_percent": 80,
+          "window_minutes": 300,
+          "resets_at_utc": "2026-11-06T23:53:37Z"
+        },
+        "secondary": {
+          "used_percent": 70,
+          "remaining_percent": 30,
+          "window_minutes": 10080,
+          "resets_at_utc": "2026-11-12T02:23:05Z"
+        }
+      }
+    ]
+  }
+}

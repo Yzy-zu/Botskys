@@ -1,5 +1,7 @@
 """IA/ASR/TTS consumen contratos de contenido; carecen de registro o ejecutor general."""
 
+import math
+
 from ..contracts import Result
 from ..jobs import EngineOutput
 from .process import MediaError
@@ -8,7 +10,7 @@ from .process import MediaError
 async def analysis_files(paths, directory):
     from ..adapters.gemini import ContentFile
     from .documents import DocumentEngine, detect_document_format
-    from .media_edit import _demuxer
+    from .media_edit import _demuxer, _probe
 
     mime = {
         "png": "image/png",
@@ -35,7 +37,27 @@ async def analysis_files(paths, directory):
             if path.stat().st_size > 100000000:
                 raise MediaError("analysis_document_too_large")
             format = detect_document_format(path.read_bytes())
-        if format == "pdf":
+        if format in ("mp4", "webm", "ogg", "mp3", "wav", "flac", "aac"):
+            # A signature alone does not establish that a container is readable.
+            # Reject corrupt local media before uploading it to a provider.
+            audio_only = format not in ("mp4", "webm")
+            try:
+                demuxer = {"mp4": "mov", "webm": "matroska"}.get(format, format)
+                info = await _probe(path, demuxer)
+                duration = float(info["format"]["duration"])
+                if (
+                    not math.isfinite(duration)
+                    or duration <= 0
+                    or not any(
+                        stream.get("codec_type") in ("audio", "video")
+                        and stream.get("codec_name") not in (None, "unknown")
+                        for stream in info["streams"]
+                    )
+                ):
+                    raise ValueError
+            except (MediaError, KeyError, TypeError, ValueError) as exc:
+                raise MediaError("invalid_audio" if audio_only else "invalid_media") from exc
+        elif format == "pdf":
             path = await DocumentEngine(directory / f"analysis-{index}").convert(
                 path.read_bytes(), "pdf"
             )

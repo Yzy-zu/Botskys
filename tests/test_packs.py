@@ -115,6 +115,8 @@ class PacksTest(IsolatedAsyncioTestCase):
     async def test_library_actual_images_catalog_exact_category_and_symlinks(self):
         catalog = self.library.catalog()
         self.assertEqual(catalog[0].count, 6)
+        self.assertTrue(self.library.category_exists("SINTÉTICO"))
+        self.assertFalse(self.library.category_exists("categoria_inexistente"))
         photos = self.library.select("sintetico", 3, set())
         self.assertEqual(len(photos), 3)
         self.assertEqual(self.library.select("inexistente", 3, set()), [])
@@ -126,6 +128,14 @@ class PacksTest(IsolatedAsyncioTestCase):
         self.assertEqual(
             len(self.receive("/pack catalogo --categoria sintetico").result.data["items"]), 1
         )
+        db = sqlite3.connect(self.root / "private/gallery/library.db")
+        try:
+            db.execute("DELETE FROM album_photos WHERE albumId='album'")
+            db.commit()
+        finally:
+            db.close()
+        self.assertEqual(self.library.catalog()[0].count, 0)
+        self.assertTrue(self.library.category_exists("sintetico"))
         self.assertEqual(self.receive("/pack catalogo --pagina 2").result.code, "page_out_of_range")
 
     async def test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase(self):
@@ -152,6 +162,40 @@ class PacksTest(IsolatedAsyncioTestCase):
         self.receive("/pack confirmar " + identifier)
         await self.app.jobs.run_pending()
         self.assertEqual(len(self.transport.calls), count)
+
+    async def test_unpublished_category_is_rejected_before_creating_an_offer(self):
+        self.receive("/daily")
+        before = self.receive("/saldo").result.data["balance"]
+        self.assertEqual(before, 1000)
+        receipt = self.receive("/pack comprar categoria_inexistente_99999")
+        self.assertEqual(receipt.result.code, "pack_category_unavailable")
+        self.assertEqual(receipt.result.status, "needs_input")
+        self.assertEqual(
+            self.rows("SELECT * FROM gallery_orders WHERE instance=?", (self.settings.instance,)),
+            [],
+        )
+        self.assertEqual(self.receive("/saldo").result.data["balance"], before)
+
+    async def test_category_normalization_and_azar_remain_available(self):
+        self.receive("/daily")
+        named = self.receive("/pack comprar SINTÉTICO")
+        self.assertEqual(named.result.code, "pack_offer")
+
+        random_offer = self.receive("/pack comprar azar")
+        self.assertEqual(random_offer.result.code, "pack_offer")
+
+    async def test_category_lookup_uses_selection_bound_beyond_catalog_page_cap(self):
+        db = sqlite3.connect(self.root / "private/gallery/library.db")
+        try:
+            db.executemany(
+                "INSERT INTO albums VALUES(?,?,?,1)",
+                [(f"extra-{i:03}", f"Album {i}", f"album-{i:03}") for i in range(101)],
+            )
+            db.execute("INSERT INTO albums VALUES('z-last','Target','target',1)")
+            db.commit()
+        finally:
+            db.close()
+        self.assertTrue(self.library.category_exists("target"))
 
     async def test_partial_refund_uncertain_hold_and_restart_do_not_send_again(self):
         self.transport.states = ["accepted", "uncertain"]

@@ -74,3 +74,14 @@ resto de entregas capturadas localmente y etiquetadas sin fingir ACK de proveedo
 No reanuda la campaña cerrada anterior. Se conservan exclusiones de perfiles,
 llamadas/navegador, mutaciones grupo/servidor, transición, NLP y GitHub. Umbral5%
 vigente: guardar evidencia/relevo/commits y detenerse sin reanudación automática.
+
+## 06/11 · Contraste correctivo posterior encargado por el propietario
+
+El propietario eligió al agente principal para contrastar el paquete
+docs/CONTRASTE_STRESS_20261106.md contra evidencia y contratos y corregir los errores
+confirmados. Autorizó subagentes económicos Luna para revisión y correcciones,
+con análisis y revisión final del principal. Esta fase sucede a la campaña cerrada;
+no altera sus resultados históricos ni autoriza reanudarla. Validación local sobre
+fixtures propios y dobles; adjudicaciones nuevas, relevo y commits selectivos.
+Se mantienen exclusiones de envíos/pruebas remotas, llamadas/navegador, mutaciones
+de grupo/servidor, servicios, transición, NLP y GitHub. Umbral5% vigente.

@@ -145,6 +145,24 @@ def execute(db, context, spec, args, now, app):
             {"items": items, "pages": pages},
         )
     if not args.get("purchase_id"):
+        category = args["category"]
+        if category != "azar":
+            from ..adapters.gallery import LibraryError
+
+            try:
+                available = app.gallery.category_exists(category)
+            except LibraryError:
+                return Result(
+                    "failed",
+                    "gallery_unavailable",
+                    "No pude comprobar la categoría publicada; no se creó una oferta.",
+                )
+            if not available:
+                return Result(
+                    "needs_input",
+                    "pack_category_unavailable",
+                    "Esa categoría no está publicada. Consulta /pack catalogo; no se creó una oferta.",
+                )
         event = active(db, context, now)
         price = 75 if event else 150
         if own["balance"] < price:

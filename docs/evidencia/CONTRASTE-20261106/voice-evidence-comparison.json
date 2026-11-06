@@ -1,0 +1,9 @@
+{
+  "case": "make_voice/c14",
+  "actual_spoken_text_characters": 2722,
+  "actual_text_sha256": "091bb21054a177bcc27384cf000815c3ee578f1b4dd815c5df92dcfe9c2f8092",
+  "actual_last_120_characters": "a sea por mensaje o agendando una breve llamada. Que tengan un excelente día y sigamos adelante con el mismo entusiasmo.",
+  "tester_feedback_result_characters": 1700,
+  "tester_feedback_last_120_characters": " de automatización. Sé que al principio adaptarse a un nuevo flujo de trabajo puede resultar cansado y requiere un esfue",
+  "feedback_truncation_source": "ops/stress_backend.py:662 [:1700]"
+}

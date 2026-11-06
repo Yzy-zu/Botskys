@@ -1,0 +1,117 @@
+[
+  {
+    "claim_id": "transcribe_media-01",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "Los videos son señales sintéticas sin habla. No existe el contenido verbal esperado por el tester. El punto devuelto es salida del ASR externo; la ausencia de un archivo TXT tampoco prueba fallo: el contrato entrega texto en Result.",
+    "evidence": [
+      "STRESS-20261106/results.json:transcribe_media/c05,c06,c23",
+      "ops/stress_backend.py:make_fixtures (long_video usa sine=frequency=660:duration=12)",
+      "ops/campana_lab.py:fixtures (video sintético)",
+      "src/botsky/adapters/whisper.py:transcribe"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:ASR y calidad del proveedor; R4 texto/resumen/ambos",
+      "rebuildbotsky.md §7: transcripción es contenido"
+    ],
+    "root_cause": "ASR_NON_SPEECH_FIXTURE_AND_ARTIFACT_ORACLE",
+    "validation": "Código de fixtures y resultados contrastados; no se repite ASR remoto ni se añade detector acústico. Calidad con habla real queda sin acreditar."
+  },
+  {
+    "claim_id": "transcribe_media-02",
+    "classification": "LIMITE_CORRECTO",
+    "reason": "El origen excede 10MiB; el límite explícito se aplica antes de normalizar. No se contrató segmentación automática. El techo temporal1200s no elimina el de bytes.",
+    "evidence": [
+      "STRESS-20261106/results.json:transcribe_media/c09",
+      "STRESS-20261106/fixture-ledger.json:large_audio",
+      "src/botsky/engines/content_jobs.py:execute",
+      "src/botsky/engines/audio.py:_MAX_BYTES"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:origen10MiB, duración1200s, salida25MB"
+    ],
+    "root_cause": "ASR_INPUT_BYTE_LIMIT",
+    "validation": "Contrato, ledger y guardia de bytes coherentes; no se cambia el límite."
+  },
+  {
+    "claim_id": "make_voice-01",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/voz ultima lee literalmente el último payload propio aceptado, incluido el pie /estado. Eliminar comandos modificaría la fuente literal. No se ejecuta el contenido vocalizado. El oracle además pedía MP3 cuando la entrega contratada es Ogg/Opus.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c21,c22",
+      "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json:spoken_text",
+      "src/botsky/domains/ai.py:literal_source"
+    ],
+    "contract": [
+      "docs/R4.md:voz literal sin Gemini",
+      "docs/portados/ia-voz.md:cita/última exactas, Ogg/Opus mono48k"
+    ],
+    "root_cause": "VOICE_LITERAL_SOURCE_AND_WRONG_MP3_ORACLE",
+    "validation": "tests/test_ai.py:test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied y test_voice_literal_and_composed_are_distinct_and_produce_real_opus pasan."
+  },
+  {
+    "claim_id": "make_voice-02",
+    "classification": "FIXTURE_SETUP_HARNESS",
+    "reason": "No hubo truncamiento del guion: spoken_text privado tiene2722caracteres y termina una frase completa. El feedback al tester cortó la representación JSON a1700caracteres precisamente en «esfue». No hay evidencia de corte real del audio, cuya escucha no se hizo.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c14",
+      "private/stress-20261106/batch1/make_voice/feedback.json:rows[c14]",
+      "CONTRASTE-20261106/voice-evidence-comparison.json",
+      "ops/stress_backend.py:feedback result [:1700]"
+    ],
+    "contract": [
+      "docs/portados/ia-voz.md:texto<=8000 y duración orientativa; no promete600s exactos"
+    ],
+    "root_cause": "HARNESS_FEEDBACK_TRUNCATION",
+    "validation": "Comparación de longitud, terminación y SHA256 de fuente completa guardada; no se modifica síntesis ni el histórico."
+  },
+  {
+    "claim_id": "make_voice-03",
+    "classification": "ERROR_EXPECTATIVA",
+    "reason": "/voz crear compone un guion a partir de una instrucción; no promete lectura literal ni coincidencia exacta con la duración orientativa. «Hola.» y1.8785s no violan esos contratos; /voz TEXTO es el modo literal.",
+    "evidence": [
+      "STRESS-20261106/results.json:make_voice/c13",
+      "private/stress-20261106/batch1/make_voice/execution/recovery1/results.json:c13",
+      "src/botsky/adapters/gemini.py:PURPOSE.compose"
+    ],
+    "contract": [
+      "docs/R4.md:literal y composición diferentes",
+      "docs/portados/ia-voz.md:duración orientativa, máximo600s"
+    ],
+    "root_cause": "COMPOSE_VS_LITERAL_AND_ADVISORY_DURATION",
+    "validation": "Prueba local existente verifica composición, parámetro requested_seconds y modo; no se altera la voz para ajustar duración exacta."
+  },
+  {
+    "claim_id": "conversation-01",
+    "classification": "DEFECTO_PRODUCTO_CONFIRMADO",
+    "reason": "El código gemini_request_failed era un error estable y controlado, no una excepción cruda filtrada. Sí se confirma el defecto subyacente: bastaba la firma OggS para subir un contenedor ilegible al proveedor. Ahora se comprueba localmente contenedor, pistas y duración antes de marcar dispatch; broken_audio devuelve invalid_audio con cero llamadas al modelo.",
+    "evidence": [
+      "STRESS-20261106/results.json:conversation/c16",
+      "CONTRASTE-20261106/root-reproductions.json",
+      "src/botsky/engines/content_jobs.py:analysis_files",
+      "tests/test_ai.py:test_analysis_rejects_corrupt_audio_before_provider_dispatch"
+    ],
+    "contract": [
+      "rebuildbotsky.md §6 condiciones particulares de medios: verificar tipo real, firma y duración",
+      "docs/portados/ia-voz.md:adjuntos propios y análisis del contenido"
+    ],
+    "root_cause": "ANALYSIS_MEDIA_SIGNATURE_WITHOUT_CONTAINER_VALIDATION",
+    "validation": "Reproducción local antes/después:184bytes Ogg corruptos antes aceptados; ahora invalid_audio. Pruebas de audio WAV/video MP4 válidos preservan bytes/MIME y pasan. Es inspección de contenedor/metadatos, no prueba de decodificación íntegra ni de semántica del proveedor."
+  },
+  {
+    "claim_id": "conversation-02",
+    "classification": "NO_REPRODUCIDO",
+    "reason": "La respuesta del modelo no demuestra omisión de archivos. La DB original contiene attachments_json e inputs_json para ambos casos. El camino de análisis convierte PPTX a texto y preserva el JSON malformado como texto; la regresión inspecciona los tipos SDK reales y demuestra que ambas cargas llegan a contents. No se dispone de una captura del request remoto original para adjudicar la percepción del proveedor.",
+    "evidence": [
+      "STRESS-20261106/results.json:conversation/c14,c19",
+      "private/stress-20261106/batch1/conversation/execution/app/lab.sqlite3 (consulta solo lectura)",
+      "tests/test_ai.py:test_analysis_forwards_presentation_and_malformed_json_content",
+      "src/botsky/adapters/gemini.py:generate"
+    ],
+    "contract": [
+      "rebuildbotsky.md §7:/ia con adjunto admisible analiza contenido",
+      "docs/portados/ia-voz.md:Office a texto en sandbox; partes SDK inline"
+    ],
+    "root_cause": "UNVERIFIED_PROVIDER_FILE_INTERPRETATION",
+    "validation": "Prueba local pasa y compara texto de diapositiva y bytes JSON exactos en inline_data text/plain. Sin nueva petición remota; calidad/procesamiento remoto no certificados."
+  }
+]

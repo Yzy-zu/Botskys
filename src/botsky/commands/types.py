@@ -59,6 +59,13 @@ class Field:
                 h, m, s = match.groups()
                 value = str(int(h) * 3600 + int(m) * 60 + float(s))
             if not re.fullmatch(pattern, value):
+                if self.kind == "int":
+                    bounds = (
+                        f" entre {self.minimum}–{self.maximum}"
+                        if self.minimum is not None and self.maximum is not None
+                        else ""
+                    )
+                    raise ValueError(f"requiere un número entero{bounds}, sin coerciones")
                 raise ValueError("requiere un número decimal positivo sin coerciones")
             number = (int(value) if self.kind in ("int", "duration") else float(value)) * factor
             if (
@@ -115,7 +122,7 @@ class Field:
                     raise ValueError("páginas entre 1 y 500 en rangos ascendentes")
         elif self.kind in ("contacts", "terms"):
             contacts = tuple(s.strip() for s in value.split(","))
-            limit = 10 if self.kind == "contacts" else 8
+            limit = self.max_items
             length = 80 if self.kind == "contacts" else 100
             if (
                 not 1 <= len(contacts) <= limit

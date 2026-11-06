@@ -1,5 +1,59 @@
 # Relevo Botsky
 
+## 06/11/2026 19:07 UTC · Contraste terminado; cinco causas confirmadas corregidas
+
+Encargo posterior del propietario: el principal es el agente de contraste y puede
+apoyarse en subagentes Luna. Tres revisiones delegadas, análisis propio de IA/voz
+y cancelación, revisión final del principal de adjudicaciones/código. AGENTS recoge
+esta autorización posterior; no se reabrió la campaña ni se hicieron pruebas
+remotas/envíos. Producto base b34db69, HEAD documental inicial3f6f3d6.
+
+50/50claims adjudicados:5defectos confirmados,21límites/denegaciones correctos,
+14errores de expectativa,8problemas de fixture/setup/harness y2sin reproducir.
+Tres observaciones revisadas:1defecto,1incidente de harness y1dependencia externa.
+Los5claims y1observación corresponden a5causas distintas, todas corregidas:
+bucle de shield sobre launch ya cancelada; contenedor de audio/media sin validar
+antes de análisis IA; metadata de búsqueda10vs8; diagnóstico «decimal» en enteros
+(compartido ruleta/admin); oferta de pack para categoría inexistente.
+
+Cancelación terminal se propaga sin bucle; la del padre conserva shield y retira
+el hijo. Watchdog externo3s confirma atasco previo y salida corregida; regresiones
+con hijo real, cancelaciones repetidas y OSError. IA verifica contenedor/pistas/
+duración antes del dispatch: Ogg sintético roto pasa de aceptado a invalid_audio,
+cero llamadas Gemini. WAV/MP4 válidos se conservan. No se promete decodificación
+completa ni semántica remota. Registry/catálogo exportan ocho términos, parser
+usa ese límite; diagnóstico entero/rango corregido. Packs verifican existencia
+publicada con normalización/techo10000 de selección, sin imponer stock preoferta;
+azar, nombres acentuados y catálogo>100 preservados, sin cargo por rechazo.
+
+Falsos positivos contrastados: spoken_text completo2722caracteres frente al
+feedback JSON truncado1700; literalidad de /voz ultima y duración orientativa;
+OCR azul uniforme, ASR con tonos sin habla, PDF501páginas/imagen4097px; outputs
+inyectados como adjuntos actuales por harness en vez de citas exactas. Adjuntos
+opacos escuela/recados e idempotencia terminal cumplen sus contratos.
+
+Sin reproducir: conversation-02, respuesta del modelo que negó adjuntos aunque
+DB/SDK contienen archivos; regresión demuestra contenido PPTX/JSON enviado, no
+interpretación remota. search_web-02, sin oracle determinista/RSS que demuestre
+coincidencia descartada. No se modifican esas funciones por sospecha. Informe AGY
+de descargas rechazado por proveedor sigue ausente; sus25resultados conservados.
+No se reescriben los783resultados ni50claims originales; manifiesto SHA256 nuevo.
+
+219Python distintos y286Node PASS:218en suite completa y1test adicional de
+>100álbumes tras discovery, con red bloqueada. Cero fallos/omisiones; guardias
+de red locales, cero intentos Python fuera de loopback. SQLite/motores/archivos sintéticos reales y
+proveedores dobles. Ruff check/format132archivos, pip check y diffcheck correctos.
+Informe docs/RESULTADO_CONTRASTE_20261106.md; adjudicación final y evidencia nueva
+docs/evidencia/CONTRASTE-20261106/ (summary/adjudications, antes/después, guion,
+logs y manifiesto). El principal revisó y corrigió normalización/límites de patches
+delegados antes del cierre. Commit selectivo local con código, pruebas y relevo.
+
+Campañas siguen CERRADAS, perfiles operativos/apagados intactos. R10 global y
+fronteras remotas/humanas pendientes; R11 no iniciado. Sin servicios, webhook,
+mensajes, llamadas, navegador, mutaciones grupo/servidor, GitHub, transición,
+NLP, DB31 o perfiles/sesiones de Zhana. Cuota80%primaria/30%semanal al cierre;
+umbral5% sigue vigente, guardar y parar sin reanudación automática.
+
 ## 06/11/2026 18:35 UTC · Descubrimiento10+10+10 terminado; paquete listo para contraste
 
 Nuevo encargo del dueño: tres tandas de diez agentes AGY CLI, una herramienta por

@@ -190,6 +190,21 @@ class CommandsTest(TestCase):
         self.assertEqual(self.parse("/hh estado EVENTO_REAL").arguments["event_id"], "EVENTO_REAL")
         self.assertEqual(self.parse("/voz --voz peruano Hola").arguments["voice"], "peruano")
 
+    def test_search_terms_follow_registry_limit_and_integer_errors_name_the_type(self):
+        terms = self.router.registry.paths[("buscar",)].fields[0]
+        self.assertEqual(terms.max_items, 8)
+        eight = ",".join(f"t{i}" for i in range(8))
+        self.assertEqual(
+            len(self.parse(f"/buscar --terminos {eight} consulta").arguments["required_terms"]), 8
+        )
+        nine = ",".join(f"t{i}" for i in range(9))
+        error = self.error(f"/buscar --terminos {nine} consulta", "invalid_field")
+        self.assertIn("1 a 8 valores", error.reply)
+
+        error = self.error("/admin xp-dar --cuenta 1 -25", "invalid_field")
+        self.assertIn("número entero entre 1–50000", error.reply)
+        self.assertNotIn("decimal", error.reply)
+
     def test_catalog_actions_are_accounted_for_and_help_is_generated(self):
         catalog = json.loads(Path("docs/inventario/catalog.json").read_text())
         internal = {

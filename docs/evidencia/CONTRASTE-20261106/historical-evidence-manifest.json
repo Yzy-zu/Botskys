@@ -1,0 +1,112 @@
+[
+  {
+    "path": "docs/evidencia/STRESS-20261106/cancelled-launch-repro-result.json",
+    "bytes": 86,
+    "sha256": "fff69a020978d9602038e2e22a0912ed05f5832c5a0ddbf38f9f9c848a37fb90"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/cancelled-launch-repro-stderr.txt",
+    "bytes": 694,
+    "sha256": "6b94207433e763f473ccaf4fb1b38ad87de43bc882fe42fe9bf1301980f26572"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/cancelled-launch-repro.py",
+    "bytes": 602,
+    "sha256": "109e0b30b4c97dca3e77b8bfbceeaa0f7f12344f3e684374be83314b77f204cb"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/claims-for-contrast.json",
+    "bytes": 44818,
+    "sha256": "aada0a84332f2e04991ad9118f0bcb1ef67ae325cdef32c02b85ed34e247b9ae"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/fixture-ledger.json",
+    "bytes": 5033,
+    "sha256": "65f1e5fdbc0be41a66bdf4141e3e119505207d47de751924dc54f3fdcf5ef976"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/format-final.txt",
+    "bytes": 28,
+    "sha256": "8f54ec861a76fc44aebfec6bc4ffd4a23bf75dceacc9ae5028bb9d634db66a53"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/harness-interruption.txt",
+    "bytes": 17134,
+    "sha256": "3f49ed5053ff9f316bcbb15ad066345c34f8683eecbe9e4da0ba5a83fffc52ea"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/harness-tests-final.txt",
+    "bytes": 392,
+    "sha256": "0ea4d0b1dbd0c1e558e29d6f5e45a081bd7d4bf397b5ee29c3377e068d24f10a"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/lab-guard-tests.txt",
+    "bytes": 780,
+    "sha256": "ab74fd1859258b32df2b323ca8d80cafa559765597cc6bd14966f52fa09425b8"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/orchestrator-observations.json",
+    "bytes": 1614,
+    "sha256": "07702649b0c784d65b74490fc301a306957d33d75fa576c84a4887132afbc912"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/pip-check.txt",
+    "bytes": 30,
+    "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/private-evidence-hashes.json",
+    "bytes": 41493,
+    "sha256": "18872a61bfb6cfe269fedd01e723789ff751e84d41f201c86f64b56b1b68fa2c"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/product-hashes.json",
+    "bytes": 497,
+    "sha256": "e37bb53116a95452650e5a9c9d0c748e461813d8274613d76bbcb919350dcf58"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/reports.json",
+    "bytes": 131997,
+    "sha256": "45726658f50cf8ddc6cb2400acbca3e1ee830cb93c2b5dbcb3d702c5e402221b"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/results.json",
+    "bytes": 952362,
+    "sha256": "1164562492c33be104a26b6caa3bb00ca2e2e97b9ee1ee408475880710f1b8d1"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/route-coverage.json",
+    "bytes": 45236,
+    "sha256": "31fbf8c0d7e54d13c92dfaebc1f7e016a6b5a76458c1b856c448830f17ee29f4"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/ruff-final.txt",
+    "bytes": 19,
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/summary.json",
+    "bytes": 1425,
+    "sha256": "cf51daa7e3a6e3dd86d0d2424a0daf7d506f1134f6ac15f5f4458757381a609e"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/syntax-boundaries.json",
+    "bytes": 53499,
+    "sha256": "7499946a8740cd9c7a3e60787990c071234fa44e1ba1d7131fce85d25ad8bd9e"
+  },
+  {
+    "path": "docs/evidencia/STRESS-20261106/tools.json",
+    "bytes": 13930,
+    "sha256": "74c6ffb79892c6064050d14afb6b974a935e3bc0a199d3fccc4b8170a3f607cb"
+  },
+  {
+    "path": "docs/CONTRASTE_STRESS_20261106.md",
+    "bytes": 2561,
+    "sha256": "2a57622b9ae9b66e5003e9b1e7eb0c914c939a41f7a8a97da053305e4ffb07cf"
+  },
+  {
+    "path": "docs/STRESS_20261106.md",
+    "bytes": 8006,
+    "sha256": "c07cba85252cb2339329898cc5d4708f57456bd4edb1600d89339cf84a8a2ff2"
+  }
+]
