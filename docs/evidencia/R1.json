@@ -11,7 +11,7 @@
   "generated_artifacts_sha256": {
     "docs/commands.md": "f91826e096d869775b7f0d6483e3f39c455406363f987754cc81ef48618747b0",
     "docs/commands.json": "096ba14eb4d34e2a616d145c68f5491cdaa035bf583ec3656bd355327207ec7e",
-    "docs/command-matrix.csv": "e9be305f21f707f7d6f92f3e82ed685236a8884f08352f63fa226ab371282b51"
+    "docs/command-matrix.csv": "f2300e4c623d784d2fb0a4d6e390a986f5f1e5e254f55e55e55e2e4d57f0dc9c"
   },
   "checks": [
     "ejemplos de todas las rutas con red y archivos prohibidos",
@@ -31,6 +31,11 @@
     {
       "case": "span literal",
       "finding": "offset esperado en test incorrecto; corregido a longitud real del prefijo",
+      "resolved": true
+    },
+    {
+      "case": "CSV staged diffcheck",
+      "finding": "CSV por defecto emitía CRLF, detectado al comprobar el índice después de generar archivos nuevos; se fija LF y se repite el check del índice antes de continuar",
       "resolved": true
     }
   ],
