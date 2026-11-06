@@ -47,7 +47,7 @@ class Scheduler:
             }
         )
         db.execute(
-            "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,origin,source_receipt_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,'[]','friend','completed',?,'internal',?)",
+            "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,origin,source_receipt_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,'[]',?,'completed',?,'internal',?)",
             (
                 identifier,
                 *context.scope_key[:2],
@@ -60,6 +60,7 @@ class Scheduler:
                 now,
                 hashlib.sha256(command.encode()).hexdigest(),
                 command,
+                "owner" if kind == "digest" else "friend",
                 result.to_json(),
                 row["receipt_id"],
             ),

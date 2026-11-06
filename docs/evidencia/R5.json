@@ -24,5 +24,10 @@
     "scheduler explícito, ningún servicio periódico activado",
     "poda general y operación prolongada pendientes de R10",
     "R6–R9 y R10 de integración pendientes; R11 sin encargo"
-  ]
+  ],
+  "followup": {
+    "tests": 9,
+    "log": "R5-owner-revalidation.txt",
+    "change": "digest delivery retains owner permission and revalidates a changed owner before client"
+  }
 }

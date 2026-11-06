@@ -288,3 +288,17 @@ class OrganizationTest(TestCase):
         self.receive("/recordatorio cancelar " + str(reminder))
         self.assertEqual(self.receive("/recordatorios").result.data["total"], 0)
         self.assertEqual(self.receive("/recordatorios --cerradas").result.data["total"], 1)
+
+    def test_digest_delivery_rechecks_current_owner(self):
+        from dataclasses import replace
+
+        self.receive(
+            "/escuela resumen configurar si --hora 09:00",
+            actor="owner",
+            chat="group",
+            is_group=True,
+        )
+        notice = self.app.scheduler.tick()[0]
+        settings = replace(self.settings, owner="bob", friends=frozenset({"alice", "owner"}))
+        restarted = Application(settings, clock=lambda: self.now)
+        self.assertEqual(restarted.deliver(notice, CollectingTransport()), 0)

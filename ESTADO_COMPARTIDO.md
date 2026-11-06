@@ -2,7 +2,7 @@
 
 ## 06/11/2026 · R5 cerrado localmente; sigue R6
 
-R4 commit30aad3f. R5 esquema propio v5: memoria explícita literal, filtros/páginas,
+R4 commit30aad3f; R5 commit9beff13. R5 esquema propio v5: memoria explícita literal, filtros/páginas,
 corrección/olvido y borrado total con vista entregada ligada a snapshot/revisión.
 IDs monotónicos. Contexto Gemini recibe solo ocho hechos propios como datos, sin
 clasificador ni acceso al ejecutor. No se importó memoria ni dato anterior.
@@ -24,7 +24,9 @@ proveedores dobles. Nuevos casos: filtros/paginación, pausa/caducidad, memoria
 propia en contexto IA y cero efectos desde contenido. Ruff/pip check/diffcheck,
 CLI init/tick e integridad/FK de SQLite correctos. Evidencia docs/evidencia/R5.json,
 R5-final-tests.txt; decisiones y límites docs/R5.md y docs/portados/organizacion.md.
-Poda general y operación prolongada pendientes de R10; no se borran recibos.
+Revisión posterior: nueve pruebas focales pasan; el aviso digest conserva permiso
+owner y se deniega antes de transporte si cambia el dueño configurado. Evidencia
+R5-owner-revalidation.txt. Poda general/operación prolongada pendientes de R10.
 
 Siguiente R6: Drive/recados con destinos configurados, vistas/confirmación y clientes
 acotados; R7–R9 por dependencias. Integración local R10 tras R3–R9. R10 remoto y R11
