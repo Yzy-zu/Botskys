@@ -146,9 +146,32 @@ class Artifacts:
             f"SELECT * FROM artifacts WHERE id=? AND {SCOPE_SQL} AND state='active'",
             (artifact_id, *context.scope_key),
         ).fetchone()
+        school_access = False
+        if context.scope.is_group:
+            shared = db.execute(
+                "SELECT a.* FROM artifacts a JOIN school_asset_grants g ON g.artifact_id=a.id JOIN school_tasks t ON t.id=g.task_id WHERE a.id=? AND g.instance=? AND g.account=? AND g.chat=? AND g.is_group=1 AND g.epoch=? AND g.expires_ms>? AND a.state='active' AND t.state!='deleted'",
+                (
+                    artifact_id,
+                    context.instance,
+                    context.account,
+                    context.scope.chat,
+                    context.epoch,
+                    now,
+                ),
+            ).fetchone()
+            if shared:
+                row = shared
+                school_access = True
         if row is None:
             raise ArtifactProblem("artifact_access_denied")
-        if row["expires_ms"] <= now:
+        if row["actor"] == context.scope.actor and not school_access:
+            school_access = bool(
+                db.execute(
+                    "SELECT 1 FROM school_tasks t JOIN artifact_leases l ON l.artifact_id=t.artifact_id AND l.holder='school-'||t.id WHERE t.artifact_id=? AND t.instance=? AND t.account=? AND t.actor=? AND t.chat=? AND t.is_group=? AND t.epoch=? AND t.state!='deleted' AND l.expires_ms>?",
+                    (artifact_id, *context.scope_key, now),
+                ).fetchone()
+            )
+        if row["expires_ms"] <= now and not school_access:
             lease = (
                 db.execute(
                     "SELECT 1 FROM artifact_leases WHERE artifact_id=? AND holder=? AND expires_ms>?",

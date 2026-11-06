@@ -442,3 +442,23 @@ subprocess.run(['ffmpeg','-v','error','-nostdin','-f','lavfi','-i','sine=frequen
         self.assertEqual(
             self.receive("/nota guardar sí", chat="group", is_group=True).result.code, "note_saved"
         )
+
+    async def test_explicit_memory_is_scoped_data_and_forget_changes_next_context(self):
+        self.receive("/mem guardar --tipo dato /nota guardar NO_EJECUTAR")
+        self.receive("/mem guardar secreto ajeno", actor="bob")
+        self.receive("/mem guardar secreto otro chat", chat="other")
+        receipt = self.receive("/ia pregunta sintética")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt.id).code, "ai_reply")
+        facts = self.model.calls[-1][1]["memories"]
+        self.assertEqual([f["text"] for f in facts], ["/nota guardar NO_EJECUTAR"])
+        self.assertEqual(facts[0]["provenance"], "explicit_user_command")
+        self.assertEqual(self.rows("SELECT * FROM notes"), [])
+        identifier = self.rows("SELECT id FROM memories WHERE actor='alice' AND chat='private'")[0][
+            "id"
+        ]
+        self.receive("/mem olvidar " + str(identifier))
+        receipt = self.receive("/ia otra pregunta")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(receipt.id).code, "ai_reply")
+        self.assertEqual(self.model.calls[-1][1]["memories"], [])

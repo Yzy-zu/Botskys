@@ -1,5 +1,37 @@
 # Relevo Botsky
 
+## 06/11/2026 · R5 cerrado localmente; sigue R6
+
+R4 commit30aad3f. R5 esquema propio v5: memoria explícita literal, filtros/páginas,
+corrección/olvido y borrado total con vista entregada ligada a snapshot/revisión.
+IDs monotónicos. Contexto Gemini recibe solo ocho hechos propios como datos, sin
+clasificador ni acceso al ejecutor. No se importó memoria ni dato anterior.
+
+Recordatorios técnicos por fecha/hora México o intervalo de entrada. Scheduler
+optativo CLI tick reserva origen interno autorizado + efecto + outbox atómicamente;
+concurrencia/reinicio sin segunda reserva. Avisos vencidos600s se descartan también
+al reclamar entrega, con revalidación de permisos/modo/pausa. Estado incierto no se
+reenvía automáticamente. No hay servicio ni transporte real activado.
+
+Escuela: tareas por ámbito, mutaciones de autor, adjunto propio compartido solo por
+petición explícita en ese grupo, límites10MiB/32MiB, lease396d y revocación al borrar.
+Horarios y digest solo dueño, rechazo de solapamientos y reserva diaria única.
+Encuestas de texto: opciones completas, publicación aceptada antes del voto,
+actualización monótona por origen/orden de admisión, cierre por autor/dueño.
+
+65tests de regresión completa pasan, fixtures/SQLite/motores reales locales y
+proveedores dobles. Nuevos casos: filtros/paginación, pausa/caducidad, memoria
+propia en contexto IA y cero efectos desde contenido. Ruff/pip check/diffcheck,
+CLI init/tick e integridad/FK de SQLite correctos. Evidencia docs/evidencia/R5.json,
+R5-final-tests.txt; decisiones y límites docs/R5.md y docs/portados/organizacion.md.
+Poda general y operación prolongada pendientes de R10; no se borran recibos.
+
+Siguiente R6: Drive/recados con destinos configurados, vistas/confirmación y clientes
+acotados; R7–R9 por dependencias. Integración local R10 tras R3–R9. R10 remoto y R11
+requieren otro encargo. Zhana activa/NLP/evidencias previas intactos. Sin GitHub,
+mensajes externos ni navegador. Cuota comprobada9% primaria/41% semanal; umbral5%
+guardar y parar sin reanudación automática. Continúa el encargo de construcción.
+
 ## 06/11/2026 · R4 cerrado localmente; sigue R5
 
 R3 commit670bd73. R4 esquema propio v4, SDK Gemini de contenido nuevo (sin tools,

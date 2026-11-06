@@ -79,6 +79,7 @@ class GeminiContent:
         files=(),
         requested_seconds=None,
         quoted_text=None,
+        memories=(),
     ):
         if not self.available:
             raise MediaError("gemini_not_configured")
@@ -106,6 +107,7 @@ class GeminiContent:
                                 "history": list(history),
                                 "requested_seconds": requested_seconds,
                                 "quoted_text": quoted_text,
+                                "explicit_memory": list(memories),
                             },
                             ensure_ascii=False,
                         )

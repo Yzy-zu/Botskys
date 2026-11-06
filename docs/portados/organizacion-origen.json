@@ -1,0 +1,57 @@
+[
+  {
+    "source": "src/zhana/memory.py",
+    "sha256": "894ddc0d713921b87f7755f1104fe1e2eedba570ce430db5351540e888558b07",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/memory_store.py",
+    "sha256": "c1b60988b52031ed1dc07c85910a70f51b1a4fc800c74790354167b6fbd4981f",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/reminder_time.py",
+    "sha256": "15a91c25a052650c90f461c88d41ff5241ed4b2d664f5f4f77c66bfca8754235",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/reminder_store.py",
+    "sha256": "7ad531e199a7d5925a8393aa636fd3a7fcafe446c9a794a906e711493814bdf0",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/reminder_scheduler.py",
+    "sha256": "1dafbc0b7597daa8d613454fc235af66afb68ed66e12b8b58531b2e3057a9ec3",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/school.py",
+    "sha256": "62be891aae1ed32fe90c2a75282e8798dd360442026cbaf1ccff6ef1bf87104f",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/school_store.py",
+    "sha256": "8e681288eae9150e442672c7c15da49944b32da6e0bf683eda4a4084efdfcca5",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/school_attachments.py",
+    "sha256": "85fc530b7f6d3c47102725ba1190e3114f526c5eb14fd80a844cd0663bd528a0",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/school_scheduler.py",
+    "sha256": "e17514d564dc16607b74ef49e6e29ee54ff238ff0ee6e48b2bae6a398a38c5bc",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/polls.py",
+    "sha256": "4b75df38677fb65e12ac91e04d632f22af1b601d6883e8cb538526caa85e006b",
+    "decision": "technical reference; own implementation"
+  },
+  {
+    "source": "src/zhana/polls_store.py",
+    "sha256": "0eef3a71a6ffa4ef99ce3408030d357feb866b538f83450375dda1a90cea878a",
+    "decision": "technical reference; own implementation"
+  }
+]

@@ -71,6 +71,7 @@ async def execute(job, directory, paths, manager, gemini, tts, asr):
             history=args.get("history", ()),
             files=files,
             quoted_text=args.get("quoted_text"),
+            memories=args.get("memories", ()),
         )
         if not isinstance(text, str) or not text.strip() or len(text) > 8000:
             raise MediaError("gemini_invalid_response")

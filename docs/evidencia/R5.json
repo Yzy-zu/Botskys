@@ -1,0 +1,28 @@
+{
+  "block": "R5",
+  "status": "PASS",
+  "level": "local SQLite/fixtures; remote NOT_TESTED",
+  "at": "2026-11-06T03:26:38.376425+00:00",
+  "schema": 5,
+  "tests": 65,
+  "log": "R5-final-tests.txt",
+  "checks": [
+    "memoria literal propia, snapshot confirmado y no reutilización de ID",
+    "memoria a Gemini como datos, sin ejecución ni mezcla de actor/chat",
+    "filtros y paginación de memoria y cerrados de recordatorios",
+    "fechas completas o intervalo explícito; Ciudad de México",
+    "reserva atómica concurrente/reinicio; incertidumbre sin repetir",
+    "caducidad de aviso pendiente y pausa antes de entregar; recibo enviado conservado",
+    "escuela: ownership, adjunto compartido explícitamente, revocación y lease",
+    "horario/digest solo dueño; no solapamiento; una reserva por día",
+    "encuesta: opciones completas, publicación aceptada, voto monótono y cierre autorizado",
+    "ruff/pip check/diffcheck; CLI init/tick; integrity/FK SQLite",
+    "hashes de referencia técnica iguales al inventario R0"
+  ],
+  "limits": [
+    "sin WhatsApp/recepción humana ni proveedores remotos",
+    "scheduler explícito, ningún servicio periódico activado",
+    "poda general y operación prolongada pendientes de R10",
+    "R6–R9 y R10 de integración pendientes; R11 sin encargo"
+  ]
+}

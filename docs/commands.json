@@ -2612,7 +2612,7 @@
         }
       ],
       "constants": [],
-      "permission": "friend",
+      "permission": "owner",
       "effect": "write",
       "confirmation": "none",
       "attachment": false,
@@ -2688,7 +2688,7 @@
         }
       ],
       "constants": [],
-      "permission": "friend",
+      "permission": "owner",
       "effect": "write",
       "confirmation": "none",
       "attachment": false,
@@ -2744,7 +2744,7 @@
         }
       ],
       "constants": [],
-      "permission": "friend",
+      "permission": "owner",
       "effect": "write",
       "confirmation": "none",
       "attachment": false,

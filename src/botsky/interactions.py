@@ -170,7 +170,7 @@ def preview_retry(db, context, target, now, artifacts, *, confirm_uncertain=Fals
     )
 
 
-def confirm(db, context, identifier, now):
+def _confirm_delivery(db, context, identifier, now):
     view = db.execute(
         f"SELECT * FROM interactions WHERE id=? AND {SCOPE_SQL} AND kind='delivery_retry' AND state='active' AND expires_ms>?",
         (identifier, *context.scope_key, now),
@@ -227,4 +227,26 @@ def confirm(db, context, identifier, now):
         "delivery_retry_authorized",
         "Reintento de entrega autorizado. Se conservan las partes ya aceptadas y el resultado del motor.",
         {"target": data["target"]},
+    )
+
+
+def confirm(db, context, identifier, now):
+    view = db.execute(
+        f"SELECT * FROM interactions WHERE id=? AND {SCOPE_SQL} AND state='active' AND expires_ms>?",
+        (identifier, *context.scope_key, now),
+    ).fetchone()
+    if not view:
+        return Result(
+            "needs_input",
+            "confirmation_unavailable",
+            "La confirmación no es propia, entregada y vigente.",
+        )
+    if view["kind"] == "delivery_retry":
+        return _confirm_delivery(db, context, identifier, now)
+    if view["kind"] == "memory_forget_all":
+        from .domains.organization import confirm_memory
+
+        return confirm_memory(db, context, view, now)
+    return Result(
+        "failed", "unsupported_confirmation", "Esta confirmación no tiene una acción admitida."
     )

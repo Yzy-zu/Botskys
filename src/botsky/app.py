@@ -47,6 +47,9 @@ class Application:
             web=lambda: self.web,
             content=lambda: (self.gemini, self.tts, self.asr),
         )
+        from .scheduler import Scheduler
+
+        self.scheduler = Scheduler(self)
 
     def attach_local(self, incoming, path):
         """Adjunto explícito de operador; nunca una ruta extraída de texto de chat."""
@@ -129,6 +132,10 @@ class Application:
             return bot.execute(db, context, spec.original_action, args, now, caps)
         if spec.family in ("conversation", "make_voice", "transcribe_media"):
             return ai.execute(db, context, spec, command, now, self)
+        if spec.family in ("manage_memory", "manage_reminder", "manage_school", "manage_poll"):
+            from .domains import organization
+
+            return organization.execute(db, context, spec, command, now, self)
         if operation == "core.help":
             return Result("ok", "help", self.router.registry.help(args.get("topic", "")))
         if operation == "core.estado":
@@ -235,6 +242,7 @@ def main():
     )
     sub.add_parser("init", help="inicializa solo almacenamiento propio")
     sub.add_parser("work", help="ejecuta trabajos locales pendientes; no activa proveedores")
+    sub.add_parser("tick", help="reserva avisos locales vencidos sin transporte remoto")
     send = sub.add_parser(
         "deliver", help="aceptación por STDOUT de partes pendientes, sin transporte remoto"
     )
@@ -267,6 +275,9 @@ def main():
         return 0
     if args.command == "init":
         print("Almacenamiento propio listo; ningún proveedor activado.")
+        return 0
+    if args.command == "tick":
+        print(json.dumps({"notifications_queued": app.scheduler.tick()}))
         return 0
     incoming = LocalAdapter(settings).incoming(
         args.message_id or uuid4().hex,

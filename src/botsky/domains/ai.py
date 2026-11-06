@@ -177,6 +177,20 @@ def execute(db, context, spec, command, now, app):
                 )
         else:
             args["history"] = history(db, context, now)
+            args["memories"] = [
+                {
+                    "kind": r["kind"],
+                    "text": r["text"],
+                    "provenance": "explicit_user_command",
+                    "revision": r["revision"],
+                }
+                for r in db.execute(
+                    "SELECT kind,text,revision FROM memories WHERE "
+                    + SCOPE_SQL
+                    + " ORDER BY updated_ms DESC,id DESC LIMIT 8",
+                    context.scope_key,
+                )
+            ]
             if row["quoted_message_id"] and not inputs:
                 quoted = literal_source(db, context, row, "quote", now)
                 if not quoted:

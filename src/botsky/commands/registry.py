@@ -490,6 +490,7 @@ def build_specs():
             ),
         ],
         effect="write",
+        permission="owner",
         block="R5",
     )
     add(
@@ -505,6 +506,7 @@ def build_specs():
         "delete_lesson",
         [integer("lesson_id", maximum=9223372036854775807)],
         effect="write",
+        permission="owner",
         block="R5",
     )
     add(
@@ -516,6 +518,7 @@ def build_specs():
             option(replace(CLOCK, name="digest_time", original="digest_time"), "--hora"),
         ],
         effect="write",
+        permission="owner",
         block="R5",
         example="/escuela resumen configurar si --hora 18:00",
     )

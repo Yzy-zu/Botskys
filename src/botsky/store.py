@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 PART_CHARS = 3500
 
 
@@ -75,6 +75,11 @@ class Store:
                 version = 3
             if version == 3 and application_id == APPLICATION_ID:
                 db.executescript((Path(__file__).parent / "migrations/004_ai.sql").read_text())
+                version = 4
+            if version == 4 and application_id == APPLICATION_ID:
+                db.executescript(
+                    (Path(__file__).parent / "migrations/005_organization.sql").read_text()
+                )
             elif version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -343,6 +348,30 @@ class Store:
             context = context_of(parent)
             if access.authorize(parent["permission"], context, settings):
                 return None
+            if parent["origin"] == "internal":
+                from .domains.bot import current
+
+                mode = current(db, context)
+                if mode["mode"] == "apagado" or mode["paused_until_ms"] > now:
+                    return None
+                event = db.execute(
+                    "SELECT expires_ms FROM organization_events WHERE delivery_receipt_id=?",
+                    (receipt_id,),
+                ).fetchone()
+                if event and event["expires_ms"] <= now:
+                    db.execute(
+                        "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
+                        (receipt_id,),
+                    )
+                    db.execute(
+                        "UPDATE reminders SET state='expired',revision=revision+1 WHERE delivery_receipt_id=? AND state='emitted'",
+                        (receipt_id,),
+                    )
+                    db.execute(
+                        "UPDATE organization_events SET state='expired' WHERE delivery_receipt_id=? AND state='emitted'",
+                        (receipt_id,),
+                    )
+                    return None
             row = db.execute(
                 "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' ORDER BY position LIMIT 1",
                 (receipt_id,),
@@ -405,6 +434,15 @@ class Store:
                     "DELETE FROM artifact_leases WHERE holder=? AND token=?",
                     (f"delivery-{part.receipt_id}-{part.position}", str(revision)),
                 )
+            if changed and state in ("failed", "uncertain"):
+                db.execute(
+                    "UPDATE reminders SET state=?,revision=revision+1 WHERE delivery_receipt_id=?",
+                    (state, part.receipt_id),
+                )
+                db.execute(
+                    "UPDATE organization_events SET state=? WHERE delivery_receipt_id=?",
+                    (state, part.receipt_id),
+                )
             if (
                 changed
                 and state == "accepted"
@@ -424,6 +462,18 @@ class Store:
                 db.execute(
                     "UPDATE ai_history SET accepted=1 WHERE receipt_id=? AND epoch=? AND expires_ms>?",
                     (part.receipt_id, settings.epoch, now),
+                )
+                db.execute(
+                    "UPDATE polls SET published_ms=coalesce(published_ms,?) WHERE receipt_id=? AND state='open'",
+                    (now, part.receipt_id),
+                )
+                db.execute(
+                    "UPDATE reminders SET state='sent',revision=revision+1 WHERE delivery_receipt_id=?",
+                    (part.receipt_id,),
+                )
+                db.execute(
+                    "UPDATE organization_events SET state='accepted' WHERE delivery_receipt_id=?",
+                    (part.receipt_id,),
                 )
             return bool(changed)
 

@@ -1,0 +1,11 @@
+test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse (test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse) ... ok
+test_poll_full_options_delivered_publication_ownership_and_monotonic_votes (test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes) ... ok
+test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat (test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat) ... ok
+test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired (test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired) ... ok
+test_school_owner_schedule_overlap_and_daily_digest_no_duplicates (test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates) ... ok
+test_school_task_owner_complete_file_explicit_share_and_grant_revocation (test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.210s
+
+OK

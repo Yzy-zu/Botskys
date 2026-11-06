@@ -322,7 +322,7 @@ Permiso: friend; implementación: R5.
 ```text
 /escuela resumen configurar ENABLED [--hora DIGEST_TIME]
 Ejemplo: /escuela resumen configurar si --hora 18:00
-Permiso: friend; implementación: R5.
+Permiso: owner; implementación: R5.
 /escuela resumen estado
 Ejemplo: /escuela resumen estado
 Permiso: friend; implementación: R5.
@@ -364,13 +364,13 @@ Permiso: friend; implementación: R7.
 ```text
 /horario agregar --materia SUBJECT --dia WEEKDAY --inicio START_TIME --fin END_TIME
 Ejemplo: /horario agregar --materia ejemplo --dia 1 --inicio 12:00 --fin 13:00
-Permiso: friend; implementación: R5.
+Permiso: owner; implementación: R5.
 /horario listar [--dia WEEKDAY]
 Ejemplo: /horario listar
 Permiso: friend; implementación: R5.
 /horario borrar LESSON_ID
 Ejemplo: /horario borrar 1
-Permiso: friend; implementación: R5.
+Permiso: owner; implementación: R5.
 ```
 
 ## /ia
