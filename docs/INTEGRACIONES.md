@@ -107,3 +107,13 @@ en private/drive/recovered-20261027; no sustituye runtime ni carpeta por falta
 de acceso. No escritura remota ni cambios en Zhana. Evidencia OAUTH-REVISION y
 OAUTH-RECUPERACION-20261106.json. Pendiente resolver acceso a carpeta con OAuth
 compatible; no es correcto afirmar que todas las credenciales estén caducadas.
+
+## Cuota verificada y aclaración del propietario · 06/11
+
+El propietario aclara que usa almacenamiento general, no una carpeta Botsky
+como requisito funcional. Consulta about/storageQuota con OAuth recuperado:
+429.497GB totales,267.263GB usados,162.234GB libres;252.156GB usados en Drive,
+papelera0. Scope confirmado drive.file: cuota global consultable, pero no otorga
+acceso general a todos los archivos. El404 previo no invalida el OAuth.
+No se modificó runtime/destino ni se escribieron archivos remotos. Evidencia
+OAUTH-CUOTA-20261106.json.

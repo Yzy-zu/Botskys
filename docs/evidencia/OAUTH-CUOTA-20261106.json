@@ -1,0 +1,17 @@
+{
+  "storageQuota": {
+    "limit": "429496729600",
+    "usage": "267262954681",
+    "usageInDrive": "252155613675",
+    "usageInDriveTrash": "0"
+  },
+  "decimal_GB": {
+    "limit": 429.497,
+    "usage": 267.263,
+    "usageInDrive": 252.156,
+    "usageInDriveTrash": 0.0
+  },
+  "scope": "https://www.googleapis.com/auth/drive.file",
+  "remote_writes": 0,
+  "free_GB": 162.234
+}
