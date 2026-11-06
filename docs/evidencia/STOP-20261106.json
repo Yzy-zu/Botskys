@@ -1,0 +1,17 @@
+{
+  "checked_at_utc": "2026-11-06T03:31:08Z",
+  "primary_remaining_percent": 5,
+  "weekly_remaining_percent": 40,
+  "state": "STOPPED_QUOTA",
+  "automatic_resume": false,
+  "completed_blocks": [
+    "R0",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
+  "partial_block": "R6",
+  "next": "Completar persistencia/vistas/trabajos Drive, OAuth propio y borradores/confirmación/entrega durable de recados; leer relevo y evidencia antes de reanudar."
+}

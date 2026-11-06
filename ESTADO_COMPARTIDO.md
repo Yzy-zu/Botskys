@@ -1,5 +1,13 @@
 # Relevo Botsky
 
+## 06/11/2026 03:31 UTC · PARADA POR CUOTA5%, sin reanudación automática
+
+Consulta oficial:5% primaria restante/40% semanal. Encargo detenido conforme al
+umbral del propietario. R0–R5 cerrados localmente; R6 PARCIAL en06a2cef, sin cierre.
+Evidencia y siguiente paso detallados abajo, STOP-20261106.json y R6-partial.json.
+Revisión documental Zhana1f25dfc. Todo guardado con commits locales selectivos;
+no iniciar más trabajo ni reanudar automáticamente. R10 remoto/R11 sin encargo.
+
 ## 06/11/2026 · R6 parcial guardado; R0–R5 cerrados localmente
 
 R5 cierre9beff13 y corrección78cdbc6. Diez pruebas focales posteriores pasan:
