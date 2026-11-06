@@ -1,0 +1,19 @@
+{
+  "refresh_http": 200,
+  "error": null,
+  "integrated": true,
+  "remote_writes": 0,
+  "quota_http": 200,
+  "quota": {
+    "limit": "5497558138880",
+    "usage": "90347137366",
+    "usageInDrive": "90302218390",
+    "usageInDriveTrash": "0"
+  },
+  "total_TiB": 5.0,
+  "used_GiB": 84.142,
+  "free_GiB": 5035.858,
+  "scope": "https://www.googleapis.com/auth/drive",
+  "own_adapter_quota_verified": true,
+  "configured_folder_accessible": true
+}

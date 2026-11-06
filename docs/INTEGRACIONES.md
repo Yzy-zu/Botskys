@@ -130,3 +130,15 @@ client_id tampoco recuperan acceso; respaldo27oct válido sigue siendo400GiB.
 Búsqueda ampliada JSON anidados/nombres alternativos y respaldos no encontró
 otro token Drive distinto utilizable. Candidatos privados0600; fuentes intactas.
 Sin sustitución runtime ni escrituras remotas. Evidencia OAUTH-BUSQUEDA-5TB*.json.
+
+## OAuth5TiB renovado e integrado · 06/11 20:20 UTC
+
+Tras reconexión del propietario en Petrovsky: renovación200, cuota200 confirma
+5497558138880B (5TiB),90347137366B usados (84.142GiB),5035.858GiB libres.
+Scope drive completo. Copia explícita client/token a private/drive propios0600,
+previos conservados en before-renewal-20261106; fuente Petrovsky intacta.
+Verificado mediante OAuthToken + DriveClient.storage_quota de Botsky; carpeta
+previamente configurada también accesible. No crea carpeta ni cambia el destino,
+permisos operativos, servicios o campañas. Cero escrituras remotas. Bloqueo
+invalid_grant resuelto en perfil propio principal; copias de laboratorios cerrados
+no se actualizan ni reactivan. Evidencia OAUTH-RENOVADO-5TB-20261106.json.
