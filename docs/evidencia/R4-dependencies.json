@@ -1,0 +1,247 @@
+{
+  "edge-tts": {
+    "version": "7.3.1",
+    "wheel": "edge_tts-7.3.1-py3-none-any.whl",
+    "sha256": "1c159dd55dc6369fa2dc1e8c021f91d7cc903f71199f3f5f680bdb73be507f00",
+    "files": 26,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "typing_extensions": {
+    "version": "4.16.0",
+    "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+    "sha256": "66ed8ebaa94af9ca0a1d2e49be983115f94b7efa13ad9f22cfc9518f49c49c83",
+    "files": 5,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "tabulate": {
+    "version": "0.10.0",
+    "wheel": "tabulate-0.10.0-py3-none-any.whl",
+    "sha256": "68f2a7b9bc09ce95889986d481da7c494e65a29ba8caf96bb62536eaebdad128",
+    "files": 7,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "certifi": {
+    "version": "2026.10.23",
+    "wheel": "certifi-2026.10.23-py3-none-any.whl",
+    "sha256": "b5cf9622a3230cc7892341dcce63ce79564388c2d497d2fa4f0b99ca6972713a",
+    "files": 12,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "aiohttp": {
+    "version": "3.14.5",
+    "wheel": "aiohttp-3.14.5-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "231bd032e86b4df75bddb76c54b0484d45a2dbfd77ecc6a2d4b68cda03ac8896",
+    "files": 73,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "yarl": {
+    "version": "1.25.1",
+    "wheel": "yarl-1.25.1-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "4691bd4a0efa71618ee986cc9e92cb360c5da63e21495ad4d7ab905805914530",
+    "files": 17,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "propcache": {
+    "version": "0.5.4",
+    "wheel": "propcache-0.5.4-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "86d6e196d735180f4f7df3eb4e21e365eebdcc11898aa3ebb8a4a29fc0ad0475",
+    "files": 13,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "multidict": {
+    "version": "7.2.1",
+    "wheel": "multidict-7.2.1-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "35b366d14b542ad54a9b2e9e56abf5e0f03c52d6f29ad65bdccddd3021786c6b",
+    "files": 15,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "idna": {
+    "version": "3.20",
+    "wheel": "idna-3.20-py3-none-any.whl",
+    "sha256": "cd07f0aed315cd14e613fd09e013f5a3ecc232bc9a973775377822a1196923de",
+    "files": 16,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "frozenlist": {
+    "version": "1.8.0",
+    "wheel": "frozenlist-1.8.0-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "55c21c074116614a6daf29d2eb33bfc445c1aa48f76feba976d640fa83cbffb2",
+    "files": 10,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "attrs": {
+    "version": "26.1.0",
+    "wheel": "attrs-26.1.0-py3-none-any.whl",
+    "sha256": "2dd400202aff87f0ad3bb19b29cb48576afdfc81016a965755512af0a64f6185",
+    "files": 35,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "aiosignal": {
+    "version": "1.4.0",
+    "wheel": "aiosignal-1.4.0-py3-none-any.whl",
+    "sha256": "8538f9c98b694768e84a1af1258213d9e9aae0b97bd89776ec35ce6e89bd1a1c",
+    "files": 7,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "aiohappyeyeballs": {
+    "version": "2.7.1",
+    "wheel": "aiohappyeyeballs-2.7.1-py3-none-any.whl",
+    "sha256": "c54786cfdbb96676391748f52f40f9efa2a8daf6eb22ac0a165c03076d326151",
+    "files": 10,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "google-genai": {
+    "version": "2.33.0",
+    "wheel": "google_genai-2.33.0-py3-none-any.whl",
+    "sha256": "17a7b65dd097bac3bc248651510f0100365752030b7601d80fa28220c60bec4a",
+    "files": 601,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "sniffio": {
+    "version": "1.3.1",
+    "wheel": "sniffio-1.3.1-py3-none-any.whl",
+    "sha256": "b623b8ed8fcc16bac19f5569292bf164de91450c40f23991bf60410f8a6274a2",
+    "files": 13,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "distro": {
+    "version": "1.9.0",
+    "wheel": "distro-1.9.0-py3-none-any.whl",
+    "sha256": "c0144356962c44356aaee1bf56ad88c25638d74c0d2ff6f9e7262d94b62b181c",
+    "files": 10,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "websockets": {
+    "version": "17.3",
+    "wheel": "websockets-17.3-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "a5953e7ffce3ac6fc2d4d391110ea0a995d4a2d4827b3ea2b944699273e6f691",
+    "files": 62,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "tenacity": {
+    "version": "9.1.4",
+    "wheel": "tenacity-9.1.4-py3-none-any.whl",
+    "sha256": "0e423b52e24753999cf26b4475c42f74e54f9b36a50086caf02c575cc9483a43",
+    "files": 18,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "requests": {
+    "version": "2.34.2",
+    "wheel": "requests-2.34.2-py3-none-any.whl",
+    "sha256": "eeda29f7fe3af1523c95d6bdf766268389b3b686d31e36d85498e1c3f6b9e73a",
+    "files": 26,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "urllib3": {
+    "version": "2.8.0",
+    "wheel": "urllib3-2.8.0-py3-none-any.whl",
+    "sha256": "71bea2d7d51191a251dd4572629aa6c39093ed14e09648605742aab00f2b7063",
+    "files": 42,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "charset-normalizer": {
+    "version": "3.5.2",
+    "wheel": "charset_normalizer-3.5.2-cp314-cp314-manylinux_2_28_aarch64.whl",
+    "sha256": "1dc02a739278ad15b3f392af7846c19508e30785f990c5678aa54929ade1ae5f",
+    "files": 21,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pydantic": {
+    "version": "2.14.1",
+    "wheel": "pydantic-2.14.1-py3-none-any.whl",
+    "sha256": "6d1816a3c4d01b28f299b7d7a9b78574a58f7e45539243c7adea7554eeebeb36",
+    "files": 111,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "typing-inspection": {
+    "version": "0.4.4",
+    "wheel": "typing_inspection-0.4.4-py3-none-any.whl",
+    "sha256": "567bcc4c8cf0481a68fbcd279d851856acef404eb2ad7e6626617ae3d2094fcc",
+    "files": 9,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pydantic_core": {
+    "version": "2.50.1",
+    "wheel": "pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_aarch64.whl",
+    "sha256": "cf3b5fd9122f4d1459d7e692bf3a8a10a697d002cab121420e94b50e3b883e48",
+    "files": 11,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "annotated-types": {
+    "version": "0.8.0",
+    "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+    "sha256": "013c20278725939a1b03ae497774d2d51d0a81bc65c5c0a8b3b3d1d842d0db0b",
+    "files": 7,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "httpx": {
+    "version": "0.28.1",
+    "wheel": "httpx-0.28.1-py3-none-any.whl",
+    "sha256": "b534491c4e23a08dfb46f7d368fe1e74f1fdef8dcaef761d91f8655e873c3313",
+    "files": 29,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "httpcore": {
+    "version": "1.0.9",
+    "wheel": "httpcore-1.0.9-py3-none-any.whl",
+    "sha256": "0bc234057e91c80969da5f28825f324ad6a156369db4521b7fcf3d28e54ec640",
+    "files": 36,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "h11": {
+    "version": "0.16.0",
+    "wheel": "h11-0.16.0-py3-none-any.whl",
+    "sha256": "12b6f3f1cb7f65d8ee414d3cca3414dd32d489a76be24f5a76940465a095b3b6",
+    "files": 17,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "anyio": {
+    "version": "4.15.1",
+    "wheel": "anyio-4.15.1-py3-none-any.whl",
+    "sha256": "de1445b7579c48600da0f5576392f4920b834f111d3236053587c80a910edb95",
+    "files": 53,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "google-auth": {
+    "version": "2.62.0",
+    "wheel": "google_auth-2.62.0-py3-none-any.whl",
+    "sha256": "f855ce2409d3deca13ac87ca720df9a6dc23dc28a69f6583ea4737997ed795dd",
+    "files": 85,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "cryptography": {
+    "version": "50.0.2",
+    "wheel": "cryptography-50.0.2-cp311-abi3-manylinux_2_34_aarch64.whl",
+    "sha256": "03b768e349142032378c6da628126336aa52b1196958445b4beee25b6e95ef7a",
+    "files": 120,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "cffi": {
+    "version": "2.1.1",
+    "wheel": "cffi-2.1.1-cp314-cp314-manylinux_2_17_aarch64.whl",
+    "sha256": "2e09a369461ac06d8a91e3634bee82e7bb1df1eec7cee9197480cae7bf430dbe",
+    "files": 31,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pycparser": {
+    "version": "3.12",
+    "wheel": "pycparser-3.12-py3-none-any.whl",
+    "sha256": "946497d1370df3c63c8f60e15c26372ea11d3bdfa4c94be9603236fe68dc549a",
+    "files": 13,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pyasn1_modules": {
+    "version": "0.4.2",
+    "wheel": "pyasn1_modules-0.4.2-py3-none-any.whl",
+    "sha256": "542f6ae1872170d094ce7023ef989c9270d7a9fd2d59de5928b658dfeacdcf1b",
+    "files": 138,
+    "origin": "repacked local installed distribution; no network"
+  },
+  "pyasn1": {
+    "version": "0.6.4",
+    "wheel": "pyasn1-0.6.4-py3-none-any.whl",
+    "sha256": "d1b94c45efc238ad11c17b546a827b2772095a25075aafd37dd59a648a82a093",
+    "files": 38,
+    "origin": "repacked local installed distribution; no network"
+  }
+}

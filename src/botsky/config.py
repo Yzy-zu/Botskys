@@ -22,6 +22,7 @@ class Settings:
     max_age_seconds: int = 300
     max_future_seconds: int = 30
     transport: str = "local"
+    bot_ids: frozenset[str] = frozenset({"botsky-local"})
 
     @classmethod
     def load(cls, path: Path):
@@ -40,6 +41,7 @@ class Settings:
             "max_age_seconds",
             "max_future_seconds",
             "transport",
+            "bot_ids",
         }
         if data.keys() - allowed:
             raise ValueError("configuración contiene campos desconocidos")
@@ -64,8 +66,8 @@ class Settings:
             value = data.get(key, {"max_age_seconds": 300, "max_future_seconds": 30}.get(key))
             if type(value) is not int or not 1 <= value <= (1000000 if key == "epoch" else 86400):
                 raise ValueError(f"configuración entera inválida: {key}")
-        for key in ("friends", "allowed_groups"):
-            values = data[key]
+        for key in ("friends", "allowed_groups", "bot_ids"):
+            values = data.get(key, ["botsky-local"])
             if not isinstance(values, list) or any(
                 not isinstance(v, str) or not v.strip() or v == "*" for v in values
             ):
@@ -95,4 +97,5 @@ class Settings:
             zone,
             data.get("max_age_seconds", 300),
             data.get("max_future_seconds", 30),
+            bot_ids=frozenset(data.get("bot_ids", ["botsky-local"])),
         )

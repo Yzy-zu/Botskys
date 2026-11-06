@@ -26,6 +26,7 @@ class LocalAdapter:
         historical=False,
         attachments=(),
         quoted_message_id=None,
+        mentioned_ids=(),
     ):
         if any(
             not isinstance(v, str) or not re.fullmatch(r"[A-Za-z0-9_.:@-]{1,128}", v)
@@ -36,6 +37,15 @@ class LocalAdapter:
             raise ValueError("texto local inválido")
         if type(is_group) is not bool or type(historical) is not bool:
             raise ValueError("metadatos locales inválidos")
+        if (
+            not isinstance(mentioned_ids, tuple)
+            or len(mentioned_ids) > 32
+            or any(
+                not isinstance(m, str) or not re.fullmatch(r"[A-Za-z0-9_.:@-]{1,128}", m)
+                for m in mentioned_ids
+            )
+        ):
+            raise ValueError("menciones locales inválidas")
         if (
             not isinstance(attachments, tuple)
             or len(attachments) > 20
@@ -65,6 +75,7 @@ class LocalAdapter:
             historical=historical,
             attachments=attachments,
             quoted_message_id=quoted_message_id,
+            mentioned_ids=mentioned_ids,
         )
 
 

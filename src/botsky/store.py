@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 PART_CHARS = 3500
 
 
@@ -72,6 +72,9 @@ class Store:
                 version, application_id = 2, APPLICATION_ID
             if version == 2 and application_id == APPLICATION_ID:
                 db.executescript((Path(__file__).parent / "migrations/003_jobs.sql").read_text())
+                version = 3
+            if version == 3 and application_id == APPLICATION_ID:
+                db.executescript((Path(__file__).parent / "migrations/004_ai.sql").read_text())
             elif version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -144,7 +147,7 @@ class Store:
             path = canonical(parsed.spec.path) if parsed else None
             permission = parsed.spec.permission if parsed and result is None else "public"
             db.execute(
-                "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,attachments_json,quoted_message_id,notice) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,attachments_json,quoted_message_id,notice,text,mentions_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (
                     incoming.id,
                     incoming.instance,
@@ -165,6 +168,14 @@ class Store:
                     canonical(incoming.attachments),
                     incoming.quoted_message_id,
                     notice,
+                    incoming.text
+                    if incoming.scope.actor in (settings.friends | {settings.owner})
+                    and (
+                        not incoming.scope.is_group
+                        or incoming.scope.chat in settings.allowed_groups
+                    )
+                    else "",
+                    canonical(incoming.mentioned_ids),
                 ),
             )
             if result and state == "completed":
@@ -261,8 +272,20 @@ class Store:
                 "SELECT position,state FROM outbox WHERE receipt_id=? ORDER BY position", (target,)
             )
         ]
-        job = db.execute("SELECT state,revision FROM jobs WHERE id=?", (target,)).fetchone()
-        visible_state = job["state"] if job else row["state"]
+        job = db.execute(
+            "SELECT state,revision,result_json FROM jobs WHERE id=?", (target,)
+        ).fetchone()
+        job_data = {"state": job["state"], "revision": job["revision"]} if job else None
+        if job and job["result_json"]:
+            result = Result.from_json(job["result_json"])
+            job_data.update(status=result.status, code=result.code)
+        visible_state = (
+            "uncertain"
+            if job_data and job_data.get("status") == "uncertain"
+            else job["state"]
+            if job
+            else row["state"]
+        )
         return Result(
             "ok",
             "receipt_state",
@@ -272,7 +295,7 @@ class Store:
                 "state": row["state"],
                 "revision": row["revision"],
                 "delivery": deliveries,
-                "job": dict(job) if job else None,
+                "job": job_data,
             },
         )
 
@@ -398,6 +421,10 @@ class Store:
                     "UPDATE interactions SET state='active',revision=revision+1 WHERE receipt_id=? AND state='pending_delivery' AND epoch=? AND expires_ms>?",
                     (part.receipt_id, settings.epoch, now),
                 )
+                db.execute(
+                    "UPDATE ai_history SET accepted=1 WHERE receipt_id=? AND epoch=? AND expires_ms>?",
+                    (part.receipt_id, settings.epoch, now),
+                )
             return bool(changed)
 
     def recover_deliveries(self, settings, now):
@@ -407,3 +434,14 @@ class Store:
                 "UPDATE outbox SET state='uncertain',error_code='interrupted_delivery',revision=revision+1,updated_ms=? WHERE state='sending' AND receipt_id IN (SELECT id FROM inbox WHERE instance=? AND account=?)",
                 (now, settings.instance, settings.account),
             ).rowcount
+
+    def prune_context(self, settings, now):
+        with self.transaction() as db:
+            db.execute(
+                "DELETE FROM ai_history WHERE instance=? AND account=? AND expires_ms<=?",
+                (settings.instance, settings.account, now),
+            )
+            db.execute(
+                "UPDATE inbox SET text='' WHERE instance=? AND account=? AND received_ms<? AND state!='queued'",
+                (settings.instance, settings.account, now - 86400000),
+            )

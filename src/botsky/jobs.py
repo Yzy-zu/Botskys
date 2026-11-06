@@ -68,11 +68,14 @@ def cancel_job(db, context, target):
 
 
 class Jobs:
-    def __init__(self, store, settings, artifacts, clock, policy=None, downloads=None, web=None):
+    def __init__(
+        self, store, settings, artifacts, clock, policy=None, downloads=None, web=None, content=None
+    ):
         self.store, self.artifacts, self.clock = store, artifacts, clock
         self._policy = policy or (lambda: settings)
         self.downloads = downloads or (lambda: None)
         self.web = web or (lambda: None)
+        self.content = content or (lambda: (None, None, None))
         self.root = private_directory(settings.root, "tmp/jobs")
 
     @property
@@ -131,6 +134,32 @@ class Jobs:
     def claim(self):
         now = self.clock()
         with self.store.transaction() as db:
+            interrupted = db.execute(
+                "SELECT j.*,i.revision AS actual_parent FROM jobs j JOIN inbox i ON i.id=j.id WHERE j.instance=? AND j.account=? AND j.epoch=? AND j.state='running' AND j.provider_dispatched=1 AND j.lease_until_ms<=?",
+                (self.settings.instance, self.settings.account, self.settings.epoch, now),
+            ).fetchall()
+            for row in interrupted:
+                result = Result(
+                    "uncertain",
+                    "provider_interrupted",
+                    "El proveedor quedó interrumpido; no repetí la solicitud automáticamente.",
+                )
+                db.execute(
+                    "UPDATE jobs SET state='failed',revision=revision+1,lease_token=NULL,result_json=? WHERE id=?",
+                    (result.to_json(), row["id"]),
+                )
+                if row["parent_revision"] == row["actual_parent"]:
+                    parent = db.execute("SELECT * FROM inbox WHERE id=?", (row["id"],)).fetchone()
+                    db.execute(
+                        "UPDATE inbox SET result_json=?,revision=revision+1 WHERE id=?",
+                        (result.to_json(), row["id"]),
+                    )
+                    db.execute(
+                        "UPDATE effects SET result_json=? WHERE receipt_id=?",
+                        (result.to_json(), row["id"]),
+                    )
+                    self.store.enqueue(db, context_of(parent), result, now)
+                db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + row["id"],))
             # Solo motores locales/lecturas externas; nunca una compra, envío o marcado.
             db.execute(
                 "UPDATE jobs SET state='queued',lease_token=NULL,revision=revision+1 WHERE instance=? AND account=? AND epoch=? AND state='running' AND lease_until_ms<=?",
@@ -186,6 +215,17 @@ class Jobs:
                 "context": context,
                 "early_result": result,
             }
+
+    def mark_provider(self, job):
+        with self.store.transaction() as db:
+            changed = db.execute(
+                "UPDATE jobs SET provider_dispatched=1 WHERE id=? AND state='running' AND lease_token=? AND revision=? AND lease_until_ms>?",
+                (job["id"], job["token"], job["revision"], self.clock()),
+            ).rowcount
+            if changed != 1:
+                from .engines.process import MediaError
+
+                raise MediaError("job_retired")
 
     def current(self, job):
         db = self.store.connect()
@@ -295,6 +335,18 @@ class Jobs:
                         parent["path_json"],
                         canonical({"artifact_id": ids[0]}),
                         now + 86400000,
+                    ),
+                )
+            if result.code == "ai_reply":
+                db.execute(
+                    "INSERT INTO ai_history VALUES(?,?,?,?,?,?,?,?,?,0,?,?)",
+                    (
+                        context.receipt_id,
+                        *context.scope_key,
+                        args["text"],
+                        result.text,
+                        now,
+                        now + 1800000,
                     ),
                 )
             db.execute(
@@ -412,6 +464,7 @@ class Jobs:
             return await self._run_pending(limit)
 
     async def _run_pending(self, limit):
+        self.store.prune_context(self.settings, self.clock())
         db = self.store.connect()
         try:
             for directory in self.root.iterdir():
@@ -485,6 +538,15 @@ class Jobs:
             if digest.hexdigest() != expected:
                 raise ArtifactProblem("artifact_changed")
         op = job["operation"]
+        if (
+            op == "conversation.respond"
+            or op.startswith("make_voice.")
+            or op == "transcribe_media.run"
+        ):
+            from .engines.content_jobs import execute
+
+            gemini, tts, asr = self.content()
+            return await execute(job, directory, paths, self, gemini, tts, asr)
         if op == "search_web.run":
             from dataclasses import asdict
 

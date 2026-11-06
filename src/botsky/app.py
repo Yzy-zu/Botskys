@@ -12,17 +12,29 @@ from .artifacts import ArtifactProblem, Artifacts
 from .commands.router import CommandError, Router
 from .config import Settings
 from .contracts import CommandContext, DeliveryAck, Result
-from .domains import notes
+from .domains import ai, bot, notes
 from .jobs import Jobs
 from .store import Store
 
 
 class Application:
-    def __init__(self, settings, *, clock=clock_ms, router=None, downloads=None, web=None):
+    def __init__(
+        self,
+        settings,
+        *,
+        clock=clock_ms,
+        router=None,
+        downloads=None,
+        web=None,
+        gemini=None,
+        tts=None,
+        asr=None,
+    ):
         self.settings, self.clock = settings, clock
         self.router = router or Router()
         self.downloads = downloads
         self.web = web
+        self.gemini, self.tts, self.asr = gemini, tts, asr
         self.store = Store(settings.database)
         self.artifacts = Artifacts(self.store, settings.root / "private/artifacts")
         self.jobs = Jobs(
@@ -33,6 +45,7 @@ class Application:
             policy=lambda: self.settings,
             downloads=lambda: self.downloads,
             web=lambda: self.web,
+            content=lambda: (self.gemini, self.tts, self.asr),
         )
 
     def attach_local(self, incoming, path):
@@ -56,12 +69,18 @@ class Application:
             except CommandError as exc:
                 return None, Result("needs_input", exc.code, exc.reply), "completed"
             if command is None:
+                command = ai.invoked(
+                    db, context, incoming, self.settings, self.router.registry, self.clock()
+                )
+            if command is None:
                 command = interactions.resume_file(
                     db, context, incoming, self.router.registry, self.clock()
                 )
             if command is None:
                 return None, None, "ignored"
             if denied := access.authorize(command.spec.permission, context, self.settings):
+                return command, denied, "completed"
+            if denied := bot.gate(db, context, command.spec, self.clock()):
                 return command, denied, "completed"
             return command, None, "queued"
 
@@ -91,8 +110,25 @@ class Application:
             )
         if denied := access.authorize(spec.permission, context, self.settings):
             return denied
+        if denied := bot.gate(db, context, spec, now):
+            return denied
         args = command["arguments"]
         operation = command["operation"]
+        if spec.family == "manage_conversation":
+            caps = {
+                "comandos": True,
+                "notas": True,
+                "medios_locales": True,
+                "gemini_configurado": self.gemini is not None
+                and getattr(self.gemini, "available", True),
+                "tts_configurado": self.tts is not None and getattr(self.tts, "enabled", True),
+                "asr_configurado": self.asr is not None and getattr(self.asr, "available", True),
+                "descargas_configuradas": self.downloads is not None
+                and getattr(self.downloads, "enabled", True),
+            }
+            return bot.execute(db, context, spec.original_action, args, now, caps)
+        if spec.family in ("conversation", "make_voice", "transcribe_media"):
+            return ai.execute(db, context, spec, command, now, self)
         if operation == "core.help":
             return Result("ok", "help", self.router.registry.help(args.get("topic", "")))
         if operation == "core.estado":

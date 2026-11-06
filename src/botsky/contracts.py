@@ -30,6 +30,7 @@ class Incoming:
     historical: bool = False
     attachments: tuple[str, ...] = ()
     quoted_message_id: str | None = None
+    mentioned_ids: tuple[str, ...] = ()
 
     @property
     def id(self):
@@ -46,6 +47,8 @@ class Incoming:
             del data["attachments"]
         if self.quoted_message_id is None:
             del data["quoted_message_id"]
+        if not self.mentioned_ids:
+            del data["mentioned_ids"]
         return hashlib.sha256(canonical(data).encode()).hexdigest()
 
 

@@ -1,0 +1,51 @@
+{
+  "block": "R4",
+  "status": "PASS",
+  "level": "local implementation; real providers NOT_TESTED",
+  "at": "2026-11-06T03:12:44.407388+00:00",
+  "schema": 4,
+  "full_regression_tests": 56,
+  "full_test_log": "R4-final-tests.txt",
+  "focal_tests_after_quote_binding": 10,
+  "focal_test_log": "R4-final-ai-tests.txt",
+  "checks": [
+    "SDK google-genai real con cliente sintético, tools vacíos y automatic function calling disabled",
+    "rechazo function_call y cero despacho desde contenido generado",
+    "menciones exactas, native ID, cita/URL/código excluidos",
+    "contexto propio aceptado por scope/epoch/TTL; quote textual verificado",
+    "archivo propio upload/delete con doble; adjunto ajeno denegado",
+    "cuota429/cooldown y deadline; comandos locales independientes",
+    "reinicio con marca provider_dispatched -> uncertain sin repetir",
+    "literal vs compuesto; texto/voz/perfil exactos a CLI fixture",
+    "MP3 sintético -> Ogg/Opus real 48k mono; sin escucha humana",
+    "ASR normalización real -> HTTPX MockTransport; resumen fallido conserva transcript",
+    "bot apagado/pausa retira trabajos; no espontaneidad",
+    "Ruff/pip check/CLI init/SQLite integrity; AST sin imports Zhana/NLP",
+    "staged diffcheck"
+  ],
+  "development_findings": [
+    {
+      "case": "R2 mention oracle",
+      "resolution": "nombre completo Botsky activa solo conversación en R4 según plan; nueva prueba exige cero herramientas, originales preservados"
+    },
+    {
+      "case": "partial summary",
+      "resolution": "fallo de Gemini conserva transcript y se declara fallo parcial"
+    },
+    {
+      "case": "provider crash",
+      "resolution": "marca durable evita regeneración automática de solicitud incierta"
+    },
+    {
+      "case": "literal quote",
+      "resolution": "se liga a texto propio exacto y se entrega como dato, separado del prompt"
+    }
+  ],
+  "limits": [
+    "Gemini/Groq/Edge reales no llamados",
+    "modelo/clave/disponibilidad real se verificarán en R10 autorizado",
+    "no escucha/WhatsApp/Android",
+    "R5-R11 pendientes",
+    "ningún cambio activo ni GitHub"
+  ]
+}

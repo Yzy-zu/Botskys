@@ -1,5 +1,42 @@
 # Relevo Botsky
 
+## 06/11/2026 · R4 cerrado localmente; sigue R5
+
+R3 commit670bd73. R4 esquema propio v4, SDK Gemini de contenido nuevo (sin tools,
+sin clasificador ni dispatcher), análisis de archivos propios, menciones exactas
+fuera de citas/código/URL y continuidad solo sobre respuesta AI propia aceptada.
+Contexto actor/chat/cuenta/época, TTL30min/6intercambios/16000caracteres; fuentes
+literales24h. Fallo/cuota de IA no impide notas y medios locales.
+
+Groq Whisper y Edge TTS conservan sus soluciones técnicas y proveedores. Literal
+no consulta Gemini; composición genera guion y después voz. Cita/última exactas
+con propiedad/entrega. Audio normalizado real y Opus48k mono verificado; proveedor
+ASR mediante HTTPX MockTransport y TTS con CLI de fixture, no voz escuchada ni
+calidad de proveedor aceptada. Todos los proveedores reales siguen apagados.
+
+Marca durable antes de dispatch de proveedor: reinicio tras corte incierto no
+repite generación/ASR/TTS. Resultado provider_interrupted/uncertain y recibos
+conservados. /bot estado/modo/pausa/reanudar implementados; mutaciones de dueño,
+apagado/pausa retiran trabajos y esperas y bloquean nuevas herramientas. Controles
+de ayuda/estado/cancelación disponibles; activo/discreto sin espontaneidad.
+
+56tests en regresión completa pasan, diez focales R4 después de cita verificada.
+SDK real con cliente doble rechaza function_call y nunca ejecuta texto generado;
+quota429/cooldown, deadline/close, scope/contexto/entrega, uploads/delete, audio y
+resumen parcial comprobados. Fuente de «Botsky descarga...» de R2 pasa a conversación
+por mención en R4, explícitamente documentado con prueba de cero herramientas.
+Evidencia docs/evidencia/R4*. Sin llamadas remotas ni recepción humana.
+
+Gemini requiere clave/modelo explícitos; no lee secretos/env privado ni hereda
+configuración. Dependencias google-genai2.33.0/Edge7.3.1 instaladas offline en .venv
+propio. Fuente/codecs/perfiles trasladados con hashes/créditos, sin NLP ni persona
+antigua. Zhana activa y cambios/evidencias anteriores intactos; solo commits locales.
+
+Siguiente R5: memoria explícita, recordatorios/scheduler propio, escuela/adjuntos/
+horarios/resúmenes y encuestas. R6–R9 continúan tras dependencias; R10 remoto y R11
+siguen sin autorizar. Cuota última26% primaria/43% semanal. Guardar y parar al5%
+de cualquier ventana, sin reanudación automática. Construcción autónoma vigente.
+
 ## 06/11/2026 · R3 cerrado localmente; siguiente R4
 
 R2 commit 7c8d0c1. R3 añade esquema propio v3, artefactos con hash/origen/ámbito,

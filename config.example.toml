@@ -11,4 +11,5 @@ owner = "owner-local"
 friends = ["friend-local"]
 allowed_groups = ["lab-local"]
 transport = "local"
+bot_ids = ["botsky-local"]
 # Proveedores deshabilitados: no heredan secretos ni configuración de Zhana.

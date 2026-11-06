@@ -76,5 +76,23 @@
     "source_sha256": "527f884aa659477d5d7fb4809beebbb0cf6ca94aed655e4d8da780a67e50dffd",
     "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
     "decision": "solo parser RSS/URL; cliente nuevo y args del registro, sin Backend ni proveedor conversacional"
+  },
+  "engines/audio.py": {
+    "source": "src/zhana/audio.py",
+    "source_sha256": "5cf99bfffa90619bba86e54fd3232683145e6679dcddcce3299b66ac9b293417",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "motor de normalización/cliente Whisper acotado; resultados bajo contrato Botsky, sin contexto conversacional anterior"
+  },
+  "adapters/whisper.py": {
+    "source": "src/zhana/providers/whisper.py",
+    "source_sha256": "a3397732728c73cac375d207b0b4227d7ea9b25021726a0e1c7844f2d43d02d8",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "motor de normalización/cliente Whisper acotado; resultados bajo contrato Botsky, sin contexto conversacional anterior"
+  },
+  "engines/speech.py": {
+    "source": "src/zhana/speech.py",
+    "source_sha256": "fb65a723cfa1c629721aae9feab8397ef15c2e6a6ef0b6f06eb2d19f9105268a",
+    "reference_head": "7e12d5401611ddb6664211f55c2f3066661017dd",
+    "decision": "perfiles/efectos/FFmpeg/CLI; perfil zhana renombrado botsky, sin Args/Pydantic"
   }
 }

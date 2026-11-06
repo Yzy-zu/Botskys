@@ -151,7 +151,7 @@ class CoreTest(TestCase):
             ).result.code,
             "stale_message",
         )
-        for text in ("guardar una nota", "> /nota guardar no", "2", "sí", "Botsky descarga esto"):
+        for text in ("guardar una nota", "> /nota guardar no", "2", "sí", "alguien descarga esto"):
             self.assertEqual(self.receive(text).state, "ignored")
         self.assertEqual(self.rows("SELECT * FROM notes"), [])
         self.assertEqual(self.rows("SELECT * FROM outbox"), [])
