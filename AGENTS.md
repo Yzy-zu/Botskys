@@ -43,3 +43,19 @@ Conservar publicación original de álbumes y restricción de redistribución de
 no añadir los archivos privados a Git. Ninguna lectura de fuentes al arrancar:
 importación es una operación de operador con rutas explícitas. Este permiso no
 activa mensajes, llamadas, mutaciones remotas, navegador, servicios o transición.
+
+## 06/11 · Campaña R10 real encargada por el propietario
+
+El propietario encargó automatizar pruebas con 1–10 sesiones AGY CLI, entrada
+simulada propia y backend Botsky, con resultados/archivos reales a Botsky Lab.
+Se permite esta campaña acotada con base y fixtures propios, proveedores reales
+y envíos exclusivamente al grupo verificado. AGY solo propone escenarios y
+revisa evidencia; no se incorpora al parser/runtime. Orquestador revisa comandos,
+ejecuta y fija oracles; no presenta una respuesta de IA como prueba de éxito.
+Sin transición, cambio de webhook/servicios activos, perfiles, NLP o GitHub.
+Sin mutaciones de participantes/grupo o Minecraft ni llamadas/navegador en esta
+campaña: consultas reales y guardias se registran aparte de esas capacidades.
+Drive puede escribir fixtures sintéticos en la carpeta propia de Botsky; recados
+solo a Botsky Lab. Los permisos se habilitan únicamente en el perfil desechable
+del laboratorio, no en el perfil operativo previo. No reanudar envíos inciertos
+ni una campaña terminada automáticamente. Umbral de cuota5% vigente.

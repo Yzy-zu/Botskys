@@ -68,11 +68,32 @@ def paginate(db, table, where, params, page, *, order="id"):
             (*params, (page - 1) * 20),
         )
     ]
+    if table == "school_tasks":
+        states = {"pending": "pendiente", "completed": "completada", "deleted": "borrada"}
+        lines = [f"Tareas: {total}. Página {page}/{pages}."]
+        for row in rows:
+            subject = row["subject"] + " · " if row["subject"] else ""
+            lines.extend(
+                [
+                    f"{row['id']}: {subject}{row['text']}",
+                    f"Entrega: {row['due_date']} {row['due_time'] or '(sin hora definida)'} · "
+                    f"Ciudad de México · {states.get(row['state'], row['state'])}.",
+                ]
+            )
+            if row["artifact_id"]:
+                lines.append(f"/tarea archivo {row['id']}")
+        if not rows:
+            lines.append("Sin registros.")
+        rendered = "\n".join(lines)
+    else:
+        rendered = (
+            "\n".join(f"{r['id']}: {r.get('text', r.get('subject', ''))}" for r in rows)
+            or "Sin registros."
+        )
     return Result(
         "ok" if rows else "empty",
         "organization_list",
-        "\n".join(f"{r['id']}: {r.get('text', r.get('subject', ''))}" for r in rows)
-        or "Sin registros.",
+        rendered,
         {"items": rows, "page": page, "pages": pages, "total": total},
     )
 

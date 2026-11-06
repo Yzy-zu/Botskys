@@ -20,6 +20,25 @@ from botsky.domains.contacts import Contact, Directory
 
 
 class IntegrationsTest(IsolatedAsyncioTestCase):
+    async def test_drive_revoked_authorization_has_actionable_message_without_claiming_upload(self):
+        from botsky.adapters.drive import DriveError
+
+        class RevokedDrive:
+            available = True
+            folder_id = "synthetic"
+
+            async def storage_quota(self):
+                raise DriveError("oauth_refresh_rejected")
+
+        self.app.drive = RevokedDrive()
+        receipt = self.receive("/drive cuota")
+        await self.app.jobs.run_pending()
+        result = self.result(receipt)
+        self.assertEqual(result.code, "oauth_refresh_rejected")
+        self.assertEqual(result.status, "failed")
+        self.assertIn("volver a conectar", result.text)
+        self.assertNotIn("subida", result.text)
+
     async def asyncSetUp(self):
         self.tmp = TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)

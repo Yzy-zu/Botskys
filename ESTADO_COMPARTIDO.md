@@ -1,5 +1,70 @@
 # Relevo Botsky
 
+## 06/11/2026 16:40 UTC · Campaña R10 real automática terminada; efectos del Lab retirados
+
+Encargo posterior expreso: 1–10 sesiones AGY CLI, entrada simulada del propietario,
+backend Botsky real y resultados al grupo WhatsApp Botsky Lab. Se verificó grupo
+por metadata y se documentó excepción en AGENTS.md. Ocho sesiones en total: cuatro
+propuestas iniciales, dos reemplazos por timeout240s y dos revisiones de evidencia;
+seis SUCCESS/dos timeout conservados. AGY aislado bwrap, solo autenticación nativa
+copiada temporalmente, sin tools/archivos/MCP, secretos de proveedores ni historia;
+copias retiradas. Nunca parser/runtime de Botsky ni NLP. 46 comandos de la primera
+tanda usados literalmente de propuestas; oracles revisados y congelados antes.
+
+116casos,30herramientas representadas y controles AV adicionales. 96PASS (87positivos,
+9negativos),6FAIL originales,14BLOCKED. 27herramientas tuvieron recorridos positivos;
+no equivalen a aceptación completa de todas sus acciones. 77/152rutas parseadas;
+75rutas y campos no observados publicados NOT_TESTED en route-coverage.json. Matriz
+local anterior no se convierte en evidencia remota. R10 global sigue ABIERTO.
+
+Se enviaron150POST con HTTP201 al Lab incluyendo avisos/cierre. Recibos producto
+validan ACK/ID; no acreditan render Android/recepción humana. Entrada de operador
+simulada, no teléfono/webhook real. Ámbitos privados conservados en backend; solo
+frontera HTTP de pruebas redirige su salida al grupo verificado. Recados solo al
+contacto Lab. DB SQLite18/artefactos propios en private/lab-20261106-run1/app; tandas
+posteriores explícitas con snapshot SQLite/perfil previos. Preservados resultados,
+ledgers privados0600, oracles y hashes saneados públicos.
+
+Hallazgo producto corregido: /tareas omitía materia/vencimiento del texto. Ahora
+muestra materia, fecha/hora de México, estado, página y comando de adjunto; dos
+retest reales PASS. Drive cuotas/subida/búsqueda fallaron: Google HTTP400 invalid_grant,
+token caducado o revocado; token fuente autorizado coincide y acceso fuente caducó.
+REQUIERE RECONECTAR GOOGLE; no hubo subida exitosa ni cambio fuente. Presentación
+del error ahora pide reconectar, comprobada realmente (PASS del error, no de Drive).
+Drive elegir dependía de vista inexistente: KeyError del runner sin comando ejecutado;
+corregido a BLOCKED antes de parser/red y prueba focal. Cancelar mano blackjack ya
+repartida fue oracle erróneo: rechazo contractual correcto, revisión separada; mano
+terminada normalmente. No se borran/reclasifican los seis FAIL de la tanda original.
+
+Galería conservada (3álbumes/0fotos/0publicados) intacta. Seis PNG sintéticos publicados
+solo en copia de laboratorio permiten pack compra/confirmación/entrega, cooperacha
+con dos aportes/entrega, lluvia, AirDrop/reclamo y liquidación: tanda19/19PASS. Segundo
+archivo para sticker y mensaje OAuth:2/2PASS. Notas/filtros, memoria, fechas/escuela/
+encuestas, OCR/QR, conversión/PDF, edición/descarga W3C, búsqueda, Gemini texto/imagen,
+voz literal/compuesta, ASR/resumen, recados, economía/BJ, avisos/XP y Minecraft consultas
+con recorridos positivos. Solo fixtures sintéticos, sin usuarios/DB31/historial.
+
+Quince controles semánticos PASS: páginas/contenido PDF, TXT/DOCX, ffprobe de cuatro
+recortes, literalidad, AI /daily sin efecto, daily único, duplicado tras nueva app,
+SQLite integrityok y cero reservas XP/partes packs-recados inciertas. 30pruebas
+focales locales PASS (11org+15integración+4harness), Ruff/formato126/pipcheck/diffcheck
+correctos. No se repitió suite histórica completa sin necesidad. Error inicial de
+fuente tipográfica del harness y dos timeouts AGY conservados, no fallos Botsky.
+
+Informe docs/LAB_20261106.md, paquete docs/evidencia/LAB-20261106/. Revisión AGY es
+advisory, no juez. Pendiente UI menor: espaciado packs y estados técnicos en inglés.
+Llamadas/Live/clip/avatar/agenda reales BLOCKED, sin sesión/navegador exclusivo;
+ruleta y mutaciones grupo/servidor no efectuadas. No atribuir éxito a esas guardias.
+
+Campaña TERMINADA y cierre enviado al Lab. Permisos messages/delivery/gallery send
+y Drive write del perfil desechable retirados; perfil operativo anterior intacto y
+efectos apagados. Ningún servicio instalado, webhook modificado, sesión copiada,
+navegador/llamada, transición/R11 o GitHub. Zhana activa/código/config/DB31/servicios/
+NLP/cambios/auditorías anteriores intactos; allí solo relevo posterior selectivo.
+No repetir campaña ni reanudar envíos automáticamente. Cuota64%primaria/73%semanal;
+al5%guardar y detenerse sin reanudación. Futuro R10 requiere concretar fronteras
+pendientes; R11 sigue requiriendo aceptación y encargo de transición.
+
 ## 06/11/2026 15:50 UTC · Galería/VRM conservados; permisos por integración/chat completos
 
 Encargo posterior de programar activos y configuración operativa. El propietario

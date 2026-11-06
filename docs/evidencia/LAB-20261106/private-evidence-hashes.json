@@ -1,0 +1,102 @@
+[
+  {
+    "private_evidence": "private/lab-20261106-run1/cases.json",
+    "bytes": 35830,
+    "sha256": "7ae9fe48d00cb94667bf1efec3a61fa1b94ef74435c4705d8e5df7fc2dc5c184"
+  },
+  {
+    "private_evidence": "private/lab-20261106-run1/results.json",
+    "bytes": 94491,
+    "sha256": "32ec3943228a5cf6be4769cc1cf47833b49bdbb1fb0be0b75231ff736313b856"
+  },
+  {
+    "private_evidence": "private/lab-20261106-run1/remote-deliveries.json",
+    "bytes": 29719,
+    "sha256": "2ced7372949e9dee632dcddf3bd266c03f042edf6aa352343317e3a556021a06"
+  },
+  {
+    "private_evidence": "private/lab-20261106-run1/summary.json",
+    "bytes": 5007,
+    "sha256": "e489c83fcf778822f117e4977bf50dd63e37960b9b30e79796e03abd73857689"
+  },
+  {
+    "private_evidence": "private/lab-20261106-run1/campaign-run.txt",
+    "bytes": 16345,
+    "sha256": "b921710797296f791b80f953bd988480aa78ea08a85d5dd266f2eabd8430602a"
+  },
+  {
+    "private_evidence": "private/lab-20261106-run1/fixture-ledger.json",
+    "bytes": 819,
+    "sha256": "b3ccb69789215f480d77929bb24b9c9a1ba3ab34ec01b4dfed0ec9ac45b568fd"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/cases.json",
+    "bytes": 5977,
+    "sha256": "f5c9bd064c324f746d650fb9a24c0a615e89927577b99e51a5d40c15fea21aa4"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/results.json",
+    "bytes": 23237,
+    "sha256": "014e3db0d001a58bd6ef5eee171b289dbd8ab5f9889f586b040c3f6b5c369d5a"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/remote-deliveries.json",
+    "bytes": 9390,
+    "sha256": "36cb9742377a0c4a67f92d4ba0192157298832eb2867d3a7fb3dc6b201c4c479"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/summary.json",
+    "bytes": 6635,
+    "sha256": "6c41f7e6181a1eca146e5bcb51f94ab03a0e531bc0bf71a99f780c5795fd898a"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/campaign-run.txt",
+    "bytes": 3326,
+    "sha256": "657c993fca01817e16cf023690a5fe29ee3096f88424c9027f7b50313710be10"
+  },
+  {
+    "private_evidence": "private/lab-20261106-followup/fixture-ledger.json",
+    "bytes": 819,
+    "sha256": "4466a94ec59ee4791b3fd4b069edc6958591fe8c738e41d32dc8393f9af7d082"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/cases.json",
+    "bytes": 625,
+    "sha256": "14b1c6a4372e10c1b8c8b725487d3eb27b93ac26b72a0fa97fc85635f369cb45"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/results.json",
+    "bytes": 1833,
+    "sha256": "eb510135242bb127960e3df15fabcc21d8db8cf064dca30bda464e50164ab2ca"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/remote-deliveries.json",
+    "bytes": 1376,
+    "sha256": "733f1bb0ddc4988a172d43e540b4d2e38e253aa7b376d3ce1e3c871cf3588e38"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/summary.json",
+    "bytes": 7054,
+    "sha256": "97b5cfaa773fac893e4df68c58f86ca1db93b617ccfe8e9207fccd2235d5f422"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/campaign-run.txt",
+    "bytes": 350,
+    "sha256": "1b44c1fe1381a53558487aeb249f4b3a16ffc9d0f4a2a70be2e7e38d14071c48"
+  },
+  {
+    "private_evidence": "private/lab-20261106-auth-check/fixture-ledger.json",
+    "bytes": 819,
+    "sha256": "ddb2647bfb22f4f7eff19a47225d60926367e3b9836c1f05f1d07d3206d97315"
+  },
+  {
+    "private_evidence": "private/lab-20261106-closing/remote-deliveries.json",
+    "bytes": 285,
+    "sha256": "337a1c5cd4fea0ff148a0323c433683a2a6929e6f2fcdaf9dd2780636501c98f"
+  },
+  {
+    "private_evidence": "private/lab-20261106-closing/closed.json",
+    "bytes": 104,
+    "sha256": "e506f453513dddce93850195f0083c9a071140d31c10cb10491a1b1920c8b59d"
+  }
+]

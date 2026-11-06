@@ -12,6 +12,8 @@ Transporte WhatsApp, proceso continuo y composición de llamadas implementados:
 [configuración y límites](docs/RUNTIME.md). Preparados, sin activar producción.
 Galería conservada, Kazumi recuperado y permisos por integración/chat conectados:
 [activos y permisos](docs/ACTIVOS_Y_PERMISOS.md). Tres álbumes originales sin fotos.
+Campaña automática real encargada, con resultados en Botsky Lab y laboratorio
+detenido: [116 casos, hallazgos y bloqueos](docs/LAB_20261106.md). R10 global abierto.
 
 Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
 hashes, límites, formatos, dependencias y superficie audiovisual. Tener una

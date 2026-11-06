@@ -1,0 +1,122 @@
+[
+  {
+    "file": "private/lab-20261106/agy/media-events.jsonl",
+    "sha256": "39ff4fdcff33ccf7a9e85a32c2ac21f2db322c8d2ff6710ee8df176cf49b9f3e",
+    "status": "ERROR",
+    "conversation_id": "52714d5e-1641-4eed-a338-d938183b4ba1",
+    "duration_seconds": 0,
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 0
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy/content-events.jsonl",
+    "sha256": "9a0b85bc14049d223699deca4c22ceca07a3cf346a96e3186a09159cf2b88a03",
+    "status": "ERROR",
+    "conversation_id": "9667e400-4734-4ebe-a3a8-6ef29a302479",
+    "duration_seconds": 0,
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 0
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy/core-events.jsonl",
+    "sha256": "7536660c42fd484e8875e2400cacbfc08dc33cd10387f1345cb1b1bcdf6846e9",
+    "status": "SUCCESS",
+    "conversation_id": "db7b6ba3-c3c5-4900-a0cf-edf808ea3c86",
+    "duration_seconds": 170.581693397,
+    "usage": {
+      "input_tokens": 5044,
+      "output_tokens": 23308,
+      "thinking_tokens": 20731,
+      "cache_read_tokens": 0,
+      "total_tokens": 28352
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy/social-events.jsonl",
+    "sha256": "e52ac703ad3c78399362e8d3f487f68d8047a63d1fab0e0c23cce0675c91db1d",
+    "status": "SUCCESS",
+    "conversation_id": "b7b8742e-0f89-44b6-a4d0-3d7d876a5216",
+    "duration_seconds": 71.638639342,
+    "usage": {
+      "input_tokens": 5951,
+      "output_tokens": 10660,
+      "thinking_tokens": 8284,
+      "cache_read_tokens": 0,
+      "total_tokens": 16611
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy-retry/media-events.jsonl",
+    "sha256": "3647e9cae791f5b801f204910c8791eb72250895f768af68693650cebe050622",
+    "status": "SUCCESS",
+    "conversation_id": "154fa50e-3dec-47c8-ad4d-92bc18593cbb",
+    "duration_seconds": 55.712591372,
+    "usage": {
+      "input_tokens": 4758,
+      "output_tokens": 1726,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 6484
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy-retry/content-events.jsonl",
+    "sha256": "00349131c0dee21c65a74adf5899dc22485c04db09f102b48239595a78598773",
+    "status": "SUCCESS",
+    "conversation_id": "28a6f2e1-e732-4bb4-b70a-5b6904b983c6",
+    "duration_seconds": 12.243918893,
+    "usage": {
+      "input_tokens": 4326,
+      "output_tokens": 1611,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 5937
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy-review/core-events.jsonl",
+    "sha256": "54bda7075f02c00ed53916b3492178c42cad426299a432346652b08a2a5bbf4b",
+    "status": "SUCCESS",
+    "conversation_id": "4b615db6-e328-4c23-85f6-94adec238821",
+    "duration_seconds": 9.681706417000001,
+    "usage": {
+      "input_tokens": 12750,
+      "output_tokens": 1002,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 13752
+    },
+    "tool_updates": []
+  },
+  {
+    "file": "private/lab-20261106/agy-review/social-events.jsonl",
+    "sha256": "c1aebca7d7d256c9d48dfa618774ba4f8e7c8bde15bbbaa494e72bd118f0a6c5",
+    "status": "SUCCESS",
+    "conversation_id": "625492e7-925f-4643-81ba-54955d02ea96",
+    "duration_seconds": 8.450589503,
+    "usage": {
+      "input_tokens": 12774,
+      "output_tokens": 760,
+      "thinking_tokens": 0,
+      "cache_read_tokens": 0,
+      "total_tokens": 13534
+    },
+    "tool_updates": []
+  }
+]

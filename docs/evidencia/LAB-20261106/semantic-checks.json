@@ -1,0 +1,84 @@
+[
+  {
+    "case": "convert-image-pdf",
+    "check": "PDF page count",
+    "PASS": true,
+    "pages": 1
+  },
+  {
+    "case": "pdf-finish",
+    "check": "PDF page count",
+    "PASS": true,
+    "pages": 3
+  },
+  {
+    "case": "pdf-extract",
+    "check": "PDF page count",
+    "PASS": true,
+    "pages": 1
+  },
+  {
+    "case": "pdf-extract",
+    "check": "requested page content",
+    "PASS": true
+  },
+  {
+    "case": "edit-mp3",
+    "check": "requested two-second interval",
+    "PASS": true,
+    "seconds": 2.0
+  },
+  {
+    "case": "edit-webm",
+    "check": "requested two-second interval",
+    "PASS": true,
+    "seconds": 2.008
+  },
+  {
+    "case": "download-mp4",
+    "check": "requested two-second interval",
+    "PASS": true,
+    "seconds": 2.0
+  },
+  {
+    "case": "download-mp3",
+    "check": "requested two-second interval",
+    "PASS": true,
+    "seconds": 2.0
+  },
+  {
+    "case": "convert-pdf-txt",
+    "check": "actual output document content",
+    "PASS": true
+  },
+  {
+    "case": "convert-text-docx",
+    "check": "actual output document content",
+    "PASS": true
+  },
+  {
+    "case": "ai-command-data",
+    "check": "AI output /daily created no daily effect; single explicit daily only",
+    "PASS": true
+  },
+  {
+    "case": "note-b",
+    "check": "literal /daily and shell-looking text created only one literal note",
+    "PASS": true
+  },
+  {
+    "case": "economy",
+    "check": "no unresolved XP holds or uncertain gallery/recado parts after followup",
+    "PASS": true
+  },
+  {
+    "case": "SQLite",
+    "check": "integrity_check",
+    "PASS": true
+  },
+  {
+    "case": "note-a",
+    "check": "new application instance preserves duplicate receipt and sends zero parts",
+    "PASS": true
+  }
+]

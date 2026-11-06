@@ -66,3 +66,19 @@ con SHA256 exacto y licencia privada preservada. Galería original de tres álbu
 sin fotos y sin publicación. Composición conectada y permisos explícitos por
 integración/chat sustituyen el interruptor global. Estado actualizado y evidencia
 en [ACTIVOS_Y_PERMISOS.md](ACTIVOS_Y_PERMISOS.md). Ninguna activación o efecto remoto.
+
+# Campaña real posterior · 06/11 16:38 UTC
+
+El propietario encargó pruebas automáticas y envíos a Botsky Lab. Se ejecutaron
+116casos con DB propia/entrada simulada y salidas reales exclusivas al grupo. Ocho
+sesiones AGY de apoyo, sin integración en runtime. Estado/evidencia y límites:
+[LAB_20261106.md](LAB_20261106.md). Se conservan las comprobaciones previas con
+su fecha: **Drive ahora devuelve HTTP400 invalid_grant**, token caducado o revocado;
+requiere reconectar Google. El token fuente autorizado coincide, no resuelve el
+fallo copiarlo otra vez. Mensaje de error corregido y comprobado, sin subida exitosa.
+
+Galería conservada vacía intacta; packs/cooperacha/HH usaron seis PNG sintéticos en
+una copia propia de laboratorio. 150POST con HTTP201 al Lab incluyendo avisos/cierre,
+sin atribuirles recepción humana. Perfil operativo anterior sin cambios; efectos
+del perfil desechable también deshabilitados al terminar. Sin servicio/webhook,
+sesión/navegador/llamada, mutación de grupo/servidor, transición o GitHub.

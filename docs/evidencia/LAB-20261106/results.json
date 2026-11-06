@@ -1,0 +1,2650 @@
+[
+  {
+    "id": "bot-status",
+    "family": "manage_conversation",
+    "kind": "positive",
+    "operation": "manage_conversation.status",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.699,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "bot_status",
+    "command": "/bot estado",
+    "artifacts": []
+  },
+  {
+    "id": "bot-mode",
+    "family": "manage_conversation",
+    "kind": "positive",
+    "operation": "manage_conversation.mode",
+    "fields": [
+      "mode"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.115,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "bot_mode_updated",
+    "command": "/bot modo discreto",
+    "artifacts": []
+  },
+  {
+    "id": "bot-pause-invalid",
+    "family": "manage_conversation",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.189,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "invalid_field",
+    "command": "/bot pausa 45",
+    "artifacts": []
+  },
+  {
+    "id": "note-a",
+    "family": "save_note",
+    "kind": "positive",
+    "operation": "save_note.run",
+    "fields": [
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.116,
+    "accepted_parts": 1,
+    "duplicate": true,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "note_saved",
+    "command": "/nota guardar Comprar materiales de laboratorio y reactivos",
+    "artifacts": []
+  },
+  {
+    "id": "note-b",
+    "family": "save_note",
+    "kind": "positive",
+    "operation": "save_note.run",
+    "fields": [
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.172,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "note_saved",
+    "command": "/nota guardar -- Cable EXACTO; /daily && $(no-ejecutar)",
+    "artifacts": []
+  },
+  {
+    "id": "notes-filter",
+    "family": "find_notes",
+    "kind": "positive",
+    "operation": "find_notes.run",
+    "fields": [
+      "page",
+      "query"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.286,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "notes_found",
+    "command": "/notas laboratorio",
+    "artifacts": []
+  },
+  {
+    "id": "notes-literal",
+    "family": "find_notes",
+    "kind": "positive",
+    "operation": "find_notes.run",
+    "fields": [
+      "page",
+      "query"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.12,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "notes_found",
+    "command": "/notas EXACTO",
+    "artifacts": []
+  },
+  {
+    "id": "notes-page-invalid",
+    "family": "find_notes",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.242,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "invalid_field",
+    "command": "/notas --pagina 0",
+    "artifacts": []
+  },
+  {
+    "id": "memory-a",
+    "family": "manage_memory",
+    "kind": "positive",
+    "operation": "manage_memory.remember",
+    "fields": [
+      "kind",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.214,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "memory_saved",
+    "command": "/mem guardar --tipo preferencia Priorizar explicaciones con ejemplos prácticos",
+    "artifacts": []
+  },
+  {
+    "id": "memory-list",
+    "family": "manage_memory",
+    "kind": "positive",
+    "operation": "manage_memory.list",
+    "fields": [
+      "kind",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.11,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "organization_list",
+    "command": "/mem listar --tipo preferencia",
+    "artifacts": []
+  },
+  {
+    "id": "memory-edit",
+    "family": "manage_memory",
+    "kind": "positive",
+    "operation": "manage_memory.correct",
+    "fields": [
+      "memory_id",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.092,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "memory_corrected",
+    "command": "/mem corregir 1 Explicaciones concisas con ejemplos de código",
+    "artifacts": []
+  },
+  {
+    "id": "memory-after",
+    "family": "manage_memory",
+    "kind": "positive",
+    "operation": "manage_memory.list",
+    "fields": [
+      "kind",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.208,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "organization_list",
+    "command": "/mem listar --tipo preferencia",
+    "artifacts": []
+  },
+  {
+    "id": "reminder-a",
+    "family": "manage_reminder",
+    "kind": "positive",
+    "operation": "manage_reminder.create",
+    "fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.209,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "reminder_created",
+    "command": "/recordar en 10m Pausa activa y estiramientos",
+    "artifacts": []
+  },
+  {
+    "id": "reminder-b",
+    "family": "manage_reminder",
+    "kind": "positive",
+    "operation": "manage_reminder.create",
+    "fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.094,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "reminder_created",
+    "command": "/recordar el 2026-12-01 12:00 Entrega del informe trimestral",
+    "artifacts": []
+  },
+  {
+    "id": "reminder-cancel",
+    "family": "manage_reminder",
+    "kind": "positive",
+    "operation": "manage_reminder.cancel",
+    "fields": [
+      "reminder_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.089,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "reminder_cancelled",
+    "command": "/recordatorio cancelar 1",
+    "artifacts": []
+  },
+  {
+    "id": "school-a",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.add_task",
+    "fields": [
+      "attach",
+      "due_date",
+      "due_time",
+      "subject",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.104,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "school_task_created",
+    "command": "/tarea crear --materia Historia --fecha 2026-12-01 --hora 10:00 Entregar ensayo sobre la revolución industrial",
+    "artifacts": []
+  },
+  {
+    "id": "school-file",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.add_task",
+    "fields": [
+      "attach",
+      "due_date",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.468,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "school_task_created",
+    "command": "/tarea crear --fecha 2026-12-01 --adjunto Resolver guía de problemas de cálculo",
+    "artifacts": []
+  },
+  {
+    "id": "school-list",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.list_tasks",
+    "fields": [
+      "include_closed",
+      "page"
+    ],
+    "verdict": "FAIL",
+    "reason": "Expected text absent",
+    "duration_seconds": 2.104,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "organization_list",
+    "command": "/tareas",
+    "artifacts": []
+  },
+  {
+    "id": "school-complete",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.complete_task",
+    "fields": [
+      "task_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.099,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "school_task_completed",
+    "command": "/tarea completar 1",
+    "artifacts": []
+  },
+  {
+    "id": "schedule-add",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.set_lesson",
+    "fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.198,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "school_lesson_created",
+    "command": "/horario agregar --materia Matemáticas --dia 1 --inicio 08:00 --fin 09:30",
+    "artifacts": []
+  },
+  {
+    "id": "schedule-list",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.list_schedule",
+    "fields": [
+      "weekday"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.104,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "school_schedule",
+    "command": "/horario listar --dia 1",
+    "artifacts": []
+  },
+  {
+    "id": "poll-create",
+    "family": "manage_poll",
+    "kind": "positive",
+    "operation": "manage_poll.create",
+    "fields": [
+      "options",
+      "question"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.203,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "poll_created",
+    "command": "/encuesta crear \"¿Horario para la reunión?\" \"Mañana 10:00\" \"Tarde 16:00\"",
+    "artifacts": []
+  },
+  {
+    "id": "poll-vote",
+    "family": "manage_poll",
+    "kind": "positive",
+    "operation": "manage_poll.vote",
+    "fields": [
+      "choice",
+      "poll_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.182,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "poll_results",
+    "command": "/encuesta votar 1 1",
+    "artifacts": []
+  },
+  {
+    "id": "poll-results",
+    "family": "manage_poll",
+    "kind": "positive",
+    "operation": "manage_poll.results",
+    "fields": [
+      "poll_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.308,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "poll_results",
+    "command": "/encuesta resultados 1",
+    "artifacts": []
+  },
+  {
+    "id": "poll-invalid",
+    "family": "manage_poll",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.105,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "invalid_field",
+    "command": "/encuesta votar 1 15",
+    "artifacts": []
+  },
+  {
+    "id": "react-a",
+    "family": "send_sticker",
+    "kind": "positive",
+    "operation": "send_sticker.run",
+    "fields": [
+      "requested",
+      "sticker_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.073,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "reaction_ready",
+    "command": "/reaccion saludo",
+    "artifacts": [
+      {
+        "format": "webp",
+        "bytes": 37968,
+        "sha256": "f02093f1fef6e7a9f10e41e93dec6b71d64c0e4883932cec8a257f9641e614fe",
+        "image_size": [
+          512,
+          512
+        ]
+      }
+    ]
+  },
+  {
+    "id": "react-b",
+    "family": "send_sticker",
+    "kind": "positive",
+    "operation": "send_sticker.run",
+    "fields": [
+      "requested",
+      "sticker_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.598,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "reaction_ready",
+    "command": "/reaccion pensando",
+    "artifacts": [
+      {
+        "format": "webp",
+        "bytes": 36600,
+        "sha256": "937c925a2c9b5e5833e16e2d0b7369c3c715f0ba07fdef1bb28361ba2a794aa8",
+        "image_size": [
+          512,
+          512
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sticker-a",
+    "family": "make_sticker",
+    "kind": "positive",
+    "operation": "make_sticker.run",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.886,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "sticker_created",
+    "command": "/sticker",
+    "artifacts": [
+      {
+        "format": "webp",
+        "bytes": 3460,
+        "sha256": "3d65091ecd128ed12da11f1fa6e7d2a3798ccc293417c65b93c41d68078811b0",
+        "image_size": [
+          512,
+          512
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sticker-no-file",
+    "family": "make_sticker",
+    "kind": "negative",
+    "operation": "make_sticker.run",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.215,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "attachment_required",
+    "command": "/sticker",
+    "artifacts": []
+  },
+  {
+    "id": "ocr-a",
+    "family": "read_image",
+    "kind": "positive",
+    "operation": "read_image.run",
+    "fields": [
+      "mode"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.805,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "image_read",
+    "command": "/ocr",
+    "artifacts": []
+  },
+  {
+    "id": "qr-a",
+    "family": "read_image",
+    "kind": "positive",
+    "operation": "read_image.run",
+    "fields": [
+      "mode"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.489,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "image_read",
+    "command": "/qr",
+    "artifacts": []
+  },
+  {
+    "id": "convert-image-pdf",
+    "family": "convert_document",
+    "kind": "positive",
+    "operation": "convert_document.run",
+    "fields": [
+      "target"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 5.098,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "document_converted",
+    "command": "/convertir pdf",
+    "artifacts": [
+      {
+        "format": "pdf",
+        "bytes": 25466,
+        "sha256": "124b9733dbf6019fd47163d2664a2d12221b640e7b992312882a83454d8e4b14",
+        "pages": 1
+      }
+    ]
+  },
+  {
+    "id": "convert-pdf-txt",
+    "family": "convert_document",
+    "kind": "positive",
+    "operation": "convert_document.run",
+    "fields": [
+      "target"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.67,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "document_converted",
+    "command": "/conv txt",
+    "artifacts": [
+      {
+        "format": "txt",
+        "bytes": 66,
+        "sha256": "187d66dc8835f65135d5cd7e07946ab12e417ea35aee05a1769133bc487a2408"
+      }
+    ]
+  },
+  {
+    "id": "convert-text-docx",
+    "family": "convert_document",
+    "kind": "positive",
+    "operation": "convert_document.run",
+    "fields": [
+      "target"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 5.289,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "document_converted",
+    "command": "/convertir docx",
+    "artifacts": [
+      {
+        "format": "docx",
+        "bytes": 5049,
+        "sha256": "7ce526c0953a5d2bfba7c8bcdc955c32dafb5c4f1ba113a5a531a00fb03a8e3d"
+      }
+    ]
+  },
+  {
+    "id": "pdf-start",
+    "family": "manage_pdf",
+    "kind": "positive",
+    "operation": "manage_pdf.start",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.303,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "pdf_session_started",
+    "command": "/pdf iniciar",
+    "artifacts": []
+  },
+  {
+    "id": "pdf-add",
+    "family": "manage_pdf",
+    "kind": "positive",
+    "operation": "manage_pdf.add",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.205,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "pdf_sources_added",
+    "command": "/pdf agregar",
+    "artifacts": []
+  },
+  {
+    "id": "pdf-finish",
+    "family": "manage_pdf",
+    "kind": "positive",
+    "operation": "manage_pdf.finish",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.791,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "pdf_assembled",
+    "command": "/pdf terminar",
+    "artifacts": [
+      {
+        "format": "pdf",
+        "bytes": 26513,
+        "sha256": "cbb36967da836b3fa3894005ce45b4987dadb055afa3c1a2126d6f99a6898a7c",
+        "pages": 3
+      }
+    ]
+  },
+  {
+    "id": "pdf-extract",
+    "family": "manage_pdf",
+    "kind": "positive",
+    "operation": "manage_pdf.extract",
+    "fields": [
+      "pages"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.703,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "pdf_extracted",
+    "command": "/pdf extraer 2",
+    "artifacts": [
+      {
+        "format": "pdf",
+        "bytes": 940,
+        "sha256": "4f49bbaa8df17eec3397f9be5ccd9a8a309f4456461b0ae06a9b96b9d3510f98",
+        "pages": 1
+      }
+    ]
+  },
+  {
+    "id": "pdf-invalid-pages",
+    "family": "manage_pdf",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.101,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "invalid_field",
+    "command": "/pdf extraer 0",
+    "artifacts": []
+  },
+  {
+    "id": "edit-mp3",
+    "family": "edit_media",
+    "kind": "positive",
+    "operation": "edit_media.run",
+    "fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 5.191,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "media_edited",
+    "command": "/editar mp3 --desde 0 --hasta 2",
+    "artifacts": [
+      {
+        "format": "mp3",
+        "bytes": 33171,
+        "sha256": "201201fda3de51d7cdd958dc7fda0abbadc46209a822d516ed40da9b0d1dd393",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "2.000000"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "edit-webm",
+    "family": "edit_media",
+    "kind": "positive",
+    "operation": "edit_media.run",
+    "fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 5.1,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "media_edited",
+    "command": "/editar webm --desde 1 --hasta 3",
+    "artifacts": [
+      {
+        "format": "webm",
+        "bytes": 118369,
+        "sha256": "af5992492425a456fc96d095bd24043fd1ccea7a32c42bc218c7194bba245db4",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "vp9",
+              "codec_type": "video"
+            },
+            {
+              "codec_name": "opus",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "2.008000"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "edit-srt-incompatible",
+    "family": "edit_media",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.107,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "incompatible_fields",
+    "command": "/editar srt --desde 1",
+    "artifacts": []
+  },
+  {
+    "id": "download-mp4",
+    "family": "download_media",
+    "kind": "positive",
+    "operation": "download_media.url",
+    "fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 7.092,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "download_ready",
+    "command": "/dl mp4 --desde 0 --hasta 2 https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "artifacts": [
+      {
+        "format": "mp4",
+        "bytes": 47479,
+        "sha256": "0405c4f15a274045dbe914833d72a12ce7a1ca9ce58e2d392b9f0848b5eae998",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video"
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "2.000000"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "download-mp3",
+    "family": "download_media",
+    "kind": "positive",
+    "operation": "download_media.url",
+    "fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 7.028,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "download_ready",
+    "command": "/dl mp3 --desde 1 --hasta 3 https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "artifacts": [
+      {
+        "format": "mp3",
+        "bytes": 33171,
+        "sha256": "f1776d8c32d48a50adf1d939820d1f914b4f4f0e599aa3fbe4a04a8ab2c9016a",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "mp3",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "2.000000"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "download-no-url",
+    "family": "download_media",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.196,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "missing_field",
+    "command": "/dl mp4",
+    "artifacts": []
+  },
+  {
+    "id": "web-python",
+    "family": "search_web",
+    "kind": "positive",
+    "operation": "search_web.run",
+    "fields": [
+      "query",
+      "required_terms"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.59,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "web_results",
+    "command": "/buscar --terminos Python,documentation Python documentation site:python.org",
+    "artifacts": []
+  },
+  {
+    "id": "web-ffmpeg",
+    "family": "search_web",
+    "kind": "positive",
+    "operation": "search_web.run",
+    "fields": [
+      "query",
+      "required_terms"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.294,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "web_results",
+    "command": "/web --terminos ffmpeg ffmpeg filters documentation",
+    "artifacts": []
+  },
+  {
+    "id": "ai-arithmetic",
+    "family": "conversation",
+    "kind": "positive",
+    "operation": "conversation.respond",
+    "fields": [
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.396,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "ai_reply",
+    "command": "/ia Responde únicamente el resultado numérico de 7 por 8.",
+    "artifacts": []
+  },
+  {
+    "id": "ai-image",
+    "family": "conversation",
+    "kind": "positive",
+    "operation": "conversation.respond",
+    "fields": [
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.152,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "ai_reply",
+    "command": "/ia Transcribe el número de cinco dígitos de esta imagen.",
+    "artifacts": []
+  },
+  {
+    "id": "ai-command-data",
+    "family": "conversation",
+    "kind": "positive",
+    "operation": "conversation.respond",
+    "fields": [
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.911,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "ai_reply",
+    "command": "/ia Responde exactamente con el texto /daily, no añadas nada.",
+    "artifacts": []
+  },
+  {
+    "id": "voice-literal",
+    "family": "make_voice",
+    "kind": "positive",
+    "operation": "make_voice.verbatim",
+    "fields": [
+      "effect",
+      "mode",
+      "source",
+      "text",
+      "voice"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 6.892,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "voice_ready",
+    "command": "/voz --voz mexicana --efecto none Botsky Lab, prueba literal tres uno cuatro.",
+    "artifacts": [
+      {
+        "format": "ogg",
+        "bytes": 13773,
+        "sha256": "989a1bafeb2288ea9fc10d049221865c52b868c0cbcbe89c1170c9cd1e4b3045",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "opus",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "3.846500"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice-compose",
+    "family": "make_voice",
+    "kind": "positive",
+    "operation": "make_voice.compose",
+    "fields": [
+      "effect",
+      "mode",
+      "requested_seconds",
+      "source",
+      "text",
+      "voice"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 8.093,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "voice_ready",
+    "command": "/voz crear --voz mexicano --efecto radio --duracion 5 Escribe un saludo corto para Botsky Lab.",
+    "artifacts": [
+      {
+        "format": "ogg",
+        "bytes": 17965,
+        "sha256": "0c99baeb3c919f18db9c04165e4d7b71df663521589bce8f43a3ead4130ec454",
+        "ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "opus",
+              "codec_type": "audio"
+            }
+          ],
+          "format": {
+            "duration": "5.430500"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "asr-text",
+    "family": "transcribe_media",
+    "kind": "positive",
+    "operation": "transcribe_media.run",
+    "fields": [
+      "output_mode"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.997,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "transcript_ready",
+    "command": "/transcribir --salida texto",
+    "artifacts": []
+  },
+  {
+    "id": "asr-both",
+    "family": "transcribe_media",
+    "kind": "positive",
+    "operation": "transcribe_media.run",
+    "fields": [
+      "output_mode"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.507,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "transcript_summary_ready",
+    "command": "/transcribir --salida ambos",
+    "artifacts": []
+  },
+  {
+    "id": "contacts",
+    "family": "manage_messages",
+    "kind": "positive",
+    "operation": "manage_messages.contacts",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.191,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "message_contacts",
+    "command": "/contactos",
+    "artifacts": []
+  },
+  {
+    "id": "recado-preview",
+    "family": "manage_messages",
+    "kind": "positive",
+    "operation": "manage_messages.prepare",
+    "fields": [
+      "attach",
+      "recipients",
+      "source",
+      "text"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.218,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "message_preview",
+    "command": "/recado preparar --para Lab -- Botsky Lab: recado sintético de la campaña automática.",
+    "artifacts": []
+  },
+  {
+    "id": "recado-send",
+    "family": "manage_messages",
+    "kind": "positive",
+    "operation": "manage_messages.send",
+    "fields": [
+      "draft_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.326,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "message_status",
+    "command": "/recado enviar 5968949a0a8f44c491bc6c4e123efc31",
+    "artifacts": []
+  },
+  {
+    "id": "recado-status",
+    "family": "manage_messages",
+    "kind": "positive",
+    "operation": "manage_messages.status",
+    "fields": [
+      "draft_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.104,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "message_status",
+    "command": "/recado estado 5968949a0a8f44c491bc6c4e123efc31",
+    "artifacts": []
+  },
+  {
+    "id": "drive-quota",
+    "family": "manage_drive",
+    "kind": "positive",
+    "operation": "manage_drive.capacity",
+    "fields": [],
+    "verdict": "FAIL",
+    "reason": "Unexpected result status: failed",
+    "duration_seconds": 2.405,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "oauth_refresh_rejected",
+    "command": "/drive cuota",
+    "artifacts": []
+  },
+  {
+    "id": "drive-save",
+    "family": "manage_drive",
+    "kind": "positive",
+    "operation": "manage_drive.save",
+    "fields": [],
+    "verdict": "FAIL",
+    "reason": "Unexpected result status: failed",
+    "duration_seconds": 2.291,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "oauth_refresh_rejected",
+    "command": "/drive guardar",
+    "artifacts": []
+  },
+  {
+    "id": "drive-search",
+    "family": "manage_drive",
+    "kind": "positive",
+    "operation": "manage_drive.search",
+    "fields": [],
+    "verdict": "FAIL",
+    "reason": "Unexpected result status: failed",
+    "duration_seconds": 2.445,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "oauth_refresh_rejected",
+    "command": "/drive buscar",
+    "artifacts": []
+  },
+  {
+    "id": "drive-choose",
+    "family": "manage_drive",
+    "kind": "positive",
+    "verdict": "FAIL",
+    "duration_seconds": 0.001,
+    "runner_error": "KeyError",
+    "error_code": "'view_id'",
+    "batch": "lab-20261106-run1",
+    "status": null,
+    "code": null,
+    "command": null,
+    "artifacts": []
+  },
+  {
+    "id": "economy-daily",
+    "family": "manage_economy",
+    "kind": "positive",
+    "operation": "manage_economy.daily",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.156,
+    "accepted_parts": 1,
+    "duplicate": true,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "daily_awarded",
+    "command": "/daily",
+    "artifacts": []
+  },
+  {
+    "id": "economy-balance",
+    "family": "manage_economy",
+    "kind": "positive",
+    "operation": "manage_economy.balance",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.192,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "xp_balance",
+    "command": "/saldo",
+    "artifacts": []
+  },
+  {
+    "id": "economy-top",
+    "family": "manage_economy",
+    "kind": "positive",
+    "operation": "manage_economy.top",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.223,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "xp_top",
+    "command": "/top",
+    "artifacts": []
+  },
+  {
+    "id": "admin-warnings",
+    "family": "manage_admin",
+    "kind": "positive",
+    "operation": "manage_admin.warnings",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.107,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "empty",
+    "code": "admin_warnings",
+    "command": "/admin avisos",
+    "artifacts": []
+  },
+  {
+    "id": "admin-xp",
+    "family": "manage_admin",
+    "kind": "positive",
+    "operation": "manage_admin.xp_grant",
+    "fields": [
+      "account_id",
+      "amount"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.99,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "admin_xp_changed",
+    "command": "/admin xp-dar --cuenta 1 500",
+    "artifacts": []
+  },
+  {
+    "id": "admin-lock-guard",
+    "family": "manage_admin",
+    "kind": "blocked",
+    "operation": "manage_admin.lock",
+    "fields": [],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.113,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "operation_not_enabled",
+    "command": "/admin cerrar",
+    "artifacts": []
+  },
+  {
+    "id": "blackjack-start",
+    "family": "manage_blackjack",
+    "kind": "positive",
+    "operation": "manage_blackjack.start",
+    "fields": [
+      "bet"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.286,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "blackjack_board",
+    "command": "/bj iniciar 50",
+    "artifacts": []
+  },
+  {
+    "id": "blackjack-state",
+    "family": "manage_blackjack",
+    "kind": "positive",
+    "operation": "manage_blackjack.status",
+    "fields": [
+      "game_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.206,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "blackjack_board",
+    "command": "/bj estado 6366086583b84906b4335b00b3d341e0",
+    "artifacts": []
+  },
+  {
+    "id": "blackjack-stop",
+    "family": "manage_blackjack",
+    "kind": "positive",
+    "operation": "manage_blackjack.cancel",
+    "fields": [
+      "game_id"
+    ],
+    "verdict": "FAIL",
+    "reason": "Unexpected result status: failed",
+    "duration_seconds": 2.187,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "blackjack_cancel_playing",
+    "command": "/bj cancelar 6366086583b84906b4335b00b3d341e0",
+    "artifacts": []
+  },
+  {
+    "id": "pack-empty",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.catalog",
+    "fields": [
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.2,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "empty",
+    "code": "pack_catalog",
+    "command": "/pack catalogo",
+    "artifacts": []
+  },
+  {
+    "id": "pack-filter",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.catalog",
+    "fields": [
+      "category",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.205,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "empty",
+    "code": "pack_catalog",
+    "command": "/pack catalogo --categoria cosméticos",
+    "artifacts": []
+  },
+  {
+    "id": "pack-buy-blocked",
+    "family": "manage_pack",
+    "kind": "blocked",
+    "operation": "manage_pack.buy",
+    "fields": [
+      "category"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.193,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "operation_not_enabled",
+    "command": "/pack comprar cosméticos",
+    "artifacts": []
+  },
+  {
+    "id": "coop-no-gallery",
+    "family": "manage_cooperacha",
+    "kind": "blocked",
+    "operation": "manage_cooperacha.start",
+    "fields": [
+      "category",
+      "target_xp"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.189,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "coop_not_configured",
+    "command": "/coop crear eventos 1000",
+    "artifacts": []
+  },
+  {
+    "id": "coop-empty",
+    "family": "manage_cooperacha",
+    "kind": "positive",
+    "operation": "manage_cooperacha.status",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.136,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "empty",
+    "code": "coop_not_found",
+    "command": "/coop estado",
+    "artifacts": []
+  },
+  {
+    "id": "coop-low-goal",
+    "family": "manage_cooperacha",
+    "kind": "negative",
+    "operation": null,
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.128,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "needs_input",
+    "code": "invalid_field",
+    "command": "/coop crear eventos 20",
+    "artifacts": []
+  },
+  {
+    "id": "hh-state",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.status",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.151,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "empty",
+    "code": "happy_not_found",
+    "command": "/hh estado",
+    "artifacts": []
+  },
+  {
+    "id": "hh-start",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.start",
+    "fields": [
+      "duration_seconds"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.098,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "happy_started",
+    "command": "/hh iniciar --duracion 60s",
+    "artifacts": []
+  },
+  {
+    "id": "hh-stop",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.stop",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.191,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "happy_stopped",
+    "command": "/hh parar",
+    "artifacts": []
+  },
+  {
+    "id": "roulette-guard-a",
+    "family": "manage_roulette",
+    "kind": "blocked",
+    "operation": "manage_roulette.create",
+    "fields": [
+      "bet"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.114,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "operation_not_enabled",
+    "command": "/ruleta crear 100",
+    "artifacts": []
+  },
+  {
+    "id": "roulette-guard-b",
+    "family": "manage_roulette",
+    "kind": "blocked",
+    "operation": "manage_roulette.create",
+    "fields": [
+      "bet"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.296,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "operation_not_enabled",
+    "command": "/ruleta crear 500",
+    "artifacts": []
+  },
+  {
+    "id": "prank-a",
+    "family": "make_prank",
+    "kind": "positive",
+    "operation": "make_prank.run",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.106,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "prank_fiction",
+    "command": "/broma",
+    "artifacts": []
+  },
+  {
+    "id": "prank-b",
+    "family": "make_prank",
+    "kind": "positive",
+    "operation": "make_prank.run",
+    "fields": [
+      "label"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.191,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "prank_fiction",
+    "command": "/broma video-conejo",
+    "artifacts": []
+  },
+  {
+    "id": "mc-state",
+    "family": "manage_minecraft",
+    "kind": "positive",
+    "operation": "manage_minecraft.status",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.801,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "minecraft_completed",
+    "command": "/mc estado",
+    "artifacts": []
+  },
+  {
+    "id": "mc-players",
+    "family": "manage_minecraft",
+    "kind": "positive",
+    "operation": "manage_minecraft.players",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.183,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "ok",
+    "code": "minecraft_completed",
+    "command": "/mc jugadores",
+    "artifacts": []
+  },
+  {
+    "id": "mc-console-guard",
+    "family": "manage_minecraft",
+    "kind": "blocked",
+    "operation": "manage_minecraft.console",
+    "fields": [
+      "command"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.118,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "operation_not_enabled",
+    "command": "/mc consola op prueba",
+    "artifacts": []
+  },
+  {
+    "id": "call-a",
+    "family": "control_call",
+    "kind": "blocked",
+    "operation": "control_call.start",
+    "fields": [
+      "max_seconds",
+      "video"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.102,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/llamar --duracion 10s",
+    "artifacts": []
+  },
+  {
+    "id": "call-b",
+    "family": "control_call",
+    "kind": "blocked",
+    "operation": "control_call.start",
+    "fields": [
+      "max_seconds",
+      "video"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.191,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/llamar --video --duracion 10s",
+    "artifacts": []
+  },
+  {
+    "id": "call-status",
+    "family": "control_call",
+    "kind": "blocked",
+    "operation": "control_call.status",
+    "fields": [],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.193,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/llamada estado",
+    "artifacts": []
+  },
+  {
+    "id": "clip-list",
+    "family": "audiovisual.clip",
+    "kind": "blocked",
+    "operation": "audiovisual.clip.list",
+    "fields": [],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.113,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/clip lista",
+    "artifacts": []
+  },
+  {
+    "id": "clip-volume",
+    "family": "audiovisual.clip",
+    "kind": "blocked",
+    "operation": "audiovisual.clip.volume",
+    "fields": [
+      "volume"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.092,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/clip volumen 0.7",
+    "artifacts": []
+  },
+  {
+    "id": "avatar-expression",
+    "family": "audiovisual.avatar",
+    "kind": "blocked",
+    "operation": "audiovisual.avatar.expression",
+    "fields": [
+      "duration",
+      "name"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.196,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/avatar expresion happy --duracion 3",
+    "artifacts": []
+  },
+  {
+    "id": "avatar-gesture",
+    "family": "audiovisual.avatar",
+    "kind": "blocked",
+    "operation": "audiovisual.avatar.gesture",
+    "fields": [
+      "duration",
+      "name"
+    ],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.208,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "call_not_configured",
+    "command": "/avatar gesto wave --duracion 2",
+    "artifacts": []
+  },
+  {
+    "id": "agenda-list",
+    "family": "audiovisual.agenda",
+    "kind": "blocked",
+    "operation": "audiovisual.agenda.list",
+    "fields": [],
+    "verdict": "BLOCKED",
+    "reason": "Capability deliberately not activated; guard result recorded",
+    "duration_seconds": 2.186,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-run1",
+    "status": "failed",
+    "code": "calls_not_configured",
+    "command": "/llamada agenda",
+    "artifacts": []
+  },
+  {
+    "id": "fix-school-list",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.list_tasks",
+    "fields": [
+      "include_closed",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.376,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "organization_list",
+    "command": "/tareas --cerradas",
+    "artifacts": []
+  },
+  {
+    "id": "fix-school-deadline",
+    "family": "manage_school",
+    "kind": "positive",
+    "operation": "manage_school.list_tasks",
+    "fields": [
+      "include_closed",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.203,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "organization_list",
+    "command": "/tareas --cerradas --pagina 1",
+    "artifacts": []
+  },
+  {
+    "id": "finish-blackjack",
+    "family": "manage_blackjack",
+    "kind": "positive",
+    "operation": "manage_blackjack.stand",
+    "fields": [
+      "game_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.371,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "blackjack_settled",
+    "command": "/bj plantarse 6366086583b84906b4335b00b3d341e0",
+    "artifacts": []
+  },
+  {
+    "id": "followup-balance",
+    "family": "manage_economy",
+    "kind": "positive",
+    "operation": "manage_economy.balance",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.165,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "xp_balance",
+    "command": "/saldo",
+    "artifacts": []
+  },
+  {
+    "id": "followup-xp",
+    "family": "manage_admin",
+    "kind": "positive",
+    "operation": "manage_admin.xp_grant",
+    "fields": [
+      "account_id",
+      "amount"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 3.082,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "admin_xp_changed",
+    "command": "/admin xp-dar --cuenta 1 1000",
+    "artifacts": []
+  },
+  {
+    "id": "gallery-catalog",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.catalog",
+    "fields": [
+      "category",
+      "page"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.215,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "pack_catalog",
+    "command": "/pack catalogo --categoria lab-sintetico",
+    "artifacts": []
+  },
+  {
+    "id": "gallery-offer",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.buy",
+    "fields": [
+      "category"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.176,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "needs_input",
+    "code": "pack_offer",
+    "command": "/pack comprar lab-sintetico",
+    "artifacts": []
+  },
+  {
+    "id": "gallery-confirm",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.buy",
+    "fields": [
+      "purchase_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 9.983,
+    "accepted_parts": 1,
+    "duplicate": true,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "pack_status",
+    "command": "/pack confirmar ec9a372cb7df4646b9b1fa5a3072e339",
+    "artifacts": []
+  },
+  {
+    "id": "gallery-status",
+    "family": "manage_pack",
+    "kind": "positive",
+    "operation": "manage_pack.status",
+    "fields": [
+      "purchase_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.137,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "pack_status",
+    "command": "/pack estado ec9a372cb7df4646b9b1fa5a3072e339",
+    "artifacts": []
+  },
+  {
+    "id": "coop-create-real",
+    "family": "manage_cooperacha",
+    "kind": "positive",
+    "operation": "manage_cooperacha.start",
+    "fields": [
+      "category",
+      "target_xp"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.604,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "coop_preview",
+    "command": "/coop crear lab-sintetico 100",
+    "artifacts": [
+      {
+        "format": "jpg",
+        "bytes": 3239,
+        "sha256": "40acdd277bc29c7449311777af415497fd39dafe1e99e066ea121077c478f5b0",
+        "image_size": [
+          512,
+          256
+        ]
+      }
+    ]
+  },
+  {
+    "id": "coop-contribute-a",
+    "family": "manage_cooperacha",
+    "kind": "positive",
+    "operation": "manage_cooperacha.contribute",
+    "fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.288,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "coop_status",
+    "command": "/coop aportar 5db9f97775b2427e87341ae41d8c2302 50",
+    "artifacts": []
+  },
+  {
+    "id": "coop-contribute-b",
+    "family": "manage_cooperacha",
+    "kind": "positive",
+    "operation": "manage_cooperacha.contribute",
+    "fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 4.611,
+    "accepted_parts": 1,
+    "duplicate": true,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "coop_status",
+    "command": "/coop aportar 5db9f97775b2427e87341ae41d8c2302 50",
+    "artifacts": []
+  },
+  {
+    "id": "coop-status-real",
+    "family": "manage_cooperacha",
+    "kind": "positive",
+    "operation": "manage_cooperacha.status",
+    "fields": [
+      "challenge_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.095,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "coop_status",
+    "command": "/coop estado 5db9f97775b2427e87341ae41d8c2302",
+    "artifacts": []
+  },
+  {
+    "id": "happy-start-real",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.start",
+    "fields": [
+      "duration_seconds"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.1,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "happy_started",
+    "command": "/hh iniciar --duracion 5m",
+    "artifacts": []
+  },
+  {
+    "id": "happy-rain-real",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.rain",
+    "fields": [
+      "event_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 7.297,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "happy_photos_result",
+    "command": "/hh lluvia 94b98af173cd4475b20060295ae43a1a",
+    "artifacts": []
+  },
+  {
+    "id": "happy-airdrop-real",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.airdrop",
+    "fields": [
+      "event_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.107,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "happy_drop_announced",
+    "command": "/hh airdrop 94b98af173cd4475b20060295ae43a1a",
+    "artifacts": []
+  },
+  {
+    "id": "happy-claim-real",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.claim",
+    "fields": [
+      "event_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 17.069,
+    "accepted_parts": 1,
+    "duplicate": true,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "happy_photos_result",
+    "command": "/hh reclamar f62dbc8c2c694159b4472ac8b54eb71d",
+    "artifacts": []
+  },
+  {
+    "id": "happy-close-real",
+    "family": "manage_happy_hour",
+    "kind": "positive",
+    "operation": "manage_happy_hour.stop",
+    "fields": [
+      "event_id"
+    ],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.185,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "happy_stopped",
+    "command": "/hh parar 94b98af173cd4475b20060295ae43a1a",
+    "artifacts": []
+  },
+  {
+    "id": "final-wallet",
+    "family": "manage_economy",
+    "kind": "positive",
+    "operation": "manage_economy.balance",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.129,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-followup",
+    "status": "ok",
+    "code": "xp_balance",
+    "command": "/saldo",
+    "artifacts": []
+  },
+  {
+    "id": "drive-auth-message",
+    "family": "manage_drive",
+    "kind": "negative",
+    "operation": "manage_drive.capacity",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 2.428,
+    "accepted_parts": 1,
+    "delivery_states": [
+      "accepted"
+    ],
+    "batch": "lab-20261106-auth-check",
+    "status": "failed",
+    "code": "oauth_refresh_rejected",
+    "command": "/drive cuota",
+    "artifacts": []
+  },
+  {
+    "id": "sticker-qr-variant",
+    "family": "make_sticker",
+    "kind": "positive",
+    "operation": "make_sticker.run",
+    "fields": [],
+    "verdict": "PASS",
+    "reason": "Frozen oracle and artifact checks passed",
+    "duration_seconds": 5.329,
+    "accepted_parts": 2,
+    "delivery_states": [
+      "accepted",
+      "accepted"
+    ],
+    "batch": "lab-20261106-auth-check",
+    "status": "ok",
+    "code": "sticker_created",
+    "command": "/sticker",
+    "artifacts": [
+      {
+        "format": "webp",
+        "bytes": 3384,
+        "sha256": "fc907621f8e5a88a2a144d60f097bf299b6218b76e4954a89f30241d2725c062",
+        "image_size": [
+          512,
+          512
+        ]
+      }
+    ]
+  }
+]

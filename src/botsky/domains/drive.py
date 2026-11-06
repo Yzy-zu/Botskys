@@ -200,10 +200,19 @@ async def run(job, directory, paths, manager, backend):
                 "UPDATE drive_uploads SET state=?,updated_ms=? WHERE receipt_id=?",
                 ("uncertain" if exc.uncertain else "failed", manager.clock(), job["id"]),
             )
+        if exc.code == "oauth_refresh_rejected":
+            message = (
+                "No pude renovar la autorización de Drive. Es necesario volver a conectar "
+                "la cuenta de Google para usar Drive. No repetí la operación."
+            )
+        elif exc.uncertain:
+            message = "Drive no confirmó la subida. Su estado es incierto; no la repetí."
+        else:
+            message = "No pude completar la operación de Drive. No la repetí."
         return EngineOutput(
             Result(
                 "uncertain" if exc.uncertain else "failed",
                 exc.code,
-                "Drive no completó una respuesta verificable. No repetí la subida.",
+                message,
             )
         )

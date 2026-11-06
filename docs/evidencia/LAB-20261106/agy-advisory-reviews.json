@@ -1,0 +1,112 @@
+{
+  "core-events": {
+    "findings": [
+      {
+        "case": "school-list",
+        "kind": "product_failure",
+        "description": "El listado de tareas escolares omitió datos esenciales de contexto (materia y plazos/fechas límite), afectando la claridad del usuario hasta su corrección posterior.",
+        "evidence": "text: '1: Entregar ensayo sobre la revolución industrial\\n2: Resolver guía de problemas de cálculo', reason: 'Expected text absent'"
+      },
+      {
+        "case": "drive-quota",
+        "kind": "product_failure",
+        "description": "Fallo de autenticación por token OAuth expirado/revocado (invalid_grant); el mensaje de error al usuario ('Drive no completó una respuesta verificable') carece de guía de acción para reconectar.",
+        "evidence": "code: 'oauth_refresh_rejected', text: 'Drive no completó una respuesta verificable. No repetí la subida.', operator_findings: 'Drive token invalid_grant expired or revoked'"
+      },
+      {
+        "case": "drive-choose",
+        "kind": "runner_oracle_failure",
+        "description": "Fallo atribuible al runner/entorno de ejecución por intentar invocar selección sin vista previa previa requerida (KeyError sin comando ejecutado ni respuesta del producto).",
+        "evidence": "verdict: 'FAIL', code: null, text: '', operator_findings: 'Drive choose had no prerequisite view: initial runner KeyError; no command executed'"
+      },
+      {
+        "case": "blackjack-stop",
+        "kind": "runner_oracle_failure",
+        "description": "Falsa expectativa del oráculo inicial: el producto rechazó correctamente cancelar una mano ya repartida según las reglas, pero el oráculo lo marcó como FAIL.",
+        "evidence": "verdict: 'FAIL', code: 'blackjack_cancel_playing', text: 'Una mano repartida se termina por turno o plazo; no se devuelve por cancelación voluntaria.'"
+      },
+      {
+        "case": "admin-lock-guard",
+        "kind": "blocked",
+        "description": "Bloqueo por salvaguarda deliberada; la denegación informa correctamente la restricción de configuración sin certificar la funcionalidad subyacente.",
+        "evidence": "verdict: 'BLOCKED', code: 'operation_not_enabled', text: 'Esta función o este chat no está habilitado en la configuración de Botsky. No se ejecutó la acción.'"
+      },
+      {
+        "case": "call-a",
+        "kind": "blocked",
+        "description": "Capacidad audiovisual/llamadas deshabilitada en la configuración; el intento fue bloqueado por diseño.",
+        "evidence": "verdict: 'BLOCKED', code: 'call_not_configured', text: 'Las llamadas todavía no están configuradas en Botsky.'"
+      },
+      {
+        "case": "pack-empty",
+        "kind": "ui_ux_issue",
+        "description": "Espaciado y formato inconsistente en el encabezado del catálogo de paquetes ('·150 XP, hora feliz75 XP.').",
+        "evidence": "code: 'pack_catalog', text: 'Packs publicados ·150 XP, hora feliz75 XP.\\n'"
+      },
+      {
+        "case": "recado-send",
+        "kind": "ui_ux_issue",
+        "description": "La confirmación de envío refleja estado de aceptación técnica ('accepted'), lo cual no garantiza recepción ni lectura humana efectiva.",
+        "evidence": "code: 'message_status', text: 'Recado [ID]: completed.\\nBotsky Lab · text: accepted'"
+      }
+    ],
+    "recommendations": [
+      "Mejorar el mensaje de error de Google Drive cuando se reciba invalid_grant, indicando explícitamente al usuario la necesidad de reconectar la autorización OAuth.",
+      "Corregir inconsistencias tipográficas y espacios faltantes en las cabeceras de texto (/pack, /hh).",
+      "Aclarar en la UI de mensajería/recados que el estado 'accepted' corresponde a entrega/recepción técnica del transporte y no a lectura humana confirmada.",
+      "Ajustar las aserciones de los oráculos de prueba para validar respuestas de rechazo legítimas como comportamiento esperado según contrato de negocio (ej. /bj cancelar en mano activa)."
+    ]
+  },
+  "social-events": {
+    "findings": [
+      {
+        "case": "school-list",
+        "kind": "product_defect",
+        "description": "La salida de la lista de tareas omitía materia y fecha límite requeridas por la especificación, corregido posteriormente en fix-school-list.",
+        "evidence": "FAIL con 'Expected text absent' frente al texto sin metadatos '1: Entregar ensayo sobre la revolución industrial'."
+      },
+      {
+        "case": "drive-quota",
+        "kind": "dependency_failure",
+        "description": "Fallo de autenticación por token OAuth de Google Drive expirado o revocado (invalid_grant), requiriendo reconexión de flujo OAuth.",
+        "evidence": "FAIL con código oauth_refresh_rejected y texto 'Drive no completó una respuesta verificable'."
+      },
+      {
+        "case": "drive-choose",
+        "kind": "runner_defect",
+        "description": "Excepción KeyError en el runner por ausencia de precondición o vista previa antes de ejecutar la selección de Drive.",
+        "evidence": "FAIL sin código ni texto registrado debido a KeyError en el runner sin comando ejecutado."
+      },
+      {
+        "case": "blackjack-stop",
+        "kind": "oracle_defect",
+        "description": "El oráculo evaluó como fallo una denegación válida de cancelación de mano activa según las reglas de negocio del juego.",
+        "evidence": "FAIL con código blackjack_cancel_playing y texto 'Una mano repartida se termina por turno o plazo; no se devuelve por cancelación voluntaria'."
+      },
+      {
+        "case": "recado-send",
+        "kind": "acceptance_limit",
+        "description": "El estado de transporte 'accepted' indica únicamente confirmación del gateway de mensajería (ACK) y no garantiza lectura o recepción humana.",
+        "evidence": "code: message_status con texto 'Botsky Lab · text: accepted'."
+      },
+      {
+        "case": "admin-lock-guard",
+        "kind": "blocked_guard",
+        "description": "Protección administrativa no activada intencionalmente en la configuración del entorno; la denegación no certifica la capacidad funcional.",
+        "evidence": "BLOCKED con código operation_not_enabled y reason 'Capability deliberately not activated; guard result recorded'."
+      },
+      {
+        "case": "call-a",
+        "kind": "blocked_dependency",
+        "description": "Subsistema de llamadas y transporte audiovisual no configurado en el entorno de pruebas, registrando bloqueo preventivo.",
+        "evidence": "BLOCKED con código call_not_configured y texto 'Las llamadas todavía no están configuradas en Botsky'."
+      }
+    ],
+    "recommendations": [
+      "Reconectar la autorización OAuth de Google Drive mediante el flujo interactivo oficial al detectarse invalid_grant, sin alterar tokens manualmente.",
+      "Ajustar el oráculo de blackjack-stop para admitir la respuesta de rechazo válida blackjack_cancel_playing acorde a las reglas de negocio.",
+      "Corregir el runner para validar precondiciones y llaves requeridas antes de invocar la selección en drive-choose.",
+      "Tratar los veredictos BLOCKED y los ACKs de transporte como límites de entorno/entrega, no como evidencia de ejecución o recepción humana."
+    ]
+  }
+}

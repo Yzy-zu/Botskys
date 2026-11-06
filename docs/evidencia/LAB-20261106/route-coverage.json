@@ -1,0 +1,2344 @@
+[
+  {
+    "route": "/ayuda",
+    "family": "core",
+    "operation": "core.help",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "topic"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/estado",
+    "family": "core",
+    "operation": "core.estado",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/cancelar",
+    "family": "core",
+    "operation": "core.cancelar",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/confirmar",
+    "family": "core",
+    "operation": "core.confirmar",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bot estado",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.status",
+    "parsed_cases": [
+      "bot-status"
+    ],
+    "positive_PASS_cases": [
+      "bot-status"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/bot modo",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.mode",
+    "parsed_cases": [
+      "bot-mode"
+    ],
+    "positive_PASS_cases": [
+      "bot-mode"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "mode"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/bot pausa",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.pause",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "minutes"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bot reanudar",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.resume",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/reaccion",
+    "family": "send_sticker",
+    "operation": "send_sticker.run",
+    "parsed_cases": [
+      "react-a",
+      "react-b"
+    ],
+    "positive_PASS_cases": [
+      "react-a",
+      "react-b"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "sticker_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/sticker",
+    "family": "make_sticker",
+    "operation": "make_sticker.run",
+    "parsed_cases": [
+      "sticker-a",
+      "sticker-no-file",
+      "sticker-qr-variant"
+    ],
+    "positive_PASS_cases": [
+      "sticker-a",
+      "sticker-qr-variant"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/ia",
+    "family": "conversation",
+    "operation": "conversation.respond",
+    "parsed_cases": [
+      "ai-arithmetic",
+      "ai-image",
+      "ai-command-data"
+    ],
+    "positive_PASS_cases": [
+      "ai-arithmetic",
+      "ai-image",
+      "ai-command-data"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/nota guardar",
+    "family": "save_note",
+    "operation": "save_note.run",
+    "parsed_cases": [
+      "note-a",
+      "note-b"
+    ],
+    "positive_PASS_cases": [
+      "note-a",
+      "note-b"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/notas",
+    "family": "find_notes",
+    "operation": "find_notes.run",
+    "parsed_cases": [
+      "notes-filter",
+      "notes-literal"
+    ],
+    "positive_PASS_cases": [
+      "notes-filter",
+      "notes-literal"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "query"
+    ],
+    "unobserved_fields": [
+      "page"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/ocr",
+    "family": "read_image",
+    "operation": "read_image.run",
+    "parsed_cases": [
+      "ocr-a"
+    ],
+    "positive_PASS_cases": [
+      "ocr-a"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/qr",
+    "family": "read_image",
+    "operation": "read_image.run",
+    "parsed_cases": [
+      "qr-a"
+    ],
+    "positive_PASS_cases": [
+      "qr-a"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/transcribir",
+    "family": "transcribe_media",
+    "operation": "transcribe_media.run",
+    "parsed_cases": [
+      "asr-text",
+      "asr-both"
+    ],
+    "positive_PASS_cases": [
+      "asr-text",
+      "asr-both"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "output_mode"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/dl mp3",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download-mp3"
+    ],
+    "positive_PASS_cases": [
+      "download-mp3"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "end_seconds",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [
+      "quality"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/dl mp4",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download-mp4"
+    ],
+    "positive_PASS_cases": [
+      "download-mp4"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "end_seconds",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [
+      "quality"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/dl webm",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/dl srt",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "subtitle_language",
+      "url"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/dl buscar",
+    "family": "download_media",
+    "operation": "download_media.search",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "query",
+      "source",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/dl elegir",
+    "family": "download_media",
+    "operation": "download_media.choose",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "choice",
+      "view_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/dl anterior",
+    "family": "download_media",
+    "operation": "download_media.previous",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/editar",
+    "family": "edit_media",
+    "operation": "edit_media.run",
+    "parsed_cases": [
+      "edit-mp3",
+      "edit-webm"
+    ],
+    "positive_PASS_cases": [
+      "edit-mp3",
+      "edit-webm"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "container",
+      "end_seconds",
+      "start_seconds"
+    ],
+    "unobserved_fields": [
+      "quality",
+      "subtitle_language"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/voz",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [
+      "voice-literal"
+    ],
+    "positive_PASS_cases": [
+      "voice-literal"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "effect",
+      "text",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/voz crear",
+    "family": "make_voice",
+    "operation": "make_voice.compose",
+    "parsed_cases": [
+      "voice-compose"
+    ],
+    "positive_PASS_cases": [
+      "voice-compose"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "effect",
+      "requested_seconds",
+      "text",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/voz cita",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "effect",
+      "voice"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/voz ultima",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "effect",
+      "voice"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/voces",
+    "family": "make_voice",
+    "operation": "make_voice.catalog",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamar",
+    "family": "control_call",
+    "operation": "control_call.start",
+    "parsed_cases": [
+      "call-a",
+      "call-b"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "call-a",
+      "call-b"
+    ],
+    "explicit_fields": [
+      "max_seconds",
+      "video"
+    ],
+    "unobserved_fields": [
+      "topic"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/llamada estado",
+    "family": "control_call",
+    "operation": "control_call.status",
+    "parsed_cases": [
+      "call-status"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "call-status"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/llamada colgar",
+    "family": "control_call",
+    "operation": "control_call.hangup",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada cancelar",
+    "family": "control_call",
+    "operation": "control_call.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/pdf iniciar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.start",
+    "parsed_cases": [
+      "pdf-start"
+    ],
+    "positive_PASS_cases": [
+      "pdf-start"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pdf agregar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.add",
+    "parsed_cases": [
+      "pdf-add"
+    ],
+    "positive_PASS_cases": [
+      "pdf-add"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pdf terminar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.finish",
+    "parsed_cases": [
+      "pdf-finish"
+    ],
+    "positive_PASS_cases": [
+      "pdf-finish"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pdf cancelar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/pdf extraer",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.extract",
+    "parsed_cases": [
+      "pdf-extract"
+    ],
+    "positive_PASS_cases": [
+      "pdf-extract"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "pages"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pdf reintentar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.retry",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/convertir",
+    "family": "convert_document",
+    "operation": "convert_document.run",
+    "parsed_cases": [
+      "convert-image-pdf",
+      "convert-pdf-txt",
+      "convert-text-docx"
+    ],
+    "positive_PASS_cases": [
+      "convert-image-pdf",
+      "convert-pdf-txt",
+      "convert-text-docx"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "target"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/tarea crear",
+    "family": "manage_school",
+    "operation": "manage_school.add_task",
+    "parsed_cases": [
+      "school-a",
+      "school-file"
+    ],
+    "positive_PASS_cases": [
+      "school-a",
+      "school-file"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "attach",
+      "due_date",
+      "due_time",
+      "subject",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/tareas",
+    "family": "manage_school",
+    "operation": "manage_school.list_tasks",
+    "parsed_cases": [
+      "school-list",
+      "fix-school-list",
+      "fix-school-deadline"
+    ],
+    "positive_PASS_cases": [
+      "fix-school-list",
+      "fix-school-deadline"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "include_closed",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/tarea completar",
+    "family": "manage_school",
+    "operation": "manage_school.complete_task",
+    "parsed_cases": [
+      "school-complete"
+    ],
+    "positive_PASS_cases": [
+      "school-complete"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/tarea borrar",
+    "family": "manage_school",
+    "operation": "manage_school.delete_task",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "task_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/tarea archivo",
+    "family": "manage_school",
+    "operation": "manage_school.get_attachment",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "task_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/horario agregar",
+    "family": "manage_school",
+    "operation": "manage_school.set_lesson",
+    "parsed_cases": [
+      "schedule-add"
+    ],
+    "positive_PASS_cases": [
+      "schedule-add"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/horario listar",
+    "family": "manage_school",
+    "operation": "manage_school.list_schedule",
+    "parsed_cases": [
+      "schedule-list"
+    ],
+    "positive_PASS_cases": [
+      "schedule-list"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/horario borrar",
+    "family": "manage_school",
+    "operation": "manage_school.delete_lesson",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "lesson_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/escuela resumen configurar",
+    "family": "manage_school",
+    "operation": "manage_school.configure_digest",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "digest_time",
+      "enabled"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/escuela resumen estado",
+    "family": "manage_school",
+    "operation": "manage_school.status_digest",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/encuesta crear",
+    "family": "manage_poll",
+    "operation": "manage_poll.create",
+    "parsed_cases": [
+      "poll-create"
+    ],
+    "positive_PASS_cases": [
+      "poll-create"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "options",
+      "question"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/encuesta votar",
+    "family": "manage_poll",
+    "operation": "manage_poll.vote",
+    "parsed_cases": [
+      "poll-vote"
+    ],
+    "positive_PASS_cases": [
+      "poll-vote"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/encuesta resultados",
+    "family": "manage_poll",
+    "operation": "manage_poll.results",
+    "parsed_cases": [
+      "poll-results"
+    ],
+    "positive_PASS_cases": [
+      "poll-results"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/encuesta cerrar",
+    "family": "manage_poll",
+    "operation": "manage_poll.close",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "poll_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/recado preparar",
+    "family": "manage_messages",
+    "operation": "manage_messages.prepare",
+    "parsed_cases": [
+      "recado-preview"
+    ],
+    "positive_PASS_cases": [
+      "recado-preview"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "recipients",
+      "text"
+    ],
+    "unobserved_fields": [
+      "attach",
+      "source"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recado estado",
+    "family": "manage_messages",
+    "operation": "manage_messages.status",
+    "parsed_cases": [
+      "recado-status"
+    ],
+    "positive_PASS_cases": [
+      "recado-status"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recado enviar",
+    "family": "manage_messages",
+    "operation": "manage_messages.send",
+    "parsed_cases": [
+      "recado-send"
+    ],
+    "positive_PASS_cases": [
+      "recado-send"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recado cancelar",
+    "family": "manage_messages",
+    "operation": "manage_messages.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/contactos",
+    "family": "manage_messages",
+    "operation": "manage_messages.contacts",
+    "parsed_cases": [
+      "contacts"
+    ],
+    "positive_PASS_cases": [
+      "contacts"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pack catalogo",
+    "family": "manage_pack",
+    "operation": "manage_pack.catalog",
+    "parsed_cases": [
+      "pack-empty",
+      "pack-filter",
+      "gallery-catalog"
+    ],
+    "positive_PASS_cases": [
+      "pack-empty",
+      "pack-filter",
+      "gallery-catalog"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "category"
+    ],
+    "unobserved_fields": [
+      "page"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pack comprar",
+    "family": "manage_pack",
+    "operation": "manage_pack.buy",
+    "parsed_cases": [
+      "pack-buy-blocked",
+      "gallery-offer"
+    ],
+    "positive_PASS_cases": [
+      "gallery-offer"
+    ],
+    "blocked_cases": [
+      "pack-buy-blocked"
+    ],
+    "explicit_fields": [
+      "category"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pack confirmar",
+    "family": "manage_pack",
+    "operation": "manage_pack.buy",
+    "parsed_cases": [
+      "gallery-confirm"
+    ],
+    "positive_PASS_cases": [
+      "gallery-confirm"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/pack estado",
+    "family": "manage_pack",
+    "operation": "manage_pack.status",
+    "parsed_cases": [
+      "gallery-status"
+    ],
+    "positive_PASS_cases": [
+      "gallery-status"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "purchase_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/coop crear",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.start",
+    "parsed_cases": [
+      "coop-no-gallery",
+      "coop-create-real"
+    ],
+    "positive_PASS_cases": [
+      "coop-create-real"
+    ],
+    "blocked_cases": [
+      "coop-no-gallery"
+    ],
+    "explicit_fields": [
+      "category",
+      "target_xp"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/coop aportar",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.contribute",
+    "parsed_cases": [
+      "coop-contribute-a",
+      "coop-contribute-b"
+    ],
+    "positive_PASS_cases": [
+      "coop-contribute-a",
+      "coop-contribute-b"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/coop estado",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.status",
+    "parsed_cases": [
+      "coop-empty",
+      "coop-status-real"
+    ],
+    "positive_PASS_cases": [
+      "coop-empty",
+      "coop-status-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/coop cancelar",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "challenge_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/hh iniciar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.start",
+    "parsed_cases": [
+      "hh-start",
+      "happy-start-real"
+    ],
+    "positive_PASS_cases": [
+      "hh-start",
+      "happy-start-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "duration_seconds"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/hh parar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.stop",
+    "parsed_cases": [
+      "hh-stop",
+      "happy-close-real"
+    ],
+    "positive_PASS_cases": [
+      "hh-stop",
+      "happy-close-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/hh estado",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.status",
+    "parsed_cases": [
+      "hh-state"
+    ],
+    "positive_PASS_cases": [
+      "hh-state"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "event_id"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/hh lluvia",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.rain",
+    "parsed_cases": [
+      "happy-rain-real"
+    ],
+    "positive_PASS_cases": [
+      "happy-rain-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/hh airdrop",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.airdrop",
+    "parsed_cases": [
+      "happy-airdrop-real"
+    ],
+    "positive_PASS_cases": [
+      "happy-airdrop-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/hh reclamar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.claim",
+    "parsed_cases": [
+      "happy-claim-real"
+    ],
+    "positive_PASS_cases": [
+      "happy-claim-real"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mem guardar",
+    "family": "manage_memory",
+    "operation": "manage_memory.remember",
+    "parsed_cases": [
+      "memory-a"
+    ],
+    "positive_PASS_cases": [
+      "memory-a"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "kind",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mem listar",
+    "family": "manage_memory",
+    "operation": "manage_memory.list",
+    "parsed_cases": [
+      "memory-list",
+      "memory-after"
+    ],
+    "positive_PASS_cases": [
+      "memory-list",
+      "memory-after"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "kind"
+    ],
+    "unobserved_fields": [
+      "page"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mem corregir",
+    "family": "manage_memory",
+    "operation": "manage_memory.correct",
+    "parsed_cases": [
+      "memory-edit"
+    ],
+    "positive_PASS_cases": [
+      "memory-edit"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "memory_id",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mem olvidar",
+    "family": "manage_memory",
+    "operation": "manage_memory.forget",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "memory_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mem borrar-todo",
+    "family": "manage_memory",
+    "operation": "manage_memory.forget_all",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc estado",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.status",
+    "parsed_cases": [
+      "mc-state"
+    ],
+    "positive_PASS_cases": [
+      "mc-state"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mc jugadores",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.players",
+    "parsed_cases": [
+      "mc-players"
+    ],
+    "positive_PASS_cases": [
+      "mc-players"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/mc mundos",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.worlds",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc mods",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.mods",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc config",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.config",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc iniciar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.start",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc parar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.stop",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc reiniciar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.restart",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc backup",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.backup",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc mod activar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.enable_mod",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc mod desactivar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.disable_mod",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/mc consola",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.console",
+    "parsed_cases": [
+      "mc-console-guard"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "mc-console-guard"
+    ],
+    "explicit_fields": [
+      "command"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/admin advertir",
+    "family": "manage_admin",
+    "operation": "manage_admin.warn",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin quitar-aviso",
+    "family": "manage_admin",
+    "operation": "manage_admin.unwarn",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target",
+      "warning_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin avisos",
+    "family": "manage_admin",
+    "operation": "manage_admin.warnings",
+    "parsed_cases": [
+      "admin-warnings"
+    ],
+    "positive_PASS_cases": [
+      "admin-warnings"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/admin expulsar",
+    "family": "manage_admin",
+    "operation": "manage_admin.kick",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin ban",
+    "family": "manage_admin",
+    "operation": "manage_admin.ban",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin unban",
+    "family": "manage_admin",
+    "operation": "manage_admin.unban",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin promover",
+    "family": "manage_admin",
+    "operation": "manage_admin.promote",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin degradar",
+    "family": "manage_admin",
+    "operation": "manage_admin.demote",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin silenciar",
+    "family": "manage_admin",
+    "operation": "manage_admin.mute",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin desilenciar",
+    "family": "manage_admin",
+    "operation": "manage_admin.unmute",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin cerrar",
+    "family": "manage_admin",
+    "operation": "manage_admin.lock",
+    "parsed_cases": [
+      "admin-lock-guard"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "admin-lock-guard"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/admin abrir",
+    "family": "manage_admin",
+    "operation": "manage_admin.unlock",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin xp-dar",
+    "family": "manage_admin",
+    "operation": "manage_admin.xp_grant",
+    "parsed_cases": [
+      "admin-xp",
+      "followup-xp"
+    ],
+    "positive_PASS_cases": [
+      "admin-xp",
+      "followup-xp"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "account_id",
+      "amount"
+    ],
+    "unobserved_fields": [
+      "target"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/admin xp-quitar",
+    "family": "manage_admin",
+    "operation": "manage_admin.xp_remove",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "account_id",
+      "amount",
+      "target"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin nuclear-preparar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_prepare",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin nuclear-confirmar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_confirm",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/admin nuclear-cancelar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj iniciar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.start",
+    "parsed_cases": [
+      "blackjack-start"
+    ],
+    "positive_PASS_cases": [
+      "blackjack-start"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/bj mesa",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.table",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "bet"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj entrar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.join",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "game_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj repartir",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.deal",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "game_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj pedir",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.hit",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "game_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj plantarse",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.stand",
+    "parsed_cases": [
+      "finish-blackjack"
+    ],
+    "positive_PASS_cases": [
+      "finish-blackjack"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/bj doblar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.double",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "game_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/bj estado",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.status",
+    "parsed_cases": [
+      "blackjack-state"
+    ],
+    "positive_PASS_cases": [
+      "blackjack-state"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/bj cancelar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.cancel",
+    "parsed_cases": [
+      "blackjack-stop"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/ruleta crear",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.create",
+    "parsed_cases": [
+      "roulette-guard-a",
+      "roulette-guard-b"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "roulette-guard-a",
+      "roulette-guard-b"
+    ],
+    "explicit_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/ruleta entrar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.join",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/ruleta jugar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.play",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/ruleta estado",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.status",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/broma",
+    "family": "make_prank",
+    "operation": "make_prank.run",
+    "parsed_cases": [
+      "prank-a",
+      "prank-b"
+    ],
+    "positive_PASS_cases": [
+      "prank-a",
+      "prank-b"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "label"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/daily",
+    "family": "manage_economy",
+    "operation": "manage_economy.daily",
+    "parsed_cases": [
+      "economy-daily"
+    ],
+    "positive_PASS_cases": [
+      "economy-daily"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/saldo",
+    "family": "manage_economy",
+    "operation": "manage_economy.balance",
+    "parsed_cases": [
+      "economy-balance",
+      "followup-balance",
+      "final-wallet"
+    ],
+    "positive_PASS_cases": [
+      "economy-balance",
+      "followup-balance",
+      "final-wallet"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/top",
+    "family": "manage_economy",
+    "operation": "manage_economy.top",
+    "parsed_cases": [
+      "economy-top"
+    ],
+    "positive_PASS_cases": [
+      "economy-top"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recordar en",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.create",
+    "parsed_cases": [
+      "reminder-a"
+    ],
+    "positive_PASS_cases": [
+      "reminder-a"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recordar el",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.create",
+    "parsed_cases": [
+      "reminder-b"
+    ],
+    "positive_PASS_cases": [
+      "reminder-b"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recordatorios",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.list",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "include_closed",
+      "page"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/recordatorio cancelar",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.cancel",
+    "parsed_cases": [
+      "reminder-cancel"
+    ],
+    "positive_PASS_cases": [
+      "reminder-cancel"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "reminder_id"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/recordatorio archivar",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.archive",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "reminder_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/buscar",
+    "family": "search_web",
+    "operation": "search_web.run",
+    "parsed_cases": [
+      "web-python",
+      "web-ffmpeg"
+    ],
+    "positive_PASS_cases": [
+      "web-python",
+      "web-ffmpeg"
+    ],
+    "blocked_cases": [],
+    "explicit_fields": [
+      "query",
+      "required_terms"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/drive guardar",
+    "family": "manage_drive",
+    "operation": "manage_drive.save",
+    "parsed_cases": [
+      "drive-save"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/drive buscar",
+    "family": "manage_drive",
+    "operation": "manage_drive.search",
+    "parsed_cases": [
+      "drive-search"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "query"
+    ],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/drive elegir",
+    "family": "manage_drive",
+    "operation": "manage_drive.choose",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "choice",
+      "view_id"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/drive cuota",
+    "family": "manage_drive",
+    "operation": "manage_drive.capacity",
+    "parsed_cases": [
+      "drive-quota",
+      "drive-auth-message"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/clip lista",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.list",
+    "parsed_cases": [
+      "clip-list"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "clip-list"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/clip poner",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.play",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "clip_id",
+      "query"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip pausa",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.pause",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip seguir",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.resume",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip repetir",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.replay",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip siguiente",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.next",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip parar",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.stop",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/clip volumen",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.volume",
+    "parsed_cases": [
+      "clip-volume"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "clip-volume"
+    ],
+    "explicit_fields": [
+      "volume"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/clip ajustar",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.volume",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "adjustment",
+      "direction"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar fondo",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.background",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar expresion",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.expression",
+    "parsed_cases": [
+      "avatar-expression"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "avatar-expression"
+    ],
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/avatar gesto",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.gesture",
+    "parsed_cases": [
+      "avatar-gesture"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "avatar-gesture"
+    ],
+    "explicit_fields": [
+      "duration",
+      "name"
+    ],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/avatar rubor",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.blush",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "duration",
+      "name"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada programar",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.create",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada agenda",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.list",
+    "parsed_cases": [
+      "agenda-list"
+    ],
+    "positive_PASS_cases": [],
+    "blocked_cases": [
+      "agenda-list"
+    ],
+    "explicit_fields": [],
+    "unobserved_fields": [],
+    "acceptance": "SEE_CASE_ORACLES_AND_LIMITS"
+  },
+  {
+    "route": "/llamada reprogramar",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.update",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "acceptance": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada cancelar-agenda",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.cancel",
+    "parsed_cases": [],
+    "positive_PASS_cases": [],
+    "blocked_cases": [],
+    "explicit_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "acceptance": "NOT_TESTED"
+  }
+]

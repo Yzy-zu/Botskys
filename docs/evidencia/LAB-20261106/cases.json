@@ -1,0 +1,1814 @@
+[
+  {
+    "batch": "lab-20261106-run1",
+    "id": "bot-status",
+    "tool": "manage_conversation",
+    "command": "/bot estado",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 0,
+    "proposal_expected": "Devuelve el estado operativo actual de la conversación, indicando modo (activo, discreto o apagado) y si existe alguna pausa temporal activa.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "bot-mode",
+    "tool": "manage_conversation",
+    "command": "/bot modo discreto",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 1,
+    "proposal_expected": "Confirmación de cambio de modo a 'discreto'; el bot limita sus respuestas a interacciones esenciales sin notificaciones proactivas.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "bot-pause-invalid",
+    "tool": "manage_conversation",
+    "command": "/bot pausa 45",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "contains": "15|30|60",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 3,
+    "proposal_expected": "Error de validación indicando que 45 no es una duración admitida; las opciones permitidas son exclusivamente 15, 30 o 60.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "note-a",
+    "tool": "save_note",
+    "command": "/nota guardar Comprar materiales de laboratorio y reactivos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "note_saved"
+    ],
+    "duplicate": true,
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 4,
+    "proposal_expected": "Confirmación de nota creada exitosamente con identificador único asignado y texto íntegro registrado.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "note-b",
+    "tool": "save_note",
+    "command": "/nota guardar -- Cable EXACTO; /daily && $(no-ejecutar)",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "note_saved"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "notes-filter",
+    "tool": "find_notes",
+    "command": "/notas laboratorio",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "notes_found"
+    ],
+    "data": {
+      "total": 1,
+      "query": "laboratorio"
+    },
+    "contains": "materiales",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 9,
+    "proposal_expected": "Resultado de búsqueda filtrado que contiene únicamente las notas coincidentes con el término 'laboratorio'.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "notes-literal",
+    "tool": "find_notes",
+    "command": "/notas EXACTO",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "notes_found"
+    ],
+    "data": {
+      "total": 1,
+      "query": "EXACTO"
+    },
+    "contains": "$(no-ejecutar)",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "notes-page-invalid",
+    "tool": "find_notes",
+    "command": "/notas --pagina 0",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "contains": "page",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 11,
+    "proposal_expected": "Error de validación indicando que el parámetro de página debe ser un entero mayor o igual a 1.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "memory-a",
+    "tool": "manage_memory",
+    "command": "/mem guardar --tipo preferencia Priorizar explicaciones con ejemplos prácticos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 20,
+    "proposal_expected": "Memoria registrada con éxito con identificador asignado y categorizada formalmente bajo el tipo 'preferencia'.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "memory-list",
+    "tool": "manage_memory",
+    "command": "/mem listar --tipo preferencia",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "ejemplos prácticos",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 21,
+    "proposal_expected": "Listado de elementos en memoria filtrados exclusivamente para mostrar entradas de tipo 'preferencia'.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "memory-edit",
+    "tool": "manage_memory",
+    "command": "/mem corregir {memory-a.memory_id} Explicaciones concisas con ejemplos de código",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "memory-after",
+    "tool": "manage_memory",
+    "command": "/mem listar --tipo preferencia",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "concisas",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 21,
+    "proposal_expected": "Listado de elementos en memoria filtrados exclusivamente para mostrar entradas de tipo 'preferencia'.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "reminder-a",
+    "tool": "manage_reminder",
+    "command": "/recordar en 10m Pausa activa y estiramientos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "reminder_created"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 24,
+    "proposal_expected": "Recordatorio programado con éxito con ID asignado y activación calculada para transcurridos 10 minutos.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "reminder-b",
+    "tool": "manage_reminder",
+    "command": "/recordar el 2026-12-01 12:00 Entrega del informe trimestral",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "reminder_created"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 25,
+    "proposal_expected": "Recordatorio programado con éxito con ID generado para la fecha futura 2026-12-01 a las 12:00 horas.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "reminder-cancel",
+    "tool": "manage_reminder",
+    "command": "/recordatorio cancelar {reminder-a.reminder_id}",
+    "statuses": [
+      "ok",
+      "cancelled"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "school-a",
+    "tool": "manage_school",
+    "command": "/tarea crear --materia Historia --fecha 2026-12-01 --hora 10:00 Entregar ensayo sobre la revolución industrial",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 12,
+    "proposal_expected": "Tarea escolar creada satisfactoriamente con ID asignado, materia 'Historia', fecha límite '2026-12-01' y hora '10:00'.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "school-file",
+    "tool": "manage_school",
+    "command": "/tarea crear --fecha 2026-12-01 --adjunto Resolver guía de problemas de cálculo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "pdf",
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 13,
+    "proposal_expected": "Tarea registrada correctamente vinculando la bandera de adjunto con el documento sintético PDF y fecha futura asignada.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "school-list",
+    "tool": "manage_school",
+    "command": "/tareas",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "Historia",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "school-complete",
+    "tool": "manage_school",
+    "command": "/tarea completar {school-a.task_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "schedule-add",
+    "tool": "manage_school",
+    "command": "/horario agregar --materia Matemáticas --dia 1 --inicio 08:00 --fin 09:30",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "schedule-list",
+    "tool": "manage_school",
+    "command": "/horario listar --dia 1",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "Matemáticas",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "poll-create",
+    "tool": "manage_poll",
+    "command": "/encuesta crear \"¿Horario para la reunión?\" \"Mañana 10:00\" \"Tarde 16:00\"",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/core-cases.json",
+    "proposal_index": 16,
+    "proposal_expected": "Encuesta generada con identificador asignado, pregunta registrada y dos opciones válidas abiertas a votación.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "poll-vote",
+    "tool": "manage_poll",
+    "command": "/encuesta votar {poll-create.poll_id} 1",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "poll-results",
+    "tool": "manage_poll",
+    "command": "/encuesta resultados {poll-create.poll_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "Mañana 10:00",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "poll-invalid",
+    "tool": "manage_poll",
+    "command": "/encuesta votar {poll-create.poll_id} 15",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "react-a",
+    "tool": "send_sticker",
+    "command": "/reaccion saludo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "webp",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 0,
+    "proposal_expected": "Envío exitoso del sticker correspondiente a 'saludo'; verificar entrega con sticker_id 'saludo'."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "react-b",
+    "tool": "send_sticker",
+    "command": "/reaccion pensando",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "webp",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "sticker-a",
+    "tool": "make_sticker",
+    "command": "/sticker",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "image",
+    "artifact": "webp",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 2,
+    "proposal_expected": "Generación y retorno del sticker en formato webp a partir de la imagen adjunta."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "sticker-no-file",
+    "tool": "make_sticker",
+    "command": "/sticker",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "author": "AGY/agy-retry/media-cases.json",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 2,
+    "proposal_expected": "Generación y retorno del sticker en formato webp a partir de la imagen adjunta."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "ocr-a",
+    "tool": "read_image",
+    "command": "/ocr",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "image",
+    "contains": "31415",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 4,
+    "proposal_expected": "Extracción y devolución del texto sintetizado presente en la imagen adjunta."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "qr-a",
+    "tool": "read_image",
+    "command": "/qr",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "qr",
+    "contains": "BOTSKY-LAB-27182",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 5,
+    "proposal_expected": "Decodificación y retorno del contenido textual embebido en el código QR adjunto."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "convert-image-pdf",
+    "tool": "convert_document",
+    "command": "/convertir pdf",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "image",
+    "artifact": "pdf",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 18,
+    "proposal_expected": "Conversión y entrega del archivo de texto plano sintético en formato PDF."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "convert-pdf-txt",
+    "tool": "convert_document",
+    "command": "/conv txt",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "pdf",
+    "artifact": "txt",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "convert-text-docx",
+    "tool": "convert_document",
+    "command": "/convertir docx",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "txt",
+    "artifact": "docx",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pdf-start",
+    "tool": "manage_pdf",
+    "command": "/pdf iniciar",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "image",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 13,
+    "proposal_expected": "Sesión de creación de PDF iniciada con la primera página agregada; confirmación en respuesta."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pdf-add",
+    "tool": "manage_pdf",
+    "command": "/pdf agregar",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "pdf",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 14,
+    "proposal_expected": "Confirmación de incorporación de una nueva página a la sesión de PDF activa."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pdf-finish",
+    "tool": "manage_pdf",
+    "command": "/pdf terminar",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "pdf",
+    "author": "AGY/agy-retry/media-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 15,
+    "proposal_expected": "Generación, cierre de sesión y entrega del documento PDF compilado."
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pdf-extract",
+    "tool": "manage_pdf",
+    "command": "/pdf extraer 2",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "pdf",
+    "artifact": "pdf",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pdf-invalid-pages",
+    "tool": "manage_pdf",
+    "command": "/pdf extraer 0",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "fixture": "pdf",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "edit-mp3",
+    "tool": "edit_media",
+    "command": "/editar mp3 --desde 0 --hasta 2",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "video",
+    "artifact": "mp3",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "edit-webm",
+    "tool": "edit_media",
+    "command": "/editar webm --desde 1 --hasta 3",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "video",
+    "artifact": "webm",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "edit-srt-incompatible",
+    "tool": "edit_media",
+    "command": "/editar srt --desde 1",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "fixture": "video",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "download-mp4",
+    "tool": "download_media",
+    "command": "/dl mp4 --desde 0 --hasta 2 https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "mp4",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "download-mp3",
+    "tool": "download_media",
+    "command": "/dl mp3 --desde 1 --hasta 3 https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "mp3",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "download-no-url",
+    "tool": "download_media",
+    "command": "/dl mp4",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "contains": "url",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "web-python",
+    "tool": "search_web",
+    "command": "/buscar --terminos Python,documentation Python documentation site:python.org",
+    "statuses": [
+      "ok",
+      "empty",
+      "needs_input"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "web-ffmpeg",
+    "tool": "search_web",
+    "command": "/web --terminos ffmpeg ffmpeg filters documentation",
+    "statuses": [
+      "ok",
+      "empty",
+      "needs_input"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "ai-arithmetic",
+    "tool": "conversation",
+    "command": "/ia Responde únicamente el resultado numérico de 7 por 8.",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "ai_reply"
+    ],
+    "contains": "56",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "ai-image",
+    "tool": "conversation",
+    "command": "/ia Transcribe el número de cinco dígitos de esta imagen.",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "image",
+    "codes": [
+      "ai_reply"
+    ],
+    "contains": "31415",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "ai-command-data",
+    "tool": "conversation",
+    "command": "/ia Responde exactamente con el texto /daily, no añadas nada.",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "ai_reply"
+    ],
+    "contains": "/daily",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "voice-literal",
+    "tool": "make_voice",
+    "command": "/voz --voz mexicana --efecto none Botsky Lab, prueba literal tres uno cuatro.",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "ogg",
+    "data": {
+      "mode": "verbatim",
+      "spoken_text": "Botsky Lab, prueba literal tres uno cuatro."
+    },
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "voice-compose",
+    "tool": "make_voice",
+    "command": "/voz crear --voz mexicano --efecto radio --duracion 5 Escribe un saludo corto para Botsky Lab.",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "artifact": "ogg",
+    "data": {
+      "mode": "compose"
+    },
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "asr-text",
+    "tool": "transcribe_media",
+    "command": "/transcribir --salida texto",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "audio",
+    "codes": [
+      "transcript_ready"
+    ],
+    "contains": "Botsky",
+    "author": "AGY/agy-retry/content-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 2,
+    "proposal_expected": "Transcripcion textual del audio adjunto generada exitosamente"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "asr-both",
+    "tool": "transcribe_media",
+    "command": "/transcribir --salida ambos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "audio",
+    "author": "AGY/agy-retry/content-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 4,
+    "proposal_expected": "Error indicando falta de adjunto multimedia o cita exacta"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "contacts",
+    "tool": "manage_messages",
+    "command": "/contactos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "private": true,
+    "contains": "Botsky Lab",
+    "author": "AGY/agy-retry/content-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 12,
+    "proposal_expected": "Lista de contactos autorizados o libreta vacia en consulta"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "recado-preview",
+    "tool": "manage_messages",
+    "command": "/recado preparar --para Lab -- Botsky Lab: recado sintético de la campaña automática.",
+    "statuses": [
+      "needs_input",
+      "ok"
+    ],
+    "private": true,
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "recado-send",
+    "tool": "manage_messages",
+    "command": "/recado enviar {recado-preview.draft_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "private": true,
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "recado-status",
+    "tool": "manage_messages",
+    "command": "/recado estado {recado-preview.draft_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "private": true,
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "drive-quota",
+    "tool": "manage_drive",
+    "command": "/drive cuota",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "private": true,
+    "codes": [
+      "drive_capacity"
+    ],
+    "author": "AGY/agy-retry/content-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 16,
+    "proposal_expected": "Reporte de espacio de almacenamiento disponible y usado devuelto por el servicio"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "drive-save",
+    "tool": "manage_drive",
+    "command": "/drive guardar",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "fixture": "txt",
+    "private": true,
+    "author": "AGY/agy-retry/content-cases.json",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 18,
+    "proposal_expected": "Archivo de texto adjunto almacenado correctamente en drive"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "drive-search",
+    "tool": "manage_drive",
+    "command": "/drive buscar",
+    "statuses": [
+      "ok",
+      "empty",
+      "needs_input"
+    ],
+    "private": true,
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "drive-choose",
+    "tool": "manage_drive",
+    "command": "/drive elegir {drive-search.view_id} 1",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "private": true,
+    "artifact": "txt",
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "economy-daily",
+    "tool": "manage_economy",
+    "command": "/daily",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "daily_awarded"
+    ],
+    "duplicate": true,
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 24,
+    "proposal_expected": "Confirmación de reclamación diaria, acreditación de XP y visualización del temporizador de recarga.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "economy-balance",
+    "tool": "manage_economy",
+    "command": "/saldo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "xp_balance"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 25,
+    "proposal_expected": "Respuesta con el desglose del saldo total de XP disponible y nivel actual de la cuenta.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "economy-top",
+    "tool": "manage_economy",
+    "command": "/top",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "xp_top"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 26,
+    "proposal_expected": "Despliegue ordenado de la tabla de clasificación con los usuarios líderes en XP del servidor.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "admin-warnings",
+    "tool": "manage_admin",
+    "command": "/admin avisos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "admin_warnings"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 12,
+    "proposal_expected": "Listado de avisos administrativos registrados en el servidor o aviso de ausencia de registros, sin llamadas externas.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "admin-xp",
+    "tool": "manage_admin",
+    "command": "/admin xp-dar --cuenta {economy-balance.account_id} 500",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "codes": [
+      "admin_xp_changed"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "admin-lock-guard",
+    "tool": "manage_admin",
+    "command": "/admin cerrar",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "blackjack-start",
+    "tool": "manage_blackjack",
+    "command": "/bj iniciar 50",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 15,
+    "proposal_expected": "Creación de partida de Blackjack, deducción provisional de 50 XP y reparto inicial de dos cartas visibles.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "blackjack-state",
+    "tool": "manage_blackjack",
+    "command": "/bj estado {blackjack-start.game_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "blackjack-stop",
+    "tool": "manage_blackjack",
+    "command": "/bj cancelar {blackjack-start.game_id}",
+    "statuses": [
+      "ok",
+      "empty",
+      "cancelled"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pack-empty",
+    "tool": "manage_pack",
+    "command": "/pack catalogo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 0,
+    "proposal_expected": "Respuesta con lista paginada de paquetes, mostrando nombre, precio en XP y categoría sin errores.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pack-filter",
+    "tool": "manage_pack",
+    "command": "/pack catalogo --categoria cosméticos",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "pack-buy-blocked",
+    "tool": "manage_pack",
+    "command": "/pack comprar cosméticos",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 2,
+    "proposal_expected": "Generación de solicitud de compra pendiente solicitando confirmación posterior con /pack confirmar {last_id}.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "coop-no-gallery",
+    "tool": "manage_cooperacha",
+    "command": "/coop crear eventos 1000",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 3,
+    "proposal_expected": "Registro exitoso de la cooperacha con meta de 1000 XP y retorno de identificador de desafío activo.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "coop-empty",
+    "tool": "manage_cooperacha",
+    "command": "/coop estado",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "coop-low-goal",
+    "tool": "manage_cooperacha",
+    "command": "/coop crear eventos 20",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "cancelled",
+      "empty"
+    ],
+    "kind": "negative",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 5,
+    "proposal_expected": "Error de validación indicando que TARGET_XP debe ser al menos 50, rechazando la operación sin crear registro.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "hh-state",
+    "tool": "manage_happy_hour",
+    "command": "/hh estado",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 6,
+    "proposal_expected": "Respuesta con el estado actual del evento (inactivo o detalles de multiplicadores y tiempo restante si está activo).",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "hh-start",
+    "tool": "manage_happy_hour",
+    "command": "/hh iniciar --duracion 60s",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "hh-stop",
+    "tool": "manage_happy_hour",
+    "command": "/hh parar",
+    "statuses": [
+      "ok",
+      "empty",
+      "cancelled"
+    ],
+    "author": "orchestrator",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "roulette-guard-a",
+    "tool": "manage_roulette",
+    "command": "/ruleta crear 100",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 18,
+    "proposal_expected": "Creación exitosa de la sala con ID asignado, monto de apuesta retenido y tiempo de espera de participantes.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "roulette-guard-b",
+    "tool": "manage_roulette",
+    "command": "/ruleta crear 500",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/social-cases.json",
+    "proposal_index": 20,
+    "proposal_expected": "Error de validación indicando que la apuesta máxima permitida es 1000 XP; la sala no se crea.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "prank-a",
+    "tool": "make_prank",
+    "command": "/broma",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "contains": "ficción",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 21,
+    "proposal_expected": "Respuesta con texto humorístico sintético predeterminado sin afectar configuraciones ni emitir menciones.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "prank-b",
+    "tool": "make_prank",
+    "command": "/broma video-conejo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 22,
+    "proposal_expected": "Entrega de mensaje simulado con video sintético respaldado por la fuente de control pública https://media.w3.org/2010/05/bunny/trailer.mp4 sin alterar galería.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "mc-state",
+    "tool": "manage_minecraft",
+    "command": "/mc estado",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 9,
+    "proposal_expected": "Informe de solo lectura mostrando estado operativo del servidor, latencia, versión y uso de memoria.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "mc-players",
+    "tool": "manage_minecraft",
+    "command": "/mc jugadores",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 10,
+    "proposal_expected": "Lista detallada de jugadores conectados actualmente y conteo total de slots ocupados sin mutar el servidor.",
+    "kind": "positive",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "mc-console-guard",
+    "tool": "manage_minecraft",
+    "command": "/mc consola op prueba",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/agy/social-cases.json",
+    "proposal_index": 11,
+    "proposal_expected": "Comprobación de denegación con respuesta de permisos insuficientes o bloqueo de seguridad; servidor sin cambios.",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "call-a",
+    "tool": "control_call",
+    "command": "/llamar --duracion 10s",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "call-b",
+    "tool": "control_call",
+    "command": "/llamar --video --duracion 10s",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "call-status",
+    "tool": "control_call",
+    "command": "/llamada estado",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "AGY/agy-retry/content-cases.json",
+    "oracle_frozen_before_execution": true,
+    "proposal_index": 10,
+    "proposal_expected": "Estado de llamada inactiva o sin sesion en curso sin iniciar conexion real"
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "clip-list",
+    "tool": "audiovisual.clip",
+    "command": "/clip lista",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "clip-volume",
+    "tool": "audiovisual.clip",
+    "command": "/clip volumen 0.7",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "avatar-expression",
+    "tool": "audiovisual.avatar",
+    "command": "/avatar expresion happy --duracion 3",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "avatar-gesture",
+    "tool": "audiovisual.avatar",
+    "command": "/avatar gesto wave --duracion 2",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-run1",
+    "id": "agenda-list",
+    "tool": "audiovisual.agenda",
+    "command": "/llamada agenda",
+    "statuses": [
+      "needs_input",
+      "failed",
+      "empty"
+    ],
+    "kind": "blocked",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "fix-school-list",
+    "tool": "manage_school",
+    "command": "/tareas --cerradas",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "contains": "Historia",
+    "codes": [
+      "organization_list"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "fix-school-deadline",
+    "tool": "manage_school",
+    "command": "/tareas --cerradas --pagina 1",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "contains": "2026-12-01 10:00",
+    "codes": [
+      "organization_list"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "finish-blackjack",
+    "tool": "manage_blackjack",
+    "command": "/bj plantarse 6366086583b84906b4335b00b3d341e0",
+    "statuses": [
+      "ok",
+      "empty",
+      "needs_input"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "followup-balance",
+    "tool": "manage_economy",
+    "command": "/saldo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "xp_balance"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "followup-xp",
+    "tool": "manage_admin",
+    "command": "/admin xp-dar --cuenta {followup-balance.account_id} 1000",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "admin_xp_changed"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "gallery-catalog",
+    "tool": "manage_pack",
+    "command": "/pack catalogo --categoria lab-sintetico",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "contains": "LAB: imágenes sintéticas"
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "gallery-offer",
+    "tool": "manage_pack",
+    "command": "/pack comprar lab-sintetico",
+    "statuses": [
+      "needs_input"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "pack_offer"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "gallery-confirm",
+    "tool": "manage_pack",
+    "command": "/pack confirmar {gallery-offer.purchase_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "duplicate": true,
+    "data": {
+      "state": "completed"
+    }
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "gallery-status",
+    "tool": "manage_pack",
+    "command": "/pack estado {gallery-offer.purchase_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "data": {
+      "state": "completed"
+    }
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "coop-create-real",
+    "tool": "manage_cooperacha",
+    "command": "/coop crear lab-sintetico 100",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "coop_preview"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "coop-contribute-a",
+    "tool": "manage_cooperacha",
+    "command": "/coop aportar {coop-create-real.challenge_id} 50",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "coop-contribute-b",
+    "tool": "manage_cooperacha",
+    "command": "/coop aportar {coop-create-real.challenge_id} 50",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "duplicate": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "coop-status-real",
+    "tool": "manage_cooperacha",
+    "command": "/coop estado {coop-create-real.challenge_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "data": {
+      "state": "completed"
+    }
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "happy-start-real",
+    "tool": "manage_happy_hour",
+    "command": "/hh iniciar --duracion 5m",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "happy_started"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "happy-rain-real",
+    "tool": "manage_happy_hour",
+    "command": "/hh lluvia {happy-start-real.event_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "happy-airdrop-real",
+    "tool": "manage_happy_hour",
+    "command": "/hh airdrop {happy-start-real.event_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "happy_drop_announced"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "happy-claim-real",
+    "tool": "manage_happy_hour",
+    "command": "/hh reclamar {happy-airdrop-real.drop_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "duplicate": true
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "happy-close-real",
+    "tool": "manage_happy_hour",
+    "command": "/hh parar {happy-start-real.event_id}",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "happy_stopped"
+    ]
+  },
+  {
+    "batch": "lab-20261106-followup",
+    "id": "final-wallet",
+    "tool": "manage_economy",
+    "command": "/saldo",
+    "statuses": [
+      "ok",
+      "empty"
+    ],
+    "kind": "positive",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true,
+    "codes": [
+      "xp_balance"
+    ],
+    "data": {
+      "reserved": 0
+    }
+  },
+  {
+    "batch": "lab-20261106-auth-check",
+    "id": "drive-auth-message",
+    "tool": "manage_drive",
+    "command": "/drive cuota",
+    "private": true,
+    "kind": "negative",
+    "statuses": [
+      "failed"
+    ],
+    "codes": [
+      "oauth_refresh_rejected"
+    ],
+    "contains": "volver a conectar",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  },
+  {
+    "batch": "lab-20261106-auth-check",
+    "id": "sticker-qr-variant",
+    "tool": "make_sticker",
+    "command": "/sticker",
+    "fixture": "qr",
+    "kind": "positive",
+    "statuses": [
+      "ok"
+    ],
+    "artifact": "webp",
+    "author": "orchestrator",
+    "oracle_frozen_before_execution": true
+  }
+]

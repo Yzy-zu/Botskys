@@ -324,13 +324,16 @@ class OrganizationTest(TestCase):
         self.assertIn("/notas", self.receive("/ayuda notas").result.text)
         self.assertEqual(self.receive("/voces").result.code, "voice_catalog")
         self.receive(
-            "/tarea crear --fecha 2026-12-01 --hora 12:00 Texto literal",
+            "/tarea crear --materia Historia --fecha 2026-12-01 --hora 12:00 Texto literal",
             actor="owner",
             chat="group",
             is_group=True,
         )
         listing = self.receive("/tareas", chat="group", is_group=True)
         self.assertEqual(len(listing.result.data["items"]), 1)
+        self.assertIn("Historia · Texto literal", listing.result.text)
+        self.assertIn("2026-12-01 12:00", listing.result.text)
+        self.assertIn("Ciudad de México · pendiente", listing.result.text)
         created = self.receive(
             "/horario agregar --materia Mate --dia 5 --inicio 10:00 --fin 11:00",
             actor="owner",

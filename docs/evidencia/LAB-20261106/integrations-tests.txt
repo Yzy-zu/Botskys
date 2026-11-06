@@ -1,0 +1,21 @@
+test_cancelled_message_or_changed_directory_between_parts_cannot_continue (test_integrations.IntegrationsTest.test_cancelled_message_or_changed_directory_between_parts_cannot_continue) ... ok
+test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only (test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only) ... ok
+test_drive_configuration_change_and_dispatched_restart_never_reupload (test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload) ... ok
+test_drive_revoked_authorization_has_actionable_message_without_claiming_upload (test_integrations.IntegrationsTest.test_drive_revoked_authorization_has_actionable_message_without_claiming_upload) ... ok
+test_drive_save_reserved_identity_hash_and_no_repeat_after_restart (test_integrations.IntegrationsTest.test_drive_save_reserved_identity_hash_and_no_repeat_after_restart) ... ok
+test_drive_search_selection_delivered_scope_and_real_artifact (test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact) ... ok
+test_message_crash_and_revoked_owner_stop_before_next_send (test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send) ... ok
+test_message_directory_change_expiry_cancel_and_stale_confirmation (test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation) ... ok
+test_message_partial_uncertain_restart_never_sends_second_destination (test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination) ... ok
+test_message_preview_owner_private_directory_literal_and_duplicate (test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate) ... ok
+test_message_quote_attachment_and_ownership_and_mid_send_cancel (test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel) ... ok
+test_messenger_real_loopback_http_and_explicit_rejection (test_integrations.IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection) ... Executing <Task finished name='Task-93' coro=<IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection() done, defined at /home/petrov/botsky/tests/test_integrations.py:405> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.498 seconds
+ok
+test_oauth_explicit_private_storage_rotation_single_refresh_and_no_redirect (test_integrations.IntegrationsTest.test_oauth_explicit_private_storage_rotation_single_refresh_and_no_redirect) ... ok
+test_oauth_rejects_loose_permissions_and_redirect_before_followup (test_integrations.IntegrationsTest.test_oauth_rejects_loose_permissions_and_redirect_before_followup) ... ok
+test_two_recado_confirmations_reserve_only_one_job_and_parts (test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.407s
+
+OK

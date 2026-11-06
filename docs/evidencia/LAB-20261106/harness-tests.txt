@@ -1,0 +1,9 @@
+test_group_server_destinations_and_budget_before_network (test_lab_campaign.LabCampaignTest.test_group_server_destinations_and_budget_before_network) ... ok
+test_missing_dependency_is_blocked_before_parsing_or_network (test_lab_campaign.LabCampaignTest.test_missing_dependency_is_blocked_before_parsing_or_network) ... ok
+test_oracle_does_not_accept_guard_as_success_or_ignore_wrong_artifact (test_lab_campaign.LabCampaignTest.test_oracle_does_not_accept_guard_as_success_or_ignore_wrong_artifact) ... ok
+test_uncertain_post_is_preserved_without_automatic_retry_or_resume (test_lab_campaign.LabCampaignTest.test_uncertain_post_is_preserved_without_automatic_retry_or_resume) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.594s
+
+OK

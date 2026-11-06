@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-06",
+  "baseline_product_commit": "06e9372",
+  "case_counts_original": {
+    "PASS": 96,
+    "FAIL": 6,
+    "BLOCKED": 14
+  },
+  "cases": 116,
+  "catalog_tools": 30,
+  "catalog_tools_with_positive_PASS_scenarios": 27,
+  "families_observed": 33,
+  "routes_parsed": 77,
+  "routes_total": 152,
+  "routes_not_tested": 75,
+  "delivery_POSTs_before_closing": 149,
+  "delivery_http_status_counts": {
+    "201": 149
+  },
+  "sessions_launched": 8,
+  "session_success": 6,
+  "session_timeout": 2,
+  "adjudication": [
+    {
+      "case": "school-list",
+      "original": "FAIL",
+      "review": "FAIL_PRODUCT_FIXED",
+      "evidence": [
+        "fix-school-list",
+        "fix-school-deadline"
+      ],
+      "finding": "Subject/deadline absent from task list; product fixed and retested on real WhatsApp delivery."
+    },
+    {
+      "case": "drive-quota,drive-save,drive-search",
+      "original": "FAIL",
+      "review": "FAIL_EXTERNAL_AUTHORIZATION",
+      "finding": "Google HTTP400 invalid_grant, token expired or revoked. Same refresh token in explicitly checked source. Reconnect Google required."
+    },
+    {
+      "case": "drive-choose",
+      "original": "FAIL",
+      "review": "BLOCKED_DEPENDENCY_RUNNER_FIXED",
+      "finding": "No view from failed search; initial runner KeyError, no command executed. Missing dependency now handled as BLOCKED."
+    },
+    {
+      "case": "blackjack-stop",
+      "original": "FAIL",
+      "review": "REVIEW_ORACLE",
+      "finding": "Contract prohibits cancelling a dealt hand. Denial was correct. finish-blackjack completed the hand."
+    }
+  ],
+  "limits": [
+    "Simulated owner admission, not actual phone/webhook ingress",
+    "API ACK201 does not prove Android render or human reception",
+    "All output messages/files restricted to verified Botsky Lab; private-context output redirected only in test HTTP boundary",
+    "Calls/Live/clip/avatar/agenda real sessions not tested; no own exclusive WhatsApp browser session",
+    "Roulette external consequences and group/server mutations not performed",
+    "All actions and all public fields are not covered: route-coverage.json lists NOT_TESTED and explicit/unobserved fields",
+    "AGY reviews are suggestions, not acceptance oracles",
+    "No transition, GitHub, production services/webhook/profile changes or NLP"
+  ],
+  "delivery_POSTs_total": 150,
+  "delivery_http_status_counts_total": {
+    "201": 150
+  },
+  "local_focal_tests": {
+    "harness": 4,
+    "organization": 11,
+    "integrations": 15,
+    "total": 30
+  },
+  "semantic_checks": 15,
+  "campaign_closed": true,
+  "disposable_lab_remote_effects_disabled": true
+}
