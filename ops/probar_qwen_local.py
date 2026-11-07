@@ -69,16 +69,17 @@ async def guarded(awaitable):
         if not task.done():task.cancel();await asyncio.gather(task,return_exceptions=True)
 
 
-async def run(live):
+async def run(live,selected_model=None):
     manifest=json.loads((EVIDENCE/'manifest.json').read_text())
     if not live:print(json.dumps({'network_inference':False,'models':manifest['models'],'cases':len(manifest['cases'])}));return
+    models=[selected_model] if selected_model else manifest['models']
     os.umask(0o077)
     out=ROOT/'private'/('qwen-local-'+datetime.now(UTC).strftime('%Y%m%dT%H%M%S%fZ'));out.mkdir(mode=0o700)
-    report={'status':'running','results':[],'metadata':{},'backend_effects':0,'production_changes':0,'automatic_resume':False,'manifest_sha256':hashlib.sha256((EVIDENCE/'manifest.json').read_bytes()).hexdigest()}
+    report={'status':'running','models_selected':models,'results':[],'metadata':{},'backend_effects':0,'production_changes':0,'automatic_resume':False,'manifest_sha256':hashlib.sha256((EVIDENCE/'manifest.json').read_bytes()).hexdigest()}
     def save():
         tmp=out/'summary.tmp';tmp.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');os.replace(tmp,out/'summary.json')
     async with httpx.AsyncClient(trust_env=False,follow_redirects=False,timeout=600) as http:
-        for model in manifest['models']:
+        for model in models:
             tags=(await http.get(URL+'/api/tags')).json()['models'];entry=next(m for m in tags if m['name']==model)
             show=(await http.post(URL+'/api/show',json={'model':model})).json()
             report['metadata'][model]={'digest':entry['digest'],'size':entry['size'],'details':entry.get('details'),'capabilities':show.get('capabilities')}
@@ -108,10 +109,10 @@ async def run(live):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--freeze',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--freeze',action='store_true');parser.add_argument('--model',choices=('qwen3.5:2b','qwen3.5:4b'));args=parser.parse_args()
     if args.freeze:
         corpus=json.loads((ROOT/'docs/evidencia/REMODELACION/F7-casos-v2.json').read_text())['cases']
         ids=['01-saludo','03-nota-markdown','04-nota-hostil','08-sin-formato','09-continuar','11-video','15-dos-listas','17-confirmar','24-gemini']
         data={'models':['qwen3.5:2b','qwen3.5:4b'],'cases':[c for c in corpus if c['id'] in ids],'catalog':'actual155variantes completo,no recorte','num_ctx':32768,'num_predict':512,'think':False,'num_thread':1,'num_parallel':1,'cold_deadline_seconds':600,'warm_deadline_seconds':180,'target_runtime_deadline_seconds':40,'minimum_available_memory_mb':1536,'backend_effects':0,'production_changes':0,'automatic_resume':False,'cache_policy':'Primer turno frío;resto mantiene modelo/prefijo yregistra caché si Ollama la reporta. No equiparar tiempos calientes con fríoCloudflare.'}
         with (EVIDENCE/'manifest.json').open('x') as f:json.dump(data,f,ensure_ascii=False,indent=2);f.write('\n')
-    asyncio.run(run(args.live))
+    asyncio.run(run(args.live,args.model))
