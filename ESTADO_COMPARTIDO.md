@@ -1,5 +1,18 @@
 # Relevo Botsky
 
+## 07/11 · Remodelación: F0 cerrado, F1 pendiente
+
+Encargo actual autoriza ejecutar remodelacionbotsky.md; excepción añadida a AGENTS.
+Revisados plan completo y último cierre. Base actual 02add40; recuentos conservados:
+155 variantes,146 operaciones,34 familias. Matriz docs/COBERTURA_NATURAL.md y
+evidencia docs/evidencia/REMODELACION/F0-inventario.json contienen todos los campos,
+constantes, permisos, efectos y destino operation/original_action; claves únicas.
+Todas las variantes permanecen PENDING_F1: inventariar no acredita contrato natural.
+No modificado runtime, proveedores, producción o servicios. .codex-attachments/
+preexistente conservado fuera del commit. Cuota5h55% al inicio. Siguiente F1:
+validación JSON nativa compartida, catálogo por variante y pruebas de equivalencia;
+después F2–F7 según dependencias. F8 requiere encargo de despliegue según el plan.
+
 ## 07/11 · Plan corregido: catálogo completo y selección directa
 
 El propietario rechazó la selección jerárquica añadida por el arquitecto.

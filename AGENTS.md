@@ -314,3 +314,14 @@ completo y selección directa de acción/argumentos en una consulta por mensaje.
 Sin clasificador previo, segundo selector ni pase posterior al resultado.
 Una cuenta Cloudflare configurada; las APIs adicionales eran una suposición,
 no un encargo de pools ni rotación. Solo corrección documental en este cierre.
+
+## 07/11 · Ejecución de remodelacionbotsky encargada
+
+El propietario ordenó revisar y ejecutar remodelacionbotsky.md. Autoriza implementar
+F0–F7 por dependencias, contratos propios y pruebas pertinentes; el nuevo frontend
+GLM selecciona directamente del catálogo completo en una consulta por mensaje, sin
+pase posterior al resultado. Esta excepción sustituye el alcance documental previo
+y la sintaxis obligatoria para esta remodelación. No recupera el clasificador antiguo.
+F8 conserva su requisito expreso de encargo de despliegue; no modificar servicios
+por inferencia del encargo de implementación. Mantener históricos, datos propios,
+secretos privados y exclusiones de GitHub. Cuota de cinco horas: guardar/parar al5%.
