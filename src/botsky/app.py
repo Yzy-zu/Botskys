@@ -51,6 +51,8 @@ class Application:
         self.frontend = frontend
         self.router = router or Router()
         self.downloads = downloads
+        if frontend is not None:
+            frontend.catalog.configure_downloads(downloads)
         self.web = web
         self.gemini, self.tts, self.asr = gemini, tts, asr
         from .domains.contacts import Directory
@@ -69,6 +71,24 @@ class Application:
         self.operations = operations
         self.minecraft = minecraft
         self.nuclear_enabled = bool(nuclear_enabled)
+        if frontend is not None:
+            def available(provider, attribute='enabled'):
+                return provider is not None and getattr(provider, attribute, True) is True
+            frontend.catalog.availability = {
+                family: {'configured': configured, 'note': 'El backend revalida permisos, ámbito y estado antes de ejecutar.'}
+                for family, configured in {
+                    'download_media': available(downloads), 'search_web': available(web),
+                    'conversation': available(gemini, 'available'), 'make_voice': available(tts),
+                    'transcribe_media': available(asr, 'available'), 'manage_drive': available(drive),
+                    'manage_minecraft': available(minecraft), 'manage_admin': available(groups),
+                    'manage_messages': available(messenger), 'manage_pack': available(gallery),
+                    'control_call': calls is not None and settings.calls is not None,
+                    'audiovisual.clip': calls is not None and settings.calls is not None,
+                    'audiovisual.avatar': calls is not None and settings.calls is not None,
+                    'audiovisual.agenda': calls is not None and settings.calls is not None,
+                }.items()
+            }
+
         self.groups, self.roulette_chats, self.allow_roulette_admins, self.roulette_choice = (
             groups,
             frozenset(roulette_chats),

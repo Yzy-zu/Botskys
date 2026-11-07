@@ -30,3 +30,12 @@ def tools(catalog):
                              'missing_fields': {'type': 'array', 'items': {'type': 'string'}},
                              'choices': {'type': 'array', 'items': text}}, ['question']),
             tool('no_action', {'reason': text}, ['reason'])]
+
+SYSTEM += """
+Fuentes: usa solo search_sources para búsquedas y url_sources para enlaces.
+Búsqueda general de videos: youtube si está habilitado. Contenido adulto explícito:
+fuente adulta habilitada, nunca sustituir por youtube. Una palabra ambigua como
+maduras exige aclaración. Fuente por URL que no admite búsqueda: pide el enlace.
+source es obligatorio para buscar. Respeta formato,negaciones,literales y fechas.
+Una capacidad deshabilitada se explica sin prometer ejecución ni éxito.
+"""

@@ -1,0 +1,4740 @@
+{
+  "scope": "CATALOGO_CONTRACTUAL_GENERICO_NO_PERFIL_PRODUCTIVO",
+  "variants": 155,
+  "operations": 146,
+  "entries": [
+    {
+      "action_key": "ayuda",
+      "operation": "core.help",
+      "description": "Ayuda y control: ayuda. Lista familias o detalla un comando.",
+      "references": [],
+      "availability": {},
+      "permission": "public",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "topic; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 64
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "estado",
+      "operation": "core.estado",
+      "description": "Ayuda y control: estado. Consulta ayuda, sigue tus encargos y cancela lo pendiente.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "cancelar",
+      "operation": "core.cancelar",
+      "description": "Ayuda y control: cancelar. Consulta ayuda, sigue tus encargos y cancela lo pendiente.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "confirmar",
+      "operation": "core.confirmar",
+      "description": "Ayuda y control: confirmar. Consulta ayuda, sigue tus encargos y cancela lo pendiente. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "action_key": "bot.estado",
+      "operation": "manage_conversation.status",
+      "description": "Modo de Botsky: bot estado. Consulta el modo y controla las pausas de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "bot.modo",
+      "operation": "manage_conversation.mode",
+      "description": "Modo de Botsky: bot modo. Consulta el modo y controla las pausas de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "mode",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "apagado",
+              "discreto",
+              "activo"
+            ]
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      }
+    },
+    {
+      "action_key": "bot.pausa",
+      "operation": "manage_conversation.pause",
+      "description": "Modo de Botsky: bot pausa. Consulta el modo y controla las pausas de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "minutes": {
+            "type": "string",
+            "description": "minutes",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "15",
+              "30",
+              "60"
+            ]
+          }
+        },
+        "required": [
+          "minutes"
+        ]
+      }
+    },
+    {
+      "action_key": "bot.reanudar",
+      "operation": "manage_conversation.resume",
+      "description": "Modo de Botsky: bot reanudar. Consulta el modo y controla las pausas de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "reaccion",
+      "operation": "send_sticker.run",
+      "description": "Reacciones: reaccion. Envía un sticker del catálogo disponible. Variante fija: requested=True.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "deliver",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "requested": true
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sticker_id": {
+            "type": "string",
+            "description": "sticker id",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "saludo",
+              "risa",
+              "pensando",
+              "sonrojo"
+            ]
+          }
+        },
+        "required": [
+          "sticker_id"
+        ]
+      }
+    },
+    {
+      "action_key": "sticker",
+      "operation": "make_sticker.run",
+      "description": "Crear sticker: sticker. Convierte una imagen adjunta o citada en sticker. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "ia",
+      "operation": "conversation.respond",
+      "description": "Inteligencia artificial: ia. Pregunta o analiza un archivo; el contenido no ejecuta comandos.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "generate",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "nota.guardar",
+      "operation": "save_note.run",
+      "description": "Guardar nota: nota guardar. Guarda texto literal propio en este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "notas",
+      "operation": "find_notes.run",
+      "description": "Buscar notas: notas. Consulta tus notas con filtro y páginas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "page",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "query": {
+            "type": "string",
+            "description": "query; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "ocr",
+      "operation": "read_image.run",
+      "description": "Lectura de imagen: ocr. Extrae texto o QR como datos; no los ejecuta. Extraer texto con OCR o leer el contenido de un QR como datos, según la variante. Variante fija: mode=text. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {
+        "mode": "text"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "qr",
+      "operation": "read_image.run",
+      "description": "Lectura de imagen: qr. Extrae texto o QR como datos; no los ejecuta. Extraer texto con OCR o leer el contenido de un QR como datos, según la variante. Variante fija: mode=qr. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {
+        "mode": "qr"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "transcribir",
+      "operation": "transcribe_media.run",
+      "description": "Transcribir: transcribir. Obtén texto literal, resumen o ambos desde audio o video. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "output_mode": {
+            "type": "string",
+            "description": "output mode",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "texto",
+              "resumen",
+              "ambos"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "dl.mp3",
+      "operation": "download_media.url",
+      "description": "Videos y descargas: dl mp3. Busca videos, elige una opción o descarga desde un enlace admitido. Descargar el enlace explícito en el formato de esta variante; SRT extrae subtítulos completos. Variante fija: container=mp3.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "container": "mp3"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "url": {
+            "type": "string",
+            "description": "url",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.mp4",
+      "operation": "download_media.url",
+      "description": "Videos y descargas: dl mp4. Busca videos, elige una opción o descarga desde un enlace admitido. Descargar el enlace explícito en el formato de esta variante; SRT extrae subtítulos completos. Variante fija: container=mp4.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "container": "mp4"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "url": {
+            "type": "string",
+            "description": "url",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.webm",
+      "operation": "download_media.url",
+      "description": "Videos y descargas: dl webm. Busca videos, elige una opción o descarga desde un enlace admitido. Descargar el enlace explícito en el formato de esta variante; SRT extrae subtítulos completos. Variante fija: container=webm.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "container": "webm"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "url": {
+            "type": "string",
+            "description": "url",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.srt",
+      "operation": "download_media.url",
+      "description": "Videos y descargas: dl srt. Busca videos, elige una opción o descarga desde un enlace admitido. Descargar el enlace explícito en el formato de esta variante; SRT extrae subtítulos completos. Variante fija: container=srt.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "container": "srt"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subtitle_language": {
+            "type": "string",
+            "description": "idioma de subtítulos",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "es",
+              "en"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "description": "url",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.buscar",
+      "operation": "download_media.search",
+      "description": "Videos y descargas: dl buscar. Busca videos, elige una opción o descarga desde un enlace admitido.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "container": {
+            "type": "string",
+            "description": "formato",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "mp3",
+              "mp4",
+              "webm",
+              "srt"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "description": "fuente",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "youtube",
+              "pornhub",
+              "xnxx",
+              "adult"
+            ]
+          },
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "subtitle_language": {
+            "type": "string",
+            "description": "idioma de subtítulos",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "es",
+              "en"
+            ]
+          },
+          "query": {
+            "type": "string",
+            "description": "query; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "container",
+          "source",
+          "query"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.elegir",
+      "operation": "download_media.choose",
+      "description": "Videos y descargas: dl elegir. Busca videos, elige una opción o descarga desde un enlace admitido.",
+      "references": [
+        "view_id",
+        "choice"
+      ],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "view_id": {
+            "type": "string",
+            "description": "referencia de lista; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "choice": {
+            "type": "integer",
+            "description": "número de opción",
+            "minimum": 1,
+            "maximum": 6
+          }
+        },
+        "required": [
+          "choice"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.detalle",
+      "operation": "download_media.inspect",
+      "description": "Videos y descargas: dl detalle. Muestra título, autor, duración y enlace completos de una lista propia vigente.",
+      "references": [
+        "view_id",
+        "choice"
+      ],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "view_id": {
+            "type": "string",
+            "description": "referencia de lista; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "choice": {
+            "type": "integer",
+            "description": "número de opción",
+            "minimum": 1,
+            "maximum": 6
+          }
+        },
+        "required": [
+          "choice"
+        ]
+      }
+    },
+    {
+      "action_key": "dl.anterior",
+      "operation": "download_media.previous",
+      "description": "Videos y descargas: dl anterior. Busca videos, elige una opción o descarga desde un enlace admitido. Variante fija: previous=True.",
+      "references": [],
+      "availability": {
+        "search_sources": [
+          "youtube",
+          "pornhub",
+          "xnxx",
+          "adult"
+        ],
+        "url_sources": [
+          "youtube",
+          "dailymotion",
+          "vimeo",
+          "facebook",
+          "instagram",
+          "tiktok",
+          "spotify",
+          "pornhub",
+          "xnxx"
+        ]
+      },
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "previous": true
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "container": {
+            "type": "string",
+            "description": "formato",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "mp3",
+              "mp4",
+              "webm",
+              "srt"
+            ]
+          },
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "subtitle_language": {
+            "type": "string",
+            "description": "idioma de subtítulos",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "es",
+              "en"
+            ]
+          }
+        },
+        "required": [
+          "container"
+        ]
+      }
+    },
+    {
+      "action_key": "editar",
+      "operation": "edit_media.run",
+      "description": "Editar audio y video: editar. Convierte un archivo y conserva los límites o recortes pedidos. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "container": {
+            "type": "string",
+            "description": "formato",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "mp3",
+              "mp4",
+              "webm",
+              "srt"
+            ]
+          },
+          "quality": {
+            "type": "string",
+            "description": "quality",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "small",
+              "standard",
+              "high"
+            ]
+          },
+          "start_seconds": {
+            "type": "number",
+            "description": "inicio; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "end_seconds": {
+            "type": "number",
+            "description": "final; número de segundos",
+            "minimum": 0,
+            "maximum": 10800
+          },
+          "subtitle_language": {
+            "type": "string",
+            "description": "idioma de subtítulos",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "es",
+              "en"
+            ]
+          }
+        },
+        "required": [
+          "container"
+        ]
+      }
+    },
+    {
+      "action_key": "voz",
+      "operation": "make_voice.verbatim",
+      "description": "Voz: voz. Lee texto literal o compone un guion antes de generar la voz elegida. Leer literalmente el texto, la cita o la última respuesta según la variante; no componer un guion. Variante fija: mode=verbatim, source=provided.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "mode": "verbatim",
+        "source": "provided"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voice": {
+            "type": "string",
+            "description": "voice",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "botsky",
+              "mexicana",
+              "colombiana",
+              "argentina",
+              "espanola",
+              "mexicano",
+              "colombiano",
+              "argentino",
+              "espanol",
+              "chileno",
+              "venezolano",
+              "peruano",
+              "anime"
+            ]
+          },
+          "effect": {
+            "type": "string",
+            "description": "effect",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "none",
+              "robot",
+              "radio",
+              "ardilla",
+              "demonio"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "voz.crear",
+      "operation": "make_voice.compose",
+      "description": "Voz: voz crear. Lee texto literal o compone un guion antes de generar la voz elegida. Variante fija: mode=compose, source=provided.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "mode": "compose",
+        "source": "provided"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voice": {
+            "type": "string",
+            "description": "voice",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "botsky",
+              "mexicana",
+              "colombiana",
+              "argentina",
+              "espanola",
+              "mexicano",
+              "colombiano",
+              "argentino",
+              "espanol",
+              "chileno",
+              "venezolano",
+              "peruano",
+              "anime"
+            ]
+          },
+          "effect": {
+            "type": "string",
+            "description": "effect",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "none",
+              "robot",
+              "radio",
+              "ardilla",
+              "demonio"
+            ]
+          },
+          "requested_seconds": {
+            "type": "number",
+            "description": "duración aproximada; número de segundos",
+            "minimum": 0.01,
+            "maximum": 600
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "voz.cita",
+      "operation": "make_voice.verbatim",
+      "description": "Voz: voz cita. Lee texto literal o compone un guion antes de generar la voz elegida. Leer literalmente el texto, la cita o la última respuesta según la variante; no componer un guion. Variante fija: mode=verbatim, source=quote.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "mode": "verbatim",
+        "source": "quote"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voice": {
+            "type": "string",
+            "description": "voice",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "botsky",
+              "mexicana",
+              "colombiana",
+              "argentina",
+              "espanola",
+              "mexicano",
+              "colombiano",
+              "argentino",
+              "espanol",
+              "chileno",
+              "venezolano",
+              "peruano",
+              "anime"
+            ]
+          },
+          "effect": {
+            "type": "string",
+            "description": "effect",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "none",
+              "robot",
+              "radio",
+              "ardilla",
+              "demonio"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "voz.ultima",
+      "operation": "make_voice.verbatim",
+      "description": "Voz: voz ultima. Lee texto literal o compone un guion antes de generar la voz elegida. Leer literalmente el texto, la cita o la última respuesta según la variante; no componer un guion. Variante fija: mode=verbatim, source=last_reply.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {
+        "mode": "verbatim",
+        "source": "last_reply"
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "voice": {
+            "type": "string",
+            "description": "voice",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "botsky",
+              "mexicana",
+              "colombiana",
+              "argentina",
+              "espanola",
+              "mexicano",
+              "colombiano",
+              "argentino",
+              "espanol",
+              "chileno",
+              "venezolano",
+              "peruano",
+              "anime"
+            ]
+          },
+          "effect": {
+            "type": "string",
+            "description": "effect",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "none",
+              "robot",
+              "radio",
+              "ardilla",
+              "demonio"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "voces",
+      "operation": "make_voice.catalog",
+      "description": "Voz: voces. Lee texto literal o compone un guion antes de generar la voz elegida.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "llamar",
+      "operation": "control_call.start",
+      "description": "Llamadas: llamar. Inicia o controla una llamada autorizada en este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "video": {
+            "type": "boolean",
+            "description": "video"
+          },
+          "max_seconds": {
+            "type": "integer",
+            "description": "duración; número de segundos",
+            "minimum": 5,
+            "maximum": 3600
+          },
+          "topic": {
+            "type": "string",
+            "description": "topic; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "llamada.estado",
+      "operation": "control_call.status",
+      "description": "Llamadas: llamada estado. Inicia o controla una llamada autorizada en este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "llamada.colgar",
+      "operation": "control_call.hangup",
+      "description": "Llamadas: llamada colgar. Inicia o controla una llamada autorizada en este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "llamada.cancelar",
+      "operation": "control_call.cancel",
+      "description": "Llamadas: llamada cancelar. Inicia o controla una llamada autorizada en este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pdf.iniciar",
+      "operation": "manage_pdf.start",
+      "description": "Documentos PDF: pdf iniciar. Reúne archivos, extrae páginas y controla una sesión PDF propia. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pdf.agregar",
+      "operation": "manage_pdf.add",
+      "description": "Documentos PDF: pdf agregar. Reúne archivos, extrae páginas y controla una sesión PDF propia. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pdf.terminar",
+      "operation": "manage_pdf.finish",
+      "description": "Documentos PDF: pdf terminar. Reúne archivos, extrae páginas y controla una sesión PDF propia.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pdf.cancelar",
+      "operation": "manage_pdf.cancel",
+      "description": "Documentos PDF: pdf cancelar. Reúne archivos, extrae páginas y controla una sesión PDF propia.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pdf.extraer",
+      "operation": "manage_pdf.extract",
+      "description": "Documentos PDF: pdf extraer. Reúne archivos, extrae páginas y controla una sesión PDF propia. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "pages": {
+            "type": "string",
+            "description": "pages",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "pages"
+        ]
+      }
+    },
+    {
+      "action_key": "pdf.reintentar",
+      "operation": "manage_pdf.retry",
+      "description": "Documentos PDF: pdf reintentar. Reúne archivos, extrae páginas y controla una sesión PDF propia. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "explicit_uncertain_retry",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "confirm_uncertain": {
+            "type": "boolean",
+            "description": "confirm uncertain"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "action_key": "convertir",
+      "operation": "convert_document.run",
+      "description": "Convertir documentos: convertir. Convierte un adjunto; informa las limitaciones del formato final. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "artifact",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "pdf",
+              "docx",
+              "doc",
+              "odt",
+              "rtf",
+              "xlsx",
+              "xls",
+              "ods",
+              "csv",
+              "pptx",
+              "ppt",
+              "odp",
+              "txt",
+              "png",
+              "jpg",
+              "webp",
+              "json",
+              "html",
+              "md"
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "tarea.crear",
+      "operation": "manage_school.add_task",
+      "description": "Escuela y horario: tarea crear. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "subject; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "due_date": {
+            "type": "string",
+            "description": "due date; fecha local AAAA-MM-DD calculada con fecha/zona del host",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "due_time": {
+            "type": "string",
+            "description": "due time; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "attach": {
+            "type": "boolean",
+            "description": "attach"
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "due_date",
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "tareas",
+      "operation": "manage_school.list_tasks",
+      "description": "Escuela y horario: tareas. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "page",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "include_closed": {
+            "type": "boolean",
+            "description": "incluir cerrados"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "tarea.completar",
+      "operation": "manage_school.complete_task",
+      "description": "Escuela y horario: tarea completar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "type": "integer",
+            "description": "task id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      }
+    },
+    {
+      "action_key": "tarea.borrar",
+      "operation": "manage_school.delete_task",
+      "description": "Escuela y horario: tarea borrar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "type": "integer",
+            "description": "task id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      }
+    },
+    {
+      "action_key": "tarea.archivo",
+      "operation": "manage_school.get_attachment",
+      "description": "Escuela y horario: tarea archivo. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "type": "integer",
+            "description": "task id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      }
+    },
+    {
+      "action_key": "horario.agregar",
+      "operation": "manage_school.set_lesson",
+      "description": "Escuela y horario: horario agregar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "subject; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "weekday": {
+            "type": "integer",
+            "description": "weekday",
+            "minimum": 1,
+            "maximum": 7
+          },
+          "start_time": {
+            "type": "string",
+            "description": "start time; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "end_time": {
+            "type": "string",
+            "description": "end time; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "subject",
+          "weekday",
+          "start_time",
+          "end_time"
+        ]
+      }
+    },
+    {
+      "action_key": "horario.listar",
+      "operation": "manage_school.list_schedule",
+      "description": "Escuela y horario: horario listar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "weekday": {
+            "type": "integer",
+            "description": "weekday",
+            "minimum": 1,
+            "maximum": 7
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "horario.borrar",
+      "operation": "manage_school.delete_lesson",
+      "description": "Escuela y horario: horario borrar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "lesson_id": {
+            "type": "integer",
+            "description": "lesson id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "lesson_id"
+        ]
+      }
+    },
+    {
+      "action_key": "escuela.resumen.configurar",
+      "operation": "manage_school.configure_digest",
+      "description": "Escuela y horario: escuela resumen configurar. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "enabled"
+          },
+          "digest_time": {
+            "type": "string",
+            "description": "digest time; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      }
+    },
+    {
+      "action_key": "escuela.resumen.estado",
+      "operation": "manage_school.status_digest",
+      "description": "Escuela y horario: escuela resumen estado. Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "encuesta.crear",
+      "operation": "manage_poll.create",
+      "description": "Encuestas: encuesta crear. Publica una pregunta, vota y consulta resultados con opciones completas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "question; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "options; conserva literalmente el contenido solicitado",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "minItems": 2,
+            "maxItems": 10
+          }
+        },
+        "required": [
+          "question",
+          "options"
+        ]
+      }
+    },
+    {
+      "action_key": "encuesta.votar",
+      "operation": "manage_poll.vote",
+      "description": "Encuestas: encuesta votar. Publica una pregunta, vota y consulta resultados con opciones completas.",
+      "references": [
+        "choice"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "poll_id": {
+            "type": "integer",
+            "description": "poll id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "choice": {
+            "type": "integer",
+            "description": "número de opción",
+            "minimum": 1,
+            "maximum": 10
+          }
+        },
+        "required": [
+          "poll_id",
+          "choice"
+        ]
+      }
+    },
+    {
+      "action_key": "encuesta.resultados",
+      "operation": "manage_poll.results",
+      "description": "Encuestas: encuesta resultados. Publica una pregunta, vota y consulta resultados con opciones completas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "poll_id": {
+            "type": "integer",
+            "description": "poll id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "poll_id"
+        ]
+      }
+    },
+    {
+      "action_key": "encuesta.cerrar",
+      "operation": "manage_poll.close",
+      "description": "Encuestas: encuesta cerrar. Publica una pregunta, vota y consulta resultados con opciones completas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "poll_id": {
+            "type": "integer",
+            "description": "poll id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "poll_id"
+        ]
+      }
+    },
+    {
+      "action_key": "recado.preparar",
+      "operation": "manage_messages.prepare",
+      "description": "Recados: recado preparar. Prepara una vista previa para contactos verificados y confirma su envío.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "preview",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "recipients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 10,
+            "uniqueItems": true
+          },
+          "source": {
+            "type": "string",
+            "description": "fuente",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "actual",
+              "cita"
+            ]
+          },
+          "attach": {
+            "type": "boolean",
+            "description": "attach"
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "recipients"
+        ]
+      }
+    },
+    {
+      "action_key": "recado.estado",
+      "operation": "manage_messages.status",
+      "description": "Recados: recado estado. Prepara una vista previa para contactos verificados y confirma su envío.",
+      "references": [
+        "draft_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "description": "draft id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "draft_id"
+        ]
+      }
+    },
+    {
+      "action_key": "recado.enviar",
+      "operation": "manage_messages.send",
+      "description": "Recados: recado enviar. Prepara una vista previa para contactos verificados y confirma su envío. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "draft_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "deliver",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "description": "draft id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "draft_id"
+        ]
+      }
+    },
+    {
+      "action_key": "recado.cancelar",
+      "operation": "manage_messages.cancel",
+      "description": "Recados: recado cancelar. Prepara una vista previa para contactos verificados y confirma su envío.",
+      "references": [
+        "draft_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "description": "draft id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "draft_id"
+        ]
+      }
+    },
+    {
+      "action_key": "contactos",
+      "operation": "manage_messages.contacts",
+      "description": "Recados: contactos. Prepara una vista previa para contactos verificados y confirma su envío.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "pack.catalogo",
+      "operation": "manage_pack.catalog",
+      "description": "Packs: pack catalogo. Consulta categorías, stock y precio antes de confirmar una compra.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "category; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "page": {
+            "type": "integer",
+            "description": "page",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "pack.comprar",
+      "operation": "manage_pack.buy",
+      "description": "Packs: pack comprar. Consulta categorías, stock y precio antes de confirmar una compra. Preparar compra por categoría o confirmar una oferta publicada por su ID según esta variante. Conserva la previa y confirmación específicas del backend.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "purchase",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "category; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "required": [
+          "category"
+        ]
+      }
+    },
+    {
+      "action_key": "pack.confirmar",
+      "operation": "manage_pack.buy",
+      "description": "Packs: pack confirmar. Consulta categorías, stock y precio antes de confirmar una compra. Preparar compra por categoría o confirmar una oferta publicada por su ID según esta variante. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "purchase_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "purchase",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "purchase_id": {
+            "type": "string",
+            "description": "purchase id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "purchase_id"
+        ]
+      }
+    },
+    {
+      "action_key": "pack.estado",
+      "operation": "manage_pack.status",
+      "description": "Packs: pack estado. Consulta categorías, stock y precio antes de confirmar una compra.",
+      "references": [
+        "purchase_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "purchase_id": {
+            "type": "string",
+            "description": "purchase id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "purchase_id"
+        ]
+      }
+    },
+    {
+      "action_key": "coop.crear",
+      "operation": "manage_cooperacha.start",
+      "description": "Cooperachas: coop crear. Consulta la previa censurada y aporta solo de tu propio saldo.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "category; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "target_xp": {
+            "type": "integer",
+            "description": "target xp",
+            "minimum": 50,
+            "maximum": 50000
+          }
+        },
+        "required": [
+          "category",
+          "target_xp"
+        ]
+      }
+    },
+    {
+      "action_key": "coop.aportar",
+      "operation": "manage_cooperacha.contribute",
+      "description": "Cooperachas: coop aportar. Consulta la previa censurada y aporta solo de tu propio saldo.",
+      "references": [
+        "challenge_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "spend_own_xp",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "description": "challenge id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "amount": {
+            "type": "integer",
+            "description": "amount",
+            "minimum": 1,
+            "maximum": 50000
+          }
+        },
+        "required": [
+          "challenge_id",
+          "amount"
+        ]
+      }
+    },
+    {
+      "action_key": "coop.estado",
+      "operation": "manage_cooperacha.status",
+      "description": "Cooperachas: coop estado. Consulta la previa censurada y aporta solo de tu propio saldo.",
+      "references": [
+        "challenge_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "description": "challenge id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "coop.cancelar",
+      "operation": "manage_cooperacha.cancel",
+      "description": "Cooperachas: coop cancelar. Consulta la previa censurada y aporta solo de tu propio saldo.",
+      "references": [
+        "challenge_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "description": "challenge id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "challenge_id"
+        ]
+      }
+    },
+    {
+      "action_key": "hh.iniciar",
+      "operation": "manage_happy_hour.start",
+      "description": "Hora feliz: hh iniciar. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "duration_seconds": {
+            "type": "integer",
+            "description": "duración; número de segundos",
+            "minimum": 60,
+            "maximum": 86400
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "hh.parar",
+      "operation": "manage_happy_hour.stop",
+      "description": "Hora feliz: hh parar. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [
+        "event_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "event id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "hh.estado",
+      "operation": "manage_happy_hour.status",
+      "description": "Hora feliz: hh estado. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [
+        "event_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "event id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "hh.lluvia",
+      "operation": "manage_happy_hour.rain",
+      "description": "Hora feliz: hh lluvia. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [
+        "event_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "event id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "hh.airdrop",
+      "operation": "manage_happy_hour.airdrop",
+      "description": "Hora feliz: hh airdrop. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [
+        "event_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "event id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "hh.reclamar",
+      "operation": "manage_happy_hour.claim",
+      "description": "Hora feliz: hh reclamar. Consulta eventos y reclama un AirDrop con su referencia publicada.",
+      "references": [
+        "drop_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "drop_id": {
+            "type": "string",
+            "description": "drop id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "drop_id"
+        ]
+      }
+    },
+    {
+      "action_key": "mem.guardar",
+      "operation": "manage_memory.remember",
+      "description": "Memoria: mem guardar. Guarda, consulta, corrige o retira recuerdos explícitos de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "description": "kind",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "preferencia",
+              "dato"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "mem.listar",
+      "operation": "manage_memory.list",
+      "description": "Memoria: mem listar. Guarda, consulta, corrige o retira recuerdos explícitos de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "description": "kind",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "preferencia",
+              "dato"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "description": "page",
+            "minimum": 1,
+            "maximum": 10000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "mem.corregir",
+      "operation": "manage_memory.correct",
+      "description": "Memoria: mem corregir. Guarda, consulta, corrige o retira recuerdos explícitos de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "memory_id": {
+            "type": "integer",
+            "description": "memory id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "memory_id",
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "mem.olvidar",
+      "operation": "manage_memory.forget",
+      "description": "Memoria: mem olvidar. Guarda, consulta, corrige o retira recuerdos explícitos de este chat.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "memory_id": {
+            "type": "integer",
+            "description": "memory id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "memory_id"
+        ]
+      }
+    },
+    {
+      "action_key": "mem.borrar-todo",
+      "operation": "manage_memory.forget_all",
+      "description": "Memoria: mem borrar-todo. Guarda, consulta, corrige o retira recuerdos explícitos de este chat. Conserva la previa y confirmación específicas del backend.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "preview",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.estado",
+      "operation": "manage_minecraft.status",
+      "description": "Minecraft: mc estado. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.jugadores",
+      "operation": "manage_minecraft.players",
+      "description": "Minecraft: mc jugadores. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.mundos",
+      "operation": "manage_minecraft.worlds",
+      "description": "Minecraft: mc mundos. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.mods",
+      "operation": "manage_minecraft.mods",
+      "description": "Minecraft: mc mods. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.config",
+      "operation": "manage_minecraft.config",
+      "description": "Minecraft: mc config. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.diagnostico",
+      "operation": "manage_minecraft.discover",
+      "description": "Minecraft: mc diagnostico. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.iniciar",
+      "operation": "manage_minecraft.start",
+      "description": "Minecraft: mc iniciar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.parar",
+      "operation": "manage_minecraft.stop",
+      "description": "Minecraft: mc parar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.reiniciar",
+      "operation": "manage_minecraft.restart",
+      "description": "Minecraft: mc reiniciar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.backup",
+      "operation": "manage_minecraft.backup",
+      "description": "Minecraft: mc backup. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.recuperar",
+      "operation": "manage_minecraft.recover",
+      "description": "Minecraft: mc recuperar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "mc.mod.activar",
+      "operation": "manage_minecraft.enable_mod",
+      "description": "Minecraft: mc mod activar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "mc.mod.desactivar",
+      "operation": "manage_minecraft.disable_mod",
+      "description": "Minecraft: mc mod desactivar. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "mc.consola",
+      "operation": "manage_minecraft.console",
+      "description": "Minecraft: mc consola. Consulta salud y paquetes o solicita cambios observables del servidor.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "server_console",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "command; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "command"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.advertir",
+      "operation": "manage_admin.warn",
+      "description": "Administración: admin advertir. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.quitar-aviso",
+      "operation": "manage_admin.unwarn",
+      "description": "Administración: admin quitar-aviso. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "warning_id": {
+            "type": "integer",
+            "description": "warning id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "target",
+          "warning_id"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.avisos",
+      "operation": "manage_admin.warnings",
+      "description": "Administración: admin avisos. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.expulsar",
+      "operation": "manage_admin.kick",
+      "description": "Administración: admin expulsar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.ban",
+      "operation": "manage_admin.ban",
+      "description": "Administración: admin ban. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.unban",
+      "operation": "manage_admin.unban",
+      "description": "Administración: admin unban. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.promover",
+      "operation": "manage_admin.promote",
+      "description": "Administración: admin promover. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.degradar",
+      "operation": "manage_admin.demote",
+      "description": "Administración: admin degradar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.silenciar",
+      "operation": "manage_admin.mute",
+      "description": "Administración: admin silenciar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.desilenciar",
+      "operation": "manage_admin.unmute",
+      "description": "Administración: admin desilenciar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.cerrar",
+      "operation": "manage_admin.lock",
+      "description": "Administración: admin cerrar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.abrir",
+      "operation": "manage_admin.unlock",
+      "description": "Administración: admin abrir. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.xp-dar",
+      "operation": "manage_admin.xp_grant",
+      "description": "Administración: admin xp-dar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "account_id": {
+            "type": "integer",
+            "description": "cuenta",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "amount": {
+            "type": "integer",
+            "description": "amount",
+            "minimum": 1,
+            "maximum": 50000
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.xp-quitar",
+      "operation": "manage_admin.xp_remove",
+      "description": "Administración: admin xp-quitar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "target"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "objetivo; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "account_id": {
+            "type": "integer",
+            "description": "cuenta",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "amount": {
+            "type": "integer",
+            "description": "amount",
+            "minimum": 1,
+            "maximum": 50000
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.nuclear-preparar",
+      "operation": "manage_admin.nuclear_prepare",
+      "description": "Administración: admin nuclear-preparar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "preview",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "admin.nuclear-confirmar",
+      "operation": "manage_admin.nuclear_confirm",
+      "description": "Administración: admin nuclear-confirmar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "draft_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "delivered_preview",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "description": "draft id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "draft_id"
+        ]
+      }
+    },
+    {
+      "action_key": "admin.nuclear-cancelar",
+      "operation": "manage_admin.nuclear_cancel",
+      "description": "Administración: admin nuclear-cancelar. Opera sobre objetivos verificados; conserva las confirmaciones sensibles.",
+      "references": [
+        "draft_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "group_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "draft_id": {
+            "type": "string",
+            "description": "draft id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "draft_id"
+        ]
+      }
+    },
+    {
+      "action_key": "bj.iniciar",
+      "operation": "manage_blackjack.start",
+      "description": "Blackjack: bj iniciar. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bet": {
+            "type": "integer",
+            "description": "bet",
+            "minimum": 20,
+            "maximum": 1000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.mesa",
+      "operation": "manage_blackjack.table",
+      "description": "Blackjack: bj mesa. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bet": {
+            "type": "integer",
+            "description": "bet",
+            "minimum": 20,
+            "maximum": 1000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.entrar",
+      "operation": "manage_blackjack.join",
+      "description": "Blackjack: bj entrar. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.repartir",
+      "operation": "manage_blackjack.deal",
+      "description": "Blackjack: bj repartir. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.pedir",
+      "operation": "manage_blackjack.hit",
+      "description": "Blackjack: bj pedir. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.plantarse",
+      "operation": "manage_blackjack.stand",
+      "description": "Blackjack: bj plantarse. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.doblar",
+      "operation": "manage_blackjack.double",
+      "description": "Blackjack: bj doblar. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.estado",
+      "operation": "manage_blackjack.status",
+      "description": "Blackjack: bj estado. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "bj.cancelar",
+      "operation": "manage_blackjack.cancel",
+      "description": "Blackjack: bj cancelar. Juega con apuestas de XP, turnos publicados y cartas visibles.",
+      "references": [
+        "game_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "game id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "ruleta.crear",
+      "operation": "manage_roulette.create",
+      "description": "Ruleta: ruleta crear. Consulta coste y consecuencias antes de entrar o iniciar una sala.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bet": {
+            "type": "integer",
+            "description": "bet",
+            "minimum": 1,
+            "maximum": 1000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "ruleta.entrar",
+      "operation": "manage_roulette.join",
+      "description": "Ruleta: ruleta entrar. Consulta coste y consecuencias antes de entrar o iniciar una sala. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "room_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "rules_acceptance",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "description": "room id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "room_id"
+        ]
+      }
+    },
+    {
+      "action_key": "ruleta.jugar",
+      "operation": "manage_roulette.play",
+      "description": "Ruleta: ruleta jugar. Consulta coste y consecuencias antes de entrar o iniciar una sala. Conserva la previa y confirmación específicas del backend.",
+      "references": [
+        "room_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "rules_acceptance",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "description": "room id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "room_id"
+        ]
+      }
+    },
+    {
+      "action_key": "ruleta.estado",
+      "operation": "manage_roulette.status",
+      "description": "Ruleta: ruleta estado. Consulta coste y consecuencias antes de entrar o iniciar una sala.",
+      "references": [
+        "room_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "description": "room id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "ruleta.cancelar",
+      "operation": "manage_roulette.cancel",
+      "description": "Ruleta: ruleta cancelar. Consulta coste y consecuencias antes de entrar o iniciar una sala.",
+      "references": [
+        "room_id"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "game",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "description": "room id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "room_id"
+        ]
+      }
+    },
+    {
+      "action_key": "broma",
+      "operation": "make_prank.run",
+      "description": "Broma ficticia: broma. Crea una broma inocua; no investiga ni contacta a nadie.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "fiction",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "label; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 40
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "daily",
+      "operation": "manage_economy.daily",
+      "description": "XP: daily. Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "saldo",
+      "operation": "manage_economy.balance",
+      "description": "XP: saldo. Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "top",
+      "operation": "manage_economy.top",
+      "description": "XP: top. Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "recordar.en",
+      "operation": "manage_reminder.create",
+      "description": "Recordatorios: recordar en. Programa y consulta avisos propios con fecha y zona explícitas. Programar un aviso relativo en segundos o en fecha/hora local concreta según esta variante.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "duration_seconds": {
+            "type": "integer",
+            "description": "duración; número de segundos",
+            "minimum": 1,
+            "maximum": 31536000
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "duration_seconds",
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "recordar.el",
+      "operation": "manage_reminder.create",
+      "description": "Recordatorios: recordar el. Programa y consulta avisos propios con fecha y zona explícitas. Programar un aviso relativo en segundos o en fecha/hora local concreta según esta variante.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "fecha; fecha local AAAA-MM-DD calculada con fecha/zona del host",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "time": {
+            "type": "string",
+            "description": "hora; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "text": {
+            "type": "string",
+            "description": "text; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "date",
+          "time",
+          "text"
+        ]
+      }
+    },
+    {
+      "action_key": "recordatorios",
+      "operation": "manage_reminder.list",
+      "description": "Recordatorios: recordatorios. Programa y consulta avisos propios con fecha y zona explícitas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "page",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "include_closed": {
+            "type": "boolean",
+            "description": "incluir cerrados"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "recordatorio.cancelar",
+      "operation": "manage_reminder.cancel",
+      "description": "Recordatorios: recordatorio cancelar. Programa y consulta avisos propios con fecha y zona explícitas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reminder_id": {
+            "type": "integer",
+            "description": "reminder id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "reminder_id"
+        ]
+      }
+    },
+    {
+      "action_key": "recordatorio.archivar",
+      "operation": "manage_reminder.archive",
+      "description": "Recordatorios: recordatorio archivar. Programa y consulta avisos propios con fecha y zona explícitas.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reminder_id": {
+            "type": "integer",
+            "description": "reminder id",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "reminder_id"
+        ]
+      }
+    },
+    {
+      "action_key": "buscar",
+      "operation": "search_web.run",
+      "description": "Búsqueda web: buscar. Consulta candidatos con términos y fuentes explícitos.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "required_terms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 8,
+            "uniqueItems": true
+          },
+          "query": {
+            "type": "string",
+            "description": "query; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "action_key": "drive.guardar",
+      "operation": "manage_drive.save",
+      "description": "Archivos de Drive: drive guardar. Busca en tu ámbito, recupera un archivo o guarda un adjunto. Requiere archivo propio adjunto o citado disponible.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "remote_write",
+      "confirmation": "none",
+      "attachment": true,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "drive.buscar",
+      "operation": "manage_drive.search",
+      "description": "Archivos de Drive: drive buscar. Busca en tu ámbito, recupera un archivo o guarda un adjunto.",
+      "references": [],
+      "availability": {},
+      "permission": "friend",
+      "effect": "search",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "query; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "drive.elegir",
+      "operation": "manage_drive.choose",
+      "description": "Archivos de Drive: drive elegir. Busca en tu ámbito, recupera un archivo o guarda un adjunto.",
+      "references": [
+        "view_id",
+        "choice"
+      ],
+      "availability": {},
+      "permission": "friend",
+      "effect": "remote_read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "view_id": {
+            "type": "string",
+            "description": "referencia de lista; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "choice": {
+            "type": "integer",
+            "description": "número de opción",
+            "minimum": 1,
+            "maximum": 5
+          }
+        },
+        "required": [
+          "choice"
+        ]
+      }
+    },
+    {
+      "action_key": "drive.cuota",
+      "operation": "manage_drive.capacity",
+      "description": "Archivos de Drive: drive cuota. Busca en tu ámbito, recupera un archivo o guarda un adjunto.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.lista",
+      "operation": "audiovisual.clip.list",
+      "description": "Clips: clip lista. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.poner",
+      "operation": "audiovisual.clip.play",
+      "description": "Clips: clip poner. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [
+        "clip_id"
+      ],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clip_id": {
+            "type": "string",
+            "description": "clip id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "query": {
+            "type": "string",
+            "description": "query; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.pausa",
+      "operation": "audiovisual.clip.pause",
+      "description": "Clips: clip pausa. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.seguir",
+      "operation": "audiovisual.clip.resume",
+      "description": "Clips: clip seguir. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.repetir",
+      "operation": "audiovisual.clip.replay",
+      "description": "Clips: clip repetir. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.siguiente",
+      "operation": "audiovisual.clip.next",
+      "description": "Clips: clip siguiente. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.parar",
+      "operation": "audiovisual.clip.stop",
+      "description": "Clips: clip parar. Consulta clips y controla reproducción y volumen durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "clip.volumen",
+      "operation": "audiovisual.clip.volume",
+      "description": "Clips: clip volumen. Consulta clips y controla reproducción y volumen durante una llamada autorizada. Ajustar volumen absoluto o modificarlo en la dirección indicada por las constantes de esta variante.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "volume": {
+            "type": "number",
+            "description": "volume",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "volume"
+        ]
+      }
+    },
+    {
+      "action_key": "clip.ajustar",
+      "operation": "audiovisual.clip.volume",
+      "description": "Clips: clip ajustar. Consulta clips y controla reproducción y volumen durante una llamada autorizada. Ajustar volumen absoluto o modificarlo en la dirección indicada por las constantes de esta variante.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "type": "string",
+            "description": "direction",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "subir",
+              "bajar"
+            ]
+          },
+          "adjustment": {
+            "type": "number",
+            "description": "adjustment",
+            "minimum": 0.01,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "direction",
+          "adjustment"
+        ]
+      }
+    },
+    {
+      "action_key": "avatar.fondo",
+      "operation": "audiovisual.avatar.background",
+      "description": "Avatar: avatar fondo. Aplica un fondo, expresión o gesto disponible durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "studio",
+              "neon",
+              "sunset",
+              "night"
+            ]
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "avatar.expresion",
+      "operation": "audiovisual.avatar.expression",
+      "description": "Avatar: avatar expresion. Aplica un fondo, expresión o gesto disponible durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "neutral",
+              "relaxed",
+              "happy",
+              "angry",
+              "sad",
+              "surprised",
+              "wink",
+              "laugh"
+            ]
+          },
+          "duration": {
+            "type": "number",
+            "description": "duration; número de segundos",
+            "minimum": 1,
+            "maximum": 15
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "avatar.gesto",
+      "operation": "audiovisual.avatar.gesture",
+      "description": "Avatar: avatar gesto. Aplica un fondo, expresión o gesto disponible durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "wave",
+              "nod",
+              "shake_head",
+              "hand_to_chest"
+            ]
+          },
+          "duration": {
+            "type": "number",
+            "description": "duration; número de segundos",
+            "minimum": 1,
+            "maximum": 15
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "avatar.rubor",
+      "operation": "audiovisual.avatar.blush",
+      "description": "Avatar: avatar rubor. Aplica un fondo, expresión o gesto disponible durante una llamada autorizada.",
+      "references": [],
+      "availability": {},
+      "permission": "call_authorized",
+      "effect": "call_control",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name",
+            "minLength": 1,
+            "maxLength": 8000,
+            "enum": [
+              "suave"
+            ]
+          },
+          "duration": {
+            "type": "number",
+            "description": "duration; número de segundos",
+            "minimum": 1,
+            "maximum": 15
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "action_key": "llamada.programar",
+      "operation": "audiovisual.agenda.create",
+      "description": "Agenda de llamadas: llamada programar. Programa una llamada con fecha, zona, modo y duración explícitos.",
+      "references": [
+        "audio_id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "fecha; fecha local AAAA-MM-DD calculada con fecha/zona del host",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "time": {
+            "type": "string",
+            "description": "hora; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "max_seconds": {
+            "type": "integer",
+            "description": "duración; número de segundos",
+            "minimum": 5,
+            "maximum": 3600
+          },
+          "live_request": {
+            "type": "string",
+            "description": "tema; conserva literalmente el contenido solicitado",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "audio_id": {
+            "type": "string",
+            "description": "audio preparado; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "end_after_audio": {
+            "type": "boolean",
+            "description": "end after audio"
+          },
+          "volume": {
+            "type": "number",
+            "description": "volume",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "date",
+          "time"
+        ]
+      }
+    },
+    {
+      "action_key": "llamada.agenda",
+      "operation": "audiovisual.agenda.list",
+      "description": "Agenda de llamadas: llamada agenda. Programa una llamada con fecha, zona, modo y duración explícitos.",
+      "references": [],
+      "availability": {},
+      "permission": "owner",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "action_key": "llamada.reprogramar",
+      "operation": "audiovisual.agenda.update",
+      "description": "Agenda de llamadas: llamada reprogramar. Programa una llamada con fecha, zona, modo y duración explícitos.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "schedule",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "date": {
+            "type": "string",
+            "description": "fecha; fecha local AAAA-MM-DD calculada con fecha/zona del host",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "time": {
+            "type": "string",
+            "description": "hora; hora local HH:MM de 24 horas",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "id",
+          "date",
+          "time"
+        ]
+      }
+    },
+    {
+      "action_key": "llamada.cancelar-agenda",
+      "operation": "audiovisual.agenda.cancel",
+      "description": "Agenda de llamadas: llamada cancelar-agenda. Programa una llamada con fecha, zona, modo y duración explícitos.",
+      "references": [
+        "id"
+      ],
+      "availability": {},
+      "permission": "owner",
+      "effect": "write",
+      "confirmation": "none",
+      "attachment": false,
+      "constants": {},
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id; referencia real verificada por el host, nunca inventada",
+            "minLength": 1,
+            "maxLength": 8000
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  ]
+}

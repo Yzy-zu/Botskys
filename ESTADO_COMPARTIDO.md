@@ -1,5 +1,25 @@
 # Relevo Botsky
 
+## 07/11 · F5 cobertura natural de capacidades cerrada localmente
+
+155variantes/146operaciones/34familias conservadas en catálogo completo con
+descripciones naturales,metadatos de referencias,constantes y restricciones.
+Revisión detectó153summaries vacíos: frontend/editorial deriva finalidad del
+catálogo editorial propio y distingue variantes. Proyección configurada informa
+proveedores disponibles sin conceder permiso ni afirmar salud.
+Búsqueda natural exige source y limita enum a fuentes buscables habilitadas:
+youtube y,si se habilita adulto,pornhub/xnxx/adult. Fuentes restantes solo URL.
+No hereda defaultYouTube ni acepta fuente no buscable; sin clasificador léxico.
+Matriz actualizada CONTRACT_AND_DISPATCH_DOUBLE_PASS para155variantes: prueba
+parametrizada nativa atraviesa dispatcher a dominio/job doblado,con guardias
+sustituidas solo en ese test. Prueba independiente con guardias reales rechaza
+acción administrativa propuesta como amiga(owner_required). No acredita efectos.
+27frontend,8descargas,11organización,12llamadas con dobles pasan. Evidencia F5-*
+y snapshot genérico del catálogo en docs/evidencia/REMODELACION;detalle
+docs/REMODELACION_F5.md. Sin inferencias reales,servicios,envíos o mutaciones.
+Cuota5h42% restante. Siguiente F6: UX natural en ayuda,presentadores y dominios;
+F7 comprobará comprensión GLM,fuentes,fechas,literales y continuidad reales.
+
 ## 07/11 · F4 continuidad y referencias locales cerradas
 
 Frontend/context usa interactions existente: borradores15min activados solo tras
