@@ -63,7 +63,7 @@ def decode_thumbnail(raw):
         return None
 
 
-async def fetch_thumbnail(url, source):
+async def fetch_thumbnail(url, source, *, client=None):
     """CONNECT con DNS público fijado; sin cookies, entorno o redirecciones."""
     import httpx
 
@@ -83,19 +83,26 @@ async def fetch_thumbnail(url, source):
             or any(ord(c) <= 32 or ord(c) >= 127 for c in url)
         ):
             return None
-        async with asyncio.timeout(6), _proxy(source) as proxy:
-            async with httpx.AsyncClient(
-                proxy=proxy, trust_env=False, follow_redirects=False
-            ) as client:
-                async with client.stream("GET", url, timeout=5) as response:
-                    if response.status_code != 200:
+
+        async def read(http):
+            async with http.stream("GET", url, timeout=5, follow_redirects=False) as response:
+                if response.status_code != 200:
+                    return None
+                raw = bytearray()
+                async for chunk in response.aiter_bytes():
+                    if len(raw) + len(chunk) > MAX_THUMB_BYTES:
                         return None
-                    raw = bytearray()
-                    async for chunk in response.aiter_bytes():
-                        raw.extend(chunk)
-                        if len(raw) > MAX_THUMB_BYTES:
-                            return None
-                    return bytes(raw)
+                    raw.extend(chunk)
+                return bytes(raw)
+
+        async with asyncio.timeout(6):
+            if client is not None:
+                return await read(client)
+            async with _proxy(source) as proxy:
+                async with httpx.AsyncClient(
+                    proxy=proxy, trust_env=False, follow_redirects=False
+                ) as http:
+                    return await read(http)
     except httpx.HTTPError, TimeoutError, ValueError, TypeError:
         return None
 

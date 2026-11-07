@@ -47,14 +47,14 @@ def execute(db, context, spec, args, now, jobs, artifacts, backend):
                 exc.code,
                 "El archivo anterior ya no está disponible; no redescargué el enlace.",
             )
-    if backend is None or getattr(backend, "enabled", True) is not True:
+    if action != "inspect" and (backend is None or getattr(backend, "enabled", True) is not True):
         return Result(
             "failed",
             "downloads_not_configured",
             "Las fuentes remotas no están habilitadas en este laboratorio.",
         )
     adult = getattr(backend, "adult_sources_enabled", False)
-    if action == "choose":
+    if action in ("choose", "inspect"):
         from ..interactions import choose_view
 
         view, ambiguity = choose_view(db, context, "download", now, args.get("view_id"))
@@ -72,6 +72,32 @@ def execute(db, context, spec, args, now, jobs, artifacts, backend):
                 "needs_input", "download_choice_out_of_range", "La elección no está en esa vista."
             )
         selected = data["choices"][args["choice"] - 1]
+        if action == "inspect":
+            from ..presentation import Block, Document, attach_document
+            from ..presentation.search import duration, source_label
+
+            return attach_document(
+                Result(
+                    "ok",
+                    "download_detail",
+                    data={"choice": dict(selected), "number": args["choice"]},
+                ),
+                Document(
+                    (
+                        Block("heading", f"Video {args['choice']}"),
+                        Block("literal", selected["title"]),
+                        Block("literal", selected.get("author") or "Autor desconocido"),
+                        Block(
+                            "paragraph",
+                            duration(selected.get("duration"))
+                            + " · "
+                            + source_label(selected["url"]),
+                        ),
+                        Block("literal", selected["url"]),
+                        Block("next_action", f"/dl elegir {view['id']} {args['choice']}"),
+                    )
+                ),
+            )
         params = {**data["arguments"], "url": selected["url"], "title": selected["title"]}
         params.pop("query", None)
         operation = "download_media.url"

@@ -16,7 +16,7 @@ from botsky.contracts import Result
 
 def sample_with_field(spec, selected):
     chosen = {f.name for f in spec.fields if f.required} | {selected.name}
-    if spec.operation in ("download_media.choose", "manage_drive.choose"):
+    if spec.operation in ("download_media.choose", "manage_drive.choose", "download_media.inspect"):
         chosen.add("choice")
     overrides = {"container": "srt"} if selected.name == "subtitle_language" else {}
     if spec.family == "audiovisual.clip" and spec.original_action == "play":
@@ -59,7 +59,7 @@ class AllFieldsTest(TestCase):
                     self.assertIn(field.name, parsed.spans)
                     self.assertEqual(router.parse(text).canonical(), parsed.canonical())
                     count += 1
-        self.assertEqual(count, 190)
+        self.assertEqual(count, 192)
 
 
 class LocalTransportAcceptanceTest(IsolatedAsyncioTestCase):

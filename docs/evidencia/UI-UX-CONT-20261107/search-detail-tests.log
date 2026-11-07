@@ -1,0 +1,11 @@
+test_layouts_cover_canvas_without_overlap_and_jpeg_decodes (test_search_presentation.CollageTest.test_layouts_cover_canvas_without_overlap_and_jpeg_decodes) ... ok
+test_collage_list_barrier_partial_ack_and_short_choice (test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice) ... ok
+test_detail_retains_complete_title_author_without_refetch_or_backend (test_search_presentation.SearchPresentationTest.test_detail_retains_complete_title_author_without_refetch_or_backend) ... ok
+test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign (test_search_presentation.SearchPresentationTest.test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign) ... ok
+test_short_choice_ambiguous_and_immutable_no_search_again (test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again) ... ok
+test_thumbnail_private_credentials_and_ports_never_open_proxy (test_search_presentation.SearchPresentationTest.test_thumbnail_private_credentials_and_ports_never_open_proxy) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 12.667s
+
+OK

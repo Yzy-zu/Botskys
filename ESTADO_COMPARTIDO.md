@@ -1,5 +1,15 @@
 # Relevo Botsky
 
+## 07/11 · V2detalle/miniautras y V3recuperación verificados localmente
+
+/dl detalle [REFERENCIA_LISTA] NUMEROofrece título/autoríntegrosdesdevistapropia
+retendida, sinproveedor; fichaabreviadaofrececomando. Registroactual155rutas/
+192campos;V0/campañas154/190históricosintactos.3miniaturasHTTPdoble/renderreal
+PASS(timeout/302/2MiB/concurrencia2/cancelaciónsinborrarscratch).6searchPASS y
+7tablasPASSincluyendoreinicio/cancelaciónenmedio de plan, sinfallbackduplicado.
+EvidenciaUI-UX-CONT-20261107/V2-V3.md. Matrizactualizada; nodeploy/envíos/llamadas.
+SigueV4–V6catálogo/revisiónydespuésV7. ObservaciónclienteNO_PROBADO.
+
 ## 07/11 · Reanudación expresa; V1–V3 fuente literal/citas reforzadas localmente
 
 Cuota5h98% alretomar, semanalnoimpide. Planvisualv2enoutboxesquema19 compatible

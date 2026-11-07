@@ -175,3 +175,29 @@ class SearchPresentationTest(IsolatedAsyncioTestCase):
             )
         )
         self.assertEqual(partial.result.code, "selection_quote_unavailable")
+
+    async def test_detail_retains_complete_title_author_without_refetch_or_backend(self):
+
+        title = "Título completo *literal* " * 20
+        author = "Autor largo " * 30
+
+        async def search(query, source, directory):
+            return (DownloadOption(test_downloads.W3, title, 85, author),)
+
+        self.backend.search = search
+        first = self.receive("/dl buscar mp4 muestra")
+        await self.app.jobs.run_pending()
+        self.app.deliver(first.id, CollectingTransport())
+        self.app.downloads = None
+        detail = self.receive("/dl detalle 1")
+        self.assertEqual(detail.result.code, "download_detail")
+        self.assertIn(title, detail.result.text)
+        self.assertIn(author, detail.result.text)
+        self.assertEqual(detail.result.data["choice"]["url"], test_downloads.W3)
+        self.assertEqual(self.backend.downloads, [])
+        self.assertIn(
+            "/dl elegir " + self.result(first.id).data["view_id"] + " 1", detail.result.text
+        )
+        self.sequence += 1
+        incoming = self.adapter.incoming(str(self.sequence), "bob", "private", "/dl detalle 1")
+        self.assertEqual(self.app.receive(incoming).result.code, "download_view_unavailable")

@@ -169,3 +169,76 @@ class TableEvolutionTest(IsolatedAsyncioTestCase):
             ),
             0,
         )
+
+
+class TableRecoveryTest(TestCase):
+    setUp = test_core.CoreTest.setUp
+    incoming = test_core.CoreTest.incoming
+    receive = test_core.CoreTest.receive
+    rows = test_core.CoreTest.rows
+    enqueue = TableStoreTest.enqueue
+
+    # Compartir solo fixture/helper, no repetir la suite de la clase base.
+    def test_restart_sending_table_becomes_uncertain_and_retains_frozen_plan(self):
+        self.app.store.native_tables_enabled = True
+        receipt = self.enqueue()
+        before = self.rows(
+            "SELECT position,payload,rich_payload_json,content_sha256 FROM outbox WHERE receipt_id=? ORDER BY position",
+            (receipt.id,),
+        )
+        intro, rev = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.app.store.finish_part(intro, rev, self.settings, "accepted", "intro", None, self.now)
+        table, _ = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.assertEqual(table.kind, "table")
+        restarted = Store(self.settings.database)
+        self.assertEqual(restarted.recover_deliveries(self.settings, self.now), 1)
+        self.assertIsNone(restarted.claim_part(receipt.id, self.settings, self.now))
+        self.assertEqual(
+            self.rows(
+                "SELECT position,payload,rich_payload_json,content_sha256 FROM outbox WHERE receipt_id=? ORDER BY position",
+                (receipt.id,),
+            ),
+            before,
+        )
+
+    def test_cancel_inflight_preserves_prior_ack_warns_and_suppresses_footer(self):
+        self.app.store.native_tables_enabled = True
+        receipt = self.enqueue()
+        with self.app.store.transaction() as db:
+            db.execute(
+                "INSERT INTO interactions(id,receipt_id,instance,account,actor,chat,is_group,epoch,kind,command_json,path_json,state,expires_ms) VALUES(?,?,?,?,?,?,?,?,?,'{}','[]','pending_delivery',?)",
+                (
+                    "synthetic-view",
+                    receipt.id,
+                    self.settings.instance,
+                    self.settings.account,
+                    "alice",
+                    "private-alice",
+                    0,
+                    1,
+                    "download",
+                    self.now + 900000,
+                ),
+            )
+        intro, rev = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.app.store.finish_part(intro, rev, self.settings, "accepted", "intro", None, self.now)
+        table, rev = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        cancelled = self.receive("/cancelar " + receipt.id)
+        self.assertIn("ya aceptó 1 partes", cancelled.result.text)
+        self.assertIn("No pude confirmar", cancelled.result.text)
+        self.app.store.finish_part(
+            table, rev, self.settings, "accepted", "late-table", None, self.now
+        )
+        self.assertIsNone(self.app.store.claim_part(receipt.id, self.settings, self.now))
+        self.assertEqual(
+            self.rows(
+                "SELECT state FROM outbox WHERE receipt_id=? ORDER BY position", (receipt.id,)
+            ),
+            [{"state": "accepted"}, {"state": "uncertain"}, {"state": "cancelled"}],
+        )
+        self.assertEqual(
+            self.rows("SELECT state FROM interactions WHERE receipt_id=?", (receipt.id,))[0][
+                "state"
+            ],
+            "cancelled",
+        )

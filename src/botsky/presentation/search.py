@@ -63,6 +63,10 @@ def video_document(choices, expires_ms, now, *, intro="Videos", short=True, view
             f"Lista disponible durante {minutes}:{remaining:02d}. Opciones 1–{len(choices)}.",
         )
     )
+    if any(
+        len(choice["title"]) > 180 or len(choice.get("author") or "") > 100 for choice in choices
+    ):
+        blocks.append(Block("next_action", "Título y autor completos: /dl detalle NUMERO"))
     command = "/dl elegir " + ("" if short else view_id + " ")
     blocks.append(Block("next_action", command + "NUMERO"))
     return Document(tuple(blocks))
@@ -87,7 +91,7 @@ def web_document(items, query):
         blocks.append(
             Block(
                 "literal",
-                f"{i}. {item.title}\n{item.snippet}\n{item.url}\nFuente: {urlsplit(item.url).hostname}",
+                f"{i}. {item.title}\nExtracto: {item.snippet}\n{item.url}\nFuente: {urlsplit(item.url).hostname}",
             )
         )
     blocks.append(

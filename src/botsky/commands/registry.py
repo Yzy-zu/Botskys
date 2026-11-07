@@ -313,6 +313,15 @@ def build_specs():
         block="R3",
     )
     add(
+        "dl detalle",
+        "download_media",
+        "inspect",
+        [identity("view_id", original="choice_view"), integer("choice", 1, 6, required=False)],
+        effect="read",
+        block="R3",
+        summary="Muestra título, autor, duración y enlace completos de una lista propia vigente.",
+    )
+    add(
         "dl anterior",
         "download_media",
         "previous",

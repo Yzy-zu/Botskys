@@ -1,0 +1,8 @@
+test_at_most_two_concurrent_thumbnails_and_partial_failure_keeps_order (test_thumbnail_boundaries.ThumbnailBoundariesTest.test_at_most_two_concurrent_thumbnails_and_partial_failure_keeps_order) ... ok
+test_cancel_waits_for_bounded_render_before_scratch_can_be_deleted (test_thumbnail_boundaries.ThumbnailBoundariesTest.test_cancel_waits_for_bounded_render_before_scratch_can_be_deleted) ... ok
+test_redirect_timeout_and_byte_limit_are_bounded_without_retry (test_thumbnail_boundaries.ThumbnailBoundariesTest.test_redirect_timeout_and_byte_limit_are_bounded_without_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.141s
+
+OK

@@ -214,7 +214,8 @@ class Router:
                     spec=spec,
                 )
         if (
-            spec.operation in ("download_media.choose", "manage_drive.choose")
+            spec.operation
+            in ("download_media.choose", "manage_drive.choose", "download_media.inspect")
             and "choice" not in values
         ):
             choice_field = next(f for f in spec.fields if f.name == "choice")

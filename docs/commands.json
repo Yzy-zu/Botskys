@@ -1134,7 +1134,62 @@
       "summary": "",
       "example": "/dl elegir ID_REAL 1",
       "block": "R3",
-      "usage": "/dl elegir [VIEW_ID] CHOICE",
+      "usage": "/dl elegir [REFERENCIA_LISTA] NUMERO",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "dl",
+        "detalle"
+      ],
+      "operation": "download_media.inspect",
+      "family": "download_media",
+      "original_action": "inspect",
+      "fields": [
+        {
+          "name": "view_id",
+          "kind": "id",
+          "required": true,
+          "default": null,
+          "choices": [],
+          "minimum": null,
+          "maximum": null,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice_view",
+          "example": "ID_REAL"
+        },
+        {
+          "name": "choice",
+          "kind": "int",
+          "required": false,
+          "default": null,
+          "choices": [],
+          "minimum": 1,
+          "maximum": 6,
+          "max_length": 8000,
+          "option": null,
+          "tail": false,
+          "repeated": false,
+          "min_items": 1,
+          "max_items": 10,
+          "original": "choice",
+          "example": "1"
+        }
+      ],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "Muestra título, autor, duración y enlace completos de una lista propia vigente.",
+      "example": "/dl detalle ID_REAL 1",
+      "block": "R3",
+      "usage": "/dl detalle [REFERENCIA_LISTA] NUMERO",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -5906,7 +5961,7 @@
       "summary": "",
       "example": "/drive elegir ID_REAL 1",
       "block": "R6",
-      "usage": "/drive elegir [VIEW_ID] CHOICE",
+      "usage": "/drive elegir [REFERENCIA_LISTA] NUMERO",
       "acceptance": "NOT_TESTED"
     },
     {

@@ -1,0 +1,7 @@
+Executing <Task pending name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() running at /home/petrov/botsky/tests/test_acceptance_local.py:100> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.409 seconds
+Executing <Task finished name='Task-2' coro=<LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally() done, defined at /home/petrov/botsky/tests/test_acceptance_local.py:87> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 5.556 seconds
+Executing <Task pending name='Task-9' coro=<LocalTransportAcceptanceTest.test_image_to_pdf_delivers_verified_bytes_into_the_local_receiver() running at /home/petrov/botsky/tests/test_acceptance_local.py:158> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.168 seconds
+----------------------------------------------------------------------
+Ran 5 tests in 6.790s
+
+OK

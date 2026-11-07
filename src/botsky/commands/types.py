@@ -158,8 +158,12 @@ class CommandSpec:
 
     @property
     def usage(self) -> str:
-        if self.operation in ("download_media.choose", "manage_drive.choose"):
-            return self.command + " [VIEW_ID] CHOICE"
+        if self.operation in (
+            "download_media.choose",
+            "manage_drive.choose",
+            "download_media.inspect",
+        ):
+            return self.command + " [REFERENCIA_LISTA] NUMERO"
         parts = [self.command]
         for field in self.fields:
             val = (
@@ -184,7 +188,11 @@ class CommandSpec:
     def sample(self) -> str:
         if self.example:
             return self.example
-        if self.operation in ("download_media.choose", "manage_drive.choose"):
+        if self.operation in (
+            "download_media.choose",
+            "manage_drive.choose",
+            "download_media.inspect",
+        ):
             return self.command + " ID_REAL 1"
         parts = [self.command]
         for field in self.fields:
