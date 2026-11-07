@@ -344,3 +344,14 @@ medición de latencia/usage/errores y evidencia. No modifica ni despliega produc
 no reabre campañas previas,no mensajes/llamadas ni cuentas/modelos alternativos.
 Parar ante cuota diaria del proveedor,sin reintentos/reanudación automática.
 Umbral5% de cinco horas Codex vigente.
+
+## 07/11 · Comparación nueva de modelos Cloudflare encargada
+
+El propietario encargó probar otros modelos gratuitos de Cloudflare y elegir
+según resultados. Se autoriza este experimento nuevo aislado: GLMcontrol,Gemma4,
+Llama4Scout,GPTOSS20B,Qwen3.8low,una cuenta ycatálogo actual completo. Supersede
+la fijación de modelo solo para estas inferencias de propuestas;producción sigue
+GLM sin cambios. Fixtures/oracles congelados,selección de finalistas previamente
+fijada,latencia/uso/errores medidos,sin herramientas ni envíos/llamadas. Sin activar
+planes/créditos ni modelos restringidos de pago;parar ante3036,sin reintentos o
+reanudación automática. No reabre A/Bcancelado. Cuota5h5% vigente.
