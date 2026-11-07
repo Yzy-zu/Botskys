@@ -1,7 +1,7 @@
 ruta,operacion,familia,fase,campos_actuales,permiso_interno_preservado,efecto,confirmacion,adjunto,presentador_propuesto,criterios,estado
-/ayuda [TOPIC],core.help,core,V1,topic [text],public,read,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,PENDIENTE_IMPLEMENTAR
-/estado ID,core.estado,core,V1,id [id],friend,read,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,PENDIENTE_IMPLEMENTAR
-/cancelar ID,core.cancelar,core,V1,id [id],friend,write,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,PENDIENTE_IMPLEMENTAR
+/ayuda [TOPIC],core.help,core,V1,topic [text],public,read,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,LOCAL_VERIFICADO; VISUAL_NO_PROBADO; V1_EN_CURSO
+/estado [ID],core.estado,core,V1,id [id opcional],friend,read,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,LOCAL_VERIFICADO; VISUAL_NO_PROBADO; V1_EN_CURSO
+/cancelar [ID],core.cancelar,core,V1,id [id opcional],friend,write,none,False,core,Exactitud; composición; ámbito; entrega; siguiente acción vigente,LOCAL_VERIFICADO; VISUAL_NO_PROBADO; V1_EN_CURSO
 /confirmar ID,core.confirmar,core,V1,id [id],friend,write,delivered_preview,False,core,Exactitud; composición; ámbito; entrega; consecuencias y confirmación,PENDIENTE_IMPLEMENTAR
 /bot estado,manage_conversation.status,manage_conversation,V5,,friend,read,none,False,manage_conversation,Exactitud; composición; ámbito; entrega; siguiente acción vigente,PENDIENTE_IMPLEMENTAR
 /bot modo apagado|discreto|activo,manage_conversation.mode,manage_conversation,V5,mode [enum],owner,write,none,False,manage_conversation,Exactitud; composición; ámbito; entrega; siguiente acción vigente,PENDIENTE_IMPLEMENTAR

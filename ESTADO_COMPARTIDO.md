@@ -1,5 +1,16 @@
 # Relevo Botsky
 
+## 07/11 · Modernización encargada V1–V7; primer corte V1 local
+
+Propietario autoriza implementación completa y despliegue reversible, sin llamadas
+ni envíos de prueba. Aclaró umbral5%solo ventana5h; semanal no detiene trabajo.
+V1base Block/Document, enqueue sin sufijo técnico, ayuda humana/categorías/llamadas,
+placeholders TEMA/FECHA/HORA y seguimiento sinID con detección de ambigüedad.
+30pruebas localesPASS; texto exacto/recuperación/scope conservados. Evidencia
+UI-UX-V1-20261107. Sin deploy aún; VISUAL_NO_PROBADO. V1EN_CURSO por alternativa
+archivo para tokens largos, revisión errores/citas/esperas; V2–V7pendientes.
+
+
 ## 07/11 · Plan global visual UI/UX creado; V0 documental cerrado
 
 Encargo: recuperar calidad visual de Zhana en toda la experiencia. Plan en

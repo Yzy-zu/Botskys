@@ -160,7 +160,7 @@ class CommandSpec:
     def usage(self) -> str:
         parts = [self.command]
         for field in self.fields:
-            val = "|".join(field.choices) if field.kind == "enum" else field.name.upper()
+            val = "|".join(field.choices) if field.kind == "enum" else {"live_request": "TEMA", "date": "FECHA", "time": "HORA"}.get(field.name, field.name.upper())
             if field.kind == "duration":
                 val = "DURACION_CON_UNIDAD"
             if field.kind == "flag":

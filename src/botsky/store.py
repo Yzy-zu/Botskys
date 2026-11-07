@@ -10,6 +10,7 @@ from pathlib import Path
 
 from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
+from .presentation import split_text
 
 APPLICATION_ID = 1112755033
 SCHEMA_VERSION = 18
@@ -251,12 +252,12 @@ class Store:
     def enqueue(db, context, result, now):
         if result.code == "job_queued":
             return
-        text = result.text + "\n/estado " + context.receipt_id if result.text else ""
+        text = result.text
         count = 0
-        for position, start in enumerate(range(0, len(text), PART_CHARS)):
+        for position, fragment in enumerate(split_text(text, PART_CHARS)):
             db.execute(
                 "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms) VALUES(?,?,?,'pending',?)",
-                (context.receipt_id, position, text[start : start + PART_CHARS], now),
+                (context.receipt_id, position, fragment, now),
             )
             count = position + 1
         for artifact_id in result.data.get("artifacts", ()):
@@ -325,6 +326,31 @@ class Store:
             (receipt_id, *context.scope_key),
         ).fetchone()
 
+    def follow(self, db, context, target, now, *, cancel=False):
+        if target:
+            return self.cancel(db, context, target) if cancel else self.state(db, context, target)
+        # Nunca elegir «el último»: solo un trabajo vivo en este ámbito, o una
+        # respuesta propia entregada en las últimas 24 h. Excluir controles.
+        rows = db.execute(
+            "SELECT i.id FROM inbox i LEFT JOIN jobs j ON j.id=i.id "
+            "WHERE i.instance=? AND i.account=? AND i.actor=? AND i.chat=? "
+            "AND i.is_group=? AND i.epoch=? AND i.id<>? "
+            "AND json_extract(i.command_json,'$.operation') NOT LIKE 'core.%' "
+            "AND (i.state='queued' OR j.state IN ('queued','running') "
+            "OR (i.received_ms>? AND EXISTS (SELECT 1 FROM outbox o "
+            "WHERE o.receipt_id=i.id AND o.state='accepted'))) ORDER BY i.received_ms DESC LIMIT 6",
+            (*context.scope_key, context.receipt_id, now - 86400000),
+        ).fetchall()
+        if not rows:
+            return Result('empty', 'no_current_request', 'No hay un encargo propio vigente en este chat.')
+        if len(rows) > 1:
+            command = '/cancelar' if cancel else '/estado'
+            return Result('needs_input', 'request_ambiguous',
+                          'Hay varios encargos. Elige uno con su referencia:\n' +
+                          '\n'.join(command + ' ' + row['id'] for row in rows),
+                          {'candidates': [row['id'] for row in rows]})
+        return self.cancel(db, context, rows[0]['id']) if cancel else self.state(db, context, rows[0]['id'])
+
     def state(self, db, context, target):
         row = self.own_receipt(db, target, context)
         if row is None:
@@ -354,7 +380,7 @@ class Store:
         return Result(
             "ok",
             "receipt_state",
-            "Encargo " + target + ": " + visible_state + ".",
+            self.state_text(visible_state, deliveries),
             {
                 "id": target,
                 "state": row["state"],
@@ -363,6 +389,26 @@ class Store:
                 "job": job_data,
             },
         )
+
+    @staticmethod
+    def state_text(state, deliveries):
+        labels = {
+            'queued': 'En cola.', 'running': 'Lo estoy preparando.',
+            'succeeded': 'Preparado.', 'completed': 'Terminado.',
+            'failed': 'No se pudo completar.', 'cancelled': 'Cancelado.',
+            'uncertain': 'No pude confirmar el resultado. Revisa antes de repetirlo.',
+        }
+        text = labels.get(state, 'Estado no disponible.')
+        states = {part['state'] for part in deliveries}
+        if states & {'uncertain', 'sending'}:
+            text += ' No pude confirmar si llegó todo. Revisa antes de reenviarlo.'
+        elif 'failed' in states:
+            text += ' Hay partes cuya entrega fue rechazada.'
+        elif states and states <= {'accepted'}:
+            text += ' El servicio aceptó la entrega; lectura no comprobada.'
+        elif 'pending' in states:
+            text += ' Entrega pendiente.'
+        return text
 
     def cancel(self, db, context, target):
         if target == context.receipt_id:
@@ -397,7 +443,7 @@ class Store:
             (target,),
         )
         return Result(
-            "cancelled", "request_cancelled", "Encargo " + target + " cancelado.", {"id": target}
+            "cancelled", "request_cancelled", "Cancelado.", {"id": target}
         )
 
     def claim_part(self, receipt_id, settings, now, retry_failed=False):

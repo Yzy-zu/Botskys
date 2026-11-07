@@ -54,7 +54,7 @@
         {
           "name": "id",
           "kind": "id",
-          "required": true,
+          "required": false,
           "default": null,
           "choices": [],
           "minimum": null,
@@ -75,9 +75,9 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/estado ID_REAL",
+      "example": "/estado",
       "block": "R2",
-      "usage": "/estado ID",
+      "usage": "/estado [ID]",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -91,7 +91,7 @@
         {
           "name": "id",
           "kind": "id",
-          "required": true,
+          "required": false,
           "default": null,
           "choices": [],
           "minimum": null,
@@ -112,9 +112,9 @@
       "confirmation": "none",
       "attachment": false,
       "summary": "",
-      "example": "/cancelar ID_REAL",
+      "example": "/cancelar",
       "block": "R2",
-      "usage": "/cancelar ID",
+      "usage": "/cancelar [ID]",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -5609,7 +5609,7 @@
       "summary": "",
       "example": "/recordar el 2026-12-01 12:00 ejemplo",
       "block": "R5",
-      "usage": "/recordar el DATE TIME TEXT",
+      "usage": "/recordar el FECHA HORA TEXT",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -6561,7 +6561,7 @@
       "summary": "",
       "example": "/llamada programar 2026-12-01 12:00",
       "block": "R9",
-      "usage": "/llamada programar DATE TIME [--duracion DURACION_CON_UNIDAD] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]",
+      "usage": "/llamada programar FECHA HORA [--duracion DURACION_CON_UNIDAD] [--tema TEMA] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -6653,7 +6653,7 @@
       "summary": "",
       "example": "/llamada reprogramar ID_REAL 2026-12-01 12:00",
       "block": "R9",
-      "usage": "/llamada reprogramar ID DATE TIME",
+      "usage": "/llamada reprogramar ID FECHA HORA",
       "acceptance": "NOT_TESTED"
     },
     {

@@ -184,7 +184,7 @@ def build_specs():
             command,
             "core",
             command,
-            [identity("id")],
+            [identity("id", required=command == "confirmar")],
             effect="write" if command != "estado" else "read",
             confirmation="delivered_preview" if command == "confirmar" else "none",
         )
@@ -1087,42 +1087,6 @@ class Registry:
             raise ValueError("alias colisiona, forma cadena o apunta a comando inexistente")
 
     def help(self, topic=""):
-        topic = topic.strip().lower().removeprefix("/")
-        parts = topic.split()
-        if parts:
-            parts[0] = self.aliases.get(parts[0], parts[0])
-        selected = [s for s in self.specs if not parts or s.path[: len(parts)] == tuple(parts)]
-        if not selected:
-            return "Comando desconocido. Usa /ayuda."
-        if not parts:
-            return (
-                "Comandos: "
-                + ", ".join("/" + root for root in sorted({s.path[0] for s in selected}))
-                + "\nUsa /ayuda COMANDO para ver campos, ejemplos y límites."
-            )
-        lines = []
-        for spec in selected:
-            lines.extend(
-                [
-                    spec.usage,
-                    "Ejemplo: " + spec.sample,
-                    "Permiso: " + spec.permission + "; implementación: " + spec.block + ".",
-                ]
-            )
-            if spec.attachment:
-                lines.append(
-                    "Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso."
-                )
-            for field in spec.fields:
-                if field.kind == "duration":
-                    label = field.option or field.name
-                    detail = (
-                        f"{label}: entero con unidad s, m, h o d; ejemplo {field.example}. "
-                        f"Rango: {field.minimum:g}–{field.maximum:g} segundos."
-                    )
-                    if field.default is not None:
-                        detail += f" Por defecto: {field.default:g} segundos."
-                    lines.append(detail)
-            if spec.summary:
-                lines.append(spec.summary)
-        return "\n".join(lines)
+        from ..presentation.help import render_help
+
+        return render_help(self, topic)

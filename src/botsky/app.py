@@ -252,9 +252,9 @@ class Application:
         if operation == "core.help":
             return Result("ok", "help", self.router.registry.help(args.get("topic", "")))
         if operation == "core.estado":
-            return self.store.state(db, context, args["id"])
+            return self.store.follow(db, context, args.get("id"), now, cancel=False)
         if operation == "core.cancelar":
-            return self.store.cancel(db, context, args["id"])
+            return self.store.follow(db, context, args.get("id"), now, cancel=True)
         if operation == "core.confirmar":
             return interactions.confirm(db, context, args["id"], now)
         if operation == "save_note.run":
