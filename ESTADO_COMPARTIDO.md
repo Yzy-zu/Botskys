@@ -1,5 +1,16 @@
 # Relevo Botsky
 
+## 07/11 · Revisión de logs del uso real
+
+Sololectura encargada.5entradasnaturalesrecientes,mediana frontend7,611s(incluye
+cola/poll). Búsqueda exitosa2,821s;seleccióncorrecta pero descargafallida source_failed
+44,127sbackend y60,885shastaACKfinal. Causadetallada no conservada;no afirmar
+bloqueo/formato sin evidencia. Salidasacceptednoacreditanéxitodescarga ni lectura.
+Fricción:aclaración de fuente pese a petición explícita;formato requerido aclarado
+es contratoactual,no bugconfirmado. Falta progreso ytelemetría por turno/alias/coste.
+Informe docs/REVISION_LOGS_20261107.md,evidencia saneada sincontenidopersonal.
+Sin inferencias,envíos,repetición de descarga,correcciones ni cambiosproductivos.
+
 ## 07/11 · Séptima cuenta Cloudflare registrada
 
 cf06 ycf07 verificadas:tokens activos yacceso AI por cuenta HTTP200. Altas en

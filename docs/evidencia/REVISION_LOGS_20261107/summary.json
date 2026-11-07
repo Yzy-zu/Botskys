@@ -1,0 +1,96 @@
+{
+  "checked_utc": "2026-11-07T20:24:28.188971+00:00",
+  "scope": "natural requests since last deployment 20:18:13 UTC",
+  "production_changes": 0,
+  "network_requests": 0,
+  "interactions": [
+    {
+      "ordinal": 1,
+      "received_utc": "2026-11-07T20:20:49.536000+00:00",
+      "frontend_elapsed_seconds": 5.543,
+      "frontend_state": "completed",
+      "frontend_error": null,
+      "decision_kind": "reply",
+      "action_key": null,
+      "result_code": "frontend_reply",
+      "outbox_states": [
+        "accepted"
+      ],
+      "seconds_to_last_provider_ack": 6.692
+    },
+    {
+      "ordinal": 2,
+      "received_utc": "2026-11-07T20:21:08.634000+00:00",
+      "frontend_elapsed_seconds": 6.892,
+      "frontend_state": "completed",
+      "frontend_error": null,
+      "decision_kind": "clarify",
+      "action_key": null,
+      "result_code": "frontend_reply",
+      "outbox_states": [
+        "accepted"
+      ],
+      "seconds_to_last_provider_ack": 8.322
+    },
+    {
+      "ordinal": 3,
+      "received_utc": "2026-11-07T20:21:24.251000+00:00",
+      "frontend_elapsed_seconds": 14.887,
+      "frontend_state": "completed",
+      "frontend_error": null,
+      "decision_kind": "clarify",
+      "action_key": "dl.buscar",
+      "result_code": "frontend_reply",
+      "outbox_states": [
+        "accepted"
+      ],
+      "seconds_to_last_provider_ack": 16.501
+    },
+    {
+      "ordinal": 4,
+      "received_utc": "2026-11-07T20:21:45.036000+00:00",
+      "frontend_elapsed_seconds": 7.611,
+      "frontend_state": "adopted",
+      "frontend_error": null,
+      "decision_kind": "action",
+      "action_key": "dl.buscar",
+      "result_code": "download_choices",
+      "outbox_states": [
+        "accepted",
+        "accepted"
+      ],
+      "seconds_to_last_provider_ack": 12.731
+    },
+    {
+      "ordinal": 5,
+      "received_utc": "2026-11-07T20:22:13.800000+00:00",
+      "frontend_elapsed_seconds": 16.065,
+      "frontend_state": "adopted",
+      "frontend_error": null,
+      "decision_kind": "action",
+      "action_key": "dl.elegir",
+      "result_code": "source_failed",
+      "outbox_states": [
+        "accepted"
+      ],
+      "seconds_to_last_provider_ack": 60.885
+    }
+  ],
+  "jobs": [
+    {
+      "operation": "download_media.search",
+      "state": "succeeded",
+      "seconds": 2.821,
+      "code": "download_choices"
+    },
+    {
+      "operation": "download_media.url",
+      "state": "failed",
+      "seconds": 44.127,
+      "code": "source_failed"
+    }
+  ],
+  "frontend_median_seconds": 7.611,
+  "frontend_elapsed_is_not_pure_provider_time": true,
+  "provider_ack_is_not_human_receipt": true
+}
