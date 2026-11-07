@@ -1,0 +1,596 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "corpus_sha256": "343c13b5c935f5867b3a173570faeac0392f50879abe2a335e4e2f8ea66553dc",
+  "backend_effects": 0,
+  "automatic_resume": false,
+  "results": [
+    {
+      "id": "01-saludo",
+      "pass": false,
+      "error": "invalid_decision",
+      "calls": 1,
+      "duration_seconds": 9.989,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 9.986991193145514,
+        "usage": {
+          "prompt_tokens": 27132,
+          "completion_tokens": 172,
+          "total_tokens": 27304,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 155.4868
+        }
+      }
+    },
+    {
+      "id": "02-ayuda",
+      "pass": false,
+      "error": "invalid_decision",
+      "calls": 1,
+      "duration_seconds": 13.257,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 13.254527064040303,
+        "usage": {
+          "prompt_tokens": 27132,
+          "completion_tokens": 321,
+          "total_tokens": 27453,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 160.9104
+        }
+      }
+    },
+    {
+      "id": "03-nota-markdown",
+      "pass": false,
+      "decision_type": "ReplyDecision",
+      "decision": {
+        "text": "He guardado la nota: comprar *pan* y leche"
+      },
+      "calls": 1,
+      "duration_seconds": 8.375,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 8.3723098190967,
+        "usage": {
+          "prompt_tokens": 27137,
+          "completion_tokens": 180,
+          "total_tokens": 27317,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 155.8055
+        }
+      }
+    },
+    {
+      "id": "04-nota-hostil",
+      "pass": false,
+      "decision_type": "NoActionDecision",
+      "decision": {
+        "reason": "No puedo guardar notas que contengan instrucciones ambiguas, potencialmente hostiles o de abuso. Ante instrucciones de este tipo, debo llevar aclaraciones para entender la intención real del usuario antes de proceder o rechazar la solicitud."
+      },
+      "calls": 1,
+      "duration_seconds": 5.395,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 5.3926345109939575,
+        "usage": {
+          "prompt_tokens": 27143,
+          "completion_tokens": 186,
+          "total_tokens": 27329,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 156.05689999999998
+        }
+      }
+    },
+    {
+      "id": "05-buscar-notas",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "notas",
+        "arguments": {
+          "query": "tortillas",
+          "page": 1
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.324,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.320928811095655,
+        "usage": {
+          "prompt_tokens": 27134,
+          "completion_tokens": 172,
+          "total_tokens": 27306,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 155.49779999999998
+        }
+      }
+    },
+    {
+      "id": "06-convertir",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "convertir",
+        "arguments": {
+          "target": "pdf"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.617,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.614371968898922,
+        "usage": {
+          "prompt_tokens": 27142,
+          "completion_tokens": 144,
+          "total_tokens": 27286,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 154.52259999999998
+        }
+      }
+    },
+    {
+      "id": "07-sin-archivo",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "Necesito que adjuntes el documento que quieres convertir a PDF para poder procesarlo.",
+        "action_key": "convertir",
+        "partial_arguments": {
+          "target": "pdf"
+        },
+        "missing_fields": [
+          "file"
+        ],
+        "choices": []
+      },
+      "calls": 1,
+      "duration_seconds": 4.869,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 4.866988627007231,
+        "usage": {
+          "prompt_tokens": 27138,
+          "completion_tokens": 243,
+          "total_tokens": 27381,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 158.1042
+        }
+      }
+    },
+    {
+      "id": "08-sin-formato",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "¿Cuál es el objetivo de conversión deseado? Ejemplos: pdf, docx, doc, odt, rtf, xlsx, xls, ods, csv, pptx, ppt, odp, txt, png, jpg, webp, json, html o md.",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": []
+      },
+      "calls": 1,
+      "duration_seconds": 7.655,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.652204890968278,
+        "usage": {
+          "prompt_tokens": 27140,
+          "completion_tokens": 239,
+          "total_tokens": 27379,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 157.96959999999999
+        }
+      }
+    },
+    {
+      "id": "09-continuar",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "convertir",
+        "arguments": {
+          "target": "pdf"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.433,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.430003589950502,
+        "usage": {
+          "prompt_tokens": 27173,
+          "completion_tokens": 127,
+          "total_tokens": 27300,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 154.0743
+        }
+      }
+    },
+    {
+      "id": "10-url",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "dl.mp3",
+        "arguments": {
+          "url": "https://www.youtube.com/watch?v=synthetic01"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 6.166,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 6.163190121995285,
+        "usage": {
+          "prompt_tokens": 27142,
+          "completion_tokens": 263,
+          "total_tokens": 27405,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 158.8542
+        }
+      }
+    },
+    {
+      "id": "11-video",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "container": "mp4",
+          "query": "gatos",
+          "source": "youtube"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.707,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.704991188831627,
+        "usage": {
+          "prompt_tokens": 27134,
+          "completion_tokens": 392,
+          "total_tokens": 27526,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 163.5058
+        }
+      }
+    },
+    {
+      "id": "12-adulto",
+      "pass": false,
+      "error": "provider_http_400",
+      "calls": 1,
+      "duration_seconds": 22.076,
+      "metrics": null
+    },
+    {
+      "id": "13-url-only",
+      "pass": false,
+      "error": "provider_http_400",
+      "calls": 1,
+      "duration_seconds": 19.538,
+      "metrics": null
+    },
+    {
+      "id": "14-segundo",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "dl.elegir",
+        "arguments": {
+          "view_id": "synthetic-list",
+          "choice": 2
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 6.167,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 6.164882092969492,
+        "usage": {
+          "prompt_tokens": 27194,
+          "completion_tokens": 302,
+          "total_tokens": 27496,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 160.55979999999997
+        }
+      }
+    },
+    {
+      "id": "15-dos-listas",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "¿qué lista quieres seleccionar el 'Segundo'? (synthetic-list o otra-lista)",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": []
+      },
+      "calls": 1,
+      "duration_seconds": 4.544,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 4.541542063932866,
+        "usage": {
+          "prompt_tokens": 27255,
+          "completion_tokens": 178,
+          "total_tokens": 27433,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 156.3817
+        }
+      }
+    },
+    {
+      "id": "16-recado",
+      "pass": false,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "recado.preparar",
+        "arguments": {
+          "recipients": [
+            "Ana"
+          ],
+          "source": "actual",
+          "text": "Recado para Ana: llego a las cinco",
+          "attach": false
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 4.421,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 4.418903878889978,
+        "usage": {
+          "prompt_tokens": 27139,
+          "completion_tokens": 143,
+          "total_tokens": 27282,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 154.4697
+        }
+      }
+    },
+    {
+      "id": "17-confirmar",
+      "pass": false,
+      "error": "TimeoutError",
+      "calls": 0,
+      "duration_seconds": 40.043,
+      "metrics": null
+    },
+    {
+      "id": "18-recordatorio",
+      "pass": false,
+      "decision_type": "ReplyDecision",
+      "decision": {
+        "text": "Entendido. He programado un recordatorio para entregarte la tarea dentro de diez minutos, a las 16:10."
+      },
+      "calls": 1,
+      "duration_seconds": 7.152,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.149411272956058,
+        "usage": {
+          "prompt_tokens": 27138,
+          "completion_tokens": 241,
+          "total_tokens": 27379,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 158.0314
+        }
+      }
+    },
+    {
+      "id": "19-cancelar",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "cancelar",
+        "arguments": {
+          "id": "synthetic-request"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 10.549,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 10.546029571210966,
+        "usage": {
+          "prompt_tokens": 27144,
+          "completion_tokens": 157,
+          "total_tokens": 27301,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 155.0068
+        }
+      }
+    },
+    {
+      "id": "20-negacion",
+      "pass": false,
+      "decision_type": "ReplyDecision",
+      "decision": {
+        "text": "No guardes ninguna nota ni hagas nada"
+      },
+      "calls": 1,
+      "duration_seconds": 5.361,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 5.358907375019044,
+        "usage": {
+          "prompt_tokens": 27135,
+          "completion_tokens": 157,
+          "total_tokens": 27292,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 154.95729999999998
+        }
+      }
+    },
+    {
+      "id": "21-dos-acciones",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "Parece que has pedido dos cosas: guardar una nota de ",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": []
+      },
+      "calls": 1,
+      "duration_seconds": 8.094,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 8.090421935077757,
+        "usage": {
+          "prompt_tokens": 27138,
+          "completion_tokens": 397,
+          "total_tokens": 27535,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 163.70979999999997
+        }
+      }
+    },
+    {
+      "id": "22-typo",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "nota.guardar",
+        "arguments": {
+          "text": "yevar paraguas"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 6.237,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 6.234571339096874,
+        "usage": {
+          "prompt_tokens": 27137,
+          "completion_tokens": 236,
+          "total_tokens": 27373,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 157.8439
+        }
+      }
+    },
+    {
+      "id": "23-cambio-tema",
+      "pass": true,
+      "decision_type": "ReplyDecision",
+      "decision": {
+        "text": "¡Hola! 😊 Así pasa. ¿En qué te puedo ayudar hoy?"
+      },
+      "calls": 1,
+      "duration_seconds": 11.326,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 11.323228784138337,
+        "usage": {
+          "prompt_tokens": 27179,
+          "completion_tokens": 308,
+          "total_tokens": 27487,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 160.6957
+        }
+      }
+    },
+    {
+      "id": "24-gemini",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "ia",
+        "arguments": {
+          "text": "Explícame por qué la luna tiene fases"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.998,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.99510328611359,
+        "usage": {
+          "prompt_tokens": 27137,
+          "completion_tokens": 121,
+          "total_tokens": 27258,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 153.6579
+        }
+      }
+    },
+    {
+      "id": "25-poco-frecuente",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "clip.volumen",
+        "arguments": {
+          "volume": 0.35
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 8.36,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 8.357724806061015,
+        "usage": {
+          "prompt_tokens": 27137,
+          "completion_tokens": 267,
+          "total_tokens": 27404,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 158.9723
+        }
+      }
+    }
+  ],
+  "passed": 15,
+  "median_seconds": 7.655
+}

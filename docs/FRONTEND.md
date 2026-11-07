@@ -34,3 +34,11 @@ rutas del modelo. Contexto por actor/chat/cuenta/época; no compartir borradores
 entre participantes. Cita propia restringe listas; varias listas sin cita exigen
 aclaración. Confirmaciones mantienen la acción específica y sus guardias originales.
 Comprensión y calidad de GLM con este contexto quedan pendientes de F7.
+
+F7: el transporte final solicita json_object y decodifica un sobre plano cerrado.
+name=select_action usa action_key y arguments; reply/clarify/no_action usan sus
+campos declarados. También se admite name igual a una clave exacta del catálogo
+con arguments; jamás nombres de handlers. El servicio conserva ActionRequest y
+la validación F1. Sin tools en el POST, fallback ni segunda consulta. Límite2048
+tokens y deadline40s por defecto. Contexto host separado del mensaje actual.
+Evidencia y límites: docs/REMODELACION_F7.md. Producción permanece sin activar.

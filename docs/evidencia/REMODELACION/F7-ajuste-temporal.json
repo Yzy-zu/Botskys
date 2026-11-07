@@ -1,0 +1,175 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "corpus_sha256": "a025b612fae215ef6a463b5ab7454b105c819e51470f06ec94541019a09d9492",
+  "backend_effects": 0,
+  "automatic_resume": false,
+  "results": [
+    {
+      "id": "02-ayuda",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "ayuda",
+        "arguments": {
+          "topic": "¿Qué puedes hacer por mí?"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 6.956,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 6.953915274003521,
+        "usage": {
+          "prompt_tokens": 22633,
+          "completion_tokens": 264,
+          "total_tokens": 22897,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 134.09109999999998
+        }
+      }
+    },
+    {
+      "id": "03-nota-markdown",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "nota.guardar",
+        "arguments": {
+          "text": "comprar *pan* y leche"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 4.644,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 4.641418884973973,
+        "usage": {
+          "prompt_tokens": 22638,
+          "completion_tokens": 139,
+          "total_tokens": 22777,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 129.56859999999998
+        }
+      }
+    },
+    {
+      "id": "09-continuar",
+      "pass": false,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "¿A qué formato específico quieres convertir el PDF? (docx, doc, txt, html, md, etc.)",
+        "action_key": "convertir",
+        "partial_arguments": {},
+        "missing_fields": [
+          "target"
+        ],
+        "choices": []
+      },
+      "calls": 1,
+      "duration_seconds": 11.04,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 11.037148350151256,
+        "usage": {
+          "prompt_tokens": 22674,
+          "completion_tokens": 371,
+          "total_tokens": 23045,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 138.2114
+        }
+      }
+    },
+    {
+      "id": "17-confirmar",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "recado.enviar",
+        "arguments": {
+          "draft_id": "synthetic-draft"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.234,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.231124247889966,
+        "usage": {
+          "prompt_tokens": 22667,
+          "completion_tokens": 284,
+          "total_tokens": 22951,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 135.0061
+        }
+      }
+    },
+    {
+      "id": "18-recordatorio",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "recordar.en",
+        "arguments": {
+          "duration_seconds": 600,
+          "text": "entregar la tarea"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 14.421,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 14.4180618529208,
+        "usage": {
+          "prompt_tokens": 22639,
+          "completion_tokens": 229,
+          "total_tokens": 22868,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 132.8501
+        }
+      }
+    },
+    {
+      "id": "21-dos-acciones",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "Quieres hacer dos cosas: guardar una nota de 'pan' y buscar videos de gatos. ¿Cuál quieres hacer primero o prefieres hacer ambas?",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": [
+          "Primero guardar la nota de pan",
+          "Primero buscar videos de gatos",
+          "Hacer ambas cosas"
+        ]
+      },
+      "calls": 1,
+      "duration_seconds": 9.86,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 9.857687606010586,
+        "usage": {
+          "prompt_tokens": 22639,
+          "completion_tokens": 346,
+          "total_tokens": 22985,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 137.1089
+        }
+      }
+    }
+  ],
+  "passed": 5,
+  "median_seconds": 8.547
+}

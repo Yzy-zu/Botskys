@@ -1,0 +1,6 @@
+.......Executing <Task pending name='Task-17' coro=<ContextTests.test_clarification_pdf_after_restart() running at /home/petrov/botsky/tests/test_frontend_context.py:37> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.100 seconds
+.......................
+----------------------------------------------------------------------
+Ran 30 tests in 2.121s
+
+OK

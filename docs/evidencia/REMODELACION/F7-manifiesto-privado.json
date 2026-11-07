@@ -1,0 +1,317 @@
+{
+  "scope": "HASHES_SINTETICOS_PRIVADOS",
+  "files": [
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/01-saludo.json",
+      "sha256": "48f53ca2093cdac685f634399bf81128a0ca2f3d8dac78dd8021e64ab5d891d6"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/02-ayuda.json",
+      "sha256": "f707d991bd4b70ad04d1757c9d278661718d25336f22780e9ab9b418e7c883f7"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/03-nota-markdown.json",
+      "sha256": "893af430142a8eaa024e81144ad8933083e145489aab81421191c6f659a235c4"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/04-nota-hostil.json",
+      "sha256": "b0c506edf76cfa71283caa8e72f5d54d4272152cb509e3e9d6f1731075e806a9"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/05-buscar-notas.json",
+      "sha256": "7d4fc6b7decfbbcb3dac9eba2b54e455e7196a368cbbeba87036c210d9e36c7e"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/06-convertir.json",
+      "sha256": "0e0c85ac3c495cb759e78c60401444c33611aca71a68cd2fd3e451e0d2d132ea"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/07-sin-archivo.json",
+      "sha256": "de7ec65db3ca9f1a806da8b0ee38dc9bd1737834ff502d5a770ea9205597984d"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/08-sin-formato.json",
+      "sha256": "7459a9461903718a1b0e96ad1449ee1ea0c78ad4a0195aec792e2f356931fe05"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/09-continuar.json",
+      "sha256": "23fe19b082b9807a9536da6577f6d422e0b6dd60889019ee07a0ef6e7536743a"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/10-url.json",
+      "sha256": "4884916683ac274128db4021b6473809e32c3e23d81ab2a16a3fdbe9dde0977c"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/11-video.json",
+      "sha256": "bb45a412608d0492cd1bb33a0cdf8ee0075d27db7e91fa2611d2d73202859e66"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/12-adulto.json",
+      "sha256": "917f7a643be6d21c5ecffdd008271a64ae562db9b9b4b8026d0f686bda5190d1"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/13-url-only.json",
+      "sha256": "e0a8a9948a9d60c99a53ac5615418781884da0d22a68cd2de271fbe6a3fe6ffd"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/14-segundo.json",
+      "sha256": "a0e07c0c3b204b1652207318ad29b608b01b4da7a26d9acef792c6210d80ea0f"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/15-dos-listas.json",
+      "sha256": "bb9824a92b0cd5b766c30131c3880a07fd96075a7a6549eda45d6b26e6bd21c0"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/16-recado.json",
+      "sha256": "409e53758f70e715ae499504a0c978bf2eff9ffb19610f64f229dffb8ec1000a"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/17-confirmar.json",
+      "sha256": "ef2625dee9eaa77aaa2880d89f8f0eef00a8887a34771c34e29de961fc40f85e"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/18-recordatorio.json",
+      "sha256": "1e326911f12f4ae3d9f152c3f8f1cc8f1079f25c720529c6f128dca770215056"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/19-cancelar.json",
+      "sha256": "2b4e5775373b0fb0cf1a6317ca91caa7a00696ba35b3baf83baecadb47770269"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/20-negacion.json",
+      "sha256": "bafabec070e32c5de22aa24860f7098c737953a72ab1830b18aadae6e19bef0b"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/21-dos-acciones.json",
+      "sha256": "3e0458e426f45c4993103369d4f6d18cecc0cc920dfdacf71d4152bf6d571234"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/22-typo.json",
+      "sha256": "ff5825d37e683ef81dbc24896e46eed0d0546d4607884c424ad21c4f8ad82b7e"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/23-cambio-tema.json",
+      "sha256": "a836464d8d2c8c0e6b85df87917899c166c14d9bc3b4a348fc4aba322e9d8a25"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/24-gemini.json",
+      "sha256": "126c99cdf41162cff7697eb963afbe6f68a55ceacc04634f99a851164a70e82a"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/25-poco-frecuente.json",
+      "sha256": "785c93d611421d338de5ce7e4f2ce9706bb2caf989c9631038b846f8b10fda7f"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163253834444Z/summary.json",
+      "sha256": "7ae9c3c4a1f8789e87094327036d5f78a82984a86bc1bbf497684ecc05b2b60f"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/01-saludo.json",
+      "sha256": "1ff82465ff915ccb3bed519d800670c9931331bbe3cc33f999f8ee5455a0b491"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/02-ayuda.json",
+      "sha256": "fa6370b5d1461cdde4f6ecbc65caec183f2d47ca8a60eb14733a13bd477bea9a"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/03-nota-markdown.json",
+      "sha256": "b9d1330bb5ab954cec2ea5eca42b080704aeda52b14c40a47069edba791ef90c"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/04-nota-hostil.json",
+      "sha256": "f7952ae96c1ed89c409dc9e41aeca47fa010276c1c08902a24a79c4595b18b30"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/05-buscar-notas.json",
+      "sha256": "2c1bb144b9dd20b003c7a72d91ce09a837ad150c8ca605053867de111a7bf801"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/06-convertir.json",
+      "sha256": "ad53a1da33d0451bf3ecfa20d51b8c24497b5430e07da03abd2cdb92ace19775"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/07-sin-archivo.json",
+      "sha256": "d0a981a1412c3800fb447259cb56f7038733d8222725bf5e3d8c96d52316aabc"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/08-sin-formato.json",
+      "sha256": "1dd6f76501e70b30fc36f5e3386d250894c39be4fda9b95baa48fb2a08998eca"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/09-continuar.json",
+      "sha256": "58bca00ecb58f3802776e9d0d93b87766770dbef869e5ae70dbc2b9e74b89a9a"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/11-video.json",
+      "sha256": "a5ebcfcf01e298b5de575e501236b38c6473ae8872ea9a1ee8dcd524329d8fdc"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/12-adulto.json",
+      "sha256": "d7e34e52e76502258740535b3838990cc25930ce3eb749a7f5723759289b4ab3"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/13-url-only.json",
+      "sha256": "8240af47adefc65a843fcc71b3249aedca60f6b61d267f7fa8d428186d9ca94b"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/15-dos-listas.json",
+      "sha256": "77c465747c46624f30486124c350cc94251de0ad0dcefe6c71d8bdf44ef0837c"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/16-recado.json",
+      "sha256": "ad1bc14645e84a7780a12349dfafdc4bf93a7e01c0e5c486c6cab9015c4f1ab7"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/17-confirmar.json",
+      "sha256": "ea36d0da56d33af9461a6fab1d391f53c310b9b15bfe5213304e4272c71da159"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/18-recordatorio.json",
+      "sha256": "f51d2d70b65d18145a983b35e207d0e20fd42e1330d8059f3ceae8c37e55d24b"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/20-negacion.json",
+      "sha256": "5101b234b321f77bff5170b87ae1874244eaba5c518b5aee57118e3e79113f89"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/24-gemini.json",
+      "sha256": "bcb082ed6cc6f09938196cf32125c00d48eeed88732b80e36df59e1abc6b4e59"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/25-poco-frecuente.json",
+      "sha256": "fcb8ca2211d778713b6a5fe6089bf786711c9e83023cff888694a848ee73c065"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/26-grupo.json",
+      "sha256": "39a7c914f57f07c346118d1ee4763f02b59bb17031608ae3c17cab8f75ebf0fa"
+    },
+    {
+      "path": "private/frontend-f7-20261107T163712226166Z/summary.json",
+      "sha256": "0c9995885b99bf0028a570a712cde8b659771f2cd50a26710329e2e9b09d4d9b"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/02-ayuda.json",
+      "sha256": "0e2aa22658d73ad1e6789c1b547c3dadc10c391624ee7dd2f096decbf174ceb6"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/03-nota-markdown.json",
+      "sha256": "26a1ecaefdd108b6a57d35cb6cb188197b67a10710827d5938cbde3bd5d74638"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/09-continuar.json",
+      "sha256": "6661a3eda939ebc040ec6b038479078cec6db823314373babf2cf201a615c46c"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/17-confirmar.json",
+      "sha256": "e5d576c1af51dbaa00dcaddb1d2c7e17d0721bbf857af25c030d3d4e962dff88"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/18-recordatorio.json",
+      "sha256": "94ee3ed27da0f838d0334af7d60e7775a6f4327c90b1c87f93797a4eab00d533"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/21-dos-acciones.json",
+      "sha256": "d2b652022f7c7c4295b944fc35337229d4d325155e137f84146cbcbaad3ebbcf"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164052214536Z/summary.json",
+      "sha256": "32b3242d72a48bfeb4245300785d8d7b4fcd2f5df542af321a948895b231add7"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/02-ayuda.json",
+      "sha256": "89ea9d9c511ecee1e890615f75fd9a987cc2072b51af17e08caf2a9f46f49176"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/03-nota-markdown.json",
+      "sha256": "48257c83142397f345c6ad3144c93e95ad693f2bae89b3714dc2a4299260049d"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/09-continuar.json",
+      "sha256": "4f9aa8c22d05c00edb6153951e1b8825e879ac112a04815a9c60bc76bc738347"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/17-confirmar.json",
+      "sha256": "956a5517a2e374b13b81ab5c89d36da7992d1748a1709e6c349ae7e5e49d90f9"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/18-recordatorio.json",
+      "sha256": "a50f990056b9efc3504f2c9c5a5f25146f88a021beb9f92eb7f845d459f47c74"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/21-dos-acciones.json",
+      "sha256": "ec42d2a05f22d412f12697c161f1ca2f80c868bf949828e788f384c494047020"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/24-gemini.json",
+      "sha256": "fc586768d5c05105c9d8982f69bcf47fa82e05cbc8bc8d429c2c4b61c1814151"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164227188816Z/summary.json",
+      "sha256": "844b894e99c7335c18242513c66746900f364fe5101a76212ec2bec579ba8438"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/03-nota-markdown.json",
+      "sha256": "2c13b649197c4db8d4f731bfa224b4f3e7e8e09aa3db57e081eb2e27a9919323"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/04-nota-hostil.json",
+      "sha256": "d030e989ae7624898f61317faea71d471ad9306bc95bcf1176c2bd1a9fccc015"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/09-continuar.json",
+      "sha256": "c6308e3f5253fb042a84a79ad6976cf43124429a5e23d755fe142829a7c25536"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/11-video.json",
+      "sha256": "6d4888d7d9174e79c1a458c4291434ff23f01dad1127d7199380801781ff2bc1"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/12-adulto.json",
+      "sha256": "7bd79d1d1cf09ec0391bb5b9ce71a25fa704039c74dade6ec44330c375dcad8e"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/17-confirmar.json",
+      "sha256": "329f323c767d4196db527277142fa4328628fe1ff5baa287929f953af44b4f50"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/18-recordatorio.json",
+      "sha256": "1b4eb63ea48d3cb51bf8480faf32124074c96c7fd4d306804f379d49367ba6fa"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/21-dos-acciones.json",
+      "sha256": "ce15d6730641b81a4d85adeee3faaec0bfd196a862b55525bc8173567fb7373d"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/24-gemini.json",
+      "sha256": "bef684404d9a301007a6129da8af4e2a402eb607790b03b469a46f801f079cdb"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164448043152Z/summary.json",
+      "sha256": "8792a320f6695db9193f0b4596acb986d00f7a1f0413dc30483d86cc30a9fb6e"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/03-nota-markdown.json",
+      "sha256": "ae136d01546728582bdb7c19e250a48e8a0dcaf54dab95c7274d93d4e94c44d8"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/09-continuar.json",
+      "sha256": "f142f638ef25887505f880071877993bf7021394800ef78d4686c21d1a4ecb2c"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/11-video.json",
+      "sha256": "7bf49468e7a8cb85e71d2ac6e290b1e991e0b9f3a58c6ed36da8eefe0d7baedb"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/17-confirmar.json",
+      "sha256": "861121441b1ec486131aa361858a168256d5e097aa05f4be182735c956961be8"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/24-gemini.json",
+      "sha256": "2bf2006409279e600868c7f0c145a8fd5bd48a972ed13b5753788bdb6a1ada13"
+    },
+    {
+      "path": "private/frontend-f7-20261107T164732992530Z/summary.json",
+      "sha256": "00df7d54ca2493aaa5e663450409516b7b83f44e3f085ff4d9198676d3e4f672"
+    }
+  ]
+}

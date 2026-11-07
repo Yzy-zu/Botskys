@@ -1,0 +1,159 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "corpus_sha256": "a025b612fae215ef6a463b5ab7454b105c819e51470f06ec94541019a09d9492",
+  "backend_effects": 0,
+  "automatic_resume": false,
+  "results": [
+    {
+      "id": "02-ayuda",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "ayuda",
+        "arguments": {}
+      },
+      "calls": 1,
+      "duration_seconds": 2.975,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 2.972851333208382,
+        "usage": {
+          "prompt_tokens": 22719,
+          "completion_tokens": 99,
+          "total_tokens": 22818,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 128.5581
+        }
+      }
+    },
+    {
+      "id": "03-nota-markdown",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "nota.guardar",
+        "arguments": {
+          "text": "comprar *pan* y leche"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 4.458,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 4.455793137894943,
+        "usage": {
+          "prompt_tokens": 22723,
+          "completion_tokens": 127,
+          "total_tokens": 22850,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 129.5993
+        }
+      }
+    },
+    {
+      "id": "09-continuar",
+      "pass": false,
+      "error": "provider_http_400",
+      "calls": 1,
+      "duration_seconds": 4.39,
+      "metrics": null
+    },
+    {
+      "id": "17-confirmar",
+      "pass": false,
+      "error": "provider_http_400",
+      "calls": 1,
+      "duration_seconds": 7.911,
+      "metrics": null
+    },
+    {
+      "id": "18-recordatorio",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "recordar.en",
+        "arguments": {
+          "duration_seconds": 600,
+          "text": "entregar la tarea"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 6.599,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 6.595636463956907,
+        "usage": {
+          "prompt_tokens": 22724,
+          "completion_tokens": 212,
+          "total_tokens": 22936,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 132.6988
+        }
+      }
+    },
+    {
+      "id": "21-dos-acciones",
+      "pass": true,
+      "decision_type": "ClarifyDecision",
+      "decision": {
+        "question": "¿Qué quieres hacer primero: guardar la nota de pan o buscar videos de gatos?",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": [
+          "Guardar la nota de pan",
+          "Buscar videos de gatos"
+        ]
+      },
+      "calls": 1,
+      "duration_seconds": 5.976,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 5.974012528080493,
+        "usage": {
+          "prompt_tokens": 22724,
+          "completion_tokens": 225,
+          "total_tokens": 22949,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 133.172
+        }
+      }
+    },
+    {
+      "id": "24-gemini",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "ia",
+        "arguments": {
+          "text": "Explícame por qué la luna tiene fases"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 3.879,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 3.876255712006241,
+        "usage": {
+          "prompt_tokens": 22723,
+          "completion_tokens": 111,
+          "total_tokens": 22834,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 129.0169
+        }
+      }
+    }
+  ],
+  "passed": 5,
+  "median_seconds": 4.458
+}

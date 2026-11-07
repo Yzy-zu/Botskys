@@ -1,0 +1,55 @@
+{
+  "scope": "FINAL_JSON_SINTETICO_SIN_RAZONAMIENTO_NI_CABECERAS",
+  "responses": {
+    "03-nota-markdown": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "content": "{\n  \"name\": \"select_action\",\n  \"action_key\": \"nota.guardar\",\n  \"arguments\": {\n    \"text\": \"comprar *pan* y leche\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    "24-gemini": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "content": "{\"name\":\"ia\",\"arguments\":{\"text\":\"Explícame por qué la luna tiene fases\"}}"
+          }
+        }
+      ]
+    },
+    "11-video": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "content": "{\n  \"name\": \"select_action\",\n  \"action_key\": \"dl.buscar\",\n  \"arguments\": {\n    \"container\": \"mp4\",\n    \"source\": \"youtube\",\n    \"query\": \"gatos\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    "09-continuar": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "content": "{\n  \"name\": \"select_action\",\n  \"action_key\": \"convertir\",\n  \"arguments\": {\n    \"target\": \"pdf\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    "17-confirmar": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "message": {
+            "content": "{\n  \"name\": \"select_action\",\n  \"action_key\": \"recado.enviar\",\n  \"arguments\": {\n    \"draft_id\": \"synthetic-draft\"\n  }\n}"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -893,3 +893,12 @@ frontend con GLM, aclara lo que falta, permite acceder a todas las variantes del
 backend, ejecuta sus procesos existentes y entrega sus resultados sin una consulta
 posterior al intérprete. Los comandos permanecen opcionales, no son la experiencia
 que se le exige al usuario.
+
+## Nota de ejecución · 07/11 · F7
+
+F0–F7 implementadas por encargo posterior; cierres en ESTADO_COMPARTIDO.md.
+La prueba real detectó fallos del parser de herramientas del proveedor. Se conserva
+la arquitectura de selección directa y el catálogo completo; el transporte final
+usa un sobre JSON plano cerrado en la misma consulta GLM. No hay segundo selector,
+reparación por IA ni retorno tras el resultado. Variación técnica y evidencias en
+docs/REMODELACION_F7.md; históricos iniciales conservados. F8 no se ejecutó.

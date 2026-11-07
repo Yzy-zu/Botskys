@@ -1,0 +1,136 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "corpus_sha256": "a025b612fae215ef6a463b5ab7454b105c819e51470f06ec94541019a09d9492",
+  "backend_effects": 0,
+  "automatic_resume": false,
+  "results": [
+    {
+      "id": "03-nota-markdown",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "nota.guardar",
+        "arguments": {
+          "text": "comprar *pan* y leche"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 13.372,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 13.369452425977215,
+        "usage": {
+          "prompt_tokens": 22468,
+          "completion_tokens": 426,
+          "total_tokens": 22894,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 139.0804
+        }
+      }
+    },
+    {
+      "id": "09-continuar",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "convertir",
+        "arguments": {
+          "target": "pdf"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 7.827,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 7.82477160403505,
+        "usage": {
+          "prompt_tokens": 22511,
+          "completion_tokens": 440,
+          "total_tokens": 22951,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 139.82649999999998
+        }
+      }
+    },
+    {
+      "id": "11-video",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "container": "mp4",
+          "source": "youtube",
+          "query": "gatos"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 30.103,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 30.100702113006264,
+        "usage": {
+          "prompt_tokens": 22465,
+          "completion_tokens": 1170,
+          "total_tokens": 23635,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 166.1455
+        }
+      }
+    },
+    {
+      "id": "17-confirmar",
+      "pass": true,
+      "decision_type": "ActionRequest",
+      "decision": {
+        "action_key": "recado.enviar",
+        "arguments": {
+          "draft_id": "synthetic-draft"
+        }
+      },
+      "calls": 1,
+      "duration_seconds": 28.151,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 28.148207985097542,
+        "usage": {
+          "prompt_tokens": 22496,
+          "completion_tokens": 562,
+          "total_tokens": 23058,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 144.1848
+        }
+      }
+    },
+    {
+      "id": "24-gemini",
+      "pass": false,
+      "error": "invalid_json_envelope",
+      "calls": 1,
+      "duration_seconds": 23.138,
+      "metrics": {
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "duration_seconds": 23.1350758029148,
+        "usage": {
+          "prompt_tokens": 22468,
+          "completion_tokens": 1059,
+          "total_tokens": 23527,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 162.1216
+        }
+      }
+    }
+  ],
+  "passed": 4,
+  "median_seconds": 23.138
+}

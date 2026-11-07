@@ -1,5 +1,28 @@
 # Relevo Botsky
 
+## 07/11 · F7 GLM real y correcciones cerradas con límites
+
+25casos/oracles congelados75ab33d:15coincidencias automáticas;históricos intactos.
+V2 precisa aclaración/volumen y añade grupo.73intentos con ajustes selectivos y
+sonda;9.524,9528neuronas reportadas,no saldo ni cobertura exhaustiva. Sin reanudación
+automática ni inferencias adicionales. Corregidos falsos efectos en reply,literales,
+recordatorio,continuidad/contexto y admisión natural/vocativo de grupo.
+Cloudflare3030 en parser de herramientasXML:transporte finalJSONplano,misma cuenta/
+GLM y catálogo completo,una consulta,sin fallback ni reintento.2048tokens/40s.
+Backend conserva validación/ejecución/entrega,sin retorno de resultados aGLM.
+Código final f7e9567. Última muestra real4/5;forma directa name=ia rechazada al
+principio. Equivalencia añadida solo para nombres del enum cerrado;5/5respuestas
+capturadas pasan en replay local,sin fingir otra inferencia real.
+192regresión pasaron antes del ajuste final de transporte;52enfocadas después,
+más2E2EconHTTPcapturado/SQLite/PDFreal/reinicio/duplicado.4propuestas reales
+adoptadas localmente verifican notas/PDF/recordatorio600s. SinACKremoto.
+Latencia final7,827–30,103s. Comprensión de155variantes,render yrecepciónWhatsApp
+no acreditados. docs/REMODELACION_F7.md y evidenciaF7-* distinguen inferencias,
+oracles,replay,dobles yefectos locales. Secretos propios0600 sinGit;escaneo y
+permisosPASS. Cuota5h14% restante al cierre. Perfil/DBproductiva/servicios intactos.
+F8 pendiente de encargo de despliegue:backup,esquema20compatible,activación reversible
+ysalud. No arrancar producción por el cierre de esta fase.
+
 ## 07/11 · F6 ayuda y presentación natural cerradas localmente
 
 Outbox consulta input_mode persistido por recibo,incluso entregas diferidas;

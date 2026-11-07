@@ -1,0 +1,57 @@
+{
+  "stages": [
+    {
+      "stage": "F7-inicial",
+      "attempts": 25,
+      "automatic_matches": 15,
+      "median_seconds": 7.655,
+      "maximum_seconds": 40.043,
+      "reported_neurons": 3465.0744
+    },
+    {
+      "stage": "F7-ajuste",
+      "attempts": 20,
+      "automatic_matches": 16,
+      "median_seconds": 5.9245,
+      "maximum_seconds": 23.73,
+      "reported_neurons": 2384.6069
+    },
+    {
+      "stage": "F7-ajuste-temporal",
+      "attempts": 6,
+      "automatic_matches": 5,
+      "median_seconds": 8.547,
+      "maximum_seconds": 14.421,
+      "reported_neurons": 806.8362
+    },
+    {
+      "stage": "F7-roles",
+      "attempts": 7,
+      "automatic_matches": 5,
+      "median_seconds": 4.458,
+      "maximum_seconds": 7.911,
+      "reported_neurons": 653.0451
+    },
+    {
+      "stage": "F7-json",
+      "attempts": 9,
+      "automatic_matches": 7,
+      "median_seconds": 10.839,
+      "maximum_seconds": 23.727,
+      "reported_neurons": 1323.7774
+    },
+    {
+      "stage": "F7-json-plano",
+      "attempts": 5,
+      "automatic_matches": 4,
+      "median_seconds": 23.138,
+      "maximum_seconds": 30.103,
+      "reported_neurons": 751.3588
+    }
+  ],
+  "total_attempts_including_probe": 73,
+  "reported_neurons_including_probe": 9524.9528,
+  "backend_remote_effects": 0,
+  "not_account_balance": true,
+  "no_automatic_resume": true
+}

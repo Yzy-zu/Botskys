@@ -1,0 +1,10 @@
+.....................................................................................................Executing <Task finished name='Task-894' coro=<IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection() done, defined at /home/petrov/botsky/tests/test_integrations.py:411> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.497 seconds
+.........Executing <Task pending name='Task-1059' coro=<MediaTest.test_multiple_sheet_csv_keeps_sheets_and_neutralizes_formula_text() running at /home/petrov/botsky/tests/test_media.py:202> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.112 seconds
+..............................................................Executing <Task finished name='Task-1664' coro=<RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts() done, defined at /home/petrov/botsky/tests/test_runtime.py:398> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.322 seconds
+...........Executing <Task pending name='Task-1750' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:606> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.108 seconds
+.Executing <Task pending name='Task-1767' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:606> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.108 seconds
+........
+----------------------------------------------------------------------
+Ran 192 tests in 62.355s
+
+OK

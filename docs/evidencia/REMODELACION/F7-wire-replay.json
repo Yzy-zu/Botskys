@@ -1,0 +1,30 @@
+{
+  "scope": "REPLAY_LOCAL_HTTP_CAPTURADO_SIN_INFERENCIA_NUEVA",
+  "results": [
+    {
+      "id": "03-nota-markdown",
+      "oracle": "PASS",
+      "http_double_calls": 1
+    },
+    {
+      "id": "09-continuar",
+      "oracle": "PASS",
+      "http_double_calls": 1
+    },
+    {
+      "id": "11-video",
+      "oracle": "PASS",
+      "http_double_calls": 1
+    },
+    {
+      "id": "17-confirmar",
+      "oracle": "PASS",
+      "http_double_calls": 1
+    },
+    {
+      "id": "24-gemini",
+      "oracle": "PASS",
+      "http_double_calls": 1
+    }
+  ]
+}

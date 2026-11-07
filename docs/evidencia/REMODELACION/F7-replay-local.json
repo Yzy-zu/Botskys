@@ -1,0 +1,37 @@
+{
+  "scope": "SQLITE_Y_MOTORES_LOCALES_SIN_RED",
+  "results": [
+    {
+      "id": "03-nota-markdown",
+      "source": "F7-ajuste-temporal.json",
+      "code": "note_saved",
+      "local_oracle": "PASS",
+      "interpreter_calls": 1,
+      "provider_ack": false
+    },
+    {
+      "id": "04-nota-hostil",
+      "source": "F7-ajuste.json",
+      "code": "note_saved",
+      "local_oracle": "PASS",
+      "interpreter_calls": 1,
+      "provider_ack": false
+    },
+    {
+      "id": "06-convertir",
+      "source": "F7-ajuste.json",
+      "code": "document_converted",
+      "local_oracle": "PASS",
+      "interpreter_calls": 1,
+      "provider_ack": false
+    },
+    {
+      "id": "18-recordatorio",
+      "source": "F7-ajuste-temporal.json",
+      "code": "reminder_created",
+      "local_oracle": "PASS",
+      "interpreter_calls": 1,
+      "provider_ack": false
+    }
+  ]
+}
