@@ -1,5 +1,18 @@
 # Relevo Botsky
 
+## 07/11 · F1 contratos nativos implementados
+
+Catálogo completo por ruta exacta,155 variantes sin deduplicar operaciones.
+ActionRequest construye ParsedCommand directamente, sin texto de comandos.
+Contratos JSON estrictos para booleanos,números,arrays,constantes no editables;
+selecciones choice requerido/view_id opcional. Restricciones cruzadas extraídas
+a commands/validation.py y compartidas con Router. Schemas y descripciones
+derivados del registro propio; no habilitan permisos ni efectos.
+4 pruebas nuevas pasan: equivalencia canónica de155 ejemplos, tipos/rangos/arrays,
+selecciones y rechazo de constantes/autoridad. Las13 pruebas de comandos pasan.
+Evidencia docs/evidencia/REMODELACION/F1-tests.txt. Sin Cloudflare ni producción.
+Siguiente F2: adaptador aislado,decisiones,prompt y configuración optativa.
+
 ## 07/11 · Remodelación: F0 cerrado, F1 pendiente
 
 Encargo actual autoriza ejecutar remodelacionbotsky.md; excepción añadida a AGENTS.
