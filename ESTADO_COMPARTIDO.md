@@ -1,5 +1,23 @@
 # Relevo Botsky
 
+## 07/11 · Video por defecto y miniaturas corregidos, desplegados
+
+Encargo usuario:investigar descarga yquitar repreguntas. Frontend dl.buscar usaMP4
+por defecto,sourcevalidadoyrequired,audioexplicitomp3;CLIintacto. Prompts fuente
+explícita yregla nopor.4casossintéticos pasan;fraseoriginal aún aclaraba,fallo
+conservado yregla/ejemploexplícito corregido:nuevaprueba exactapasa7,89s.5casos
+únicoscorrectos/6intentoscf06,sin ejecutar propuestas.56tests locales pasan.
+Miniaturas3/5HTTP403sinReferer;conRefererpúblico/UA200ymismo código decodificaambas.
+Sin cookies,allowlist/boundsintactos. DescargahistóricacausaexactaUNKNOWN(stderr
+perdido);metadatos/muestras206 yextractor--test117277bytesparciales funcionan.
+No descarga completa ni entrega;no fingirfalloresueltoensutotalidad. Nuevoclasificador
+deerroresdeextractor(solo diagnóstico técnico,noNLP)preserva códigos403/404/formato/red.
+Dos cortesrespaldados;a9b6980yfinal5c02559,PID3902023,healthruntime/callsready.
+Qwenlow/compacto/pool7/perfilcuotas/serviciosajenosintactos,sin inferencias/envíos
+durantecortes. Informe docs/CORRECCION_VIDEO_20261107.md,evidencia separada.
+Pendiente:observar preparación completa nueva si dueño la solicita;no repetir
+la descarga automáticamente ni reanudar campañas.
+
 ## 07/11 · Revisión de logs del uso real
 
 Sololectura encargada.5entradasnaturalesrecientes,mediana frontend7,611s(incluye
