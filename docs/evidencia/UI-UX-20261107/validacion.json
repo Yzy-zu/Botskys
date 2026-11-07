@@ -1,0 +1,15 @@
+{
+  "validacion": "PASS",
+  "rutas": 154,
+  "raices": 32,
+  "campos_en_rutas": 190,
+  "fuentes_sha256_verificadas": 28,
+  "svg_xml_valido": true,
+  "revision_visual": "Dos inspecciones de rasterización local; contraste y seis opciones corregidos; tamaños de títulos ajustados",
+  "producto_modificado": false,
+  "produccion_modificada": false,
+  "envios": 0,
+  "llamadas": 0,
+  "implementacion": "PENDIENTE",
+  "suite_producto": "NO_EJECUTADA_CAMBIO_DOCUMENTAL"
+}

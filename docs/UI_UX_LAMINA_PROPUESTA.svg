@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1430" viewBox="0 0 1440 1430" role="img" aria-labelledby="title desc">
+<title id="title">Botsky · propuesta de presentación</title>
+<desc id="desc">Seis muestras sintéticas: videos, búsqueda web, ayuda, tabla, estado y juego. Diseño propuesto, no captura de WhatsApp.</desc>
+<rect width="1440" height="1430" fill="#10121b" />
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#f3f1f8}.muted{fill:#b6b7c9}.small{font-size:16px}.body{font-size:19px}.bold{font-weight:700}.heading{font-size:23px;font-weight:700}</style>
+<text x="38" y="49" class="heading" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="23" font-weight="700">Botsky · dirección visual</text>
+<text x="38" y="80" class="body muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="19" font-weight="400">Muestras sintéticas de diseño · pendientes de implementar y verificar en WhatsApp</text>
+<rect x="30" y="112" width="438" height="610" rx="20" fill="#202432" />
+<text x="52" y="148" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">01 · Videos</text>
+<text x="52" y="177" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Imagen y lista comparten numeración</text>
+<rect x="50" y="199" width="128" height="90" rx="5" fill="#454064" />
+<rect x="56" y="205" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="64" y="225" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">1</text>
+<text x="60" y="252" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="124" y="279" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">4:12</text>
+<rect x="183" y="199" width="128" height="90" rx="5" fill="#324e61" />
+<rect x="189" y="205" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="197" y="225" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">2</text>
+<text x="193" y="252" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="257" y="279" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">3:48</text>
+<rect x="316" y="199" width="128" height="90" rx="5" fill="#60434f" />
+<rect x="322" y="205" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="330" y="225" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">3</text>
+<text x="326" y="252" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="390" y="279" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">5:06</text>
+<rect x="50" y="294" width="128" height="90" rx="5" fill="#454064" />
+<rect x="56" y="300" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="64" y="320" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">4</text>
+<text x="60" y="347" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="124" y="374" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">4:12</text>
+<rect x="183" y="294" width="128" height="90" rx="5" fill="#324e61" />
+<rect x="189" y="300" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="197" y="320" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">5</text>
+<text x="193" y="347" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="257" y="374" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">3:48</text>
+<rect x="316" y="294" width="128" height="90" rx="5" fill="#60434f" />
+<rect x="322" y="300" width="27" height="27" rx="5" fill="#e11d48" />
+<text x="330" y="320" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">6</text>
+<text x="326" y="347" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Miniatura</text>
+<text x="390" y="374" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">5:06</text>
+<text x="52" y="422" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Videos · sesión de ejemplo</text>
+<text x="52" y="662" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Lista vigente: 15 minutos</text>
+<text x="52" y="692" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/dl elegir 2  · sintaxis propuesta</text>
+<rect x="501" y="112" width="438" height="610" rx="20" fill="#202432" />
+<text x="523" y="148" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">02 · Búsqueda web</text>
+<text x="523" y="177" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Separación, fuente y enlace íntegro</text>
+<text x="523" y="224" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Resultados · astronomía</text>
+<text x="523" y="277" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">1. Guía del cielo de ejemplo</text>
+<text x="523" y="306" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">observatorio.example</text>
+<text x="523" y="334" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Vista previa breve de la fuente…</text>
+<text x="523" y="360" class="small" style="fill:#a5c9ff" font-family="DejaVu Sans, sans-serif" fill="#a5c9ff" font-size="16" font-weight="400">https://observatorio.example/guia</text>
+<text x="523" y="397" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">2. Mapa de estrellas de ejemplo</text>
+<text x="523" y="426" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">ciencia.example</text>
+<text x="523" y="454" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Vista previa breve de la fuente…</text>
+<text x="523" y="480" class="small" style="fill:#a5c9ff" font-family="DejaVu Sans, sans-serif" fill="#a5c9ff" font-size="16" font-weight="400">https://ciencia.example/guia</text>
+<text x="523" y="517" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">3. Calendario de ejemplo</text>
+<text x="523" y="546" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">museo.example</text>
+<text x="523" y="574" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Vista previa breve de la fuente…</text>
+<text x="523" y="600" class="small" style="fill:#a5c9ff" font-family="DejaVu Sans, sans-serif" fill="#a5c9ff" font-size="16" font-weight="400">https://museo.example/guia</text>
+<text x="523" y="679" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Candidatos; páginas no verificadas.</text>
+<rect x="972" y="112" width="438" height="610" rx="20" fill="#202432" />
+<text x="994" y="148" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">03 · Ayuda de llamadas</text>
+<text x="994" y="177" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Acciones agrupadas; ejemplos copiables</text>
+<text x="994" y="237" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Iniciar llamada</text>
+<text x="994" y="272" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Duración de ejemplo: 10 minutos</text>
+<text x="994" y="309" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/llamar --duracion 10m</text>
+<text x="994" y="367" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Consultar o terminar</text>
+<text x="994" y="402" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Durante una llamada autorizada</text>
+<text x="994" y="439" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/llamada estado · /llamada colgar</text>
+<text x="994" y="497" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Programar · solo el dueño</text>
+<text x="994" y="532" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Fecha y hora en tu zona configurada</text>
+<text x="994" y="569" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/llamada programar FECHA HORA</text>
+<text x="994" y="669" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Ejemplos sujetos al contrato del comando.</text>
+<rect x="30" y="762" width="438" height="610" rx="20" fill="#202432" />
+<text x="52" y="798" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">04 · Tabla nativa</text>
+<text x="52" y="827" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Intención de celdas; no tabla dibujada</text>
+<text x="52" y="877" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Horario · semana de ejemplo</text>
+<rect x="52" y="908" width="394" height="53" rx="3" fill="#35384e" />
+<text x="63" y="941" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">Día</text>
+<text x="191" y="941" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">Hora</text>
+<text x="319" y="941" class="small bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="700">Materia</text>
+<rect x="52" y="965" width="394" height="53" rx="3" fill="#292e40" />
+<text x="63" y="998" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Lunes</text>
+<text x="191" y="998" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">08:00</text>
+<text x="319" y="998" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Ciencias</text>
+<rect x="52" y="1022" width="394" height="53" rx="3" fill="#292e40" />
+<text x="63" y="1055" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Martes</text>
+<text x="191" y="1055" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">09:30</text>
+<text x="319" y="1055" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Historia</text>
+<rect x="52" y="1079" width="394" height="53" rx="3" fill="#292e40" />
+<text x="63" y="1112" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Jueves</text>
+<text x="191" y="1112" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">11:00</text>
+<text x="319" y="1112" class="small" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="16" font-weight="400">Arte</text>
+<text x="52" y="1187" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Referencias y detalles siguen disponibles.</text>
+<text x="52" y="1222" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">La tabla viaja como datos estructurados.</text>
+<text x="52" y="1262" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">Apariencia final: verificar en el cliente.</text>
+<rect x="501" y="762" width="438" height="610" rx="20" fill="#202432" />
+<text x="523" y="798" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">05 · Archivos y seguimiento</text>
+<text x="523" y="827" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Resultado primero; sin hashes automáticos</text>
+<rect x="523" y="867" width="394" height="126" rx="12" fill="#30354b" />
+<text x="541" y="905" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Viaje de ejemplo.mp4</text>
+<text x="541" y="939" class="body muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="19" font-weight="400">MP4 · 18 MB · 2:14</text>
+<text x="541" y="971" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Datos de muestra</text>
+<text x="523" y="1047" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Conservé el video completo.</text>
+<text x="523" y="1082" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Reduje la calidad para poder enviarlo.</text>
+<rect x="523" y="1132" width="394" height="125" rx="12" fill="#292e40" />
+<text x="541" y="1169" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Estado de otra tarea</text>
+<text x="541" y="1203" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Estoy convirtiendo el PDF.</text>
+<text x="541" y="1238" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/cancelar · resolución propia y explícita</text>
+<text x="523" y="1319" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Sin porcentajes ni etapas inventados.</text>
+<rect x="972" y="762" width="438" height="610" rx="20" fill="#202432" />
+<text x="994" y="798" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="20" font-weight="700">06 · Juegos y confirmaciones</text>
+<text x="994" y="827" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Jerarquía sin ocultar costes ni consecuencias</text>
+<text x="994" y="881" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Blackjack · mesa de ejemplo</text>
+<text x="994" y="927" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Apuesta: 20 XP</text>
+<text x="994" y="967" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Tu mano: 10♠ 7♥ · 17 puntos</text>
+<text x="994" y="1007" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Es tu turno.</text>
+<text x="994" y="1049" class="small" style="fill:#c4b5fd" font-family="DejaVu Sans, sans-serif" fill="#c4b5fd" font-size="16" font-weight="400">/bj pedir  ·  /bj plantarse</text>
+<rect x="994" y="1102" width="394" height="160" rx="12" fill="#3d3042" />
+<text x="1012" y="1140" class="body bold" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="700">Antes de confirmar</text>
+<text x="1012" y="1176" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Destino y coste completos.</text>
+<text x="1012" y="1210" class="body" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-size="19" font-weight="400">Consecuencias visibles.</text>
+<text x="1012" y="1244" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">La apariencia no concede permisos.</text>
+<text x="994" y="1319" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Muestras conceptuales, sin efectos reales.</text>
+<text x="38" y="1405" class="small muted" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-size="16" font-weight="400">Referencia: Zhana · implementación, datos y contratos propios de Botsky · sin cambios de producción</text>
+<text x="52" y="447" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">1. Concierto de ejemplo</text><text x="52" y="464" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">4:12 · Canal de ejemplo · YouTube</text><text x="52" y="483" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">2. Versión acústica de ejemplo</text><text x="52" y="500" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">3:48 · Canal de ejemplo · YouTube</text><text x="52" y="519" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">3. Sesión en vivo de ejemplo</text><text x="52" y="536" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">5:06 · Canal de ejemplo · YouTube</text><text x="52" y="555" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">4. Versión de estudio</text><text x="52" y="572" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">4:12 · Canal de ejemplo · YouTube</text><text x="52" y="591" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">5. Presentación de ejemplo</text><text x="52" y="608" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">3:48 · Canal de ejemplo · YouTube</text><text x="52" y="627" class="body bold" font-size="17" font-family="DejaVu Sans, sans-serif" fill="#f3f1f8" font-weight="700">6. Ensayo de ejemplo</text><text x="52" y="644" class="small muted" font-size="14" font-family="DejaVu Sans, sans-serif" fill="#b6b7c9" font-weight="400">5:06 · Canal de ejemplo · YouTube</text></svg>

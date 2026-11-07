@@ -1,0 +1,26 @@
+[
+  {
+    "path": "docs/PLAN_MODERNIZACION_VISUAL_UI_UX.md",
+    "sha256": "fa67d726d7651a03caef45d29fee4fa3663fc96efcb7e804a67c7a81dc3b80d5"
+  },
+  {
+    "path": "docs/UI_UX_MATRIZ_RUTAS.csv",
+    "sha256": "cd8e8ee50e95c6769e24cc6b784e108a237321a3cf0839e8b8da3e0bf790823e"
+  },
+  {
+    "path": "docs/UI_UX_LAMINA_PROPUESTA.svg",
+    "sha256": "0db325814aea0bcba1a9971bb170d77a96a372821842635914650e73198ce588"
+  },
+  {
+    "path": "docs/evidencia/UI-UX-20261107/fuentes.json",
+    "sha256": "0a1961ada9eb965227b3ba04d96b08547dc91192bd7b353770e8f70bfca7d537"
+  },
+  {
+    "path": "docs/evidencia/UI-UX-20261107/inventario.json",
+    "sha256": "0206d076609bba03cb01bb2cdf0b63195c88f64704ae9b476e36ab2b7067c0c0"
+  },
+  {
+    "path": "docs/evidencia/UI-UX-20261107/validacion.json",
+    "sha256": "4a8448722575a6a714f5a46de8e087340e31abb0c8934e399e14b265f9350201"
+  }
+]

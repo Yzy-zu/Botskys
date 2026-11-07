@@ -249,3 +249,15 @@ con SQLite/fixtures propios, motores y dobles; suplemento nuevo, sin reabrir AGY
 La observación de una guardia o ACK no acredita efecto ni recepción humana.
 No cambia producción, participantes, Minecraft, proveedores reales, llamadas,
 navegador, servicios, perfiles, NLP o GitHub. Mantener históricos y cuota5%.
+
+
+## 07/11 · Plan global de modernización visual UI/UX
+
+El propietario encargó analizar minuciosamente la presentación de Zhana y crear
+un plan global para Botsky: collages numerados, metadatos, tablas nativas, ayuda,
+archivos y las demás herramientas. Autoriza investigación de código/documentación
+como referencia, inventario propio, muestras sintéticas y planificación detallada.
+Este cierre es documental: no cambia producto, servicios, perfiles, proveedores
+ni envía mensajes/llamadas. No importa runtime/NLP/datos de Zhana. Plan vigente en
+docs/PLAN_MODERNIZACION_VISUAL_UI_UX.md; implementación posterior por fases V1–V7,
+con evidencia y alcance de ejecución que corresponda. Cuota5% sigue vigente.

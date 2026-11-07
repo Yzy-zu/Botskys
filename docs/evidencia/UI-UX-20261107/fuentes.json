@@ -1,0 +1,562 @@
+[
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/rich_text.py",
+    "sha256": "0a17b8f0e7f36438c2c0b1f419812b1283b2ec72bc95e12287f3a4087490b22b",
+    "anclas": [
+      {
+        "linea": 10,
+        "texto": "class NativeTable(BaseModel):"
+      },
+      {
+        "linea": 73,
+        "texto": "def table_parts(table: NativeTable, intro: str = \"\", footer: str = \"\") -> tuple[dict[str, Any], ...]:"
+      },
+      {
+        "linea": 83,
+        "texto": "def result_parts(data: dict[str, Any]) -> tuple[dict[str, Any], ...]:"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/providers/evolution.py",
+    "sha256": "48f1708b3dcdd51b3fa85d19914a29a4c24a433684f9d3836bcb57a7071c9366",
+    "anclas": [
+      {
+        "linea": 417,
+        "texto": "async def send_native_table(self, chat_id: str, table: dict[str, object]) -> str:"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/rich_delivery.py",
+    "sha256": "515a4d2fd7900f344e1381022f07058428295a3ccb06cae085fe1b466d08fc7c",
+    "anclas": [
+      {
+        "linea": 20,
+        "texto": "class RichDeliveryError(ValueError):"
+      },
+      {
+        "linea": 74,
+        "texto": "class RichDelivery:"
+      },
+      {
+        "linea": 78,
+        "texto": "async def prepare(self, request_id: str, parts: list[dict[str, Any]]) -> None:"
+      },
+      {
+        "linea": 109,
+        "texto": "async def parts(self, request_id: str) -> list[dict[str, Any]]:"
+      },
+      {
+        "linea": 115,
+        "texto": "async def claim(self, request_id: str, position: int) -> bool:"
+      },
+      {
+        "linea": 135,
+        "texto": "async def accept(self, request_id: str, position: int, message_id: str) -> bool:"
+      },
+      {
+        "linea": 140,
+        "texto": "async def fail(self, request_id: str, position: int, error_code: str, uncertain: bool) -> bool:"
+      },
+      {
+        "linea": 145,
+        "texto": "async def _finish(self, request_id: str, position: int, state: str, message_id: str | None, error_code: str | None) -> bool:"
+      },
+      {
+        "linea": 161,
+        "texto": "async def recover(self) -> int:"
+      },
+      {
+        "linea": 177,
+        "texto": "async def prune(self, now_ms: int) -> int:"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/migrations/030_rich_delivery.sql",
+    "sha256": "ccb3e808d70dcf61deb00b668677f9e2310491f8d0e9520757f691458eaa800b",
+    "anclas": [
+      {
+        "linea": 1,
+        "texto": "CREATE TABLE rich_delivery_plans ("
+      },
+      {
+        "linea": 10,
+        "texto": "CREATE TABLE rich_delivery_parts ("
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/search_collage.py",
+    "sha256": "fb0b08954fed3679349aa8c9aafca918b940b1cdddd19466f81bc6d4802fa4e0",
+    "anclas": [
+      {
+        "linea": 25,
+        "texto": "CANVAS_WIDTH = 1280"
+      },
+      {
+        "linea": 26,
+        "texto": "CANVAS_HEIGHT = 720"
+      },
+      {
+        "linea": 73,
+        "texto": "async def _fetch_thumbnail(option: DownloadOption) -> Image.Image | None:"
+      },
+      {
+        "linea": 98,
+        "texto": "def _render_placeholder(option: DownloadOption, width: int, height: int) -> Image.Image:"
+      },
+      {
+        "linea": 128,
+        "texto": "def _render_card("
+      },
+      {
+        "linea": 243,
+        "texto": "def _compute_layout(count: int) -> list[tuple[int, int, int, int]]:"
+      },
+      {
+        "linea": 245,
+        "texto": "w, h = CANVAS_WIDTH, CANVAS_HEIGHT"
+      },
+      {
+        "linea": 282,
+        "texto": "async def create_search_collage("
+      },
+      {
+        "linea": 298,
+        "texto": "canvas = Image.new(\"RGB\", (CANVAS_WIDTH, CANVAS_HEIGHT), (0, 0, 0))"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/jobs.py",
+    "sha256": "c4556d22dc67666f324b090440bf0a67bba518968b2f33895529faa912dfb9f0",
+    "anclas": [
+      {
+        "linea": 798,
+        "texto": "elif job.kind == \"search_media\":"
+      },
+      {
+        "linea": 844,
+        "texto": "from .search_collage import create_search_collage"
+      },
+      {
+        "linea": 847,
+        "texto": "collage_path = await create_search_collage(options, collage_dest)"
+      },
+      {
+        "linea": 900,
+        "texto": "heading = f\"*{i}. {title}*\" if \"*\" not in title else f\"{i}. {title}\""
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/web_search.py",
+    "sha256": "527f884aa659477d5d7fb4809beebbb0cf6ca94aed655e4d8da780a67e50dffd",
+    "anclas": [
+      {
+        "linea": 184,
+        "texto": "class SearchBackend:"
+      },
+      {
+        "linea": 231,
+        "texto": "lines = [\"*Resultados de Bing*\", \"Búsqueda experimental · \" + args.query]"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/drive_runtime.py",
+    "sha256": "401fecc22e4c869fcc494daca6f3c01566fa32b1e36bb3106d8f6d9508b61877",
+    "anclas": [
+      {
+        "linea": 48,
+        "texto": "async def run_drive(media: MediaJobs, job: MediaJob) -> tuple[Path, str] | None:"
+      },
+      {
+        "linea": 73,
+        "texto": "parts = table_parts(NativeTable(title=\"Espacio de Google\", headers=[\"Concepto\", \"Espacio\"], rows=facts), footer=footer)"
+      },
+      {
+        "linea": 114,
+        "texto": "parts = table_parts(NativeTable(title=\"Archivos de Drive\", headers=[\"Opción\", \"Archivo\", \"Tamaño\"],"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/cooperacha_image.py",
+    "sha256": "2f9081881716654660d860ffc3095db8fdfb52275e7cb3ed6012455f9037460e",
+    "anclas": [
+      {
+        "linea": 11,
+        "texto": "PIXEL_EDGE = 12"
+      },
+      {
+        "linea": 22,
+        "texto": "def censored_preview(photo: LibraryPhoto) -> bytes:"
+      },
+      {
+        "linea": 57,
+        "texto": "divisor = max(image.size) / PIXEL_EDGE"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/blackjack_store.py",
+    "sha256": "e895ad23ffe03d0f84248d0d66d600f4f94438de1efb2f29ada2680645db542c",
+    "anclas": [
+      {
+        "linea": 145,
+        "texto": "def _result_text("
+      },
+      {
+        "linea": 167,
+        "texto": "def _hand(cards: list[dict[str, Any]]) -> str:"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/economy.py",
+    "sha256": "3c438f03c9d46584e59261778913c0afc67b00f8989b98b747ebd66cc4e4ab95",
+    "anclas": [
+      {
+        "linea": 73,
+        "texto": "return ToolResult(\"ok\", {\"text\": \"\\n\".join(lines), \"native_table\": {\"title\": \"Top de XP\", \"headers\": [\"Puesto\", \"Cuenta\", \"XP\", \"Nivel\", \"ID\"], \"rows\": table_rows}})"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/roulette.py",
+    "sha256": "129914971645ece811984ebd030b0cb9cf4eb64fc1620d46cbe3819846311d4b",
+    "anclas": [
+      {
+        "linea": 367,
+        "texto": "f\"*Ruleta · sala #{room_id}*\\nApuesta: {bet} XP por persona · de 2 a 6 participantes\\n\\n\""
+      },
+      {
+        "linea": 521,
+        "texto": "return f\"*Ruleta · sala #{room_id}*\\nAsientos: {seats} ({len(players)}/6)\\nApuesta en riesgo: {room['bet']} XP por persona\\nEl anfitrión puede iniciar con el ID {room_id}.\""
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/school.py",
+    "sha256": "62be891aae1ed32fe90c2a75282e8798dd360442026cbaf1ccff6ef1bf87104f",
+    "anclas": [
+      {
+        "linea": 305,
+        "texto": "data[\"native_table\"] = table"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/reminders.py",
+    "sha256": "7ccd9fd28fa097357ce3f323def291b8a7655e3b850678f49ee2df4f26c07d7a",
+    "anclas": [
+      {
+        "linea": 203,
+        "texto": "data = {\"text\": \"\\n\\n\".join(lines), \"native_table\": table}"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/polls_store.py",
+    "sha256": "0eef3a71a6ffa4ef99ce3408030d357feb866b538f83450375dda1a90cea878a",
+    "anclas": [
+      {
+        "linea": 368,
+        "texto": "return ToolResult(\"ok\", {\"text\": \"\\n\".join(lines), \"poll_id\": poll_id, \"native_intro\": f\"{prefix + chr(10) if prefix else ''}{poll['question']}\", \"native_footer\": f\"{sum(row['votes'] for row in rows)} participantes · {'abierta' if poll['state'] == 'o"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/src/zhana/minecraft.py",
+    "sha256": "cb1f539e9636923e6c80b6ff8cc971e9eb77cf03c6501c7055a9649d3a0c7a90",
+    "anclas": [
+      {
+        "linea": 308,
+        "texto": "clean[\"native_table\"] = {\"title\": \"Paquetes del servidor\", \"headers\": [\"Grupo\", \"Cantidad\", \"Ejemplos\"], \"rows\": table_rows}"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/docs/historico/UI_NATIVA_Y_COMPOSICION.md",
+    "sha256": "ec92d5d6684a13a695044f0b083cdd06f6de258b034e0c59ebe19a3a62c1d919",
+    "anclas": [
+      {
+        "linea": 5,
+        "texto": "## Resultado visible"
+      },
+      {
+        "linea": 24,
+        "texto": "## Arquitectura y esquema30"
+      },
+      {
+        "linea": 34,
+        "texto": "## Transporte instalado, sin tocar servicio compartido"
+      },
+      {
+        "linea": 40,
+        "texto": "## Evidencia"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/docs/historico/UI_RICA_DOMINIOS.md",
+    "sha256": "bdb8db6cc4bfc91965a2f1cf34ae3ecb7039a322ea807a22a99eae8c704d1f7d",
+    "anclas": [
+      {
+        "linea": 3,
+        "texto": "## Decisión"
+      },
+      {
+        "linea": 7,
+        "texto": "## Cobertura"
+      },
+      {
+        "linea": 17,
+        "texto": "## Comprobación"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/docs/referencia/GUIA_UI_UX_Y_PERSONALIDAD.md",
+    "sha256": "fab655afad9cd021a60be7c5a991d1ccf6f869d262978f64434a59e4fb567183",
+    "anclas": [
+      {
+        "linea": 5,
+        "texto": "## 1. Una presencia agradable"
+      },
+      {
+        "linea": 17,
+        "texto": "## 2. Entender antes de interrumpir"
+      },
+      {
+        "linea": 27,
+        "texto": "## 3. Presentación de mensajes"
+      },
+      {
+        "linea": 39,
+        "texto": "## 4. Estados y fallos"
+      },
+      {
+        "linea": 57,
+        "texto": "## 5. Interacciones de referencia"
+      },
+      {
+        "linea": 83,
+        "texto": "## 6. Voz, llamadas y clips"
+      },
+      {
+        "linea": 102,
+        "texto": "## 7. Dirección visual de Zhana"
+      },
+      {
+        "linea": 112,
+        "texto": "## 8. Aceptación de UX"
+      },
+      {
+        "linea": 119,
+        "texto": "### Lista de búsqueda general aprobada el 27/10"
+      },
+      {
+        "linea": 123,
+        "texto": "## Afinación de conversación · 30/10"
+      },
+      {
+        "linea": 135,
+        "texto": "## 01/11 · Contrato visual aplicado a WhatsApp"
+      },
+      {
+        "linea": 145,
+        "texto": "## 01/11 · Dirección visual definitiva tras las capturas"
+      },
+      {
+        "linea": 154,
+        "texto": "**02/11 · Preferencia vigente:** el propietario permite emojis decorativos («déjalos, me gustó al final»); sustituye la restricción anterior a palomita/X. Uso contextual y sin cuota obligatoria; preservar composición y datos literales. Conversación g"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/zhana/docs/referencia/NATIVAS_WHATSAPP_RICH_RESPONSE.md",
+    "sha256": "203002498cf58760a78ca72bcbde8f9a46adaf272cb62848cb0ca38cf0d5d8e1",
+    "anclas": [
+      {
+        "linea": 56,
+        "texto": "**Integración posterior autorizada:** implementada enZhana con tabla tipada, esquema30 y recibosporparte; evidencia/activación definitivas en docs/historico/UI_NATIVA_Y_COMPOSICION.md y ESTADO_COMPARTIDO.md. Los párrafos anteriores conservan el diagn"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/src/botsky/store.py",
+    "sha256": "421febd1b670b8b97cb90e2387c09e7532d0ffbe4d526fa0d9a1216d9d385bca",
+    "anclas": [
+      {
+        "linea": 16,
+        "texto": "PART_CHARS = 3500"
+      },
+      {
+        "linea": 251,
+        "texto": "def enqueue(db, context, result, now):"
+      },
+      {
+        "linea": 254,
+        "texto": "text = result.text + \"\\n/estado \" + context.receipt_id if result.text else \"\""
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/src/botsky/jobs.py",
+    "sha256": "e8f3fdca8beef667c530bb54fdd24b58fab44c28267e0a3f1d622374a467eea1",
+    "anclas": [
+      {
+        "linea": 451,
+        "texto": "if result.code == \"download_choices\":"
+      },
+      {
+        "linea": 779,
+        "texto": "[\"Resultados candidatos: \" + args[\"query\"]]"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/src/botsky/commands/registry.py",
+    "sha256": "8412c351085d9960f03e1ca2a3c9c9bf9c827349f23965a6fb083b8b34662733",
+    "anclas": [
+      {
+        "linea": 1089,
+        "texto": "def help(self, topic=\"\"):"
+      },
+      {
+        "linea": 1109,
+        "texto": "\"Permiso: \" + spec.permission + \"; implementación: \" + spec.block + \".\","
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/src/botsky/adapters/evolution.py",
+    "sha256": "93ef3e6d1fd2605d1ae46d947115663d97ef653efb11c351655cdfb099563ccc",
+    "anclas": [
+      {
+        "linea": 220,
+        "texto": "async def send(self, part):"
+      },
+      {
+        "linea": 274,
+        "texto": "\"fileName\": \"botsky.\" + fmt,"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/src/botsky/engines/downloads.py",
+    "sha256": "ca2606e04f48dea064c981d6cc7ef6b0ed618211181ce51bf729462bbdc5ff28",
+    "anclas": [
+      {
+        "linea": 92,
+        "texto": "class DownloadOption:"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/calls/service/avatar-renderer.mjs",
+    "sha256": "2f47eed7643d4679b37d551e0c03dfda34ac22e5e0c1f50294731283af074a6d",
+    "anclas": [
+      {
+        "linea": 178,
+        "texto": "status() { return { ready: !!vrm && !stopped, name: 'Zhana', background, expression, expressionCapabilities: vrm ? expressionCapabilities(vrm.expressionManager, vrm.scene) : [], appliedExpression, ...motion?.status(), gestureCapabilities: motion?.cap"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/calls/service/avatar-quality.mjs",
+    "sha256": "1f46c7d1942508e430a0a0e6525db463d7cace4f1faa4ebc8231e49416ca2b9b",
+    "anclas": [
+      {
+        "linea": 2,
+        "texto": "export const AVATAR_WIDTH = 384;"
+      },
+      {
+        "linea": 3,
+        "texto": "export const AVATAR_HEIGHT = 384;"
+      },
+      {
+        "linea": 4,
+        "texto": "export const VIDEO_WIDTH = 640;"
+      },
+      {
+        "linea": 5,
+        "texto": "export const VIDEO_HEIGHT = 360;"
+      },
+      {
+        "linea": 6,
+        "texto": "export const AVATAR_CAMERA_DISTANCE = 1.08;"
+      },
+      {
+        "linea": 7,
+        "texto": "export const AVATAR_FPS = 20;"
+      },
+      {
+        "linea": 8,
+        "texto": "export const AVATAR_FRAME_MS = 1000 / AVATAR_FPS;"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  },
+  {
+    "archivo": "/home/petrov/botsky/calls/service/video-bridge.cjs",
+    "sha256": "91a4b1d9f5bb6fc656d33cc66f95aa103ba9cedd33c00166ec2c32f16e4333a0",
+    "anclas": [
+      {
+        "linea": 22,
+        "texto": "if (recovering || (reconnecting && clip?.state === 'paused')) return 'Reconectando…';"
+      },
+      {
+        "linea": 23,
+        "texto": "return isSpeaking() ? '' : reconnecting ? 'Reconectando…' : '';"
+      },
+      {
+        "linea": 33,
+        "texto": "const label = reason === 'gemini' ? 'Pausado mientras hablo' : 'Pausado';"
+      },
+      {
+        "linea": 133,
+        "texto": "const pipWidth = portrait ? 108 : 140, pipHeight = portrait ? 192 : 140;"
+      },
+      {
+        "linea": 135,
+        "texto": "context.fillStyle = '#10142699'; context.fillRect(x - 4, y - 4, pipWidth + 8, pipHeight + 8);"
+      },
+      {
+        "linea": 136,
+        "texto": "context.drawImage(avatar.canvas, ...fit(avatar.canvas.width, avatar.canvas.height, x, y, pipWidth, pipHeight));"
+      }
+    ],
+    "alcance": "Referencia de presentación; no ejecución ni importación del runtime"
+  }
+]

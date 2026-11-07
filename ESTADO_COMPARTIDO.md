@@ -1,5 +1,25 @@
 # Relevo Botsky
 
+## 07/11 · Plan global visual UI/UX creado; V0 documental cerrado
+
+Encargo: recuperar calidad visual de Zhana en toda la experiencia. Plan en
+ docs/PLAN_MODERNIZACION_VISUAL_UI_UX.md, ocho fases V0–V7 con dependencias,
+contratos por las30herramientas más núcleo/adaptacionesAV,154rutas/32raíces
+inventariadas desde Registry. Matriz UI_UX_MATRIZ_RUTAS.csv conserva campos,
+permisos/efectos/confirmaciones y deja todas PENDIENTE_IMPLEMENTAR.28fuentes con
+SHA/anclas en evidencia/UI-UX-20261107; láminaSVG con6muestras sintéticas revisada.
+
+Prioridad V1 IDs/ayuda/presentador; V2collage1–6/metadatos/búsqueda y selección
+corta explícita; V3tabla nativa+outbox propia; V4organización/archivos;
+V5comunidad/operación; V6AV; V7revisión/despliegue. Incluye literalidad, nombres,
+captions, errores, TTL, varias vistas, citas de partes, tabla/entrega incierta,
+accesibilidad y compatibilidad real separadas. Zhana web_search no usa collage;
+search_media sí. TablaHTTP histórica no certifica render actual. Avatar propio
+aún devuelve etiquetaZhana, queda inventariada para revisar. No copiar NLP ni
+fuentesSoundCloud retiradas. Producción/código intactos; no pruebas remotas,
+envíos, llamadas ni perfiles. Validación documental/inventario, no suite de producto.
+Cuota39%/9%al01:34UTC; umbral5%vigente. V1–V7pendientes, no presentar plan como deploy.
+
 ## 07/11 · Investigación UI/UX y referencia Zhana
 
 Propietario confirma sticker recibido y pide mejorar presentación/investigarZhana.
