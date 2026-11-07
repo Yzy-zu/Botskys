@@ -334,3 +334,13 @@ observados del runtime Botsky y activación interpreter.enabled con reversión
 compatible. Mantener datos, servicios ajenos y propiedad exclusiva; no copiar
 perfiles activos, no inferir permiso de mensajes o llamadas de prueba. La salud
 no acredita recepción humana. Sin GitHub ni reanudación de campañas; cuota5h5%.
+
+## 07/11 · Comparación aislada de catálogo completo y compacto
+
+El propietario encargó testear la compactación manteniendo selección directa,
+modelo/cuenta configurados y155variantes. Autoriza nueva comparación A/B con
+fixtures/oracles propios,inferencias de propuestas sin ejecutar herramientas,
+medición de latencia/usage/errores y evidencia. No modifica ni despliega producción,
+no reabre campañas previas,no mensajes/llamadas ni cuentas/modelos alternativos.
+Parar ante cuota diaria del proveedor,sin reintentos/reanudación automática.
+Umbral5% de cinco horas Codex vigente.
