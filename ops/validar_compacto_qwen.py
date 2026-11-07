@@ -17,14 +17,16 @@ def freeze():
 async def run():
  os.umask(0o077);manifest=json.loads((OUT/'manifest.json').read_text());target=OUT/'acceptance.json'
  if target.exists():raise SystemExit('Already started; no automatic resumption')
- report={'status':'running','results':[],'account_alias':'cf04','backend_effects':0,'automatic_resume':False}
+ report={'status':'running','results':[],'account_alias':manifest.get('account_alias','cf04'),'backend_effects':0,'automatic_resume':False}
  responses=[]
  async def hook(response):
   await response.aread();body=response.json()
   responses.append({'http':response.status_code,'usage':body.get('usage'),'error_codes':[e.get('code') for e in body.get('errors',[])],'choices':[{'finish_reason':c.get('finish_reason'),'content':c.get('message',{}).get('content')} for c in body.get('choices',[])]})
  def save():target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
  async with httpx.AsyncClient(trust_env=False,event_hooks={'response':[hook]}) as http:
-  provider=CloudflareInterpreter(http,read_credentials(ROOT/'private/cloudflare-pool/cf04.json'),model=manifest['model'],reasoning_effort='low')
+  alias=manifest.get('account_alias','cf04')
+  if alias not in {f'cf{i:02d}' for i in range(1,11)}:raise ValueError('invalid_test_account')
+  provider=CloudflareInterpreter(http,read_credentials(ROOT/('private/cloudflare-pool/'+alias+'.json')),model=manifest['model'],reasoning_effort='low')
   service=FrontendService(provider);service.catalog.configure_downloads(SimpleNamespace(enabled=True,adult_sources_enabled=True));save()
   for case in manifest['cases']:
    t=time.monotonic();before=len(responses);row={'case':case['id']};print(json.dumps({**row,'status':'started'}),flush=True)

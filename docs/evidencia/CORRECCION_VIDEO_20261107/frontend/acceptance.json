@@ -1,0 +1,143 @@
+{
+  "status": "accepted_cases",
+  "results": [
+    {
+      "case": "video",
+      "passed": true,
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "source": "youtube",
+          "container": "mp4",
+          "query": "volcanes"
+        }
+      },
+      "seconds": 7.434,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17284,
+            "completion_tokens": 136,
+            "total_tokens": 17420,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 746.6363525390625
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"dl.buscar\",\"arguments\":{\"source\":\"youtube\",\"container\":\"mp4\",\"query\":\"volcanes\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "adult-explicit",
+      "passed": true,
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "source": "adult",
+          "container": "mp4",
+          "query": "contenido adulto"
+        }
+      },
+      "seconds": 6.988,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17284,
+            "completion_tokens": 209,
+            "total_tokens": 17493,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 767.8726806640625
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"dl.buscar\",\"arguments\":{\"source\":\"adult\",\"container\":\"mp4\",\"query\":\"contenido adulto\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "audio-explicit",
+      "passed": true,
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "source": "youtube",
+          "container": "mp3",
+          "query": "volcanes"
+        }
+      },
+      "seconds": 34.708,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17291,
+            "completion_tokens": 204,
+            "total_tokens": 17495,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 766.7045288085938
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"dl.buscar\",\"arguments\":{\"source\":\"youtube\",\"container\":\"mp3\",\"query\":\"volcanes\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "ambiguous",
+      "passed": true,
+      "decision": {
+        "question": "¿Qué tipo de contenido buscas con «maduras»? ¿Videos para adultos o algo más (por ejemplo, frutas maduras, recetas, etc.)?",
+        "action_key": null,
+        "partial_arguments": {},
+        "missing_fields": [],
+        "choices": []
+      },
+      "seconds": 6.116,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17281,
+            "completion_tokens": 133,
+            "total_tokens": 17414,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 745.640869140625
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"clarify\",\"question\":\"¿Qué tipo de contenido buscas con «maduras»? ¿Videos para adultos o algo más (por ejemplo, frutas maduras, recetas, etc.)?\"}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "account_alias": "cf06",
+  "backend_effects": 0,
+  "automatic_resume": false
+}

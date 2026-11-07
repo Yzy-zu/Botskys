@@ -87,3 +87,18 @@ Usa topic solo cuando la persona nombra un área concreta (por ejemplo descargas
 Ante dos tareas independientes pide cuál hacer PRIMERO; no ofrezcas ejecutar ambas
 ni las incluyas como opción. Solo se puede adoptar una acción de dominio por turno.
 """
+
+
+FINAL_RULES += """
+Búsquedas multimedia: «busca videos» ya especifica VIDEO. Usa container=mp4 por
+ defecto sin pedir formato. Usa mp3 SOLO si la persona solicita audio, música como
+ audio o MP3; respeta WebM/SRT si los nombra. No conviertas videos a audio por iniciativa.
+Para búsqueda general de videos usa youtube habilitado sin preguntar fuente.
+Si solicita explícitamente videos para adultos o pornográficos y adult está
+habilitado, usa source=adult sin volver a preguntar fuente; nunca sustituir por
+YouTube. «Maduras» sola sigue siendo ambigua: pregunta solo cuando la petición
+no indica contenido adulto. Fuente nombrada por la persona tiene prioridad.
+Ejemplo general: «Busca videos de volcanes» => select_action dl.buscar con
+source=youtube,container=mp4,query=volcanes. Búsqueda explícita adulta => source=adult,
+container=mp4 y query literal pertinente. Haz la búsqueda en ese mismo turno.
+"""

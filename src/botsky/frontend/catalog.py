@@ -57,6 +57,9 @@ def field_schema(f):
     if f.repeated:
         schema = {'type': 'array', 'items': schema, 'minItems': f.min_items,
                   'maxItems': f.max_items}
+    if f.name == 'container' and f.default == 'mp4':
+        schema['default'] = 'mp4'
+        schema['description'] += '; video MP4 por defecto; audio solo si se solicita'
     return schema
 
 
@@ -75,7 +78,9 @@ class Catalog:
 
     def fields(self, spec):
         return tuple(replace(f, required=True, default=None, choices=self.search_sources)
-                     if spec.operation == 'download_media.search' and f.name == 'source' else f
+                     if spec.operation == 'download_media.search' and f.name == 'source'
+                     else replace(f, required=False, default='mp4')
+                     if spec.operation == 'download_media.search' and f.name == 'container' else f
                      for f in native_fields(spec))
 
     def describe(self):

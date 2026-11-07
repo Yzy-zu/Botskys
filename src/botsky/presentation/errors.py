@@ -1,6 +1,10 @@
 """Microtexto de fallos desde códigos estables; diagnóstico conserva código aparte."""
 
 ERRORS = {
+    "source_access_denied": "La fuente rechazó el acceso a ese video. Prueba otro resultado.",
+    "source_client_unavailable": "El cliente de descarga no está disponible para esta fuente.",
+    "source_network_failed": "La conexión con la fuente falló al preparar el video. No se entregó un archivo nuevo.",
+    "source_failed": "No se pudo completar la descarga de ese video. No se entregó un archivo nuevo; prueba otro resultado.",
     "job_timeout": "La preparación superó el tiempo disponible. No se entregó un resultado nuevo.",
     "source_rate_limited": "La fuente limitó las consultas. Espera antes de intentarlo de nuevo o usa otro enlace admitido.",
     "source_auth_required": "Ese contenido requiere acceso que Botsky no tiene. Usa otro enlace público admitido.",

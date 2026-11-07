@@ -84,8 +84,12 @@ async def fetch_thumbnail(url, source, *, client=None):
         ):
             return None
 
+        headers = ({'Referer': 'https://www.pornhub.com/', 'User-Agent': 'Mozilla/5.0'}
+                   if source == 'pornhub' else
+                   {'Referer': 'https://www.xnxx.com/', 'User-Agent': 'Mozilla/5.0'}
+                   if source == 'xnxx' else {})
         async def read(http):
-            async with http.stream("GET", url, timeout=5, follow_redirects=False) as response:
+            async with http.stream("GET", url, timeout=5, follow_redirects=False, headers=headers) as response:
                 if response.status_code != 200:
                     return None
                 raw = bytearray()

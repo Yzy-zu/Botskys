@@ -384,6 +384,20 @@ def social_failure_code(stderr: bytes) -> str:
     return "source_failed"
 
 
+def adult_failure_code(stderr: bytes) -> str:
+    """Content-free extractor diagnostics; never return URLs, titles or output."""
+    text = stderr.decode('utf-8', errors='replace').casefold()
+    if 'http error 403' in text or '403 forbidden' in text:
+        return 'source_access_denied'
+    if 'http error 404' in text or 'video has been removed' in text:
+        return 'source_content_unavailable'
+    if 'impersonat' in text and ('not available' in text or 'unavailable' in text):
+        return 'source_client_unavailable'
+    if any(marker in text for marker in ('unable to download', 'connection reset', 'connection refused', 'timed out', 'name resolution')):
+        return 'source_network_failed'
+    return youtube_failure_code(stderr)
+
+
 async def _bounded_network_process(
     args: list[str],
     workspace: Path,
@@ -1332,6 +1346,8 @@ class Downloader:
                                 if source_kind == "youtube"
                                 else social_failure_code
                                 if source_kind in SOCIAL_SOURCES
+                                else adult_failure_code
+                                if source_kind in ("pornhub", "xnxx")
                                 else None
                             ),
                             **({"timeout_seconds": 10_800} if options else {}),

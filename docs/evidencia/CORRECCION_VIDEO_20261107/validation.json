@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "local_tests": 56,
+  "qwen_cases_passed": 4,
+  "qwen_account": "cf06",
+  "source_sha256": {
+    "src/botsky/frontend/catalog.py": "fc561f8c28ab5d5922abf57d1390b204f386f6cded8c8b110d4624d85a842555",
+    "src/botsky/frontend/prompts.py": "f500ad31291161533827f18c670729f66a36e1e7774dfc681cbe695099d3f48e",
+    "src/botsky/engines/search_collage.py": "4741121b504be1b966ea1947bd8152c4b249faabb6a683d9ce90407cd4499219",
+    "src/botsky/engines/downloads.py": "03e22d510193818c3ebf226e021ce3de3b5c26e9f11a77ab861b17ef9faac825",
+    "src/botsky/presentation/errors.py": "7623701d4c8bf9491af269535f0a9e97df55de2642e1da5fb450b5874b4e64ac"
+  },
+  "historical_download_root_cause": "UNKNOWN",
+  "partial_extractor_success": true,
+  "full_download_tested": false,
+  "two_failed_thumbnails_fixed_and_decode": true
+}

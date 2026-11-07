@@ -1,0 +1,22 @@
+{
+  "partial_extractor_test": true,
+  "delivery": false,
+  "full_download": false,
+  "thumbnail_http": [
+    {
+      "number": 3,
+      "http": 403,
+      "redirect": false,
+      "content_type": "text/html"
+    },
+    {
+      "number": 5,
+      "http": 403,
+      "redirect": false,
+      "content_type": "text/html"
+    }
+  ],
+  "selected_format": "hls-1145",
+  "status": "partial_success",
+  "bytes_on_disk": 117277
+}

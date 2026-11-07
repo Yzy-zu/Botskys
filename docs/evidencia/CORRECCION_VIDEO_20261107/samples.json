@@ -1,0 +1,51 @@
+{
+  "bounded_samples": true,
+  "messages": 0,
+  "thumbnails": [
+    {
+      "number": 1,
+      "downloaded_bytes": 15424,
+      "decodes": true
+    },
+    {
+      "number": 2,
+      "downloaded_bytes": 34337,
+      "decodes": true
+    },
+    {
+      "number": 3,
+      "downloaded_bytes": 0,
+      "decodes": false
+    },
+    {
+      "number": 4,
+      "downloaded_bytes": 23076,
+      "decodes": true
+    },
+    {
+      "number": 5,
+      "downloaded_bytes": 0,
+      "decodes": false
+    },
+    {
+      "number": 6,
+      "downloaded_bytes": 40279,
+      "decodes": true
+    }
+  ],
+  "denied_hosts": [],
+  "samples": [
+    {
+      "protocol": "https",
+      "http": 206,
+      "bytes_observed_max": 823,
+      "content_type": "video/mp4"
+    },
+    {
+      "protocol": "m3u8_native",
+      "http": 206,
+      "bytes_observed_max": 316,
+      "content_type": "application/vnd.apple.mpegurl"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "scope": "new_video_defaults_proposals_only",
+  "account_alias": "cf06",
+  "model": "@cf/qwen/qwen3.8-27b",
+  "cases": [
+    {
+      "id": "video",
+      "message": "Busca videos de volcanes",
+      "context": {
+        "now": "2026-11-07T20:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "dl.buscar",
+        "arguments": {
+          "container": "mp4",
+          "source": "youtube",
+          "query": "volcanes"
+        }
+      }
+    },
+    {
+      "id": "adult-explicit",
+      "message": "Busca videos de contenido adulto",
+      "context": {
+        "now": "2026-11-07T20:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "dl.buscar",
+        "arguments": {
+          "container": "mp4",
+          "source": "adult"
+        }
+      }
+    },
+    {
+      "id": "audio-explicit",
+      "message": "Busca videos de volcanes pero pásamelos en MP3",
+      "context": {
+        "now": "2026-11-07T20:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "dl.buscar",
+        "arguments": {
+          "container": "mp3",
+          "source": "youtube"
+        }
+      }
+    },
+    {
+      "id": "ambiguous",
+      "message": "Busca maduras",
+      "context": {
+        "now": "2026-11-07T20:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "clarify",
+        "arguments": {}
+      }
+    }
+  ],
+  "max_requests": 4,
+  "backend_effects": 0,
+  "automatic_resume": false
+}

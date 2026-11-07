@@ -1,0 +1,119 @@
+{
+  "metadata_only": true,
+  "video_downloaded": false,
+  "messages": 0,
+  "thumbnail_metadata": [
+    {
+      "number": 1,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "pornhub"
+    },
+    {
+      "number": 2,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "xnxx"
+    },
+    {
+      "number": 3,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "pornhub"
+    },
+    {
+      "number": 4,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "xnxx"
+    },
+    {
+      "number": 5,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "pornhub"
+    },
+    {
+      "number": 6,
+      "present": true,
+      "scheme": "https",
+      "host_allowed": true,
+      "source": "xnxx"
+    }
+  ],
+  "metadata": {
+    "success": true,
+    "duration": 576,
+    "formats": [
+      {
+        "id": "240p",
+        "protocol": "https",
+        "height": 240,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "hls-467",
+        "protocol": "m3u8_native",
+        "height": 240,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "480p",
+        "protocol": "https",
+        "height": 480,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "hls-1145",
+        "protocol": "m3u8_native",
+        "height": 480,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "720p",
+        "protocol": "https",
+        "height": 720,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "hls-2119",
+        "protocol": "m3u8_native",
+        "height": 720,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "1080p",
+        "protocol": "https",
+        "height": 1080,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      },
+      {
+        "id": "hls-3915",
+        "protocol": "m3u8_native",
+        "height": 1080,
+        "has_audio": true,
+        "url_https": true,
+        "host_allowed": true
+      }
+    ]
+  }
+}

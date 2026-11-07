@@ -406,3 +406,14 @@ entre procesos. Continuación de la configuración/despliegue propios autorizado
 pruebas locales con dobles y procesos propios, sin inferencias reales ni entregas.
 Respaldo consistente y despliegue reversible del runtime, conservando catálogo
 íntegro,cinco cuentas,cuotas y servicios ajenos. No reabrir campañas históricas.
+
+## 07/11 · Corrección de búsqueda de videos y diagnóstico de descarga
+
+El propietario encargó investigar la descarga fallida y corregir preguntas de
+fuente/formato innecesarias y miniaturas. Video explícito usaMP4por defecto;audio
+solo si se pide,fuente adulta explícita habilitada sin otra aclaración. Autoriza
+metadatos y muestras acotadas del recurso fallido y miniaturas,sin entrega ni
+sesiones/cookies;prueba parcial propia del extractor,no descarga completa.
+Pruebas nuevas de propuestas Qwen con cf06,dobles locales y despliegue reversible
+propio con respaldo. Mantener límites/allowlists,ambigüedad real yfuentes adultas
+habilitadas explícitamente. No fingir causa histórica ni éxito de descarga completa.
