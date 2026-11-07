@@ -325,3 +325,12 @@ y la sintaxis obligatoria para esta remodelación. No recupera el clasificador a
 F8 conserva su requisito expreso de encargo de despliegue; no modificar servicios
 por inferencia del encargo de implementación. Mantener históricos, datos propios,
 secretos privados y exclusiones de GitHub. Cuota de cinco horas: guardar/parar al5%.
+
+## 07/11 · F8 despliegue y activación expresamente encargados
+
+El propietario encargó respaldo/instalación y aclaró «desplegarlo ya, todo activo».
+Autoriza F8 completo: respaldo consistente propio, migración20, parada/arranque
+observados del runtime Botsky y activación interpreter.enabled con reversión
+compatible. Mantener datos, servicios ajenos y propiedad exclusiva; no copiar
+perfiles activos, no inferir permiso de mensajes o llamadas de prueba. La salud
+no acredita recepción humana. Sin GitHub ni reanudación de campañas; cuota5h5%.
