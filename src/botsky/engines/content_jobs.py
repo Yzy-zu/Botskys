@@ -159,10 +159,16 @@ async def execute(job, directory, paths, manager, gemini, tts, asr):
                     {"purpose": "answer", "qr_readings": qr_readings},
                 )
             )
+        analysis_text = text
         if verified:
             text = verified + "\n\nAnálisis de IA:\n" + text
         return EngineOutput(
-            Result("ok", "ai_reply", text, {"purpose": "answer", "qr_readings": qr_readings})
+            Result(
+                "ok",
+                "ai_reply",
+                text,
+                {"purpose": "answer", "qr_readings": qr_readings, "analysis_text": analysis_text},
+            )
         )
     if operation.startswith("make_voice."):
         if tts is None:
@@ -222,7 +228,7 @@ async def execute(job, directory, paths, manager, gemini, tts, asr):
                     "summary_unavailable",
                     (transcript + "\n\n" if mode == "ambos" else "")
                     + "La transcripción se completó, pero el resumen no está disponible.",
-                    {"transcript": transcript},
+                    {"transcript": transcript, "output_mode": mode},
                 )
             )
         return EngineOutput(
@@ -230,7 +236,7 @@ async def execute(job, directory, paths, manager, gemini, tts, asr):
                 "ok",
                 "transcript_summary_ready",
                 (transcript + "\n\nResumen:\n" if mode == "ambos" else "") + summary,
-                {"transcript": transcript, "summary": summary},
+                {"transcript": transcript, "summary": summary, "output_mode": mode},
             )
         )
     raise MediaError("content_operation_unavailable")

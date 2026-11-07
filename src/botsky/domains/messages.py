@@ -173,7 +173,17 @@ def execute(db, context, spec, command, now, app):
             "needs_input",
             "message_preview",
             preview + f"\nCaduca en 5 minutos. Para enviarlo:\n/recado enviar {identifier}",
-            {"draft_id": identifier, "artifact_id": artifact["id"] if artifact else None},
+            {
+                "draft_id": identifier,
+                "artifact_id": artifact["id"] if artifact else None,
+                "recipients": [contact.name for contact in selected],
+                "content": content,
+                "attachment": {"format": artifact["format"], "bytes": artifact["size"]}
+                if artifact
+                else None,
+                "expires_ms": now + TTL,
+                "presented_ms": now,
+            },
         )
     draft = db.execute(
         f"SELECT * FROM message_drafts WHERE id=? AND {SCOPE_SQL}",

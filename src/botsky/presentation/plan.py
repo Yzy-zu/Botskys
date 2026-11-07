@@ -182,4 +182,31 @@ def compile_result(result, retain, *, native_tables=False):
         Part("media", payload={"artifacts": [identifier]})
         for identifier in data.get("artifacts", ())
     ]
+    caption_codes = {
+        "document_converted",
+        "media_edited",
+        "download_ready",
+        "pdf_assembled",
+        "pdf_extracted",
+        "drive_downloaded",
+        "task_attachment",
+    }
+    if (
+        result.code in caption_codes
+        and len(media) == 1
+        and len(parts) == 1
+        and parts[0].kind == "text"
+        and units(parts[0].text) <= 900
+    ):
+        return [
+            Part(
+                "media",
+                payload={
+                    **media[0].payload,
+                    "caption": parts[0].text,
+                    "source_text": parts[0].payload.get("source_text", result.text),
+                    "caption_frozen": True,
+                },
+            )
+        ]
     return media + parts if data.get("media_first") else parts + media

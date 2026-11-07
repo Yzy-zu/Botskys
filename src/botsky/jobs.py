@@ -456,6 +456,15 @@ class Jobs:
                         receipt_id=job["id"],
                     )
                 )
+            if result.data.get("file_facts"):
+                from dataclasses import replace
+
+                facts = [
+                    {**fact, "format": staged[index].format}
+                    for index, fact in enumerate(result.data["file_facts"])
+                    if index < len(staged)
+                ]
+                result = replace(result, data={**result.data, "file_facts": facts})
             if ids:
                 result = Result(
                     result.status, result.code, result.text, {**result.data, "artifacts": ids}
@@ -578,7 +587,13 @@ class Jobs:
                     with self.store.transaction() as db:
                         cancel_job(db, job["context"], job["id"])
                     return
-                task = asyncio.create_task(self.execute_engine(job, directory))
+
+                async def execute_with_facts():
+                    from .engines.output_facts import enrich
+
+                    return await enrich(await self.execute_engine(job, directory))
+
+                task = asyncio.create_task(execute_with_facts())
                 async with asyncio.timeout(job["budget"]):
                     while not task.done():
                         await asyncio.wait([task], timeout=0.05)
@@ -608,6 +623,7 @@ class Jobs:
             if isinstance(exc, TimeoutError):
                 code = "job_timeout"
             from .engines.documents import present_document_error
+            from .presentation.errors import job_error
 
             message = (
                 present_document_error(code)
@@ -621,7 +637,7 @@ class Jobs:
                         "unsupported_conversion",
                     )
                 )
-                else "No pude completar el archivo. Código: " + code
+                else job_error(code, job["operation"])
             )
             self.finish(
                 job,
@@ -961,7 +977,7 @@ class Jobs:
                     "ok" if text else "empty",
                     "image_read" if text else "image_empty",
                     text or "No encontré contenido extraíble.",
-                    data,
+                    {**data, "mode": args["mode"]},
                 )
             )
         if op == "manage_pdf.finish":

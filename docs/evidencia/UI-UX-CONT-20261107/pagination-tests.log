@@ -1,0 +1,7 @@
+test_memory_and_closed_lists_keep_explicit_filters_on_next_page (test_pagination_presentation.PaginationPresentationTest.test_memory_and_closed_lists_keep_explicit_filters_on_next_page) ... ok
+test_note_filter_is_explicit_even_after_a_different_delivered_search (test_pagination_presentation.PaginationPresentationTest.test_note_filter_is_explicit_even_after_a_different_delivered_search) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.273s
+
+OK

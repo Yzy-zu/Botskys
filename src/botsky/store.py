@@ -312,15 +312,16 @@ class Store:
                     }.get(result.code, "Botsky")
                 )
                 payload["name"] = filename(name, extension)
-                payload["caption"] = (
-                    ""
-                    if result.code in ("sticker_created", "reaction_ready", "voice_ready")
-                    else f"Videos · {len(result.data['choices'])} opciones. Fichas y selección en el mensaje siguiente."
-                    if result.code == "download_choices"
-                    else result.text
-                    if len(result.text) <= 900
-                    else result.text[:880] + "… [vista previa]"
-                )
+                if not payload.get("caption_frozen"):
+                    payload["caption"] = (
+                        ""
+                        if result.code in ("sticker_created", "reaction_ready", "voice_ready")
+                        else f"Videos · {len(result.data['choices'])} opciones. Fichas y selección en el mensaje siguiente."
+                        if result.code == "download_choices"
+                        else result.text
+                        if len(result.text) <= 900
+                        else result.text[:880] + "… [vista previa]"
+                    )
         for position, (kind, fragment, payload) in enumerate(parts):
             identifiers = payload.get("artifacts", [])
             frozen = canonical(

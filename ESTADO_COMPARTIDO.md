@@ -1,5 +1,15 @@
 # Relevo Botsky
 
+## 07/11 · V4 continuidad/ficheros/recados y fuentes verificadas localmente
+
+Paginaciónconservafiltrosmemoria/cerradas/notas explícitas;2oraclesSQLitePASS.
+Metadatosmedidosenoutputpropio bajoJob:bytes/PDFpages/XLSXsheets/PPTXslides/ZIP
+files/dimensiones/duración;formatoverdaderodestaged. Captioncortoarchivoúnico
+conadvertencias;PDFimagen avisaOCRausente.2testsPDF/stickerPASS,16media/15integración
+PASS;primerosfallosfixtureordinal y avisoimagenregistrados/corregidos. Recadopreview
+conbloquesliterales,QRverificadoseparado/OCRtruncado/transcripciónvsresumen.
+UI-UX-CONT-20261107/V4.md. Nodeploynuevo;V5/V6ycatálogo155rutas/V7siguen.
+
 ## 07/11 · V2detalle/miniautras y V3recuperación verificados localmente
 
 /dl detalle [REFERENCIA_LISTA] NUMEROofrece título/autoríntegrosdesdevistapropia

@@ -89,7 +89,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, result = await self.convert("/qr", qr)
         self.assertEqual(result.text, "SYNTHETIC:BOTSKY-2026")
         transport = CollectingTransport()
-        self.assertEqual(self.app.deliver(receipt.id, transport), 2)
+        self.assertEqual(self.app.deliver(receipt.id, transport), 1)
         self.assertEqual(
             transport.parts[-1].artifacts, (self.result(receipt.id).data["artifacts"][0],)
         )
@@ -279,7 +279,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         transport = CollectingTransport()
         self.app.deliver(receipt.id, transport)
         quote = transport.parts[-1].receipt_id
-        provider_id = "local-" + quote + "-1"
+        provider_id = "local-" + quote + "-" + str(transport.parts[-1].position)
         request = self.app.receive(self.incoming("/pdf extraer 1", quoted_message_id=provider_id))
         self.assertEqual(request.result.code, "job_queued")
         await self.app.jobs.run_pending()
@@ -379,7 +379,7 @@ class MediaTest(IsolatedAsyncioTestCase):
             "confirmation_unavailable",
         )
         transport = CollectingTransport()
-        self.assertEqual(self.app.deliver(receipt.id, transport), 2)
+        self.assertEqual(self.app.deliver(receipt.id, transport), 1)
         self.assertEqual(len(self.rows("SELECT * FROM jobs")), 1)
         self.assertEqual(await self.app.jobs.run_pending(), 0)
         self.assertEqual(self.result(receipt.id).data["artifacts"], result.data["artifacts"])
@@ -408,7 +408,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         self.assertEqual(
             self.app.receive(self.incoming(command)).result.code, "no_retryable_delivery"
         )
-        self.assertEqual(self.app.deliver(receipt.id, CollectingTransport()), 2)
+        self.assertEqual(self.app.deliver(receipt.id, CollectingTransport()), 1)
         self.assertEqual(self.result(receipt.id).data["artifacts"], result.data["artifacts"])
         self.assertEqual(len(self.rows("SELECT * FROM jobs")), 1)
         self.assertEqual(await self.app.jobs.run_pending(), 0)

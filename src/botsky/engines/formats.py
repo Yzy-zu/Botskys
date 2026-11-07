@@ -158,6 +158,8 @@ def conversion_notice(source: str, target: str, actual_suffix: str = "") -> str:
             notices.append("Cada hoja está en un CSV dentro del ZIP.")
     if target == "txt" and source in ("xlsx", "xls", "ods"):
         notices.append("Las fórmulas usan el valor guardado, si existe.")
+    if target == "pdf" and source in ("png", "jpg", "webp", "tiff"):
+        notices.append("Las páginas conservan la imagen; no se añadió OCR ni texto editable.")
     if target in ("jpg", "pdf") and source in ("png", "webp", "tiff"):
         notices.append("La transparencia se reemplaza por fondo blanco.")
     if source == "pdf" and target in ("png", "jpg") and actual_suffix.lstrip(".") == "zip":

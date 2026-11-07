@@ -101,6 +101,42 @@ def tabular(result, title, headers, rows, *, intro="", footer=""):
 
 def present(result, *, zone="America/Mexico_City"):
     data, code = result.data, result.code
+    file_titles = {
+        "document_converted": "Documento convertido",
+        "media_edited": "Audio o video convertido",
+        "download_ready": "Descarga preparada",
+        "pdf_assembled": "PDF terminado",
+        "pdf_extracted": "Páginas extraídas",
+        "drive_downloaded": "Archivo de Drive",
+        "task_attachment": "Archivo de tarea",
+    }
+    if code in file_titles and data.get("artifacts"):
+        blocks = [Block("heading", file_titles[code])]
+        name = data.get("title") or data.get("name")
+        if name:
+            blocks.append(Block("literal", name))
+        for index, facts in enumerate(data.get("file_facts", ()), 1):
+            lines = [
+                f"Formato final: {facts.get('extension', 'desconocido').upper()}",
+                size(facts.get("bytes")),
+            ]
+            for field, label in (
+                ("pages", "Páginas"),
+                ("sheets", "Hojas"),
+                ("slides", "Diapositivas"),
+                ("files", "Archivos"),
+            ):
+                if type(facts.get(field)) is int:
+                    lines.append(f"{label}: {facts[field]}")
+            if facts.get("duration_seconds"):
+                from .search import duration
+
+                lines.append("Duración: " + duration(facts["duration_seconds"]))
+            if facts.get("status") == "unavailable" or facts.get("pages_status"):
+                lines.append("No se pudieron medir todos los metadatos.")
+            blocks.append(Block("paragraph", " · ".join(lines)))
+        blocks.append(Block("notice", result.text))
+        return attach_document(result, Document(tuple(blocks)))
     if code == "organization_list" and data.get("list_kind") in (
         "reminders",
         "school_tasks",
@@ -115,6 +151,11 @@ def present(result, *, zone="America/Mexico_City"):
                 "school_tasks": "/tareas",
             }
             footer += "\n" + commands[data["list_kind"]] + f" --pagina {data['page'] + 1}"
+            filters = data.get("filters", {})
+            if filters.get("include_closed"):
+                footer += " --cerradas"
+            if filters.get("kind"):
+                footer += " --tipo " + filters["kind"]
         if data.get("list_kind") == "reminders":
             return tabular(
                 result,
@@ -228,15 +269,81 @@ def present(result, *, zone="America/Mexico_City"):
             Block("paragraph", f"{data['total']} notas · Página {data['page']}/{data['pages']}"),
         ]
         for row in rows:
-            blocks.extend((Block("paragraph", f"Nota {row['id']}"), Block("literal", row["text"])))
+            blocks.extend(
+                (
+                    Block(
+                        "paragraph",
+                        f"Nota {row['id']}"
+                        + (
+                            (" · " + date_time(row["created_ms"], zone))
+                            if "created_ms" in row
+                            else ""
+                        ),
+                    ),
+                    Block("literal", row["text"]),
+                )
+            )
         if data["page"] < data["pages"]:
-            blocks.append(Block("next_action", f"/notas --pagina {data['page'] + 1}"))
+            command = f"/notas --pagina {data['page'] + 1}"
+            if data.get("query"):
+                command += " -- " + data["query"]
+            blocks.append(Block("next_action", command))
+        return attach_document(result, Document(tuple(blocks)))
+    if data.get("qr_readings") and (code == "ai_reply" or result.status == "failed"):
+        blocks = []
+        for reading in data["qr_readings"]:
+            if reading["status"] == "decoded":
+                blocks.extend(
+                    (
+                        Block(
+                            "heading", f"Contenido QR verificado · archivo {reading['attachment']}"
+                        ),
+                        Block("literal", reading["text"]),
+                    )
+                )
+                if reading.get("truncated"):
+                    blocks.append(Block("notice", "Lectura truncada por límite de tamaño."))
+            elif reading["status"] == "unavailable":
+                blocks.append(
+                    Block(
+                        "notice", f"No se pudo verificar el QR del archivo {reading['attachment']}."
+                    )
+                )
+        blocks.append(Block("heading", "Análisis de IA"))
+        blocks.append(
+            Block("paragraph", data.get("analysis_text", "El análisis de IA no está disponible."))
+        )
+        return attach_document(result, Document(tuple(blocks)))
+    if code in ("transcript_summary_ready", "summary_unavailable") and "output_mode" in data:
+        blocks = []
+        if data["output_mode"] == "ambos":
+            blocks.extend(
+                (Block("heading", "Transcripción literal"), Block("literal", data["transcript"]))
+            )
+        if code == "transcript_summary_ready":
+            blocks.extend(
+                (Block("heading", "Resumen generado"), Block("paragraph", data["summary"]))
+            )
+        else:
+            blocks.append(
+                Block("notice", "La transcripción se completó, pero el resumen no está disponible.")
+            )
         return attach_document(result, Document(tuple(blocks)))
     if code in ("image_read", "transcript_ready"):
-        label = "Lectura de imagen" if code == "image_read" else "Transcripción literal"
-        return attach_document(
-            result, Document((Block("heading", label), Block("literal", result.text)))
+        label = (
+            ("Contenido QR" if data.get("mode") == "qr" else "Texto de imagen (OCR)")
+            if code == "image_read"
+            else "Transcripción literal"
         )
+        blocks = [Block("heading", label), Block("literal", result.text)]
+        if data.get("truncated"):
+            blocks.append(
+                Block(
+                    "notice",
+                    "Lectura truncada por límite de tamaño. El archivo original conserva el contenido restante.",
+                )
+            )
+        return attach_document(result, Document(tuple(blocks)))
     if code == "xp_top":
         return tabular(
             result,
@@ -271,6 +378,35 @@ def present(result, *, zone="America/Mexico_City"):
         return replace(
             result, text=result.text + "\nPróximo daily: " + date_time(data["retry_at_ms"], zone)
         )
+    if code == "message_preview" and "content" in data:
+        blocks = [
+            Block("heading", "Vista previa del recado"),
+            Block("paragraph", "Destinatarios verificados:"),
+        ]
+        blocks.extend(Block("literal", name) for name in data["recipients"])
+        blocks.extend(
+            (Block("paragraph", "Texto que se enviará:"), Block("literal", data["content"]))
+        )
+        if data.get("attachment"):
+            blocks.append(
+                Block(
+                    "paragraph",
+                    "Adjunto: "
+                    + data["attachment"]["format"].upper()
+                    + " · "
+                    + size(data["attachment"]["bytes"]),
+                )
+            )
+        blocks.append(
+            Block(
+                "notice",
+                "Vence: "
+                + date_time(data["expires_ms"], zone)
+                + ". Al confirmar se enviará este contenido a los destinatarios mostrados.",
+            )
+        )
+        blocks.append(Block("next_action", "/recado enviar " + data["draft_id"]))
+        return attach_document(result, Document(tuple(blocks)))
     if code == "message_status":
         lines = [STATES.get(data["state"], data["state"])]
         lines += [

@@ -1,0 +1,29 @@
+test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part (test_file_presentation.FilePresentationTest.test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part) ... FAIL
+test_sticker_success_has_no_redundant_text_or_document_conversion (test_file_presentation.FilePresentationTest.test_sticker_success_has_no_redundant_text_or_document_conversion) ... ok
+
+======================================================================
+FAIL: test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part (test_file_presentation.FilePresentationTest.test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/petrov/botsky/tests/test_file_presentation.py", line 30, in test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part
+    self.assertIn("imagen", part.payload["caption"].lower())
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'imagen' not found in '*documento convertido*\n\nformato final: pdf · 10.42 kib (10674 bytes) · páginas: 1\n\nconversión lista. la transparencia se reemplaza por fondo blanco.'
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.243s
+
+FAILED (failures=1)
+test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part (test_file_presentation.FilePresentationTest.test_real_pdf_has_measured_page_size_and_single_immutable_captioned_part) ... ok
+test_sticker_success_has_no_redundant_text_or_document_conversion (test_file_presentation.FilePresentationTest.test_sticker_success_has_no_redundant_text_or_document_conversion) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.138s
+
+OK

@@ -47,7 +47,7 @@ def find(db, context, args, now):
             "needs_input", "note_page_out_of_range", f"Página fuera de rango: 1–{pages}.", data
         )
     rows = db.execute(
-        "SELECT id,text FROM notes WHERE " + where + " ORDER BY id LIMIT ? OFFSET ?",
+        "SELECT id,text,created_ms FROM notes WHERE " + where + " ORDER BY id LIMIT ? OFFSET ?",
         (*params, PAGE_SIZE, (page - 1) * PAGE_SIZE),
     ).fetchall()
     data["items"] = [dict(row) for row in rows]

@@ -1,0 +1,6 @@
+Executing <Task pending name='Task-140' coro=<MediaTest.test_multiple_sheet_csv_keeps_sheets_and_neutralizes_formula_text() running at /home/petrov/botsky/tests/test_media.py:202> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.105 seconds
+Executing <Task pending name='Task-155' coro=<MediaTest.test_nineteen_document_targets_have_real_output_of_the_declared_format() running at /home/petrov/botsky/tests/test_media.py:564> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at /usr/lib/python3.14/asyncio/tasks.py:991, Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.143 seconds
+----------------------------------------------------------------------
+Ran 16 tests in 34.552s
+
+OK

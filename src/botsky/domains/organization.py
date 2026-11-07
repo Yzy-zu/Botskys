@@ -56,7 +56,7 @@ def future_ms(day, clock, now, *, date_only=False):
         ) from None
 
 
-def paginate(db, table, where, params, page, *, order="id"):
+def paginate(db, table, where, params, page, *, order="id", filters=None):
     total = db.execute(f"SELECT count(*) FROM {table} WHERE " + where, params).fetchone()[0]
     pages = max(1, (total + 19) // 20)
     if page > pages:
@@ -94,7 +94,14 @@ def paginate(db, table, where, params, page, *, order="id"):
         "ok" if rows else "empty",
         "organization_list",
         rendered,
-        {"items": rows, "page": page, "pages": pages, "total": total, "list_kind": table},
+        {
+            "items": rows,
+            "page": page,
+            "pages": pages,
+            "total": total,
+            "list_kind": table,
+            "filters": filters or {},
+        },
     )
 
 
@@ -130,7 +137,9 @@ def memory(db, context, action, args, now):
         if args.get("kind"):
             where += " AND kind=?"
             params.append(args["kind"])
-        return paginate(db, "memories", where, params, args["page"])
+        return paginate(
+            db, "memories", where, params, args["page"], filters={"kind": args.get("kind")}
+        )
     if action == "forget_all":
         rows = [
             dict(r)
@@ -272,6 +281,7 @@ def reminder(db, context, action, args, now):
             context.scope_key,
             args["page"],
             order="due_ms,id",
+            filters={"include_closed": args["include_closed"]},
         )
     row = db.execute(
         "SELECT * FROM reminders WHERE id=? AND " + SCOPE_SQL,
@@ -517,6 +527,7 @@ def school(db, context, spec, command, now, app):
             params,
             args["page"],
             order="due_date,id",
+            filters={"include_closed": args["include_closed"]},
         )
     if action in ("complete_task", "delete_task", "get_attachment"):
         own = action != "get_attachment"

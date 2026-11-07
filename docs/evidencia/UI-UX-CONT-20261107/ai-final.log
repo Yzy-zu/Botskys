@@ -1,0 +1,5 @@
+Executing <Task pending name='Task-2' coro=<AITest.test_analysis_forwards_presentation_and_malformed_json_content() running at /home/petrov/botsky/tests/test_ai.py:352> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.14/asyncio/base_events.py:181] created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.118 seconds
+----------------------------------------------------------------------
+Ran 17 tests in 6.752s
+
+OK
