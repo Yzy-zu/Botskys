@@ -402,11 +402,15 @@ async def run(job, directory, manager):
                 for c in clips
             ):
                 raise CallsError("invalid_provider_result")
-            safe = [{"id": c["id"], "name": c["label"][:120]} for c in clips]
+            safe = [{"id": c["id"], "name": c["label"]} for c in clips]
             text = (
                 "Catálogo vacío."
                 if not safe
-                else "Clips disponibles:\n" + "\n".join(c["id"] + " · " + c["name"] for c in safe)
+                else "Clips disponibles:\n\n"
+                + "\n\n".join(
+                    f"{index}. {c['name']}\n/clip poner {c['id']}"
+                    for index, c in enumerate(safe, 1)
+                )
             )
             return EngineOutput(Result("ok", "av_control_applied", text, {"clips": safe}))
         if op.startswith("audiovisual.avatar."):

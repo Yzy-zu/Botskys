@@ -1,5 +1,14 @@
 # Relevo Botsky
 
+## 07/11 · V6 primer corte audiovisual local
+
+MarcaBotskyenavatar/video/fallback; catálogo numerado y nombre completo, agenda
+fecha/zona/modo/duración/estado, estadochat humano sin afirmar escucha. PIP/
+resuming/ended/reconexión/fondodiferido revisadossinmodificarsupolítica.18Node
+localesPASS; PythonAVenproceso devalidación. UI-UX-V6-20261107. Sinbrowser/
+llamadas/envíos. V6EN_CURSOpor21rutas/framesreales/vozcliente, NO_PROBADO.
+SigueV7regresiónydeploydel subconjuntoverificado; plan completo aúnpendiente.
+
 ## 07/11 · V5 primer corte comunidad local
 
 Saldos/top/daily, blackjack manos/turno/pago bruto/neto, stockpacks, avancecoop/

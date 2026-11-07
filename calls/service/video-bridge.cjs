@@ -144,14 +144,14 @@ function installVideoBridge() {
           if (lastLayout === 'full' && lastAvatarFrame === state.frames && lastBackground === state.background && lastActivityLabel === label) return;
           frame++; lastLayout = 'full'; lastAvatarFrame = state.frames; lastBackground = state.background; lastActivityLabel = label;
           paintBackground(); context.drawImage(avatar.canvas, ...fit(avatar.canvas.width, avatar.canvas.height, 0, 0, width, height));
-          context.fillStyle = '#ffffffbb'; context.font = '18px sans-serif'; context.fillText('Zhana', 24, height - 26);
+          context.fillStyle = '#ffffffbb'; context.font = '18px sans-serif'; context.fillText('Botsky', 24, height - 26);
           paintActivity(label);
           return;
         }
         frame++; lastLayout = 'fallback';
         context.fillStyle = '#101b35'; context.fillRect(0, 0, width, height);
         context.fillStyle = '#f3efff'; context.font = 'bold 42px sans-serif';
-        context.fillText('Zhana', 40, 82);
+        context.fillText('Botsky', 40, 82);
         context.font = `${portrait ? 20 : 26}px sans-serif`;
         context.fillText('La imagen no está disponible', 40, 128);
         paintActivity(label);

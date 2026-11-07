@@ -175,7 +175,7 @@ globalThis.__botskyAvatarRenderer = {
         } else throw Error('AVATAR_ACTION_INVALID');
         return controller.status();
       },
-      status() { return { ready: !!vrm && !stopped, name: 'Zhana', background, expression, expressionCapabilities: vrm ? expressionCapabilities(vrm.expressionManager, vrm.scene) : [], appliedExpression, ...motion?.status(), gestureCapabilities: motion?.capabilities() || [], blushCapabilities: vrm ? [{ name: 'soft', supported: true, mode: 'procedural-overlay' }] : [], appliedBlush, mouth: Number(mouth.toFixed(3)), frames, renderMs: Math.round(renderedMs), animationMs: Math.round(animationMs), omittedTriangles, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles }; },
+      status() { return { ready: !!vrm && !stopped, name: 'Botsky', background, expression, expressionCapabilities: vrm ? expressionCapabilities(vrm.expressionManager, vrm.scene) : [], appliedExpression, ...motion?.status(), gestureCapabilities: motion?.capabilities() || [], blushCapabilities: vrm ? [{ name: 'soft', supported: true, mode: 'procedural-overlay' }] : [], appliedBlush, mouth: Number(mouth.toFixed(3)), frames, renderMs: Math.round(renderedMs), animationMs: Math.round(animationMs), omittedTriangles, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles }; },
       stop() {
         if (stopped) return; stopped = true;
         if (vrm) { VRMUtils.deepDispose(vrm.scene); scene.remove(vrm.scene); }

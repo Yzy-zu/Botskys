@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: V4 names, aliases and scoped choices never play ambiguous or missing clips
+ok 1 - V4 names, aliases and scoped choices never play ambiguous or missing clips
+  ---
+  duration_ms: 18.79844
+  ...
+# Subtest: V4 next/replay, real relative volume, idempotency and call changes preserve intent
+ok 2 - V4 next/replay, real relative volume, idempotency and call changes preserve intent
+  ---
+  duration_ms: 2.311654
+  ...
+# Subtest: V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+ok 3 - V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+  ---
+  duration_ms: 1.066487
+  ...
+# Subtest: N12b a later stop invalidates queued play commands before they reach the manager
+ok 4 - N12b a later stop invalidates queued play commands before they reach the manager
+  ---
+  duration_ms: 0.487803
+  ...
+# Subtest: N12b pause and stop reach a pending clip load before the browser queue is released
+ok 5 - N12b pause and stop reach a pending clip load before the browser queue is released
+  ---
+  duration_ms: 5.455875
+  ...
+# Subtest: N12b a manual pause can supersede a pending resume without waiting for play()
+ok 6 - N12b a manual pause can supersede a pending resume without waiting for play()
+  ---
+  duration_ms: 0.543484
+  ...
+# Subtest: N12b abort during pending clip load rejects promptly and stops late completion
+ok 7 - N12b abort during pending clip load rejects promptly and stops late completion
+  ---
+  duration_ms: 1.373689
+  ...
+# Subtest: N12b abort during pending resume rejects promptly and stops late completion
+ok 8 - N12b abort during pending resume rejects promptly and stops late completion
+  ---
+  duration_ms: 1.743611
+  ...
+# Subtest: N12b late aborted completion cannot stop a successor call
+ok 9 - N12b late aborted completion cannot stop a successor call
+  ---
+  duration_ms: 0.583164
+  ...
+# Subtest: N12b spoken pause bypasses a pending clip command while preserving call identity
+ok 10 - N12b spoken pause bypasses a pending clip command while preserving call identity
+  ---
+  duration_ms: 14.914695
+  ...
+# Subtest: N12b resume of an ended clip asks before replaying and sends no playback command
+ok 11 - N12b resume of an ended clip asks before replaying and sends no playback command
+  ---
+  duration_ms: 0.667845
+  ...
+# Subtest: N12b renderer replaces one crashed worker in the same canvas and fences late frames and controls
+ok 12 - N12b renderer replaces one crashed worker in the same canvas and fences late frames and controls
+  ---
+  duration_ms: 8.602415
+  ...
+# Subtest: N12b renderer stops retrying after the one recovery and exposes failure without losing the canvas
+ok 13 - N12b renderer stops retrying after the one recovery and exposes failure without losing the canvas
+  ---
+  duration_ms: 1.379969
+  ...
+# Subtest: N12b renderer watchdog bounds a silent worker and its stalled replacement
+ok 14 - N12b renderer watchdog bounds a silent worker and its stalled replacement
+  ---
+  duration_ms: 2.392456
+  ...
+# Subtest: N12b renderer hangup during recovery cannot resurrect a worker or frame
+ok 15 - N12b renderer hangup during recovery cannot resurrect a worker or frame
+  ---
+  duration_ms: 2.929619
+  ...
+# Subtest: N12b renderer failure before any frame rejects preparation after the bounded attempt
+ok 16 - N12b renderer failure before any frame rejects preparation after the bounded attempt
+  ---
+  duration_ms: 1.035407
+  ...
+# Subtest: N13a worker confirms an expression only after the compositor acknowledges its own frame
+ok 17 - N13a worker confirms an expression only after the compositor acknowledges its own frame
+  ---
+  duration_ms: 4.63663
+  ...
+# Subtest: N13a a cancelled queued expression is never applied and a cancelled in-flight frame is never confirmed
+ok 18 - N13a a cancelled queued expression is never applied and a cancelled in-flight frame is never confirmed
+  ---
+  duration_ms: 1.56281
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 378.836094

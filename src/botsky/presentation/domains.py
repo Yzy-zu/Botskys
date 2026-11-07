@@ -430,4 +430,60 @@ def present(result, *, zone="America/Mexico_City"):
                 rows,
                 footer="Detalles, advertencias y comandos verificados:\n" + result.text,
             )
+    if code in ("agenda_list", "agenda_create", "agenda_update", "agenda_cancel"):
+        schedules = data.get("schedules") if code == "agenda_list" else [data.get("schedule")]
+        if isinstance(schedules, list) and all(
+            isinstance(item, dict) and type(item.get("dueAt")) is int for item in schedules
+        ):
+            return tabular(
+                result,
+                "Agenda de llamadas",
+                ("Referencia", "Fecha", "Modo y duración", "Estado"),
+                [
+                    (
+                        item["id"],
+                        date_time(item["dueAt"], item.get("timeZone") or zone),
+                        (
+                            "En vivo"
+                            if item.get("live") is True
+                            else "Audio preparado"
+                            if item.get("live") is False
+                            else "Modo no informado"
+                        )
+                        + (
+                            " · " + str(item["maxSeconds"]) + " s"
+                            if type(item.get("maxSeconds")) is int
+                            else " · duración no informada"
+                        ),
+                        STATES.get(item["state"], item["state"]),
+                    )
+                    for item in schedules
+                ],
+                footer="La programación no acredita una llamada conectada ni recepción humana.",
+            )
+    if code == "call_status":
+        states = {
+            "preparing": "Preparando",
+            "dialing": "Marcando",
+            "ringing": "Esperando respuesta",
+            "connected": "Conectada según el servicio",
+            "ending": "Terminando",
+            "ended": "Terminada",
+            "failed": "No se pudo completar",
+            "interrupted": "Interrumpida",
+            "cancelled": "Cancelada",
+        }
+        call = data["call"]
+        return replace(
+            result,
+            text=Document(
+                (
+                    Block("heading", "Llamada"),
+                    Block("paragraph", states.get(call["state"], "Estado no reconocido")),
+                    Block(
+                        "notice", "Estado del servicio; no acredita escucha ni recepción humana."
+                    ),
+                )
+            ).text(),
+        )
     return result
