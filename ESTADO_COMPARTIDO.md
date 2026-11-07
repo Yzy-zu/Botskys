@@ -1,5 +1,15 @@
 # Relevo Botsky
 
+## 07/11 · Prueba Qwen local cancelada por el propietario
+
+Descargado Qwen3.5:2b (Q8_0); descarga 4b interrumpida. Primera inferencia 2b
+con catálogo completo, contexto32768 y un hilo CPU sin respuesta final observada;
+cero casos terminados, sin puntuación de calidad. Propietario canceló por latencia.
+Procesos propios de prueba/descarga/daemon detenidos, puerto11435 cerrado.
+Descargas conservadas en private/ollama-lab; no modelo local en producción.
+Producción online PID3842369 sin cambios. Evidencia CANCELLED.json impide reanudar
+runner --live; no continuar esta campaña automáticamente. Históricos intactos.
+
 ## 07/11 · Pool instalado, Qwen seleccionado, ambas cuotas agotadas
 
 Propietario proporcionó segundo token/AccountID yencargó pool. Datos propios0600,

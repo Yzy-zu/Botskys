@@ -72,6 +72,7 @@ async def guarded(awaitable):
 async def run(live,selected_model=None):
     manifest=json.loads((EVIDENCE/'manifest.json').read_text())
     if not live:print(json.dumps({'network_inference':False,'models':manifest['models'],'cases':len(manifest['cases'])}));return
+    if (EVIDENCE/'CANCELLED.json').exists():raise SystemExit('Campaña cancelada por el propietario; no reanudar.')
     models=[selected_model] if selected_model else manifest['models']
     os.umask(0o077)
     out=ROOT/'private'/('qwen-local-'+datetime.now(UTC).strftime('%Y%m%dT%H%M%S%fZ'));out.mkdir(mode=0o700)
