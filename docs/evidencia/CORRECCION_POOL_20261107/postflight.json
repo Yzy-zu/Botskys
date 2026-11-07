@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-11-07T20:19:10.528917+00:00",
+  "healthy_loaded_accounts": 5,
+  "credential_errors": {},
+  "blocked_credentials_count": 0,
+  "observed_quota_pauses_count": 2,
+  "network_requests": 0,
+  "model": "@cf/qwen/qwen3.8-27b"
+}

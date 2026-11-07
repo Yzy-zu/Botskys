@@ -1,5 +1,20 @@
 # Relevo Botsky
 
+## 07/11 · Correcciones del pool desplegadas
+
+Encargo expreso de corregir hallazgos. Credenciales dañadas activas se aíslan con
+diagnóstico poralias;disabled nolee secreto.401/403cuarentena persistente por
+fingerprintdecredencial;token renovado se reevalúa,sin limpiar cuota porcuenta.
+Fallo tardío tokenviejo no bloquea nuevo. Pausas se fusionan bajo flock+replace
+yconservan vencimiento mayor;prueba con dosprocesosreales. Registro protege nombres
+reservados de estado.54testslocales pasan. Sin inferencias ni envíos nuevos.
+Desplegado7e98bf0;PID3890974,healthruntime/callsready,perfil/Qwenlow/compacto/pool5
+sin cambios. Backup deploy-pool-recovery-20261107*,DB íntegra/esquema20/preservada
+mientrasparado;serviciosajenosmismosPID.5cuentas cargan,0incidenciaslocales,
+2pausasobservadascf01/cf02conservadas. No saldo real inferido.
+Informe docs/CORRECCION_POOL_20261107.md yevidencia separada;auditoría original
+conservada. Sin reanudación decampañas.
+
 ## 07/11 · Auditoría del pool, solo lectura y simulaciones
 
 Encargo auditar funcionamiento teórico.13tests locales pasan;7cuentas/70turnos

@@ -1,0 +1,57 @@
+{
+  "release": "pool_recovery",
+  "phase": "active_healthy",
+  "previous_commit": "0448e21",
+  "target_commit": "7e98bf0d20898d9112939776dd62c2fd68b4be40",
+  "messages": 0,
+  "calls": 0,
+  "inferences_during_deploy": 0,
+  "preflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "db_before": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend_tasks": 0
+  },
+  "profile_hash": "142b1a3212d36a75ed8ebf81d103869ed9f21ab5bd2178aa307df61ab2e3f74b",
+  "backup_verified": true,
+  "data_unchanged_while_stopped": true,
+  "pool_accounts": 5,
+  "compact_default": true,
+  "postflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "new_runtime_pid": 3890974,
+  "other_services_unchanged": true,
+  "profile_unchanged": true,
+  "db_after": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend_tasks": 0
+  },
+  "backup_hashes": {
+    "before.sqlite3-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "config.toml": "caa3b8928e8324e7947bec1704a2fd3e2c593ad32c83d93b89832607f012bfdc",
+    "integrations.production.json": "142b1a3212d36a75ed8ebf81d103869ed9f21ab5bd2178aa307df61ab2e3f74b",
+    "previous-code.tar": "5d027fec5d41ff0c88b4f6b3a3e35a3b0792dcf5fb898a4bbcc851582590f562",
+    "target-code.tar": "0ded95c64b5b451f6aba4be273c2e2aa440194cca03f616d5486c4d5dcfa43a4",
+    "before.sqlite3": "497c632de234ad3840c22f0e7115c086640c57d68b11ae56437a511144ff65c4",
+    "before.sqlite3-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "cloudflare-pool/cf01.json": "30161241d9c5b73bd10365f625a0af355a5e7ff662dd4cdc707653c2ce1fb5f2",
+    "cloudflare-pool/cf04.json": "accce228aee63639e94db178cb2f143033c9d45bd6880eace8904222638d69b4",
+    "cloudflare-pool/quota-state.json": "372282cb600e5098df59862d30d2ada893fb9768fa2a942acca39d8e28a382c0",
+    "cloudflare-pool/cf02.json": "28f25d82594a03d71cbed72a2ec3055c1ba107377de1d420b9f8e895e19587c7",
+    "cloudflare-pool/cf03.json": "618a0ace88f932ed88dd9d1cde8daed6b7aee375fdebfc17e284b4332b4c9628",
+    "cloudflare-pool/registry.json": "7d8ec36cf7b582fd19916b11863799af80a591439ad2c20b5ffe62415005f4cd",
+    "cloudflare-pool/cf05.json": "d2bade0c376da85c686592b700f70f2c218acc32e972155d9ec15a09ec65e838"
+  }
+}
