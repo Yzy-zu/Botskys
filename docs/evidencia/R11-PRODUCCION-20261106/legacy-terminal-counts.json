@@ -1,0 +1,20 @@
+{
+  "inbox": {
+    "accepted": 366,
+    "ignored": 629
+  },
+  "jobs": {
+    "completed": 83,
+    "failed": 19
+  },
+  "reminders": {
+    "cancelled": 1,
+    "sent": 3
+  },
+  "school_digest_deliveries": {},
+  "school_asset_deliveries": {},
+  "happy_jobs": {},
+  "rich_delivery_parts": {
+    "accepted": 17
+  }
+}

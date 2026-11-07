@@ -1,5 +1,7 @@
 # Procedimiento documental de transición y reversión
 
+**Estado posterior06/11:** el propietario dispensó R10 como gate y Botsky ya está en producción. [Corte R11, estado y reversión](R11_PRODUCCION_20261106.md). Se conservan los resultados y límites históricos siguientes; R10 no fue reclasificado como aceptación completa.
+
 Actualización06/11: propietario ya encargó R10/R11 y producción. Preflight,
 respaldo y cesión temporal AV en [R10_PRODUCCION_20261106.md](R10_PRODUCCION_20261106.md).
 El corte final no se ha ejecutado: R10 requiere todavía aceptación real pendiente.

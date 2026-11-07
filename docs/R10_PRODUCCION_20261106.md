@@ -1,5 +1,7 @@
 # R10 nueva aceptación y preparación de producción · 06/11
 
+**Estado posterior06/11:** el propietario dispensó R10 como gate y Botsky ya está en producción. [Corte R11, estado y reversión](R11_PRODUCCION_20261106.md). Se conservan los resultados y límites históricos siguientes; R10 no fue reclasificado como aceptación completa.
+
 El propietario encargó ejecutar R10/R11 y reemplazar Zhana por Botsky. El permiso
 está registrado en AGENTS.md. No se reanudaron campañas históricas. El propietario
 indicó después que no está disponible para comprobar Android o contestar llamadas.

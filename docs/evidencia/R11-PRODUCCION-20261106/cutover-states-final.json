@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-11-06T23:54:54.851773+00:00",
+  "r10GateWaivedByOwner": true,
+  "phase": "production_active_legacy_archived",
+  "legacyStopped": true,
+  "profileMoved": true,
+  "newRuntimeStarted": true,
+  "webhookAttempted": true,
+  "webhookVerified": true,
+  "committed": true,
+  "updatedAt": "2026-11-06T23:55:37.968856+00:00",
+  "activationAt": "2026-11-06T23:55:17.120641+00:00",
+  "webhookHttpStatus": 201,
+  "humanAcceptance": "NOT_TESTED"
+}

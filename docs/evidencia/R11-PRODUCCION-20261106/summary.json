@@ -1,0 +1,91 @@
+{
+  "at_ms": 1794009430049,
+  "deployed": true,
+  "r10GateWaived": true,
+  "R10": "PARTIAL_NOT_RELABELED",
+  "humanReception": "NOT_TESTED",
+  "activationAt": "2026-11-06T23:55:17.120641+00:00",
+  "checks": {
+    "runtimeReady": true,
+    "callsReady": true,
+    "noActiveCall": true,
+    "idleMediaReleased": true,
+    "webhookOwnsNewEndpoint": true,
+    "legacyAbsentFromPM2": true,
+    "productionOnline": true,
+    "noProductionRestart": true,
+    "unrelatedSupervisorsUnchanged": true,
+    "exclusiveProfileAtBotsky": true,
+    "dump.pm2ArchivedAbsent": true,
+    "dump.pm2.bakArchivedAbsent": true,
+    "finalProfileGzipCRC": true,
+    "realEvolutionToDeployedBridge": true
+  },
+  "capabilities": {
+    "scheduler": true,
+    "callNotices": true,
+    "callAgenda": true,
+    "incomingAutoAnswer": false,
+    "configuredGroups": 1,
+    "configuredFriends": 0,
+    "permissions": {
+      "version": 1,
+      "messages": {
+        "send": true,
+        "targets": 2
+      },
+      "drive": {
+        "read": true,
+        "write": true
+      },
+      "groups": {
+        "read": true,
+        "write": true,
+        "chats": 1
+      },
+      "minecraft": {
+        "read": true,
+        "write": true
+      },
+      "gallery": {
+        "enabled": true,
+        "send": true,
+        "chats": 2
+      },
+      "roulette": {
+        "chats": 1,
+        "allow_admins": false
+      },
+      "nuclear": {
+        "enabled": true,
+        "chats": 1
+      },
+      "delivery": {
+        "send": true,
+        "chats": 2
+      }
+    }
+  },
+  "activeSupervisors": [
+    {
+      "name": "botsky-production-runtime",
+      "pid": 3256051
+    },
+    {
+      "name": "botsky-production-webhook-bridge",
+      "pid": 3256052
+    }
+  ],
+  "callsMedia": {
+    "idleReleased": true,
+    "warnings": [],
+    "trackedProcesses": {
+      "bus": 1,
+      "display": 1,
+      "audio": 1,
+      "browser": 1
+    }
+  },
+  "activationNotice": "provider_accepted",
+  "automaticCampaignResume": false
+}

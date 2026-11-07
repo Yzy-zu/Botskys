@@ -1,5 +1,46 @@
 # Relevo Botsky
 
+## 06/11 · PRODUCCIÓN Botsky activa; Zhana archivada y recuperable
+
+Propietario dispensó explícitamente gateR10 y reiteró transición inmediata.
+AGENTS registra sustitución del requisito: R10 queda parcial/NOT_TESTED humano,
+no simular aceptación ni esperar permiso adicional. R11 ejecutado. Corte
+2026-11-06T23:55:17.120641Z/época1. Runtime funcional1e4dbe9; cierre documental posterior.
+
+ZhanaCore yCalls detenidos bajo estado observado sin trabajos/entregas/agendas/
+llamadas pendientes. BackupSQLite final integrity/FKok y perfil offline TAR/CRCgzip
+verificados, config/credenciales/PM2 privadas; archivo código+Git anterior preservado.
+Perfil cedido por rename offline a private/production/private/calls/profile-brave;
+no clonado activo. DB18 Botsky de usuario vacía al corte; ninguna migración deDB31,
+fixtures o recibos. Galería/avatar propios ya importados; tres álbumes/cero fotos.
+
+Producción private/production/config.toml + private/integrations.production.json.
+PM2botsky-production-runtime ybotsky-production-webhook-bridge online,0reinicios,
+ready núcleo yAV/cuenta exacta/sin llamada/medios ociosos liberados/sin warnings.
+Puente172.18.0.1:3000→127.0.0.1:18787; contenedorEvolution real health200 autenticado.
+Webhook cambiado porPOSTúnico tras relectura del original yGETconciliado exacto;
+proveedor sinCASatómico, no prometerlo. Zhana-dev/calls/observador retiradosPM2;
+dumpy.bak sin antiguos, PM2guardado. Otros supervisores conservanPID. Código/DB31/
+Zhana siguen en sitio, marcados archivados. Sin cambiofirewall ni serviciosajenos.
+
+Permisos productivos para ámbitos explícitos existentes(dueño/Lab/contactos),
+Drive/grupos/MC/galería/recados/ruleta/nuclear habilitados según intención operativa
+previa; no efectos por habilitar. Guardias dueño/roles/consentimiento/preview y
+confirmaciones intactas. Scheduler/avisos/agenda activos sobre datos nuevos;
+llamadas salientes/Live ygrupoLab configurados; entrantes automáticasfalse.
+Gemini contenido exclusivamente; sinNLP. Avisoúnico alBotskyLabverificado aceptado
+porproveedor; nolecturahumana ni llamada. No reanudar campañas históricas.
+
+Informe docs/R11_PRODUCCION_20261106.md y evidencia R11-PRODUCCION-20261106. Privados
+backup/recibos/state en private/r11-cutover-20261106. Reversión documentada deliberada:
+pararBotsky, conciliarefectos, preservarDBactual, cederperfil offline, reponerwebhook
+observado porreferenciaprivada, actualizarcutoffZhana yarrancarúnicodueño; noreponerDB
+antigua sobre efectos nuevos. No ejecutar procedimientos de evidencia por leerlos.
+Android/entradaauténtica/escucha-video yparticipantes elegibles mantienenNOT_TESTED;
+no bloquean este corte por dispensa explícita. Cuota53%/59% restante23:57UTC;
+umbral5%vigente. SinGitHub, DB31importado, NLP ni perfiles duplicados activos.
+
+
 ## 06/11 · R10/R11 encargados: pruebas nuevas PASS, corte final pendiente
 
 Propietario ordenó desplegar Botsky, ejecutar R10/R11 y archivar Zhana recuperable;

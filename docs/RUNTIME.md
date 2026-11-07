@@ -1,5 +1,7 @@
 # Unión operativa · puntos 1, 2 y 3
 
+**Estado posterior06/11:** el propietario dispensó R10 como gate y Botsky ya está en producción. [Corte R11, estado y reversión](R11_PRODUCCION_20261106.md). Se conservan los resultados y límites históricos siguientes; R10 no fue reclasificado como aceptación completa.
+
 Encargo posterior del propietario: programar transporte WhatsApp, proceso continuo
 y composición de llamadas. Continúa rebuildbotsky.md, R2/R9/R10 local. Se conserva
 la instalación activa; este cierre no es activación ni transición.

@@ -1,0 +1,29 @@
+import json,subprocess,tomllib,time,gzip,socket
+from pathlib import Path
+import httpx
+ROOT=Path('/home/petrov/botsky');OUT=ROOT/'private/r11-cutover-20261106';p=json.loads((ROOT/'private/integrations.production.json').read_text());e=p['evolution'];s=tomllib.loads((ROOT/'private/production/config.toml').read_text());before=json.loads((OUT/'pm2-before.json').read_text());rows=json.loads(subprocess.check_output(['pm2','jlist']));wanted=['botsky-production-runtime','botsky-production-webhook-bridge']
+checks={}
+with httpx.Client(trust_env=False,timeout=10) as c:
+ r=c.get('http://127.0.0.1:18787/healthz',headers={'Authorization':'Bearer '+p['runtime']['webhook_token']});checks['runtimeReady']=r.status_code==200 and r.json().get('ready') is True
+ r=c.get('http://127.0.0.1:18788/v1/status',headers={'Authorization':'Bearer '+p['call_service']['token']});r.raise_for_status();v=r.json();checks['callsReady']=v['state']=='ready';checks['noActiveCall']=not v.get('activeCall') and not v.get('externalCallPresent')
+ r=c.get('http://127.0.0.1:18788/v1/operations',headers={'Authorization':'Bearer '+p['call_service']['token']});r.raise_for_status();ops=r.json();(OUT/'operations-final.json').write_text(json.dumps(ops,indent=2));(OUT/'operations-final.json').chmod(0o600)
+ checks['idleMediaReleased']=ops['health']['idleMediaReleased'] is True
+ r=c.get(e['base_url']+'/webhook/find/'+e['instance'],headers={'apikey':e['api_key']});r.raise_for_status();hook=r.json();checks['webhookOwnsNewEndpoint']=hook['url']=='http://172.18.0.1:3000/webhook/evolution' and hook['headers']=={'Authorization':'Bearer '+p['runtime']['webhook_token']} and hook['enabled'] is True
+checks['legacyAbsentFromPM2']=not any(r['name'].startswith('zhana-') for r in rows)
+checks['productionOnline']=all(next(r for r in rows if r['name']==n)['pm2_env']['status']=='online' for n in wanted)
+checks['noProductionRestart']=all(next(r for r in rows if r['name']==n)['pm2_env']['restart_time']==0 for n in wanted)
+checks['unrelatedSupervisorsUnchanged']=all(any(n['name']==o['name'] and n['pid']==o['pid'] for n in rows) for o in before if not o['name'].startswith('zhana-'))
+checks['exclusiveProfileAtBotsky']=(ROOT/'private/production/private/calls/profile-brave').is_dir() and not Path('/home/petrov/zhana/private/calls/profile-brave').exists()
+for name in ['dump.pm2','dump.pm2.bak']:
+ d=json.loads((Path('/home/petrov/.pm2')/name).read_text());checks[name+'ArchivedAbsent']=not any(r['name'].startswith('zhana-') for r in d)
+with gzip.open(OUT/'legacy-profile-final.tar.gz','rb') as f:
+ while f.read(2*1024*1024):pass
+checks['finalProfileGzipCRC']=True
+# Verify the same deployed bridge from the actual Evolution namespace, with
+# private Bearer configuration over stdin, never credentials in argv.
+js="const http=require('node:http');let b='';process.stdin.on('data',c=>b+=c);process.stdin.on('end',()=>{let o=JSON.parse(b);let r=http.get({host:'172.18.0.1',port:3000,path:'/healthz',headers:{Authorization:'Bearer '+o.token}},s=>{let x='';s.on('data',c=>x+=c);s.on('end',()=>process.stdout.write(JSON.stringify({status:s.statusCode,body:JSON.parse(x)})))});r.on('error',()=>process.exit(1));r.setTimeout(5000,()=>{r.destroy();process.exit(1)})})"
+r=subprocess.run(['docker','exec','-i','evolution_api','node','-e',js],input=json.dumps({'token':p['runtime']['webhook_token']}).encode(),capture_output=True,timeout=10);assert r.returncode==0;probe=json.loads(r.stdout);checks['realEvolutionToDeployedBridge']=probe=={'status':200,'body':{'ready':True}}
+assert all(checks.values()),checks
+report={'at_ms':int(time.time()*1000),'deployed':True,'r10GateWaived':True,'R10':'PARTIAL_NOT_RELABELED','humanReception':'NOT_TESTED','activationAt':s['activation_at'],'checks':checks,'capabilities':{'scheduler':p['runtime']['scheduler_enabled'],'callNotices':p['runtime']['notices_enabled'],'callAgenda':p['call_service']['agenda_timers'],'incomingAutoAnswer':s['calls']['features']['incoming'],'configuredGroups':len(s['allowed_groups']),'configuredFriends':len(s['friends']),'permissions':{k:{key:len(v) if isinstance(v,list) else v for key,v in values.items()} if isinstance(values,dict) else values for k,values in p['permissions'].items()}},'activeSupervisors':[{k:v[k] for k in ['name','pid']} for v in rows if v['name'] in wanted],'callsMedia':{'idleReleased':ops['health']['idleMediaReleased'],'warnings':ops['health']['warnings'],'trackedProcesses':ops['resources']['trackedProcesses']},'activationNotice':'provider_accepted','automaticCampaignResume':False}
+f=OUT/'final.json';f.write_text(json.dumps(report,indent=2));f.chmod(0o600)
+print(json.dumps(report))

@@ -219,3 +219,14 @@ probado desde contenedor Evolution con200 autorizado/401 sin Bearer, sin cambiar
 firewall/webhook activo. Perfil productivo preparado propio, con DBvacía y tokens
 nuevos; perfil previo conserva flags. El propietario no está disponible Android.
 R10 parcial; R11 autorizado, corte final no ejecutado, Zhana vuelve a estar sana.
+
+
+## 06/11 · Activación productiva por dispensa expresa de R10
+
+Botsky activo: [R11](R11_PRODUCCION_20261106.md). Perfil productivo separado, DBvacía
+al corte, tokens propios, permisos de efectos en ámbitos explícitos ya configurados
+y guardias de negocio intactas. Scheduler/avisos/agenda activos, autoatención
+entrantefalse. Webhook/cuenta/navegador cedidos de forma exclusiva; Zhana retirada
+de PM2 y de sus dumps, preservada con respaldos/reversión. Prueba de salud real
+desde Evolution y aviso único Lab aceptado; Android/recepción humana NOT_TESTED.
+El perfil operativo anterior de laboratorio no se modificó para simular aceptación.

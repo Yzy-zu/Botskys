@@ -1,0 +1,17 @@
+import asyncio,json,os,time
+from pathlib import Path
+import httpx
+from botsky.adapters.messenger import Messenger
+ROOT=Path('/home/petrov/botsky');OUT=ROOT/'private/r11-cutover-20261106';os.umask(0o077)
+p=json.loads((ROOT/'private/integrations.production.json').read_text());e=p['evolution'];target=p['permissions']['groups']['chats'][0]
+async def main():
+ async with httpx.AsyncClient(trust_env=False,timeout=15) as client:
+  r=await client.get(e['base_url']+'/group/findGroupInfos/'+e['instance'],params={'groupJid':target},headers={'apikey':e['api_key']});r.raise_for_status();g=r.json();g=g.get('group',g);assert g['id']==target and g['subject']=='Botsky Lab'
+  intent=OUT/'activation-notice.json'
+  with intent.open('x') as f:json.dump({'state':'uncertain','destination':'verified Botsky Lab only','reservedAtMs':int(time.time()*1000),'automaticRetry':False},f)
+  intent.chmod(0o600)
+  messenger=Messenger(e['base_url'],e['instance'],e['api_key'],client=client)
+  identifier=await messenger.send(target,'text',text='Botsky ya está activo en producción.\n\nZhana quedó archivada y recuperable. Empezamos con datos nuevos.\n\nEscribe /ayuda para ver los comandos. Para conversar: /ia TEXTO o menciona a Botsky.')
+  value=json.loads(intent.read_text());value.update(state='provider_accepted',messageId=identifier,humanReception='NOT_TESTED');intent.write_text(json.dumps(value,indent=2));intent.chmod(0o600)
+  print(json.dumps({'activationNotice':'provider_accepted','destination':'verified Botsky Lab only','humanReception':'NOT_TESTED'}))
+asyncio.run(main())

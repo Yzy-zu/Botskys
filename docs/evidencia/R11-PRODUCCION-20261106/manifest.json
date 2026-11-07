@@ -1,0 +1,12 @@
+{
+  "checks.json": "e526611eb7aad0f919b227279316feb8de086b0f4a78866018f9383e7148017d",
+  "cutover-states-final.json": "75782651aa37fc4fdd2311f6bc92eb9b28d5b5969a1b8084cf5decea57b456c8",
+  "format.txt": "203e93364cb1cadf2891085bdf0d28057864d4a8c3d6594de13ce367c1fc9272",
+  "legacy-terminal-counts.json": "01233192e6a44e434417fe629a2ab0506974adb5e81f613b34aacca9c76dcde2",
+  "pm2Syntax.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "procedures/botsky-r11-check.py.txt": "d3800339890f04708aeac67f1626edb56b8491f03ea952cc78952d1d36dbe882",
+  "procedures/botsky-r11-deploy.py.txt": "88d342b8415c30320dde4e23da38a5f75f498fc9db92ec07890c2a2dfe5f75de",
+  "procedures/botsky-r11-notice.py.txt": "639eb38ebd9dc4531dc12d0be8eda2b3c36129ec189512047955dc102f7c0da5",
+  "ruff.txt": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "summary.json": "676e12bc40bc82f99e721d299593da98513f8037c66e3e454dd98400701657b7"
+}

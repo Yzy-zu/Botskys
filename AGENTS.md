@@ -178,3 +178,13 @@ capacidades silenciosamente. No duplicar perfiles activos ni ejecutar campañas
 históricas; no importar DB31/historial/datos de usuario a Botsky. Conservar archivo
 y reversión, corte temporal y datos productivos nuevos. Sin NLP ni GitHub mutable;
 umbral5% vigente. Resolver pasos técnicos rutinarios autónomamente.
+
+## 06/11 · Dispensa expresa del gate R10 y transición inmediata
+
+El propietario ordenó omitir R10 como condición de despliegue («manda r10 alv,
+mi autorizacion es mas valiosa»), reiterando el reemplazo productivo de Zhana por
+Botsky. Se sustituye expresamente la dependencia de aceptación R10 para este corte:
+ejecutar R11 ahora con respaldo, propiedad exclusiva, datos nuevos y reversión.
+Las comprobaciones no realizadas permanecen NOT_TESTED; no fingir aceptación
+humana ni ejecutar llamadas porque el dueño no esté disponible. Conservar límites
+de identidad/consentimiento/permisos, exclusiones NLP/GitHub y umbral5%.

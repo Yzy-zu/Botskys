@@ -1,7 +1,7 @@
 'use strict';
 
-// Plantilla PM2 inerte: cargar este módulo solo exporta configuración.
-// No instala PM2, inicia procesos ni modifica servicios.
+// Definiciones usadas por R11 en producción el 06/11/2026.
+// Cargar el módulo solo exporta configuración; pm2 start es la acción explícita.
 const root = '/home/petrov/botsky';
 
 module.exports = {

@@ -1,0 +1,133 @@
+"""One-shot R11 operator action authorized with explicit waiver of R10 gate.
+No implicit resume. Private state written before every externally visible effect.
+"""
+import json,os,time,sqlite3,subprocess,hashlib,tomllib,tarfile,shutil
+from pathlib import Path
+from datetime import datetime,timezone
+import httpx
+from botsky.config import Settings
+from botsky.operational import OperationalPolicy
+ROOT=Path('/home/petrov/botsky');OLD=Path('/home/petrov/zhana');OUT=ROOT/'private/r11-cutover-20261106';PROD=ROOT/'private/production';os.umask(0o077);OUT.mkdir(mode=0o700)
+oldprofile=OLD/'private/calls/profile-brave';newprofile=PROD/'private/calls/profile-brave'
+z=tomllib.loads((OLD/'private/config.toml').read_text());providers=ROOT/'private/integrations.production.json';config=PROD/'config.toml';p=json.loads(providers.read_text());e=p['evolution'];origin=e['base_url'].rstrip('/');headers={'apikey':e['api_key']}
+state={'startedAt':datetime.now(timezone.utc).isoformat(),'r10GateWaivedByOwner':True,'phase':'preflight','legacyStopped':False,'profileMoved':False,'newRuntimeStarted':False,'webhookAttempted':False,'webhookVerified':False,'committed':False}
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  while b:=f.read(2*1024*1024):h.update(b)
+ return h.hexdigest()
+def save(name,value):
+ f=OUT/name;t=f.with_suffix('.new');t.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n');t.chmod(0o600);os.replace(t,f)
+def checkpoint(phase):state['phase']=phase;state['updatedAt']=datetime.now(timezone.utc).isoformat();save('state.json',state);print(json.dumps({'phase':phase}),flush=True)
+def pm2(*args):
+ r=subprocess.run(['pm2',*args],capture_output=True,text=True,timeout=90)
+ (OUT/('pm2-'+args[0]+'-'+str(time.time_ns())+'.txt')).write_text(r.stdout+r.stderr)
+ if r.returncode:raise RuntimeError('pm2_'+args[0]+'_failed')
+ return r
+
+def pmstates():return json.loads(subprocess.check_output(['pm2','jlist']))
+def offline_profile(path):
+ lock=path/'SingletonLock'
+ if lock.is_symlink():
+  try:pid=int(os.readlink(lock).rsplit('-',1)[1])
+  except (ValueError,IndexError):raise RuntimeError('unknown_profile_owner')
+  if Path('/proc/'+str(pid)).exists():raise RuntimeError('profile_still_open')
+def dbcheck(snapshot=None):
+ source=sqlite3.connect('file:'+str(OLD/z['database'])+'?mode=ro',uri=True)
+ counts={t:dict(source.execute('select state,count(*) from '+t+' group by state')) for t in ['inbox','jobs','reminders','school_digest_deliveries','school_asset_deliveries','happy_jobs','rich_delivery_parts']}
+ allowed={'inbox':{'accepted','ignored','failed','cancelled'},'jobs':{'completed','failed','cancelled'},'reminders':{'cancelled','sent','failed'},'rich_delivery_parts':{'accepted','failed','cancelled'}}
+ for t,c in counts.items():
+  if set(c)-allowed.get(t,set()):raise RuntimeError('legacy_unresolved_'+t)
+ if snapshot:
+  target=sqlite3.connect(snapshot);source.backup(target);assert target.execute('pragma integrity_check').fetchone()[0]=='ok';assert not target.execute('pragma foreign_key_check').fetchall();target.close();snapshot.chmod(0o600)
+ source.close();return counts
+
+def encode_toml(s):
+ text=''
+ for k,v in s.items():
+  if k!='calls':text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+ text+='\n[calls]\n';c=s['calls']
+ for k,v in c.items():
+  if k not in ('groups','features','schedule'):text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+ for group in c['groups']:
+  text+='\n[[calls.groups]]\n'
+  for k,v in group.items():text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+ for key in ('features','schedule'):
+  text+='\n[calls.'+key+']\n'
+  for k,v in c[key].items():text+=k+' = '+json.dumps(v,ensure_ascii=False)+'\n'
+ return text
+
+def webhook_body(v):
+ return {'webhook':{'enabled':v['enabled'],'url':v['url'],'headers':v.get('headers') or {},'byEvents':v.get('webhookByEvents',False),'base64':v.get('webhookBase64',False),'events':v.get('events',[])}}
+def equivalent(a,b):return webhook_body(a)==webhook_body(b)
+
+client=httpx.Client(trust_env=False,timeout=15)
+try:
+ checkpoint('preflight')
+ rows=pmstates();assert all(next(r for r in rows if r['name']==name)['pm2_env']['status']=='online' for name in ['zhana-dev','zhana-calls']);assert not any(r['name'].startswith('botsky-production') for r in rows)
+ save('pm2-before.json',rows)
+ r=client.get(origin+'/webhook/find/'+e['instance'],headers=headers);r.raise_for_status();before=r.json();expected=json.loads((ROOT/'private/production-transition-20261106/webhook-before.json').read_text());assert before==expected,'webhook_external_drift';save('webhook-before.json',before)
+ r=client.get(origin+'/instance/connectionState/'+e['instance'],headers=headers);r.raise_for_status();assert r.json()['instance']['state']=='open'
+ token=(OLD/z['calls_token_file']).read_text().strip();r=client.get(z['calls_base_url']+'/v1/status',headers={'Authorization':'Bearer '+token});r.raise_for_status();v=r.json();assert v['state']=='ready' and not v.get('activeCall') and not v.get('externalCallPresent'),'legacy_call_busy'
+ agenda=json.loads((OLD/'private/calls/call-agenda.json').read_text());assert not agenda.get('rows'),'legacy_agenda_not_empty'
+ counts=dbcheck();save('preflight-counts.json',counts)
+ assert oldprofile.is_dir() and not oldprofile.is_symlink() and not newprofile.exists()
+ for f in [config,providers]:shutil.copyfile(f,OUT/f.name);(OUT/f.name).chmod(0o600)
+ for name in ['private/config.toml','private/credentials.json','private/calls-policy.json','ops/ecosystem.config.cjs']:
+  dest=OUT/'legacy-config'/name;dest.parent.mkdir(parents=True,exist_ok=True,mode=0o700);shutil.copyfile(OLD/name,dest);dest.chmod(0o600)
+ # Stage enabled capabilities using the already configured identities and legacy
+ # product intent. This does not issue any mutation or waive backend consent.
+ s=tomllib.loads(config.read_text());groups=sorted(s['allowed_groups']);assert len(groups)==1
+ for name,flag in [('drive','drive_enabled'),('groups','admin_enabled'),('minecraft','minecraft_enabled')]:p['permissions'][name]['write']=z.get(flag,False)
+ p['permissions']['messages']['send']=z.get('messages_enabled',False)
+ p['permissions']['gallery']['send']=z.get('packs_enabled',False)
+ p['permissions']['roulette']['chats']=groups if z.get('roulette_enabled') else []
+ p['permissions']['nuclear'].update(enabled=z.get('admin_nuclear_enabled',False),chats=groups if z.get('admin_nuclear_enabled') else [])
+ p['runtime'].update(scheduler_enabled=True,notices_enabled=True)
+ p['call_service']['agenda_timers']=True
+ s['calls']['groups']=[{'id':groups[0],'name':'Botsky Lab','maxParticipants':2}]
+ # No production user data exists before admission. Cutoff is refreshed after stop.
+ db=sqlite3.connect(PROD/'botsky.sqlite3');nonempty={row[0]:db.execute('select count(*) from "'+row[0]+'"').fetchone()[0] for row in db.execute("select name from sqlite_master where type='table' AND name NOT LIKE 'sqlite_%'")};db.close();assert {k:v for k,v in nonempty.items() if v}=={'schema_version':18}
+ checkpoint('stopping_legacy')
+ pm2('stop','zhana-dev');state['legacyStopped']=True;checkpoint('legacy_core_stopped')
+ pm2('stop','zhana-calls');offline_profile(oldprofile)
+ counts=dbcheck(OUT/'legacy-final.sqlite3');save('final-legacy-counts.json',counts)
+ with tarfile.open(OUT/'legacy-profile-final.tar.gz','x:gz',compresslevel=1) as tar:tar.add(oldprofile,arcname='profile-brave')
+ with tarfile.open(OUT/'legacy-profile-final.tar.gz','r:gz') as tar:assert tar.getmembers()
+ save('archive-references.json',{'sourceArchive':str(ROOT/'private/production-transition-20261106/zhana-source-before.tar.gz'),'sourceArchiveManifest':str(ROOT/'private/production-transition-20261106/archive-manifest.json'),'finalSQLiteSHA256':sha(OUT/'legacy-final.sqlite3'),'finalProfileSHA256':sha(OUT/'legacy-profile-final.tar.gz')})
+ s['activation_at']=datetime.now(timezone.utc).isoformat();state['activationAt']=s['activation_at'];config.write_text(encode_toml(s));config.chmod(0o600);providers.write_text(json.dumps(p,indent=2));providers.chmod(0o600)
+ settings=Settings.load(config);OperationalPolicy.build(p,settings)
+ oldprofile.rename(newprofile);state['profileMoved']=True;checkpoint('profile_handed_off_offline')
+ pm2('start',str(ROOT/'ops/examples/botsky-production.ecosystem.config.cjs'));state['newRuntimeStarted']=True;checkpoint('starting_botsky')
+ for _ in range(180):
+  try:
+   h=client.get('http://127.0.0.1:18787/healthz',headers={'Authorization':'Bearer '+p['runtime']['webhook_token']})
+   av=client.get('http://127.0.0.1:18788/v1/status',headers={'Authorization':'Bearer '+p['call_service']['token']})
+   if h.status_code==200 and h.json().get('ready') and av.status_code==200 and av.json().get('state')=='ready' and av.json().get('policyRevision')==settings.calls.revision:break
+  except httpx.HTTPError:pass
+  time.sleep(1)
+ else:raise RuntimeError('new_runtime_not_ready')
+ checkpoint('botsky_healthy_before_webhook')
+ # Provider offers no atomic CAS. Re-read immediately before the single POST;
+ # unexpected drift aborts. A lost response is reconciled by GET, not repeated.
+ current=client.get(origin+'/webhook/find/'+e['instance'],headers=headers);current.raise_for_status();assert current.json()==before,'webhook_external_drift'
+ after={**before,'enabled':True,'url':'http://172.18.0.1:3000/webhook/evolution','headers':{'Authorization':'Bearer '+p['runtime']['webhook_token']},'webhookByEvents':False,'webhookBase64':False,'events':['MESSAGES_UPSERT']}
+ save('webhook-intended.json',after);state['webhookAttempted']=True;checkpoint('webhook_dispatch_reserved')
+ try:
+  response=client.post(origin+'/webhook/set/'+e['instance'],headers=headers,json=webhook_body(after));state['webhookHttpStatus']=response.status_code
+ except httpx.HTTPError:state['webhookHttpStatus']='unknown'
+ verify=client.get(origin+'/webhook/find/'+e['instance'],headers=headers);verify.raise_for_status();observed=verify.json();save('webhook-observed.json',observed)
+ assert equivalent(observed,after),'webhook_outcome_not_confirmed';state['webhookVerified']=True;checkpoint('webhook_owned_by_botsky')
+ # Remove only archived Zhana entries from supervisor; saved definitions retain
+ # recovery. No old stopped entries may be restarted by pm2 restart all/resurrect.
+ pm2('delete','zhana-dev','zhana-calls','zhana-observer-20m');pm2('save')
+ rows=pmstates();save('pm2-after.json',rows);assert not any(r['name'] in ['zhana-dev','zhana-calls','zhana-observer-20m'] for r in rows)
+ assert all(next(r for r in rows if r['name']==name)['pm2_env']['status']=='online' for name in ['botsky-production-runtime','botsky-production-webhook-bridge'])
+ dump=json.loads(Path('/home/petrov/.pm2/dump.pm2').read_text());assert not any(r.get('name') in ['zhana-dev','zhana-calls','zhana-observer-20m'] for r in dump)
+ state['committed']=True;state['humanAcceptance']='NOT_TESTED';checkpoint('production_active_legacy_archived')
+except Exception as exc:
+ state['errorType']=type(exc).__name__;state['error']=str(exc);checkpoint('cutover_failed_needs_review')
+ # Never hide a partial effect: retain state and all databases. Rollback is a
+ # separate reviewed operator step, not an automatic retry of webhook mutation.
+ raise
+finally:client.close()

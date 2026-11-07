@@ -1,21 +1,23 @@
 # Botsky
 
+**Producción activa06/11:** Botsky reemplazó a Zhana por instrucción expresa del propietario y dispensa del gateR10. [Estado, alcance y reversión](docs/R11_PRODUCCION_20261106.md). Zhana archivada recuperable; datos nuevos, sin migrar DB31. Los apartados siguientes conservan cierres históricos.
+
 Reconstrucción independiente por comandos explícitos. Plan vigente:
 [/home/petrov/zhana/rebuildbotsky.md](/home/petrov/zhana/rebuildbotsky.md).
 Estado real y siguiente trabajo en [ESTADO_COMPARTIDO.md](ESTADO_COMPARTIDO.md).
 
 Python 3.14 y SQLite propios. El núcleo arranca sin IA ni clasificador. No hay
 dependencia del runtime de Zhana ni acceso a sus datos privados. Repositorio solo
-local. Transporte productivo, sesiones y transición siguen apagados.
+local. Transporte productivo y sesión exclusiva activos; Zhana archivada recuperable.
 Integraciones optativas propias validadas por encargo posterior: [estado](docs/INTEGRACIONES.md).
 Transporte WhatsApp, proceso continuo y composición de llamadas implementados:
-[configuración y límites](docs/RUNTIME.md). Preparados, sin activar producción.
+[configuración y límites](docs/RUNTIME.md). Activación y reversión en [R11](docs/R11_PRODUCCION_20261106.md).
 Galería conservada, Kazumi recuperado y permisos por integración/chat conectados:
 [activos y permisos](docs/ACTIVOS_Y_PERMISOS.md). Tres álbumes originales sin fotos.
 Campaña automática real encargada, con resultados en Botsky Lab y laboratorio
 detenido: [116 casos, hallazgos y bloqueos](docs/LAB_20261106.md). R10 global abierto.
 Nueva campaña de descubrimiento10+10+10: [783casos y29informes](docs/STRESS_20261106.md).
-[Paquete para contraste posterior](docs/CONTRASTE_STRESS_20261106.md); producto sin corregir.
+[Paquete original de contraste](docs/CONTRASTE_STRESS_20261106.md); correcciones y evidencia posterior en el relevo.
 
 Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
 hashes, límites, formatos, dependencias y superficie audiovisual. Tener una
@@ -34,7 +36,7 @@ Economía y juegos: [docs/R7.md](docs/R7.md).
 Administración y Minecraft: [docs/R8.md](docs/R8.md).
 Audiovisual portado y límites: [docs/R9.md](docs/R9.md).
 Integración local, matriz y límites de aceptación: [docs/R10.md](docs/R10.md).
-Guía breve: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md). R10 global/R11 pendientes.
+Guía breve: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md). R10 parcial dispensado como gate por el dueño; R11 ejecutado.
 Pruebas Node locales: `node --test calls/test/*.test.cjs` (sin navegador).
-Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Los handlers de
-bloques posteriores dan un límite explícito hasta que se construyan y comprueben.
+Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Permisos y recepción
+humana conservan los alcances documentados; presencia de ruta no acredita aceptación remota.
