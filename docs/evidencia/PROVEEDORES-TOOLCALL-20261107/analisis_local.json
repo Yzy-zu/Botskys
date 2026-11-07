@@ -1,0 +1,231 @@
+{
+  "kind": "offline_catalog_measurement_and_hypothetical_capacity",
+  "provider_inference_executed": false,
+  "production_data_read": false,
+  "routes": 155,
+  "distinct_operations": 146,
+  "families": 34,
+  "all_route_declarations": {
+    "characters": 40426,
+    "utf8_bytes": 40428
+  },
+  "by_family": {
+    "audiovisual.agenda": {
+      "tools": 4,
+      "characters": 1296,
+      "utf8_bytes": 1296
+    },
+    "audiovisual.avatar": {
+      "tools": 4,
+      "characters": 1299,
+      "utf8_bytes": 1299
+    },
+    "audiovisual.clip": {
+      "tools": 9,
+      "characters": 1947,
+      "utf8_bytes": 1947
+    },
+    "control_call": {
+      "tools": 4,
+      "characters": 855,
+      "utf8_bytes": 855
+    },
+    "conversation": {
+      "tools": 1,
+      "characters": 220,
+      "utf8_bytes": 220
+    },
+    "convert_document": {
+      "tools": 1,
+      "characters": 359,
+      "utf8_bytes": 359
+    },
+    "core": {
+      "tools": 4,
+      "characters": 864,
+      "utf8_bytes": 864
+    },
+    "download_media": {
+      "tools": 8,
+      "characters": 3487,
+      "utf8_bytes": 3489
+    },
+    "edit_media": {
+      "tools": 1,
+      "characters": 538,
+      "utf8_bytes": 538
+    },
+    "find_notes": {
+      "tools": 1,
+      "characters": 265,
+      "utf8_bytes": 265
+    },
+    "make_prank": {
+      "tools": 1,
+      "characters": 210,
+      "utf8_bytes": 210
+    },
+    "make_sticker": {
+      "tools": 1,
+      "characters": 174,
+      "utf8_bytes": 174
+    },
+    "make_voice": {
+      "tools": 5,
+      "characters": 2202,
+      "utf8_bytes": 2202
+    },
+    "manage_admin": {
+      "tools": 17,
+      "characters": 4110,
+      "utf8_bytes": 4110
+    },
+    "manage_blackjack": {
+      "tools": 9,
+      "characters": 2046,
+      "utf8_bytes": 2046
+    },
+    "manage_conversation": {
+      "tools": 4,
+      "characters": 904,
+      "utf8_bytes": 904
+    },
+    "manage_cooperacha": {
+      "tools": 4,
+      "characters": 1112,
+      "utf8_bytes": 1112
+    },
+    "manage_drive": {
+      "tools": 4,
+      "characters": 871,
+      "utf8_bytes": 871
+    },
+    "manage_economy": {
+      "tools": 3,
+      "characters": 524,
+      "utf8_bytes": 524
+    },
+    "manage_happy_hour": {
+      "tools": 6,
+      "characters": 1396,
+      "utf8_bytes": 1396
+    },
+    "manage_memory": {
+      "tools": 5,
+      "characters": 1374,
+      "utf8_bytes": 1374
+    },
+    "manage_messages": {
+      "tools": 5,
+      "characters": 1329,
+      "utf8_bytes": 1329
+    },
+    "manage_minecraft": {
+      "tools": 14,
+      "characters": 2730,
+      "utf8_bytes": 2730
+    },
+    "manage_pack": {
+      "tools": 4,
+      "characters": 989,
+      "utf8_bytes": 989
+    },
+    "manage_pdf": {
+      "tools": 6,
+      "characters": 1201,
+      "utf8_bytes": 1201
+    },
+    "manage_poll": {
+      "tools": 4,
+      "characters": 1179,
+      "utf8_bytes": 1179
+    },
+    "manage_reminder": {
+      "tools": 5,
+      "characters": 1480,
+      "utf8_bytes": 1480
+    },
+    "manage_roulette": {
+      "tools": 5,
+      "characters": 1176,
+      "utf8_bytes": 1176
+    },
+    "manage_school": {
+      "tools": 10,
+      "characters": 2912,
+      "utf8_bytes": 2912
+    },
+    "read_image": {
+      "tools": 2,
+      "characters": 334,
+      "utf8_bytes": 334
+    },
+    "save_note": {
+      "tools": 1,
+      "characters": 223,
+      "utf8_bytes": 223
+    },
+    "search_web": {
+      "tools": 1,
+      "characters": 308,
+      "utf8_bytes": 308
+    },
+    "send_sticker": {
+      "tools": 1,
+      "characters": 280,
+      "utf8_bytes": 280
+    },
+    "transcribe_media": {
+      "tools": 1,
+      "characters": 265,
+      "utf8_bytes": 265
+    }
+  },
+  "source_sha256": {
+    "src/botsky/commands/registry.py": "254ec16ed75d04d20efaf038aa0c2e3b7a71649661ad85e384befb29b924fb78",
+    "src/botsky/commands/types.py": "bffabb6899dce773f144c5c778d7f70dfed1c1fd68aaab65f77adf8be21132fe"
+  },
+  "capacity_scenarios_not_benchmarks": [
+    {
+      "assumed_input_tokens_per_task": 2000,
+      "assumed_output_tokens_per_task_including_reasoning": 100,
+      "inference_calls_per_task": 1,
+      "groq_daily_upper_bound": 95,
+      "cloudflare_glm47_neurons_per_task": 14.64,
+      "cloudflare_glm47_daily_upper_bound": 683,
+      "cloudflare_gemma4_daily_upper_bound": 478,
+      "openrouter_free_variant_daily_request_bound": 50,
+      "sambanova_one_model_daily_request_bound": 20
+    },
+    {
+      "assumed_input_tokens_per_task": 3000,
+      "assumed_output_tokens_per_task_including_reasoning": 200,
+      "inference_calls_per_task": 1,
+      "groq_daily_upper_bound": 62,
+      "cloudflare_glm47_neurons_per_task": 23.78,
+      "cloudflare_glm47_daily_upper_bound": 420,
+      "cloudflare_gemma4_daily_upper_bound": 305,
+      "openrouter_free_variant_daily_request_bound": 50,
+      "sambanova_one_model_daily_request_bound": 20
+    },
+    {
+      "assumed_input_tokens_per_task": 4000,
+      "assumed_output_tokens_per_task_including_reasoning": 200,
+      "inference_calls_per_task": 2,
+      "groq_daily_upper_bound": 47,
+      "cloudflare_glm47_neurons_per_task": 29.28,
+      "cloudflare_glm47_daily_upper_bound": 341,
+      "cloudflare_gemma4_daily_upper_bound": 239,
+      "openrouter_free_variant_daily_request_bound": 25,
+      "sambanova_one_model_daily_request_bound": 10
+    }
+  ],
+  "caveats": [
+    "Schemas are size probes; not a validated interpreter contract.",
+    "Token counts are assumptions, never characters/4 or provider measurements.",
+    "No cache hits, retries, other workloads or additional reasoning assumed.",
+    "Daily upper bounds omit minute limits, contention and availability.",
+    "Cloudflare rates from pricing table; model page rounding can differ.",
+    "Free quotas apply to accounts/organizations; not to each Botsky user."
+  ]
+}

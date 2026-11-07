@@ -5,6 +5,12 @@ interpreta lenguaje natural, propone una herramienta fija y deja de intervenir;
 el backend valida, ejecuta y presenta. Investigación completada; implementación,
 calidad de interpretación con proveedor y despliegue NO_PROBADOS.
 
+Ampliación posterior por encargo del propietario: comparación profunda de ofertas
+gratuitas, modelos, cuotas, compatibilidad y privacidad en
+`COMPARATIVA_PROVEEDORES_TOOLCALL_20261107.md`. La recomendación de candidato
+por condiciones documentadas pasa a CloudflareWorkersAI/GLM4.7Flash; no implica
+ganador semántico medido ni implementación. El diseño debe admitir proveedores.
+
 Este encargo sustituye la decisión anterior de investigar únicamente sintaxis
 explícita para esta propuesta. No reactiva el clasificador antiguo ni importa
 runtime, datos, modelos entrenados o historial de Zhana. No modifica producción.

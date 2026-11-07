@@ -1,5 +1,32 @@
 # Relevo Botsky
 
+## 07/11 · Comparación profunda de proveedores gratuitos para tool calling
+
+Encargo posterior pide investigación fundamentada, no especulación. Comparados
+Cloudflare/Groq/Z.ai/Gemini/OpenRouter/SambaNova/Cerebras/Mistral/HF/Cohere/Together/
+NVIDIA con fuentes primarias actuales;doc COMPARATIVA_PROVEEDORES_TOOLCALL_20261107.
+Descartados como gratis recurrente Cerebras(prueba30d),Mistral(APIrequierebilling),
+HF(Free sincréditos),Cohere(trialnoproducción),Together(compraordinaria). NVIDIA
+solo propuesta de prueba/prototipado acreditada;no afirmar gratisproductivo.
+
+Candidato documental:CloudflareWorkersAI/GLM4.7Flash por cuota/privacidad;Groq con
+GPTOSS120B alternativa;Z.aiFlash coste0pero cuota traslogin noverificada. Gemini
+cuota porproyecto desconocida. Sin ganador semántico/latencia real medido. Hallazgos:
+Groq máximo128funciones;StructuredOutputs no combina tools;Qwen3.8Preview;
+CloudflareQwen330B retiradaprevista20nov. Z.ai soloauto/enumFlashomitido en esquema
+genérico pese a oferta publicada. No usar tutoriales viejos como acceso actual.
+
+Mediciónoffline propia reproducible:155rutas/146operaciones/34familias;schemas
+sondeo40.428bytes,mayorfamilia17rutas/4.110bytes,no tokens medidos. Escenario
+hipotético4000entrada+200salidatotal/2pases da techo341tareasCFGLMvs47Groqvs25OR;
+no benchmark,omite caché/razonamientoextra/saturación. Script/JSON en
+docs/evidencia/PROVEEDORES-TOOLCALL-20261107. Sin inferencias autenticadas,lectura
+dedatosproductivos,cuentasnuevas,compras,servicios odespliegue. Investigación y
+aritmética completas; evaluación semántica multicuenta noejecutada. Cuota5h84% al
+inicio,umbral5h5%vigente;semanalnoimpide.
+Validación:AST/regeneraciónidéntica/recuento/ariméticaPASS,diffcheckPASS;Ruffno
+instalado,no se afirma lint. Cuota final5h77%/semanal7%;no cambia límite vigente.
+
 ## 07/11 · Investigación de entrada natural con tool calling
 
 Propietario pide sustituir experiencia sintáctica por LLM intérprete de herramienta
