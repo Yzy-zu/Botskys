@@ -1,0 +1,18 @@
+test_cache_prefix_stable_without_losing_dynamic_context (test_ahorro_qwen.SavingsTests.test_cache_prefix_stable_without_losing_dynamic_context) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK
+test_roundtrip_every_value_including_metadata_and_field_descriptions (test_qwen_lossless_catalog.LosslessTests.test_roundtrip_every_value_including_metadata_and_field_descriptions) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.033s
+
+OK
+test_projection_preserves_all_native_contracts (test_catalog_ab.CatalogABTests.test_projection_preserves_all_native_contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.232s
+
+OK

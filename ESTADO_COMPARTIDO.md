@@ -1,5 +1,17 @@
 # Relevo Botsky
 
+## 07/11 · Campaña nueva de ahorro Qwen cerrada
+
+Propietario autorizó gastar una API: exclusivamente cf05,9732,9633neuronas
+reportadas,13inferencias exitosas y12rechazos de transporte contando diagnóstico.
+Actual3/3pares;compacto3/3pares y6/6únicos,47,78%menos entrada y45,74%menos
+neuronas. Cached_tokens0incluso repetición:ahorro de caché NO demostrado.
+Compacto anterior omite metadata ymezcla notas homónimas;no desplegarlo.
+Candidato nuevo sin pérdidas,roundtrip exacto155acciones,34,89%menos bytes;
+proveedor NOT_TESTED,ninguna promesa de ahorro equivalente. Producción intacta.
+Guardia presupuestaria posrespuesta dejó última repetición sin ejecutar;no reanudar.
+No usar más claves por esta campaña. Informe docs/AHORRO_QWEN_20261107.md.
+
 ## 07/11 · Quinta cuenta Cloudflare registrada
 
 cf05: token activo y acceso AI verificados HTTP200; cuenta distinta. Cinco cuentas

@@ -1,0 +1,48 @@
+{
+  "actual": {
+    "cases": 3,
+    "passed": 3,
+    "prompt_tokens": 67320,
+    "completion_tokens": 268,
+    "neurons": 2831.9635009765625,
+    "median_seconds": 7.014,
+    "cached_tokens": 0
+  },
+  "prefijo_afinidad": {
+    "cases": 3,
+    "passed": 3,
+    "prompt_tokens": 67320,
+    "completion_tokens": 354,
+    "neurons": 2856.981689453125,
+    "median_seconds": 5.275,
+    "cached_tokens": 0
+  },
+  "compacto_afinidad": {
+    "cases": 3,
+    "passed": 3,
+    "prompt_tokens": 35157,
+    "completion_tokens": 338,
+    "neurons": 1536.568115234375,
+    "median_seconds": 3.271,
+    "cached_tokens": 0
+  },
+  "comparisons": {
+    "input_reduction_percent": 47.77629233511587,
+    "neurons_reduction_percent": 45.741952016524536,
+    "neurons_multiplier_capacity": 1.8430445568269513
+  },
+  "total_reported_neurons_cf05": 9732.963256835938,
+  "production_changes": 0,
+  "automatic_resume": false,
+  "compact_challenge_passed": 6,
+  "compact_challenge_cases": 6,
+  "provider_rejections_transport": 11,
+  "caveats": [
+    "No provider inference for lossless candidate",
+    "Cache remained zero in all 13 successful inferences",
+    "Old compact omits permission/effect/reference metadata and conflates target/name field notes; not production candidate",
+    "One missed compact repeat due budget guard; not automatically resumed",
+    "No human delivery/backend effects tested",
+    "cf05 shared with production; reported experiment usage is not total account balance"
+  ]
+}

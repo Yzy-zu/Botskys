@@ -1,0 +1,11 @@
+{
+  "catalog_bytes": {
+    "actual": 90159,
+    "sin_perdidas": 58701
+  },
+  "reduction_percent": 34.891691345289985,
+  "roundtrip_exact": true,
+  "variants": 155,
+  "provider_tested": false,
+  "production_deployed": false
+}
