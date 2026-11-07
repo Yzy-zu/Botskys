@@ -135,7 +135,10 @@ class Application:
             except CommandError as exc:
                 return None, Result("needs_input", exc.code, exc.reply), "completed"
             if command is None and self.frontend is not None:
-                directed = (not incoming.scope.is_group or bool(set(incoming.mentioned_ids) & self.settings.bot_ids)
+                from .presentation.quotes import own_delivered_parent
+                own_quote = incoming.quoted_message_id and own_delivered_parent(
+                    db, context, incoming.quoted_message_id, self.clock())
+                directed = (bool(own_quote) or not incoming.scope.is_group or bool(set(incoming.mentioned_ids) & self.settings.bot_ids)
                             or ai.named(incoming.text))
                 if directed:
                     if denied := access.authorize("friend", context, self.settings):

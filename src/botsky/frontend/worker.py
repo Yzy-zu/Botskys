@@ -6,10 +6,12 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 
 from botsky import access
+from botsky.artifacts import ArtifactProblem
 from botsky.contracts import Result
 from botsky.domains import bot
 from botsky.store import context_of
 from .contracts import ActionRequest, ClarifyDecision, ReplyDecision
+from .context import load, save_draft, adopt_context
 
 
 def finish(app, db, row, state, result, now, decision=None):
@@ -39,12 +41,14 @@ async def run_one(app):
             finish(app, db, row, 'cancelled', denied, now)
             return True
         db.execute("UPDATE frontend_tasks SET state='running',token=?,deadline_ms=?,updated_ms=? WHERE receipt_id=?", (token, now + 60000, now, row['id']))
+    with app.store.transaction() as db:
+        snapshot, draft = load(app, db, row, now)
     try:
         async with asyncio.timeout(50):
             decision = await app.frontend.decide(row['text'], {
                 'now': datetime.fromtimestamp(now / 1000, UTC).isoformat(),
                 'timezone': app.settings.timezone,
-                'attachments': json.loads(row['attachments_json'])})
+                'attachments': json.loads(row['attachments_json']), **snapshot})
         error = None
     except Exception:
         decision, error = None, 'frontend_unavailable'
@@ -62,14 +66,31 @@ async def run_one(app):
         elif error:
             finish(app, db, current, 'failed', Result('failed', error, 'No pude interpretar la petición. Inténtalo con un mensaje nuevo.'), now)
         elif isinstance(decision, ActionRequest):
+            db.execute('SAVEPOINT frontend_adoption')
             try:
+                decision = adopt_context(app, db, current, decision, snapshot, draft, now)
                 parsed = app.frontend.catalog.build(decision)
-            except (ValueError, KeyError, TypeError):
+            except (ValueError, KeyError, TypeError, ArtifactProblem):
+                db.execute('ROLLBACK TO frontend_adoption')
+                db.execute('RELEASE frontend_adoption')
                 finish(app, db, current, 'failed', Result('failed', 'invalid_proposal', 'La propuesta no es válida.'), now)
                 return True
+            db.execute('RELEASE frontend_adoption')
             db.execute("UPDATE inbox SET command_json=?,path_json=?,permission=?,revision=revision+1 WHERE id=?", (parsed.canonical(), json.dumps(parsed.spec.path), parsed.spec.permission, row['id']))
             db.execute("UPDATE frontend_tasks SET state='adopted',decision_json=?,updated_ms=? WHERE receipt_id=?", (json.dumps(asdict(decision), ensure_ascii=False), now, row['id']))
         else:
+            if isinstance(decision, ClarifyDecision):
+                db.execute('SAVEPOINT frontend_draft')
+                try:
+                    save_draft(app, db, current, decision, now)
+                except (ValueError, ArtifactProblem):
+                    db.execute('ROLLBACK TO frontend_draft')
+                    db.execute('RELEASE frontend_draft')
+                    finish(app, db, current, 'failed', Result('failed', 'invalid_draft', 'No pude conservar la petición; vuelve a indicarla.'), now)
+                    return True
+                db.execute('RELEASE frontend_draft')
+            elif draft:
+                db.execute("UPDATE interactions SET state='cancelled',revision=revision+1 WHERE id=?", (draft['id'],))
             text = decision.text if isinstance(decision, ReplyDecision) else decision.question if isinstance(decision, ClarifyDecision) else 'De acuerdo.'
             finish(app, db, current, 'completed', Result('ok', 'frontend_reply', text), now, asdict(decision))
     # Adoption is already committed: restart only executes this canonical request.

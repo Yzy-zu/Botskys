@@ -1,4 +1,4 @@
-# Frontend conversacional · F3
+# Frontend conversacional · F4
 
 Admisión durable conectada a `Application.frontend` cuando está configurado.
 Runtime ejecuta el worker en un bucle independiente; no se activa producción aquí.
@@ -25,3 +25,12 @@ con el backend existente y sus permisos, jobs y outbox. Una cancelación o pausa
 descarta respuestas tardías. La reversión compatible consiste en desactivar el
 frontend manteniendo código que soporte esquema20; no usar binario de esquema19.
 Continuidad de preguntas y referencias se implementa en F4.
+
+F4 conserva borradores en interactions (TTL15min, activación con entrega completa).
+Contexto máximo cuatro turnos de conversación del frontend, sin resultados de
+dominio; referencias vigentes de listas y previas. Los adjuntos se retienen con
+lease y una vinculación explícita de continuación, sin cambiar origen ni aceptar
+rutas del modelo. Contexto por actor/chat/cuenta/época; no compartir borradores
+entre participantes. Cita propia restringe listas; varias listas sin cita exigen
+aclaración. Confirmaciones mantienen la acción específica y sus guardias originales.
+Comprensión y calidad de GLM con este contexto quedan pendientes de F7.

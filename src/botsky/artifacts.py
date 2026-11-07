@@ -232,7 +232,16 @@ class Artifacts:
                     row["origin"] != "incoming"
                     or row["source_message_id"] != incoming_row["message_id"]
                 ):
-                    raise ArtifactProblem("attachment_source_mismatch")
+                    retained = db.execute(
+                        f"SELECT 1 FROM interactions v JOIN artifact_leases l ON l.artifact_id=? AND l.holder=? WHERE "
+                        + " AND ".join("v." + term for term in SCOPE_SQL.split(" AND "))
+                        + " AND v.kind='frontend_draft' AND v.state='consumed' AND v.expires_ms>? "
+                        "AND json_extract(v.data_json,'$.continuation_receipt')=? "
+                        "AND EXISTS(SELECT 1 FROM json_each(v.data_json,'$.attachments') WHERE value=?) AND l.expires_ms>?",
+                        (artifact_id, context.receipt_id, *context.scope_key, now, context.receipt_id, artifact_id, now),
+                    ).fetchone()
+                    if not retained:
+                        raise ArtifactProblem("attachment_source_mismatch")
             return ids
         quote = incoming_row["quoted_message_id"]
         if not quote:

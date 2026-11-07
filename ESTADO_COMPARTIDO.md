@@ -1,5 +1,24 @@
 # Relevo Botsky
 
+## 07/11 · F4 continuidad y referencias locales cerradas
+
+Frontend/context usa interactions existente: borradores15min activados solo tras
+entrega completa,actor/chat/cuenta/época,cita propia y contexto corto de conversación
+del frontend (4turnos,800caracteres por parte),sin resultados de dominio a GLM.
+Aclaraciones conservan acción/argumentos/archivo con lease; continuación vincula
+adjunto de origen mediante borrador consumido y recibo explícito. No se relaja
+la guardia de origen general. Nuevo tema retira borrador; consumo/adopción con
+savepoint. Citas de grupo propias permiten invocación sin repetir nombre del bot.
+Índice de listas download/Drive con títulos/números;ambigüedad no elige última.
+Índice por acción concreta de previas recado,pack,memoria,reintento y nuclear;
+confirmación exige referencia publicada,vigente y propia;dominio revalida al ejecutar.
+23 pruebas frontend pasan (5contexto nuevas),16media,15integraciones,17packs.
+PDF real tras pregunta/reinicio,aislamiento/vencimiento,cambio de tema,listas/cita
+y rechazo de confirmación ausente verificados con SQLite y dobles de entrega.
+Evidencia F4-* en docs/evidencia/REMODELACION. No acredita comprensión GLM ni
+recepción humana. Sin proveedor real,servicios o efectos productivos.
+Siguiente F5: cobertura natural por área,capacidades/fuentes y permisos con dobles.
+
 ## 07/11 · F3 conexión durable local cerrada
 
 Migración aditiva20: input_mode por recibo y frontend_tasks con FK posterior al

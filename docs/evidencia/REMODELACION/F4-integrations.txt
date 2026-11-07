@@ -1,0 +1,6 @@
+...........Executing <Task finished name='Task-97' coro=<IntegrationsTest.test_messenger_real_loopback_http_and_explicit_rejection() done, defined at /home/petrov/botsky/tests/test_integrations.py:411> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.497 seconds
+....
+----------------------------------------------------------------------
+Ran 15 tests in 1.547s
+
+OK
