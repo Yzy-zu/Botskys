@@ -386,3 +386,14 @@ por vez ypruebas de propuestas sin herramientas/envíos/llamadas. Catálogo comp
 oracles previos,medición frío/caliente/memoria/CPU. No cambia producción ni instala
 servicio de sistema. Descargas conservadas;liberar modelos/parar daemon propio al
 cerrar. No reabre A/Bcancelado ni campañas previas. Cuota5h5% vigente.
+
+## 07/11 · Compactación íntegra y despliegue encargados
+
+El propietario ordenó hacer los cambios, dejar el compacto y desplegar. Autoriza
+promover la codificación íntegra del catálogo, comprobar propuestas sintéticas
+nuevas con Qwen y credencial propia disponible, respaldo consistente y reinicio
+reversible del runtime propio. No reanuda campañas cerradas ni modifica sus datos;
+conservar timeouts y resultados parciales. Catálogo completo y selección directa,
+validación/permisos nativos; no sustituir por el prototipo que omite metadata.
+Sin entregas de prueba, llamadas, servicios ajenos, GitHub ni clasificador antiguo.
+Conservar pool de cinco cuentas, credenciales0600 y cuota5% de cinco horas.
