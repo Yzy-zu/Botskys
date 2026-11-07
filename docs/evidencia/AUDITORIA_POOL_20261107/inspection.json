@@ -1,0 +1,69 @@
+{
+  "checked_utc": "2026-11-07T20:12:35.033437+00:00",
+  "network_requests": 0,
+  "production_changes": 0,
+  "local_timing": {
+    "5": {
+      "iterations": 1000,
+      "median_ms": 0.607124,
+      "p95_ms": 0.700685,
+      "max_ms": 2.726338,
+      "network": false,
+      "scope": "registry+credential reload,selection,dummy provider; no prompt generation/network/inference"
+    },
+    "7": {
+      "iterations": 1000,
+      "median_ms": 0.823745,
+      "p95_ms": 0.938046,
+      "max_ms": 1.693211,
+      "network": false,
+      "scope": "registry+credential reload,selection,dummy provider; no prompt generation/network/inference"
+    },
+    "10": {
+      "iterations": 1000,
+      "median_ms": 1.1471475,
+      "p95_ms": 1.346209,
+      "max_ms": 2.138414,
+      "network": false,
+      "scope": "registry+credential reload,selection,dummy provider; no prompt generation/network/inference"
+    }
+  },
+  "production": {
+    "accounts": 5,
+    "distinct_accounts": 5,
+    "aliases": [
+      "cf01",
+      "cf02",
+      "cf03",
+      "cf04",
+      "cf05"
+    ],
+    "private_modes": {
+      "cf01": "0o600",
+      "cf02": "0o600",
+      "cf03": "0o600",
+      "cf04": "0o600",
+      "cf05": "0o600"
+    },
+    "paused_by_observed_quota": [
+      "cf01",
+      "cf02"
+    ],
+    "quota_not_measured": true,
+    "configured_max_concurrency_per_account": 2,
+    "runtime_worker_concurrency": 2,
+    "services": [
+      {
+        "name": "botsky-production-runtime",
+        "pid": 3880318,
+        "status": "online"
+      }
+    ],
+    "model": "@cf/qwen/qwen3.8-27b"
+  },
+  "limits_confirmed": [
+    "401 invalid credential has no quarantine",
+    "disabled credential is still read and validated",
+    "shared state writes lose pauses with two pool instances"
+  ]
+}

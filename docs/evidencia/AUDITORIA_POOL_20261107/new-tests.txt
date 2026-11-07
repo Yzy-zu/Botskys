@@ -1,0 +1,11 @@
+test_concurrent_quota_single_instance_preserves_both_pauses (test_cloudflare_pool_audit.AuditPoolTests.test_concurrent_quota_single_instance_preserves_both_pauses) ... ok
+test_disabled_broken_credential_blocks_pool_observed_limitation (test_cloudflare_pool_audit.AuditPoolTests.test_disabled_broken_credential_blocks_pool_observed_limitation) ... ok
+test_multiple_instances_can_lose_pause_observed_limitation (test_cloudflare_pool_audit.AuditPoolTests.test_multiple_instances_can_lose_pause_observed_limitation) ... ok
+test_revoked_token_is_not_quarantined_observed_limitation (test_cloudflare_pool_audit.AuditPoolTests.test_revoked_token_is_not_quarantined_observed_limitation) ... ok
+test_seven_accounts_seventy_turns_balanced (test_cloudflare_pool_audit.AuditPoolTests.test_seven_accounts_seventy_turns_balanced) ... Executing <Task finished name='Task-30' coro=<AuditPoolTests.test_seven_accounts_seventy_turns_balanced() done, defined at /home/petrov/botsky/tests/test_cloudflare_pool_audit.py:24> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.217 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.264s
+
+OK

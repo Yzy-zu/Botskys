@@ -1,5 +1,16 @@
 # Relevo Botsky
 
+## 07/11 · Auditoría del pool, solo lectura y simulaciones
+
+Encargo auditar funcionamiento teórico.13tests locales pasan;7cuentas/70turnos
+reparten10cadauna. Overhead local5cuentas0,607msmediana;7cuentas0,824ms.
+Tres límites reproducidos:no cuarentena401/403;credencial rota incluso disabled
+bloquea carga global;dos instancias pueden perder pausa por escritura concurrente.
+Una instancia con dos fallos concurrentes conserva ambas pausas. Pool actual5
+cuentas distintas,0600,Qwenlow,PM2PID3880318online;cf01/cf02pausadas observadas.
+Sin red,neuronas,reinicio,correcciones ni cambiosproductivos. Informe
+docs/AUDITORIA_POOL_20261107.md,reproductores/evidencia propios.
+
 ## 07/11 · Compacto íntegro desplegado
 
 Encargo expreso:implementar ydesplegar. Default FrontendService usa LosslessCatalog
