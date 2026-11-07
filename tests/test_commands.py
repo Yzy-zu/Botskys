@@ -190,6 +190,25 @@ class CommandsTest(TestCase):
         self.assertEqual(self.parse("/hh estado EVENTO_REAL").arguments["event_id"], "EVENTO_REAL")
         self.assertEqual(self.parse("/voz --voz peruano Hola").arguments["voice"], "peruano")
 
+    def test_airdrop_id_and_call_duration_help_match_accepted_arguments(self):
+        parsed = self.parse("/hh reclamar DROP_REAL")
+        self.assertEqual(dict(parsed.arguments), {"drop_id": "DROP_REAL"})
+        help_text = self.router.registry.help("hh reclamar")
+        self.assertIn("/hh reclamar DROP_ID", help_text)
+        self.assertNotIn("EVENT_ID", help_text)
+        for topic, command in (
+            ("llamar", "/llamar"),
+            ("llamada programar", "/llamada programar 2026-12-01 12:00"),
+        ):
+            help_text = self.router.registry.help(topic)
+            self.assertIn("--duracion DURACION_CON_UNIDAD", help_text)
+            self.assertIn("ejemplo 10m", help_text)
+            self.assertIn("5–3600 segundos", help_text)
+            self.assertIn("Por defecto: 300 segundos", help_text)
+            self.assertEqual(self.parse(command + " --duracion 600s").arguments["max_seconds"], 600)
+            self.assertEqual(self.parse(command + " --duracion 10m").arguments["max_seconds"], 600)
+            self.error(command + " --duracion 600", "invalid_field")
+
     def test_search_terms_follow_registry_limit_and_integer_errors_name_the_type(self):
         terms = self.router.registry.paths[("buscar",)].fields[0]
         self.assertEqual(terms.max_items, 8)

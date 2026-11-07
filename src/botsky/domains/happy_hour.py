@@ -69,7 +69,7 @@ def execute(db, context, action, args, now, app):
         drop = db.execute(
             "SELECT d.*,e.expires_ms,e.state AS event_state FROM happy_drops d JOIN happy_events e ON e.id=d.event_id WHERE d.id=? AND e."
             + CHAT.replace(" AND ", " AND e."),
-            (args["event_id"], *chat_key(context)),
+            (args["drop_id"], *chat_key(context)),
         ).fetchone()
         if (
             not drop

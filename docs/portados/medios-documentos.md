@@ -39,7 +39,7 @@ YouTube. Spotify exige coincidencia real elegida por el usuario.
 Pruebas de red: dobles de cliente, HTTPX MockTransport y proxy loopback con DNS y
 salida remota sustituidos. Cero conexiones de prueba a fuentes/proveedores.
 Los motores del flujo de descarga sí procesan un video local real. La disponibilidad
-de YouTube/W3C/SoundCloud/Dailymotion/Vimeo/Facebook/Instagram/TikTok/Spotify y adultas
+de YouTube/W3C/Dailymotion/Vimeo/Facebook/Instagram/TikTok/Spotify y adultas
 sigue NOT_TESTED en Botsky. Adultas optativas y apagadas; no confundir validación
 de URL con descarga real del sitio. yt-dlp del host solo se comprobó como dependencia.
 

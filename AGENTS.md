@@ -212,3 +212,12 @@ sin reabrir campaña ni hacer llamadas/red/envíos/efectos productivos. Adjudica
 nuevas separadas de los históricos; errores de contenido IA se distinguen de bugs
 del backend. No se encargó aplicar correcciones ni desplegar en esta fase.
 Conservar cuota5%, secretos privados, exclusionesNLP/GitHub y serviciosactivos.
+
+
+## 07/11 · Retirada de SoundCloud y corrección de ayuda
+
+El propietario encargó retirar SoundCloud de Botsky y corregir/hh reclamar y
+la ayuda de llamadas. Autoriza código, catálogo/documentación generada y pruebas
+locales propias. Conservar auditorías históricas. No reabrir campañas ni llamadas,
+envíos o mutaciones remotas; no reiniciar servicios en este cierre local.
+NLP/GitHub y umbral5% mantienen sus límites.

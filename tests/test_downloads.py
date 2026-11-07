@@ -19,7 +19,7 @@ from botsky.app import Application
 from botsky.config import Settings
 from botsky.contracts import Result
 from botsky.domains.downloads import validate_url
-from botsky.engines.downloads import DownloadOption, _proxy, download_source
+from botsky.engines.downloads import DownloadOption, _allowed_host, _proxy, download_source
 from botsky.engines.media_edit import MediaEditor
 from botsky.engines.process import MediaError, run_process
 from botsky.engines.web_results import SearchError, parse_results
@@ -198,7 +198,6 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         sources = {
             "youtube": "https://www.youtube.com/watch?v=AbCDEfgHI12",
             "w3": W3,
-            "soundcloud": "https://soundcloud.com/synthetic/song",
             "dailymotion": "https://www.dailymotion.com/video/synthetic",
             "vimeo": "https://vimeo.com/12345678",
             "facebook": "https://www.facebook.com/reel/12345678",
@@ -222,9 +221,24 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             "https://u:p@www.youtube.com/watch?v=AbCDEfgHI12",
             "file:///tmp/a",
             "https://www.youtube.com/playlist?list=synthetic",
+            "https://soundcloud.com/synthetic/song",
+            "https://www.soundcloud.com/synthetic/song",
+            "https://on.soundcloud.com/abc123",
+            "https://api-v2.soundcloud.com/tracks/123",
         ):
             with self.assertRaises(MediaError):
                 validate_url(url)
+
+        for host in (
+            "soundcloud.com",
+            "www.soundcloud.com",
+            "on.soundcloud.com",
+            "api-v2.soundcloud.com",
+            "api.soundcloud.com",
+            "a-v2.sndcdn.com",
+            "playback.media-streaming.soundcloud.cloud",
+        ):
+            self.assertFalse(_allowed_host(host, "youtube"))
 
     async def test_connect_proxy_rejects_private_dns_and_pins_public_address_without_remote_io(
         self,

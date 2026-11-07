@@ -161,6 +161,8 @@ class CommandSpec:
         parts = [self.command]
         for field in self.fields:
             val = "|".join(field.choices) if field.kind == "enum" else field.name.upper()
+            if field.kind == "duration":
+                val = "DURACION_CON_UNIDAD"
             if field.kind == "flag":
                 val = field.option
             elif field.option:

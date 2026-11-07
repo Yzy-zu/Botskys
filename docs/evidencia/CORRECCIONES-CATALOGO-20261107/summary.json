@@ -1,0 +1,10 @@
+{
+  "tests_passed": 37,
+  "tests_failed": 0,
+  "external_network_attempts": 0,
+  "soundcloud_removed": true,
+  "happy_claim_uses_drop_id": true,
+  "duration_help_units_explicit": true,
+  "production_restarted": false,
+  "historical_evidence_modified": false
+}

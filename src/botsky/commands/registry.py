@@ -281,7 +281,6 @@ def build_specs():
         "source",
         (
             "youtube",
-            "soundcloud",
             "dailymotion",
             "vimeo",
             "facebook",
@@ -659,7 +658,13 @@ def build_specs():
                 )
             ]
             if action == "start"
-            else [identity("event_id", required=action == "claim")]
+            else [
+                identity(
+                    "drop_id" if action == "claim" else "event_id",
+                    required=action == "claim",
+                    original="event_id",
+                )
+            ]
         )
         add(
             "hh " + p,
@@ -1108,6 +1113,16 @@ class Registry:
                 lines.append(
                     "Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso."
                 )
+            for field in spec.fields:
+                if field.kind == "duration":
+                    label = field.option or field.name
+                    detail = (
+                        f"{label}: entero con unidad s, m, h o d; ejemplo {field.example}. "
+                        f"Rango: {field.minimum:g}–{field.maximum:g} segundos."
+                    )
+                    if field.default is not None:
+                        detail += f" Por defecto: {field.default:g} segundos."
+                    lines.append(detail)
             if spec.summary:
                 lines.append(spec.summary)
         return "\n".join(lines)

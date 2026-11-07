@@ -39,7 +39,6 @@ DownloadSource = Literal[
     "w3",
     "xnxx",
     "pornhub",
-    "soundcloud",
     "dailymotion",
     "vimeo",
     "spotify",
@@ -128,21 +127,6 @@ def validate_download_url(url: str) -> str:
             return social
         if host == "media.w3.org" and parts.path == _W3_PATH and not parts.query:
             return f"https://media.w3.org{_W3_PATH}"
-        if host in ("soundcloud.com", "www.soundcloud.com") and not parts.query:
-            match = re.fullmatch(r"/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)", parts.path)
-            if match and match[2].lower() not in {
-                "tracks",
-                "albums",
-                "sets",
-                "reposts",
-                "likes",
-                "spotlight",
-                "comments",
-            }:
-                return f"https://soundcloud.com{parts.path}"
-        if host == "on.soundcloud.com" and not parts.query:
-            if re.fullmatch(r"/[A-Za-z0-9]+", parts.path):
-                return f"https://on.soundcloud.com{parts.path}"
         if host in ("dailymotion.com", "www.dailymotion.com") and not parts.query:
             if re.fullmatch(r"/video/[A-Za-z0-9]+", parts.path):
                 return f"https://www.dailymotion.com{parts.path}"
@@ -240,8 +224,6 @@ def download_source(url: str) -> DownloadSource:
         return "instagram"
     if host in {"www.tiktok.com", "vm.tiktok.com", "vt.tiktok.com"}:
         return "tiktok"
-    if host in ("soundcloud.com", "on.soundcloud.com"):
-        return "soundcloud"
     if host == "www.dailymotion.com":
         return "dailymotion"
     if host == "vimeo.com":
@@ -292,18 +274,6 @@ def _allowed_host(host: str, source: DownloadSource | None = None) -> bool:
         "ai.phncdn.com",
         "phncdn.com",
     )
-    soundcloud = host in (
-        "soundcloud.com",
-        "www.soundcloud.com",
-        "on.soundcloud.com",
-        "api-v2.soundcloud.com",
-        "api.soundcloud.com",
-        "a-v2.sndcdn.com",
-        "i1.sndcdn.com",
-        "playback.media-streaming.soundcloud.cloud",
-        "cf-media.sndcdn.com",
-        "cf-preview-media.sndcdn.com",
-    )
     dailymotion = host in (
         "www.dailymotion.com",
         "dailymotion.com",
@@ -347,7 +317,6 @@ def _allowed_host(host: str, source: DownloadSource | None = None) -> bool:
         "w3": host == "media.w3.org",
         "xnxx": xnxx,
         "pornhub": pornhub,
-        "soundcloud": soundcloud,
         "dailymotion": dailymotion,
         "vimeo": vimeo,
         "spotify": host == "open.spotify.com",
@@ -651,7 +620,6 @@ class Downloader:
                 "xnxx": "xnxx",
                 "pornhub": "pornhub",
                 "w3": "",
-                "soundcloud": "soundcloud",
                 "dailymotion": "dailymotion",
                 "vimeo": "vimeo",
                 "spotify": "",
@@ -1257,16 +1225,6 @@ class Downloader:
                                         raise MediaError("input_size")
                                     file.write(chunk)
                 else:
-                    if url.startswith("https://on.soundcloud.com/"):
-                        async with httpx.AsyncClient(
-                            proxy=proxy, trust_env=False, follow_redirects=False, timeout=15
-                        ) as client:
-                            async with client.stream("GET", url) as response:
-                                if response.status_code not in (301, 302, 303, 307, 308):
-                                    raise MediaError("source_failed")
-                                url = validate_download_url(response.headers.get("location", ""))
-                            if not url.startswith("https://soundcloud.com/"):
-                                raise MediaError("source_failed")
                     # yt-dlp labels progressive HTTPS streams as protocol "http".
                     # Require the actual URL to be HTTPS as well; the CONNECT proxy
                     # independently blocks plaintext and destinations outside the source.
@@ -1275,10 +1233,7 @@ class Downloader:
                         if options
                         else (MAX_WORKSPACE_BYTES if format == "video" else MAX_BYTES)
                     )
-                    if (
-                        source_kind in ("soundcloud", "dailymotion", "vimeo")
-                        or source_kind in SOCIAL_SOURCES
-                    ):
+                    if source_kind in ("dailymotion", "vimeo") or source_kind in SOCIAL_SOURCES:
                         progressive = [
                             f'[protocol={p}][url^="https://"]' for p in ("http", "https")
                         ]
@@ -1289,10 +1244,7 @@ class Downloader:
                             else [f"bestaudio{p}" for p in progressive]
                             + [f"best{p}" for p in progressive]
                         )
-                        if (
-                            source_kind in ("soundcloud", "dailymotion")
-                            or source_kind in SOCIAL_SOURCES
-                        ):
+                        if source_kind == "dailymotion" or source_kind in SOCIAL_SOURCES:
                             hls = '[protocol=m3u8_native][url^="https://"]'
                             selector += (
                                 f"/best{hls}[height<=720]"
@@ -1358,10 +1310,7 @@ class Downloader:
                                 "--extractor-retries",
                                 "0",
                             ]
-                        if (
-                            source_kind in ("soundcloud", "dailymotion")
-                            or source_kind in SOCIAL_SOURCES
-                        ):
+                        if source_kind == "dailymotion" or source_kind in SOCIAL_SOURCES:
                             args[args.index("--format") : args.index("--format")] = [
                                 "--downloader",
                                 "m3u8:native",

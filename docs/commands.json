@@ -957,7 +957,6 @@
           "default": "youtube",
           "choices": [
             "youtube",
-            "soundcloud",
             "dailymotion",
             "vimeo",
             "facebook",
@@ -1080,7 +1079,7 @@
       "summary": "",
       "example": "/dl buscar mp3 ejemplo",
       "block": "R3",
-      "usage": "/dl buscar mp3|mp4|webm|srt [--fuente youtube|soundcloud|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY",
+      "usage": "/dl buscar mp3|mp4|webm|srt [--fuente youtube|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -1851,7 +1850,7 @@
       "summary": "",
       "example": "/llamar",
       "block": "R9",
-      "usage": "/llamar [--video] [--duracion MAX_SECONDS] [--tema TOPIC]",
+      "usage": "/llamar [--video] [--duracion DURACION_CON_UNIDAD] [--tema TOPIC]",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -3461,7 +3460,7 @@
       "summary": "",
       "example": "/hh iniciar",
       "block": "R7",
-      "usage": "/hh iniciar [--duracion DURATION_SECONDS]",
+      "usage": "/hh iniciar [--duracion DURACION_CON_UNIDAD]",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -3626,7 +3625,7 @@
       "original_action": "claim",
       "fields": [
         {
-          "name": "event_id",
+          "name": "drop_id",
           "kind": "id",
           "required": true,
           "default": null,
@@ -3651,7 +3650,7 @@
       "summary": "",
       "example": "/hh reclamar ID_REAL",
       "block": "R7",
-      "usage": "/hh reclamar EVENT_ID",
+      "usage": "/hh reclamar DROP_ID",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -3986,6 +3985,26 @@
     {
       "path": [
         "mc",
+        "diagnostico"
+      ],
+      "operation": "manage_minecraft.discover",
+      "family": "manage_minecraft",
+      "original_action": "discover",
+      "fields": [],
+      "constants": [],
+      "permission": "friend",
+      "effect": "read",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc diagnostico",
+      "block": "R8",
+      "usage": "/mc diagnostico",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
         "iniciar"
       ],
       "operation": "manage_minecraft.start",
@@ -4061,6 +4080,26 @@
       "example": "/mc backup",
       "block": "R8",
       "usage": "/mc backup",
+      "acceptance": "NOT_TESTED"
+    },
+    {
+      "path": [
+        "mc",
+        "recuperar"
+      ],
+      "operation": "manage_minecraft.recover",
+      "family": "manage_minecraft",
+      "original_action": "recover",
+      "fields": [],
+      "constants": [],
+      "permission": "owner",
+      "effect": "server_mutation",
+      "confirmation": "none",
+      "attachment": false,
+      "summary": "",
+      "example": "/mc recuperar",
+      "block": "R8",
+      "usage": "/mc recuperar",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -5498,7 +5537,7 @@
       "summary": "",
       "example": "/recordar en 10m ejemplo",
       "block": "R5",
-      "usage": "/recordar en DURATION_SECONDS TEXT",
+      "usage": "/recordar en DURACION_CON_UNIDAD TEXT",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -6522,7 +6561,7 @@
       "summary": "",
       "example": "/llamada programar 2026-12-01 12:00",
       "block": "R9",
-      "usage": "/llamada programar DATE TIME [--duracion MAX_SECONDS] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]",
+      "usage": "/llamada programar DATE TIME [--duracion DURACION_CON_UNIDAD] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]",
       "acceptance": "NOT_TESTED"
     },
     {

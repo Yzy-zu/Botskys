@@ -1,5 +1,24 @@
 # Relevo Botsky
 
+## 07/11 · SoundCloud retirado; HH y ayuda de duración corregidos
+
+Encargo propietario aplicado en código:SoundCloud eliminado del registro,URLs,
+shortlinks,tipos,extractor,proxy/CDN yramasdescargas. Referenciasnegativas en tests
+e informes históricos conservadas; no volver aofrecerlo. HHreclamar ahoracampo
+DROP_ID/drop_id enregistro+handler; otrasaccionesHH mantienenevent_id. Anuncio
+imprimecomandocorrecto, testcompleto rechazaeventID y adjudica500XP conDropID.
+Original=event_id en matriz refiereinventarioantiguo, noargumentoactual.
+
+Ayudacampo duration muestraDURACION_CON_UNIDAD, unidades/ejemplo/rango/default
+derivadosregistro. Llamadas5s–1h,default300s,ejemplo10m; no cambia parser. Docs
+generadas154rutasconciliadas; incluyendosrutasMCyaimplementadas antesomitidas.
+37testsPASS(comandos13,packs16,downloads8),cero intentosexternos,proxyloopback;
+Ruff7archivos/format/diffcheckPASS. Sin nuevascampañas, llamadas,redexterna o
+serviciosreiniciados. Código enrepositorio: producción cargadaanterior requiere
+reinicio deliberadoparaadoptarlo. SinDBmigration. EvidenciaCORRECCIONES-CATALOGO-
+20261107 e informe docs/CORRECCIONES_CATALOGO_20261107.md. Cuota84%/16%00:58UTC,
+umbral5%vigente; sinNLP/GitHub/históricosalterados.
+
 ## 07/11 · Contraste AGY:35/35claims adjudicados,3defectos de catálogo
 
 Encargo nuevo del propietario contrastar/comprobar, sincorrecciones/despliegue.

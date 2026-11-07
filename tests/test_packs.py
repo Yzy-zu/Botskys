@@ -367,6 +367,11 @@ class PacksTest(IsolatedAsyncioTestCase):
         self.assertTrue(all(c[0] == "group" and not c[3] for c in self.transport.calls))
         drop = self.receive("/hh airdrop " + identifier, actor="owner", **group)
         self.deliver(drop)
+        self.assertNotEqual(identifier, drop.result.data["drop_id"])
+        self.assertEqual(
+            self.receive("/hh reclamar " + identifier, **group).result.code,
+            "happy_drop_unavailable",
+        )
         claim = self.receive("/hh reclamar " + drop.result.data["drop_id"], **group)
         self.assertEqual(claim.result.data["gained"], 500)
         await self.app.jobs.run_pending()

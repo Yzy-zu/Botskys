@@ -262,7 +262,7 @@ Permiso: friend; implementación: R3.
 /dl srt [--idioma es|en] URL
 Ejemplo: /dl srt https://media.w3.org/2010/05/bunny/trailer.mp4
 Permiso: friend; implementación: R3.
-/dl buscar mp3|mp4|webm|srt [--fuente youtube|soundcloud|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY
+/dl buscar mp3|mp4|webm|srt [--fuente youtube|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY
 Ejemplo: /dl buscar mp3 ejemplo
 Permiso: friend; implementación: R3.
 /dl elegir VIEW_ID CHOICE
@@ -339,9 +339,10 @@ Permiso: friend; implementación: R2.
 ## /hh
 
 ```text
-/hh iniciar [--duracion DURATION_SECONDS]
+/hh iniciar [--duracion DURACION_CON_UNIDAD]
 Ejemplo: /hh iniciar
 Permiso: owner; implementación: R7.
+--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 60–86400 segundos. Por defecto: 3600 segundos.
 /hh parar [EVENT_ID]
 Ejemplo: /hh parar
 Permiso: owner; implementación: R7.
@@ -354,7 +355,7 @@ Permiso: owner; implementación: R7.
 /hh airdrop [EVENT_ID]
 Ejemplo: /hh airdrop
 Permiso: owner; implementación: R7.
-/hh reclamar EVENT_ID
+/hh reclamar DROP_ID
 Ejemplo: /hh reclamar ID_REAL
 Permiso: friend; implementación: R7.
 ```
@@ -393,9 +394,10 @@ Permiso: call_authorized; implementación: R9.
 /llamada cancelar
 Ejemplo: /llamada cancelar
 Permiso: call_authorized; implementación: R9.
-/llamada programar DATE TIME [--duracion MAX_SECONDS] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]
+/llamada programar DATE TIME [--duracion DURACION_CON_UNIDAD] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]
 Ejemplo: /llamada programar 2026-12-01 12:00
 Permiso: owner; implementación: R9.
+--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos.
 /llamada agenda
 Ejemplo: /llamada agenda
 Permiso: owner; implementación: R9.
@@ -410,9 +412,10 @@ Permiso: owner; implementación: R9.
 ## /llamar
 
 ```text
-/llamar [--video] [--duracion MAX_SECONDS] [--tema TOPIC]
+/llamar [--video] [--duracion DURACION_CON_UNIDAD] [--tema TOPIC]
 Ejemplo: /llamar
 Permiso: call_authorized; implementación: R9.
+--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos.
 ```
 
 ## /mc
@@ -433,6 +436,9 @@ Permiso: friend; implementación: R8.
 /mc config
 Ejemplo: /mc config
 Permiso: friend; implementación: R8.
+/mc diagnostico
+Ejemplo: /mc diagnostico
+Permiso: friend; implementación: R8.
 /mc iniciar
 Ejemplo: /mc iniciar
 Permiso: owner; implementación: R8.
@@ -444,6 +450,9 @@ Ejemplo: /mc reiniciar
 Permiso: owner; implementación: R8.
 /mc backup
 Ejemplo: /mc backup
+Permiso: owner; implementación: R8.
+/mc recuperar
+Ejemplo: /mc recuperar
 Permiso: owner; implementación: R8.
 /mc mod activar NAME
 Ejemplo: /mc mod activar ejemplo
@@ -581,9 +590,10 @@ Permiso: owner; implementación: R6.
 ## /recordar
 
 ```text
-/recordar en DURATION_SECONDS TEXT
+/recordar en DURACION_CON_UNIDAD TEXT
 Ejemplo: /recordar en 10m ejemplo
 Permiso: friend; implementación: R5.
+duration_seconds: entero con unidad s, m, h o d; ejemplo 10m. Rango: 1–3.1536e+07 segundos.
 /recordar el DATE TIME TEXT
 Ejemplo: /recordar el 2026-12-01 12:00 ejemplo
 Permiso: friend; implementación: R5.

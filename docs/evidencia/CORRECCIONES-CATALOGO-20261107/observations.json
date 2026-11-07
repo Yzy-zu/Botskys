@@ -1,0 +1,14 @@
+{
+  "soundcloud_search_rejected": "invalid_field",
+  "current_source_has_soundcloud": false,
+  "hh_claim_arguments": {
+    "drop_id": "DROP_REAL"
+  },
+  "help": {
+    "hh reclamar": "/hh reclamar DROP_ID\nEjemplo: /hh reclamar ID_REAL\nPermiso: friend; implementación: R7.",
+    "llamar": "/llamar [--video] [--duracion DURACION_CON_UNIDAD] [--tema TOPIC]\nEjemplo: /llamar\nPermiso: call_authorized; implementación: R9.\n--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos.",
+    "llamada programar": "/llamada programar DATE TIME [--duracion DURACION_CON_UNIDAD] [--tema LIVE_REQUEST] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]\nEjemplo: /llamada programar 2026-12-01 12:00\nPermiso: owner; implementación: R9.\n--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos."
+  },
+  "generated_catalog_routes": 154,
+  "product_services_restarted": false
+}

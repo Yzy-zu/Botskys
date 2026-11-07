@@ -1,0 +1,14 @@
+test_clip_options_flow_through_url_search_and_retained_source (test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source) ... ok
+test_connect_proxy_rejects_private_dns_and_pins_public_address_without_remote_io (test_downloads.DownloadsTest.test_connect_proxy_rejects_private_dns_and_pins_public_address_without_remote_io) ... ok
+test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance (test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance) ... ok
+test_remote_clients_are_disabled_and_sources_do_not_fall_back (test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back) ... ok
+test_spotify_requires_real_choice_and_view_expiration_is_enforced (test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced) ... ok
+test_url_contract_all_sources_and_no_private_or_arbitrary_url (test_downloads.DownloadsTest.test_url_contract_all_sources_and_no_private_or_arbitrary_url) ... ok
+test_url_webm_and_embedded_srt_are_real_files_without_remote_download (test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download) ... ok
+test_view_accepted_scope_choice_format_and_previous_reuses_file (test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.409s
+
+OK
+NON_LOOPBACK_ATTEMPTS []
