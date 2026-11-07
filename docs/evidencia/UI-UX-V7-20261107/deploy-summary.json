@@ -1,0 +1,61 @@
+{
+  "target_commit": "4482c46c18c773d81577a0fb4851daec59083d08",
+  "phase": "deployed_healthy",
+  "test_messages": 0,
+  "calls": 0,
+  "preflight": {
+    "runtime": {
+      "ready": true
+    },
+    "calls": {
+      "ready": true
+    },
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": true,
+    "warnings": [],
+    "reserved_agenda": 0,
+    "resources": {
+      "bus": 1,
+      "display": 1,
+      "audio": 1,
+      "browser": 1
+    }
+  },
+  "db_before": {
+    "active_jobs": 0,
+    "unsettled_deliveries": 0,
+    "schema": 18
+  },
+  "old_runtime_pid": 3303101,
+  "preserved_tables": 54,
+  "migration": "18\u219219; all prior table columns and rows preserved except schema version entry",
+  "native_tables_enabled": true,
+  "postflight": {
+    "runtime": {
+      "ready": true
+    },
+    "calls": {
+      "ready": true
+    },
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": true,
+    "warnings": [],
+    "reserved_agenda": 0,
+    "resources": {
+      "bus": 1,
+      "display": 1,
+      "audio": 1,
+      "browser": 1
+    }
+  },
+  "other_supervisors_unchanged": true,
+  "new_runtime_pid": 3344306,
+  "db_after": {
+    "active_jobs": 0,
+    "unsettled_deliveries": 0,
+    "schema": 19
+  },
+  "integrity": "ok"
+}

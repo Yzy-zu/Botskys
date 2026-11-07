@@ -1,0 +1,8 @@
+{
+  "tests": 288,
+  "success": false,
+  "failures": 2,
+  "errors": 2,
+  "skipped": 0,
+  "non_loopback_attempts": 0
+}

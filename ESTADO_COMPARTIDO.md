@@ -1,5 +1,34 @@
 # Relevo Botsky
 
+## 07/11 · Corte por cuota5h5%; mejoras parciales desplegadas, plan NO completo
+
+Código4482c46 desplegado: runtimePID3344306, anterior3303101; respaldo privado
+private/deploy-ui-20261107. Migración18→19 preservó columnas/filas de54tablas
+anteriores (excepto entrada de versión); integridadok/FKvacías. Tablasnativas
+habilitadas por configuración explícita tras lectura de instalación. Runtime/calls
+ready, sinllamadas, mediosociosos liberados, warningsvacíos,0jobs/entregaspendientes;
+otros supervisores idénticos. Sin mensajes/llamadas de prueba ni cambiosEvolution.
+
+288PythonPASS,0fallos/errores/omisiones/intentosredexterna en segunda regresión.
+Primera falló generador de campos de selección corta y expectativa esquema18;
+logs originales conservados, fixtures actualizados sin cambiar oracles de negocio.
+18Node+4PythonAVfocalesPASS con dobles, no frames reales. EvidenciaUI-UX-V7-20261107
+más logsUI-UX-V7-python*. NO_PROBADO clienteAndroid/Web, compresiónreal, recepción,
+frames/voz/accesibilidad. Inspección JPEG local no es prueba de canal.
+
+Pendiente: cerrar V1literalidadvisual/errores/esperas, V2miniaturas/fallos/rendimiento/
+selecciónporcita, V3todaslasrecuperaciones, V4catálogo54rutas/PDF/vozQR/recados,
+V5catálogo67rutas/admin/ruleta/cooperacha/HH, V6catálogo21rutas/frames/voz, V7catálogo
+154rutas/32raíces y revisión global. Matriz es conservadora; inventario/guardias no
+acreditanrender. No marcar fases ni plan completo. Reversiónmanual: conservarDB19
+actual/efectosnuevos; deshabilitarcapacidad, desplegarfuenteanteriorcompatible con19
+sinrestaurarbackup sobre datos nuevos. Fuente67500bfarchivada requiere adaptar
+versión de esquema antes de usarDB19. No revertir automáticamente.
+
+Cuota5h5%al02:08UTC: guardado y detenido, sinreanudaciónautomática. Semanal ignorada
+por aclaración explícita. Requiere nueva continuación tras recuperar cuota.
+
+
 ## 07/11 · V6 primer corte audiovisual local
 
 MarcaBotskyenavatar/video/fallback; catálogo numerado y nombre completo, agenda
