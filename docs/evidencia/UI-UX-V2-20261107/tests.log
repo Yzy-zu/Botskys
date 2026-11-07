@@ -1,0 +1,20 @@
+test_layouts_cover_canvas_without_overlap_and_jpeg_decodes (test_search_presentation.CollageTest.test_layouts_cover_canvas_without_overlap_and_jpeg_decodes) ... ok
+test_collage_list_barrier_partial_ack_and_short_choice (test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice) ... Executing <Task finished name='Task-8' coro=<Jobs.execute_engine() done, defined at /home/petrov/botsky/src/botsky/jobs.py:685> result=EngineOutput(...ideos.jpg'),)) created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.350 seconds
+ok
+test_short_choice_ambiguous_and_immutable_no_search_again (test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again) ... ok
+test_thumbnail_private_credentials_and_ports_never_open_proxy (test_search_presentation.SearchPresentationTest.test_thumbnail_private_credentials_and_ports_never_open_proxy) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 10.738s
+
+OK
+test_layouts_cover_canvas_without_overlap_and_jpeg_decodes (test_search_presentation.CollageTest.test_layouts_cover_canvas_without_overlap_and_jpeg_decodes) ... ok
+test_collage_list_barrier_partial_ack_and_short_choice (test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice) ... Executing <Task pending name='Task-7' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:562> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.105 seconds
+ok
+test_short_choice_ambiguous_and_immutable_no_search_again (test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again) ... ok
+test_thumbnail_private_credentials_and_ports_never_open_proxy (test_search_presentation.SearchPresentationTest.test_thumbnail_private_credentials_and_ports_never_open_proxy) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 9.857s
+
+OK

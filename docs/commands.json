@@ -1111,7 +1111,7 @@
         {
           "name": "choice",
           "kind": "int",
-          "required": true,
+          "required": false,
           "default": null,
           "choices": [],
           "minimum": 1,
@@ -1134,7 +1134,7 @@
       "summary": "",
       "example": "/dl elegir ID_REAL 1",
       "block": "R3",
-      "usage": "/dl elegir VIEW_ID CHOICE",
+      "usage": "/dl elegir [VIEW_ID] CHOICE",
       "acceptance": "NOT_TESTED"
     },
     {
@@ -5883,7 +5883,7 @@
         {
           "name": "choice",
           "kind": "int",
-          "required": true,
+          "required": false,
           "default": null,
           "choices": [],
           "minimum": 1,
@@ -5906,7 +5906,7 @@
       "summary": "",
       "example": "/drive elegir ID_REAL 1",
       "block": "R6",
-      "usage": "/drive elegir VIEW_ID CHOICE",
+      "usage": "/drive elegir [VIEW_ID] CHOICE",
       "acceptance": "NOT_TESTED"
     },
     {

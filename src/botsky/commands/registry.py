@@ -308,7 +308,7 @@ def build_specs():
         "dl elegir",
         "download_media",
         "choose",
-        [identity("view_id", original="choice_view"), integer("choice", 1, 6)],
+        [identity("view_id", original="choice_view"), integer("choice", 1, 6, required=False)],
         effect="artifact",
         block="R3",
     )
@@ -921,7 +921,7 @@ def build_specs():
         "drive elegir",
         "manage_drive",
         "choose",
-        [identity("view_id"), integer("choice", 1, 5)],
+        [identity("view_id"), integer("choice", 1, 5, required=False)],
         effect="remote_read",
         block="R6",
     )

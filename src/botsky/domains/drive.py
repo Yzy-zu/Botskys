@@ -42,10 +42,9 @@ def execute(db, context, spec, command, now, app):
         except ArtifactProblem as exc:
             return Result("failed", exc.code, "El archivo propio no está disponible.")
     if spec.original_action == "choose":
-        view = db.execute(
-            f"SELECT * FROM interactions WHERE id=? AND {SCOPE_SQL} AND kind='drive' AND state='active' AND expires_ms>?",
-            (args["view_id"], *context.scope_key, now),
-        ).fetchone()
+        view, ambiguity = interactions.choose_view(db, context, 'drive', now, args.get('view_id'))
+        if ambiguity:
+            return ambiguity
         if not view:
             return Result(
                 "needs_input",

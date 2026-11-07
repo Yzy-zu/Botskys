@@ -6,3 +6,13 @@ test_short_follow_never_guesses_and_retains_scope (test_presentation.Presentatio
 Ran 3 tests in 0.082s
 
 OK
+test_follow_quote_of_intermediate_part_is_bound_to_actor (test_presentation.PresentationTest.test_follow_quote_of_intermediate_part_is_bound_to_actor) ... ok
+test_help_and_literal_delivery_are_exact_without_technical_suffix (test_presentation.PresentationTest.test_help_and_literal_delivery_are_exact_without_technical_suffix) ... ok
+test_oversized_indivisible_is_retained_as_actual_text_file (test_presentation.PresentationTest.test_oversized_indivisible_is_retained_as_actual_text_file) ... ok
+test_public_help_categories_and_detailed_call_navigation (test_presentation.PresentationTest.test_public_help_categories_and_detailed_call_navigation) ... ok
+test_short_follow_never_guesses_and_retains_scope (test_presentation.PresentationTest.test_short_follow_never_guesses_and_retains_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.163s
+
+OK

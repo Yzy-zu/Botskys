@@ -1,5 +1,17 @@
 # Relevo Botsky
 
+## 07/11 · V1 base ampliada y V2 local implementada
+
+Archivo UTF8íntegro para bloques indivisibles/código largo, citas de partes propias
+aceptadas y vigentes, sin IDs en cola/cancelación. Videos conservan metadatos y
+collageJPEG1–6 durable con fallback, miniaturas por proxy público acotado, render
+en hilo con limpieza tras cancelación. Selección corta dl/Drive determinista,
+ambigüedad explícita; barreraimagen+texto, sin falsa descarga anterior. Web con
+fichas numeradas. EvidenciaUI-UX-V1/V2-20261107;5+4pruebas nuevas,8downloads/
+15integracionesPASS. JPEG390px inspeccionadoLOCAL, no canal real. V2cierrevisual
+pendiente; V3tablas sigue. Sin deploy/envíos/llamadas. Cuota28%5h; semanal ignorada
+por instrucción del propietario. Plan global incompleto.
+
 ## 07/11 · Modernización encargada V1–V7; primer corte V1 local
 
 Propietario autoriza implementación completa y despliegue reversible, sin llamadas

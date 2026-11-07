@@ -21,3 +21,12 @@ propia, sin importar runtime. Matriz conserva las rutas no verificadas.
 
 El propietario aclaró en este turno que el umbral 5% aplica a la ventana de cinco
 horas y que la semanal no impide continuar; sustituye el criterio previo.
+
+## Segundo corte V1
+
+Añadida alternativa de archivo UTF-8 íntegro para token indivisible/código largo,
+0600, registrado como artefacto propio con lease/retención y plan outbox. Seguimiento
+por cita indexa partes intermedias aceptadas existentes; ámbito/24h verificados.
+Aviso job_queued y cancelación ya no exponen HASH. Cinco pruebas nuevas PASS.
+Base V1 habilita V2/V3; revisión visual cliente y todos los errores de dominios
+se continúa en sus fases/V7; no se considera aceptación de cliente.

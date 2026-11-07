@@ -300,7 +300,7 @@ Ejemplo: /dl srt https://media.w3.org/2010/05/bunny/trailer.mp4
 /dl buscar mp3|mp4|webm|srt [--fuente youtube|dailymotion|vimeo|facebook|instagram|tiktok|spotify|pornhub|xnxx|adult] [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] QUERY
 Ejemplo: /dl buscar mp3 ejemplo
 
-/dl elegir VIEW_ID CHOICE
+/dl elegir [VIEW_ID] CHOICE
 Ejemplo: /dl elegir ID_REAL 1
 
 /dl anterior mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en]
@@ -317,7 +317,7 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 /drive buscar [QUERY]
 Ejemplo: /drive buscar
 
-/drive elegir VIEW_ID CHOICE
+/drive elegir [VIEW_ID] CHOICE
 Ejemplo: /drive elegir ID_REAL 1
 
 /drive cuota

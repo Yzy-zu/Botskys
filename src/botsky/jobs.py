@@ -36,7 +36,7 @@ def cancel_job(db, context, target):
     if not row and not interaction:
         return None
     result = Result(
-        "cancelled", "request_cancelled", "Encargo " + target + " cancelado.", {"id": target}
+        "cancelled", "request_cancelled", "Cancelado.", {"id": target}
     )
     db.execute(
         "UPDATE jobs SET state='cancelled',lease_token=NULL,revision=revision+1,result_json=? WHERE id=? AND state IN ('queued','running')",
@@ -201,7 +201,7 @@ class Jobs:
         return Result(
             "ok",
             "job_queued",
-            "Trabajo en cola. /estado " + context.receipt_id,
+            "Trabajo en cola. Usa /estado para consultarlo.",
             {"job_id": context.receipt_id},
         )
 
@@ -464,16 +464,13 @@ class Jobs:
                         now + 900000,
                     ),
                 )
-                lines = [result.text or "Elige una coincidencia real:"]
-                for index, choice in enumerate(data["choices"], 1):
-                    lines.extend(
-                        [f"{index}. {choice['title']}", f"/dl elegir {identifier} {index}"]
-                    )
+                from .presentation.search import videos
                 result = Result(
-                    "needs_input",
-                    "download_choices",
-                    "\n".join(lines),
-                    {"view_id": identifier, "choices": data["choices"]},
+                    "needs_input", "download_choices",
+                    videos(data['choices'], now + 900000, now,
+                           intro=result.text or 'Videos'),
+                    {**result.data, "view_id": identifier,
+                     "choices": data["choices"], "media_first": True},
                 )
             if result.code == "drive_choices":
                 from .domains.drive import finish_choices
@@ -483,7 +480,7 @@ class Jobs:
                 from .domains.cooperacha import finish_preview
 
                 result = finish_preview(db, context, result)
-            if row["operation"].startswith("download_media.") and ids:
+            if result.code == "download_ready" and ids:
                 identifier = uuid4().hex
                 db.execute(
                     "INSERT INTO interactions(id,receipt_id,instance,account,actor,chat,is_group,epoch,kind,command_json,path_json,data_json,state,expires_ms) VALUES(?,?,?,?,?,?,?,?,?,?,?,?, 'pending_delivery',?)",
@@ -775,20 +772,13 @@ class Jobs:
             if backend is None:
                 raise MediaError("web_not_configured")
             items = await backend.search(args["query"], args.get("required_terms", ()))
-            lines = (
-                ["Resultados candidatos: " + args["query"]]
-                if items
-                else ["No encontré resultados que cumplan los términos y las fuentes solicitadas."]
-            )
-            for item in items:
-                lines.extend([item.title, item.snippet, item.url])
-            if items:
-                lines.append("No se han abierto ni verificado las páginas completas.")
+            from .presentation.search import web
+            text = web(items, args['query'])
             return EngineOutput(
                 Result(
                     "ok" if items else "empty",
                     "web_results" if items else "web_empty",
-                    "\n".join(lines),
+                    text,
                     {"items": [asdict(item) for item in items]},
                 )
             )
@@ -820,14 +810,20 @@ class Jobs:
                 source = "youtube" if spotify else args.get("source", "youtube")
                 choices = await backend.search(query, source, directory)
                 normalized = []
-                for candidate in choices[:6]:
+                seen = set()
+                for candidate in choices:
                     url = validate_url(
                         candidate.url, getattr(backend, "adult_sources_enabled", False)
                     )
-                    title = " ".join(str(candidate.title).split())[:300]
-                    if not title:
+                    if url in seen or len(normalized) >= 6:
                         continue
-                    normalized.append({"url": url, "title": title})
+                    title = str(candidate.title)
+                    if not title.strip():
+                        continue
+                    seen.add(url)
+                    normalized.append({"url": url, "title": title,
+                        "duration": candidate.duration if isinstance(candidate.duration, (int, float)) and __import__("math").isfinite(candidate.duration) and candidate.duration > 0 else None, "author": candidate.author,
+                        "thumbnail_url": candidate.thumbnail_url})
                 if not normalized:
                     return EngineOutput(
                         Result(
@@ -835,6 +831,15 @@ class Jobs:
                         )
                     )
                 parameters = {k: v for k, v in args.items() if k not in ("url", "query")}
+                from .engines.search_collage import create
+                collage_files = ()
+                collage_state = 'unavailable'
+                try:
+                    collage = await create(normalized, directory / 'videos.jpg', getattr(backend, 'thumbnail', None))
+                    collage_files = (collage,)
+                    collage_state = 'ready'
+                except (OSError, ValueError):
+                    pass
                 return EngineOutput(
                     Result(
                         "needs_input",
@@ -842,8 +847,9 @@ class Jobs:
                         "Spotify aporta metadatos; selecciona una coincidencia real."
                         if spotify
                         else "Elige una coincidencia:",
-                        {"choices": normalized, "arguments": parameters},
-                    )
+                        {"choices": normalized, "arguments": parameters, "collage_state": collage_state},
+                    ),
+                    collage_files,
                 )
             opts = {
                 k: args[k]

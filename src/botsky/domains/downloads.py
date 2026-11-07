@@ -55,15 +55,15 @@ def execute(db, context, spec, args, now, jobs, artifacts, backend):
         )
     adult = getattr(backend, "adult_sources_enabled", False)
     if action == "choose":
-        view = db.execute(
-            f"SELECT * FROM interactions WHERE id=? AND {SCOPE_SQL} AND kind='download' AND state='active' AND expires_ms>?",
-            (args["view_id"], *context.scope_key, now),
-        ).fetchone()
+        from ..interactions import choose_view
+        view, ambiguity = choose_view(db, context, 'download', now, args.get('view_id'))
+        if ambiguity:
+            return ambiguity
         if not view:
             return Result(
                 "needs_input",
                 "download_view_unavailable",
-                "La vista no es propia, entregada y vigente. Ejecuta una búsqueda nueva.",
+                "La lista no está disponible o venció. Vuelve a buscar con /dl buscar.",
             )
         data = json.loads(view["data_json"])
         if args["choice"] > len(data["choices"]):

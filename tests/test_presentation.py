@@ -58,3 +58,36 @@ class PresentationTest(TestCase):
         self.assertEqual(''.join(split_text(text)), text)
         self.assertTrue(all(len(p) <= 3500 for p in split_text(text)))
         self.assertEqual(Document((Block('literal', '*texto* /daily'),)).text(), '*texto* /daily')
+
+    def test_oversized_indivisible_is_retained_as_actual_text_file(self):
+        from botsky.contracts import Result
+        from botsky.store import context_of
+        receipt = self.receive('/ayuda')
+        literal = 'https://example.invalid/' + 'a' * 6000 + '\n**literal** e\u0301'
+        with self.app.store.transaction() as db:
+            row = db.execute('SELECT * FROM inbox WHERE id=?', (receipt.id,)).fetchone()
+            db.execute('DELETE FROM outbox WHERE receipt_id=?', (receipt.id,))
+            self.app.store.enqueue(db, context_of(row), Result('ok', 'literal', literal), self.now)
+        self.assertEqual(self.app.deliver(receipt.id, self.transport), 2)
+        self.assertIn('contenido completo', self.transport.parts[0].text)
+        artifact = self.transport.parts[1].artifacts[0]
+        self.assertEqual(self.app.artifacts.path(artifact).read_text(), literal)
+        self.assertEqual(self.app.artifacts.path(artifact).stat().st_mode & 0o777, 0o600)
+        self.assertEqual(self.app.deliver(receipt.id, self.transport), 0)
+
+    def test_follow_quote_of_intermediate_part_is_bound_to_actor(self):
+        from botsky.contracts import Result
+        from botsky.store import context_of
+        receipt = self.receive('/ayuda')
+        with self.app.store.transaction() as db:
+            row = db.execute('SELECT * FROM inbox WHERE id=?', (receipt.id,)).fetchone()
+            db.execute('DELETE FROM outbox WHERE receipt_id=?', (receipt.id,))
+            self.app.store.enqueue(db, context_of(row), Result('ok', 'literal', 'párrafo\n\n' * 1000), self.now)
+        self.app.deliver(receipt.id, self.transport)
+        cited = self.rows('SELECT provider_message_id FROM outbox WHERE receipt_id=? AND position=1', (receipt.id,))[0]['provider_message_id']
+        found = self.receive('/estado', quoted_message_id=cited)
+        self.assertEqual(found.result.data['id'], receipt.id)
+        foreign = self.receive('/estado', actor='bob', quoted_message_id=cited)
+        self.assertEqual(foreign.result.code, 'request_quote_unavailable')
+        self.now += 86400001
+        self.assertEqual(self.receive('/estado', quoted_message_id=cited).result.code, 'request_quote_unavailable')

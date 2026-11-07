@@ -74,6 +74,7 @@ class Application:
             roulette_choice,
         )
         self.artifacts = Artifacts(self.store, settings.root / "private/artifacts")
+        self.store.presentation_artifacts = self.artifacts
         self.jobs = Jobs(
             self.store,
             settings,

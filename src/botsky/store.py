@@ -248,19 +248,45 @@ class Store:
                 self.enqueue(db, context, result, incoming.received_ms)
             return Receipt(incoming.id, state, result)
 
-    @staticmethod
-    def enqueue(db, context, result, now):
+    def enqueue(self, db, context, result, now):
         if result.code == "job_queued":
             return
         text = result.text
+        artifact_ids = list(result.data.get("artifacts", ()))
+        if text and (any(len(token) > PART_CHARS for token in text.split())
+                     or len(text) > PART_CHARS and '```' in text):
+            # Fuente íntegra, privada y durable. La vista previa nunca se hace
+            # pasar por el contenido completo; no cortar URLs ni bloques de código.
+            from tempfile import NamedTemporaryFile
+
+            artifacts = getattr(self, 'presentation_artifacts', None)
+            if artifacts is not None:
+                with NamedTemporaryFile(dir=artifacts.root, suffix='.txt', delete=False) as output:
+                    source = Path(output.name)
+                    output.write(text.encode('utf-8'))
+                try:
+                    staged = artifacts.stage(source, output=True)
+                    artifact_ids.append(artifacts.register(db, staged, context,
+                        context.receipt_id, now, origin='result', receipt_id=context.receipt_id))
+                finally:
+                    source.unlink(missing_ok=True)
+                text = 'El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres.'
         count = 0
-        for position, fragment in enumerate(split_text(text, PART_CHARS)):
+        if result.data.get('media_first'):
+            for artifact_id in artifact_ids:
+                db.execute(
+                    "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json) VALUES(?,?,'','pending',?,?)",
+                    (context.receipt_id, count, now, canonical([artifact_id])),
+                )
+                count += 1
+            artifact_ids = []
+        for position, fragment in enumerate(split_text(text, PART_CHARS), start=count):
             db.execute(
                 "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms) VALUES(?,?,?,'pending',?)",
                 (context.receipt_id, position, fragment, now),
             )
             count = position + 1
-        for artifact_id in result.data.get("artifacts", ()):
+        for artifact_id in artifact_ids:
             db.execute(
                 "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json) VALUES(?,?,'','pending',?,?)",
                 (context.receipt_id, count, now, canonical([artifact_id])),
@@ -329,6 +355,20 @@ class Store:
     def follow(self, db, context, target, now, *, cancel=False):
         if target:
             return self.cancel(db, context, target) if cancel else self.state(db, context, target)
+        parent = db.execute('SELECT quoted_message_id FROM inbox WHERE id=?', (context.receipt_id,)).fetchone()
+        if parent and parent[0]:
+            cited = db.execute(
+                'SELECT i.id FROM inbox i JOIN outbox o ON o.receipt_id=i.id '
+                "WHERE o.provider_message_id=? AND o.state='accepted' "
+                'AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? '
+                'AND i.is_group=? AND i.epoch=? AND i.received_ms>?',
+                (parent[0], *context.scope_key, now - 86400000),
+            ).fetchall()
+            if len({r['id'] for r in cited}) == 1:
+                target = cited[0]['id']
+                return self.cancel(db, context, target) if cancel else self.state(db, context, target)
+            return Result('needs_input', 'request_quote_unavailable',
+                          'La cita debe ser una respuesta propia entregada y vigente en este chat.')
         # Nunca elegir «el último»: solo un trabajo vivo en este ámbito, o una
         # respuesta propia entregada en las últimas 24 h. Excluir controles.
         rows = db.execute(
