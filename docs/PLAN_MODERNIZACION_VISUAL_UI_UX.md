@@ -1,7 +1,7 @@
 # Modernización visual y de experiencia de Botsky
 
 Versión 1 · 07/11/2026 · Encargo: recuperar la calidad visual de Zhana en toda la experiencia.
-Estado: **V1–V6 implementadas y verificadas en alcance local; V7 en cierre técnico.
+Estado: **V1–V6 implementadas y verificadas en alcance local; V7 técnico desplegado.
 Plan completo NO cerrado: observación de cliente/canal y audiovisual real NO_PROBADO**.
 
 Encargo posterior: implementación y despliegue reversible autorizados, sin llamadas
@@ -459,3 +459,10 @@ envíos/llamadas de prueba; no impiden el trabajo técnico independiente realiza
 No se han reincorporado NLP ni SoundCloud. La reversión conserva la base viva y
 requiere no degradar planes2 pendientes al lector anterior; no restaura un backup
 antiguo sobre efectos nuevos. Ver `evidencia/UI-UX-CONT-20261107/reversion.md`.
+
+Corte productivo de continuación verificado:189e71f, runtimePID3402770, esquema19
+sin migración,55tablas previas idénticas tras respaldo y antes de arrancar. Salud
+runtime/callsready, sin actividad, medios liberados y supervisores ajenos intactos.
+Ver resumen saneado `evidencia/UI-UX-CONT-20261107/despliegue-resumen.json`.
+Respaldo y archivos de código legibles comprobados; reversión no ejecutada como
+prueba. Este corte no acredita render de WhatsApp ni modifica los NO_PROBADO.

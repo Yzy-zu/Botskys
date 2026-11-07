@@ -1,5 +1,27 @@
 # Relevo Botsky
 
+## 07/11 · Continuación visual desplegada y datos preservados; plan NO completo
+
+Desplegado189e71f (fuente producto bf2fba9), runtimePID3402770, anterior3344306.
+Respaldo propio private/deploy-ui-cont-20261107: SQLite integridadok/FKvacías,
+55tablas con columnas/filas idénticas antes de arrancar; esquema19 sin migración.
+Código anterior4482c46 y actual archivados/leídos completamente, hashes guardados;
+privado directorio0700/ficheros0600. Runtime/callsready; llamadasactivas/externasfalse,
+mediosliberados,0reservasagenda/warnings,0jobsactivos/entregaspendientes al corte.
+Todos los supervisores ajenos conservanPID/estado/reinicios. Sin llamadas/envíos de
+prueba nuevos ni restauración de datos. Resumen saneado y reversión guardados en
+UI-UX-CONT-20261107; vuelta a código anterior exige0jobs/planesv2sinresolver y
+conserva base viva, nunca backup antiguo sobre efectos nuevos.
+
+321PythonPASS y catálogo final033459155rutas/776muestras, hash fuente estable y
+0redexterna. Node286PASS+2VM focales documentados; VM no es raster/WebGL real.
+Matriz155/192/32raíces (34familias AV) enlaza prueba/ámbito; no inventario como
+render ni todas las capturas como PASS de campos. V1–V6 implementadas/verificadas
+localmente, V7 técnico desplegado. NO_PROBADO: Android/Web, modo/fuente/lector,
+compresión real del canal, frames/labios/audio/recepción y fidelidad fuera defixtures.
+Plan NO completo ni aceptación humana declarada. No queda prueba remota autorizada
+pendiente de ejecución automática. Cuota5h31% última lectura; semanal no bloquea.
+
 ## 07/11 · V7 local final verificada; despliegue de continuación preparado
 
 Fuente bf2fba9: suite final033459 con321PythonPASS,0fallos/errores/omisiones,

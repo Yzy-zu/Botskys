@@ -1,0 +1,68 @@
+{
+  "target_commit": "189e71fac7a37076947f986f90d4c6e86d39aa7f",
+  "phase": "deployed_healthy",
+  "test_messages": 0,
+  "calls": 0,
+  "catalogue": "docs/evidencia/UI-UX-CATALOGO-20261107/033459",
+  "source_revision": "bf2fba91e4b39ca9a9f85c1c917e5db2fcf9b79e",
+  "preflight": {
+    "runtime": {
+      "ready": true
+    },
+    "calls": {
+      "ready": true
+    },
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": true,
+    "warnings": [],
+    "reserved_agenda": 0
+  },
+  "db_before": {
+    "active_jobs": 0,
+    "unsettled_deliveries": 0,
+    "schema": 19
+  },
+  "old_runtime_pid": 3344306,
+  "preserved_tables": 55,
+  "migration": "none; schema19; every table, column and row identical before restart",
+  "native_tables_enabled": true,
+  "postflight": {
+    "runtime": {
+      "ready": true
+    },
+    "calls": {
+      "ready": true
+    },
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": true,
+    "warnings": [],
+    "reserved_agenda": 0
+  },
+  "other_supervisors_unchanged": true,
+  "new_runtime_pid": 3402770,
+  "db_after": {
+    "active_jobs": 0,
+    "unsettled_deliveries": 0,
+    "schema": 19
+  },
+  "integrity": "ok",
+  "backup_sha256": "4844f7cf0c6f5fbc202ce9d4a7b8e84fdf7eee170ef80b0fc4680c50cde7042e",
+  "rollback": "Previous code archived; stop only own runtime, require zero active jobs/unsettled v2 plans, retain live schema19 database. Never restore old database over new effects. See reversion.md.",
+  "archives": [
+    {
+      "archive": "previous-code-4482c46.tar",
+      "members": 908,
+      "sha256": "ba51f7dcb311e75b3c0a4de7ffe6f68267fd10380183f538c81a8ad247dabb85",
+      "readable": true
+    },
+    {
+      "archive": "verified-code.tar",
+      "members": 3296,
+      "sha256": "4c6f3453b41b20086bb8deb91f2ae4873907276760513109d5daeb1e4c18667e",
+      "readable": true
+    }
+  ],
+  "private_modes": "directory0700/files0600"
+}
