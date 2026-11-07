@@ -12,7 +12,7 @@ window.__botskyAvatar = {
     let worker, watchdog, stopped = false, loaded = false, sequence = 0, recoveries = 0;
     let lastFrameAt = performance.now(), workerStartedAt = lastFrameAt;
     const modelSource = model;
-    let state = { ready: false, name: 'Zhana', frames: 0, mouth: 0, background: 'neon', expression: 'relaxed', renderMs: 0, width: AVATAR_WIDTH, height: AVATAR_HEIGHT, targetFps: AVATAR_FPS };
+    let state = { ready: false, name: 'Botsky', frames: 0, mouth: 0, background: 'neon', expression: 'relaxed', renderMs: 0, width: AVATAR_WIDTH, height: AVATAR_HEIGHT, targetFps: AVATAR_FPS };
     const requests = new Map();
     let resolveReady, rejectReady;
     const ready = new Promise((resolve, reject) => { resolveReady = resolve; rejectReady = reject; });

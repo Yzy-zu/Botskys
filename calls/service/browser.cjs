@@ -311,8 +311,8 @@ class BrowserDriver {
   async resolveGroup(query) {
     const result = await bounded(this.page.evaluate(resolveJoinedGroup, query), 15000, 'GROUP_DIRECTORY_UNAVAILABLE');
     if (result.error === 'ambiguous') throw new ServiceError('CALL_TARGET_CLARIFICATION', 'Hay varios grupos con ese nombre. Dime un nombre más preciso.', 409);
-    if (result.error === 'not_found') throw new ServiceError('CALL_TARGET_CLARIFICATION', 'No encontré un grupo con ese nombre donde Zhana sea miembro. Dime su nombre completo.', 404);
-    if (!result.group) throw new ServiceError('GROUP_DIRECTORY_UNAVAILABLE', 'No pude verificar los grupos de Zhana ahora. Inténtalo de nuevo en un momento.', 503);
+    if (result.error === 'not_found') throw new ServiceError('CALL_TARGET_CLARIFICATION', 'No encontré un grupo con ese nombre donde Botsky sea miembro. Dime su nombre completo.', 404);
+    if (!result.group) throw new ServiceError('GROUP_DIRECTORY_UNAVAILABLE', 'No pude verificar los grupos de Botsky ahora. Inténtalo de nuevo en un momento.', 503);
     return result.group;
   }
   async dial(group, { cancelled, audioToken, preparedAudio, recoveryNativeId, video = false }) {
@@ -331,7 +331,7 @@ class BrowserDriver {
         return { id: chat?.id?._serialized || chat?.id?.toString(), count: participants.length, member: chat?.groupMetadata?.participants?.iAmMember?.() === true, community: !!(chat?.isParentGroup || chat?.groupMetadata?.isParentGroup) };
       }, group.id), 10_000, 'OPEN_GROUP_TIMEOUT');
       if (selected.id !== group.id || (selected.count < (group.minParticipants || 2) || selected.count > (group.maxParticipants || 2))) throw new ServiceError('GROUP_MISMATCH', 'El grupo solicitado no coincide o su tamaño no permite iniciar esta llamada.');
-      if (group.requireMembership && (!selected.member || selected.community)) throw new ServiceError('GROUP_NOT_JOINED', 'Zhana ya no es miembro de ese grupo o ese chat no admite esta llamada.', 403);
+      if (group.requireMembership && (!selected.member || selected.community)) throw new ServiceError('GROUP_NOT_JOINED', 'Botsky ya no es miembro de ese grupo o ese chat no admite esta llamada.', 403);
       check();
       stage = 'arm_audio';
       await bounded(this.page.evaluate(({ token, video }) => window.__botskyAudio.arm(token, { video }), { token: audioToken, video }), video ? 30000 : 5000, 'AUDIO_ARM_TIMEOUT');

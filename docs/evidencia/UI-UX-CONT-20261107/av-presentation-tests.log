@@ -1,0 +1,8 @@
+test_agenda_uses_configured_timezone_even_when_service_zone_is_invalid (test_av_presentation.AVPresentationTest.test_agenda_uses_configured_timezone_even_when_service_zone_is_invalid) ... ok
+test_status_retains_reason_connection_time_and_measured_duration (test_av_presentation.AVPresentationTest.test_status_retains_reason_connection_time_and_measured_duration) ... ok
+test_volume_uses_observed_value_and_preserves_deferred_message (test_av_presentation.AVPresentationTest.test_volume_uses_observed_value_and_preserves_deferred_message) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+OK

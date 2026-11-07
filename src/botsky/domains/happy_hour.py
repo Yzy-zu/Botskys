@@ -60,7 +60,7 @@ def execute(db, context, action, args, now, app):
             "ok",
             "happy_started",
             f"Hora feliz {identifier}: {args['duration_seconds']}s desde la entrega de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n/hh estado {identifier}",
-            {"event_id": identifier},
+            {"event_id": identifier, "duration_seconds": args["duration_seconds"]},
         )
     source_ms = db.execute(
         "SELECT min(source_ms,received_ms) FROM inbox WHERE id=?", (context.receipt_id,)
@@ -143,6 +143,7 @@ def execute(db, context, action, args, now, app):
                 "state": event["state"],
                 "drop": dict(drop) if drop else None,
                 "expires_ms": event["expires_ms"],
+                "duration_seconds": event["duration_seconds"],
             },
         )
     if action == "stop":

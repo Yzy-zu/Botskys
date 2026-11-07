@@ -1,0 +1,20 @@
+TAP version 13
+# Subtest: visual: clip/PIP survives pending resume; real end returns to avatar without autoplay
+ok 1 - visual: clip/PIP survives pending resume; real end returns to avatar without autoplay
+  ---
+  duration_ms: 8.409774
+  ...
+# Subtest: visual: reconnect replaces pause in one layer; obsolete session cannot continue clip
+ok 2 - visual: reconnect replaces pause in one layer; obsolete session cannot continue clip
+  ---
+  duration_ms: 3.692344
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86.937714

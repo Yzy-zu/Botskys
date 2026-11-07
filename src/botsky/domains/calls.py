@@ -468,7 +468,11 @@ async def run(job, directory, manager):
                 if response.get("success") is True
                 else "av_control_unconfirmed",
                 response.get("message", "Control audiovisual solicitado; consulta estado."),
-                response,
+                {
+                    **response,
+                    "presentation_action": action,
+                    "presentation_family": op.split(".")[1],
+                },
             )
         )
     except BaseException as exc:

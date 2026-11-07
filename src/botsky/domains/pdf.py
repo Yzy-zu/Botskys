@@ -56,7 +56,7 @@ def execute(db, context, spec, command, now, artifacts, jobs):
             return Result(
                 "needs_input",
                 "pdf_session_busy",
-                "La sesión ya está procesándose. Usa /estado ID o cancela el encargo exacto.",
+                "La sesión ya está procesándose. Consulta /estado o detén la sesión con /pdf cancelar.",
             )
         inputs = json.loads(session["inputs_json"])
         if not inputs:

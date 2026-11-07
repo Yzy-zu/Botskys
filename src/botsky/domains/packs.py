@@ -204,7 +204,14 @@ def execute(db, context, spec, args, now, app):
             "needs_input",
             "pack_offer",
             f"Pack {identifier}: {args['category']} · {price} XP · {'4–6' if event else '3–5'} fotos (mínimo3 por stock), visualización única en tu privado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. No he cobrado. Caduca en5min.\n/pack confirmar {identifier}",
-            {"purchase_id": identifier, "price": price},
+            {
+                "purchase_id": identifier,
+                "price": price,
+                "category": args["category"],
+                "min_photos": 4 if event else 3,
+                "max_photos": 6 if event else 5,
+                "expires_ms": now + 300000,
+            },
         )
     row = db.execute(
         f"SELECT * FROM gallery_orders WHERE id=? AND {SCOPE_SQL}",

@@ -247,7 +247,13 @@ def finish_preview(db, context, result):
         "ok",
         "coop_preview",
         f"Cooperacha {row['id']} · meta {row['target']} XP. Vence10min tras aceptar esta vista completa. Al completar se publica la foto original en este grupo. Al vencer se devuelve80% por persona, redondeado hacia abajo; cancelación o fallo conocido100%; entrega incierta retiene el saldo, sin reenviar.\n/coop aportar {row['id']} 50",
-        {"challenge_id": row["id"], "artifacts": result.data.get("artifacts", [])},
+        {
+            "challenge_id": row["id"],
+            "artifacts": result.data.get("artifacts", []),
+            "category": row["category"],
+            "target": row["target"],
+            "media_first": True,
+        },
     )
 
 

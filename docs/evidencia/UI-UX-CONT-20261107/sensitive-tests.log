@@ -1,0 +1,9 @@
+test_nuclear_preview_is_not_a_confirmation_and_keeps_scope_cost_and_protection (test_sensitive_presentation.NuclearPresentationTest.test_nuclear_preview_is_not_a_confirmation_and_keeps_scope_cost_and_protection) ... ok
+test_coop_preview_is_actual_censored_image_and_requires_whole_composition (test_sensitive_presentation.OfferPresentationTest.test_coop_preview_is_actual_censored_image_and_requires_whole_composition) ... ok
+test_pack_offer_keeps_cost_private_delivery_and_confirm_token_without_charging (test_sensitive_presentation.OfferPresentationTest.test_pack_offer_keeps_cost_private_delivery_and_confirm_token_without_charging) ... ok
+test_minecraft_worlds_config_and_backup_never_show_raw_json_or_assume_game_load (test_sensitive_presentation.OperationalPresentationTest.test_minecraft_worlds_config_and_backup_never_show_raw_json_or_assume_game_load) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.295s
+
+OK

@@ -1,5 +1,16 @@
 # Relevo Botsky
 
+## 07/11 · V5/V6 vistas sensibles y operación AV verificadas localmente
+
+PreviewsPack/ruleta/nuclear/coop/HH concondicionescompletas,tablasestado;4oracles
+sensiblesPASSincluyendocensuraJPEGreal sobrepatrónpropio ybarreraimagen/texto.
+14admin/16packs/6ruleta/37MC PASS. MCmundos/config/diagnósticoentablas,backup
+bytesdedatosseparado tamañoarchivo/restauraciónnoprobados. Botvencimientozonareal.
+AVmarcaerroresyavatarclientBotsky;estadotiempo/motivo,volumenobservado,diferido,
+zonaconfigurada.3presentadorAV+4PythonAV+286Node+2VMcomposiciónPASS. VM no es raster
+niWebGLniobservaciónhumana. UI-UX-CONT-20261107/V5-V6.md. Sinproveedores/servicios
+/envíos/llamadas/navegadorreales. V7catálogo155rutas/revisiónydeploysigue.
+
 ## 07/11 · V4 continuidad/ficheros/recados y fuentes verificadas localmente
 
 Paginaciónconservafiltrosmemoria/cerradas/notas explícitas;2oraclesSQLitePASS.

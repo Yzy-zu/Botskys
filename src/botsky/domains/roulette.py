@@ -171,6 +171,8 @@ def board(db, context, row, now):
             "state": row["state"],
             "revision": row["revision"],
             "players": len(ps),
+            "bet": row["bet"],
+            "seats": [p["wallet_id"] for p in ps],
         },
     )
 

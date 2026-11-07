@@ -266,7 +266,7 @@ def reminder(db, context, action, args, now):
             "ok",
             "reminder_created",
             f"Recordatorio {cur.lastrowid}: {args['text']}\n{shown} · Ciudad de México. Aviso pendiente; entrega aún no comprobada.",
-            {"reminder_id": cur.lastrowid, "due_ms": due},
+            {"reminder_id": cur.lastrowid, "due_ms": due, "text": args["text"]},
         )
     if action == "list":
         return paginate(
@@ -517,7 +517,13 @@ def school(db, context, spec, command, now, app):
             "school_task_created",
             f"Tarea {cur.lastrowid} guardada para {args['due_date']}"
             + (" " + args["due_time"] if args.get("due_time") else " (sin hora definida)."),
-            {"task_id": cur.lastrowid},
+            {
+                "task_id": cur.lastrowid,
+                "due_date": args["due_date"],
+                "due_time": args.get("due_time"),
+                "subject": args.get("subject", ""),
+                "text": args["text"],
+            },
         )
     if action == "list_tasks":
         return paginate(

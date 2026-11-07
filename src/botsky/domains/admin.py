@@ -283,7 +283,12 @@ async def run(job, directory, manager):
                 "ok" if state == "completed" else "failed" if state == "failed" else "uncertain",
                 "admin_" + state,
                 "Acción administrativa: " + state + ". Una acción incierta no se repetirá.",
-                {"action": action},
+                {
+                    "action": action,
+                    "target_label": "Participante verificado del comando"
+                    if member
+                    else "Este grupo",
+                },
             )
             if action == "ban" and state == "failed":
                 with manager.store.transaction() as db:

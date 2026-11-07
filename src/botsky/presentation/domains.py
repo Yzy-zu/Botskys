@@ -27,6 +27,17 @@ STATES = {
     "open": "abierta",
     "closed": "cerrada",
     "partial": "parcial",
+    "preparing": "preparando",
+    "publishing": "publicando",
+    "offered": "oferta pendiente",
+    "ready": "preparado",
+    "claimed": "reclamado",
+    "active": "activo",
+    "lobby": "esperando participantes",
+    "playing": "en juego",
+    "settled": "liquidado",
+    "skipped": "omitido",
+    "revoked": "retirado",
 }
 
 
@@ -59,7 +70,17 @@ def filename(name, extension):
 
 def tabular(result, title, headers, rows, *, intro="", footer=""):
     if not rows:
-        return result
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block("heading", title),
+                    Block("paragraph", intro),
+                    Block("notice", "Sin registros para mostrar."),
+                    Block("notice", footer),
+                )
+            ),
+        )
     try:
         tables = [
             NativeTable(
@@ -101,6 +122,92 @@ def tabular(result, title, headers, rows, *, intro="", footer=""):
 
 def present(result, *, zone="America/Mexico_City"):
     data, code = result.data, result.code
+    from .community import present as present_community
+
+    result = present_community(result, zone)
+    data = result.data
+    if data.get("document") or data.get("native_tables"):
+        return result
+    from .audiovisual import present_audiovisual
+
+    result = present_audiovisual(result, zone)
+    data = result.data
+    if data.get("document") or data.get("native_tables"):
+        return result
+    if code == "reminder_created" and "text" in data:
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block("heading", f"Recordatorio {data['reminder_id']} guardado"),
+                    Block("paragraph", date_time(data["due_ms"], zone)),
+                    Block("literal", data["text"]),
+                    Block("notice", "Aviso pendiente; entrega aún no comprobada."),
+                )
+            ),
+        )
+    if code == "school_task_created" and "due_date" in data:
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block("heading", f"Tarea {data['task_id']} guardada"),
+                    Block(
+                        "paragraph",
+                        "Entrega: "
+                        + data["due_date"]
+                        + " "
+                        + (data["due_time"] or "(sin hora definida)")
+                        + " · "
+                        + zone,
+                    ),
+                    Block("literal", data["subject"]),
+                    Block("literal", data["text"]),
+                )
+            ),
+        )
+    if code in ("memory_forgotten", "memories_deleted"):
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block("heading", "Memoria actualizada"),
+                    Block(
+                        "notice",
+                        result.text + " En este chat; no se promete borrar copias históricas.",
+                    ),
+                )
+            ),
+        )
+    if code in ("bot_status", "bot_mode_updated"):
+        blocks = [Block("heading", "Estado de Botsky"), Block("paragraph", "Modo: " + data["mode"])]
+        if data.get("paused_until_ms"):
+            blocks.append(
+                Block("notice", "Pausa hasta: " + date_time(data["paused_until_ms"], zone))
+            )
+        else:
+            blocks.append(Block("notice", "Sin pausa."))
+        labels = {
+            "comandos": "Comandos explícitos",
+            "notas": "Notas",
+            "medios_locales": "Archivos locales",
+            "gemini_configurado": "IA",
+            "tts_configurado": "Voz",
+            "asr_configurado": "Transcripción",
+            "descargas_configuradas": "Descargas",
+        }
+        if code == "bot_status":
+            blocks.append(
+                Block(
+                    "paragraph",
+                    "Configuración (no prueba del proveedor):\n"
+                    + "\n".join(
+                        labels.get(k, k) + ": " + ("configurado" if v else "sin configurar")
+                        for k, v in data["capabilities"].items()
+                    ),
+                )
+            )
+        return attach_document(result, Document(tuple(blocks)))
     file_titles = {
         "document_converted": "Documento convertido",
         "media_edited": "Audio o video convertido",
@@ -512,6 +619,19 @@ def present(result, *, zone="America/Mexico_City"):
         return attach_document(
             result, Document((Block("heading", "Hora feliz"), Block("paragraph", "\n".join(lines))))
         )
+    if code == "minecraft_completed" and data.get("action") in (
+        "config",
+        "worlds",
+        "backup",
+        "players",
+        "status",
+        "diagnostics",
+        "start",
+        "stop",
+    ):
+        from .minecraft import present_minecraft
+
+        return present_minecraft(result)
     if code == "minecraft_completed" and data.get("action") == "mods":
         response = data["response"]
         installed = response.get("installed")
@@ -564,7 +684,7 @@ def present(result, *, zone="America/Mexico_City"):
                 [
                     (
                         item["id"],
-                        date_time(item["dueAt"], item.get("timeZone") or zone),
+                        date_time(item["dueAt"], zone),
                         (
                             "En vivo"
                             if item.get("live") is True
@@ -583,29 +703,4 @@ def present(result, *, zone="America/Mexico_City"):
                 ],
                 footer="La programación no acredita una llamada conectada ni recepción humana.",
             )
-    if code == "call_status":
-        states = {
-            "preparing": "Preparando",
-            "dialing": "Marcando",
-            "ringing": "Esperando respuesta",
-            "connected": "Conectada según el servicio",
-            "ending": "Terminando",
-            "ended": "Terminada",
-            "failed": "No se pudo completar",
-            "interrupted": "Interrumpida",
-            "cancelled": "Cancelada",
-        }
-        call = data["call"]
-        return attach_document(
-            result,
-            Document(
-                (
-                    Block("heading", "Llamada"),
-                    Block("paragraph", states.get(call["state"], "Estado no reconocido")),
-                    Block(
-                        "notice", "Estado del servicio; no acredita escucha ni recepción humana."
-                    ),
-                )
-            ),
-        )
     return result
