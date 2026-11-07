@@ -166,7 +166,7 @@ def memory(db, context, action, args, now):
             "needs_input",
             "memory_delete_preview",
             f"Borraré {len(rows)} recuerdos de este ámbito.\n/confirmar {identifier}",
-            {"confirmation_id": identifier},
+            {"confirmation_id": identifier, "count": len(rows)},
         )
     row = db.execute(
         "SELECT * FROM memories WHERE id=? AND " + SCOPE_SQL,

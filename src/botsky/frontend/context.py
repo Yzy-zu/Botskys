@@ -51,6 +51,22 @@ def load(app, db, row, now):
         answer = decision.get('text') or decision.get('question')
         if answer:
             conversation.append({'user': turn['text'][:800], 'frontend': answer[:800]})
+    pages = db.execute(
+        "SELECT i.id,i.path_json,i.command_json,i.result_json FROM inbox i WHERE "
+        + " AND ".join("i." + term for term in SCOPE_SQL.split(" AND "))
+        + " AND i.state='completed' AND i.received_ms>? AND i.id<>? "
+        "AND EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND o.state='accepted') "
+        "AND NOT EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND o.state!='accepted') "
+        "ORDER BY i.received_ms DESC,i.rowid DESC LIMIT 6", (*context.scope_key, now-TTL, row['id'])).fetchall()
+    for page in pages:
+        result_data = json.loads(page['result_json'] or '{}').get('data', {})
+        if result_data.get('pages', 0) > result_data.get('page', 1) and page['command_json']:
+            command = json.loads(page['command_json'])
+            arguments = command.get('arguments', {})
+            # Only list filters and page references, not domain result content.
+            arguments = {k:v for k,v in arguments.items() if k in ('query','page','category','kind','state','include_closed')}
+            arguments['page'] = result_data.get('page', 1)+1
+            references.append({'kind': 'pagination', 'action_key': '.'.join(json.loads(page['path_json'])), 'arguments': arguments})
     result = {'conversation': conversation, 'references': references, 'quoted_reference_unavailable': bool(row['quoted_message_id'] and not parent)}
     if draft:
         result['draft'] = json.loads(draft['data_json'])

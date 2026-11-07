@@ -121,7 +121,7 @@ def tabular(result, title, headers, rows, *, intro="", footer=""):
     )
 
 
-def present(result, *, zone="America/Mexico_City"):
+def present(result, *, zone="America/Mexico_City", input_mode="command"):
     data, code = result.data, result.code
     from .community import present as present_community
 
@@ -410,7 +410,7 @@ def present(result, *, zone="America/Mexico_City"):
                 if "expires_ms" in data
                 else "Lista de tu ámbito · Vigencia máxima de 5 minutos desde la preparación."
             )
-            + "\n/drive elegir NUMERO",
+            + ("\nResponde con el número del archivo que quieres recuperar." if input_mode == 'natural' else "\n/drive elegir NUMERO"),
         )
     if code == "notes_found":
         rows = data["items"]
@@ -598,10 +598,11 @@ def present(result, *, zone="America/Mexico_City"):
                 + states.get(player["state"], player["state"])
             )
         if data["state"] == "lobby":
-            lines.append(f"/bj entrar {identifier}\n/bj repartir {identifier}")
+            lines.append('Di «entro en esta partida» o «reparte las cartas».' if input_mode == 'natural' else f"/bj entrar {identifier}\n/bj repartir {identifier}")
         else:
             lines.append(
-                f"Turno: asiento {data['turn']}\n/bj pedir {identifier}\n/bj plantarse {identifier}\n/bj doblar {identifier}"
+                (f"Turno: asiento {data['turn']}. Di «pido carta», «me planto» o «doblo la apuesta»." if input_mode == 'natural' else
+                 f"Turno: asiento {data['turn']}\n/bj pedir {identifier}\n/bj plantarse {identifier}\n/bj doblar {identifier}")
             )
         return attach_document(
             result,
@@ -631,8 +632,9 @@ def present(result, *, zone="America/Mexico_City"):
             footer="150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles."
             + (f"\nPágina {data['page']}/{data['pages']}" if "page" in data else "")
             + (
-                f"\n/pack catalogo --pagina {data['page'] + 1}"
-                + (" --categoria " + json.dumps(data["category_filter"], ensure_ascii=False) if data.get("category_filter") else "")
+                ("\nDi «siguiente página del catálogo»." if input_mode == 'natural' else
+                 f"\n/pack catalogo --pagina {data['page'] + 1}"
+                 + (" --categoria " + json.dumps(data["category_filter"], ensure_ascii=False) if data.get("category_filter") else ""))
                 if data.get("page", 1) < data["pages"]
                 else ""
             ),

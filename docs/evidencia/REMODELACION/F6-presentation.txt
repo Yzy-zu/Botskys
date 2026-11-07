@@ -1,0 +1,8 @@
+...............................Executing <Task pending name='Task-59' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:606> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.129 seconds
+.Executing <Task pending name='Task-76' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:606> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.123 seconds
+Executing <Task pending name='Task-76' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:606> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.166 seconds
+........
+----------------------------------------------------------------------
+Ran 40 tests in 14.863s
+
+OK

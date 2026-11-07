@@ -264,7 +264,12 @@ class Store:
             return
         from .presentation.domains import present
 
-        result = present(result, zone=getattr(self, "presentation_timezone", "America/Mexico_City"))
+        mode_row = db.execute("SELECT input_mode FROM inbox WHERE id=?", (context.receipt_id,)).fetchone()
+        input_mode = mode_row['input_mode'] if mode_row else 'command'
+        result = present(result, zone=getattr(self, "presentation_timezone", "America/Mexico_City"), input_mode=input_mode)
+        if input_mode == 'natural':
+            from .presentation.natural import adapt
+            result = adapt(result)
         from .artifacts import Artifacts
         from .presentation.plan import VERSION, compile_result
 

@@ -1,0 +1,174 @@
+{
+  "scope": "MUESTRAS_LOCALES_NO_RENDER_WHATSAPP",
+  "samples": {
+    "ayuda": {
+      "status": "ok",
+      "code": "help",
+      "text": "Pídeme lo que necesitas con tus palabras. Por ejemplo:\n\n• «Guarda una nota: comprar pan»\n• «Busca videos de gatos»\n• «Pasa este archivo a PDF» y adjunta el documento\n• «Recuérdame entregar la tarea mañana a las ocho»\n• «Explícame este ejercicio»\n\nSi falta un dato, te lo preguntaré. Para elegir algo, responde a su lista con el número. También puedes pedirme ayuda con una herramienta concreta.",
+      "data": {}
+    },
+    "nota": {
+      "status": "ok",
+      "code": "notes_found",
+      "text": "*Notas*\n\n1 notas · Página 1/2\n\nNota 1\n\n*pan* /dl elegir NUMERO `codigo` https://example.org/a\n\nDi «siguiente página de notas» para continuar.",
+      "data": {
+        "items": [
+          {
+            "id": 1,
+            "text": "*pan* /dl elegir NUMERO `codigo` https://example.org/a"
+          }
+        ],
+        "total": 1,
+        "page": 1,
+        "pages": 2,
+        "document": {
+          "blocks": [
+            {
+              "kind": "heading",
+              "text": "Notas"
+            },
+            {
+              "kind": "paragraph",
+              "text": "1 notas · Página 1/2"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Nota 1"
+            },
+            {
+              "kind": "literal",
+              "text": "*pan* /dl elegir NUMERO `codigo` https://example.org/a"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Di «siguiente página de notas» para continuar."
+            }
+          ],
+          "version": 1
+        }
+      }
+    },
+    "collage": {
+      "status": "ok",
+      "code": "download_choices",
+      "text": "*pan* /dl elegir NUMERO `codigo` https://example.org/a\n\nResponde con el número del video que quieres descargar.",
+      "data": {
+        "document": {
+          "blocks": [
+            {
+              "kind": "literal",
+              "text": "*pan* /dl elegir NUMERO `codigo` https://example.org/a"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Responde con el número del video que quieres descargar."
+            }
+          ],
+          "version": 1
+        }
+      }
+    },
+    "conversion": {
+      "status": "needs_input",
+      "code": "attachment_required",
+      "text": "Adjunta el archivo aquí o responde al mensaje que lo contiene. Conservaré esta petición durante 15 minutos.",
+      "data": {}
+    },
+    "recado": {
+      "status": "needs_input",
+      "code": "message_preview",
+      "text": "*Vista previa del recado*\n\nDestinatarios verificados:\n\nAna\n\nTexto que se enviará:\n\n*pan* /dl elegir NUMERO `codigo` https://example.org/a\n\nVence: 2026-11-06 15:20:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\nResponde «sí, envíalo» a esta vista previa.",
+      "data": {
+        "recipients": [
+          "Ana"
+        ],
+        "content": "*pan* /dl elegir NUMERO `codigo` https://example.org/a",
+        "expires_ms": 1794000000000,
+        "draft_id": "real",
+        "document": {
+          "blocks": [
+            {
+              "kind": "heading",
+              "text": "Vista previa del recado"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Destinatarios verificados:"
+            },
+            {
+              "kind": "literal",
+              "text": "Ana"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Texto que se enviará:"
+            },
+            {
+              "kind": "literal",
+              "text": "*pan* /dl elegir NUMERO `codigo` https://example.org/a"
+            },
+            {
+              "kind": "notice",
+              "text": "Vence: 2026-11-06 15:20:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados."
+            },
+            {
+              "kind": "paragraph",
+              "text": "Responde «sí, envíalo» a esta vista previa."
+            }
+          ],
+          "version": 1
+        }
+      }
+    },
+    "confirmacion": {
+      "status": "needs_input",
+      "code": "pack_offer",
+      "text": "*Oferta de pack*\n\nCategoría: Prueba\n\nPrecio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado.\n\nNo he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 15:20:00 · America/Mexico_City\n\nResponde «confirma la compra» a esta oferta.",
+      "data": {
+        "category": "Prueba",
+        "price": 150,
+        "min_photos": 3,
+        "max_photos": 5,
+        "expires_ms": 1794000000000,
+        "purchase_id": "real",
+        "document": {
+          "blocks": [
+            {
+              "kind": "heading",
+              "text": "Oferta de pack"
+            },
+            {
+              "kind": "literal",
+              "text": "Categoría: Prueba"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Precio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado."
+            },
+            {
+              "kind": "notice",
+              "text": "No he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 15:20:00 · America/Mexico_City"
+            },
+            {
+              "kind": "paragraph",
+              "text": "Responde «confirma la compra» a esta oferta."
+            }
+          ],
+          "version": 1
+        }
+      }
+    },
+    "error": {
+      "status": "needs_input",
+      "code": "selection_ambiguous",
+      "text": "Hay varias listas vigentes. Responde al mensaje de la lista que quieres e indica el número de opción.",
+      "data": {}
+    },
+    "conversacion": {
+      "status": "ok",
+      "code": "frontend_reply",
+      "text": "Hola. ¿Qué necesitas?",
+      "data": {}
+    }
+  }
+}

@@ -1,5 +1,23 @@
 # Relevo Botsky
 
+## 07/11 · F6 ayuda y presentación natural cerradas localmente
+
+Outbox consulta input_mode persistido por recibo,incluso entregas diferidas;
+comandos antiguos conservan su presentación. Ayuda natural breve por tema/ejemplos.
+Adaptación exclusiva de instrucciones next_action tipadas con catálogo explícito,
+sin regex sobre texto final ni modificación de literales/enlaces/archivos.
+Presentadores Drive,packs y blackjack construyen pies según modo;PDF y previas de
+memoria/reenvío usan hechos estructurados para conservar efectos y consecuencias.
+Precio,destinatarios,vencimiento e incertidumbre siguen visibles. Collage intacto.
+Contexto añade referencias acotadas de paginación propia entregada. Dueño puede
+interpretar reanudación natural durante pausa;backend valida acción antes de efecto.
+5 pruebas nuevas pasan,incluidas8muestras locales,literales,modo por recibo tras
+desactivar frontend y reanudación real de modo enSQLite.27frontend y40presentación
+pasan (estas40incluyen las5nuevas). Evidencia F6-* y docs/REMODELACION_F6.md.
+No se observó render/recepciónWhatsApp ni calidadGLM;sin inferencias,envíos,servicios
+o cambios productivos. Cuota5h38% restante. Siguiente F7: corrida nueva acotada
+con modelo elegido y oracles congelados,ajustar defectos y regresión pertinente.
+
 ## 07/11 · F5 cobertura natural de capacidades cerrada localmente
 
 155variantes/146operaciones/34familias conservadas en catálogo completo con

@@ -36,7 +36,7 @@ async def run_one(app):
             return False
         context = context_of(row)
         gate_spec = app.router.registry.paths[('nota', 'guardar')]
-        denied = access.authorize('friend', context, app.settings) or bot.gate(db, context, gate_spec, now)
+        denied = access.authorize('friend', context, app.settings) or (bot.gate(db, context, gate_spec, now) if context.scope.actor != app.settings.owner else None)
         if denied:
             finish(app, db, row, 'cancelled', denied, now)
             return True
@@ -60,7 +60,7 @@ async def run_one(app):
         if current['epoch'] != app.settings.epoch or now >= current['deadline_ms']:
             finish(app, db, current, 'failed', Result('failed', 'frontend_expired', 'La interpretación caducó; envía una petición nueva.'), now)
             return True
-        denied = access.authorize('friend', context_of(current), app.settings) or bot.gate(db, context_of(current), gate_spec, now)
+        denied = access.authorize('friend', context_of(current), app.settings) or (bot.gate(db, context_of(current), gate_spec, now) if current['actor'] != app.settings.owner else None)
         if denied:
             finish(app, db, current, 'cancelled', denied, now)
         elif error:

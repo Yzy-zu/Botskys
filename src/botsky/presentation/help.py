@@ -103,3 +103,44 @@ def render_help(registry, topic=""):
             lines.append(spec.summary)
         blocks.append(Block("paragraph", "\n".join(lines)))
     return Document(tuple(blocks)).text()
+
+
+NATURAL_EXAMPLES = {
+    'download_media': ('Busca videos de gatos', 'Descarga este enlace como audio', 'Dime más del segundo video'),
+    'convert_document': ('Pasa este archivo a PDF', 'Convierte este documento a Word'),
+    'save_note': ('Guarda una nota: comprar pan',),
+    'find_notes': ('Busca mis notas de tortillas',),
+    'manage_messages': ('Prepara un recado para Ana: llego a las cinco', 'Sí, envíalo'),
+    'manage_reminder': ('Recuérdame entregar la tarea mañana a las ocho',),
+    'conversation': ('Explícame este ejercicio',),
+    'control_call': ('Llama al contacto autorizado', 'Cuelga la llamada'),
+    'manage_conversation': ('Cómo está Botsky', 'Pausa Botsky diez minutos', 'Reanuda Botsky'),
+}
+
+
+def render_natural_help(registry, topic=''):
+    topic = topic.strip().casefold()
+    if not topic:
+        return ('Pídeme lo que necesitas con tus palabras. Por ejemplo:\n\n'
+                '• «Guarda una nota: comprar pan»\n'
+                '• «Busca videos de gatos»\n'
+                '• «Pasa este archivo a PDF» y adjunta el documento\n'
+                '• «Recuérdame entregar la tarea mañana a las ocho»\n'
+                '• «Explícame este ejercicio»\n\n'
+                'Si falta un dato, te lo preguntaré. Para elegir algo, responde a su lista con el número. '
+                'También puedes pedirme ayuda con una herramienta concreta.')
+    families = [family for family, (title, _) in FAMILIES.items()
+                if topic in title.casefold() or any(s.family == family and topic in ' '.join(s.path) for s in registry.specs)]
+    if not families:
+        return 'Dime qué quieres hacer y te explicaré cómo pedirlo; por ejemplo, buscar videos, convertir un archivo o guardar una nota.'
+    blocks = []
+    for family in families[:2]:
+        title, purpose = FAMILIES[family]
+        blocks.extend((Block('heading', title), Block('paragraph', purpose)))
+        examples = NATURAL_EXAMPLES.get(family, ())
+        if examples:
+            blocks.append(Block('paragraph', '\n'.join('• «'+example+'»' for example in examples)))
+    if any(s.permission == 'call_authorized' for s in registry.specs if s.family in families):
+        blocks.append(Block('notice', 'Requiere llamadas habilitadas y autorización en este chat.'))
+    blocks.append(Block('paragraph', 'Si falta un dato, te lo preguntaré. Las acciones sujetas a confirmación conservan su vista previa.'))
+    return Document(tuple(blocks)).text()

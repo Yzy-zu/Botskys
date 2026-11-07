@@ -164,8 +164,9 @@ class Application:
                     if denied := access.authorize("friend", context, self.settings):
                         return None, denied, "completed"
                     spec = self.router.registry.paths[("nota", "guardar")]
-                    if denied := bot.gate(db, context, spec, self.clock()):
-                        return None, denied, "completed"
+                    if context.scope.actor != self.settings.owner:
+                        if denied := bot.gate(db, context, spec, self.clock()):
+                            return None, denied, "completed"
                     return None, None, "queued"
                 return None, None, "ignored"
             if command is None:
@@ -288,6 +289,10 @@ class Application:
 
             return organization.execute(db, context, spec, command, now, self)
         if operation == "core.help":
+            mode = db.execute("SELECT input_mode FROM inbox WHERE id=?", (context.receipt_id,)).fetchone()
+            if mode and mode['input_mode'] == 'natural':
+                from .presentation.help import render_natural_help
+                return Result('ok', 'help', render_natural_help(self.router.registry, args.get('topic', '')))
             return Result("ok", "help", self.router.registry.help(args.get("topic", "")))
         if operation == "core.estado":
             return self.store.follow(db, context, args.get("id"), now, cancel=False)

@@ -166,7 +166,7 @@ def preview_retry(db, context, target, now, artifacts, *, confirm_uncertain=Fals
         "needs_input",
         "delivery_retry_preview",
         f"Voy a reenviar {len(rows)} partes fallidas o inciertas del PDF {target}. Un reenvío de una parte incierta podría duplicarla. No repetiré el motor.\n/confirmar {identifier}",
-        {"confirmation_id": identifier, "target": target},
+        {"confirmation_id": identifier, "target": target, "part_count": len(rows)},
     )
 
 
