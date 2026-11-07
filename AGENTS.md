@@ -365,3 +365,15 @@ No autoriza inventar ganador ante bloqueos ni activar un plan de pago. Ronda
 07/11rechazada:HTTP429/código4006,mensaje explícito de asignación diaria10.000
 agotada. Sin inferencias exitosas,no hay ganador. Conservar evidencia yno reanudar
 esta corrida automáticamente;A/Bdecatálogos cancelado sigue cerrado.
+
+## 07/11 · Pool Cloudflare encargado y segunda cuenta proporcionada
+
+El propietario proporcionó un nuevo token/AccountID y encargó construir un pool
+de APIs. Autoriza guardarlos0600 privados,verificar acceso yusarlos en una nueva
+comparación de modelos con fixtures/oracles previos;no reabre A/Bcancelado.
+Sustituye la restricción de cuenta única para este pool. Se mantienen selección
+directa,una decisión/consulta por mensaje,backend dueño de efectos,modelos gratis
+en cuota disponible yninguna compra de planes. Autoriza integrar el pool propio y
+configurar/desplegar el ganador contrastado,con respaldo/reversión ysalud;sin
+mensajes o llamadas de prueba,perfiles ajenos,GitHub ni reanudación de campañas.
+Cuota Codex5h5% vigente. Tokens/AccountID no se publican ni se añaden aGit.

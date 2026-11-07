@@ -68,13 +68,14 @@ def manifest():
             'sources':['https://developers.cloudflare.com/workers-ai/platform/pricing/',*[f'https://developers.cloudflare.com/workers-ai/models/{p["id"].split("/")[-1]}/' for p in MODELS[1:]]]}
 
 
-async def run(live):
+async def run(live,credentials_file=None,alias="cf01"):
+    credentials_file=credentials_file or ROOT/'private/cloudflare-toolcall.json'
     data=json.loads((EVIDENCE/'manifest.json').read_text())
     if not live:print(json.dumps({'network':False,'models':len(data['models']),'screen_requests':10,'followup_max_requests':12}));return
     os.umask(0o077)
     directory=ROOT/'private'/('models-cf-'+datetime.now(UTC).strftime('%Y%m%dT%H%M%S%fZ'))
     directory.mkdir(mode=0o700)
-    report={'manifest_sha256':hashlib.sha256((EVIDENCE/'manifest.json').read_bytes()).hexdigest(),'results':[],'status':'running','backend_effects':0,'production_changes':0,'automatic_resume':False,'finalists':[]}
+    report={'manifest_sha256':hashlib.sha256((EVIDENCE/'manifest.json').read_bytes()).hexdigest(),'results':[],'status':'running','backend_effects':0,'production_changes':0,'automatic_resume':False,'finalists':[],'credential_alias':alias}
     def save():
         tmp=directory/'summary.tmp';tmp.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');os.replace(tmp,directory/'summary.json')
     requests=[];responses=[]
@@ -86,7 +87,7 @@ async def run(live):
         responses.append({'status':response.status_code,'choices':[{'finish_reason':c.get('finish_reason'),'content':c.get('message',{}).get('content')} for c in body.get('choices',[])], 'usage':body.get('usage'),'error_codes':[e.get('code') for e in body.get('errors',[]) if isinstance(e,dict)]})
     cases={c['id']:c for c in data['cases']}
     async with httpx.AsyncClient(trust_env=False,follow_redirects=False,event_hooks={'request':[request_hook],'response':[response_hook]}) as http:
-        credentials=read_credentials(ROOT/'private/cloudflare-toolcall.json')
+        credentials=read_credentials(credentials_file)
         providers={p['label']:ModelProvider(http,credentials,p) for p in data['models']}
         services={label:FrontendService(p) for label,p in providers.items()}
         for service in services.values():service.catalog.configure_downloads(SimpleNamespace(enabled=True,adult_sources_enabled=True))
@@ -133,7 +134,10 @@ async def run(live):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--freeze',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--freeze',action='store_true');parser.add_argument('--credentials-file',type=Path);parser.add_argument('--alias',default='cf01');parser.add_argument('--evidence-dir',type=Path);args=parser.parse_args()
+    if args.evidence_dir:
+        EVIDENCE=args.evidence_dir.resolve()
+        EVIDENCE.mkdir(mode=0o755,parents=True,exist_ok=True)
     if args.freeze:
         with (EVIDENCE/'manifest.json').open('x') as stream:json.dump(manifest(),stream,ensure_ascii=False,indent=2);stream.write('\n')
-    asyncio.run(run(args.live))
+    asyncio.run(run(args.live,args.credentials_file,args.alias))
