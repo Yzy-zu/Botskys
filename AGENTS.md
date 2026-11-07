@@ -305,3 +305,12 @@ anteriores de diseño NLP para esta remodelación; no reactiva el clasificador a
 Alcance actual documental: arquitectura basada en el código propio, fases F0–F8,
 pruebas proporcionadas al proyecto escolar. No encarga implementar ni desplegar
 en este cierre. Conservar históricos, secretos privados y cuota5% de cinco horas.
+
+## 07/11 · Corrección expresa: selección directa de herramienta
+
+El propietario descartó la selección jerárquica propuesta por el arquitecto.
+`remodelacionbotsky.md` queda corregido: un bot, un frontend GLM, un catálogo
+completo y selección directa de acción/argumentos en una consulta por mensaje.
+Sin clasificador previo, segundo selector ni pase posterior al resultado.
+Una cuenta Cloudflare configurada; las APIs adicionales eran una suposición,
+no un encargo de pools ni rotación. Solo corrección documental en este cierre.

@@ -1,5 +1,17 @@
 # Relevo Botsky
 
+## 07/11 · Plan corregido: catálogo completo y selección directa
+
+El propietario rechazó la selección jerárquica añadida por el arquitecto.
+Se corrigió `remodelacionbotsky.md`: una consulta GLM por mensaje, catálogo completo,
+selección directa de acción y argumentos o respuesta/aclaración. Un bot y una
+cuenta Cloudflare; sin pools ni rotación. Sustituye expresamente el diseño de dos
+consultas del cierre anterior, que se conserva únicamente como historial.
+Se actualizaron contratos, persistencia, adaptador, fases y comprobaciones.
+Sobre estructurado `select_action` con clave enumerada y argumentos validados
+por contrato local; compatibilidad/calidad con catálogo completo pendiente de F2/F7.
+Sin implementación, inferencias ni cambios productivos. Cuota5h restante65%.
+
 ## 07/11 · Plan supremo de remodelación preparado para otra IA
 
 Encargo documental completado en `remodelacionbotsky.md`, sobre código `03e613c`.

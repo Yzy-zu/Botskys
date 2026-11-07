@@ -92,8 +92,8 @@ notas de voz como órdenes es una ampliación distinta, no un requisito oculto.
 ## 3. Qué existe realmente y cómo se reutiliza
 
 Recuento ejecutado sobre `Registry()` de esta revisión: **155 rutas, 146 operaciones
-distintas, 34 familias**. No son 146 funciones Python independientes: parte del
-despacho se realiza por familia y `original_action`.
+distintas**. No son 146 funciones Python independientes: el despacho actual
+agrupa handlers y usa `original_action`. Eso no introduce etapas en el frontend.
 
 | Código actual | Hallazgo | Decisión de refactorización |
 | --- | --- | --- |
@@ -158,7 +158,7 @@ los resultados a un agente.
 ### Responsabilidades
 
 **Frontend:** decidir si la persona conversa, pide una capacidad o está completando
-una petición; seleccionar familia/herramienta; extraer argumentos; preguntar lo
+una petición; seleccionar herramienta; extraer argumentos; preguntar lo
 que falta; expresar una respuesta conversacional breve cuando no hace falta una
 herramienta. Lo componen GLM, sus contratos y el código local de contexto.
 
@@ -176,8 +176,7 @@ el intérprete vuelva a intervenir. Gemini no selecciona herramientas generales.
 # Nombres de diseño; implementar como dataclasses/uniones normales.
 ActionRequest(action_key: str, arguments: dict)
 ReplyDecision(text: str)
-ClarifyDecision(question: str, family: str | None,
-                action_key: str | None, partial_arguments: dict,
+ClarifyDecision(question: str, action_key: str | None, partial_arguments: dict,
                 missing_fields: list[str], choices: list[str])
 NoActionDecision(reason: str)
 ```
@@ -195,49 +194,55 @@ El cambio sustancial es que el contrato se puede invocar sin sintaxis de chat.
 
 ## 5. Cómo seleccionar entre 146 operaciones y crecer después
 
-### Decisión: selección jerárquica, dentro del frontend inicial
+### Decisión: selección directa en una consulta
 
-Una entrada nueva usa **como máximo dos consultas GLM antes de ejecutar**:
+**Un bot, un frontend GLM y un backend. Una sola consulta al intérprete por mensaje
+que lo necesite.** GLM recibe el catálogo completo de acciones disponibles y el
+contexto relevante; responde, pregunta o selecciona directamente la herramienta
+con sus argumentos. No hay una clasificación previa ni un segundo selector.
 
-1. **Intención/familia:** catálogo compacto de las 34 familias, descripción corta
-   y contexto relevante. Devuelve `select_family`, `reply_user`, `request_details`
-   o `no_action`. Un saludo o una pregunta de aclaración puede terminar aquí.
-2. **Acción/argumentos:** únicamente las variantes de la familia elegida más los
-   controles de frontend. Devuelve una función de dominio o una aclaración.
+El catálogo representa las 146 operaciones actuales y sus 155 variantes. Para
+no depender de admitir cientos de funciones separadas en el protocolo del proveedor,
+se declara `select_action` como salida estructurada de selección. Sus parámetros
+son `action_key` (enum cerrado de claves del catálogo) y `arguments` (objeto cuyos
+campos y restricciones se describen en el catálogo generado). El host valida los
+argumentos con el contrato exacto de la clave elegida, antes de cualquier ejecución.
+No es una función que acepte comandos libres ni código: solo expresa una petición
+hacia una acción ya registrada.
 
-En esta revisión, la familia más grande tiene 17 rutas. Así no se envían 155
-declaraciones completas en cada petición. No venderlo como más rápido o barato
-sin medir: son dos consultas; su tamaño total y latencia se comprobarán en F7.
+El mensaje de sistema incluye ese catálogo generado y compacto: clave, descripción,
+campos, tipos, requisitos y constantes relevantes. Se ofrece completo para las
+capacidades accesibles, sin seleccionar un subconjunto mediante otra IA o un
+clasificador de intención. Las únicas otras declaraciones son `reply_user`,
+`request_details` y `no_action`.
 
-Ambas consultas pertenecen al inicio de la petición. Entre ellas el host solo
-selecciona declaraciones y construye contexto: **todavía no ejecuta una herramienta
-de dominio ni devuelve un `tool_result` al modelo**. La segunda consulta se envía
-como una petición nueva con mensaje/contexto y familia ya elegida.
+Un borrador o una cita aportan contexto a la misma consulta. No requieren otro
+modelo ni otra etapa. Si falta algo, GLM pregunta; la respuesta del usuario es un
+nuevo mensaje. Si la salida es inválida, el host informa sin pedir al modelo que
+la repare en un bucle. Tras una acción válida, el backend ejecuta y entrega.
 
-Si hay un borrador inequívoco o una respuesta citada con familia conocida, se puede
-omitir el selector y llamar directamente al segundo paso. Si allí GLM detecta que
-el usuario cambió de tema, devuelve `switch_family`: permite un único segundo
-intento en la familia indicada, dentro del mismo máximo de dos consultas. Si ya se
-usaron dos, pregunta y termina. Nada de bucles de reparación o reclasificación.
+Para «explícame la fotosíntesis», GLM selecciona directamente `conversation.respond`
+mediante su clave del catálogo. Para saludo o charla breve usa `reply_user`.
+Las herramientas de contenido siguen siendo parte del backend.
 
-Para «explícame la fotosíntesis», el primer paso puede seleccionar
-`route_conversation` sin inventar argumentos: el host construye
-`conversation.respond` con el mensaje original. Para saludo/charla breve se usa
-`reply_user`. Los trabajos de explicación, redacción y análisis van a la herramienta
-de contenido; no duplicar a Gemini con un segundo asistente de conocimiento.
+El piloto no probó este catálogo completo ni este sobre `select_action`. F2 y F7
+comprobarán compatibilidad, calidad, tamaño, latencia y consumo reales. No sustituir
+este diseño por selección jerárquica si aparecen dificultades: compactar las
+representaciones y corregir descripciones sin ocultar herramientas. Si el proveedor
+rechaza el tamaño necesario, documentar el límite observado antes de rediseñar.
 
 ### Catálogo y crecimiento
 
 Crear `frontend/catalog.py` como proyección del registro actual. Cada variante
-tiene `action_key`, nombre de función estable, descripción humana, ejemplos y
+tiene `action_key` estable, descripción humana, ejemplos y
 metadatos de referencias/literales. Los tipos, rangos, enums, defaults, constantes,
 permisos y destino se derivan de los contratos; no mantenerlos duplicados a mano.
 
 Las descripciones sí requieren trabajo editorial: muchos `summary` están vacíos.
 Una función llamada `run` sin explicar para qué sirve no basta para GLM.
-Usar `commands/editorial.py` como punto de partida para descripciones de familias.
+Usar `commands/editorial.py` como referencia editorial para las capacidades.
 
-Los nombres de funciones pueden derivarse de las rutas con un separador estable,
+Las claves de acciones pueden derivarse de las rutas con un separador estable,
 por ejemplo `nota__guardar` o `dl__mp4`. Son claves internas, no sintaxis que el
 usuario deba aprender. Fijarlas y comprobar colisiones. La IA nunca elige un
 nombre de handler Python.
@@ -246,19 +251,20 @@ Al añadir una capacidad, el albañil hará solamente:
 
 1. Declarar contrato y handler de la acción como ahora.
 2. Añadir descripción natural, uno o dos ejemplos y metadatos de referencias si usa IDs.
-3. Incorporarla a una familia; el schema y el catálogo se regeneran automáticamente.
+3. Regenerar el catálogo completo y el enum de acciones disponibles.
 4. Comprobar una petición representativa y la inclusión en el inventario.
 
-No hay entrenamiento ni un prompt gigante que editar en tres sitios. Si una familia
-crece mucho más allá de unas 20 variantes, dividir su agrupación editorial en el
-primer paso; el backend puede conservar su familia original. No añadir un tercer
-nivel de inferencia como primera solución.
+El catálogo se genera desde el registro; no hay entrenamiento ni listas de
+herramientas que mantener duplicadas. Nuevas acciones pasan a estar disponibles
+para selección directa sin añadir pasos al frontend.
 
-### Cobertura por familia, obligatoria al finalizar
+### Inventario del backend actual, obligatorio al finalizar
 
-Los números de esta tabla son rutas/variantes, no operaciones únicas.
+La siguiente tabla sirve solo para localizar capacidades existentes en el código.
+No es una estructura de selección del frontend. Los números son rutas/variantes,
+no operaciones únicas.
 
-| Familia del backend | Rutas | Ejemplo de entrada natural |
+| Identificador existente en el backend | Rutas | Ejemplo de entrada natural |
 | --- | ---: | --- |
 | `core` | 4 | «Qué puedes hacer», «cómo va», «cancélalo», «confirmo» |
 | `manage_conversation` | 4 | «Pausa el bot diez minutos», «reanuda» |
@@ -352,8 +358,7 @@ máximo 6 opciones. Si falta un formato, no inventar que PNG es válido para cua
 conversión: las opciones provienen del catálogo. Si faltan varios datos, pedirlos
 en una sola pregunta legible cuando se pueda. No simular certeza con porcentajes.
 
-Persistir el borrador en `interactions`, `kind='natural_draft'`, con familia,
-variante si se conoce, argumentos parciales, campos faltantes, referencias y
+Persistir el borrador en `interactions`, `kind='natural_draft'`, con variante si se conoce, argumentos parciales, campos faltantes, referencias y
 adjuntos vinculados. Usar la activación tras entrega existente y TTL de 15 minutos.
 Mientras retenga archivos, conservar sus leases y liberarlos al resolver/cancelar/
 caducar. Al continuar, revalidar disponibilidad y pertenencia, no depender del texto
@@ -465,8 +470,7 @@ Columnas mínimas de `interpretation_jobs`:
 ```text
 receipt_id PRIMARY KEY REFERENCES inbox(id)
 state: queued | running | resolved | failed | cancelled
-stage: family | action
-family, catalog_version, context_json, decision_json
+catalog_version, context_json, decision_json
 revision, lease_token, lease_until_ms
 created_ms, updated_ms, error_code, usage_json, elapsed_ms
 ```
@@ -515,7 +519,7 @@ de conversión completado.
 - Las esperas de archivo anteriores se reemplazan al adoptar una nueva acción,
   como ya se hace al admitir comandos; no cancelarlas por cualquier charla.
 
-Concurrencia inicial: dos consultas activas globales, una interpretación activa
+Concurrencia inicial: hasta dos mensajes distintos en consulta, una interpretación activa
 por persona/chat. Cola pequeña: 32 entradas globales, 4 por persona; una entrada
 esperando más de 60 segundos termina con aviso, sin ejecutarse mucho después.
 Son parámetros simples, no infraestructura nueva. Jobs y entregas siguen avanzando
@@ -532,13 +536,14 @@ POST https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/compl
 Authorization: Bearer <token privado>
 model: @cf/zai-org/glm-4.7-flash
 messages: system + contexto delimitado + mensaje del usuario
-tools: declaraciones de la etapa actual
+tools: select_action, reply_user, request_details, no_action
 temperature: 0
 stream: false
 max_tokens: 1024 inicialmente
 ```
 
-Esta combinación básica se usó en el piloto. Usar el `tools` compatible Chat
+El transporte, modelo y parámetros básicos se usaron en el piloto; las nuevas
+declaraciones y el catálogo completo requieren su comprobación. Usar `tools` compatible Chat
 Completions; no copiar sin adaptación el schema del endpoint nativo `/ai/run`.
 No depender inicialmente de `strict`, desactivación de razonamiento u opciones
 adicionales no ensayadas. La validación local manda aunque se solicite una sola
@@ -549,8 +554,8 @@ respuestas truncadas, múltiples llamadas o JSON inválido. No recuperar instruc
 de un bloque Markdown y ejecutarlas. `reply_user` es también una función declarada,
 de modo que las respuestas conversacionales tienen el mismo sobre estructurado.
 
-Plazo inicial total por turno: 40 segundos para ambos pasos; cada paso tiene como
-máximo el tiempo restante. Sin reintentos automáticos en la primera versión.
+Plazo inicial por consulta: 40 segundos. Una consulta por mensaje,
+sin reintentos automáticos en la primera versión.
 La cifra es un límite de producto, no una promesa de respuesta rápida.
 
 Bloque nuevo propuesto en el perfil de integraciones:
@@ -574,9 +579,9 @@ a docs, pruebas, consola o Git. El ejemplo es un bloque a añadir, no el perfil
 completo. `integrations.read_profile` tiene una lista de claves permitidas: ampliarla,
 validar tipos y componer el adaptador en `Integrations`/`Application`.
 
-Una cuenta configurada basta para implementar y comprobar esta arquitectura.
-La gestión de aportaciones de cuentas de terceros queda desacoplada; no hacer de
-un pool o una rotación entre cuentas una dependencia de la remodelación.
+Una sola cuenta Cloudflare configurada. La idea de APIs adicionales fue una
+suposición del propietario y no forma parte de este plan. No implementar pools,
+rotación de cuentas ni varios bots.
 
 Errores: distinguir agotamiento diario `3036` de capacidad temporal `3040`, aunque
 ambos puedan ser HTTP 429. El agotamiento pausa consultas de esa cuenta hasta el
@@ -584,7 +589,7 @@ reinicio de la cuota; un error de capacidad termina ese turno con aviso. Para
 auth/modelo/configuración, avisar al operador mediante logs locales, sin secretos.
 No activar cobros, otro modelo ni otra cuenta de forma implícita.
 
-Registrar por turno etapa, modelo, resultado, duración y `usage` si existe.
+Registrar por turno modelo, resultado, duración y `usage` si existe.
 No guardar razonamiento del modelo ni logs completos con conversaciones por defecto.
 No estimar saldo real de cuenta solo con consumo local: puede haber otros clientes.
 
@@ -598,8 +603,8 @@ Referencias oficiales verificadas para este diseño:
 `docs/PILOTO_CLOUDFLARE_TOOLCALL_20261107.md`: 12 inferencias reales, 8 declaraciones,
 11 casos correctos y 1 falso negativo al guardar texto literal con una instrucción
 hostil dentro. Mediana de 2,29 segundos; máximo de 14,47 segundos; 128,1113 neuronas
-reportadas. No ejecutó herramientas y no probó el catálogo completo ni el selector
-de dos pasos. Conservar el fallo como caso de regresión; no presentarlo como prueba
+reportadas. No ejecutó herramientas y no probó el catálogo completo ni el sobre
+de selección directa `select_action`. Conservar el fallo como caso de regresión; no presentarlo como prueba
 de que la remodelación ya funciona.
 
 ## 10. Selección de fuentes y presentación
@@ -659,8 +664,8 @@ src/botsky/frontend/
   contracts.py       # decisiones y peticiones del frontend
   catalog.py         # proyección del registro + metadatos naturales
   context.py         # invocación, citas, borradores y referencias
-  prompts.py         # selector de familia y selector de acción
-  service.py         # máximo dos consultas, validación y entrega de decisión
+  prompts.py         # conversación y selección directa de herramienta
+  service.py         # una consulta, validación y entrega de decisión
   worker.py          # claim y adopción durable fuera de transacciones largas
 src/botsky/adapters/cloudflare_interpreter.py
 src/botsky/commands/validation.py
@@ -690,13 +695,13 @@ F0 → F1 → F2 → F3 → F4 → F5 → F6 → F7 → F8
 
 **Trabajo:** leer este plan, último relevo y cambios locales; actualizar la excepción
 de AGENTS para la ejecución encomendada; generar inventario del registro con
-acción, variante, familia, campos y destino. Confirmar los recuentos actuales y
+acción, variante, campos y destino. Confirmar los recuentos actuales y
 señalar cambios posteriores sin borrar evidencia histórica.
 
 **Archivos:** AGENTS/relevo y una matriz simple de cobertura natural en `docs/`.
 
 **Cierre:** se distinguen 155 variantes de 146 operaciones en esta base; todas las
-familias aparecen. No se ha modificado producción ni supuesto permiso de pruebas
+capacidades aparecen. No se ha modificado producción ni supuesto permiso de pruebas
 remotas por el solo hecho de haber leído el plan.
 
 ### F1 · Contratos nativos y catálogo completo
@@ -704,7 +709,7 @@ remotas por el solo hecho de haber leído el plan.
 **Trabajo:** extraer validación compartida; construir `ActionRequest` →
 `ParsedCommand`; derivar schemas por variante; escribir descripciones naturales
 y metadatos de referencias; resolver las seis operaciones con variantes y el caso
-`choice/view_id`. Incluir todas las familias desde el inventario.
+`choice/view_id`. Incluir todas las acciones desde el inventario.
 
 **Archivos:** `commands/types.py`, `router.py`, `validation.py`, `frontend/contracts.py`,
 `frontend/catalog.py` y metadatos editoriales.
@@ -719,7 +724,7 @@ producir texto de comandos; ninguna variante desapareció del catálogo.
 
 ### F2 · Frontend GLM funcional, aislado del ejecutor
 
-**Trabajo:** adaptador Cloudflare, prompts, selección de familia/acción y decisiones
+**Trabajo:** adaptador Cloudflare, prompt, selección directa de acción y decisiones
 de hablar/aclarar/actuar. Inyectar un proveedor doble y devolver decisiones; todavía
 no conectar efectos reales. Añadir bloque de configuración optativo y validado.
 
@@ -727,7 +732,7 @@ no conectar efectos reales. Añadir bloque de configuración optativo y validado
 `frontend/prompts.py`, `integrations.py` y composición de `Application`.
 
 **Comprobación:** doble HTTP para respuesta, aclaración, acción, truncación,
-multillamada, cuota y timeout. Contar llamadas: máximo dos, cero después de obtener
+multillamada, cuota y timeout. Contar llamadas: máximo una por mensaje, cero después de obtener
 la decisión final. El adaptador recibe schemas, nunca objetos ejecutables.
 
 **Cierre:** «hola» devuelve respuesta de frontend; «guarda una nota» devuelve acción;
@@ -769,13 +774,13 @@ preguntas sobreviven a un reinicio dentro de su vigencia.
 
 ### F5 · Cobertura natural de todas las capacidades
 
-**Trabajo:** recorrer la matriz de 34 familias y cerrar referencias, descripciones,
+**Trabajo:** recorrer el catálogo completo de operaciones y cerrar referencias, descripciones,
 opciones, fechas, literales, permisos existentes y confirmaciones específicas.
 Conectar selección de fuente a capacidades reales de descargas. Cubrir también
 administración, juegos, Minecraft, llamadas, clips, avatar y agenda con dobles.
 
 **Comprobación:** inventario sin variantes omitidas; una propuesta representativa
-por familia se adopta hacia su dominio con argumentos correctos. Efectos externos
+por área del backend se adopta hacia su dominio con argumentos correctos. Efectos externos
 capturados por dobles: no llamar personas ni reiniciar Minecraft para probar
 que el frontend sabe seleccionar una función. Reutilizar pruebas de dominio.
 
@@ -806,7 +811,7 @@ variantes de redacción que no estén literalmente en el prompt. Ajustar defecto
 encontrados y repetir solo los casos afectados y una muestra breve de los demás.
 
 **Medir:** decisión/argumentos correctos, aclaración necesaria o innecesaria,
-número de consultas, demora total y consumo reportado sumando ambas etapas.
+número de consultas (máximo una por mensaje), demora y consumo reportado.
 No exigir un porcentaje arbitrario que oculte un error importante ni llamar
 «100 % de cobertura» a esta muestra. Un falso efecto o una variante básica rota se
 corrige antes de activar; una ambigüedad bien preguntada es un comportamiento válido.
@@ -845,7 +850,7 @@ El propósito es descubrir errores concretos, no producir una certificación.
 | --- | --- | --- |
 | Catálogo y contratos | Una prueba parametrizada sobre rutas existentes | No se perdieron variantes/campos; entradas tipadas compatibles |
 | Frontend + persistencia | Unos 10–15 escenarios con dobles y SQLite | Flujo, aclaración, duplicados, cancelación y ausencia de pase posterior |
-| Enrutado por familia | Una muestra local por familia, parametrizada | Destino de backend correcto; no acredita semántica real del modelo |
+| Enrutado directo | Muestras locales de las distintas áreas, parametrizadas | Destino de backend correcto; no acredita semántica real del modelo |
 | GLM real | Alrededor de 24 peticiones en una corrida acotada | Calidad/latencia/consumo observados de esta selección |
 | Regresión existente | Subconjuntos durante fases; una pasada final pertinente | El cambio de entrada no rompió capacidades ya implementadas |
 | Revisión visual | Unas 8 muestras | Ayuda y respuestas comprensibles, literales conservados |
@@ -856,7 +861,7 @@ notas; conversión con adjunto; archivo ausente; formato ausente y continuación
 descarga por URL; video general; fuente adulta explícita; fuente no buscable;
 segunda opción; dos listas ambiguas; recado y confirmación; recordatorio relativo;
 cancelación; negación; dos acciones independientes; typo coloquial; cambio de tema;
-pregunta para Gemini; selección de una familia poco frecuente.
+pregunta para Gemini; selección de una herramienta poco frecuente.
 
 Para comprobar que no hay pase posterior, usar un doble del intérprete que falle
 si se llama después de adoptar `ActionRequest`; ejecutar la herramienta y preparar
@@ -867,7 +872,7 @@ Eso prueba la propiedad que el dueño pidió, sin una suite ceremonial.
 
 1. Implementa este plan por fases y conserva los cambios ajenos. Si el código cambió,
    adapta los puntos concretos y registra la diferencia, no reinicies la arquitectura.
-2. Prioriza un recorrido vertical funcionando y luego completa las familias. No
+2. Prioriza un recorrido vertical funcionando y luego completa las herramientas. No
    declares terminado el proyecto al lograr únicamente guardar una nota.
 3. Elige detalles técnicos rutinarios sin pedir aprobación por cada archivo.
    La decisión de proveedor, modelo y separación frontend/backend ya está tomada.
