@@ -1,0 +1,43 @@
+{
+  "status": "finished",
+  "models": {
+    "GLM4.7Flash": {
+      "strict_matches": 5,
+      "cases": 6,
+      "median_seconds": 8.2975,
+      "max_seconds": 40.041,
+      "reported_neurons": 756.0509999999999
+    },
+    "GPT-OSS20B": {
+      "strict_matches": 1,
+      "cases": 2,
+      "median_seconds": 2.998,
+      "max_seconds": 3.298,
+      "reported_neurons": 806.271921
+    },
+    "Gemma4-26B": {
+      "strict_matches": 1,
+      "cases": 2,
+      "median_seconds": 12.4885,
+      "max_seconds": 17.87,
+      "reported_neurons": 458.2363586425781
+    },
+    "Llama4Scout": {
+      "strict_matches": 3,
+      "cases": 6,
+      "median_seconds": 1.236,
+      "max_seconds": 4.327,
+      "reported_neurons": 3176.5147094726562
+    },
+    "Qwen3.8-27B-low": {
+      "strict_matches": 6,
+      "cases": 6,
+      "median_seconds": 9.627500000000001,
+      "max_seconds": 39.704,
+      "reported_neurons": 5798.672424316406
+    }
+  },
+  "chosen": "Qwen3.8-27B-low",
+  "selection_reason": "Único6/6;prioridadaciertos;Scouttieneerroresrealesdecontinuidadydedelegación,no solo diferencia de query. Muestra pequeña,no garantía universal.",
+  "production_changes_in_experiment": 0
+}

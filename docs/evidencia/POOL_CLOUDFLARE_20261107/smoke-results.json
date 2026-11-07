@@ -1,0 +1,11 @@
+{
+  "results": [
+    {
+      "case": "01-saludo",
+      "pass": false,
+      "error": "daily_quota",
+      "metrics": null
+    }
+  ],
+  "backend_effects": 0
+}

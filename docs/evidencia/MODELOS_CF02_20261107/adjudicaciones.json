@@ -1,0 +1,18 @@
+{
+  "historical_scores_unchanged": true,
+  "cases": [
+    {
+      "model": "Llama4Scout",
+      "case": "11-video",
+      "strict_match": false,
+      "intent_match": true,
+      "reason": "query videos de gatos conserva intención;diferencia de literal no es bug de dominio. No corrige fallos de protocolo en09/24."
+    },
+    {
+      "model": "Llama4Scout",
+      "case": "24-gemini",
+      "intent_match": false,
+      "reason": "Generó una explicación en lugar de conservar la pregunta para Gemini;no se acepta como simple alias JSON."
+    }
+  ]
+}

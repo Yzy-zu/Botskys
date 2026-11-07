@@ -8,6 +8,7 @@ import time
 from datetime import UTC, datetime, timedelta
 
 MODEL = '@cf/zai-org/glm-4.7-flash'
+MODELS = (MODEL, '@cf/google/gemma-4-26b-a4b-it', '@cf/meta/llama-4-scout-17b-16e-instruct', '@cf/openai/gpt-oss-20b', '@cf/qwen/qwen3.8-27b')
 
 
 class InterpreterError(ValueError):
@@ -29,7 +30,10 @@ def read_credentials(path):
 
 
 class CloudflareInterpreter:
-    def __init__(self, http, credentials, *, deadline_seconds=40, max_concurrency=2):
+    def __init__(self, http, credentials, *, deadline_seconds=40, max_concurrency=2, model=MODEL, reasoning_effort=None):
+        if model not in MODELS or (reasoning_effort is not None and (model != '@cf/qwen/qwen3.8-27b' or reasoning_effort not in ('low', 'medium', 'xhigh'))):
+            raise InterpreterError('model_configuration_invalid')
+        self.model, self.reasoning_effort = model, reasoning_effort
         self.http, self.credentials = http, credentials
         self.deadline = deadline_seconds
         self.semaphore = asyncio.Semaphore(max_concurrency)
@@ -60,9 +64,10 @@ class CloudflareInterpreter:
                     response = await self.http.post(
                         'https://api.cloudflare.com/client/v4/accounts/' + self.credentials['account_id'] + '/ai/v1/chat/completions',
                         headers={'Authorization': 'Bearer ' + self.credentials['api_token']},
-                        json={'model': MODEL, 'messages': wire_messages,
+                        json={'model': self.model, 'messages': wire_messages,
                               'response_format': {'type': 'json_object'}, 'stream': False,
-                              'temperature': 0, 'max_completion_tokens': 2048}, timeout=self.deadline)
+                              'temperature': 0, 'max_completion_tokens': 2048,
+                              **({'reasoning_effort': self.reasoning_effort} if self.reasoning_effort else {})}, timeout=self.deadline)
                 except Exception:
                     raise InterpreterError('transport_error') from None
                 try:
@@ -71,14 +76,15 @@ class CloudflareInterpreter:
                     raise InterpreterError('invalid_response') from None
                 errors = data.get('errors', []) if isinstance(data, dict) else []
                 codes = {e.get('code') for e in errors if isinstance(e, dict)}
-                if 3036 in codes:
+                quota_message = any(e.get('code') == 4006 and 'daily free allocation' in str(e.get('message', '')).lower() for e in errors if isinstance(e, dict))
+                if 3036 in codes or quota_message:
                     self.paused_until = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
                     raise InterpreterError('daily_quota')
                 if 3040 in codes:
                     raise InterpreterError('capacity')
                 if response.status_code != 200:
                     raise InterpreterError('provider_http_' + str(response.status_code))
-                self.last_metrics = {'model': MODEL, 'duration_seconds': time.monotonic() - started,
+                self.last_metrics = {'model': self.model, 'duration_seconds': time.monotonic() - started,
                                      'usage': data.get('usage')}
                 try:
                     choices = data['choices']

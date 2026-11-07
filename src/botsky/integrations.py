@@ -88,18 +88,23 @@ def read_profile(path):
 
 
 def validate_interpreter(block):
-    from .adapters.cloudflare_interpreter import MODEL
-    allowed = {'enabled', 'provider', 'model', 'credentials_file', 'deadline_seconds', 'max_concurrency'}
+    from .adapters.cloudflare_interpreter import MODEL, MODELS
+    allowed = {'enabled', 'provider', 'model', 'credentials_file', 'pool_file', 'deadline_seconds', 'max_concurrency', 'reasoning_effort'}
     if type(block) is not dict or set(block) - allowed:
         raise ValueError('interpreter_config_invalid')
     if type(block.get('enabled', False)) is not bool:
         raise ValueError('interpreter_config_invalid')
-    if block.get('provider', 'cloudflare') != 'cloudflare' or block.get('model', MODEL) != MODEL:
+    if block.get('provider', 'cloudflare') != 'cloudflare' or block.get('model', MODEL) not in MODELS:
         raise ValueError('interpreter_model_invalid')
     for key, default, lo, hi in [('deadline_seconds', 40, 1, 120), ('max_concurrency', 2, 1, 10)]:
         if type(block.get(key, default)) is not int or not lo <= block.get(key, default) <= hi:
             raise ValueError('interpreter_config_invalid')
-    path = block.get('credentials_file', 'private/cloudflare-toolcall.json')
+    effort=block.get('reasoning_effort')
+    if effort is not None and (block.get('model',MODEL) != '@cf/qwen/qwen3.8-27b' or effort not in ('low','medium','xhigh')):
+        raise ValueError('interpreter_reasoning_invalid')
+    if 'pool_file' in block and 'credentials_file' in block:
+        raise ValueError('interpreter_credentials_ambiguous')
+    path = block.get('pool_file', block.get('credentials_file', 'private/cloudflare-toolcall.json'))
     if type(path) is not str or not path or Path(path).is_absolute() or '..' in Path(path).parts:
         raise ValueError('interpreter_credentials_path_invalid')
     return block
@@ -111,9 +116,12 @@ def compose_frontend(settings, block, http):
     validate_interpreter(block)
     if not block.get('enabled', False):
         return None
+    options={k:block[k] for k in ('model','reasoning_effort','deadline_seconds','max_concurrency') if k in block}
+    if 'pool_file' in block:
+        from .adapters.cloudflare_pool import CloudflarePool
+        return FrontendService(CloudflarePool(http,settings.root,block['pool_file'],**options))
     credentials = read_credentials(settings.root / block.get('credentials_file', 'private/cloudflare-toolcall.json'))
-    return FrontendService(CloudflareInterpreter(http, credentials,
-        deadline_seconds=block.get('deadline_seconds', 40), max_concurrency=block.get('max_concurrency', 2)))
+    return FrontendService(CloudflareInterpreter(http, credentials,**options))
 
 
 class Integrations:

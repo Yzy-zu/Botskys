@@ -7,6 +7,7 @@ from datetime import UTC, datetime
 
 from botsky import access
 from botsky.artifacts import ArtifactProblem
+from botsky.adapters.cloudflare_interpreter import InterpreterError
 from botsky.contracts import Result
 from botsky.domains import bot
 from botsky.store import context_of
@@ -50,6 +51,9 @@ async def run_one(app):
                 'timezone': app.settings.timezone,
                 'attachments': json.loads(row['attachments_json']), **snapshot})
         error = None
+    except InterpreterError as exc:
+        decision=None
+        error='frontend_quota_exhausted' if str(exc)=='daily_quota_pool' else 'frontend_account_quota' if str(exc)=='daily_quota' else 'frontend_unavailable'
     except Exception:
         decision, error = None, 'frontend_unavailable'
     with app.store.transaction() as db:
@@ -64,7 +68,7 @@ async def run_one(app):
         if denied:
             finish(app, db, current, 'cancelled', denied, now)
         elif error:
-            finish(app, db, current, 'failed', Result('failed', error, 'No pude interpretar la petición. Inténtalo con un mensaje nuevo.'), now)
+            finish(app, db, current, 'failed', Result('failed', error, 'La cuota diaria de las cuentas configuradas está agotada. La interpretación volverá a estar disponible cuando el proveedor renueve la cuota.' if error == 'frontend_quota_exhausted' else 'La cuenta elegida agotó su cuota. Puedes enviar la petición de nuevo para usar otra cuenta disponible.' if error == 'frontend_account_quota' else 'No pude interpretar la petición. Inténtalo con un mensaje nuevo.'), now)
         elif isinstance(decision, ActionRequest):
             db.execute('SAVEPOINT frontend_adoption')
             try:
