@@ -1,5 +1,26 @@
 # Relevo Botsky
 
+## 07/11 · Investigación de entrada natural con tool calling
+
+Propietario pide sustituir experiencia sintáctica por LLM intérprete de herramienta
+fija, sin intervención posterior en ejecución/presentación. Nueva instrucción
+sustituye prohibición de investigación natural para este encargo; clasificador
+antiguo y runtime/datos de Zhana no reactivados. Documento nuevo:
+docs/INVESTIGACION_TOOL_CALLING_20261107.md, fuentes primarias Google/Anthropic,
+arquitectura propuesta, módulos, alternativas de catálogo y bloques T0–T5.
+
+Inspección propia:155rutas/146operaciones/34familias;SDKgoogle-genai2.33.0 soporta
+declaraciones/manual+disable; no acredita compatibilidad remota. Admisión actual
+en transacciónSQLite requiere trabajo durable separado para inferencia. Fuente
+YouTube por defecto explica búsqueda actual; catálogo de fuentes/guardias manda.
+Propuesta directa a petición tipada, sin generar comandos ni segundo pase de
+redacción;permisos/confirmaciones/referencias/contexto siguen resueltos por backend.
+
+Sin cambios de producto/producción, pruebas de proveedor, envíos o llamadas.
+Precisión/latencia/intérprete/despliegue NO_PROBADOS. No se declara implementado.
+Chequeo documental diffcheck; no requiere regresión de producto. Cuota5h87% al
+inicio de investigación; semanal no bloquea según instrucción vigente.
+
 ## 07/11 · Legacy de octubre recuperado de Drive, sin activación
 
 Propietario pidió buscar `botsky/` en respaldos Drive y aclaró legacy de octubre

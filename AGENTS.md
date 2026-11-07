@@ -271,3 +271,15 @@ envíos de prueba nuevos; cliente/humano no observado queda NO_PROBADO y no impi
 trabajo independiente. No cerrar fases incompletas ni confundir mock/HTTP con render.
 Aclaró después: priorizar cuota de cinco horas; la semanal no impide continuar.
 El umbral5% se aplica a cinco horas; guardar y parar sin reanudación automática.
+
+## 07/11 · Investigación de entrada natural con tool calling
+
+El propietario rechaza la sintaxis como experiencia principal y encarga investigar
+a profundidad un LLM que interprete lenguaje natural, proponga una herramienta fija
+del backend y deje de intervenir tras esa propuesta. Esta instrucción sustituye la
+prohibición anterior de investigar interpretación natural para este encargo concreto.
+No reactiva el clasificador cancelado ni importa NLP/runtime/datos de Zhana.
+Investigación y diseño en docs/INVESTIGACION_TOOL_CALLING_20261107.md; este cierre
+no implementa ni activa el intérprete ni hace pruebas de proveedor o cambios de
+producción. Mantener permisos/confirmaciones, datos propios, históricos, exclusión
+GitHub y umbral5% de cinco horas. El backend conserva ejecución y presentación.
