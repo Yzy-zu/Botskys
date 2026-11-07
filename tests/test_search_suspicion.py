@@ -69,6 +69,38 @@ class SearchFilterTests(unittest.TestCase):
 
 
 class SearchCaptureReplayTests(unittest.IsolatedAsyncioTestCase):
+    async def test_provider_query_terms_enable_positive_result_without_weakening_all_filter(self):
+        query = "asyncio tutorial"
+        terms = ["Python", "docs"]
+        seen = []
+
+        def respond(request):
+            provider_query = request.url.params["q"]
+            seen.append(provider_query)
+            if all(f'"{term}"' in provider_query for term in terms):
+                return httpx.Response(
+                    200,
+                    content=rss(
+                        (
+                            "Python asyncio tutorial",
+                            "https://docs.example.org/asyncio",
+                            "Official docs",
+                        ),
+                        (
+                            "Python asyncio tutorial",
+                            "https://docs.example.org/partial",
+                            "Missing required word",
+                        ),
+                    ),
+                )
+            return httpx.Response(200, content=rss())
+
+        async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+            results = await NetworkWeb(enabled=True, client=client).search(query, terms)
+
+        self.assertEqual(seen, ['asyncio tutorial "Python" "docs"'])
+        self.assertEqual([item.url for item in results], ["https://docs.example.org/asyncio"])
+
     async def test_captured_provider_responses_replay_as_empty_with_same_filter(self):
         capture = Path(__file__).parents[1] / "docs/evidencia/SOSPECHAS-20261106/20261106T211144Z"
         cases = {
@@ -90,7 +122,26 @@ class SearchCaptureReplayTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(seen), 2)
         self.assertEqual(
             [request.url.params["q"] for request in seen],
-            ["Botsky testing guide", "HTML standards specification"],
+            [
+                'Botsky testing guide "Python" "tutorial"',
+                'HTML standards specification "W3C" "HTML"',
+            ],
+        )
+
+    async def test_provider_query_keeps_site_and_escapes_literal_terms(self):
+        seen = []
+
+        def respond(request):
+            seen.append(request)
+            return httpx.Response(200, content=rss())
+
+        async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+            backend = NetworkWeb(enabled=True, client=client)
+            await backend.search('site:docs.example.org "release"', ["C++", 'a "quote"'])
+
+        self.assertEqual(
+            seen[0].url.params["q"],
+            'site:docs.example.org "release" "C++" "a \\"quote\\""',
         )
 
 

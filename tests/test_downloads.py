@@ -293,7 +293,7 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             self.assertEqual(
                 [item["url"] for item in result.data["items"]], ["https://docs.python.org/3/"]
             )
-            self.assertEqual(seen[0].url.params["q"], "Python site:python.org")
+            self.assertEqual(seen[0].url.params["q"], 'Python site:python.org "Python"')
             empty = self.receive("/buscar --terminos inexistente Python site:python.org")
             await self.app.jobs.run_pending()
             self.assertEqual(self.result(empty.id).code, "web_empty")

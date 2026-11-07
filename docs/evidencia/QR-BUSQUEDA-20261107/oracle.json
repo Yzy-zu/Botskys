@@ -1,0 +1,15 @@
+{
+  "frozen_before_requests": true,
+  "scope": "Three synthetic RSS GETs to check query construction and unchanged local filtering; not a relevance/coverage acceptance test.",
+  "cases": [
+    {"case": "c02", "query": "asyncio tutorial documentation", "required_terms": ["asyncio", "tutorial", "Python", "documentation"]},
+    {"case": "c03", "query": "cargo build guide", "required_terms": ["cargo", "build", "guide", "Rust"]},
+    {"case": "c04", "query": "python documentation", "required_terms": ["Python", "asyncio", "tutorial", "documentation", "terms", "limits", "eight", "query"]}
+  ],
+  "assertions": [
+    "Every required term is appended to the provider query as a double-quoted literal with backslash and quote escaping.",
+    "The caller query is preserved verbatim, including any site: operator.",
+    "The existing parser still requires all terms to occur in cleaned title plus snippet; candidates missing any term are rejected.",
+    "No expected provider result count or relevance is asserted."
+  ]
+}

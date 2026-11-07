@@ -170,4 +170,5 @@ async def read_image(path: Path, mode: str, directory: Path):
                 values.append(text)
     except ValueError, ET.ParseError, binascii.Error, UnicodeError:
         raise MediaError("invalid_qr_output") from None
-    return "\n".join(values)[:6000], {"symbols": values[:20]}
+    text = "\n".join(values)
+    return text[:6000], {"symbols": values[:20], "truncated": len(text) > 6000 or len(values) > 20}

@@ -1,0 +1,11 @@
+test_captured_provider_responses_replay_as_empty_with_same_filter (test_search_suspicion.SearchCaptureReplayTests.test_captured_provider_responses_replay_as_empty_with_same_filter) ... ok
+test_provider_query_keeps_site_and_escapes_literal_terms (test_search_suspicion.SearchCaptureReplayTests.test_provider_query_keeps_site_and_escapes_literal_terms) ... ok
+test_provider_query_terms_enable_positive_result_without_weakening_all_filter (test_search_suspicion.SearchCaptureReplayTests.test_provider_query_terms_enable_positive_result_without_weakening_all_filter) ... ok
+test_every_required_term_must_appear_in_title_or_snippet (test_search_suspicion.SearchFilterTests.test_every_required_term_must_appear_in_title_or_snippet) ... ok
+test_only_first_ten_rss_items_are_considered (test_search_suspicion.SearchFilterTests.test_only_first_ten_rss_items_are_considered) ... ok
+test_required_terms_match_across_cleaned_title_and_snippet_and_keep_site (test_search_suspicion.SearchFilterTests.test_required_terms_match_across_cleaned_title_and_snippet_and_keep_site) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.016s
+
+OK

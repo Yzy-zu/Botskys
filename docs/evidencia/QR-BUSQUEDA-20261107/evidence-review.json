@@ -1,0 +1,17 @@
+{
+  "prior_capture_review": "The earlier operator queries differ from original campaign cases, but contain no extra backslash characters. The label operator_escape_not_product_query in verified-client/prior-capture-status.json was based on a mistaken reading of JSON escaping and is superseded by this review.",
+  "earlier_capture_scope": "Manually constructed queries with different terms; not a capture of NetworkWeb execution.",
+  "authoritative_current_capture": "verified-client/report.json: direct NetworkWeb.search execution with exact original query/terms combinations.",
+  "provider_query_backslash_counts": {
+    "report.json": [
+      0,
+      0,
+      0
+    ],
+    "verified-client/report.json": [
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -221,3 +221,13 @@ la ayuda de llamadas. Autoriza código, catálogo/documentación generada y prue
 locales propias. Conservar auditorías históricas. No reabrir campañas ni llamadas,
 envíos o mutaciones remotas; no reiniciar servicios en este cierre local.
 NLP/GitHub y umbral5% mantienen sus límites.
+
+
+## 07/11 · Corrección QR y búsqueda con términos
+
+El propietario encargó corregir los puntos1y3 pendientes: QR erróneo en/ia y
+búsqueda con --terminos. Autoriza código, fixtures/dobles y comprobación nueva
+acotada de RSS para observar queries/candidatos, sin reabrir campañas históricas.
+LecturaQR determinista como datos; sinNLP ni comandos desdecontenidoextraído.
+Mantener filtroALL, evidencias saneadas y recepciónhumanaNOT_TESTED. Sinenvíos,
+llamadas, perfiles, cambiosdeservicios, GitHub ni reanudaciónautomática. Cuota5%.

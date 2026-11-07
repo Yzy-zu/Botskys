@@ -1,0 +1,14 @@
+{
+  "frozen_before_requests": true,
+  "cases": [
+    {"case":"c02","query":"asyncio tutorial","required_terms":["Python","docs"]},
+    {"case":"c03","query":"cargo build guide","required_terms":["rust"]},
+    {"case":"c04","query":"prueba de limites","required_terms":["uno","dos","tres","cuatro","cinco","seis","siete","ocho"]}
+  ],
+  "assertions": [
+    "Invoke NetworkWeb.search for each case; capture the actual request q and actual raw response body through an HTTPX transport wrapper.",
+    "Actual q must contain the original query verbatim followed by each required term enclosed by ordinary double quote delimiters; delimiters are not backslash-prefixed.",
+    "A deterministic positive MockTransport regression returns a result only when provider q includes all required terms; NetworkWeb must keep it when returned title/snippet satisfy the unchanged ALL-term parser filter.",
+    "No expected result counts or relevance are asserted for live RSS captures."
+  ]
+}

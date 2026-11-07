@@ -1,0 +1,17 @@
+{
+  "tests_passed": 47,
+  "tests_failed_final": 0,
+  "initial_test_failure": "old HTTP request expectation did not include newly forwarded required terms; log preserved",
+  "non_loopback_connections_during_local_tests": 0,
+  "real_rss_requests_total": 6,
+  "authoritative_networkweb_requests": 3,
+  "rss_valid_matches_in_authoritative_capture": 0,
+  "qr_extraction": "local decoder; verified section independent of model; images preserved for analysis",
+  "gemini_generation_performed_for_validation": "SDK doubles only",
+  "search_required_terms_in_provider_request": true,
+  "search_all_terms_filter_preserved": true,
+  "original_rss_historical_missing": "not retroactively reconstructed",
+  "product_services_restarted": false,
+  "messages_sent": 0,
+  "human_acceptance": "NOT_TESTED"
+}

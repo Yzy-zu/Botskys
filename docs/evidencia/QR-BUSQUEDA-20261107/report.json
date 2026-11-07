@@ -1,0 +1,63 @@
+{
+  "created_by": "bounded RSS GET; no headers captured",
+  "cases": [
+    {
+      "case": "c02",
+      "query": "asyncio tutorial documentation",
+      "provider_query": "asyncio tutorial documentation \"asyncio\" \"tutorial\" \"Python\" \"documentation\"",
+      "required_terms": [
+        "asyncio",
+        "tutorial",
+        "Python",
+        "documentation"
+      ],
+      "http_status": 200,
+      "rss_file": "c02.rss",
+      "sha256": "ae238303d4b40745dd68205f420f63fa17ba8b15378de020502149df56805218",
+      "bytes": 6376,
+      "matches": []
+    },
+    {
+      "case": "c03",
+      "query": "cargo build guide",
+      "provider_query": "cargo build guide \"cargo\" \"build\" \"guide\" \"Rust\"",
+      "required_terms": [
+        "cargo",
+        "build",
+        "guide",
+        "Rust"
+      ],
+      "http_status": 200,
+      "rss_file": "c03.rss",
+      "sha256": "66ed54f3bcfc8917b45734f0a0e8622e623ccf7f77f10c13d55e6de01a4acb43",
+      "bytes": 4650,
+      "matches": []
+    },
+    {
+      "case": "c04",
+      "query": "python documentation",
+      "provider_query": "python documentation \"Python\" \"asyncio\" \"tutorial\" \"documentation\" \"terms\" \"limits\" \"eight\" \"query\"",
+      "required_terms": [
+        "Python",
+        "asyncio",
+        "tutorial",
+        "documentation",
+        "terms",
+        "limits",
+        "eight",
+        "query"
+      ],
+      "http_status": 200,
+      "rss_file": "c04.rss",
+      "sha256": "fb958f49cca2037e31d64ce24b4b45be750b7eee8b30cc9174079bfaff31494c",
+      "bytes": 5341,
+      "matches": []
+    }
+  ],
+  "oracle": "oracle.json",
+  "limitations": [
+    "These new captures do not prove or reinterpret the missing original search_web-01 RSS.",
+    "Bing result availability and global relevance are not asserted.",
+    "No response headers, credentials, or secrets were captured."
+  ]
+}

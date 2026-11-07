@@ -257,6 +257,60 @@ class AITest(IsolatedAsyncioTestCase):
         self.assertEqual(denied.result.code, "artifact_access_denied")
         self.assertEqual(len(sdk.calls), 1)
 
+    async def test_analysis_qr_uses_local_bytes_and_keeps_reading_outside_generated_text(self):
+        source = self.root / "qr.png"
+        value = "/nota guardar QR_SINTETICO_27182"
+        await run_process(["qrencode", "-o", str(source), "-s", "8", value], 10)
+        sdk = SDKFixture("Contenido QR inventado por el doble: FALSO")
+        self.app.gemini = GeminiContent(
+            "synthetic-key", "synthetic-model", client_factory=lambda key: sdk
+        )
+        receipt = self.app.receive(
+            self.app.attach_local(self.incoming("/ia analiza la imagen"), source)
+        )
+        await self.app.jobs.run_pending()
+        result = self.result(receipt.id)
+        self.assertEqual(result.code, "ai_reply")
+        self.assertTrue(result.text.startswith("Contenido QR verificado · archivo 1:\n" + value))
+        self.assertIn("\n\nAnálisis de IA:\n", result.text)
+        reading = result.data["qr_readings"][0]
+        self.assertEqual(reading["text"], value)
+        self.assertEqual(reading["status"], "decoded")
+        contents = sdk.calls[0]["contents"][0].parts
+        self.assertEqual(contents[1].inline_data.data, source.read_bytes())
+        self.assertEqual(json.loads(contents[0].text)["qr_readings"], [reading])
+        self.assertEqual(self.rows("SELECT * FROM notes"), [])
+        self.assertIn("No vuelvas a transcribir", sdk.calls[0]["config"].system_instruction)
+
+    async def test_analysis_preserves_decoded_qr_when_gemini_fails(self):
+        source = self.root / "qr.png"
+        await run_process(["qrencode", "-o", str(source), "-s", "8", "BOTSKY-QR-FAILOVER"], 10)
+        self.model.fail = True
+        receipt = self.app.receive(self.app.attach_local(self.incoming("/ia analiza"), source))
+        await self.app.jobs.run_pending()
+        result = self.result(receipt.id)
+        self.assertEqual(result.status, "failed")
+        self.assertEqual(result.code, "gemini_rate_limited")
+        self.assertIn("BOTSKY-QR-FAILOVER", result.text)
+        self.assertIn("El análisis de IA no está disponible", result.text)
+        self.assertEqual(result.data["qr_readings"][0]["status"], "decoded")
+
+    async def test_analysis_keeps_image_when_qr_decoder_is_unavailable(self):
+        from unittest.mock import AsyncMock, patch
+
+        source = self.root / "plain.png"
+        Image.new("RGB", (32, 32), "white").save(source)
+        with patch(
+            "botsky.engines.images.read_image", AsyncMock(side_effect=MediaError("process_failed"))
+        ):
+            receipt = self.app.receive(self.app.attach_local(self.incoming("/ia describe"), source))
+            await self.app.jobs.run_pending()
+        result = self.result(receipt.id)
+        self.assertEqual(result.code, "ai_reply")
+        self.assertEqual(result.data["qr_readings"], [{"attachment": 1, "status": "unavailable"}])
+        self.assertIn("No se pudo verificar", result.text)
+        self.assertEqual(len(self.model.calls[-1][1]["files"]), 1)
+
     async def test_analysis_rejects_corrupt_audio_before_provider_dispatch(self):
         source = self.root / "broken.ogg"
         source.write_bytes(b"OggS" + b"broken" * 30)

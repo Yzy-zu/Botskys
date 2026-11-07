@@ -1,0 +1,59 @@
+{
+  "capture_method": "NetworkWeb.search invoked directly; HTTPX transport wrapper captured actual request URL q and response body; response headers omitted",
+  "prior_capture_note": "The sibling ../c02.rss through ../c04.rss were constructed from operator queries and are labeled operator_escape_not_product_query; this verified-client directory is a new independent capture.",
+  "oracle": "oracle.json",
+  "cases": [
+    {
+      "case": "c02",
+      "query": "asyncio tutorial",
+      "required_terms": [
+        "Python",
+        "docs"
+      ],
+      "actual_request_q": "asyncio tutorial \"Python\" \"docs\"",
+      "http_status": 200,
+      "rss_file": "c02.rss",
+      "sha256": "09c13e7906fad946d11535d12a35b40e16cbbd4cbf29c81cce316b31527f3071",
+      "bytes": 5006,
+      "returned_matches": []
+    },
+    {
+      "case": "c03",
+      "query": "cargo build guide",
+      "required_terms": [
+        "rust"
+      ],
+      "actual_request_q": "cargo build guide \"rust\"",
+      "http_status": 200,
+      "rss_file": "c03.rss",
+      "sha256": "9f73159a5d2578cab07424e18427100d63365f904de37d016beda2a27b0c36ff",
+      "bytes": 4530,
+      "returned_matches": []
+    },
+    {
+      "case": "c04",
+      "query": "prueba de limites",
+      "required_terms": [
+        "uno",
+        "dos",
+        "tres",
+        "cuatro",
+        "cinco",
+        "seis",
+        "siete",
+        "ocho"
+      ],
+      "actual_request_q": "prueba de limites \"uno\" \"dos\" \"tres\" \"cuatro\" \"cinco\" \"seis\" \"siete\" \"ocho\"",
+      "http_status": 200,
+      "rss_file": "c04.rss",
+      "sha256": "876fa94abeef9fc84020071a3f5bc3526a5249e0357e7cf6ecc2d08e545e7f2d",
+      "bytes": 5601,
+      "returned_matches": []
+    }
+  ],
+  "limitations": [
+    "No provider relevance or result-count expectation.",
+    "No response headers, credentials, or secrets stored.",
+    "At most one GET per case; no retries."
+  ]
+}

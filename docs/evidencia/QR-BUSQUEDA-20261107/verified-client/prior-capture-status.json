@@ -1,0 +1,5 @@
+{
+  "files": ["../c02.rss", "../c03.rss", "../c04.rss"],
+  "label": "operator_escape_not_product_query",
+  "note": "These earlier bodies were fetched by manually constructed operator queries, not by invoking NetworkWeb.search. They are preserved and are not used as evidence for the actual product request query."
+}

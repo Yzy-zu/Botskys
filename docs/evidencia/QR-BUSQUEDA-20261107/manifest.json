@@ -1,0 +1,97 @@
+[
+  {
+    "file": "ai-tests.txt",
+    "bytes": 2685,
+    "sha256": "cc4155771e2310fc87758bf3788283f41d92ce57974cf736e7a3a76eede7065c"
+  },
+  {
+    "file": "c02.rss",
+    "bytes": 6376,
+    "sha256": "ae238303d4b40745dd68205f420f63fa17ba8b15378de020502149df56805218"
+  },
+  {
+    "file": "c03.rss",
+    "bytes": 4650,
+    "sha256": "66ed54f3bcfc8917b45734f0a0e8622e623ccf7f77f10c13d55e6de01a4acb43"
+  },
+  {
+    "file": "c04.rss",
+    "bytes": 5341,
+    "sha256": "fb958f49cca2037e31d64ce24b4b45be750b7eee8b30cc9174079bfaff31494c"
+  },
+  {
+    "file": "evidence-review.json",
+    "bytes": 748,
+    "sha256": "ccbc160e55fbaa525bb8a749901502b5277f3444fbf48ea658d9db654d40c655"
+  },
+  {
+    "file": "local-tests-initial.txt",
+    "bytes": 9359,
+    "sha256": "3874ae1fcd232d8257da1a7a296332a611bcb2e960807c3ff36feecf9a7df398"
+  },
+  {
+    "file": "local-tests.txt",
+    "bytes": 8200,
+    "sha256": "491a2e63eb9688c7c4bc8436eb7b3e7220d4b815adc25d1916ce7ec6403420f6"
+  },
+  {
+    "file": "oracle.json",
+    "bytes": 1018,
+    "sha256": "1642d965eb184bbd4dfbd3397c7885192933b8bbe8050b6e079e73cf55006657"
+  },
+  {
+    "file": "quota-final.json",
+    "bytes": 306,
+    "sha256": "10dfe8230310fe0eb8c62cd3dd1c4d8a31b929dfaf66a47631236c1b3d656809"
+  },
+  {
+    "file": "report.json",
+    "bytes": 1865,
+    "sha256": "9d3a80cd5558c60ffecd64108c54d39ba91f170bbdb2eb9a738b2190b1d002d7"
+  },
+  {
+    "file": "style.txt",
+    "bytes": 45,
+    "sha256": "0be7adce665690956090205e08186f7efd9939d7fe606e4a0d117c570ab71599"
+  },
+  {
+    "file": "summary.json",
+    "bytes": 790,
+    "sha256": "b12cc6c7a8f8f24179f203295d18a8f415c261c1ce36ab4bc70136c57993604b"
+  },
+  {
+    "file": "verified-client/c02.rss",
+    "bytes": 5006,
+    "sha256": "09c13e7906fad946d11535d12a35b40e16cbbd4cbf29c81cce316b31527f3071"
+  },
+  {
+    "file": "verified-client/c03.rss",
+    "bytes": 4530,
+    "sha256": "9f73159a5d2578cab07424e18427100d63365f904de37d016beda2a27b0c36ff"
+  },
+  {
+    "file": "verified-client/c04.rss",
+    "bytes": 5601,
+    "sha256": "876fa94abeef9fc84020071a3f5bc3526a5249e0357e7cf6ecc2d08e545e7f2d"
+  },
+  {
+    "file": "verified-client/oracle.json",
+    "bytes": 975,
+    "sha256": "264b9b39cfaec838464fd250621bc35ad19755555319848402c00f97a324023f"
+  },
+  {
+    "file": "verified-client/prior-capture-status.json",
+    "bytes": 316,
+    "sha256": "636224881aa1ec8030eac0873069cd2c8387203d441ef0a6852c056a8509ed1c"
+  },
+  {
+    "file": "verified-client/report.json",
+    "bytes": 1911,
+    "sha256": "bb7c5a7556bbacfd53d812f9323f091f02195661727d3928698925da4ddc1d52"
+  },
+  {
+    "file": "verified-client/tests.log",
+    "bytes": 1165,
+    "sha256": "650497361b72c58a4a40fc4d7e2be9da4b32e7c2379f38f662359d2047a1b7cd"
+  }
+]

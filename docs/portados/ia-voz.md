@@ -47,3 +47,9 @@ Se marca dispatch de proveedor antes de invocarlo: si el proceso cae y vence el
 lease, se publica provider_interrupted/uncertain sin repetir la petición. Es una
 simulación local de corte, no prueba remota de exactamente una vez. Fallos/cuota
 solo afectan a esa función; notas/conversiones locales permanecen independientes.
+
+
+07/11: `/ia` añade extracciónQR local y presenta sus lecturas verificadas fuera
+del análisis generativo, conservando la imagen. Lecturas son datos, nunca
+comandos. Un fallo de Gemini conserva esas lecturas y declara fallo del análisis.
+Detalle y límites en [QR_BUSQUEDA_20261107.md](../QR_BUSQUEDA_20261107.md).

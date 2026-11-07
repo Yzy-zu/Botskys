@@ -79,6 +79,53 @@ async def analysis_files(paths, directory):
     return result
 
 
+async def local_qr_readings(files, directory):
+    """Decode image bytes, never the user's intent; extracted data is not executable."""
+    from .images import read_image
+
+    readings = []
+    remaining = 6000
+    for index, file in enumerate(files, 1):
+        if not file.mime.startswith("image/"):
+            continue
+        work = directory / f"qr-{index}"
+        work.mkdir()
+        try:
+            text, metadata = await read_image(file.path, "qr", work)
+        except MediaError, OSError:
+            readings.append({"attachment": index, "status": "unavailable"})
+            continue
+        if not text:
+            readings.append({"attachment": index, "status": "not_decoded"})
+            continue
+        value = text[:remaining]
+        readings.append(
+            {
+                "attachment": index,
+                "status": "decoded",
+                "text": value,
+                "truncated": bool(metadata.get("truncated")) or len(text) > remaining,
+            }
+        )
+        remaining -= len(value)
+        if not remaining:
+            break
+    return readings
+
+
+def qr_result_text(readings):
+    sections = []
+    for reading in readings:
+        if reading["status"] == "decoded":
+            text = f"Contenido QR verificado · archivo {reading['attachment']}:\n" + reading["text"]
+            if reading["truncated"]:
+                text += "\n[Lectura truncada por límite de tamaño.]"
+            sections.append(text)
+        elif reading["status"] == "unavailable":
+            sections.append(f"No se pudo verificar el QR del archivo {reading['attachment']}.")
+    return "\n\n".join(sections)
+
+
 async def execute(job, directory, paths, manager, gemini, tts, asr):
     operation = job["operation"]
     args = job["arguments"]
@@ -86,18 +133,37 @@ async def execute(job, directory, paths, manager, gemini, tts, asr):
         if gemini is None:
             raise MediaError("gemini_not_configured")
         files = await analysis_files(paths, directory)
+        qr_readings = await local_qr_readings(files, directory)
+        verified = qr_result_text(qr_readings)
         manager.mark_provider(job)
-        text = await gemini.generate(
-            args["text"],
-            purpose="answer",
-            history=args.get("history", ()),
-            files=files,
-            quoted_text=args.get("quoted_text"),
-            memories=args.get("memories", ()),
+        try:
+            text = await gemini.generate(
+                args["text"],
+                purpose="answer",
+                history=args.get("history", ()),
+                files=files,
+                quoted_text=args.get("quoted_text"),
+                memories=args.get("memories", ()),
+                qr_readings=qr_readings,
+            )
+            if not isinstance(text, str) or not text.strip() or len(text) > 8000:
+                raise MediaError("gemini_invalid_response")
+        except MediaError as exc:
+            if not any(r["status"] == "decoded" for r in qr_readings):
+                raise
+            return EngineOutput(
+                Result(
+                    "failed",
+                    exc.code,
+                    verified + "\n\nEl análisis de IA no está disponible.",
+                    {"purpose": "answer", "qr_readings": qr_readings},
+                )
+            )
+        if verified:
+            text = verified + "\n\nAnálisis de IA:\n" + text
+        return EngineOutput(
+            Result("ok", "ai_reply", text, {"purpose": "answer", "qr_readings": qr_readings})
         )
-        if not isinstance(text, str) or not text.strip() or len(text) > 8000:
-            raise MediaError("gemini_invalid_response")
-        return EngineOutput(Result("ok", "ai_reply", text, {"purpose": "answer"}))
     if operation.startswith("make_voice."):
         if tts is None:
             raise MediaError("tts_not_configured")

@@ -1,5 +1,27 @@
 # Relevo Botsky
 
+## 07/11 · QR local en/ia y términos enviados al buscador
+
+Propietario encargócorregir1y3. /ia extraeQRlocal en imágenes sinclasificarprompt,
+conservaimagenparaGemini, envía lecturacomodatos y presenta bloqueQRverificado
+fuera deltextogenerado. Datos nunca ejecutados. PreservaQRsiGeminifalla, declara
+falloparcial; fallodecoderconservaanálisisgeneralconaviso. Tope6000lectura ymarca
+truncamiento; ningunalectura no demuestra ausenciaQR. Gemini instruido noadivinar
+ni repetirQR; subloqueanálisis siguesiendogenerativo,nogarantizarverdaduniversal.
+
+NetworkWebahoraañadeTODOSrequiredterms entrecomillasenq, conservaquery/site y
+filtroALLlocal. Mockpositivo pruebacoincidenciaúnicamentesi constraints enviadas.
+6GETRSSacotadosnuevos:3consultasoperadorsintéticas +3NetworkWebexactasdecampaña,
+HTTP200,todos sincoincidenciasválidas; cuerpos/hash/oraclepreviosconservados.
+Bingpuededevolvercandidatosirrelevantes;novaciarfiltroparafingirfuncionalidad.
+NoRSSoriginalreconstruido. NotaerróneasobreescapeJSONsuperadaen evidence-review.
+
+47pruebasfocalesPASS(IA17,búsqueda6,media16,downloads8),guardia0conexionesexternas;
+Ruff7/formato/diffPASS. Primerlogfallóexpectativaantiguaq yseconservaseparado.
+Sinserviciosreiniciados,datosproductivos,perfiles,llamadasoenvíos. Códigoespera
+reinicioproducción ya pendiente. SinNLP/GitHub. Informe docs/QR_BUSQUEDA_20261107.md;
+evidenciaQR-BUSQUEDA-20261107. Cuota74%/14%01:04UTC,umbral5%vigente.
+
 ## 07/11 · SoundCloud retirado; HH y ayuda de duración corregidos
 
 Encargo propietario aplicado en código:SoundCloud eliminado del registro,URLs,
