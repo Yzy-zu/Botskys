@@ -1,5 +1,17 @@
 # Relevo Botsky
 
+## 07/11 · Investigación UI/UX y referencia Zhana
+
+Propietario confirma sticker recibido y pide mejorar presentación/investigarZhana.
+Hallazgo: Store.enqueue añade /estadoID a todo texto y corta fijo3500; ayuda filtra
+permisos/bloques internos al usuario. Zhana tiene NativeTable+sendNativeTable HTTP,
+composición durable porpartes; web_search usa lista numerada separada, search_media
+usa títulos/citas/pie ycollage opcional. No confundir ambas rutas ni asumir soporte
+actual por evidenciahistórica. Propuesta docs/PROPUESTA_UI_UX_20261107.md: presentador
+propio tipado, IDs internos, ayuda humana, búsquedas legibles, tablas reales por
+transporte, paginación yliteralidad. Investigación terminada; implementación pendiente,
+ningún cambio producto/servicios/envíos, sin NLP/GitHub. Cuota44%/9% al01:27UTC.
+
 ## 07/11 · Punto2 cobertura local cerrado:45rutas/56campos
 
 Propietario encargócubrirhuecosúltimaAGY.268Python+4NodePASS,ceroerrores/fallos/
