@@ -48,9 +48,13 @@ class CloudflareInterpreter:
                 # request and full catalog; no fallback or repair inference.
                 wire_messages = [dict(message) for message in messages] or [{'role': 'system', 'content': ''}]
                 wire_messages[0]['content'] += (
-                    '\nPROTOCOLO JSON: Devuelve un solo objeto JSON con exactamente name y arguments. '
-                    'name es reply,clarify,select_action o no_action. arguments cumple el schema '
-                    'de esa función. No produzcas XML, etiquetas ni llamadas de herramientas. Definiciones: '
+                    '\nPROTOCOLO JSON PLANO: Devuelve un único objeto JSON. name identifica '
+                    'reply,clarify,select_action o no_action; los demás campos son directamente '
+                    'las propiedades del schema de esa función, SIN otra envoltura. Ejemplos de forma: '
+                    '{"name":"select_action","action_key":"nota.guardar","arguments":{"text":"ejemplo"}} '
+                    'o {"name":"reply","text":"Hola"}. Para select_action los argumentos de dominio '
+                    'van obligatoriamente dentro de arguments; nunca al lado de action_key. '
+                    'No produzcas XML, etiquetas ni llamadas de herramientas. Definiciones: '
                     + json.dumps([t['function'] for t in tools], ensure_ascii=False, separators=(',', ':')))
                 try:
                     response = await self.http.post(
@@ -58,7 +62,7 @@ class CloudflareInterpreter:
                         headers={'Authorization': 'Bearer ' + self.credentials['api_token']},
                         json={'model': MODEL, 'messages': wire_messages,
                               'response_format': {'type': 'json_object'}, 'stream': False,
-                              'temperature': 0, 'max_completion_tokens': 1024}, timeout=self.deadline)
+                              'temperature': 0, 'max_completion_tokens': 2048}, timeout=self.deadline)
                 except Exception:
                     raise InterpreterError('transport_error') from None
                 try:
@@ -84,8 +88,20 @@ class CloudflareInterpreter:
                     if message.get('tool_calls'):
                         raise ValueError()
                     envelope = json.loads(message['content'])
-                    if type(envelope) is not dict or set(envelope) != {'name', 'arguments'}:
+                    if type(envelope) is not dict or type(envelope.get('name')) is not str:
                         raise ValueError()
+                    name = envelope.pop('name')
+                    selection = next((t['function']['parameters'] for t in tools if t['function']['name'] == 'select_action'), None)
+                    action_keys = selection['properties']['action_key']['enum'] if selection else ()
+                    # Equivalent direct action envelope observed from GLM. This is
+                    # an exact closed-enum decode, never a Python handler name.
+                    if name in action_keys and set(envelope) == {'arguments'}:
+                        envelope = {'action_key': name, 'arguments': envelope['arguments']}
+                        name = 'select_action'
+                    definition = next((t['function']['parameters'] for t in tools if t['function']['name'] == name), None)
+                    if definition is None or set(envelope) - set(definition['properties']) or set(definition['required']) - set(envelope):
+                        raise ValueError()
+                    envelope = {'name': name, 'arguments': envelope}
                 except (KeyError, TypeError, ValueError):
                     raise InterpreterError('invalid_json_envelope') from None
                 return {'choices': [{'finish_reason': 'stop', 'message': {

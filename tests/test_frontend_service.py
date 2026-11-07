@@ -29,7 +29,7 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                     if len(original) == 1:
                         function = original[0]['function']
                         arguments = json.loads(function['arguments'])
-                        choice['message'] = {'content': json.dumps({'name': function['name'], 'arguments': arguments})}
+                        choice['message'] = {'content': json.dumps({'name': function['name'], **arguments})}
                         if choice['finish_reason'] == 'tool_calls':
                             choice['finish_reason'] = 'stop'
             return httpx.Response(status, json=wire)
@@ -43,7 +43,7 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(calls[0]['response_format'], {'type': 'json_object'})
                 self.assertNotIn('tools', calls[0])
                 self.assertEqual(calls[0]['temperature'], 0)
-                self.assertEqual(calls[0]['max_completion_tokens'], 1024)
+                self.assertEqual(calls[0]['max_completion_tokens'], 2048)
                 self.assertIn('nota.guardar', calls[0]['messages'][0]['content'])
 
     async def test_decisions(self):
@@ -107,3 +107,18 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                 service=FrontendService(CloudflareInterpreter(http,{'account_id':'a'*32,'api_token':'synthetic'}))
                 with self.assertRaisesRegex(InterpreterError,'invalid_json_envelope'):
                     await service.decide('hola')
+
+    async def test_captured_direct_action_envelope_is_closed(self):
+        from botsky.frontend.contracts import ActionRequest
+        for name,expected in [('ia',True),('arbitrary_executor',False)]:
+            def handle(request):
+                return httpx.Response(200,json={'choices':[{'finish_reason':'stop','message':{'content':json.dumps({'name':name,'arguments':{'text':'Explícame por qué la luna tiene fases'}})}}]})
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+                service=FrontendService(CloudflareInterpreter(http,{'account_id':'a'*32,'api_token':'synthetic'}))
+                if expected:
+                    decision=await service.decide('Explícame por qué la luna tiene fases')
+                    self.assertIsInstance(decision,ActionRequest)
+                    self.assertEqual(decision.action_key,'ia')
+                else:
+                    with self.assertRaises(InterpreterError):
+                        await service.decide('Explícame por qué la luna tiene fases')
