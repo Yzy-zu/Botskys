@@ -1,5 +1,20 @@
 # Relevo Botsky
 
+## 07/11 · Legacy de octubre recuperado de Drive, sin activación
+
+Propietario pidió buscar `botsky/` en respaldos Drive y aclaró legacy de octubre
+anterior a Zhana. Recuperado de Backups_Flota/Miroslav, respaldo28oct03:00:
+2.794.665.248B cifrados, tamaño/MD5 completos coinciden con proveedor, descifrado0.
+5.158archivos/1.252.682.898B código/recursos en almacenamiento privado aislado
+`private/legacy-recovery-20261107/oct28-source/`; segunda lectura SHA256/tamaño
+de todos los archivos PASS, node--check entrada/supervisor PASS. Datos/credenciales/
+sesiones/perfiles/dependencias excluidos de la extracción; original cifrado íntegro
+conservado. Archivos0600/directorios0700. No runtime legacy, NLP, instalación,
+pruebas funcionales ni cambio productivo. No afirmar activación/restauración de
+servicio. Referencia local15oct recuperada aparte;24oct parcial22archivos sin mezclar.
+Otros respaldos31oct–6nov solo listados, sin comparar contenidos. Detalles/límites:
+docs/RECUPERACION_LEGACY_20261107.md; manifiestos privados, sin secretos en Git.
+
 ## 07/11 · Logs y primera observación parcial Android del propietario
 
 Revisión de solo lectura a petición «Checa los logs», sin envíos ni consultas de
