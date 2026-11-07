@@ -1,0 +1,54 @@
+{
+  "route": "/voz crear",
+  "operation": "make_voice.compose",
+  "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+  "input": "/voz crear --voz argentino --efecto radio --duracion 10 explica el cable",
+  "result": {
+    "code": "voice_ready",
+    "data": {
+      "artifacts": [
+        "54d7d6022e064c8a9fd6231c0a3a5baa"
+      ],
+      "effect": "radio",
+      "file_facts": [
+        {
+          "bytes": 4927,
+          "duration_seconds": 1.0065,
+          "extension": "ogg",
+          "format": "ogg"
+        }
+      ],
+      "mode": "compose",
+      "spoken_text": "Guion compuesto sintético.",
+      "voice": "argentino"
+    },
+    "status": "ok",
+    "text": "Voz compuesta lista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "5b5a6d6a16655e416c656084da086c1bd141517ffd9c5d0f393dd8daf5b49bbf",
+      "rich_payload": {
+        "artifacts": [
+          "54d7d6022e064c8a9fd6231c0a3a5baa"
+        ],
+        "caption": "",
+        "name": "Voz Botsky.ogg",
+        "source_text": "Guion compuesto sintético."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

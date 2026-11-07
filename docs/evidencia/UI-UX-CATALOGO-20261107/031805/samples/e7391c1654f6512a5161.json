@@ -1,0 +1,33 @@
+{
+  "route": "/pdf agregar",
+  "operation": "manage_pdf.add",
+  "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+  "input": "/pdf agregar",
+  "result": {
+    "code": "pdf_session_busy",
+    "data": {},
+    "status": "needs_input",
+    "text": "La sesión ya está procesándose."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La sesión ya está procesándose.",
+      "visual_version": 2,
+      "content_sha256": "153ab869cfe663e6353d530bb8a2fa464bb0ea79703e26fcdf78cf6ca7e9ec06",
+      "rich_payload": {
+        "source_text": "La sesión ya está procesándose."
+      },
+      "utf16_units": 31
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

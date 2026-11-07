@@ -1,0 +1,33 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+  "input": "/ia no",
+  "result": {
+    "code": "bot_paused",
+    "data": {},
+    "status": "failed",
+    "text": "Botsky está en pausa en este chat. El dueño puede usar /bot reanudar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Botsky está en pausa en este chat. El dueño puede usar /bot reanudar.",
+      "visual_version": 2,
+      "content_sha256": "010a52a9267b5972a9ce019891cc06e7f181210e6d761fb06381bb9d889c1e23",
+      "rich_payload": {
+        "source_text": "Botsky está en pausa en este chat. El dueño puede usar /bot reanudar."
+      },
+      "utf16_units": 69
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

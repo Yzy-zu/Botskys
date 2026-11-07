@@ -1,0 +1,80 @@
+{
+  "route": "/coop crear",
+  "operation": "manage_cooperacha.start",
+  "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+  "input": "/coop crear sintetico 100",
+  "result": {
+    "code": "coop_preview",
+    "data": {
+      "artifacts": [
+        "26bd048e2792485baf360069eb178090"
+      ],
+      "category": "sintetico",
+      "challenge_id": "69556c6589f045ffb11414f0decae8b6",
+      "media_first": true,
+      "target": 100
+    },
+    "status": "ok",
+    "text": "Cooperacha 69556c6589f045ffb11414f0decae8b6 · meta 100 XP. Vence10min tras aceptar esta vista completa. Al completar se publica la foto original en este grupo. Al vencer se devuelve80% por persona, redondeado hacia abajo; cancelación o fallo conocido100%; entrega incierta retiene el saldo, sin reenviar.\n/coop aportar 69556c6589f045ffb11414f0decae8b6 50"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha · previa censurada"
+      },
+      {
+        "kind": "literal",
+        "text": "Categoría: sintetico"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Meta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa."
+      },
+      {
+        "kind": "notice",
+        "text": "Al completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar."
+      },
+      {
+        "kind": "next_action",
+        "text": "/coop aportar 69556c6589f045ffb11414f0decae8b6 50"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "3f33040b42bed89baa70138e5227c9862fc4cbdd0dec76d4b2acbfdd5dfc0587",
+      "rich_payload": {
+        "artifacts": [
+          "26bd048e2792485baf360069eb178090"
+        ],
+        "caption": "*Cooperacha · previa censurada*\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n`/coop aportar 69556c6589f045ffb11414f0decae8b6 50`",
+        "name": "Botsky.jpg"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Cooperacha · previa censurada*\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n`/coop aportar 69556c6589f045ffb11414f0decae8b6 50`",
+      "visual_version": 2,
+      "content_sha256": "374024b9fabe0e7e45cc44cdbbf1b0d85e0ba57a92f7d3559656e5d76d7afec4",
+      "rich_payload": {
+        "source_text": "Cooperacha · previa censurada\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n/coop aportar 69556c6589f045ffb11414f0decae8b6 50"
+      },
+      "utf16_units": 426
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

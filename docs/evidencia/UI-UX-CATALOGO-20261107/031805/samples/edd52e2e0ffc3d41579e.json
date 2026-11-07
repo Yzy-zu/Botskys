@@ -1,0 +1,61 @@
+{
+  "route": "/llamada cancelar-agenda",
+  "operation": "audiovisual.agenda.cancel",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+  "input": "/llamada cancelar-agenda 51e3bd80",
+  "result": {
+    "code": "agenda_cancel",
+    "data": {
+      "schedule": {
+        "dueAt": 1794087900000,
+        "id": "51e3bd80",
+        "mode": "conversación",
+        "revision": 2,
+        "state": "cancelled",
+        "target": "llamada privada",
+        "timeZone": "America/Mexico_City"
+      }
+    },
+    "status": "ok",
+    "text": "Agenda (America/Mexico_City):\n51e3bd80 · 2026-11-07 15:45 · cancelled"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Agenda de llamadas",
+      "headers": [
+        "Referencia",
+        "Fecha",
+        "Modo y duración",
+        "Estado"
+      ],
+      "rows": [
+        [
+          "51e3bd80",
+          "2026-11-07 15:45:00 · America/Mexico_City",
+          "Modo no informado · duración no informada",
+          "cancelado"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nAgenda de llamadas\n\nReferencia: 51e3bd80\nFecha: 2026-11-07 15:45:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: cancelado\n```\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "d94584e7085635814736eb4ad5d69ae458530bfb343ec894906db9cbe629697f",
+      "rich_payload": {
+        "source_text": "Agenda de llamadas\n\nReferencia: 51e3bd80\nFecha: 2026-11-07 15:45:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: cancelado\n\nLa programación no acredita una llamada conectada ni recepción humana."
+      },
+      "utf16_units": 246
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

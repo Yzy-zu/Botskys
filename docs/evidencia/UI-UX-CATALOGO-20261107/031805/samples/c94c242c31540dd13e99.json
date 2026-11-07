@@ -1,0 +1,52 @@
+{
+  "route": "/buscar",
+  "operation": "search_web.run",
+  "test": "test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance",
+  "input": "/buscar --terminos inexistente Python site:python.org",
+  "result": {
+    "code": "web_empty",
+    "data": {
+      "document": {
+        "blocks": [
+          {
+            "kind": "notice",
+            "text": "No encontré resultados que cumplan los términos y las fuentes solicitadas."
+          }
+        ],
+        "version": 1
+      },
+      "items": []
+    },
+    "status": "empty",
+    "text": "No encontré resultados que cumplan los términos y las fuentes solicitadas."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "notice",
+        "text": "No encontré resultados que cumplan los términos y las fuentes solicitadas."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No encontré resultados que cumplan los términos y las fuentes solicitadas.",
+      "visual_version": 2,
+      "content_sha256": "9cf42dbb7f7a1e2034b94fad9c7ef1b2730033d4a090eb517942aa1f4cfcd11d",
+      "rich_payload": {
+        "source_text": "No encontré resultados que cumplan los términos y las fuentes solicitadas."
+      },
+      "utf16_units": 74
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/encuesta cerrar",
+  "operation": "manage_poll.close",
+  "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+  "input": "/encuesta cerrar 1",
+  "result": {
+    "code": "poll_author_required",
+    "data": {},
+    "status": "failed",
+    "text": "Solo el creador o el dueño puede cerrar esta encuesta."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Solo el creador o el dueño puede cerrar esta encuesta.",
+      "visual_version": 2,
+      "content_sha256": "498bb73a7290b13577682de0d27ef840e0da45afb02eca45c4107026455f8e8c",
+      "rich_payload": {
+        "source_text": "Solo el creador o el dueño puede cerrar esta encuesta."
+      },
+      "utf16_units": 54
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

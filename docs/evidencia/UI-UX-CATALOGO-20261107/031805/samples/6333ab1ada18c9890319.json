@@ -1,0 +1,56 @@
+{
+  "route": "/clip lista",
+  "operation": "audiovisual.clip.list",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/clip lista",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clips": [
+        {
+          "id": "6bd87b0a2036710cfeefb14ed485506644fbd03b15a6a0187bb4fbd3b522a3f2",
+          "name": "Prueba audiovisual V3"
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Clips disponibles:\n\n1. Prueba audiovisual V3\n/clip poner 6bd87b0a2036710cfeefb14ed485506644fbd03b15a6a0187bb4fbd3b522a3f2"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clips disponibles"
+      },
+      {
+        "kind": "literal",
+        "text": "1. Prueba audiovisual V3"
+      },
+      {
+        "kind": "next_action",
+        "text": "/clip poner 6bd87b0a2036710cfeefb14ed485506644fbd03b15a6a0187bb4fbd3b522a3f2"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clips disponibles*\n\n1. Prueba audiovisual V3\n\n`/clip poner 6bd87b0a2036710cfeefb14ed485506644fbd03b15a6a0187bb4fbd3b522a3f2`",
+      "visual_version": 2,
+      "content_sha256": "8313797c4157c13a35d989b2229a48f566300cd0769736ed2bc42717d4d50266",
+      "rich_payload": {
+        "source_text": "Clips disponibles\n\n1. Prueba audiovisual V3\n\n/clip poner 6bd87b0a2036710cfeefb14ed485506644fbd03b15a6a0187bb4fbd3b522a3f2"
+      },
+      "utf16_units": 125
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

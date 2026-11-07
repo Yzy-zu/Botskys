@@ -1,0 +1,39 @@
+{
+  "route": "/encuesta crear",
+  "operation": "manage_poll.create",
+  "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+  "input": "/encuesta crear \"¿Qué hora?\" \"A las dos\" \"A las tres\"",
+  "result": {
+    "code": "poll_created",
+    "data": {
+      "options": [
+        "A las dos",
+        "A las tres"
+      ],
+      "poll_id": 1
+    },
+    "status": "ok",
+    "text": "Encuesta 1: ¿Qué hora?\n1. A las dos\n/encuesta votar 1 1\n2. A las tres\n/encuesta votar 1 2"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Encuesta 1: ¿Qué hora?\n1. A las dos\n/encuesta votar 1 1\n2. A las tres\n/encuesta votar 1 2",
+      "visual_version": 2,
+      "content_sha256": "787ed067f0d908b4972c35b36e56dc031280052c9fe72f9855c1264f7d20e766",
+      "rich_payload": {
+        "source_text": "Encuesta 1: ¿Qué hora?\n1. A las dos\n/encuesta votar 1 1\n2. A las tres\n/encuesta votar 1 2"
+      },
+      "utf16_units": 89
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

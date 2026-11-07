@@ -88,7 +88,12 @@ def finish_choices(db, context, parent, result, now):
         "needs_input",
         "drive_choices",
         "\n".join(lines),
-        {"view_id": identifier, "choices": data["choices"]},
+        {
+            "view_id": identifier,
+            "choices": data["choices"],
+            "expires_ms": now + 300000,
+            "prepared_ms": now,
+        },
     )
 
 

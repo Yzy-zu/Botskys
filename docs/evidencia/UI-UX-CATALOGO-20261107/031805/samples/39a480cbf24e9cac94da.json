@@ -1,0 +1,84 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+  "input": "/pack confirmar 9495656af4bf4284ab6dc5d8615e3d11",
+  "result": {
+    "code": "pack_status",
+    "data": {
+      "parts": [
+        {
+          "cost": 50,
+          "error_code": "synthetic_failed",
+          "position": 0,
+          "state": "failed"
+        },
+        {
+          "cost": 50,
+          "error_code": null,
+          "position": 1,
+          "state": "cancelled"
+        },
+        {
+          "cost": 50,
+          "error_code": null,
+          "position": 2,
+          "state": "cancelled"
+        }
+      ],
+      "price": 150,
+      "purchase_id": "9495656af4bf4284ab6dc5d8615e3d11",
+      "refund": 150,
+      "state": "failed"
+    },
+    "status": "ok",
+    "text": "Pack 9495656af4bf4284ab6dc5d8615e3d11: failed. Precio 150 XP · devuelto 150 XP.\nFoto 1: failed · 50 XP\nFoto 2: cancelled · 50 XP\nFoto 3: cancelled · 50 XP"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Entrega de pack",
+      "headers": [
+        "Foto",
+        "Estado",
+        "XP"
+      ],
+      "rows": [
+        [
+          "1",
+          "fallido",
+          "50"
+        ],
+        [
+          "2",
+          "cancelado",
+          "50"
+        ],
+        [
+          "3",
+          "cancelado",
+          "50"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Precio: 150 XP · Devuelto: 150 XP · fallido\n\n```\nEntrega de pack\n\nFoto: 1\nEstado: fallido\nXP: 50\n\nFoto: 2\nEstado: cancelado\nXP: 50\n\nFoto: 3\nEstado: cancelado\nXP: 50\n```\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "2fd35c936e5f0c6712427afb24dfa1c354e6f3771052f3689d724b611a6dd42e",
+      "rich_payload": {
+        "source_text": "Precio: 150 XP · Devuelto: 150 XP · fallido\n\nEntrega de pack\n\nFoto: 1\nEstado: fallido\nXP: 50\n\nFoto: 2\nEstado: cancelado\nXP: 50\n\nFoto: 3\nEstado: cancelado\nXP: 50\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente."
+      },
+      "utf16_units": 279
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

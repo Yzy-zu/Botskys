@@ -1,0 +1,33 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_owned_attachment_sdk_upload_and_cleanup_without_remote_access",
+  "input": "/ia analiza",
+  "result": {
+    "code": "artifact_access_denied",
+    "data": {},
+    "status": "failed",
+    "text": "No puedo usar esa referencia de archivo; adjunta uno propio y disponible."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No puedo usar esa referencia de archivo; adjunta uno propio y disponible.",
+      "visual_version": 2,
+      "content_sha256": "11f84a9f67b12bd75bdcc6714f2a3932564faa93d07a626f2f476d620b3bfffb",
+      "rich_payload": {
+        "source_text": "No puedo usar esa referencia de archivo; adjunta uno propio y disponible."
+      },
+      "utf16_units": 73
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

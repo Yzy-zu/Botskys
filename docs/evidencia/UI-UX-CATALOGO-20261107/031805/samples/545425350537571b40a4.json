@@ -1,0 +1,72 @@
+{
+  "route": "/drive elegir",
+  "operation": "manage_drive.choose",
+  "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+  "input": "/drive elegir 2c5019e11b4748c48d8a4c4ae0dc895f 1",
+  "result": {
+    "code": "drive_downloaded",
+    "data": {
+      "artifacts": [
+        "175a4b00da354c16a2f5baa6db4bfcf1"
+      ],
+      "file_facts": [
+        {
+          "bytes": 3,
+          "extension": "bin",
+          "format": "txt"
+        }
+      ],
+      "name": "literal.txt",
+      "remote_id": "file1"
+    },
+    "status": "ok",
+    "text": "Archivo recuperado de Drive."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Archivo de Drive"
+      },
+      {
+        "kind": "literal",
+        "text": "literal.txt"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: BIN · 3 B"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo recuperado de Drive."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "0b32dea7a5413a515b42c36c0332960783bb30142d7744343fe34a2dbcc040ec",
+      "rich_payload": {
+        "artifacts": [
+          "175a4b00da354c16a2f5baa6db4bfcf1"
+        ],
+        "caption": "*Archivo de Drive*\n\nliteral.txt\n\nFormato final: BIN · 3 B\n\nArchivo recuperado de Drive.",
+        "caption_frozen": true,
+        "name": "literal.txt",
+        "source_text": "Archivo de Drive\n\nliteral.txt\n\nFormato final: BIN · 3 B\n\nArchivo recuperado de Drive."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

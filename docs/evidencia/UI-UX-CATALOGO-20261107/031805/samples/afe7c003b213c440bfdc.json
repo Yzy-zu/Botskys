@@ -1,0 +1,53 @@
+{
+  "route": "/coop aportar",
+  "operation": "manage_cooperacha.contribute",
+  "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+  "input": "/coop aportar 69556c6589f045ffb11414f0decae8b6 100",
+  "result": {
+    "code": "coop_status",
+    "data": {
+      "category": "sintetico",
+      "challenge_id": "69556c6589f045ffb11414f0decae8b6",
+      "expires_ms": 1793963400000,
+      "refund": 0,
+      "state": "uncertain",
+      "target": 100,
+      "total": 100
+    },
+    "status": "uncertain",
+    "text": "Cooperacha 69556c6589f045ffb11414f0decae8b6: uncertain · 100/100 XP · devuelto 0 XP."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Categoría: sintetico\nEstado: incierto\nAvance: 100/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Cooperacha*\n\nCategoría: sintetico\nEstado: incierto\nAvance: 100/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "17789f80cb5ece0809d86da7e7a49aadf9f031d4807d995b39a02fe0b17b59f5",
+      "rich_payload": {
+        "source_text": "Cooperacha\n\nCategoría: sintetico\nEstado: incierto\nAvance: 100/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City"
+      },
+      "utf16_units": 134
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

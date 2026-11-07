@@ -1,0 +1,67 @@
+{
+  "route": "/clip pausa",
+  "operation": "audiovisual.clip.pause",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/clip pausa",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clip": {
+        "name": "Prueba audiovisual V3",
+        "state": "paused",
+        "volume": 0.5
+      },
+      "message": "Clip pausado.",
+      "presentation_action": "pause",
+      "presentation_family": "clip",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Clip pausado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "literal",
+        "text": "Prueba audiovisual V3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: En pausa"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen aplicado: 50 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Clip pausado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nPrueba audiovisual V3\n\nEstado del servicio: En pausa\n\nVolumen aplicado: 50 %\n\nClip pausado.",
+      "visual_version": 2,
+      "content_sha256": "a85cafd0b3b84256cc16d7fe1d6a63ac13d57a3fb5a791a4d380712c899d2849",
+      "rich_payload": {
+        "source_text": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: En pausa\n\nVolumen aplicado: 50 %\n\nClip pausado."
+      },
+      "utf16_units": 99
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

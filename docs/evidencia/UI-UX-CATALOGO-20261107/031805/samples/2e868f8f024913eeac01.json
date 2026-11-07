@@ -1,0 +1,33 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_native_tables.TableEvolutionTest.test_evolution_sends_typed_table_and_never_text_substitute",
+  "input": "/ayuda",
+  "result": {
+    "code": "help",
+    "data": {},
+    "status": "ok",
+    "text": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`",
+      "visual_version": 2,
+      "content_sha256": "38d4e212326c07897ec7d2f7a09dcea94fafbe1d4258d4113c6a866997a1bf31",
+      "rich_payload": {
+        "source_text": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`"
+      },
+      "utf16_units": 617
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

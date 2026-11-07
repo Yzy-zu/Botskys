@@ -1,0 +1,76 @@
+{
+  "route": "/ruleta crear",
+  "operation": "manage_roulette.create",
+  "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+  "input": "/ruleta crear 50",
+  "result": {
+    "code": "roulette_board",
+    "data": {
+      "bet": 50,
+      "players": 0,
+      "revision": 1,
+      "room_id": "33f5ded5fecb413685cebaa185c47c09",
+      "seats": [],
+      "state": "lobby"
+    },
+    "status": "ok",
+    "text": "Ruleta 33f5ded5fecb413685cebaa185c47c09 · 50 XP por persona ·2–6 participantes.\nUna persona elegida recibe expulsión de20min; si se permiten administradores, su degradación es permanente. Dueño/bots protegidos; administradores protegidos por defecto. El resto comparte el pozo redondeado hacia abajo. Para expulsión se enviará invitación por privado tras20min, sujeto a identidad/número verificados y privado disponible. Una entrega/acción incierta no se repite.\nAl escribir /ruleta entrar 33f5ded5fecb413685cebaa185c47c09 después de recibir estas reglas aceptas apuesta, efecto y aviso privado.\n/ruleta jugar 33f5ded5fecb413685cebaa185c47c09\nAsientos: "
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Ruleta · sala abierta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Apuesta: 50 XP por persona · 0/6 participantes; se necesitan al menos 2."
+      },
+      {
+        "kind": "notice",
+        "text": "Una persona elegida recibe expulsión de 20 minutos; si se permiten administradores, su degradación es permanente. Dueño y bots protegidos; administradores protegidos por defecto. El resto comparte el pozo redondeado hacia abajo."
+      },
+      {
+        "kind": "notice",
+        "text": "Para expulsión se enviará invitación por privado tras 20 minutos, sujeto a identidad/número verificados y privado disponible. Una entrega o acción incierta no se repite."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Asientos: Sin participantes"
+      },
+      {
+        "kind": "notice",
+        "text": "Al entrar después de recibir estas reglas aceptas la apuesta, el efecto y el aviso privado."
+      },
+      {
+        "kind": "next_action",
+        "text": "/ruleta entrar 33f5ded5fecb413685cebaa185c47c09"
+      },
+      {
+        "kind": "next_action",
+        "text": "/ruleta jugar 33f5ded5fecb413685cebaa185c47c09"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Ruleta · sala abierta*\n\nApuesta: 50 XP por persona · 0/6 participantes; se necesitan al menos 2.\n\nUna persona elegida recibe expulsión de 20 minutos; si se permiten administradores, su degradación es permanente. Dueño y bots protegidos; administradores protegidos por defecto. El resto comparte el pozo redondeado hacia abajo.\n\nPara expulsión se enviará invitación por privado tras 20 minutos, sujeto a identidad/número verificados y privado disponible. Una entrega o acción incierta no se repite.\n\nAsientos: Sin participantes\n\nAl entrar después de recibir estas reglas aceptas la apuesta, el efecto y el aviso privado.\n\n`/ruleta entrar 33f5ded5fecb413685cebaa185c47c09`\n\n`/ruleta jugar 33f5ded5fecb413685cebaa185c47c09`",
+      "visual_version": 2,
+      "content_sha256": "fd6a59c2d42d369f5ff148ef33e89dd15c53041cd775b4b52008a12efb5bf4d3",
+      "rich_payload": {
+        "source_text": "Ruleta · sala abierta\n\nApuesta: 50 XP por persona · 0/6 participantes; se necesitan al menos 2.\n\nUna persona elegida recibe expulsión de 20 minutos; si se permiten administradores, su degradación es permanente. Dueño y bots protegidos; administradores protegidos por defecto. El resto comparte el pozo redondeado hacia abajo.\n\nPara expulsión se enviará invitación por privado tras 20 minutos, sujeto a identidad/número verificados y privado disponible. Una entrega o acción incierta no se repite.\n\nAsientos: Sin participantes\n\nAl entrar después de recibir estas reglas aceptas la apuesta, el efecto y el aviso privado.\n\n/ruleta entrar 33f5ded5fecb413685cebaa185c47c09\n\n/ruleta jugar 33f5ded5fecb413685cebaa185c47c09"
+      },
+      "utf16_units": 721
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

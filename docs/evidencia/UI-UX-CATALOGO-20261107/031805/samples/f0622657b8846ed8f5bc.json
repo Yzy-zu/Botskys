@@ -1,0 +1,54 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+  "input": "/admin nuclear-confirmar 5bd0dd76daa9409f81ce649a5ca3504c",
+  "result": {
+    "code": "nuclear_status",
+    "data": {
+      "cost": 5000,
+      "counts": {
+        "accepted": 2
+      },
+      "draft_id": "5bd0dd76daa9409f81ce649a5ca3504c",
+      "state": "completed"
+    },
+    "status": "ok",
+    "text": "Nuclear 5bd0dd76daa9409f81ce649a5ca3504c: completed · coste 5000 XP. accepted: 2"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Estado de operación nuclear",
+      "headers": [
+        "Estado de destinatarios",
+        "Cantidad"
+      ],
+      "rows": [
+        [
+          "aceptado por el servicio",
+          "2"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Coste: 5000 XP · completada\n\n```\nEstado de operación nuclear\n\nEstado de destinatarios: aceptado por el servicio\nCantidad: 2\n```\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+      "visual_version": 2,
+      "content_sha256": "00ec3e97b83f98a3b1268a41e96a1c90253fd8f2584f17a2279cacea6008390f",
+      "rich_payload": {
+        "source_text": "Coste: 5000 XP · completada\n\nEstado de operación nuclear\n\nEstado de destinatarios: aceptado por el servicio\nCantidad: 2\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación."
+      },
+      "utf16_units": 241
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

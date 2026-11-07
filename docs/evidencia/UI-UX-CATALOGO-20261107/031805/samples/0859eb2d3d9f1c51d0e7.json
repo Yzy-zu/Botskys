@@ -1,0 +1,33 @@
+{
+  "route": "/pack estado",
+  "operation": "manage_pack.status",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/pack estado ID_REAL",
+  "result": {
+    "code": "pack_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una compra propia con ese ID aquí."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una compra propia con ese ID aquí.",
+      "visual_version": 2,
+      "content_sha256": "dd182b2bdda6c6a5a5bc409c329371ec42a4678d7a2babb7c764f98b2b58938e",
+      "rich_payload": {
+        "source_text": "No hay una compra propia con ese ID aquí."
+      },
+      "utf16_units": 41
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again",
+  "input": "/dl elegir 1",
+  "result": {
+    "code": "selection_ambiguous",
+    "data": {},
+    "status": "needs_input",
+    "text": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir 38db07a9ca9a44418abd516826ef1fa7 NUMERO\n/dl elegir 06b7f4c61dec4f38871edfbf1f368762 NUMERO"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir 38db07a9ca9a44418abd516826ef1fa7 NUMERO\n/dl elegir 06b7f4c61dec4f38871edfbf1f368762 NUMERO",
+      "visual_version": 2,
+      "content_sha256": "080aecac7ba0e267f6053f7651e20413d743a3fecb3b5408cb44557bd1072284",
+      "rich_payload": {
+        "source_text": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir 38db07a9ca9a44418abd516826ef1fa7 NUMERO\n/dl elegir 06b7f4c61dec4f38871edfbf1f368762 NUMERO"
+      },
+      "utf16_units": 172
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

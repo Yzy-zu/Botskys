@@ -1,0 +1,49 @@
+{
+  "route": "/estado",
+  "operation": "core.estado",
+  "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+  "input": "/estado e36d0f9f2719bf3693e3d5448f3ceaf1",
+  "result": {
+    "code": "receipt_state",
+    "data": {
+      "delivery": [
+        {
+          "position": 0,
+          "state": "pending"
+        }
+      ],
+      "id": "e36d0f9f2719bf3693e3d5448f3ceaf1",
+      "job": {
+        "code": "provider_interrupted",
+        "revision": 2,
+        "state": "failed",
+        "status": "uncertain"
+      },
+      "revision": 2,
+      "state": "completed"
+    },
+    "status": "ok",
+    "text": "No pude confirmar el resultado. Revisa antes de repetirlo. Entrega pendiente."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude confirmar el resultado. Revisa antes de repetirlo. Entrega pendiente.",
+      "visual_version": 2,
+      "content_sha256": "8c9a7b5e5145f67f397aca53584fcbadb402f0ba7ef173d71b259342304b513b",
+      "rich_payload": {
+        "source_text": "No pude confirmar el resultado. Revisa antes de repetirlo. Entrega pendiente."
+      },
+      "utf16_units": 77
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

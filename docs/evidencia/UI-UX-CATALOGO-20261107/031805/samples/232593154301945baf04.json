@@ -1,0 +1,33 @@
+{
+  "route": "/drive cuota",
+  "operation": "manage_drive.capacity",
+  "test": "test_integrations.IntegrationsTest.test_drive_revoked_authorization_has_actionable_message_without_claiming_upload",
+  "input": "/drive cuota",
+  "result": {
+    "code": "oauth_refresh_rejected",
+    "data": {},
+    "status": "failed",
+    "text": "No pude renovar la autorización de Drive. Es necesario volver a conectar la cuenta de Google para usar Drive. No repetí la operación."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude renovar la autorización de Drive. Es necesario volver a conectar la cuenta de Google para usar Drive. No repetí la operación.",
+      "visual_version": 2,
+      "content_sha256": "689c0ccab801c2f663c6bb4abfe490ab2510dff7d3a624de2c1c50f3905e3635",
+      "rich_payload": {
+        "source_text": "No pude renovar la autorización de Drive. Es necesario volver a conectar la cuenta de Google para usar Drive. No repetí la operación."
+      },
+      "utf16_units": 133
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/horario agregar",
+  "operation": "manage_school.set_lesson",
+  "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+  "input": "/horario agregar --materia Mate --dia 5 --inicio 10:00 --fin 11:00",
+  "result": {
+    "code": "owner_required",
+    "data": {},
+    "status": "failed",
+    "text": "Esta acción está reservada al dueño verificado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Esta acción está reservada al dueño verificado.",
+      "visual_version": 2,
+      "content_sha256": "277bf9f987dae5eb8beeb906732d0bfb7cde89468d74e7dfd7e5261dee492ba7",
+      "rich_payload": {
+        "source_text": "Esta acción está reservada al dueño verificado."
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

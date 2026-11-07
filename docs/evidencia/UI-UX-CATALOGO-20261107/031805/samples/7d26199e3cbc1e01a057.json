@@ -1,0 +1,33 @@
+{
+  "route": "/clip pausa",
+  "operation": "audiovisual.clip.pause",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/clip pausa",
+  "result": {
+    "code": "call_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "Las llamadas todavía no están configuradas en Botsky."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Las llamadas todavía no están configuradas en Botsky.",
+      "visual_version": 2,
+      "content_sha256": "e3d9e52b9f4d74fe083de31efbdcb10872078d7a96c72d49e85c29a3eb0f4013",
+      "rich_payload": {
+        "source_text": "Las llamadas todavía no están configuradas en Botsky."
+      },
+      "utf16_units": 53
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

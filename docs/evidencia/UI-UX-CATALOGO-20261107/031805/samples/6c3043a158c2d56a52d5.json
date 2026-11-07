@@ -1,0 +1,38 @@
+{
+  "route": "/ruleta jugar",
+  "operation": "manage_roulette.play",
+  "test": "test_roulette.RouletteTest.test_known_effect_failure_refunds_everyone_and_expiry_is_once",
+  "input": "/ruleta jugar 9b67a97e421541d1903a204705456952",
+  "result": {
+    "code": "roulette_failed",
+    "data": {
+      "payout_each": 0,
+      "room_id": "9b67a97e421541d1903a204705456952",
+      "state": "failed",
+      "target": null
+    },
+    "status": "cancelled",
+    "text": "Ruleta 9b67a97e421541d1903a204705456952: failed. Apuestas devueltas una sola vez."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ruleta 9b67a97e421541d1903a204705456952: failed. Apuestas devueltas una sola vez.",
+      "visual_version": 2,
+      "content_sha256": "703d72bbaadb9edd77968e081a2968054efbf3f80948672b662c305f4a5684d2",
+      "rich_payload": {
+        "source_text": "Ruleta 9b67a97e421541d1903a204705456952: failed. Apuestas devueltas una sola vez."
+      },
+      "utf16_units": 81
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,129 @@
+{
+  "route": "/dl buscar",
+  "operation": "download_media.search",
+  "test": "test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice",
+  "input": "/dl buscar mp4 muestra",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp4",
+        "quality": "standard",
+        "source": "youtube",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "c249776093fc4e6a8ec9fab9aff2ca1a"
+      ],
+      "choices": [
+        {
+          "author": "Autor",
+          "duration": 252,
+          "thumbnail_url": null,
+          "title": "Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro ",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "literal",
+            "text": "1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n4:12 · Autor · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Lista disponible durante 15:00. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "Título y autor completos: /dl detalle NUMERO"
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 71745,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "view_id": "37cc56be9e4d40febe1585514b189589"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n4:12 · Autor · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "literal",
+        "text": "1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n4:12 · Autor · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Lista disponible durante 15:00. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "Título y autor completos: /dl detalle NUMERO"
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "d45e30e8103143f299000aa7ee4ede5e2f8d8296f9507d596e893c35697f0090",
+      "rich_payload": {
+        "artifacts": [
+          "c249776093fc4e6a8ec9fab9aff2ca1a"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n```\n1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n4:12 · Autor · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n```\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "7844055abcc2c075b8d977ba3e9ea4cd8fa789a176b2f44fe9d3f05421349434",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n4:12 · Autor · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 399
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

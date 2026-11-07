@@ -1,0 +1,40 @@
+{
+  "route": "/mc mod activar",
+  "operation": "manage_minecraft.enable_mod",
+  "test": "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+  "input": "/mc mod activar \"dependency\"",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "enable_mod",
+      "response": {
+        "changed": true,
+        "name": "fixture",
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Activación de fixture: cambió. Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Activación de fixture: cambió. Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada.",
+      "visual_version": 2,
+      "content_sha256": "7ed57321ce9e516489e82d1464c90ac2dacd0ae28568d4cf9c2db13a8ca00699",
+      "rich_payload": {
+        "source_text": "Activación de fixture: cambió. Requiere /mc reiniciar para aplicarse; el reinicio desconecta jugadores. Carga en juego no confirmada."
+      },
+      "utf16_units": 133
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

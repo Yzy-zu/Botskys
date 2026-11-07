@@ -1,0 +1,92 @@
+{
+  "route": "/horario listar",
+  "operation": "manage_school.list_schedule",
+  "test": "test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads",
+  "input": "/horario listar",
+  "result": {
+    "code": "school_schedule",
+    "data": {
+      "items": [
+        {
+          "account": "local",
+          "actor": "owner",
+          "chat": "private",
+          "end_time": "09:00",
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "start_time": "08:00",
+          "subject": "Matemáticas",
+          "weekday": 1
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "1: día 1 08:00–09:00 Matemáticas"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Horario",
+      "headers": [
+        "Ref.",
+        "Día",
+        "Horario",
+        "Materia"
+      ],
+      "rows": [
+        [
+          "1",
+          "Lunes",
+          "08:00–09:00",
+          "Matemáticas"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "2b7460ba0c94140aa9b6916ce00e61d09ca083d4e257caf2e319b6e35dbae5ce",
+      "rich_payload": {
+        "headers": [
+          "Ref.",
+          "Día",
+          "Horario",
+          "Materia"
+        ],
+        "rows": [
+          [
+            "1",
+            "Lunes",
+            "08:00–09:00",
+            "Matemáticas"
+          ]
+        ],
+        "title": "Horario"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "Zona: America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "0ae86b7e0316b8ca90b583dfe79bef7ebc89ddbf3bef22f24040ab4e0f1cc0aa",
+      "rich_payload": {
+        "source_text": "Zona: America/Mexico_City"
+      },
+      "utf16_units": 25
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

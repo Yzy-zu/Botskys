@@ -1,0 +1,33 @@
+{
+  "route": "/ruleta entrar",
+  "operation": "manage_roulette.join",
+  "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+  "input": "/ruleta entrar 64a36ed295904162af0f76a30f00652f",
+  "result": {
+    "code": "roulette_rules_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Recibe las reglas y lista de asientos vigentes antes de aceptar o jugar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recibe las reglas y lista de asientos vigentes antes de aceptar o jugar.",
+      "visual_version": 2,
+      "content_sha256": "6f2b9064df489c37e367ad94b0e5d2f03ceefc9e79526bd92b1b897e8f0a7c03",
+      "rich_payload": {
+        "source_text": "Recibe las reglas y lista de asientos vigentes antes de aceptar o jugar."
+      },
+      "utf16_units": 72
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

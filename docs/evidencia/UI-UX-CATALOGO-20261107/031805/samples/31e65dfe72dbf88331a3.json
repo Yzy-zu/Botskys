@@ -1,0 +1,74 @@
+{
+  "route": "/dl webm",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+  "input": "/dl webm https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "6840c648fe4b44209440a7b351c8f9ca"
+      ],
+      "file_facts": [
+        {
+          "bytes": 20528,
+          "duration_seconds": 1.01,
+          "extension": "webm",
+          "format": "webm"
+        }
+      ],
+      "format": "webm",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: WEBM · 20.05 KiB (20528 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "1f05ab39d04c5c3e7f35a444a2bdbb42700c769eef7d9caaaf5a45b6d3793427",
+      "rich_payload": {
+        "artifacts": [
+          "6840c648fe4b44209440a7b351c8f9ca"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: WEBM · 20.05 KiB (20528 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.webm",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: WEBM · 20.05 KiB (20528 bytes) · Duración: 0:01\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

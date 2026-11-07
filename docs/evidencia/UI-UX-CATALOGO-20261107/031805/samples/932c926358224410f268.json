@@ -1,0 +1,54 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_owned_attachment_sdk_upload_and_cleanup_without_remote_access",
+  "input": "/ia analiza esta imagen",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "Análisis sintético.",
+      "purpose": "answer",
+      "qr_readings": [
+        {
+          "attachment": 1,
+          "status": "not_decoded"
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Análisis sintético."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Análisis de IA"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Análisis sintético."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Análisis de IA*\n\nAnálisis sintético.",
+      "visual_version": 2,
+      "content_sha256": "2b9b0e03a9ad007e3c0770fb8da882399570298db4a2025bd6ba9da1143c35b7",
+      "rich_payload": {
+        "source_text": "Análisis de IA\n\nAnálisis sintético."
+      },
+      "utf16_units": 37
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

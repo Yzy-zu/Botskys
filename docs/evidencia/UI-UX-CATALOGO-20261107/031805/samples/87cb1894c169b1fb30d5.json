@@ -1,0 +1,69 @@
+{
+  "route": "/bj plantarse",
+  "operation": "manage_blackjack.stand",
+  "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+  "input": "/bj plantarse 02b57ff552a24a57b1109163e168cda7",
+  "result": {
+    "code": "blackjack_settled",
+    "data": {
+      "dealer": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        },
+        {
+          "rank": "7",
+          "suit": "♠",
+          "value": 7
+        }
+      ],
+      "game_id": "02b57ff552a24a57b1109163e168cda7",
+      "players": [
+        {
+          "bet": 50,
+          "outcome": "pierde",
+          "payout": 0,
+          "score": 11,
+          "seat": 1
+        }
+      ],
+      "state": "settled"
+    },
+    "status": "ok",
+    "text": "Crupier: 17\nAsiento 1: pierde · pago 0 XP"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack · final"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Crupier: 17 puntos\n\nAsiento 1 · pierde · 11 puntos\nApuesta: 50 XP · pago bruto: 0 XP · resultado neto: -50 XP"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack · final*\n\nCrupier: 17 puntos\n\nAsiento 1 · pierde · 11 puntos\nApuesta: 50 XP · pago bruto: 0 XP · resultado neto: -50 XP",
+      "visual_version": 2,
+      "content_sha256": "b12d2be529f5048a52aaa9bf795c3e3fe24f52f7a4e4f7dc74d6cb7aecec6428",
+      "rich_payload": {
+        "source_text": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · pierde · 11 puntos\nApuesta: 50 XP · pago bruto: 0 XP · resultado neto: -50 XP"
+      },
+      "utf16_units": 130
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

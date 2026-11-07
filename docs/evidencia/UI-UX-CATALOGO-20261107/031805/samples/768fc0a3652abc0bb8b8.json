@@ -1,0 +1,33 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+  "input": "/ia interrumpida",
+  "result": {
+    "code": "provider_interrupted",
+    "data": {},
+    "status": "uncertain",
+    "text": "El proveedor quedó interrumpido; no repetí la solicitud automáticamente."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El proveedor quedó interrumpido; no repetí la solicitud automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "bedd4020871110817250a808e4217901e1d8f428ecdbb0f53203fc1e0a3aefd2",
+      "rich_payload": {
+        "source_text": "El proveedor quedó interrumpido; no repetí la solicitud automáticamente."
+      },
+      "utf16_units": 72
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,51 @@
+{
+  "route": "/hh estado",
+  "operation": "manage_happy_hour.status",
+  "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+  "input": "/hh estado 235f480ae9f14462b3e4738cd737c17a",
+  "result": {
+    "code": "happy_status",
+    "data": {
+      "drop": null,
+      "duration_seconds": 60,
+      "event_id": "235f480ae9f14462b3e4738cd737c17a",
+      "expires_ms": null,
+      "state": "preparing"
+    },
+    "status": "ok",
+    "text": "Hora feliz 235f480ae9f14462b3e4738cd737c17a: preparing."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Hora feliz"
+      },
+      {
+        "kind": "paragraph",
+        "text": "preparando"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Hora feliz*\n\npreparando",
+      "visual_version": 2,
+      "content_sha256": "f91faec2126d011402ad96b0044f3992518ab9445ac5c2d2b46d9e3dd606dcc9",
+      "rich_payload": {
+        "source_text": "Hora feliz\n\npreparando"
+      },
+      "utf16_units": 24
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_search_presentation.SearchPresentationTest.test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign",
+  "input": "/dl elegir 1",
+  "result": {
+    "code": "selection_quote_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "Responde a una lista propia recibida por completo y vigente, o busca de nuevo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Responde a una lista propia recibida por completo y vigente, o busca de nuevo.",
+      "visual_version": 2,
+      "content_sha256": "55b3216e4f077c0d4d25938984b494bc90774e6e678a3e1442aae22c0958a617",
+      "rich_payload": {
+        "source_text": "Responde a una lista propia recibida por completo y vigente, o busca de nuevo."
+      },
+      "utf16_units": 78
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

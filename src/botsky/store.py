@@ -322,6 +322,17 @@ class Store:
                         if len(result.text) <= 900
                         else result.text[:880] + "… [vista previa]"
                     )
+        if parts:
+            document = result.data.get("document")
+            if document:
+                source = "\n\n".join(block["text"] for block in document["blocks"] if block["text"])
+            else:
+                source = (
+                    result.data.get("spoken_text", result.text)
+                    if result.code == "voice_ready"
+                    else result.text
+                )
+            parts[0][2]["source_full"] = source
         for position, (kind, fragment, payload) in enumerate(parts):
             identifiers = payload.get("artifacts", [])
             frozen = canonical(

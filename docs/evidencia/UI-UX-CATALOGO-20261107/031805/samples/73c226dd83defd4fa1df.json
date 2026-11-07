@@ -1,0 +1,69 @@
+{
+  "route": "/bj estado",
+  "operation": "manage_blackjack.status",
+  "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+  "input": "/bj estado 295b31fee374478fa386ddc2d5a7a9bd",
+  "result": {
+    "code": "blackjack_settled",
+    "data": {
+      "dealer": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        },
+        {
+          "rank": "7",
+          "suit": "♠",
+          "value": 7
+        }
+      ],
+      "game_id": "295b31fee374478fa386ddc2d5a7a9bd",
+      "players": [
+        {
+          "bet": 50,
+          "outcome": "gana",
+          "payout": 100,
+          "score": 18,
+          "seat": 1
+        }
+      ],
+      "state": "settled"
+    },
+    "status": "ok",
+    "text": "Crupier: 17\nAsiento 1: gana · pago 100 XP"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack · final"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Crupier: 17 puntos\n\nAsiento 1 · gana · 18 puntos\nApuesta: 50 XP · pago bruto: 100 XP · resultado neto: +50 XP"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack · final*\n\nCrupier: 17 puntos\n\nAsiento 1 · gana · 18 puntos\nApuesta: 50 XP · pago bruto: 100 XP · resultado neto: +50 XP",
+      "visual_version": 2,
+      "content_sha256": "6ba667340604141e3075475b78bb5381b63363f108faaff1326316102332e0e7",
+      "rich_payload": {
+        "source_text": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · gana · 18 puntos\nApuesta: 50 XP · pago bruto: 100 XP · resultado neto: +50 XP"
+      },
+      "utf16_units": 130
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

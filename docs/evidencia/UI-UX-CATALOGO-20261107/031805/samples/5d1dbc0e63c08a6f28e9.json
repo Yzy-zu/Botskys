@@ -1,0 +1,33 @@
+{
+  "route": "/pdf cancelar",
+  "operation": "manage_pdf.cancel",
+  "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+  "input": "/pdf cancelar",
+  "result": {
+    "code": "pdf_session_cancelled",
+    "data": {},
+    "status": "cancelled",
+    "text": "Sesión PDF cancelada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Sesión PDF cancelada.",
+      "visual_version": 2,
+      "content_sha256": "2dcea0f8b8a8f6716e5e7dc2e1583d273ee03de972138dfd3d152dde643bc7d6",
+      "rich_payload": {
+        "source_text": "Sesión PDF cancelada."
+      },
+      "utf16_units": 21
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

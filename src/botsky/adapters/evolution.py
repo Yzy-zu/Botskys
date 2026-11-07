@@ -235,7 +235,12 @@ class EvolutionTransport:
             from ..presentation.table import NativeTable
 
             try:
-                table = NativeTable.parse(part.payload)
+                table_payload = {
+                    key: value
+                    for key, value in part.payload.items()
+                    if not (part.visual_version == 2 and key == "source_full")
+                }
+                table = NativeTable.parse(table_payload)
                 identifier = await self.api.send_table(c.scope.chat, table.payload())
                 return DeliveryAck(True, identifier)
             except ValueError:

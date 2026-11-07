@@ -1,0 +1,51 @@
+{
+  "route": "/mc config",
+  "operation": "manage_minecraft.config",
+  "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+  "input": "/mc config",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "config",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft config:\n{\"status\": \"ok\", \"online\": true}"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Configuración Minecraft"
+      },
+      {
+        "kind": "notice",
+        "text": "El servicio no informó propiedades verificables."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Configuración Minecraft*\n\nEl servicio no informó propiedades verificables.",
+      "visual_version": 2,
+      "content_sha256": "9e33b3f1d20a62f62c3d62b0c89407d0ba81461f4a6232c11401b128a17a4dda",
+      "rich_payload": {
+        "source_text": "Configuración Minecraft\n\nEl servicio no informó propiedades verificables."
+      },
+      "utf16_units": 75
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

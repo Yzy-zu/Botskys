@@ -1,0 +1,33 @@
+{
+  "route": "/confirmar",
+  "operation": "core.confirmar",
+  "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+  "input": "/confirmar 6a75f9da843b4d6fa2178cd79beefa01",
+  "result": {
+    "code": "confirmation_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "La confirmación no es propia, entregada y vigente."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La confirmación no es propia, entregada y vigente.",
+      "visual_version": 2,
+      "content_sha256": "fb9862b54e29bcdb6aa6fb86459a8696af19330d70b4c68dfdebc09fad6c448f",
+      "rich_payload": {
+        "source_text": "La confirmación no es propia, entregada y vigente."
+      },
+      "utf16_units": 50
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

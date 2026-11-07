@@ -1,0 +1,66 @@
+{
+  "route": "/drive cuota",
+  "operation": "manage_drive.capacity",
+  "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+  "input": "/drive cuota",
+  "result": {
+    "code": "drive_capacity",
+    "data": {
+      "quota": {
+        "limit": null,
+        "usage": 100,
+        "usageInDrive": null,
+        "usageInDriveTrash": null
+      }
+    },
+    "status": "ok",
+    "text": "Espacio de la cuenta Google (bytes):\nlimit: None\nusage: 100\nusageInDrive: None\nusageInDriveTrash: None"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Espacio de Google",
+      "headers": [
+        "Concepto",
+        "Espacio"
+      ],
+      "rows": [
+        [
+          "Capacidad",
+          "Desconocido"
+        ],
+        [
+          "Usado",
+          "100 B"
+        ],
+        [
+          "Usado en Drive",
+          "Desconocido"
+        ],
+        [
+          "Papelera de Drive",
+          "Desconocido"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nEspacio de Google\n\nConcepto: Capacidad\nEspacio: Desconocido\n\nConcepto: Usado\nEspacio: 100 B\n\nConcepto: Usado en Drive\nEspacio: Desconocido\n\nConcepto: Papelera de Drive\nEspacio: Desconocido\n```\n\nCuota compartida con otros servicios de Google; no es una cuota exclusiva de Botsky.",
+      "visual_version": 2,
+      "content_sha256": "6fef94a28c332797e2a6ab40068fc281d16c187f8f6f0daf113b3f5f11a038b1",
+      "rich_payload": {
+        "source_text": "Espacio de Google\n\nConcepto: Capacidad\nEspacio: Desconocido\n\nConcepto: Usado\nEspacio: 100 B\n\nConcepto: Usado en Drive\nEspacio: Desconocido\n\nConcepto: Papelera de Drive\nEspacio: Desconocido\n\nCuota compartida con otros servicios de Google; no es una cuota exclusiva de Botsky."
+      },
+      "utf16_units": 282
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

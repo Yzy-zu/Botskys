@@ -1,0 +1,33 @@
+{
+  "route": "/recordatorio archivar",
+  "operation": "manage_reminder.archive",
+  "test": "test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired",
+  "input": "/recordatorio archivar 1",
+  "result": {
+    "code": "reminder_archived",
+    "data": {},
+    "status": "ok",
+    "text": "Recordatorio archived."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recordatorio archived.",
+      "visual_version": 2,
+      "content_sha256": "7bc33b1224dd427fb91bc8e6db558b9b6bf3ae3848e9a5f4371a480c393ce0a3",
+      "rich_payload": {
+        "source_text": "Recordatorio archived."
+      },
+      "utf16_units": 22
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

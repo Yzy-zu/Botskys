@@ -66,7 +66,9 @@ def text_parts(blocks, retain):
         literal = block.kind == "literal"
         code = literal and any(c in block.text for c in "*_~`\n>")
         budget = LIMIT - 8 if code else LIMIT
-        if needs_file(block.text, budget):
+        if needs_file(block.text, budget) or (
+            block.kind == "next_action" and units(block.text) > LIMIT - 2
+        ):
             flush()
             identifier = retain(block.text)
             result.extend(

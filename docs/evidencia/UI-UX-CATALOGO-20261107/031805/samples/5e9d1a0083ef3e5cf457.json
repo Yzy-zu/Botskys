@@ -1,0 +1,33 @@
+{
+  "route": "/hh reclamar",
+  "operation": "manage_happy_hour.claim",
+  "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+  "input": "/hh reclamar 5fa6fb8a01b14074bd028615f27f69d8",
+  "result": {
+    "code": "happy_drop_unavailable",
+    "data": {},
+    "status": "empty",
+    "text": "Ese AirDrop no está abierto en este grupo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ese AirDrop no está abierto en este grupo.",
+      "visual_version": 2,
+      "content_sha256": "99e93d6f70f22e8cbcf926a9eab9e7de119f8ac535e894ce3285718860ad40ba",
+      "rich_payload": {
+        "source_text": "Ese AirDrop no está abierto en este grupo."
+      },
+      "utf16_units": 42
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

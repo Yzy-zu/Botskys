@@ -1,0 +1,60 @@
+{
+  "route": "/drive buscar",
+  "operation": "manage_drive.search",
+  "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+  "input": "/drive buscar literal",
+  "result": {
+    "code": "drive_choices",
+    "data": {
+      "choices": [
+        {
+          "id": "file1",
+          "mime_type": "text/plain",
+          "name": "literal.txt",
+          "size": 3,
+          "web_view_link": "https://drive.google.com/file/d/file1/view"
+        }
+      ],
+      "view_id": "ade996bc343c4ad88d5143c474725ace"
+    },
+    "status": "needs_input",
+    "text": "Archivos de tu ámbito:\n1. literal.txt\n/drive elegir ade996bc343c4ad88d5143c474725ace 1"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Archivos de Drive",
+      "headers": [
+        "Opción",
+        "Archivo",
+        "Tamaño"
+      ],
+      "rows": [
+        [
+          "1",
+          "literal.txt",
+          "3 B"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nArchivos de Drive\n\nOpción: 1\nArchivo: literal.txt\nTamaño: 3 B\n```\n\nLista de tu ámbito · disponible durante 5 minutos.\n/drive elegir NUMERO",
+      "visual_version": 2,
+      "content_sha256": "ee5277da78878d94803eef5e8a4b46952a0978df23b0d9a129a21d4b87832fc7",
+      "rich_payload": {
+        "source_text": "Archivos de Drive\n\nOpción: 1\nArchivo: literal.txt\nTamaño: 3 B\n\nLista de tu ámbito · disponible durante 5 minutos.\n/drive elegir NUMERO"
+      },
+      "utf16_units": 142
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

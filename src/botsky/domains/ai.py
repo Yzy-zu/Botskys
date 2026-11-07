@@ -87,21 +87,43 @@ def literal_source(db, context, row, source, now):
         ).fetchone()
         if incoming:
             return incoming["text"]
+        from ..presentation.quotes import own_delivered_parent
+
+        parent = own_delivered_parent(db, context, quote, now)
+        if parent is None:
+            return None
+        first = db.execute(
+            "SELECT rich_payload_json FROM outbox WHERE receipt_id=? ORDER BY position LIMIT 1",
+            (parent["id"],),
+        ).fetchone()
+        payload = json.loads(first["rich_payload_json"]) if first else {}
+        if "source_full" in payload:
+            return payload["source_full"]
         own = db.execute(
-            "SELECT o.payload,o.rich_payload_json FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.provider_message_id=? AND o.state='accepted' AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>?",
-            (quote, *context.scope_key, now - 86400000),
+            "SELECT payload,rich_payload_json FROM outbox WHERE receipt_id=? AND provider_message_id=? AND state='accepted'",
+            (parent["id"], quote),
         ).fetchone()
         return (
             json.loads(own["rich_payload_json"]).get("source_text", own["payload"]) if own else None
         )
     prior = db.execute(
-        "SELECT o.payload,o.rich_payload_json FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.state='accepted' AND (length(o.payload)>0 OR length(json_extract(o.rich_payload_json,'$.source_text'))>0) AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>? ORDER BY o.rowid DESC LIMIT 1",
-        (*context.scope_key, now - 86400000),
+        "SELECT o.receipt_id,o.payload,o.rich_payload_json FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.state='accepted' "
+        "AND (length(o.payload)>0 OR length(json_extract(o.rich_payload_json,'$.source_text'))>0 OR length(json_extract(o.rich_payload_json,'$.source_full'))>0) "
+        "AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>? AND i.received_ms>? "
+        "AND NOT EXISTS(SELECT 1 FROM outbox p WHERE p.receipt_id=i.id AND p.state!='accepted') ORDER BY o.rowid DESC LIMIT 1",
+        (*context.scope_key, now - 86400000, now - 86400000),
     ).fetchone()
+    if not prior:
+        return None
+    first = db.execute(
+        "SELECT rich_payload_json FROM outbox WHERE receipt_id=? ORDER BY position LIMIT 1",
+        (prior["receipt_id"],),
+    ).fetchone()
+    payload = json.loads(first["rich_payload_json"])
     return (
-        json.loads(prior["rich_payload_json"]).get("source_text", prior["payload"])
-        if prior
-        else None
+        payload["source_full"]
+        if "source_full" in payload
+        else json.loads(prior["rich_payload_json"]).get("source_text", prior["payload"])
     )
 
 

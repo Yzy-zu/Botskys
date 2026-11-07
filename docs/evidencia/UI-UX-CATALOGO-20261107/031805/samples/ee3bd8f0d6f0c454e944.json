@@ -1,0 +1,54 @@
+{
+  "route": "/saldo",
+  "operation": "manage_economy.balance",
+  "test": "test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo",
+  "input": "/saldo",
+  "result": {
+    "code": "xp_balance",
+    "data": {
+      "account_id": 1,
+      "balance": 900,
+      "level": 46,
+      "reserved": 100
+    },
+    "status": "ok",
+    "text": "Cuenta #1: 900 XP · nivel 46. Reservas de pago: 100 XP. Cuenta compartida entre tus chats de Botsky."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Tu saldo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Disponible: 900 XP\nReservado: 100 XP\nNivel: 46\nCuenta #1"
+      },
+      {
+        "kind": "notice",
+        "text": "Cuenta compartida entre tus chats de Botsky."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Tu saldo*\n\nDisponible: 900 XP\nReservado: 100 XP\nNivel: 46\nCuenta #1\n\nCuenta compartida entre tus chats de Botsky.",
+      "visual_version": 2,
+      "content_sha256": "5e4fb4d3ae90f435bef2c4d7773d96109b39c0428ba59922daf3348a3b46f096",
+      "rich_payload": {
+        "source_text": "Tu saldo\n\nDisponible: 900 XP\nReservado: 100 XP\nNivel: 46\nCuenta #1\n\nCuenta compartida entre tus chats de Botsky."
+      },
+      "utf16_units": 114
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

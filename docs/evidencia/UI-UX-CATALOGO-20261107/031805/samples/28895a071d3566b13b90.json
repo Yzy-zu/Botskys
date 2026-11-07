@@ -1,0 +1,59 @@
+{
+  "route": "/pack estado",
+  "operation": "manage_pack.status",
+  "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+  "input": "/pack estado f394cbd6b56f4cecaf53cd9d5dc843b1",
+  "result": {
+    "code": "pack_status",
+    "data": {
+      "parts": [],
+      "price": 150,
+      "purchase_id": "f394cbd6b56f4cecaf53cd9d5dc843b1",
+      "refund": 0,
+      "state": "offered"
+    },
+    "status": "ok",
+    "text": "Pack f394cbd6b56f4cecaf53cd9d5dc843b1: offered. Precio 150 XP · devuelto 0 XP.\n"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Entrega de pack"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Precio: 150 XP · Devuelto: 0 XP · oferta pendiente"
+      },
+      {
+        "kind": "notice",
+        "text": "Sin registros para mostrar."
+      },
+      {
+        "kind": "notice",
+        "text": "La entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Entrega de pack*\n\nPrecio: 150 XP · Devuelto: 0 XP · oferta pendiente\n\nSin registros para mostrar.\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "4f1ff122bc23da99f89e502d652319cb13bb16abdc91b077041d5f1d30695488",
+      "rich_payload": {
+        "source_text": "Entrega de pack\n\nPrecio: 150 XP · Devuelto: 0 XP · oferta pendiente\n\nSin registros para mostrar.\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente."
+      },
+      "utf16_units": 209
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

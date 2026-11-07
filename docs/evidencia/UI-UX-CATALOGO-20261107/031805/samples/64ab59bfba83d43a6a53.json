@@ -1,0 +1,33 @@
+{
+  "route": "/bj iniciar",
+  "operation": "manage_blackjack.start",
+  "test": "test_games.GamesTest.test_blackjack_invalid_deck_refunds_and_admission_before_publication_is_denied",
+  "input": "/bj iniciar 50",
+  "result": {
+    "code": "blackjack_invalid_deck",
+    "data": {},
+    "status": "failed",
+    "text": "No pude preparar una baraja válida; apuesta devuelta."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude preparar una baraja válida; apuesta devuelta.",
+      "visual_version": 2,
+      "content_sha256": "e819b7577d983491052700e0bb5bb64a020ec30f3ddb837d295fe65082b423e9",
+      "rich_payload": {
+        "source_text": "No pude preparar una baraja válida; apuesta devuelta."
+      },
+      "utf16_units": 53
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/ayuda notas",
+  "result": {
+    "code": "help",
+    "data": {},
+    "status": "ok",
+    "text": "*Buscar notas*\n\nConsulta tus notas con filtro y páginas.\n\n/notas [--pagina PAGE] [QUERY]\nEjemplo: /notas"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Buscar notas*\n\nConsulta tus notas con filtro y páginas.\n\n/notas [--pagina PAGE] [QUERY]\nEjemplo: /notas",
+      "visual_version": 2,
+      "content_sha256": "8dde8c81a320823b4333c40a708affd00f06860a8d388b9d99e4ab210f99a592",
+      "rich_payload": {
+        "source_text": "*Buscar notas*\n\nConsulta tus notas con filtro y páginas.\n\n/notas [--pagina PAGE] [QUERY]\nEjemplo: /notas"
+      },
+      "utf16_units": 104
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -31,7 +31,7 @@ def wait_file(db, context, spec, command, now):
         "attachment_required",
         "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: "
         + spec.sample,
-        {"interaction_id": identifier},
+        {"interaction_id": identifier, "expires_ms": now + TTL_MS, "example": spec.sample},
     )
 
 

@@ -1,0 +1,73 @@
+{
+  "route": "/dl srt",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+  "input": "/dl srt --idioma es https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "e65dd92c519c4016b49a3fd5b3da1c23"
+      ],
+      "file_facts": [
+        {
+          "bytes": 64,
+          "extension": "srt",
+          "format": "srt"
+        }
+      ],
+      "format": "srt",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: SRT · 64 B"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "7149485bf94a8cd3d9a33e32f38488f3850a282f879fa59735c5bf2db540b8c0",
+      "rich_payload": {
+        "artifacts": [
+          "e65dd92c519c4016b49a3fd5b3da1c23"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: SRT · 64 B\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.srt",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: SRT · 64 B\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

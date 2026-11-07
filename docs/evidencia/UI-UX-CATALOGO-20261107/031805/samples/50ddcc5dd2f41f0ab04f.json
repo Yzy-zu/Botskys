@@ -1,0 +1,55 @@
+{
+  "route": "/mc estado",
+  "operation": "manage_minecraft.status",
+  "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+  "input": "/mc estado",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "status",
+      "response": {
+        "online": false,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft: apagado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado de Minecraft"
+      },
+      {
+        "kind": "notice",
+        "text": "Minecraft: apagado."
+      },
+      {
+        "kind": "notice",
+        "text": "Contenedor activo no equivale a juego disponible ni a paquetes cargados."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado de Minecraft*\n\nMinecraft: apagado.\n\nContenedor activo no equivale a juego disponible ni a paquetes cargados.",
+      "visual_version": 2,
+      "content_sha256": "eaf85e248a34f5d72e5956214d5718cacc9b796807ff611e12ef99a13e7337d5",
+      "rich_payload": {
+        "source_text": "Estado de Minecraft\n\nMinecraft: apagado.\n\nContenedor activo no equivale a juego disponible ni a paquetes cargados."
+      },
+      "utf16_units": 116
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

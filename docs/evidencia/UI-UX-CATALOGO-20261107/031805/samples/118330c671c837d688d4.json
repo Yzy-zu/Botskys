@@ -1,0 +1,33 @@
+{
+  "route": "/voz cita",
+  "operation": "make_voice.verbatim",
+  "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+  "input": "/voz cita",
+  "result": {
+    "code": "voice_source_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "No hay texto propio exacto y disponible para leer. Usa /voz TEXTO."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay texto propio exacto y disponible para leer. Usa /voz TEXTO.",
+      "visual_version": 2,
+      "content_sha256": "02e9cc4dc2f4bad1fc38870bae76a3cd5eeaa4b21d503f9b0cb3eda5cbe3109a",
+      "rich_payload": {
+        "source_text": "No hay texto propio exacto y disponible para leer. Usa /voz TEXTO."
+      },
+      "utf16_units": 66
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

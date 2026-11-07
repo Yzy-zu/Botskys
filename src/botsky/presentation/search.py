@@ -39,28 +39,48 @@ def source_label(url):
     return labels.get(source, source)
 
 
-def video_document(choices, expires_ms, now, *, intro="Videos", short=True, view_id=""):
+def requires_literal(value):
+    return any(char in value for char in "*_~`\n\r")
+
+
+def video_document(
+    choices,
+    expires_ms,
+    now,
+    *,
+    intro="Videos",
+    short=True,
+    view_id="",
+    note="",
+    zone="America/Mexico_City",
+):
     blocks = [Block("heading", intro)]
     for i, choice in enumerate(choices, 1):
-        blocks.append(
-            Block(
-                "literal",
-                f"{i}. {preview(choice['title'])}\n"
-                + duration(choice.get("duration"))
-                + " · "
-                + preview(choice.get("author") or "Autor desconocido", 100)
-                + " · "
-                + source_label(choice["url"])
-                + "\n"
-                + choice["url"],
-            )
+        title = f"{i}. {preview(choice['title'])}"
+        blocks.append(Block("literal" if requires_literal(title) else "heading", title))
+        metadata = (
+            duration(choice.get("duration"))
+            + " · "
+            + preview(choice.get("author") or "Autor desconocido", 100)
+            + " · "
+            + source_label(choice["url"])
         )
+        blocks.append(Block("literal" if requires_literal(metadata) else "quote", metadata))
+        # El enlace canónico ya está validado; separado del título literal para
+        # que el cliente lo reconozca sin inventar enlaces Markdown.
+        blocks.append(Block("paragraph", choice["url"]))
+    if note:
+        blocks.append(Block("notice", note))
+    from .domains import date_time
+
     seconds = max(0, (expires_ms - now) // 1000)
     minutes, remaining = divmod(seconds, 60)
     blocks.append(
         Block(
             "notice",
-            f"Lista disponible durante {minutes}:{remaining:02d}. Opciones 1–{len(choices)}.",
+            f"Vigencia máxima: {minutes}:{remaining:02d} desde la preparación. Vence: "
+            + date_time(expires_ms, zone)
+            + f". Opciones 1–{len(choices)}.",
         )
     )
     if any(
@@ -88,10 +108,14 @@ def web_document(items, query):
         )
     blocks = [Block("heading", "Resultados de búsqueda"), Block("literal", query)]
     for i, item in enumerate(items, 1):
-        blocks.append(
-            Block(
-                "literal",
-                f"{i}. {item.title}\nExtracto: {item.snippet}\n{item.url}\nFuente: {urlsplit(item.url).hostname}",
+        title = f"{i}. {item.title}"
+        unsafe = any(char in title for char in "*_~`\n\r")
+        blocks.extend(
+            (
+                Block("literal" if unsafe else "heading", title),
+                Block("literal", "Extracto: " + item.snippet),
+                Block("paragraph", item.url),
+                Block("quote", "Fuente: " + str(urlsplit(item.url).hostname)),
             )
         )
     blocks.append(

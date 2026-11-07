@@ -1,0 +1,50 @@
+{
+  "route": "/clip siguiente",
+  "operation": "audiovisual.clip.next",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/clip siguiente",
+  "result": {
+    "code": "av_control_unconfirmed",
+    "data": {
+      "message": "Solo hay un clip en el catálogo; puedo repetirlo si quieres.",
+      "presentation_action": "next",
+      "presentation_family": "clip",
+      "success": false
+    },
+    "status": "needs_input",
+    "text": "Solo hay un clip en el catálogo; puedo repetirlo si quieres."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "notice",
+        "text": "Solo hay un clip en el catálogo; puedo repetirlo si quieres."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nSolo hay un clip en el catálogo; puedo repetirlo si quieres.",
+      "visual_version": 2,
+      "content_sha256": "14bf2215a5c87aa5f90c9c6d37e0972d069c5025a07d92d7fcf65d43e0fdb4b0",
+      "rich_payload": {
+        "source_text": "Clip\n\nSolo hay un clip en el catálogo; puedo repetirlo si quieres."
+      },
+      "utf16_units": 68
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

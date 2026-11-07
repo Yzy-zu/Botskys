@@ -1,0 +1,74 @@
+{
+  "route": "/dl mp4",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+  "input": "/dl mp4 --hasta 0.8 https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "0ded3c70b2724a2fa30bdad1e4bbd20b"
+      ],
+      "file_facts": [
+        {
+          "bytes": 15322,
+          "duration_seconds": 0.8,
+          "extension": "mp4",
+          "format": "mp4"
+        }
+      ],
+      "format": "mp4",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "456f75ddd64a6984cb3e7083030366b8340727f553c2ad988d15cc3b66856f88",
+      "rich_payload": {
+        "artifacts": [
+          "0ded3c70b2724a2fa30bdad1e4bbd20b"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.mp4",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/llamar",
+  "operation": "control_call.start",
+  "test": "test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider",
+  "input": "/llamar",
+  "result": {
+    "code": "calls_policy_changed",
+    "data": {},
+    "status": "failed",
+    "text": "La política audiovisual debe conciliarse antes de iniciar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La política audiovisual debe conciliarse antes de iniciar.",
+      "visual_version": 2,
+      "content_sha256": "a6b18c5253f21e7e1d77b666307edccb62421a00b76739ff3244ec7e479d63df",
+      "rich_payload": {
+        "source_text": "La política audiovisual debe conciliarse antes de iniciar."
+      },
+      "utf16_units": 58
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

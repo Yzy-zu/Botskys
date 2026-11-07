@@ -1,0 +1,33 @@
+{
+  "route": "/pdf iniciar",
+  "operation": "manage_pdf.start",
+  "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+  "input": "/pdf iniciar",
+  "result": {
+    "code": "pdf_source_format",
+    "data": {},
+    "status": "failed",
+    "text": "La sesión admite PDF e imágenes PNG/JPG/WebP/TIFF."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La sesión admite PDF e imágenes PNG/JPG/WebP/TIFF.",
+      "visual_version": 2,
+      "content_sha256": "53430c310a99a5bde73a12981ac189446643d1c44c335863e892299c4b8995e2",
+      "rich_payload": {
+        "source_text": "La sesión admite PDF e imágenes PNG/JPG/WebP/TIFF."
+      },
+      "utf16_units": 50
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,52 @@
+{
+  "route": "/admin desilenciar",
+  "operation": "manage_admin.unmute",
+  "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+  "input": "/admin desilenciar",
+  "result": {
+    "code": "admin_completed",
+    "data": {
+      "action": "unmute",
+      "target_label": "Este grupo"
+    },
+    "status": "ok",
+    "text": "Acción administrativa: completed. Una acción incierta no se repetirá."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Administración"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Todos pueden enviar · Este grupo"
+      },
+      {
+        "kind": "notice",
+        "text": "Aceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Administración*\n\nTodos pueden enviar · Este grupo\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+      "visual_version": 2,
+      "content_sha256": "5c2c24edd5fb1e1ed8fd8eed549d681d5051fba01af4aa5fdcc57fdd2a8b3da4",
+      "rich_payload": {
+        "source_text": "Administración\n\nTodos pueden enviar · Este grupo\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      },
+      "utf16_units": 156
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

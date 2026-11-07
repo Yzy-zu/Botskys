@@ -1,0 +1,39 @@
+{
+  "route": "/llamar",
+  "operation": "control_call.start",
+  "test": "test_calls.CallsTest.test_failure_notice_is_own_outbox_and_ack_does_not_redial",
+  "input": "/llamar",
+  "result": {
+    "code": "call_requested",
+    "data": {
+      "call": {
+        "id": "8eecbb34-888f-44e6-9336-d498ad5e23fd",
+        "requestedAt": 1793988000000,
+        "state": "starting"
+      }
+    },
+    "status": "ok",
+    "text": "Llamada solicitada; aún no confirma conexión ni escucha."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Llamada solicitada; aún no confirma conexión ni escucha.",
+      "visual_version": 2,
+      "content_sha256": "f2bda5c69a3e27ae2b9c7d9be51e4b657e83cacd4cb8634da998e6e648a2d256",
+      "rich_payload": {
+        "source_text": "Llamada solicitada; aún no confirma conexión ni escucha."
+      },
+      "utf16_units": 56
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

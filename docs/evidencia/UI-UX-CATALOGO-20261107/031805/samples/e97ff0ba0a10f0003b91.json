@@ -1,0 +1,33 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_operational.OperationalTest.test_gallery_send_independent_of_recados_and_preserves_confirmation_charge_and_scope",
+  "input": "/pack confirmar 5892732126c54aa79e9a597bd42ac73c",
+  "result": {
+    "code": "pack_preview_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Recibe la oferta completa vigente y después confirma su ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recibe la oferta completa vigente y después confirma su ID.",
+      "visual_version": 2,
+      "content_sha256": "502cfb4967f4dcfb6c3fa9677f3f3c5b397f2da8e1a47cf5a85d4fd2ad0b2fe2",
+      "rich_payload": {
+        "source_text": "Recibe la oferta completa vigente y después confirma su ID."
+      },
+      "utf16_units": 59
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

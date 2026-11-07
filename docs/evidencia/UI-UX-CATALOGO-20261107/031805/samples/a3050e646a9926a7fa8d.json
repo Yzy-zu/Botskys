@@ -1,0 +1,54 @@
+{
+  "route": "/mem listar",
+  "operation": "manage_memory.list",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/mem listar",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "kind": null
+      },
+      "items": [],
+      "list_kind": "memories",
+      "page": 1,
+      "pages": 1,
+      "total": 0
+    },
+    "status": "empty",
+    "text": "Sin registros."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria"
+      },
+      {
+        "kind": "notice",
+        "text": "Página 1/1 · 0 registros."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria*\n\nPágina 1/1 · 0 registros.",
+      "visual_version": 2,
+      "content_sha256": "f24692976511b7d788f54a92267916f4a9c8520ee65b550d3fc4145008bcc58d",
+      "rich_payload": {
+        "source_text": "Memoria\n\nPágina 1/1 · 0 registros."
+      },
+      "utf16_units": 36
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

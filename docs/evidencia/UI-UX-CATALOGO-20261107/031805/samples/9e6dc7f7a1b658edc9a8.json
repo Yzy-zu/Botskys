@@ -1,0 +1,75 @@
+{
+  "route": "/recado preparar",
+  "operation": "manage_messages.prepare",
+  "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+  "input": "/recado preparar --para Amiga -- Mensaje sintético",
+  "result": {
+    "code": "message_preview",
+    "data": {
+      "artifact_id": null,
+      "attachment": null,
+      "content": "Mensaje sintético",
+      "draft_id": "0db2e2aec22e4396931bb68de6d706b1",
+      "expires_ms": 1793963100000,
+      "presented_ms": 1793962800000,
+      "recipients": [
+        "Amiga"
+      ]
+    },
+    "status": "needs_input",
+    "text": "Recado para: Amiga\nMensaje sintético\nCaduca en 5 minutos. Para enviarlo:\n/recado enviar 0db2e2aec22e4396931bb68de6d706b1"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Vista previa del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Destinatarios verificados:"
+      },
+      {
+        "kind": "literal",
+        "text": "Amiga"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Texto que se enviará:"
+      },
+      {
+        "kind": "literal",
+        "text": "Mensaje sintético"
+      },
+      {
+        "kind": "notice",
+        "text": "Vence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados."
+      },
+      {
+        "kind": "next_action",
+        "text": "/recado enviar 0db2e2aec22e4396931bb68de6d706b1"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Vista previa del recado*\n\nDestinatarios verificados:\n\nAmiga\n\nTexto que se enviará:\n\nMensaje sintético\n\nVence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\n`/recado enviar 0db2e2aec22e4396931bb68de6d706b1`",
+      "visual_version": 2,
+      "content_sha256": "fb483dd7b348e94901ac4fa8e35e751e7ea0a43ce92b5fef155dafd741478147",
+      "rich_payload": {
+        "source_text": "Vista previa del recado\n\nDestinatarios verificados:\n\nAmiga\n\nTexto que se enviará:\n\nMensaje sintético\n\nVence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\n/recado enviar 0db2e2aec22e4396931bb68de6d706b1"
+      },
+      "utf16_units": 274
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

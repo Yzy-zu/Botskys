@@ -1,0 +1,62 @@
+{
+  "route": "/recordatorios",
+  "operation": "manage_reminder.list",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/recordatorios",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "include_closed": false
+      },
+      "items": [],
+      "list_kind": "reminders",
+      "page": 1,
+      "pages": 1,
+      "total": 0
+    },
+    "status": "empty",
+    "text": "Sin registros."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorios"
+      },
+      {
+        "kind": "paragraph",
+        "text": ""
+      },
+      {
+        "kind": "notice",
+        "text": "Sin registros para mostrar."
+      },
+      {
+        "kind": "notice",
+        "text": "Página 1/1 · 0 registros."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorios*\n\nSin registros para mostrar.\n\nPágina 1/1 · 0 registros.",
+      "visual_version": 2,
+      "content_sha256": "d01f7c9127f47bf3bfecfe5984e537adc658fa74536702438f7d3a204f31884f",
+      "rich_payload": {
+        "source_text": "Recordatorios\n\nSin registros para mostrar.\n\nPágina 1/1 · 0 registros."
+      },
+      "utf16_units": 71
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

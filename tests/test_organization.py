@@ -198,7 +198,7 @@ class OrganizationTest(TestCase):
         shared = self.receive("/tarea archivo " + str(identifier), actor="bob", **group)
         self.assertEqual(shared.result.code, "task_attachment")
         transport = CollectingTransport()
-        self.assertEqual(self.app.deliver(shared.id, transport), 2)
+        self.assertEqual(self.app.deliver(shared.id, transport), 1)
         self.assertEqual(transport.parts[-1].artifacts, (task["artifact_id"],))
         self.assertEqual(
             self.receive(

@@ -1,0 +1,33 @@
+{
+  "route": "/hh airdrop",
+  "operation": "manage_happy_hour.airdrop",
+  "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+  "input": "/hh airdrop 235f480ae9f14462b3e4738cd737c17a",
+  "result": {
+    "code": "happy_drop_exists",
+    "data": {},
+    "status": "empty",
+    "text": "Ya hay un AirDrop adjudicado o publicado para este evento."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ya hay un AirDrop adjudicado o publicado para este evento.",
+      "visual_version": 2,
+      "content_sha256": "1e469c451aa18f768b9ef10d595e5b71608d3c5ee0d64b3ce94d625105c7ca34",
+      "rich_payload": {
+        "source_text": "Ya hay un AirDrop adjudicado o publicado para este evento."
+      },
+      "utf16_units": 58
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

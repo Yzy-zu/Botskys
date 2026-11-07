@@ -1,0 +1,33 @@
+{
+  "route": "/encuesta votar",
+  "operation": "manage_poll.vote",
+  "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+  "input": "/encuesta votar 1 1",
+  "result": {
+    "code": "poll_not_published",
+    "data": {},
+    "status": "needs_input",
+    "text": "La encuesta aún no tiene publicación aceptada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La encuesta aún no tiene publicación aceptada.",
+      "visual_version": 2,
+      "content_sha256": "9ecf01a198010cc8a231787cedd343f0f698a4661dbcba65a7579005011f3d75",
+      "rich_payload": {
+        "source_text": "La encuesta aún no tiene publicación aceptada."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

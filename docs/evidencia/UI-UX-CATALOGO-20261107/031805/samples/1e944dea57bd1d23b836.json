@@ -1,0 +1,36 @@
+{
+  "route": "/bj estado",
+  "operation": "manage_blackjack.status",
+  "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+  "input": "/bj estado 596da7d392794c548bc3b74708cc8b41",
+  "result": {
+    "code": "blackjack_expired",
+    "data": {
+      "game_id": "596da7d392794c548bc3b74708cc8b41",
+      "state": "expired"
+    },
+    "status": "cancelled",
+    "text": "Partida retirada; apuestas devueltas una vez."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Partida retirada; apuestas devueltas una vez.",
+      "visual_version": 2,
+      "content_sha256": "07336395a78603ffd12e9a07d1cc99f44fb6b0d8eef17ab1852457ae18ffc519",
+      "rich_payload": {
+        "source_text": "Partida retirada; apuestas devueltas una vez."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

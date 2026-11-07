@@ -1,0 +1,33 @@
+{
+  "route": "/mc iniciar",
+  "operation": "manage_minecraft.start",
+  "test": "test_minecraft.MinecraftTest.test_uncertain_change_blocks_next_mutation_but_status_is_available",
+  "input": "/mc iniciar",
+  "result": {
+    "code": "minecraft_resource_busy",
+    "data": {},
+    "status": "needs_input",
+    "text": "Hay un cambio pendiente o incierto en el servidor. Consulta estado y pide revisión antes de otro cambio."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hay un cambio pendiente o incierto en el servidor. Consulta estado y pide revisión antes de otro cambio.",
+      "visual_version": 2,
+      "content_sha256": "65918039e7708af05c97915b7555338d6bb8223a5d68534fb3443b2678b399d5",
+      "rich_payload": {
+        "source_text": "Hay un cambio pendiente o incierto en el servidor. Consulta estado y pide revisión antes de otro cambio."
+      },
+      "utf16_units": 104
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,52 @@
+{
+  "route": "/hh iniciar",
+  "operation": "manage_happy_hour.start",
+  "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+  "input": "/hh iniciar --duracion 10m",
+  "result": {
+    "code": "happy_started",
+    "data": {
+      "duration_seconds": 600,
+      "event_id": "d72c2ea8c42e477188db92591d131871"
+    },
+    "status": "ok",
+    "text": "Hora feliz d72c2ea8c42e477188db92591d131871: 600s desde la entrega de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n/hh estado d72c2ea8c42e477188db92591d131871"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Hora feliz"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Duración: 600 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles."
+      },
+      {
+        "kind": "next_action",
+        "text": "/hh estado d72c2ea8c42e477188db92591d131871"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Hora feliz*\n\nDuración: 600 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n\n`/hh estado d72c2ea8c42e477188db92591d131871`",
+      "visual_version": 2,
+      "content_sha256": "a42627535415c1535d5d0725eec4db2b05af16c19d2e05df86f3474cce65a4fb",
+      "rich_payload": {
+        "source_text": "Hora feliz\n\nDuración: 600 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n\n/hh estado d72c2ea8c42e477188db92591d131871"
+      },
+      "utf16_units": 193
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

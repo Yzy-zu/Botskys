@@ -1,0 +1,78 @@
+{
+  "route": "/mem listar",
+  "operation": "manage_memory.list",
+  "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+  "input": "/mem listar --tipo dato --pagina 2",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "kind": "dato"
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 21,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "dato",
+          "receipt_id": "b7dadc34b94d668e33a5472016ac9216",
+          "revision": 1,
+          "text": "hecho 20",
+          "updated_ms": 1793977200000
+        }
+      ],
+      "list_kind": "memories",
+      "page": 2,
+      "pages": 2,
+      "total": 21
+    },
+    "status": "ok",
+    "text": "21: hecho 20"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 21 · dato"
+      },
+      {
+        "kind": "literal",
+        "text": "hecho 20"
+      },
+      {
+        "kind": "notice",
+        "text": "Página 2/2 · 21 registros."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria*\n\nRef. 21 · dato\n\nhecho 20\n\nPágina 2/2 · 21 registros.",
+      "visual_version": 2,
+      "content_sha256": "9fdf6bb10e12d30331bfe56a1fc657c4cb4d45d26aed5bf1356879248fe777a9",
+      "rich_payload": {
+        "source_text": "Memoria\n\nRef. 21 · dato\n\nhecho 20\n\nPágina 2/2 · 21 registros."
+      },
+      "utf16_units": 63
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

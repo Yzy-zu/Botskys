@@ -1,0 +1,38 @@
+{
+  "route": "/contactos",
+  "operation": "manage_messages.contacts",
+  "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+  "input": "/contactos",
+  "result": {
+    "code": "message_contacts",
+    "data": {
+      "names": [
+        "Amiga",
+        "Otra"
+      ]
+    },
+    "status": "ok",
+    "text": "Contactos configurados:\nAmiga\nOtra"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Contactos configurados:\nAmiga\nOtra",
+      "visual_version": 2,
+      "content_sha256": "ee40b527de11ad0a85b8ee682c0d737fc22e68ee51329bdd97035f409d480523",
+      "rich_payload": {
+        "source_text": "Contactos configurados:\nAmiga\nOtra"
+      },
+      "utf16_units": 34
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

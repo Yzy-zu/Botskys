@@ -1,0 +1,33 @@
+{
+  "route": "/coop cancelar",
+  "operation": "manage_cooperacha.cancel",
+  "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+  "input": "/coop cancelar 2f42657054fd43d6a32ed3fddfda7767",
+  "result": {
+    "code": "coop_creator_required",
+    "data": {},
+    "status": "failed",
+    "text": "Solo creador o dueño cancela este reto."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Solo creador o dueño cancela este reto.",
+      "visual_version": 2,
+      "content_sha256": "44f12f222512d60e942ce36d2f2292c1a54b8668a02625196756f16d05cc0a7d",
+      "rich_payload": {
+        "source_text": "Solo creador o dueño cancela este reto."
+      },
+      "utf16_units": 39
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

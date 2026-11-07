@@ -1,0 +1,37 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_sdk_disables_tools_rejects_function_calls_and_does_not_dispatch_generated_text",
+  "input": "/ia responde",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "/nota guardar salida de IA sin ejecutar",
+      "purpose": "answer",
+      "qr_readings": []
+    },
+    "status": "ok",
+    "text": "/nota guardar salida de IA sin ejecutar"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "/nota guardar salida de IA sin ejecutar",
+      "visual_version": 2,
+      "content_sha256": "3228ccccfd25da674b567636596751d6272d0233c8a4d737b42a4b7f2fec9985",
+      "rich_payload": {
+        "source_text": "/nota guardar salida de IA sin ejecutar"
+      },
+      "utf16_units": 39
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

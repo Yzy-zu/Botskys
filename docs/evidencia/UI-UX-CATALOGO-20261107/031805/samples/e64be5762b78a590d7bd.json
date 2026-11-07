@@ -1,0 +1,33 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice",
+  "input": "/dl elegir 1",
+  "result": {
+    "code": "download_view_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar.",
+      "visual_version": 2,
+      "content_sha256": "46ba1ece1d602c7a9bf5bd7b86e72f228976ac383df7529e4263e02d8b259559",
+      "rich_payload": {
+        "source_text": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar."
+      },
+      "utf16_units": 69
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

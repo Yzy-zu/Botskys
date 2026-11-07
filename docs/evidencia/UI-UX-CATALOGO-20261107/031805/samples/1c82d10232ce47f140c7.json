@@ -1,0 +1,51 @@
+{
+  "route": "/mc mundos",
+  "operation": "manage_minecraft.worlds",
+  "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+  "input": "/mc mundos",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "worlds",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft worlds:\n{\"status\": \"ok\", \"online\": true}"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Mundos de Minecraft"
+      },
+      {
+        "kind": "notice",
+        "text": "No se recibió una lista verificable de mundos."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Mundos de Minecraft*\n\nNo se recibió una lista verificable de mundos.",
+      "visual_version": 2,
+      "content_sha256": "5e0cef845e6bece2a88a5a086f9d24137339e337434850c58c7136007a38195a",
+      "rich_payload": {
+        "source_text": "Mundos de Minecraft\n\nNo se recibió una lista verificable de mundos."
+      },
+      "utf16_units": 69
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

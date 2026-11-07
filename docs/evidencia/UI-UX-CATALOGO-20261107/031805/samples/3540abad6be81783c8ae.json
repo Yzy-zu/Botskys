@@ -1,0 +1,33 @@
+{
+  "route": "/broma",
+  "operation": "make_prank.run",
+  "test": "test_games.GamesTest.test_prank_safe_fiction_never_looks_up_or_mutates_foreign_data",
+  "input": "/broma 123",
+  "result": {
+    "code": "prank_invalid_label",
+    "data": {},
+    "status": "needs_input",
+    "text": "Usa una etiqueta ficticia de letras, espacios o guiones, sin identificadores."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Usa una etiqueta ficticia de letras, espacios o guiones, sin identificadores.",
+      "visual_version": 2,
+      "content_sha256": "10b560ae7211329b2fc564e1c4b26a6d5d687b596d66aeb12cbdd094582d21a7",
+      "rich_payload": {
+        "source_text": "Usa una etiqueta ficticia de letras, espacios o guiones, sin identificadores."
+      },
+      "utf16_units": 77
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

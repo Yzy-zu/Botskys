@@ -1,0 +1,33 @@
+{
+  "route": "/pdf extraer",
+  "operation": "manage_pdf.extract",
+  "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+  "input": "/pdf extraer 1",
+  "result": {
+    "code": "quoted_attachment_unavailable",
+    "data": {},
+    "status": "failed",
+    "text": "El archivo no está disponible o no tienes acceso en este ámbito."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El archivo no está disponible o no tienes acceso en este ámbito.",
+      "visual_version": 2,
+      "content_sha256": "47488b90ccb8e5a064d94816911138453735c92f8b4b472b39f49de1c30f0425",
+      "rich_payload": {
+        "source_text": "El archivo no está disponible o no tienes acceso en este ámbito."
+      },
+      "utf16_units": 64
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

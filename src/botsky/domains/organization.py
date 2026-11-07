@@ -320,7 +320,12 @@ def reminder(db, context, action, args, now):
         "UPDATE reminders SET state=?,revision=revision+1 WHERE id=? AND revision=?",
         (state, row["id"], row["revision"]),
     )
-    return Result("ok", "reminder_" + state, "Recordatorio " + state + ".")
+    return Result(
+        "ok",
+        "reminder_" + state,
+        "Recordatorio " + state + ".",
+        {"reminder_id": row["id"], "state": state},
+    )
 
 
 def poll(db, context, action, args, now, owner):
@@ -563,7 +568,12 @@ def school(db, context, spec, command, now, app):
         if state == "deleted":
             db.execute("DELETE FROM school_asset_grants WHERE task_id=?", (row["id"],))
             db.execute("DELETE FROM artifact_leases WHERE holder=?", ("school-" + str(row["id"]),))
-        return Result("ok", "school_task_" + state, "Tarea " + state + ".")
+        return Result(
+            "ok",
+            "school_task_" + state,
+            "Tarea " + state + ".",
+            {"task_id": args["task_id"], "state": state},
+        )
     if action == "set_lesson":
         if (
             db.execute("SELECT count(*) FROM school_lessons WHERE " + where, params).fetchone()[0]

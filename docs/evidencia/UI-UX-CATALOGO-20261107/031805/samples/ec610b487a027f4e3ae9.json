@@ -1,0 +1,35 @@
+{
+  "route": "/nota guardar",
+  "operation": "save_note.run",
+  "test": "test_runtime.RuntimeTest.test_http_auth_limits_durable_ack_and_continuous_shutdown",
+  "input": "/nota guardar tortilla",
+  "result": {
+    "code": "note_saved",
+    "data": {
+      "note_id": 1
+    },
+    "status": "ok",
+    "text": "Nota 1 guardada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Nota 1 guardada.",
+      "visual_version": 2,
+      "content_sha256": "249acd050ca12d8dce1e69567f32985a89310a6e1bc229979e9360be04d5d485",
+      "rich_payload": {
+        "source_text": "Nota 1 guardada."
+      },
+      "utf16_units": 16
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

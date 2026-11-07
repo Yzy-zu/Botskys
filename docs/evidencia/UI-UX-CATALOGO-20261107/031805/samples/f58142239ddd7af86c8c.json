@@ -1,0 +1,33 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+  "input": "/pack confirmar b58d3181c8f544458c92cb7916dbf614",
+  "result": {
+    "code": "pack_discount_expired",
+    "data": {},
+    "status": "needs_input",
+    "text": "Hora feliz terminó; solicita otra oferta sin cargo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hora feliz terminó; solicita otra oferta sin cargo.",
+      "visual_version": 2,
+      "content_sha256": "db4967ad8390c0f8d2cc91deff2b04d54074d7c169623342b4b4d787c534979d",
+      "rich_payload": {
+        "source_text": "Hora feliz terminó; solicita otra oferta sin cargo."
+      },
+      "utf16_units": 51
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

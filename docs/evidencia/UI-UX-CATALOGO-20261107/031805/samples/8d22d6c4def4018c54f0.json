@@ -1,0 +1,52 @@
+{
+  "route": "/bot modo",
+  "operation": "manage_conversation.mode",
+  "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+  "input": "/bot modo apagado",
+  "result": {
+    "code": "bot_mode_updated",
+    "data": {
+      "mode": "apagado",
+      "paused_until_ms": 0
+    },
+    "status": "ok",
+    "text": "Modo apagado. Sin pausa."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado de Botsky"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Modo: apagado"
+      },
+      {
+        "kind": "notice",
+        "text": "Sin pausa."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado de Botsky*\n\nModo: apagado\n\nSin pausa.",
+      "visual_version": 2,
+      "content_sha256": "f8a438ef29aee9cb533d3c2f618a511af19c6805bf28d592f8e2215e713b9e78",
+      "rich_payload": {
+        "source_text": "Estado de Botsky\n\nModo: apagado\n\nSin pausa."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/clip repetir",
+  "operation": "audiovisual.clip.replay",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/clip repetir",
+  "result": {
+    "code": "call_ended",
+    "data": {},
+    "status": "empty",
+    "text": "La llamada ya terminó."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La llamada ya terminó.",
+      "visual_version": 2,
+      "content_sha256": "4e9dbfa9bf05cb485c590ff98335d3169b448443d6c0ae1943e22780752af57f",
+      "rich_payload": {
+        "source_text": "La llamada ya terminó."
+      },
+      "utf16_units": 22
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

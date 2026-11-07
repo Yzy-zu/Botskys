@@ -1,0 +1,51 @@
+{
+  "route": "/sticker",
+  "operation": "make_sticker.run",
+  "test": "test_runtime.RuntimeTest.test_sticker_uses_native_endpoint_and_scoped_output",
+  "input": "/sticker",
+  "result": {
+    "code": "sticker_created",
+    "data": {
+      "artifacts": [
+        "8917174c6e0649a4b603e5a648e8c62a"
+      ],
+      "file_facts": [
+        {
+          "bytes": 820,
+          "extension": "webp",
+          "format": "webp",
+          "height": 512,
+          "width": 512
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Sticker listo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "34d514cec75e333b443b229d0bf6fb347466c33a7e065e91476309abc06d858f",
+      "rich_payload": {
+        "artifacts": [
+          "8917174c6e0649a4b603e5a648e8c62a"
+        ],
+        "caption": "",
+        "name": "Botsky.webp",
+        "source_text": ""
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

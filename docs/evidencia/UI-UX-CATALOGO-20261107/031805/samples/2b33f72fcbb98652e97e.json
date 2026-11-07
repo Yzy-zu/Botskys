@@ -1,0 +1,39 @@
+{
+  "route": "/estado",
+  "operation": "core.estado",
+  "test": "test_presentation.PresentationTest.test_short_follow_never_guesses_and_retains_scope",
+  "input": "/estado",
+  "result": {
+    "code": "receipt_state",
+    "data": {
+      "delivery": [],
+      "id": "62b0d1e638a9f8355928d0e294309f4d",
+      "job": null,
+      "revision": 0,
+      "state": "queued"
+    },
+    "status": "ok",
+    "text": "En cola."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "En cola.",
+      "visual_version": 2,
+      "content_sha256": "ac03d4c944e8648c73e3d2bb25330034ea5e0e8c59460d4c3adbc11222b64047",
+      "rich_payload": {
+        "source_text": "En cola."
+      },
+      "utf16_units": 8
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

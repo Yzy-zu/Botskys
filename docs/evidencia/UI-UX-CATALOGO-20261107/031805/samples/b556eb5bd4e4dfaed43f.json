@@ -1,0 +1,33 @@
+{
+  "route": "/llamada colgar",
+  "operation": "control_call.hangup",
+  "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+  "input": "/llamada colgar",
+  "result": {
+    "code": "call_end_requested",
+    "data": {},
+    "status": "ok",
+    "text": "Cierre solicitado a la llamada exacta; consulta /llamada estado para confirmar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cierre solicitado a la llamada exacta; consulta /llamada estado para confirmar.",
+      "visual_version": 2,
+      "content_sha256": "5252b5984b60e828f868ae8eea5d6519b60481ff723b05cf9872f7114b9a6b4d",
+      "rich_payload": {
+        "source_text": "Cierre solicitado a la llamada exacta; consulta /llamada estado para confirmar."
+      },
+      "utf16_units": 79
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

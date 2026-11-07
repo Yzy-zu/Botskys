@@ -1,0 +1,35 @@
+{
+  "route": "/horario agregar",
+  "operation": "manage_school.set_lesson",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/horario agregar --materia ejemplo --dia 1 --inicio 12:00 --fin 13:00",
+  "result": {
+    "code": "school_lesson_created",
+    "data": {
+      "lesson_id": 1
+    },
+    "status": "ok",
+    "text": "Clase 1 guardada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Clase 1 guardada.",
+      "visual_version": 2,
+      "content_sha256": "e2f3f3d0574d946af524d5e34aa3e60c97325e7a55e437ac0f9f87a77c1afab1",
+      "rich_payload": {
+        "source_text": "Clase 1 guardada."
+      },
+      "utf16_units": 17
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

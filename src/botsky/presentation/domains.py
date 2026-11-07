@@ -134,6 +134,43 @@ def present(result, *, zone="America/Mexico_City"):
     data = result.data
     if data.get("document") or data.get("native_tables"):
         return result
+    if code in ("school_task_completed", "school_task_deleted"):
+        text = "completada" if code == "school_task_completed" else "borrada"
+        return attach_document(
+            result,
+            Document(
+                (Block("notice", "Tarea " + str(data.get("task_id", "")) + " " + text + "."),)
+            ),
+        )
+    if code in ("reminder_cancelled", "reminder_archived") and "state" in data:
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block(
+                        "notice",
+                        f"Recordatorio {data['reminder_id']} · {STATES.get(data['state'], data['state'])}.",
+                    ),
+                )
+            ),
+        )
+    if code == "attachment_required" and "expires_ms" in data:
+        return attach_document(
+            result,
+            Document(
+                (
+                    Block("heading", "Falta el archivo"),
+                    Block(
+                        "notice",
+                        "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene.",
+                    ),
+                    Block(
+                        "notice", "Espera disponible hasta: " + date_time(data["expires_ms"], zone)
+                    ),
+                    Block("paragraph", "Ejemplo: " + data.get("example", "/ayuda")),
+                )
+            ),
+        )
     if code == "reminder_created" and "text" in data:
         return attach_document(
             result,
@@ -367,7 +404,12 @@ def present(result, *, zone="America/Mexico_City"):
             "Archivos de Drive",
             ("Opción", "Archivo", "Tamaño"),
             [(i, r["name"], size(r.get("size"))) for i, r in enumerate(data["choices"], 1)],
-            footer="Lista de tu ámbito · disponible durante 5 minutos.\n/drive elegir NUMERO",
+            footer=(
+                "Lista de tu ámbito · Vence: " + date_time(data["expires_ms"], zone)
+                if "expires_ms" in data
+                else "Lista de tu ámbito · Vigencia máxima de 5 minutos desde la preparación."
+            )
+            + "\n/drive elegir NUMERO",
         )
     if code == "notes_found":
         rows = data["items"]

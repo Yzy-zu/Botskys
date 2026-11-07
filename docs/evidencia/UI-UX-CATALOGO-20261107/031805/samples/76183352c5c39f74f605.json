@@ -1,0 +1,33 @@
+{
+  "route": "/mem corregir",
+  "operation": "manage_memory.correct",
+  "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+  "input": "/mem corregir 1 reemplazo",
+  "result": {
+    "code": "memory_corrected",
+    "data": {},
+    "status": "ok",
+    "text": "Recuerdo corregido."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recuerdo corregido.",
+      "visual_version": 2,
+      "content_sha256": "a021e5c4fe262190cb24b2c71f5c3cc8877eac52820693b04703431b68615d8b",
+      "rich_payload": {
+        "source_text": "Recuerdo corregido."
+      },
+      "utf16_units": 19
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

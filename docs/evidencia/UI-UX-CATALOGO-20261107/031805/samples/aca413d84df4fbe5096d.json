@@ -1,0 +1,110 @@
+{
+  "route": "/encuesta resultados",
+  "operation": "manage_poll.results",
+  "test": "test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads",
+  "input": "/encuesta resultados 1",
+  "result": {
+    "code": "poll_results",
+    "data": {
+      "options": [
+        {
+          "choice": 1,
+          "text": "Dos *literal*",
+          "votes": 0
+        },
+        {
+          "choice": 2,
+          "text": "Tres",
+          "votes": 0
+        }
+      ],
+      "participants": 0,
+      "poll_id": 1,
+      "question": "¿Hora?",
+      "state": "open"
+    },
+    "status": "ok",
+    "text": "¿Hora?\n1. Dos *literal*: 0\n2. Tres: 0"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Resultados de encuesta",
+      "headers": [
+        "Opción",
+        "Respuesta",
+        "Votos"
+      ],
+      "rows": [
+        [
+          "1",
+          "Dos *literal*",
+          "0"
+        ],
+        [
+          "2",
+          "Tres",
+          "0"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "¿Hora?",
+      "visual_version": 2,
+      "content_sha256": "cec78fee28669fe390e2211ec03c7b771735194dff28b0396ec4dd72e36d08c0",
+      "rich_payload": {
+        "source_text": "¿Hora?"
+      },
+      "utf16_units": 6
+    },
+    {
+      "position": 1,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "fb0376d7bb5e424df4f817ddc6f66e8a6a3441cf4d36c436edf16ba4fa79f5ff",
+      "rich_payload": {
+        "headers": [
+          "Opción",
+          "Respuesta",
+          "Votos"
+        ],
+        "rows": [
+          [
+            "1",
+            "Dos *literal*",
+            "0"
+          ],
+          [
+            "2",
+            "Tres",
+            "0"
+          ]
+        ],
+        "title": "Resultados de encuesta"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 2,
+      "kind": "text",
+      "payload": "0 participantes · abierta · Encuesta 1",
+      "visual_version": 2,
+      "content_sha256": "2d4d14b00dc7fa969221fa557241198c7c5db3db95785d421d536e420107ff2f",
+      "rich_payload": {
+        "source_text": "0 participantes · abierta · Encuesta 1"
+      },
+      "utf16_units": 38
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

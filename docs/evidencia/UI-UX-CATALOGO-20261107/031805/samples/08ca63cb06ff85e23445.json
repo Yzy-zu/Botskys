@@ -1,0 +1,33 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_current_attachment_priority_foreign_quote_symlink_and_expiry",
+  "input": "/convertir pdf",
+  "result": {
+    "code": "artifact_access_denied",
+    "data": {},
+    "status": "failed",
+    "text": "No puedo usar ese archivo en este ámbito. Adjunta uno propio y disponible."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No puedo usar ese archivo en este ámbito. Adjunta uno propio y disponible.",
+      "visual_version": 2,
+      "content_sha256": "261a32da6f6a4fe14039d77fe7a63fbd300573a44b6f73ad6fd752577b950ba1",
+      "rich_payload": {
+        "source_text": "No puedo usar ese archivo en este ámbito. Adjunta uno propio y disponible."
+      },
+      "utf16_units": 74
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

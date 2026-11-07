@@ -1,0 +1,40 @@
+{
+  "route": "/mc parar",
+  "operation": "manage_minecraft.stop",
+  "test": "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+  "input": "/mc parar",
+  "result": {
+    "code": "minecraft_change_rejected",
+    "data": {
+      "action": "stop",
+      "response": {
+        "code": "recovery_requires_offline",
+        "dispatched": false,
+        "status": "needs_input"
+      }
+    },
+    "status": "needs_input",
+    "text": "Apaga Minecraft antes de recuperar su configuración. No se modificó nada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Apaga Minecraft antes de recuperar su configuración. No se modificó nada.",
+      "visual_version": 2,
+      "content_sha256": "852348a36aca502e62bd2e6ebbb7e7c220e6f1fa4d9ec9dd3128f1b1ba9bacab",
+      "rich_payload": {
+        "source_text": "Apaga Minecraft antes de recuperar su configuración. No se modificó nada."
+      },
+      "utf16_units": 73
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

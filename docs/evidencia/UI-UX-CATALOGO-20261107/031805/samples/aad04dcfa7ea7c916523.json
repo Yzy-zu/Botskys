@@ -1,0 +1,33 @@
+{
+  "route": "/encuesta cerrar",
+  "operation": "manage_poll.close",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/encuesta cerrar 1",
+  "result": {
+    "code": "poll_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una encuesta con ese ID en este ámbito."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una encuesta con ese ID en este ámbito.",
+      "visual_version": 2,
+      "content_sha256": "d9b7441ff4dc7f515355fa72801a71c51190f5c27979c51f1fa44df60918c99d",
+      "rich_payload": {
+        "source_text": "No hay una encuesta con ese ID en este ámbito."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

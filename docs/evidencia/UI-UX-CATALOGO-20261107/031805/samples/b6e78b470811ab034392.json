@@ -1,0 +1,68 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+  "input": "/convertir docx",
+  "result": {
+    "code": "document_converted",
+    "data": {
+      "artifacts": [
+        "aa6c54500f2e4c0f8fd520eb3db27d5f"
+      ],
+      "file_facts": [
+        {
+          "bytes": 36629,
+          "extension": "docx",
+          "format": "docx"
+        }
+      ],
+      "source_format": "pdf",
+      "target_format": "docx"
+    },
+    "status": "ok",
+    "text": "Conversión lista. El texto editable y el diseño pueden diferir del PDF original."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Documento convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: DOCX · 35.77 KiB (36629 bytes)"
+      },
+      {
+        "kind": "notice",
+        "text": "Conversión lista. El texto editable y el diseño pueden diferir del PDF original."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "46222a2feb46657b66079222dbae3471f3c65a20c5de59c545f1b3639c160876",
+      "rich_payload": {
+        "artifacts": [
+          "aa6c54500f2e4c0f8fd520eb3db27d5f"
+        ],
+        "caption": "*Documento convertido*\n\nFormato final: DOCX · 35.77 KiB (36629 bytes)\n\nConversión lista. El texto editable y el diseño pueden diferir del PDF original.",
+        "caption_frozen": true,
+        "name": "Documento convertido.docx",
+        "source_text": "Documento convertido\n\nFormato final: DOCX · 35.77 KiB (36629 bytes)\n\nConversión lista. El texto editable y el diseño pueden diferir del PDF original."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

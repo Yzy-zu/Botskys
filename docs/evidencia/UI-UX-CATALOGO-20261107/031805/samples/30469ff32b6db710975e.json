@@ -1,0 +1,33 @@
+{
+  "route": "/dl mp4",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back",
+  "input": "/dl mp4 https://www.pornhub.com/view_video.php?viewkey=synthetic",
+  "result": {
+    "code": "adult_sources_disabled",
+    "data": {},
+    "status": "failed",
+    "text": "La fuente o el enlace no están admitidos para esta operación."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La fuente o el enlace no están admitidos para esta operación.",
+      "visual_version": 2,
+      "content_sha256": "3bc57f0ab0612b0fc191090bb2a444d841c47afc9f1c1f04d7d4e23368e5e42b",
+      "rich_payload": {
+        "source_text": "La fuente o el enlace no están admitidos para esta operación."
+      },
+      "utf16_units": 61
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,5 +1,17 @@
 # Relevo Botsky
 
+## 07/11 · Revisión V7 inicial: hallazgos corregidos antes de repetir
+
+Catálogoinicial031805captura155rutascon311tests;3fallos(Spotifyperdiónotametadatos,
+2expectativasde2partesvs1caption). Corrigidosinrebajaroraclesdecontenido/propiedad.
+Nueve huecos decandidatosseabordancon5testsdeefecto:taskcomplete/delete,BJhitmano
+guardada,banregistrodoble,MCdiscover/stop/restart+healthdoble,clipnext2videosown.
+5PASS;Tareacompletedinglésdetectadopororaclenuevo ycorregido.2scheduledPASS
+pruebandigest>6000sintruncarsilenciosamente/20de21 yrecordatorioliteral.2source
+PASSparacitaciónrespuestacompletadesdeprimerplanhash(tablamedia/archivo).
+TTLahoraabsolutoenzonaenVideos/Drive/esperas. UI-UX-CONT-20261107/revision-hallazgos.
+Catálogohistóricointacto;fuenteaúnnodesplegada;NO_PROBADOcliente/recepción.
+
 ## 07/11 · V5/V6 vistas sensibles y operación AV verificadas localmente
 
 PreviewsPack/ruleta/nuclear/coop/HH concondicionescompletas,tablasestado;4oracles

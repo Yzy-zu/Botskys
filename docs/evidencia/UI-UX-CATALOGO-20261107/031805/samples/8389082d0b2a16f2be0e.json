@@ -1,0 +1,33 @@
+{
+  "route": "/recordatorio cancelar",
+  "operation": "manage_reminder.cancel",
+  "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+  "input": "/recordatorio cancelar 1",
+  "result": {
+    "code": "reminder_cancelled",
+    "data": {},
+    "status": "ok",
+    "text": "Recordatorio cancelled."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recordatorio cancelled.",
+      "visual_version": 2,
+      "content_sha256": "833b8bb2f8975b13366733599a8ca0e6ca8382a9917c1304c5615c9d93e97003",
+      "rich_payload": {
+        "source_text": "Recordatorio cancelled."
+      },
+      "utf16_units": 23
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

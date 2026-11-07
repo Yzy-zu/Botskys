@@ -1,0 +1,33 @@
+{
+  "route": "/nota guardar",
+  "operation": "save_note.run",
+  "test": "test_core.CoreTest.test_permissions_before_dispatch_and_revalidated_after_admission",
+  "input": "",
+  "result": {
+    "code": "actor_denied",
+    "data": {},
+    "status": "failed",
+    "text": "Tu identidad no está autorizada para esta herramienta."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Tu identidad no está autorizada para esta herramienta.",
+      "visual_version": 2,
+      "content_sha256": "e9f61fbfedeb2c26f15a0bc32758cada007fcda0826a69aa738ee1cb1b641d68",
+      "rich_payload": {
+        "source_text": "Tu identidad no está autorizada para esta herramienta."
+      },
+      "utf16_units": 54
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

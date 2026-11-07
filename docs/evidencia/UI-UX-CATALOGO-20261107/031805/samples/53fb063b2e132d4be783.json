@@ -1,0 +1,39 @@
+{
+  "route": "/encuesta crear",
+  "operation": "manage_poll.create",
+  "test": "test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads",
+  "input": "/encuesta crear \"¿Hora?\" \"Dos *literal*\" \"Tres\"",
+  "result": {
+    "code": "poll_created",
+    "data": {
+      "options": [
+        "Dos *literal*",
+        "Tres"
+      ],
+      "poll_id": 1
+    },
+    "status": "ok",
+    "text": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2",
+      "visual_version": 2,
+      "content_sha256": "0bf85414ad66cd5840fa17610eb1a587007149987a6a18b7db2fc4810f1fb1ee",
+      "rich_payload": {
+        "source_text": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2"
+      },
+      "utf16_units": 83
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

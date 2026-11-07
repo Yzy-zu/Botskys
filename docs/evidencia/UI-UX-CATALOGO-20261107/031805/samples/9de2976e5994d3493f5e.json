@@ -1,0 +1,33 @@
+{
+  "route": "/drive elegir",
+  "operation": "manage_drive.choose",
+  "test": "test_integrations.IntegrationsTest.test_drive_configuration_change_and_dispatched_restart_never_reupload",
+  "input": "/drive elegir ade996bc343c4ad88d5143c474725ace 1",
+  "result": {
+    "code": "drive_configuration_changed",
+    "data": {},
+    "status": "failed",
+    "text": "Cambió la carpeta o el ámbito; busca de nuevo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cambió la carpeta o el ámbito; busca de nuevo.",
+      "visual_version": 2,
+      "content_sha256": "28418b45c6ce2937fb22364e7243bd590fb6e66d2b08696d82d129a62d14dc05",
+      "rich_payload": {
+        "source_text": "Cambió la carpeta o el ámbito; busca de nuevo."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

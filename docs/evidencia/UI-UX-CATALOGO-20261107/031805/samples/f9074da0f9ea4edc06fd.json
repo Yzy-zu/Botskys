@@ -1,0 +1,33 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+  "input": "/recado enviar d10654e34f6449b68b3c17598f7a0a3a",
+  "result": {
+    "code": "message_preview_expired",
+    "data": {},
+    "status": "failed",
+    "text": "El borrador caducó. Prepara otro."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El borrador caducó. Prepara otro.",
+      "visual_version": 2,
+      "content_sha256": "84b0eb8b956e06e74a1dccc797440e8e14c764c97aa0673d98a9ed5fd2655737",
+      "rich_payload": {
+        "source_text": "El borrador caducó. Prepara otro."
+      },
+      "utf16_units": 33
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

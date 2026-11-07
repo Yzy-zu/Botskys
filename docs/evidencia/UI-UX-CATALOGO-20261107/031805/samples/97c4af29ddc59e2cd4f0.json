@@ -1,0 +1,33 @@
+{
+  "route": "/llamada colgar",
+  "operation": "control_call.hangup",
+  "test": "test_calls.CallsTest.test_group_call_controls_are_scoped_to_authorized_group_members",
+  "input": "/llamada colgar",
+  "result": {
+    "code": "no_current_call",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una llamada vigente en este chat."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una llamada vigente en este chat.",
+      "visual_version": 2,
+      "content_sha256": "f530d6405283510479f4b39addbbf6ce5aaa56da8e4a2592131138dd0ccf6f9d",
+      "rich_payload": {
+        "source_text": "No hay una llamada vigente en este chat."
+      },
+      "utf16_units": 40
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

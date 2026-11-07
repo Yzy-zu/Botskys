@@ -1,0 +1,67 @@
+{
+  "route": "/clip parar",
+  "operation": "audiovisual.clip.stop",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+  "input": "/clip parar",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clip": {
+        "name": "Prueba audiovisual V3",
+        "state": "stopped",
+        "volume": 0.5
+      },
+      "message": "Clip detenido.",
+      "presentation_action": "stop",
+      "presentation_family": "clip",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Clip detenido."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "literal",
+        "text": "Prueba audiovisual V3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: Detenido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen para el siguiente clip: 50 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Clip detenido."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nPrueba audiovisual V3\n\nEstado del servicio: Detenido\n\nVolumen para el siguiente clip: 50 %\n\nClip detenido.",
+      "visual_version": 2,
+      "content_sha256": "367f326d366d22811e9388316e5545e79d16c51cd7ad3f050d77cd9fc57ac4d4",
+      "rich_payload": {
+        "source_text": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Detenido\n\nVolumen para el siguiente clip: 50 %\n\nClip detenido."
+      },
+      "utf16_units": 114
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

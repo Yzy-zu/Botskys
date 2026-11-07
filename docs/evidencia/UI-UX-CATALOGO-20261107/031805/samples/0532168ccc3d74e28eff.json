@@ -1,0 +1,33 @@
+{
+  "route": "/recado preparar",
+  "operation": "manage_messages.prepare",
+  "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+  "input": "/recado preparar --para Desconocida -- hola",
+  "result": {
+    "code": "message_recipient_unknown",
+    "data": {},
+    "status": "needs_input",
+    "text": "Uno o más destinatarios no son contactos configurados. No seleccioné una lista parcial."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Uno o más destinatarios no son contactos configurados. No seleccioné una lista parcial.",
+      "visual_version": 2,
+      "content_sha256": "15c4050ea6d0f4e6710898418282a5fdf32e20c61f5a0282282ee763c59a000b",
+      "rich_payload": {
+        "source_text": "Uno o más destinatarios no son contactos configurados. No seleccioné una lista parcial."
+      },
+      "utf16_units": 87
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

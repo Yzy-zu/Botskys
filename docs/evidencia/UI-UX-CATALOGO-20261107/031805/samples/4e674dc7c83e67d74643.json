@@ -1,0 +1,33 @@
+{
+  "route": "/admin xp-dar",
+  "operation": "manage_admin.xp_grant",
+  "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+  "input": "/admin xp-dar --objetivo alice 100",
+  "result": {
+    "code": "admin_xp_changed",
+    "data": {},
+    "status": "ok",
+    "text": "Cuenta #1: ajuste +100 XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cuenta #1: ajuste +100 XP.",
+      "visual_version": 2,
+      "content_sha256": "90c7c238613d92b789b9bc7a59d55a36f7c4325e46f7b1e0d81207613be6880f",
+      "rich_payload": {
+        "source_text": "Cuenta #1: ajuste +100 XP."
+      },
+      "utf16_units": 26
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

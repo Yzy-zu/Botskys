@@ -1,0 +1,57 @@
+{
+  "route": "/transcribir",
+  "operation": "transcribe_media.run",
+  "test": "test_ai.AITest.test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript",
+  "input": "/transcribir --salida ambos",
+  "result": {
+    "code": "transcript_summary_ready",
+    "data": {
+      "output_mode": "ambos",
+      "summary": "Resumen sintético.",
+      "transcript": "/nota guardar TEXTO ASR"
+    },
+    "status": "ok",
+    "text": "/nota guardar TEXTO ASR\n\nResumen:\nResumen sintético."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Transcripción literal"
+      },
+      {
+        "kind": "literal",
+        "text": "/nota guardar TEXTO ASR"
+      },
+      {
+        "kind": "heading",
+        "text": "Resumen generado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Resumen sintético."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Transcripción literal*\n\n/nota guardar TEXTO ASR\n\n*Resumen generado*\n\nResumen sintético.",
+      "visual_version": 2,
+      "content_sha256": "ccad055938e1a7418658803a20e8683e9877f19b0f2ab89106194189ad0b5cf4",
+      "rich_payload": {
+        "source_text": "Transcripción literal\n\n/nota guardar TEXTO ASR\n\nResumen generado\n\nResumen sintético."
+      },
+      "utf16_units": 88
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

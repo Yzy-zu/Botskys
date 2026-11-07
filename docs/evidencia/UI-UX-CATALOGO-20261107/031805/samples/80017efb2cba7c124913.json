@@ -1,0 +1,33 @@
+{
+  "route": "/horario agregar",
+  "operation": "manage_school.set_lesson",
+  "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+  "input": "/horario agregar --materia Mate --dia 5 --inicio 10:00 --fin 11:00",
+  "result": {
+    "code": "school_lesson_overlap",
+    "data": {},
+    "status": "needs_input",
+    "text": "Ese horario se cruza con otra clase."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ese horario se cruza con otra clase.",
+      "visual_version": 2,
+      "content_sha256": "e43842875163ba6f04b195710b05c8ad96ab32c3ea3b3d366ba9915b20075c10",
+      "rich_payload": {
+        "source_text": "Ese horario se cruza con otra clase."
+      },
+      "utf16_units": 36
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

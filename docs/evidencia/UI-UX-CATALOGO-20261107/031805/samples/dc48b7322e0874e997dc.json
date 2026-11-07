@@ -1,0 +1,35 @@
+{
+  "route": "/admin advertir",
+  "operation": "manage_admin.warn",
+  "test": "test_admin.AdminTest.test_local_warning_receipt_survives_crash_before_job_publication",
+  "input": "/admin advertir alice",
+  "result": {
+    "code": "admin_warning_added",
+    "data": {
+      "warning_id": 1
+    },
+    "status": "ok",
+    "text": "Aviso #1 guardado. No se expulsó a nadie."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Aviso #1 guardado. No se expulsó a nadie.",
+      "visual_version": 2,
+      "content_sha256": "7246021c9a75a9b63d1df0c24b185fa7365cfbe0bd246ce14a9f938a4cb9df1e",
+      "rich_payload": {
+        "source_text": "Aviso #1 guardado. No se expulsó a nadie."
+      },
+      "utf16_units": 41
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

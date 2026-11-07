@@ -28,9 +28,13 @@ class Scheduler:
         mode = current(db, context)
         return mode["mode"] != "apagado" and mode["paused_until_ms"] <= now
 
-    def emit(self, db, row, kind, event_key, text, now):
+    def emit(self, db, row, kind, event_key, text, now, *, document=None):
         identifier = hashlib.sha256(canonical(["internal", event_key]).encode()).hexdigest()[:32]
         result = Result("ok", kind + "_notice", text)
+        if document is not None:
+            from .presentation import attach_document
+
+            result = attach_document(result, document)
         context = CommandContext(
             identifier,
             row["instance"],
@@ -108,15 +112,19 @@ class Scheduler:
                     "SELECT 1 FROM organization_events WHERE event_key=?", (key,)
                 ).fetchone():
                     continue
+                from .presentation import Block, Document
+                from .presentation.domains import date_time
+
+                document = Document(
+                    (
+                        Block("heading", f"Recordatorio {row['id']}"),
+                        Block("paragraph", date_time(row["due_ms"], settings.timezone)),
+                        Block("literal", row["text"]),
+                        Block("notice", "Aviso con retraso." if now - row["due_ms"] > 1000 else ""),
+                    )
+                )
                 identifier = self.emit(
-                    db,
-                    row,
-                    "reminder",
-                    key,
-                    f"Recordatorio {row['id']}: "
-                    + row["text"]
-                    + (" (con retraso)" if now - row["due_ms"] > 1000 else ""),
-                    now,
+                    db, row, "reminder", key, document.text(), now, document=document
                 )
                 db.execute(
                     "INSERT INTO organization_events VALUES(?,?,?,?,'emitted',?,?)",
@@ -177,16 +185,53 @@ class Scheduler:
                     + " AND due_date=? AND state='pending' ORDER BY due_time,id LIMIT 20",
                     (*chat_key(context), day),
                 ).fetchall()
-                lines = ["Resumen escolar · " + day + " · Ciudad de México", "Clases:"]
-                lines += [
-                    r["start_time"] + "–" + r["end_time"] + " " + r["subject"] for r in lessons
-                ] or ["Sin clases guardadas."]
-                lines += (
-                    ["Entregas de hoy:"] + [f"{r['id']}: " + r["text"] for r in tasks]
-                    if tasks
-                    else ["Sin tareas pendientes para hoy."]
+                from .presentation import Block, Document
+
+                blocks = [
+                    Block("heading", "Resumen escolar · " + day),
+                    Block("notice", "Zona: " + settings.timezone),
+                    Block("heading", "Clases"),
+                ]
+                if not lessons:
+                    blocks.append(Block("notice", "Sin clases guardadas para hoy."))
+                for lesson in lessons:
+                    blocks.extend(
+                        (
+                            Block("paragraph", lesson["start_time"] + "–" + lesson["end_time"]),
+                            Block("literal", lesson["subject"]),
+                        )
+                    )
+                blocks.append(Block("heading", "Entregas de hoy"))
+                if not tasks:
+                    blocks.append(Block("notice", "Sin tareas pendientes guardadas para hoy."))
+                for task in tasks:
+                    blocks.extend(
+                        (
+                            Block(
+                                "paragraph",
+                                f"Tarea {task['id']} · "
+                                + (task["due_time"] or "Sin hora definida"),
+                            ),
+                            Block("literal", task["text"]),
+                        )
+                    )
+                total = db.execute(
+                    "SELECT count(*) FROM school_tasks WHERE "
+                    + CHAT_SQL
+                    + " AND due_date=? AND state='pending'",
+                    (*chat_key(context), day),
+                ).fetchone()[0]
+                if total > len(tasks):
+                    blocks.append(
+                        Block(
+                            "notice",
+                            f"Se incluyen {len(tasks)} de {total} tareas de hoy. Consulta /tareas para revisar las demás.",
+                        )
+                    )
+                document = Document(tuple(blocks))
+                identifier = self.emit(
+                    db, row, "digest", key, document.text(), now, document=document
                 )
-                identifier = self.emit(db, row, "digest", key, "\n".join(lines)[:6000], now)
                 db.execute(
                     "INSERT INTO organization_events VALUES(?,?,?,?,'emitted',?,?)",
                     (key, "digest", target, identifier, now, int(at.timestamp() * 1000) + 600000),

@@ -1,0 +1,33 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+  "input": "/dl elegir 862812dc41ed4784a9884d890cb72f58 2",
+  "result": {
+    "code": "download_choice_out_of_range",
+    "data": {},
+    "status": "needs_input",
+    "text": "La elección no está en esa vista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La elección no está en esa vista.",
+      "visual_version": 2,
+      "content_sha256": "9f3257d90747ce1b1894ca06836d3b85c2416e531dcf76d0b69f9b46368d262d",
+      "rich_payload": {
+        "source_text": "La elección no está en esa vista."
+      },
+      "utf16_units": 33
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

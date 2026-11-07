@@ -1,0 +1,33 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_presentation.PresentationTest.test_help_and_literal_delivery_are_exact_without_technical_suffix",
+  "input": "/ayuda llamada programar",
+  "result": {
+    "code": "help",
+    "data": {},
+    "status": "ok",
+    "text": "*Agenda de llamadas*\n\nPrograma una llamada con fecha, zona, modo y duración explícitos.\n\n/llamada programar FECHA HORA [--duracion DURACION_CON_UNIDAD] [--tema TEMA] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]\nEjemplo: /llamada programar 2026-12-01 12:00\nSolo el dueño.\n--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Agenda de llamadas*\n\nPrograma una llamada con fecha, zona, modo y duración explícitos.\n\n/llamada programar FECHA HORA [--duracion DURACION_CON_UNIDAD] [--tema TEMA] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]\nEjemplo: /llamada programar 2026-12-01 12:00\nSolo el dueño.\n--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos.",
+      "visual_version": 2,
+      "content_sha256": "2fd61aa82d8d1f0804ba6c75db2cfcbde18d56b95e0fc1f156d1355c14522db1",
+      "rich_payload": {
+        "source_text": "*Agenda de llamadas*\n\nPrograma una llamada con fecha, zona, modo y duración explícitos.\n\n/llamada programar FECHA HORA [--duracion DURACION_CON_UNIDAD] [--tema TEMA] [--audio AUDIO_ID] [--terminar-audio] [--volumen VOLUME]\nEjemplo: /llamada programar 2026-12-01 12:00\nSolo el dueño.\n--duracion: entero con unidad s, m, h o d; ejemplo 10m. Rango: 5–3600 segundos. Por defecto: 300 segundos."
+      },
+      "utf16_units": 389
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

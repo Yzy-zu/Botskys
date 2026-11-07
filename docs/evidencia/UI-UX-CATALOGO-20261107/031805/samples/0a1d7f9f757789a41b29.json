@@ -1,0 +1,35 @@
+{
+  "route": "/mem guardar",
+  "operation": "manage_memory.remember",
+  "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+  "input": "/mem guardar --tipo dato /nota guardar NO_EJECUTAR",
+  "result": {
+    "code": "memory_saved",
+    "data": {
+      "memory_id": 1
+    },
+    "status": "ok",
+    "text": "Recuerdo 1 guardado como dato."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recuerdo 1 guardado como dato.",
+      "visual_version": 2,
+      "content_sha256": "21918937a0775fcd0fa266bc870edb3a34f4e48660af63d50714d7c61f156836",
+      "rich_payload": {
+        "source_text": "Recuerdo 1 guardado como dato."
+      },
+      "utf16_units": 30
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

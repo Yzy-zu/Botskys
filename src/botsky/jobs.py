@@ -489,7 +489,14 @@ class Jobs:
 
                 from .presentation.search import video_document
 
-                document = video_document(data["choices"], now + 900000, now, intro="Videos")
+                document = video_document(
+                    data["choices"],
+                    now + 900000,
+                    now,
+                    intro="Videos",
+                    note=result.data.get("search_note", ""),
+                    zone=self.settings.timezone,
+                )
                 result = Result(
                     "needs_input",
                     "download_choices",
@@ -905,6 +912,9 @@ class Jobs:
                             "choices": normalized,
                             "arguments": parameters,
                             "collage_state": collage_state,
+                            "search_note": "Spotify aporta metadatos; selecciona una coincidencia real."
+                            if spotify
+                            else "",
                         },
                     ),
                     collage_files,

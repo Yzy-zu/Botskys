@@ -1,0 +1,61 @@
+{
+  "route": "/admin nuclear-preparar",
+  "operation": "manage_admin.nuclear_prepare",
+  "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+  "input": "/admin nuclear-preparar",
+  "result": {
+    "code": "nuclear_preview",
+    "data": {
+      "cost": 5000,
+      "count": 1,
+      "draft_id": "699445896c464cf4a3f56d85be09c916"
+    },
+    "status": "needs_input",
+    "text": "Nuclear 699445896c464cf4a3f56d85be09c916: 1 miembros no administradores elegibles. Coste5000 XP si se confirma. Dueño/bots/admins protegidos. Sin cargo ni expulsiones todavía. Caduca en5min.\n/admin nuclear-confirmar 699445896c464cf4a3f56d85be09c916\n/admin nuclear-cancelar 699445896c464cf4a3f56d85be09c916"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Vista previa nuclear"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Se seleccionaron 1 miembros no administradores elegibles de este grupo. Coste: 5000 XP si se confirma."
+      },
+      {
+        "kind": "notice",
+        "text": "Se expulsará a los miembros elegibles verificados. Dueño, bots y administradores están protegidos. Sin cargo ni expulsiones todavía. La vista caduca en 5 minutos."
+      },
+      {
+        "kind": "next_action",
+        "text": "/admin nuclear-confirmar 699445896c464cf4a3f56d85be09c916"
+      },
+      {
+        "kind": "next_action",
+        "text": "/admin nuclear-cancelar 699445896c464cf4a3f56d85be09c916"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Vista previa nuclear*\n\nSe seleccionaron 1 miembros no administradores elegibles de este grupo. Coste: 5000 XP si se confirma.\n\nSe expulsará a los miembros elegibles verificados. Dueño, bots y administradores están protegidos. Sin cargo ni expulsiones todavía. La vista caduca en 5 minutos.\n\n`/admin nuclear-confirmar 699445896c464cf4a3f56d85be09c916`\n\n`/admin nuclear-cancelar 699445896c464cf4a3f56d85be09c916`",
+      "visual_version": 2,
+      "content_sha256": "067f883557942d640edb7af1e07282f97e182b44fc59f903637c21c605b07c72",
+      "rich_payload": {
+        "source_text": "Vista previa nuclear\n\nSe seleccionaron 1 miembros no administradores elegibles de este grupo. Coste: 5000 XP si se confirma.\n\nSe expulsará a los miembros elegibles verificados. Dueño, bots y administradores están protegidos. Sin cargo ni expulsiones todavía. La vista caduca en 5 minutos.\n\n/admin nuclear-confirmar 699445896c464cf4a3f56d85be09c916\n\n/admin nuclear-cancelar 699445896c464cf4a3f56d85be09c916"
+      },
+      "utf16_units": 411
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

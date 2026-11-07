@@ -1,0 +1,78 @@
+{
+  "route": "/mem listar",
+  "operation": "manage_memory.list",
+  "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+  "input": "/mem listar",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "kind": null
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "42b392cfd3daf871b6203568bb12652b",
+          "revision": 1,
+          "text": "Cable EXACTO; /daily",
+          "updated_ms": 1793977200000
+        }
+      ],
+      "list_kind": "memories",
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "1: Cable EXACTO; /daily"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 1 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Cable EXACTO; /daily"
+      },
+      {
+        "kind": "notice",
+        "text": "Página 1/1 · 1 registros."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria*\n\nRef. 1 · preferencia\n\nCable EXACTO; /daily\n\nPágina 1/1 · 1 registros.",
+      "visual_version": 2,
+      "content_sha256": "f64eefca1b801b8c671393f2279ed57a5f7e6c65b8f69d78e1d9c95050ca6db0",
+      "rich_payload": {
+        "source_text": "Memoria\n\nRef. 1 · preferencia\n\nCable EXACTO; /daily\n\nPágina 1/1 · 1 registros."
+      },
+      "utf16_units": 80
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

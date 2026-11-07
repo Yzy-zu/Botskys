@@ -1,0 +1,66 @@
+{
+  "route": "/clip poner",
+  "operation": "audiovisual.clip.play",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+  "input": "/clip poner aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "callId": "8c91826a-8061-4664-b030-18cabad7d6c6",
+      "clip": {
+        "clipId": "aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601",
+        "id": "aecaede1-3950-4023-b6eb-491f5add7736",
+        "state": "playing",
+        "volume": 0.5
+      },
+      "message": "Clip solicitado: aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601. Estado del servicio: playing.",
+      "presentation_action": "play",
+      "presentation_family": "clip",
+      "replayed": false,
+      "success": true
+    },
+    "status": "ok",
+    "text": "Clip solicitado: aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601. Estado del servicio: playing."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: Reproduciendo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen aplicado: 50 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Clip solicitado: aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601. Estado del servicio: playing."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 50 %\n\nClip solicitado: aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601. Estado del servicio: playing.",
+      "visual_version": 2,
+      "content_sha256": "7fe95d611ac5936188180a13b8873486451af3795ac450c988b7624216b6529a",
+      "rich_payload": {
+        "source_text": "Clip\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 50 %\n\nClip solicitado: aacae1926ed769f21d262927eb054aa4483bd049349b1f1298fa7b2298fcd601. Estado del servicio: playing."
+      },
+      "utf16_units": 180
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

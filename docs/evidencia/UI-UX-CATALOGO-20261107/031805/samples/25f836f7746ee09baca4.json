@@ -1,0 +1,33 @@
+{
+  "route": "/tarea completar",
+  "operation": "manage_school.complete_task",
+  "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+  "input": "/tarea completar 1",
+  "result": {
+    "code": "task_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una tarea admisible con ese ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una tarea admisible con ese ID.",
+      "visual_version": 2,
+      "content_sha256": "42eb90730a4c3eddaa759c6b2db0b66da79ddee194b3319e8c3f0aee9cc1c547",
+      "rich_payload": {
+        "source_text": "No hay una tarea admisible con ese ID."
+      },
+      "utf16_units": 38
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "FAIL",
+  "semantic_candidate": false
+}

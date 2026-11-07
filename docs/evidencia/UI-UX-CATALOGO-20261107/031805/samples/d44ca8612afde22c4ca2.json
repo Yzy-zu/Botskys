@@ -1,0 +1,36 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_calls.CallsTest.test_cancel_before_dispatch_persists_tombstone_across_application_restart",
+  "input": "/cancelar 48c76c811aa026d78f9fb2150c1c7014",
+  "result": {
+    "code": "request_cancelled",
+    "data": {
+      "delivery_before_cancel": {},
+      "id": "48c76c811aa026d78f9fb2150c1c7014"
+    },
+    "status": "cancelled",
+    "text": "Cancelado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cancelado.",
+      "visual_version": 2,
+      "content_sha256": "9d02b170510a08bddfbdfe528f60ac93c2a9076b6e57d0a39a44bc4976ac10d1",
+      "rich_payload": {
+        "source_text": "Cancelado."
+      },
+      "utf16_units": 10
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

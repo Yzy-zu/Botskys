@@ -1,0 +1,57 @@
+{
+  "route": "/recordar en",
+  "operation": "manage_reminder.create",
+  "test": "test_organization.OrganizationTest.test_pending_notice_expiry_pause_and_sent_receipt_are_preserved",
+  "input": "/recordar en 30s caducará",
+  "result": {
+    "code": "reminder_created",
+    "data": {
+      "due_ms": 1793977230000,
+      "reminder_id": 1,
+      "text": "caducará"
+    },
+    "status": "ok",
+    "text": "Recordatorio 1: caducará\n2026-11-06 09:00:30 · Ciudad de México. Aviso pendiente; entrega aún no comprobada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorio 1 guardado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2026-11-06 09:00:30 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "caducará"
+      },
+      {
+        "kind": "notice",
+        "text": "Aviso pendiente; entrega aún no comprobada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorio 1 guardado*\n\n2026-11-06 09:00:30 · America/Mexico_City\n\ncaducará\n\nAviso pendiente; entrega aún no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "2c8306b6dbb8d38f3c7fda17e11bc6ec73f068b12a3e6147509270e8aa39c636",
+      "rich_payload": {
+        "source_text": "Recordatorio 1 guardado\n\n2026-11-06 09:00:30 · America/Mexico_City\n\ncaducará\n\nAviso pendiente; entrega aún no comprobada."
+      },
+      "utf16_units": 123
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

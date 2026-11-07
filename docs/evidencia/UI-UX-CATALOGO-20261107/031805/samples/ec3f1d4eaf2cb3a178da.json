@@ -1,0 +1,63 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_analysis_preserves_decoded_qr_when_gemini_fails",
+  "input": "/ia analiza",
+  "result": {
+    "code": "gemini_rate_limited",
+    "data": {
+      "purpose": "answer",
+      "qr_readings": [
+        {
+          "attachment": 1,
+          "status": "decoded",
+          "text": "BOTSKY-QR-FAILOVER",
+          "truncated": false
+        }
+      ]
+    },
+    "status": "failed",
+    "text": "Contenido QR verificado · archivo 1:\nBOTSKY-QR-FAILOVER\n\nEl análisis de IA no está disponible."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Contenido QR verificado · archivo 1"
+      },
+      {
+        "kind": "literal",
+        "text": "BOTSKY-QR-FAILOVER"
+      },
+      {
+        "kind": "heading",
+        "text": "Análisis de IA"
+      },
+      {
+        "kind": "paragraph",
+        "text": "El análisis de IA no está disponible."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Contenido QR verificado · archivo 1*\n\nBOTSKY-QR-FAILOVER\n\n*Análisis de IA*\n\nEl análisis de IA no está disponible.",
+      "visual_version": 2,
+      "content_sha256": "109632d7545385338d94706f27a3101e18baea96b1ebb57db9dec0413bbe60d9",
+      "rich_payload": {
+        "source_text": "Contenido QR verificado · archivo 1\n\nBOTSKY-QR-FAILOVER\n\nAnálisis de IA\n\nEl análisis de IA no está disponible."
+      },
+      "utf16_units": 114
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

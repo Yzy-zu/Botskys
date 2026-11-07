@@ -1,0 +1,68 @@
+{
+  "route": "/bj entrar",
+  "operation": "manage_blackjack.join",
+  "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+  "input": "/bj entrar fb53470e76a4447387c1c3d9fd19c3a9",
+  "result": {
+    "code": "blackjack_board",
+    "data": {
+      "bet": 50,
+      "dealer_visible": [],
+      "game_id": "fb53470e76a4447387c1c3d9fd19c3a9",
+      "players": [
+        {
+          "bet": 50,
+          "hand": [],
+          "score": 0,
+          "seat": 1,
+          "state": "waiting"
+        },
+        {
+          "bet": 50,
+          "hand": [],
+          "score": 0,
+          "seat": 2,
+          "state": "waiting"
+        }
+      ],
+      "revision": 2,
+      "state": "lobby",
+      "turn": 1
+    },
+    "status": "ok",
+    "text": "Blackjack fb53470e76a4447387c1c3d9fd19c3a9 · lobby · apuesta 50 XP.\nAsiento 1:  (0) · waiting\nAsiento 2:  (0) · waiting\n/bj entrar fb53470e76a4447387c1c3d9fd19c3a9\n/bj repartir fb53470e76a4447387c1c3d9fd19c3a9"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Mesa fb53470e76a4447387c1c3d9fd19c3a9 · Esperando jugadores\n\nApuesta: 50 XP por persona\n\nAsiento 1 ·  · 0 puntos · waiting\n\nAsiento 2 ·  · 0 puntos · waiting\n\n/bj entrar fb53470e76a4447387c1c3d9fd19c3a9\n/bj repartir fb53470e76a4447387c1c3d9fd19c3a9"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack*\n\nMesa fb53470e76a4447387c1c3d9fd19c3a9 · Esperando jugadores\n\nApuesta: 50 XP por persona\n\nAsiento 1 ·  · 0 puntos · waiting\n\nAsiento 2 ·  · 0 puntos · waiting\n\n/bj entrar fb53470e76a4447387c1c3d9fd19c3a9\n/bj repartir fb53470e76a4447387c1c3d9fd19c3a9",
+      "visual_version": 2,
+      "content_sha256": "577f223189af315f5bf01f483dd742266d394c515fb92abbba677cb0aeb9cb08",
+      "rich_payload": {
+        "source_text": "Blackjack\n\nMesa fb53470e76a4447387c1c3d9fd19c3a9 · Esperando jugadores\n\nApuesta: 50 XP por persona\n\nAsiento 1 ·  · 0 puntos · waiting\n\nAsiento 2 ·  · 0 puntos · waiting\n\n/bj entrar fb53470e76a4447387c1c3d9fd19c3a9\n/bj repartir fb53470e76a4447387c1c3d9fd19c3a9"
+      },
+      "utf16_units": 261
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,495 @@
+{
+  "route": "/recordatorios",
+  "operation": "manage_reminder.list",
+  "test": "test_pagination_presentation.PaginationPresentationTest.test_memory_and_closed_lists_keep_explicit_filters_on_next_page",
+  "input": "/recordatorios --cerradas",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "include_closed": true
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "ce15f5e4abca013fe363134c3e9143c8",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 0"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 2,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "91a1e075827412df39302bc134caec4d",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 1"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 3,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "e1a927bce1fab279fd69b93b5b706743",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 2"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 4,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "a9fda29c5c56005342cbfcb757b257fd",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 3"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 5,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "0d24b0aafe1ba1c12336a9b3f8bb3377",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 4"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 6,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "c3fe1e472717f80f99dbb2e7b4ab12e6",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 5"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 7,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "26e0e4d91d4232fa4a105c47adb2af35",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 6"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 8,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "414a30e67ab6b00564e9f8ca60983253",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 7"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 9,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "81c6362f3638779912f444b2cc11e836",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 8"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 10,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "624dbbb6e43fb6ad3c6c03b617cf3a83",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 9"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 11,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "823054eba50254c6e0c15df5acbe3ea6",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 10"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 12,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "4a2b01785d2cf3b3a76ec81c6972d382",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 11"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 13,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "fc901a3766d5dd710b1653e728e9cda7",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 12"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 14,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "f879b55551e3eb9c64f9f14e6175aab6",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 13"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 15,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "4373e5fd9457f9f8e7a48e08a4b62d18",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 14"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 16,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "b9ba4012ace4136c671ffe2a6f9703c0",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 15"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 17,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "bd801c73a9670115782ae52e8fcb748d",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 16"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 18,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "10adc74344a541b62542dcd762294069",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 17"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 19,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "24560e4f06aca29ff1155b2e32a6d446",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 18"
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 20,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "a752a44e9b815d34a0e01e369b46ce67",
+          "revision": 1,
+          "state": "pending",
+          "text": "Aviso 19"
+        }
+      ],
+      "list_kind": "reminders",
+      "page": 1,
+      "pages": 2,
+      "total": 21
+    },
+    "status": "ok",
+    "text": "1: Aviso 0\n2: Aviso 1\n3: Aviso 2\n4: Aviso 3\n5: Aviso 4\n6: Aviso 5\n7: Aviso 6\n8: Aviso 7\n9: Aviso 8\n10: Aviso 9\n11: Aviso 10\n12: Aviso 11\n13: Aviso 12\n14: Aviso 13\n15: Aviso 14\n16: Aviso 15\n17: Aviso 16\n18: Aviso 17\n19: Aviso 18\n20: Aviso 19"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Recordatorios",
+      "headers": [
+        "Ref.",
+        "Fecha",
+        "Estado",
+        "Texto"
+      ],
+      "rows": [
+        [
+          "1",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 0"
+        ],
+        [
+          "2",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 1"
+        ],
+        [
+          "3",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 2"
+        ],
+        [
+          "4",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 3"
+        ],
+        [
+          "5",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 4"
+        ],
+        [
+          "6",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 5"
+        ],
+        [
+          "7",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 6"
+        ],
+        [
+          "8",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 7"
+        ],
+        [
+          "9",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 8"
+        ],
+        [
+          "10",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 9"
+        ],
+        [
+          "11",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 10"
+        ],
+        [
+          "12",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 11"
+        ],
+        [
+          "13",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 12"
+        ],
+        [
+          "14",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 13"
+        ],
+        [
+          "15",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 14"
+        ],
+        [
+          "16",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 15"
+        ],
+        [
+          "17",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 16"
+        ],
+        [
+          "18",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 17"
+        ],
+        [
+          "19",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 18"
+        ],
+        [
+          "20",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Aviso 19"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nRecordatorios\n\nRef.: 1\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 0\n\nRef.: 2\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 1\n\nRef.: 3\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 2\n\nRef.: 4\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 3\n\nRef.: 5\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 4\n\nRef.: 6\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 5\n\nRef.: 7\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 6\n\nRef.: 8\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 7\n\nRef.: 9\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 8\n\nRef.: 10\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 9\n\nRef.: 11\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 10\n\nRef.: 12\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 11\n\nRef.: 13\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 12\n\nRef.: 14\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 13\n\nRef.: 15\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 14\n\nRef.: 16\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 15\n\nRef.: 17\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 16\n\nRef.: 18\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 17\n\nRef.: 19\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 18\n\nRef.: 20\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 19\n```\n\nPágina 1/2 · 21 registros.\n/recordatorios --pagina 2 --cerradas",
+      "visual_version": 2,
+      "content_sha256": "fcb6cbc9cea07f5a7dd848734c8f101be31520e68c3d3d598b42f4b7ed77bf88",
+      "rich_payload": {
+        "source_text": "Recordatorios\n\nRef.: 1\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 0\n\nRef.: 2\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 1\n\nRef.: 3\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 2\n\nRef.: 4\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 3\n\nRef.: 5\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 4\n\nRef.: 6\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 5\n\nRef.: 7\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 6\n\nRef.: 8\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 7\n\nRef.: 9\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 8\n\nRef.: 10\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 9\n\nRef.: 11\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 10\n\nRef.: 12\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 11\n\nRef.: 13\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 12\n\nRef.: 14\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 13\n\nRef.: 15\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 14\n\nRef.: 16\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 15\n\nRef.: 17\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 16\n\nRef.: 18\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 17\n\nRef.: 19\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 18\n\nRef.: 20\nFecha: 2026-11-06 09:10:00 · America/Mexico_City\nEstado: pendiente\nTexto: Aviso 19\n\nPágina 1/2 · 21 registros.\n/recordatorios --pagina 2 --cerradas"
+      },
+      "utf16_units": 1927
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

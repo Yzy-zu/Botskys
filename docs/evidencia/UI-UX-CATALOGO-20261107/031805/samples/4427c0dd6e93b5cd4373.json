@@ -1,0 +1,71 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_native_tables.TableStoreTest.test_invalid_table_preflight_and_tampered_hash_never_dispatch",
+  "input": "/ayuda",
+  "result": {
+    "code": "table_fixture",
+    "data": {
+      "native_footer": "Fin",
+      "native_intro": "Inicio",
+      "native_table": {
+        "headers": [
+          "Nombre",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "Uno"
+          ],
+          [
+            "RTL עברית",
+            "2"
+          ]
+        ],
+        "title": "Comparación"
+      }
+    },
+    "status": "ok",
+    "text": "Fuente canónica"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Comparación",
+      "headers": [
+        "Nombre",
+        "Valor"
+      ],
+      "rows": [
+        [
+          "*literal*",
+          "Uno"
+        ],
+        [
+          "RTL עברית",
+          "2"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Inicio\n\n```\nComparación\n\nNombre: *literal*\nValor: Uno\n\nNombre: RTL עברית\nValor: 2\n```\n\nFin",
+      "visual_version": 2,
+      "content_sha256": "4e3d89bff51ba7258efe7780b6de608d287377ff0ea3f8f450debdd2ce1317ab",
+      "rich_payload": {
+        "source_text": "Inicio\n\nComparación\n\nNombre: *literal*\nValor: Uno\n\nNombre: RTL עברית\nValor: 2\n\nFin"
+      },
+      "utf16_units": 90
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

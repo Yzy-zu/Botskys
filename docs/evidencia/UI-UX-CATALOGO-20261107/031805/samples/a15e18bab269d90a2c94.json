@@ -1,0 +1,33 @@
+{
+  "route": "/admin xp-quitar",
+  "operation": "manage_admin.xp_remove",
+  "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+  "input": "/admin xp-quitar --cuenta 1 101",
+  "result": {
+    "code": "admin_xp_limit",
+    "data": {},
+    "status": "failed",
+    "text": "Saldo o margen insuficientes; no se modificó XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Saldo o margen insuficientes; no se modificó XP.",
+      "visual_version": 2,
+      "content_sha256": "fa156ac31fff360ddd1d351c4333a037d238524e77fd88dad2667a93dd61fec0",
+      "rich_payload": {
+        "source_text": "Saldo o margen insuficientes; no se modificó XP."
+      },
+      "utf16_units": 48
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/mem listar",
+  "operation": "manage_memory.list",
+  "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+  "input": "/mem listar --tipo dato --pagina 3",
+  "result": {
+    "code": "page_out_of_range",
+    "data": {},
+    "status": "needs_input",
+    "text": "Página fuera de rango: 1–2."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Página fuera de rango: 1–2.",
+      "visual_version": 2,
+      "content_sha256": "d584eceafae06c86873e4f08e452254a286601a890cf50e9d006cdce1ec5069b",
+      "rich_payload": {
+        "source_text": "Página fuera de rango: 1–2."
+      },
+      "utf16_units": 27
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

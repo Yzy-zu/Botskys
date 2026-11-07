@@ -1,0 +1,33 @@
+{
+  "route": "/admin unban",
+  "operation": "manage_admin.unban",
+  "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+  "input": "/admin unban alice",
+  "result": {
+    "code": "admin_unban",
+    "data": {},
+    "status": "ok",
+    "text": "Bloqueo retirado del registro local; no se reincorporó a nadie."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Bloqueo retirado del registro local; no se reincorporó a nadie.",
+      "visual_version": 2,
+      "content_sha256": "ae8c623122265a77748c6d963abed0a513b344399e61666d06fafabb04883c17",
+      "rich_payload": {
+        "source_text": "Bloqueo retirado del registro local; no se reincorporó a nadie."
+      },
+      "utf16_units": 63
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

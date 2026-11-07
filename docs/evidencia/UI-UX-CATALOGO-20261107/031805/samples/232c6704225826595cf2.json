@@ -1,0 +1,33 @@
+{
+  "route": "/mc consola",
+  "operation": "manage_minecraft.console",
+  "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+  "input": "/mc consola rm -rf /",
+  "result": {
+    "code": "minecraft_local_validation",
+    "data": {},
+    "status": "needs_input",
+    "text": "El cambio no es admisible. Consola: list, save, time query daytime o weather query; no comandos del host."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El cambio no es admisible. Consola: list, save, time query daytime o weather query; no comandos del host.",
+      "visual_version": 2,
+      "content_sha256": "a9ca757575aca347c60288d3c92b1b1f778976f93f57c4ad6caaeb3d624a46d6",
+      "rich_payload": {
+        "source_text": "El cambio no es admisible. Consola: list, save, time query daytime o weather query; no comandos del host."
+      },
+      "utf16_units": 105
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

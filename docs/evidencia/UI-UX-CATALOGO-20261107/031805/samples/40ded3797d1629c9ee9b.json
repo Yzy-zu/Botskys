@@ -1,0 +1,77 @@
+{
+  "route": "/recordatorios",
+  "operation": "manage_reminder.list",
+  "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+  "input": "/recordatorios --cerradas",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "include_closed": true
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977230000,
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "ce15f5e4abca013fe363134c3e9143c8",
+          "revision": 2,
+          "state": "cancelled",
+          "text": "filtro"
+        }
+      ],
+      "list_kind": "reminders",
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "1: filtro"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Recordatorios",
+      "headers": [
+        "Ref.",
+        "Fecha",
+        "Estado",
+        "Texto"
+      ],
+      "rows": [
+        [
+          "1",
+          "2026-11-06 09:00:30 · America/Mexico_City",
+          "cancelado",
+          "filtro"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nRecordatorios\n\nRef.: 1\nFecha: 2026-11-06 09:00:30 · America/Mexico_City\nEstado: cancelado\nTexto: filtro\n```\n\nPágina 1/1 · 1 registros.",
+      "visual_version": 2,
+      "content_sha256": "4635f67d03e0a82f0eb6a527e6eea1892ec355e90722392e73f9eb39a8d1108c",
+      "rich_payload": {
+        "source_text": "Recordatorios\n\nRef.: 1\nFecha: 2026-11-06 09:00:30 · America/Mexico_City\nEstado: cancelado\nTexto: filtro\n\nPágina 1/1 · 1 registros."
+      },
+      "utf16_units": 138
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

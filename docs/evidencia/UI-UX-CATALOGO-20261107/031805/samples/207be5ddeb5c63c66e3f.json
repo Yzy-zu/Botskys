@@ -1,0 +1,33 @@
+{
+  "route": "/nota guardar",
+  "operation": "save_note.run",
+  "test": "test_core.CoreTest.test_permissions_before_dispatch_and_revalidated_after_admission",
+  "input": "",
+  "result": {
+    "code": "group_denied",
+    "data": {},
+    "status": "failed",
+    "text": "Este grupo no está habilitado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Este grupo no está habilitado.",
+      "visual_version": 2,
+      "content_sha256": "b6408299a69974f300b3d83a75c8528f318d3e7fa53f7f8efd1cc01bfc36a87a",
+      "rich_payload": {
+        "source_text": "Este grupo no está habilitado."
+      },
+      "utf16_units": 30
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,121 @@
+{
+  "route": "/dl buscar",
+  "operation": "download_media.search",
+  "test": "test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again",
+  "input": "/dl buscar mp4 primera",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp4",
+        "quality": "standard",
+        "source": "youtube",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "c5047bf698ba473fa20d034aa3a01ec6"
+      ],
+      "choices": [
+        {
+          "author": null,
+          "duration": null,
+          "thumbnail_url": null,
+          "title": "Video sintético /nota guardar NO",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "literal",
+            "text": "1. Video sintético /nota guardar NO\nDuración desconocida · Autor desconocido · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Lista disponible durante 15:00. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 22929,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "view_id": "06b7f4c61dec4f38871edfbf1f368762"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n1. Video sintético /nota guardar NO\nDuración desconocida · Autor desconocido · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "literal",
+        "text": "1. Video sintético /nota guardar NO\nDuración desconocida · Autor desconocido · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Lista disponible durante 15:00. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "09b4876ca76d66d4cd736438c27ad70f14af480a7540527ec5f5f1a1178c3123",
+      "rich_payload": {
+        "artifacts": [
+          "c5047bf698ba473fa20d034aa3a01ec6"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n```\n1. Video sintético /nota guardar NO\nDuración desconocida · Autor desconocido · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n```\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "56f4bf56c0b4087a48cb20b471eed24a4042d75c3b860bd3565e5b1b9318f455",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Video sintético /nota guardar NO\nDuración desconocida · Autor desconocido · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 215
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

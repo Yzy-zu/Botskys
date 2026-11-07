@@ -1,0 +1,52 @@
+{
+  "route": "/hh airdrop",
+  "operation": "manage_happy_hour.airdrop",
+  "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+  "input": "/hh airdrop d72c2ea8c42e477188db92591d131871",
+  "result": {
+    "code": "happy_drop_announced",
+    "data": {
+      "drop_id": "ddcabac67a7d424a89d35a2d13dfc71d",
+      "event_id": "d72c2ea8c42e477188db92591d131871"
+    },
+    "status": "ok",
+    "text": "AirDrop ddcabac67a7d424a89d35a2d13dfc71d: la primera reclamación posterior a la entrega de este aviso gana500 XP.\n/hh reclamar ddcabac67a7d424a89d35a2d13dfc71d"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "AirDrop · 500 XP"
+      },
+      {
+        "kind": "notice",
+        "text": "Gana la primera reclamación posterior a la entrega de este aviso."
+      },
+      {
+        "kind": "next_action",
+        "text": "/hh reclamar ddcabac67a7d424a89d35a2d13dfc71d"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*AirDrop · 500 XP*\n\nGana la primera reclamación posterior a la entrega de este aviso.\n\n`/hh reclamar ddcabac67a7d424a89d35a2d13dfc71d`",
+      "visual_version": 2,
+      "content_sha256": "a55a387c1b725468fb90df088166f5752ae0eb0938c2de195741412e0aba7245",
+      "rich_payload": {
+        "source_text": "AirDrop · 500 XP\n\nGana la primera reclamación posterior a la entrega de este aviso.\n\n/hh reclamar ddcabac67a7d424a89d35a2d13dfc71d"
+      },
+      "utf16_units": 134
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

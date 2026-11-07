@@ -1,0 +1,57 @@
+{
+  "route": "/avatar gesto",
+  "operation": "audiovisual.avatar.gesture",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/avatar gesto wave --duracion 2",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "avatar": {
+        "appliedGesture": {
+          "applied": true,
+          "requested": "wave"
+        },
+        "background": "wave"
+      },
+      "message": "Gesto aplicado.",
+      "presentation_action": "gesture",
+      "presentation_family": "avatar",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Gesto aplicado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Avatar"
+      },
+      {
+        "kind": "notice",
+        "text": "Gesto aplicado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Avatar*\n\nGesto aplicado.",
+      "visual_version": 2,
+      "content_sha256": "0c4962e2478cd5c4130e999ef9b38b3cbd5b78fb67df7115128a9862f927f3a7",
+      "rich_payload": {
+        "source_text": "Avatar\n\nGesto aplicado."
+      },
+      "utf16_units": 25
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+  "input": "/admin nuclear-confirmar 5bd0dd76daa9409f81ce649a5ca3504c",
+  "result": {
+    "code": "nuclear_preview_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Recibe la vista propia completa vigente y después confirma su ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recibe la vista propia completa vigente y después confirma su ID.",
+      "visual_version": 2,
+      "content_sha256": "cb86aac8c1a9b4da08728b1ebae6559aedfe8d9fe7ef7723168c480f29179f36",
+      "rich_payload": {
+        "source_text": "Recibe la vista propia completa vigente y después confirma su ID."
+      },
+      "utf16_units": 65
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

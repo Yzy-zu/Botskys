@@ -1,0 +1,515 @@
+{
+  "route": "/mem listar",
+  "operation": "manage_memory.list",
+  "test": "test_pagination_presentation.PaginationPresentationTest.test_memory_and_closed_lists_keep_explicit_filters_on_next_page",
+  "input": "/mem listar --tipo preferencia",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "kind": "preferencia"
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "42b392cfd3daf871b6203568bb12652b",
+          "revision": 1,
+          "text": "Preferencia 0",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 2,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "453167ff299950c8b61e24957d19e944",
+          "revision": 1,
+          "text": "Preferencia 1",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 3,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "301487e7ec6832527035990de2545dbe",
+          "revision": 1,
+          "text": "Preferencia 2",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 4,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "ae3b1be942e966a5126c5eb24236496a",
+          "revision": 1,
+          "text": "Preferencia 3",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 5,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "16172b33062ad53b54a6541bb356ea21",
+          "revision": 1,
+          "text": "Preferencia 4",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 6,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "450c8a81cb5bf8a32ef2f50dc667f4a0",
+          "revision": 1,
+          "text": "Preferencia 5",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 7,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "2cfbf6cb301c260ff2affb5aa71612c4",
+          "revision": 1,
+          "text": "Preferencia 6",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 8,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "f0e80699b76f9b717d144336f0d3ef8d",
+          "revision": 1,
+          "text": "Preferencia 7",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 9,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "b344ca1a876305b051eba3301e56015c",
+          "revision": 1,
+          "text": "Preferencia 8",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 10,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "e59ad58e7b05c581c65e700e6a58998a",
+          "revision": 1,
+          "text": "Preferencia 9",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 11,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "4853dc7194d07071b29e94c9bb327335",
+          "revision": 1,
+          "text": "Preferencia 10",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 12,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "8e3109862169d64d8f6e68ebef08cab0",
+          "revision": 1,
+          "text": "Preferencia 11",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 13,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "8a3e71e5a85328a5ee3da9c48634b2a7",
+          "revision": 1,
+          "text": "Preferencia 12",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 14,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "3aed2ff909c721c92bc9b8090a83c334",
+          "revision": 1,
+          "text": "Preferencia 13",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 15,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "657668b0fbfdeee9e9c4fa3709e58880",
+          "revision": 1,
+          "text": "Preferencia 14",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 16,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "a84151391974fddcf16fdbca207fcdff",
+          "revision": 1,
+          "text": "Preferencia 15",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 17,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "e71cfc44d2bf2e800d7e16a618e6f24c",
+          "revision": 1,
+          "text": "Preferencia 16",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 18,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "a7267724902aad701aa908560e50e84e",
+          "revision": 1,
+          "text": "Preferencia 17",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 19,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "0807435d566920a197e43c79a2341475",
+          "revision": 1,
+          "text": "Preferencia 18",
+          "updated_ms": 1793977200000
+        },
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "epoch": 1,
+          "id": 20,
+          "instance": "org-lab",
+          "is_group": 0,
+          "kind": "preferencia",
+          "receipt_id": "c5d249b02285b6525ec91064e2a72367",
+          "revision": 1,
+          "text": "Preferencia 19",
+          "updated_ms": 1793977200000
+        }
+      ],
+      "list_kind": "memories",
+      "page": 1,
+      "pages": 2,
+      "total": 21
+    },
+    "status": "ok",
+    "text": "1: Preferencia 0\n2: Preferencia 1\n3: Preferencia 2\n4: Preferencia 3\n5: Preferencia 4\n6: Preferencia 5\n7: Preferencia 6\n8: Preferencia 7\n9: Preferencia 8\n10: Preferencia 9\n11: Preferencia 10\n12: Preferencia 11\n13: Preferencia 12\n14: Preferencia 13\n15: Preferencia 14\n16: Preferencia 15\n17: Preferencia 16\n18: Preferencia 17\n19: Preferencia 18\n20: Preferencia 19"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 1 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 0"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 2 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 1"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 3 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 2"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 4 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 5 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 4"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 6 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 5"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 7 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 6"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 8 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 7"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 9 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 8"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 10 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 9"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 11 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 10"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 12 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 11"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 13 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 12"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 14 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 13"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 15 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 14"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 16 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 15"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 17 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 16"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 18 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 17"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 19 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 18"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ref. 20 · preferencia"
+      },
+      {
+        "kind": "literal",
+        "text": "Preferencia 19"
+      },
+      {
+        "kind": "notice",
+        "text": "Página 1/2 · 21 registros.\n/mem listar --pagina 2 --tipo preferencia"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria*\n\nRef. 1 · preferencia\n\nPreferencia 0\n\nRef. 2 · preferencia\n\nPreferencia 1\n\nRef. 3 · preferencia\n\nPreferencia 2\n\nRef. 4 · preferencia\n\nPreferencia 3\n\nRef. 5 · preferencia\n\nPreferencia 4\n\nRef. 6 · preferencia\n\nPreferencia 5\n\nRef. 7 · preferencia\n\nPreferencia 6\n\nRef. 8 · preferencia\n\nPreferencia 7\n\nRef. 9 · preferencia\n\nPreferencia 8\n\nRef. 10 · preferencia\n\nPreferencia 9\n\nRef. 11 · preferencia\n\nPreferencia 10\n\nRef. 12 · preferencia\n\nPreferencia 11\n\nRef. 13 · preferencia\n\nPreferencia 12\n\nRef. 14 · preferencia\n\nPreferencia 13\n\nRef. 15 · preferencia\n\nPreferencia 14\n\nRef. 16 · preferencia\n\nPreferencia 15\n\nRef. 17 · preferencia\n\nPreferencia 16\n\nRef. 18 · preferencia\n\nPreferencia 17\n\nRef. 19 · preferencia\n\nPreferencia 18\n\nRef. 20 · preferencia\n\nPreferencia 19\n\nPágina 1/2 · 21 registros.\n/mem listar --pagina 2 --tipo preferencia",
+      "visual_version": 2,
+      "content_sha256": "7fd0c6e1d1cd16d277ad5a1257c81e9ffdb9580726ce7d0953ffceaeb2b7ccdc",
+      "rich_payload": {
+        "source_text": "Memoria\n\nRef. 1 · preferencia\n\nPreferencia 0\n\nRef. 2 · preferencia\n\nPreferencia 1\n\nRef. 3 · preferencia\n\nPreferencia 2\n\nRef. 4 · preferencia\n\nPreferencia 3\n\nRef. 5 · preferencia\n\nPreferencia 4\n\nRef. 6 · preferencia\n\nPreferencia 5\n\nRef. 7 · preferencia\n\nPreferencia 6\n\nRef. 8 · preferencia\n\nPreferencia 7\n\nRef. 9 · preferencia\n\nPreferencia 8\n\nRef. 10 · preferencia\n\nPreferencia 9\n\nRef. 11 · preferencia\n\nPreferencia 10\n\nRef. 12 · preferencia\n\nPreferencia 11\n\nRef. 13 · preferencia\n\nPreferencia 12\n\nRef. 14 · preferencia\n\nPreferencia 13\n\nRef. 15 · preferencia\n\nPreferencia 14\n\nRef. 16 · preferencia\n\nPreferencia 15\n\nRef. 17 · preferencia\n\nPreferencia 16\n\nRef. 18 · preferencia\n\nPreferencia 17\n\nRef. 19 · preferencia\n\nPreferencia 18\n\nRef. 20 · preferencia\n\nPreferencia 19\n\nPágina 1/2 · 21 registros.\n/mem listar --pagina 2 --tipo preferencia"
+      },
+      "utf16_units": 840
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

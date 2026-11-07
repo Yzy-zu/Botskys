@@ -1,0 +1,33 @@
+{
+  "route": "/bj cancelar",
+  "operation": "manage_blackjack.cancel",
+  "test": "test_games.GamesTest.test_blackjack_table_stakes_own_wallet_turns_and_cancel_refund_once",
+  "input": "/bj cancelar fb53470e76a4447387c1c3d9fd19c3a9",
+  "result": {
+    "code": "blackjack_host_required",
+    "data": {},
+    "status": "failed",
+    "text": "Solo anfitrión o dueño cancela esta partida."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Solo anfitrión o dueño cancela esta partida.",
+      "visual_version": 2,
+      "content_sha256": "85eae7019cc40596e4c7d28b0471dfb5ca8447db640ed0e81180e7e38ded4cd5",
+      "rich_payload": {
+        "source_text": "Solo anfitrión o dueño cancela esta partida."
+      },
+      "utf16_units": 44
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -150,7 +150,7 @@ class RuntimeTest(IsolatedAsyncioTestCase):
             await deliver_async(
                 self.app.store, identifier, self.settings, self.transport, self.app.clock
             ),
-            2,
+            1,
         )
         media = next(body for body in self.sent if "media" in body)
         self.assertEqual(len(PdfReader(io.BytesIO(base64.b64decode(media["media"]))).pages), 1)

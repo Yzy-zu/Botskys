@@ -1,0 +1,37 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_analysis_preserves_valid_audio_and_video_for_provider",
+  "input": "/ia analiza el medio",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "Análisis del medio.",
+      "purpose": "answer",
+      "qr_readings": []
+    },
+    "status": "ok",
+    "text": "Análisis del medio."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Análisis del medio.",
+      "visual_version": 2,
+      "content_sha256": "f8ad115ef87c19afbfc5ace9a8e362e3fa66fd46aad16fff48c91f81aca99bac",
+      "rich_payload": {
+        "source_text": "Análisis del medio."
+      },
+      "utf16_units": 19
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

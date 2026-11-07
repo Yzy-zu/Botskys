@@ -1,0 +1,33 @@
+{
+  "route": "/buscar",
+  "operation": "search_web.run",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/buscar ejemplo",
+  "result": {
+    "code": "web_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "El buscador remoto no está habilitado en este laboratorio."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El buscador remoto no está habilitado en este laboratorio.",
+      "visual_version": 2,
+      "content_sha256": "54d2054bf96805b73cf23a2e61463569ff7a7a5994bcd009f5c24a86cba1e86a",
+      "rich_payload": {
+        "source_text": "El buscador remoto no está habilitado en este laboratorio."
+      },
+      "utf16_units": 58
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

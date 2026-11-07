@@ -108,3 +108,56 @@ class VisualIntegrityTest(TestCase):
             (receipt.id, media["position"]),
         )[0]
         self.assertEqual(row["error_code"], "presentation_plan_corrupt")
+
+    def test_quote_of_intermediate_table_reads_whole_canonical_answer_and_rejects_partial(self):
+        from botsky.domains.ai import literal_source
+
+        self.app.store.native_tables_enabled = True
+        table = {
+            "title": "Comparación",
+            "headers": ["Dato", "Valor"],
+            "rows": [["*literal*", "42"]],
+        }
+        source = "Introducción\n\nDato: *literal*\nValor: 42\n\nFinal"
+        receipt = self.enqueue(
+            Result(
+                "ok",
+                "own_fixture",
+                source,
+                {"native_table": table, "native_intro": "Introducción", "native_footer": "Final"},
+            )
+        )
+        intro, rev = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.app.store.finish_part(
+            intro, rev, self.settings, "accepted", "intro-full", None, self.now
+        )
+        tablepart, rev = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.app.store.finish_part(
+            tablepart, rev, self.settings, "accepted", "middle-table", None, self.now
+        )
+        request = self.receive("/estado", quoted_message_id="middle-table")
+        with self.app.store.transaction() as db:
+            row = db.execute("SELECT * FROM inbox WHERE id=?", (request.id,)).fetchone()
+            self.assertIsNone(literal_source(db, context_of(row), row, "quote", self.now))
+        self.app.deliver(receipt.id, self.transport)
+        request = self.receive("/estado", quoted_message_id="middle-table")
+        with self.app.store.transaction() as db:
+            row = db.execute("SELECT * FROM inbox WHERE id=?", (request.id,)).fetchone()
+            self.assertEqual(literal_source(db, context_of(row), row, "quote", self.now), source)
+
+    def test_file_only_literal_remains_an_exact_citable_source(self):
+        from botsky.domains.ai import literal_source
+
+        literal = "%PDF-1.4\n```\n/daily\n*not a command*"
+        receipt = self.enqueue(
+            attach_document(Result("ok", "own_fixture"), Document((Block("literal", literal),)))
+        )
+        self.app.deliver(receipt.id, self.transport)
+        message = self.rows(
+            "SELECT provider_message_id FROM outbox WHERE receipt_id=? ORDER BY position DESC",
+            (receipt.id,),
+        )[0]["provider_message_id"]
+        request = self.receive("/estado", quoted_message_id=message)
+        with self.app.store.transaction() as db:
+            row = db.execute("SELECT * FROM inbox WHERE id=?", (request.id,)).fetchone()
+            self.assertEqual(literal_source(db, context_of(row), row, "quote", self.now), literal)

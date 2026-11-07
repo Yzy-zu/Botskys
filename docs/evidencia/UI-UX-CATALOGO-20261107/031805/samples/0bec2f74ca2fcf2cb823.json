@@ -1,0 +1,38 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_presentation.PresentationTest.test_short_follow_never_guesses_and_retains_scope",
+  "input": "/cancelar",
+  "result": {
+    "code": "request_ambiguous",
+    "data": {
+      "candidates": [
+        "62b0d1e638a9f8355928d0e294309f4d",
+        "17f24733f428701bf018c0b4927396ea"
+      ]
+    },
+    "status": "needs_input",
+    "text": "Hay varios encargos. Elige uno con su referencia:\n/cancelar 62b0d1e638a9f8355928d0e294309f4d\n/cancelar 17f24733f428701bf018c0b4927396ea"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hay varios encargos. Elige uno con su referencia:\n/cancelar 62b0d1e638a9f8355928d0e294309f4d\n/cancelar 17f24733f428701bf018c0b4927396ea",
+      "visual_version": 2,
+      "content_sha256": "111df4917b2e5b40bc2d1f374136db2d28e9ce58718a831063a2732de6480ceb",
+      "rich_payload": {
+        "source_text": "Hay varios encargos. Elige uno con su referencia:\n/cancelar 62b0d1e638a9f8355928d0e294309f4d\n/cancelar 17f24733f428701bf018c0b4927396ea"
+      },
+      "utf16_units": 135
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

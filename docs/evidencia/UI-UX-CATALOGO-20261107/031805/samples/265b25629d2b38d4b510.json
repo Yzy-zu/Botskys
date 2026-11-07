@@ -1,0 +1,33 @@
+{
+  "route": "/mem borrar-todo",
+  "operation": "manage_memory.forget_all",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/mem borrar-todo",
+  "result": {
+    "code": "memory_empty",
+    "data": {},
+    "status": "empty",
+    "text": "No hay recuerdos que borrar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay recuerdos que borrar.",
+      "visual_version": 2,
+      "content_sha256": "7afd275e7288782d76bf0adf1964dedcbd3b8d155a00fdbd486f2aa1b1638979",
+      "rich_payload": {
+        "source_text": "No hay recuerdos que borrar."
+      },
+      "utf16_units": 28
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

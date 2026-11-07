@@ -1,0 +1,33 @@
+{
+  "route": "/pack comprar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_unpublished_category_is_rejected_before_creating_an_offer",
+  "input": "/pack comprar categoria_inexistente_99999",
+  "result": {
+    "code": "pack_category_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "Esa categoría no está publicada. Consulta /pack catalogo; no se creó una oferta."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Esa categoría no está publicada. Consulta /pack catalogo; no se creó una oferta.",
+      "visual_version": 2,
+      "content_sha256": "6942ed860e73a6a0579a40c8d9fe8de9416597542d9a909f15f6426ce06eb2a4",
+      "rich_payload": {
+        "source_text": "Esa categoría no está publicada. Consulta /pack catalogo; no se creó una oferta."
+      },
+      "utf16_units": 80
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,36 @@
+{
+  "route": "/ruleta jugar",
+  "operation": "manage_roulette.play",
+  "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+  "input": "/ruleta jugar bc6bb38568dd4e0186242c93082d9d3a",
+  "result": {
+    "code": "roulette_status",
+    "data": {
+      "room_id": "bc6bb38568dd4e0186242c93082d9d3a",
+      "state": "uncertain"
+    },
+    "status": "uncertain",
+    "text": "El efecto está pendiente; no se repite."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El efecto está pendiente; no se repite.",
+      "visual_version": 2,
+      "content_sha256": "29da5af370d314949eb6b5673ca865939e7b0e007fd914dfa2bbef4c5d832d63",
+      "rich_payload": {
+        "source_text": "El efecto está pendiente; no se repite."
+      },
+      "utf16_units": 39
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

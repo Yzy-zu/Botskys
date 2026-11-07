@@ -1,0 +1,33 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+  "input": "/pack confirmar 852ae3e3b26d4009902516b44f5b4799",
+  "result": {
+    "code": "pack_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay compra propia con ese ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay compra propia con ese ID.",
+      "visual_version": 2,
+      "content_sha256": "9cafc9f198bb524800e4b9411d696d820c363a9e898a2202e5f827a4206e4dd3",
+      "rich_payload": {
+        "source_text": "No hay compra propia con ese ID."
+      },
+      "utf16_units": 32
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

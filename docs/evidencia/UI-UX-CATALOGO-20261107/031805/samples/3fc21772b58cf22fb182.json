@@ -1,0 +1,55 @@
+{
+  "route": "/horario listar",
+  "operation": "manage_school.list_schedule",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/horario listar",
+  "result": {
+    "code": "school_schedule",
+    "data": {
+      "items": []
+    },
+    "status": "empty",
+    "text": "Sin clases."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Horario"
+      },
+      {
+        "kind": "paragraph",
+        "text": ""
+      },
+      {
+        "kind": "notice",
+        "text": "Sin registros para mostrar."
+      },
+      {
+        "kind": "notice",
+        "text": "Zona: America/Mexico_City"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Horario*\n\nSin registros para mostrar.\n\nZona: America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "7f1f361f60cc7e58906b1794aa6c72b4141b7edec051ad64c7e096a14022e6ee",
+      "rich_payload": {
+        "source_text": "Horario\n\nSin registros para mostrar.\n\nZona: America/Mexico_City"
+      },
+      "utf16_units": 65
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

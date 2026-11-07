@@ -1,0 +1,29 @@
+test_ban_stores_verified_target_and_known_ack_without_repeating (test_visual_route_gaps.AdminVisualGaps.test_ban_stores_verified_target_and_known_ack_without_repeating) ... ok
+test_hit_changes_saved_hand_and_shows_new_score_without_hidden_dealer_card (test_visual_route_gaps.BlackjackVisualGaps.test_hit_changes_saved_hand_and_shows_new_score_without_hidden_dealer_card) ... ok
+test_next_selects_second_actual_synthetic_clip_and_reports_observed_name (test_visual_route_gaps.ClipVisualGaps.test_next_selects_second_actual_synthetic_clip_and_reports_observed_name) ... ok
+test_discover_stop_restart_use_only_runner_and_restart_health_is_observed (test_visual_route_gaps.MinecraftVisualGaps.test_discover_stop_restart_use_only_runner_and_restart_health_is_observed) ... ok
+test_author_completes_and_deletes_actual_task_with_visible_result (test_visual_route_gaps.SchoolVisualGaps.test_author_completes_and_deletes_actual_task_with_visible_result) ... FAIL
+
+======================================================================
+FAIL: test_author_completes_and_deletes_actual_task_with_visible_result (test_visual_route_gaps.SchoolVisualGaps.test_author_completes_and_deletes_actual_task_with_visible_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_visual_route_gaps.py", line 42, in test_author_completes_and_deletes_actual_task_with_visible_result
+    self.assertTrue(any("completada" in p.text for p in transport.parts))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.295s
+
+FAILED (failures=1)
+test_ban_stores_verified_target_and_known_ack_without_repeating (test_visual_route_gaps.AdminVisualGaps.test_ban_stores_verified_target_and_known_ack_without_repeating) ... ok
+test_hit_changes_saved_hand_and_shows_new_score_without_hidden_dealer_card (test_visual_route_gaps.BlackjackVisualGaps.test_hit_changes_saved_hand_and_shows_new_score_without_hidden_dealer_card) ... ok
+test_next_selects_second_actual_synthetic_clip_and_reports_observed_name (test_visual_route_gaps.ClipVisualGaps.test_next_selects_second_actual_synthetic_clip_and_reports_observed_name) ... ok
+test_discover_stop_restart_use_only_runner_and_restart_health_is_observed (test_visual_route_gaps.MinecraftVisualGaps.test_discover_stop_restart_use_only_runner_and_restart_health_is_observed) ... ok
+test_author_completes_and_deletes_actual_task_with_visible_result (test_visual_route_gaps.SchoolVisualGaps.test_author_completes_and_deletes_actual_task_with_visible_result) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.351s
+
+OK

@@ -1,0 +1,64 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_cancelled_message_or_changed_directory_between_parts_cannot_continue",
+  "input": "/recado enviar 701091c51ecc445486ce227063651a58",
+  "result": {
+    "code": "message_status",
+    "data": {
+      "draft_id": "701091c51ecc445486ce227063651a58",
+      "parts": [
+        {
+          "contact_name": "Amiga",
+          "error_code": null,
+          "kind": "text",
+          "position": 0,
+          "state": "accepted"
+        },
+        {
+          "contact_name": "Otra",
+          "error_code": null,
+          "kind": "text",
+          "position": 1,
+          "state": "cancelled"
+        }
+      ],
+      "state": "partial"
+    },
+    "status": "ok",
+    "text": "Recado 701091c51ecc445486ce227063651a58: partial.\nAmiga · text: accepted\nOtra · text: cancelled"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "parcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: cancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado del recado*\n\nparcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: cancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "73e6fc19ad91f3b17281d165f24b9436a3dbad9e80c2c9ebde55dba35d83c40f",
+      "rich_payload": {
+        "source_text": "Estado del recado\n\nparcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: cancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      },
+      "utf16_units": 189
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

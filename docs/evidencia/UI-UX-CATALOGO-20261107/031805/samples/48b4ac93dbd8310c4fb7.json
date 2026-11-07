@@ -1,0 +1,33 @@
+{
+  "route": "/horario borrar",
+  "operation": "manage_school.delete_lesson",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/horario borrar 1",
+  "result": {
+    "code": "school_lesson_deleted",
+    "data": {},
+    "status": "ok",
+    "text": "Clase eliminada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Clase eliminada.",
+      "visual_version": 2,
+      "content_sha256": "d8d10036d586ec294ad7f993c32f24b85343b11fcaadd28295eda9f29648d846",
+      "rich_payload": {
+        "source_text": "Clase eliminada."
+      },
+      "utf16_units": 16
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

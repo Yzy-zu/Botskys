@@ -1,0 +1,36 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+  "input": "/cancelar ac26c0f73dd512c1575301e43759eb69",
+  "result": {
+    "code": "already_finished",
+    "data": {
+      "id": "ac26c0f73dd512c1575301e43759eb69",
+      "state": "completed"
+    },
+    "status": "empty",
+    "text": "El encargo ya terminó; no se deshace su efecto."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El encargo ya terminó; no se deshace su efecto.",
+      "visual_version": 2,
+      "content_sha256": "2a95478ae5e2c38a78439e3746af1d053652540b7cab55b0c9bf03807bc2b2d9",
+      "rich_payload": {
+        "source_text": "El encargo ya terminó; no se deshace su efecto."
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

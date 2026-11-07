@@ -1,0 +1,79 @@
+{
+  "route": "/tareas",
+  "operation": "manage_school.list_tasks",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/tareas",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "include_closed": false
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "owner",
+          "artifact_id": null,
+          "chat": "group",
+          "created_ms": 1793977200000,
+          "due_date": "2026-12-01",
+          "due_time": "12:00",
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 1,
+          "receipt_id": "ae3b1be942e966a5126c5eb24236496a",
+          "revision": 1,
+          "state": "pending",
+          "subject": "Historia",
+          "text": "Texto literal"
+        }
+      ],
+      "list_kind": "school_tasks",
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "Tareas: 1. Página 1/1.\n1: Historia · Texto literal\nEntrega: 2026-12-01 12:00 · Ciudad de México · pendiente."
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Tareas",
+      "headers": [
+        "Ref.",
+        "Estado",
+        "Entrega",
+        "Tarea"
+      ],
+      "rows": [
+        [
+          "1",
+          "pendiente",
+          "2026-12-01 12:00 · America/Mexico_City",
+          "Historia · Texto literal"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nTareas\n\nRef.: 1\nEstado: pendiente\nEntrega: 2026-12-01 12:00 · America/Mexico_City\nTarea: Historia · Texto literal\n```\n\nPágina 1/1 · 1 registros.",
+      "visual_version": 2,
+      "content_sha256": "c8ddee847e712a3a1e2eb2f4b1d96310ab8a8f5b7fee416a243640271c8a7080",
+      "rich_payload": {
+        "source_text": "Tareas\n\nRef.: 1\nEstado: pendiente\nEntrega: 2026-12-01 12:00 · America/Mexico_City\nTarea: Historia · Texto literal\n\nPágina 1/1 · 1 registros."
+      },
+      "utf16_units": 148
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

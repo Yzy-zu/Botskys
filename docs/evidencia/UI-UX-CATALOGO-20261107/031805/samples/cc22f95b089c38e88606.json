@@ -1,0 +1,39 @@
+{
+  "route": "/mc parar",
+  "operation": "manage_minecraft.stop",
+  "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+  "input": "/mc parar",
+  "result": {
+    "code": "minecraft_uncertain",
+    "data": {
+      "action": "stop",
+      "response": {
+        "action": "stop",
+        "status": "uncertain"
+      }
+    },
+    "status": "uncertain",
+    "text": "Minecraft: resultado uncertain. No se repetirá automáticamente."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Minecraft: resultado uncertain. No se repetirá automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "75fc7fd2a56162755eb5474154432eac6974f8cdadd955709042c9b1f94b7027",
+      "rich_payload": {
+        "source_text": "Minecraft: resultado uncertain. No se repetirá automáticamente."
+      },
+      "utf16_units": 63
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

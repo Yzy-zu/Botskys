@@ -1,0 +1,68 @@
+{
+  "route": "/editar",
+  "operation": "edit_media.run",
+  "test": "test_media.MediaTest.test_same_video_mp3_actual_stream_and_clip_duration",
+  "input": "/editar mp3",
+  "result": {
+    "code": "media_edited",
+    "data": {
+      "artifacts": [
+        "0bdf26f108584f5883000e8bbbbd7f96"
+      ],
+      "file_facts": [
+        {
+          "bytes": 33171,
+          "duration_seconds": 2.005333,
+          "extension": "mp3",
+          "format": "mp3"
+        }
+      ],
+      "format": "mp3"
+    },
+    "status": "ok",
+    "text": "Archivo convertido."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Audio o video convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: MP3 · 32.39 KiB (33171 bytes) · Duración: 0:02"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo convertido."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "2be89f6fbc10830906e5d8ee55ea66178f0adfc3cd96e4f187bff3e55b86f39b",
+      "rich_payload": {
+        "artifacts": [
+          "0bdf26f108584f5883000e8bbbbd7f96"
+        ],
+        "caption": "*Audio o video convertido*\n\nFormato final: MP3 · 32.39 KiB (33171 bytes) · Duración: 0:02\n\nArchivo convertido.",
+        "caption_frozen": true,
+        "name": "Botsky.mp3",
+        "source_text": "Audio o video convertido\n\nFormato final: MP3 · 32.39 KiB (33171 bytes) · Duración: 0:02\n\nArchivo convertido."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,59 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+  "input": "/admin nuclear-confirmar 27c39fedcca24a2eb9a47c3a04bcfefc",
+  "result": {
+    "code": "nuclear_status",
+    "data": {
+      "cost": 5000,
+      "counts": {
+        "failed": 1,
+        "skipped": 1
+      },
+      "draft_id": "27c39fedcca24a2eb9a47c3a04bcfefc",
+      "state": "cancelled"
+    },
+    "status": "ok",
+    "text": "Nuclear 27c39fedcca24a2eb9a47c3a04bcfefc: cancelled · coste 5000 XP. failed: 1, skipped: 1"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Estado de operación nuclear",
+      "headers": [
+        "Estado de destinatarios",
+        "Cantidad"
+      ],
+      "rows": [
+        [
+          "fallido",
+          "1"
+        ],
+        [
+          "omitido",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Coste: 5000 XP · cancelado\n\n```\nEstado de operación nuclear\n\nEstado de destinatarios: fallido\nCantidad: 1\n\nEstado de destinatarios: omitido\nCantidad: 1\n```\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+      "visual_version": 2,
+      "content_sha256": "da643ee128fdba7a7975325c545eaa2cf84c329d89fedefdda4691134f216808",
+      "rich_payload": {
+        "source_text": "Coste: 5000 XP · cancelado\n\nEstado de operación nuclear\n\nEstado de destinatarios: fallido\nCantidad: 1\n\nEstado de destinatarios: omitido\nCantidad: 1\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación."
+      },
+      "utf16_units": 269
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

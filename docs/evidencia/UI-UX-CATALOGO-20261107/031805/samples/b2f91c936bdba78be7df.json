@@ -1,0 +1,49 @@
+{
+  "route": "/voces",
+  "operation": "make_voice.catalog",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/voces",
+  "result": {
+    "code": "voice_catalog",
+    "data": {
+      "voices": [
+        "botsky",
+        "mexicana",
+        "colombiana",
+        "argentina",
+        "espanola",
+        "mexicano",
+        "colombiano",
+        "argentino",
+        "espanol",
+        "chileno",
+        "venezolano",
+        "peruano",
+        "anime"
+      ]
+    },
+    "status": "ok",
+    "text": "Voces: botsky, mexicana, colombiana, argentina, espanola, mexicano, colombiano, argentino, espanol, chileno, venezolano, peruano, anime.\n/voz --voz mexicana TEXTO"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Voces: botsky, mexicana, colombiana, argentina, espanola, mexicano, colombiano, argentino, espanol, chileno, venezolano, peruano, anime.\n/voz --voz mexicana TEXTO",
+      "visual_version": 2,
+      "content_sha256": "5cea9fda4fdf42fe4dd9fdf033a6d437d731ebbdac67ba33a360b2919678571f",
+      "rich_payload": {
+        "source_text": "Voces: botsky, mexicana, colombiana, argentina, espanola, mexicano, colombiano, argentino, espanol, chileno, venezolano, peruano, anime.\n/voz --voz mexicana TEXTO"
+      },
+      "utf16_units": 162
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

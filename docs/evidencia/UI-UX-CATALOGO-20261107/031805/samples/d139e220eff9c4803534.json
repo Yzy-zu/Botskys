@@ -1,0 +1,52 @@
+{
+  "route": "/admin degradar",
+  "operation": "manage_admin.demote",
+  "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+  "input": "/admin degradar alice",
+  "result": {
+    "code": "admin_completed",
+    "data": {
+      "action": "demote",
+      "target_label": "Participante verificado del comando"
+    },
+    "status": "ok",
+    "text": "Acción administrativa: completed. Una acción incierta no se repetirá."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Administración"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Retirar administración · Participante verificado del comando"
+      },
+      {
+        "kind": "notice",
+        "text": "Aceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Administración*\n\nRetirar administración · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+      "visual_version": 2,
+      "content_sha256": "2f0eb75d6895eaaa8187c9f5d0ee810fd372389ff8c1388d8834d25ae7765bbd",
+      "rich_payload": {
+        "source_text": "Administración\n\nRetirar administración · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      },
+      "utf16_units": 184
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

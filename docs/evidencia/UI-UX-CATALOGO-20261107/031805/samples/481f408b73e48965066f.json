@@ -1,0 +1,53 @@
+{
+  "route": "/coop aportar",
+  "operation": "manage_cooperacha.contribute",
+  "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+  "input": "/coop aportar 2f42657054fd43d6a32ed3fddfda7767 1",
+  "result": {
+    "code": "coop_status",
+    "data": {
+      "category": "sintetico",
+      "challenge_id": "2f42657054fd43d6a32ed3fddfda7767",
+      "expires_ms": 1793963400000,
+      "refund": 0,
+      "state": "open",
+      "target": 100,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "Cooperacha 2f42657054fd43d6a32ed3fddfda7767: open · 1/100 XP · devuelto 0 XP."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Categoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar 2f42657054fd43d6a32ed3fddfda7767 CANTIDAD"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Cooperacha*\n\nCategoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar 2f42657054fd43d6a32ed3fddfda7767 CANTIDAD",
+      "visual_version": 2,
+      "content_sha256": "ebe4ff503f06be5aa8d438e5a014a3b2962933eab3f82dfd06a2eb99d67779ca",
+      "rich_payload": {
+        "source_text": "Cooperacha\n\nCategoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar 2f42657054fd43d6a32ed3fddfda7767 CANTIDAD"
+      },
+      "utf16_units": 187
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

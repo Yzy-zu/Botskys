@@ -1,0 +1,33 @@
+{
+  "route": "/admin expulsar",
+  "operation": "manage_admin.kick",
+  "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+  "input": "/admin expulsar bob",
+  "result": {
+    "code": "admin_operation_pending",
+    "data": {},
+    "status": "needs_input",
+    "text": "Hay una operación administrativa pendiente o incierta en este grupo; consulta su recibo antes de otra mutación."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hay una operación administrativa pendiente o incierta en este grupo; consulta su recibo antes de otra mutación.",
+      "visual_version": 2,
+      "content_sha256": "14e0f23475e1dc21f1102e498593b80eeb7d0f5d3806526fadd65b4f78941399",
+      "rich_payload": {
+        "source_text": "Hay una operación administrativa pendiente o incierta en este grupo; consulta su recibo antes de otra mutación."
+      },
+      "utf16_units": 111
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

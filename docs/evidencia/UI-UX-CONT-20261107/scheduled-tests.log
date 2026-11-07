@@ -1,0 +1,7 @@
+test_reminder_notice_keeps_literal_and_timezone_without_executing_its_content (test_scheduled_presentation.ScheduledPresentationTest.test_reminder_notice_keeps_literal_and_timezone_without_executing_its_content) ... ok
+test_school_digest_retains_long_included_tasks_and_declares_twenty_of_twenty_one (test_scheduled_presentation.ScheduledPresentationTest.test_school_digest_retains_long_included_tasks_and_declares_twenty_of_twenty_one) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.148s
+
+OK

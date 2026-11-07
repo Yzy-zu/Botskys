@@ -1,0 +1,33 @@
+{
+  "route": "/pdf reintentar",
+  "operation": "manage_pdf.retry",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/pdf reintentar ID_REAL",
+  "result": {
+    "code": "receipt_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay un encargo propio con ese ID en este chat."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay un encargo propio con ese ID en este chat.",
+      "visual_version": 2,
+      "content_sha256": "4ea9d91b319698244e7d9a8c37b4f25d784456196b96856b4c0a5c6eedcc2cc7",
+      "rich_payload": {
+        "source_text": "No hay un encargo propio con ese ID en este chat."
+      },
+      "utf16_units": 49
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

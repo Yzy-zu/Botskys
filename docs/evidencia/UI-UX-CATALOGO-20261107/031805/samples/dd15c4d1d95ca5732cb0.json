@@ -1,0 +1,33 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+  "input": "/recado enviar d10654e34f6449b68b3c17598f7a0a3a",
+  "result": {
+    "code": "message_directory_changed",
+    "data": {},
+    "status": "failed",
+    "text": "Cambió el directorio; prepara otra vista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cambió el directorio; prepara otra vista.",
+      "visual_version": 2,
+      "content_sha256": "84ac60e8bd42ebd5d4007f534c2b0352d6aeac5e49226b02da1bac14b508501b",
+      "rich_payload": {
+        "source_text": "Cambió el directorio; prepara otra vista."
+      },
+      "utf16_units": 41
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,35 @@
+{
+  "route": "/contactos",
+  "operation": "manage_messages.contacts",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/contactos",
+  "result": {
+    "code": "message_contacts",
+    "data": {
+      "names": []
+    },
+    "status": "empty",
+    "text": "No hay contactos configurados."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay contactos configurados.",
+      "visual_version": 2,
+      "content_sha256": "cea78e97deef427777b4d5eb30fcbbe43960a92e734da1ad61ab4ea408908b75",
+      "rich_payload": {
+        "source_text": "No hay contactos configurados."
+      },
+      "utf16_units": 30
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/daily",
+  "operation": "manage_economy.daily",
+  "test": "test_games.GamesTest.test_daily_race_scope_global_cooldown_streak_and_maximum_hold",
+  "input": "/daily",
+  "result": {
+    "code": "xp_limit",
+    "data": {},
+    "status": "failed",
+    "text": "El premio excedería el límite de tu cuenta y sus reservas; no se consumió daily."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El premio excedería el límite de tu cuenta y sus reservas; no se consumió daily.",
+      "visual_version": 2,
+      "content_sha256": "7d2bebc4db1332856e358136d246ad2400f179f7ac26da476716144ba100a490",
+      "rich_payload": {
+        "source_text": "El premio excedería el límite de tu cuenta y sus reservas; no se consumió daily."
+      },
+      "utf16_units": 80
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

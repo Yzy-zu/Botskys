@@ -1,0 +1,33 @@
+{
+  "route": "/broma",
+  "operation": "make_prank.run",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/broma",
+  "result": {
+    "code": "prank_fiction",
+    "data": {},
+    "status": "ok",
+    "text": "FICCIÓN · BROMA INOCUA\nEl club imaginario de patitos nombró a Personaje ficticio inspector de charcos.\nDominio de ejemplo: patitos.invalid. No investigué a nadie ni envié nada a terceros.\nFIN DE FICCIÓN"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "FICCIÓN · BROMA INOCUA\nEl club imaginario de patitos nombró a Personaje ficticio inspector de charcos.\nDominio de ejemplo: patitos.invalid. No investigué a nadie ni envié nada a terceros.\nFIN DE FICCIÓN",
+      "visual_version": 2,
+      "content_sha256": "37431faddf79f6f1807fc8879583407e925a9d6d5a06fbb5a6dea6be8f05f72f",
+      "rich_payload": {
+        "source_text": "FICCIÓN · BROMA INOCUA\nEl club imaginario de patitos nombró a Personaje ficticio inspector de charcos.\nDominio de ejemplo: patitos.invalid. No investigué a nadie ni envié nada a terceros.\nFIN DE FICCIÓN"
+      },
+      "utf16_units": 202
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

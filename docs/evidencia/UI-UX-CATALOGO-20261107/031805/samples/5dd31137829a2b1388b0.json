@@ -1,0 +1,84 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again",
+  "input": "/pack confirmar 6ff45a642cba4989bd946e5e3f076fc3",
+  "result": {
+    "code": "pack_status",
+    "data": {
+      "parts": [
+        {
+          "cost": 50,
+          "error_code": null,
+          "position": 0,
+          "state": "accepted"
+        },
+        {
+          "cost": 50,
+          "error_code": "synthetic_uncertain",
+          "position": 1,
+          "state": "uncertain"
+        },
+        {
+          "cost": 50,
+          "error_code": null,
+          "position": 2,
+          "state": "cancelled"
+        }
+      ],
+      "price": 150,
+      "purchase_id": "6ff45a642cba4989bd946e5e3f076fc3",
+      "refund": 50,
+      "state": "uncertain"
+    },
+    "status": "uncertain",
+    "text": "Pack 6ff45a642cba4989bd946e5e3f076fc3: uncertain. Precio 150 XP · devuelto 50 XP.\nFoto 1: accepted · 50 XP\nFoto 2: uncertain · 50 XP\nFoto 3: cancelled · 50 XP"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Entrega de pack",
+      "headers": [
+        "Foto",
+        "Estado",
+        "XP"
+      ],
+      "rows": [
+        [
+          "1",
+          "aceptado por el servicio",
+          "50"
+        ],
+        [
+          "2",
+          "incierto",
+          "50"
+        ],
+        [
+          "3",
+          "cancelado",
+          "50"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Precio: 150 XP · Devuelto: 50 XP · incierto\n\n```\nEntrega de pack\n\nFoto: 1\nEstado: aceptado por el servicio\nXP: 50\n\nFoto: 2\nEstado: incierto\nXP: 50\n\nFoto: 3\nEstado: cancelado\nXP: 50\n```\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "3d41eeb94706461692d86217bb7a5dbfd3a1739df3c4ba34d0ea29e07f53a5fd",
+      "rich_payload": {
+        "source_text": "Precio: 150 XP · Devuelto: 50 XP · incierto\n\nEntrega de pack\n\nFoto: 1\nEstado: aceptado por el servicio\nXP: 50\n\nFoto: 2\nEstado: incierto\nXP: 50\n\nFoto: 3\nEstado: cancelado\nXP: 50\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente."
+      },
+      "utf16_units": 295
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

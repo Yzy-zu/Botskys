@@ -1,0 +1,53 @@
+{
+  "route": "/coop estado",
+  "operation": "manage_cooperacha.status",
+  "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+  "input": "/coop estado 2f42657054fd43d6a32ed3fddfda7767",
+  "result": {
+    "code": "coop_status",
+    "data": {
+      "category": "sintetico",
+      "challenge_id": "2f42657054fd43d6a32ed3fddfda7767",
+      "expires_ms": 1793963400000,
+      "refund": 2,
+      "state": "expired",
+      "target": 100,
+      "total": 3
+    },
+    "status": "ok",
+    "text": "Cooperacha 2f42657054fd43d6a32ed3fddfda7767: expired · 3/100 XP · devuelto 2 XP."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Categoría: sintetico\nEstado: vencido\nAvance: 3/100 XP\nDevuelto: 2 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Cooperacha*\n\nCategoría: sintetico\nEstado: vencido\nAvance: 3/100 XP\nDevuelto: 2 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "e0ff24d19ed61bb4ee107589793f86f9794fbe2c62ce40ef7a11ad2545608840",
+      "rich_payload": {
+        "source_text": "Cooperacha\n\nCategoría: sintetico\nEstado: vencido\nAvance: 3/100 XP\nDevuelto: 2 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City"
+      },
+      "utf16_units": 131
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

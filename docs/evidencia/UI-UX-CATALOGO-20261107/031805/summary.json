@@ -1,0 +1,16 @@
+{
+  "tests": 311,
+  "success": false,
+  "failures": 3,
+  "errors": 0,
+  "skipped": 0,
+  "non_loopback_attempts": 0,
+  "routes": 155,
+  "families": 34,
+  "captured_routes": 155,
+  "semantic_candidate_routes": 146,
+  "samples": 746,
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "note": "Candidato exige revisión del oracle del test. Captura/guardia no acreditan efecto ni render."
+}

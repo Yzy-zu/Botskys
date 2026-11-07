@@ -1,0 +1,102 @@
+{
+  "route": "/recordatorios",
+  "operation": "manage_reminder.list",
+  "test": "test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads",
+  "input": "/recordatorios",
+  "result": {
+    "code": "organization_list",
+    "data": {
+      "filters": {
+        "include_closed": false
+      },
+      "items": [
+        {
+          "account": "local",
+          "actor": "alice",
+          "chat": "private",
+          "created_ms": 1793977200000,
+          "delivery_receipt_id": null,
+          "due_ms": 1793977800000,
+          "epoch": 1,
+          "id": 1,
+          "instance": "org-lab",
+          "is_group": 0,
+          "receipt_id": "42b392cfd3daf871b6203568bb12652b",
+          "revision": 1,
+          "state": "pending",
+          "text": "Texto literal /daily"
+        }
+      ],
+      "list_kind": "reminders",
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "1: Texto literal /daily"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Recordatorios",
+      "headers": [
+        "Ref.",
+        "Fecha",
+        "Estado",
+        "Texto"
+      ],
+      "rows": [
+        [
+          "1",
+          "2026-11-06 09:10:00 · America/Mexico_City",
+          "pendiente",
+          "Texto literal /daily"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "4e9d87ca864daefb48047a418899855db586cfa25260534535f5e927efde0a62",
+      "rich_payload": {
+        "headers": [
+          "Ref.",
+          "Fecha",
+          "Estado",
+          "Texto"
+        ],
+        "rows": [
+          [
+            "1",
+            "2026-11-06 09:10:00 · America/Mexico_City",
+            "pendiente",
+            "Texto literal /daily"
+          ]
+        ],
+        "title": "Recordatorios"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "Página 1/1 · 1 registros.",
+      "visual_version": 2,
+      "content_sha256": "031060e0ac6721a3125958467be45d1ee0bcfbd134a2a92fc08af7a005934d84",
+      "rich_payload": {
+        "source_text": "Página 1/1 · 1 registros."
+      },
+      "utf16_units": 25
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

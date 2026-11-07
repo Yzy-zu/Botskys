@@ -1,0 +1,37 @@
+{
+  "route": "/escuela resumen configurar",
+  "operation": "manage_school.configure_digest",
+  "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+  "input": "/escuela resumen configurar si --hora 09:00",
+  "result": {
+    "code": "school_digest_status",
+    "data": {
+      "digest_time": "09:00",
+      "enabled": 1,
+      "revision": 1
+    },
+    "status": "ok",
+    "text": "Resumen activo a las 09:00 · Ciudad de México."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Resumen activo a las 09:00 · Ciudad de México.",
+      "visual_version": 2,
+      "content_sha256": "16a2d8f5b20154eaab6b2688f1f159b4e58cc0ab1196eb927d38798efd3e5158",
+      "rich_payload": {
+        "source_text": "Resumen activo a las 09:00 · Ciudad de México."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,69 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+  "input": "/convertir pdf",
+  "result": {
+    "code": "document_converted",
+    "data": {
+      "artifacts": [
+        "b7e6add7681147629a401c3a309cf90b"
+      ],
+      "file_facts": [
+        {
+          "bytes": 10674,
+          "extension": "pdf",
+          "format": "pdf",
+          "pages": 1
+        }
+      ],
+      "source_format": "png",
+      "target_format": "pdf"
+    },
+    "status": "ok",
+    "text": "Conversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Documento convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1"
+      },
+      {
+        "kind": "notice",
+        "text": "Conversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "dc68c374edab2b3037eea374ea039dd0eefd9e730df16c9d897bdc657c6fc173",
+      "rich_payload": {
+        "artifacts": [
+          "b7e6add7681147629a401c3a309cf90b"
+        ],
+        "caption": "*Documento convertido*\n\nFormato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1\n\nConversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco.",
+        "caption_frozen": true,
+        "name": "Documento convertido.pdf",
+        "source_text": "Documento convertido\n\nFormato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1\n\nConversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

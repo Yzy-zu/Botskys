@@ -1,0 +1,33 @@
+{
+  "route": "/llamar",
+  "operation": "control_call.start",
+  "test": "test_calls.CallsTest.test_scope_transport_revision_and_access_before_provider",
+  "input": "/llamar",
+  "result": {
+    "code": "calls_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "La llamada no está habilitada para este ámbito y transporte."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La llamada no está habilitada para este ámbito y transporte.",
+      "visual_version": 2,
+      "content_sha256": "e00bfd0ba3e1c8cba5be1019bc98504c9d6931d4ac6486c9ea1acf4d547713bc",
+      "rich_payload": {
+        "source_text": "La llamada no está habilitada para este ámbito y transporte."
+      },
+      "utf16_units": 60
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

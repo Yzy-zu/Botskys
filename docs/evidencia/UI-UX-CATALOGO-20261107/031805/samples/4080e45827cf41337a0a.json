@@ -1,0 +1,129 @@
+{
+  "route": "/dl buscar",
+  "operation": "download_media.search",
+  "test": "test_search_presentation.SearchPresentationTest.test_detail_retains_complete_title_author_without_refetch_or_backend",
+  "input": "/dl buscar mp4 muestra",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp4",
+        "quality": "standard",
+        "source": "youtube",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "ee1fdd4333d34f39a238edd79258c1a9"
+      ],
+      "choices": [
+        {
+          "author": "Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo ",
+          "duration": 85,
+          "thumbnail_url": null,
+          "title": "Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* ",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "literal",
+            "text": "1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Lista disponible durante 15:00. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "Título y autor completos: /dl detalle NUMERO"
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 79317,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "view_id": "63477152a5ff4eb995dcdb32c692f08e"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "literal",
+        "text": "1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Lista disponible durante 15:00. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "Título y autor completos: /dl detalle NUMERO"
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "646d1cc82633c344af66c2b833986919b3a7d173c983fb5284efcde8300b3189",
+      "rich_payload": {
+        "artifacts": [
+          "ee1fdd4333d34f39a238edd79258c1a9"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n```\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n```\n\nLista disponible durante 15:00. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "eedcc500de368eca39c31454defcbbf722251cda6e8fd7e42f51d7231c5306e4",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nLista disponible durante 15:00. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 510
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

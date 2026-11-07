@@ -1,0 +1,33 @@
+{
+  "route": "/mc parar",
+  "operation": "manage_minecraft.stop",
+  "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+  "input": "/mc parar",
+  "result": {
+    "code": "owner_required",
+    "data": {},
+    "status": "failed",
+    "text": "Esta acción está reservada al dueño verificado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Esta acción está reservada al dueño verificado.",
+      "visual_version": 2,
+      "content_sha256": "277bf9f987dae5eb8beeb906732d0bfb7cde89468d74e7dfd7e5261dee492ba7",
+      "rich_payload": {
+        "source_text": "Esta acción está reservada al dueño verificado."
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

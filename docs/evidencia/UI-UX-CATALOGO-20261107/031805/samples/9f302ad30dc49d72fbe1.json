@@ -1,0 +1,33 @@
+{
+  "route": "/llamar",
+  "operation": "control_call.start",
+  "test": "test_calls.CallsTest.test_backend_removed_after_admission_does_not_lose_cancellation_or_start",
+  "input": "/llamar",
+  "result": {
+    "code": "calls_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "No pude confirmar la operación audiovisual. No la repetiré automáticamente."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude confirmar la operación audiovisual. No la repetiré automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "af0be67ab175b5746f29416e5eb918e908e86e7fe7d8978424075c934df34013",
+      "rich_payload": {
+        "source_text": "No pude confirmar la operación audiovisual. No la repetiré automáticamente."
+      },
+      "utf16_units": 75
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

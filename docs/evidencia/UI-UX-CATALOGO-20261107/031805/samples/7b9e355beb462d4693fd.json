@@ -1,0 +1,36 @@
+{
+  "route": "/pdf agregar",
+  "operation": "manage_pdf.add",
+  "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+  "input": "/pdf agregar",
+  "result": {
+    "code": "pdf_sources_added",
+    "data": {
+      "session_id": "a5cec68227bb414dbb89611b801e09c7",
+      "sources": 1
+    },
+    "status": "ok",
+    "text": "Sesión PDF: 1 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Sesión PDF: 1 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar",
+      "visual_version": 2,
+      "content_sha256": "14d7be471173906b2212d7dff964b9f821b879869c7888aeb53aaef9152c6383",
+      "rich_payload": {
+        "source_text": "Sesión PDF: 1 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar"
+      },
+      "utf16_units": 64
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/admin expulsar",
+  "operation": "manage_admin.kick",
+  "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+  "input": "/admin expulsar owner",
+  "result": {
+    "code": "admin_failed",
+    "data": {},
+    "status": "failed",
+    "text": "No pude verificar la operación administrativa. No se despachó una mutación."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude verificar la operación administrativa. No se despachó una mutación.",
+      "visual_version": 2,
+      "content_sha256": "228989f18bdf15c2c3ad41ca96d0fdefce2225354c70f874f1565e83e1597942",
+      "rich_payload": {
+        "source_text": "No pude verificar la operación administrativa. No se despachó una mutación."
+      },
+      "utf16_units": 75
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

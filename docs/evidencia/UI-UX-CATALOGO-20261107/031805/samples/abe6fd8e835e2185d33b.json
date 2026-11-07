@@ -1,0 +1,33 @@
+{
+  "route": "/recordar el",
+  "operation": "manage_reminder.create",
+  "test": "test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat",
+  "input": "/recordar el 2028-01-01 10:00 fuera",
+  "result": {
+    "code": "invalid_reminder_date",
+    "data": {},
+    "status": "needs_input",
+    "text": "Indica una fecha completa futura, no ambigua, hasta un año; hora de Ciudad de México."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Indica una fecha completa futura, no ambigua, hasta un año; hora de Ciudad de México.",
+      "visual_version": 2,
+      "content_sha256": "758e750264d86a0f6699739607da240ffb533641ce6d211f62527eb24bf1635a",
+      "rich_payload": {
+        "source_text": "Indica una fecha completa futura, no ambigua, hasta un año; hora de Ciudad de México."
+      },
+      "utf16_units": 85
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

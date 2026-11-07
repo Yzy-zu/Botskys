@@ -1,0 +1,33 @@
+{
+  "route": "/admin xp-dar",
+  "operation": "manage_admin.xp_grant",
+  "test": "test_admin.AdminTest.test_nuclear_known_adapter_failure_refunds_and_cancellation_preserves_uncertainty",
+  "input": "/admin xp-dar --objetivo owner 5000",
+  "result": {
+    "code": "admin_xp_changed",
+    "data": {},
+    "status": "ok",
+    "text": "Cuenta #1: ajuste +5000 XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cuenta #1: ajuste +5000 XP.",
+      "visual_version": 2,
+      "content_sha256": "11eb4dab8f87ce405cee9dc5086c2c4a4aee3cd3ad888a3517bb9de02efa3386",
+      "rich_payload": {
+        "source_text": "Cuenta #1: ajuste +5000 XP."
+      },
+      "utf16_units": 27
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

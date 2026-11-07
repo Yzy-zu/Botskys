@@ -1,0 +1,99 @@
+{
+  "route": "/dl detalle",
+  "operation": "download_media.inspect",
+  "test": "test_search_presentation.SearchPresentationTest.test_detail_retains_complete_title_author_without_refetch_or_backend",
+  "input": "/dl detalle 1",
+  "result": {
+    "code": "download_detail",
+    "data": {
+      "choice": {
+        "author": "Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo ",
+        "duration": 85,
+        "thumbnail_url": null,
+        "title": "Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* ",
+        "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Video 1"
+          },
+          {
+            "kind": "literal",
+            "text": "Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* "
+          },
+          {
+            "kind": "literal",
+            "text": "Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo "
+          },
+          {
+            "kind": "paragraph",
+            "text": "1:25 · W3C"
+          },
+          {
+            "kind": "literal",
+            "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir 63477152a5ff4eb995dcdb32c692f08e 1"
+          }
+        ],
+        "version": 1
+      },
+      "number": 1
+    },
+    "status": "ok",
+    "text": "*Video 1*\n\nTítulo completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* \n\nAutor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo \n\n1:25 · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\n`/dl elegir 63477152a5ff4eb995dcdb32c692f08e 1`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Video 1"
+      },
+      {
+        "kind": "literal",
+        "text": "Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* "
+      },
+      {
+        "kind": "literal",
+        "text": "Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo "
+      },
+      {
+        "kind": "paragraph",
+        "text": "1:25 · W3C"
+      },
+      {
+        "kind": "literal",
+        "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir 63477152a5ff4eb995dcdb32c692f08e 1"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Video 1*\n\n```\nTítulo completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* \n```\n\nAutor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo \n\n1:25 · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\n`/dl elegir 63477152a5ff4eb995dcdb32c692f08e 1`",
+      "visual_version": 2,
+      "content_sha256": "99a489c82f1bf7fae458139f236e18e8c7584a7f06fdb1fcacc8020ee3b94fd2",
+      "rich_payload": {
+        "source_text": "Video 1\n\nTítulo completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* \n\nAutor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo \n\n1:25 · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\n/dl elegir 63477152a5ff4eb995dcdb32c692f08e 1"
+      },
+      "utf16_units": 1010
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

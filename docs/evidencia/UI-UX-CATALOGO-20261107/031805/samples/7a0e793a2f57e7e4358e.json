@@ -1,0 +1,33 @@
+{
+  "route": "/drive elegir",
+  "operation": "manage_drive.choose",
+  "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+  "input": "/drive elegir 2c5019e11b4748c48d8a4c4ae0dc895f 5",
+  "result": {
+    "code": "drive_choice_out_of_range",
+    "data": {},
+    "status": "needs_input",
+    "text": "Esa opción no pertenece a la vista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Esa opción no pertenece a la vista.",
+      "visual_version": 2,
+      "content_sha256": "9eb290146513f7738b27a26effddf1b1f38f6af67299408cf4b3facbc7425c40",
+      "rich_payload": {
+        "source_text": "Esa opción no pertenece a la vista."
+      },
+      "utf16_units": 35
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

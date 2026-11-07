@@ -1,0 +1,41 @@
+{
+  "route": "/daily",
+  "operation": "manage_economy.daily",
+  "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+  "input": "/daily",
+  "result": {
+    "code": "daily_awarded",
+    "data": {
+      "account_id": 1,
+      "balance": 1000,
+      "gained": 1000,
+      "level": 51,
+      "reserved": 0,
+      "retry_at_ms": 1794049200000,
+      "streak": 1
+    },
+    "status": "ok",
+    "text": "Daily: +1000 XP. Racha 1. Saldo 1000 XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Daily: +1000 XP. Racha 1. Saldo 1000 XP.\nPróximo daily: 2026-11-07 05:00:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "7c27e9d7cba23b18015d031d320bdcf09a970d77c03b97170fa3e6d94741c985",
+      "rich_payload": {
+        "source_text": "Daily: +1000 XP. Racha 1. Saldo 1000 XP.\nPróximo daily: 2026-11-07 05:00:00 · America/Mexico_City"
+      },
+      "utf16_units": 97
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

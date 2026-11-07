@@ -1,0 +1,35 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+  "input": "/convertir pdf",
+  "result": {
+    "code": "attachment_required",
+    "data": {
+      "interaction_id": "22e20afa2d534062a7ab76ce52a1dbcc"
+    },
+    "status": "needs_input",
+    "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /convertir pdf"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /convertir pdf",
+      "visual_version": 2,
+      "content_sha256": "656528e85a7ab843a58f4182352d0a039027286dd3ea527b64aec0484f921cf2",
+      "rich_payload": {
+        "source_text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /convertir pdf"
+      },
+      "utf16_units": 122
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

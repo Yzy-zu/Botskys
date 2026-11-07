@@ -1,0 +1,54 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+  "input": "/admin nuclear-confirmar 2052f03e16444d88804ee285f1b7ae89",
+  "result": {
+    "code": "nuclear_status",
+    "data": {
+      "cost": 5000,
+      "counts": {
+        "skipped": 2
+      },
+      "draft_id": "2052f03e16444d88804ee285f1b7ae89",
+      "state": "cancelled"
+    },
+    "status": "ok",
+    "text": "Nuclear 2052f03e16444d88804ee285f1b7ae89: cancelled · coste 5000 XP. skipped: 2"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Estado de operación nuclear",
+      "headers": [
+        "Estado de destinatarios",
+        "Cantidad"
+      ],
+      "rows": [
+        [
+          "omitido",
+          "2"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Coste: 5000 XP · cancelado\n\n```\nEstado de operación nuclear\n\nEstado de destinatarios: omitido\nCantidad: 2\n```\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+      "visual_version": 2,
+      "content_sha256": "7a28c797cff88ee934f9e4181bcae9c5fcc63244709ae09a3960c49ad10241b8",
+      "rich_payload": {
+        "source_text": "Coste: 5000 XP · cancelado\n\nEstado de operación nuclear\n\nEstado de destinatarios: omitido\nCantidad: 2\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación."
+      },
+      "utf16_units": 223
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

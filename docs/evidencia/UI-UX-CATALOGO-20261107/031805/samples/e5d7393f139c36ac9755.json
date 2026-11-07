@@ -1,0 +1,33 @@
+{
+  "route": "/bj doblar",
+  "operation": "manage_blackjack.double",
+  "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+  "input": "/bj doblar 7f31d208528b4babb6595119815786e8",
+  "result": {
+    "code": "blackjack_board_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Recibe el tablero vigente y después elige tu acción."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recibe el tablero vigente y después elige tu acción.",
+      "visual_version": 2,
+      "content_sha256": "c273a5a53901995f3c03a9f7d65e3994bf8e66991a62dea87dc28ad30e5beefd",
+      "rich_payload": {
+        "source_text": "Recibe el tablero vigente y después elige tu acción."
+      },
+      "utf16_units": 52
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,33 @@
+{
+  "route": "/admin quitar-aviso",
+  "operation": "manage_admin.unwarn",
+  "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+  "input": "/admin quitar-aviso alice 1",
+  "result": {
+    "code": "admin_warning_revoked",
+    "data": {},
+    "status": "ok",
+    "text": "Aviso retirado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Aviso retirado.",
+      "visual_version": 2,
+      "content_sha256": "4508bb531d9254527944c5b895be65f0e1687ac899864ace21d058d514fff855",
+      "rich_payload": {
+        "source_text": "Aviso retirado."
+      },
+      "utf16_units": 15
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}
