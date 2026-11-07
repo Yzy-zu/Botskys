@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "alias": "cf06",
+      "checked_utc": "2026-11-07T20:19:41.144679+00:00",
+      "inference_tested": false,
+      "quota_available": "NOT_TESTED",
+      "token_http": 200,
+      "token_active": true,
+      "account_http": 200,
+      "account_ai_access": true,
+      "registrations": [
+        {
+          "target": "canonical",
+          "accounts": 6
+        },
+        {
+          "target": "production",
+          "accounts": 6
+        }
+      ],
+      "status": "registered",
+      "credentials_mode": "0600"
+    },
+    {
+      "alias": "cf07",
+      "checked_utc": "2026-11-07T20:19:42.496650+00:00",
+      "inference_tested": false,
+      "quota_available": "NOT_TESTED",
+      "token_http": 200,
+      "token_active": true,
+      "account_http": 200,
+      "account_ai_access": true,
+      "registrations": [
+        {
+          "target": "canonical",
+          "accounts": 7
+        },
+        {
+          "target": "production",
+          "accounts": 7
+        }
+      ],
+      "status": "registered",
+      "credentials_mode": "0600"
+    }
+  ],
+  "inferences": 0,
+  "messages_sent": 0,
+  "service_restart": false
+}
