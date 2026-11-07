@@ -1,0 +1,26 @@
+test_composed_pool_uses_selected_model_and_profile (test_cloudflare_pool.PoolTests.test_composed_pool_uses_selected_model_and_profile) ... ok
+test_configuration_single_or_pool_and_closed_models (test_cloudflare_pool.PoolTests.test_configuration_single_or_pool_and_closed_models) ... ok
+test_daily_quota_no_same_message_retry_and_restart (test_cloudflare_pool.PoolTests.test_daily_quota_no_same_message_retry_and_restart) ... ok
+test_duplicate_account_does_not_add_quota (test_cloudflare_pool.PoolTests.test_duplicate_account_does_not_add_quota) ... ok
+test_expired_pause_is_available (test_cloudflare_pool.PoolTests.test_expired_pause_is_available) ... ok
+test_operator_registration_and_duplicate_rejection (test_cloudflare_pool.PoolTests.test_operator_registration_and_duplicate_rejection) ... ok
+test_round_robin_and_operator_addition (test_cloudflare_pool.PoolTests.test_round_robin_and_operator_addition) ... ok
+test_all_quota_blocked_does_not_execute_effects (test_cloudflare_pool.PoolWorkerTests.test_all_quota_blocked_does_not_execute_effects) ... ok
+test_concurrent_quota_single_instance_preserves_both_pauses (test_cloudflare_pool_audit.AuditPoolTests.test_concurrent_quota_single_instance_preserves_both_pauses) ... ok
+test_disabled_broken_credential_is_not_read (test_cloudflare_pool_audit.AuditPoolTests.test_disabled_broken_credential_is_not_read) ... ok
+test_multiple_instances_preserve_both_pauses (test_cloudflare_pool_audit.AuditPoolTests.test_multiple_instances_preserve_both_pauses) ... ok
+test_revoked_token_is_quarantined_between_turns (test_cloudflare_pool_audit.AuditPoolTests.test_revoked_token_is_quarantined_between_turns) ... ok
+test_seven_accounts_seventy_turns_balanced (test_cloudflare_pool_audit.AuditPoolTests.test_seven_accounts_seventy_turns_balanced) ... Executing <Task finished name='Task-68' coro=<AuditPoolTests.test_seven_accounts_seventy_turns_balanced() done, defined at /home/petrov/botsky/tests/test_cloudflare_pool_audit.py:24> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.226 seconds
+ok
+test_active_broken_credentials_isolated_and_repaired (test_cloudflare_pool_recovery.PoolRecoveryTests.test_active_broken_credentials_isolated_and_repaired) ... ok
+test_all_credentials_bad_fails_without_request (test_cloudflare_pool_recovery.PoolRecoveryTests.test_all_credentials_bad_fails_without_request) ... ok
+test_auth_restart_rotation_and_no_same_turn_retry (test_cloudflare_pool_recovery.PoolRecoveryTests.test_auth_restart_rotation_and_no_same_turn_retry) ... ok
+test_inflight_old_token_failure_does_not_quarantine_rotated_token (test_cloudflare_pool_recovery.PoolRecoveryTests.test_inflight_old_token_failure_does_not_quarantine_rotated_token) ... ok
+test_malformed_shared_state_still_fails_closed (test_cloudflare_pool_recovery.PoolRecoveryTests.test_malformed_shared_state_still_fails_closed) ... ok
+test_operator_cannot_overwrite_pool_state_with_account_alias (test_cloudflare_pool_recovery.PoolRecoveryTests.test_operator_cannot_overwrite_pool_state_with_account_alias) ... ok
+test_two_real_processes_merge_quota_state (test_cloudflare_pool_recovery.PoolRecoveryTests.test_two_real_processes_merge_quota_state) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.417s
+
+OK

@@ -397,3 +397,12 @@ conservar timeouts y resultados parciales. Catálogo completo y selección direc
 validación/permisos nativos; no sustituir por el prototipo que omite metadata.
 Sin entregas de prueba, llamadas, servicios ajenos, GitHub ni clasificador antiguo.
 Conservar pool de cinco cuentas, credenciales0600 y cuota5% de cinco horas.
+
+## 07/11 · Corrección de hallazgos del pool encargada
+
+El propietario ordenó corregir los hallazgos de docs/AUDITORIA_POOL_20261107.md:
+aislamiento de credenciales dañadas, cuarentena de401/403 y fusión segura de pausas
+entre procesos. Continuación de la configuración/despliegue propios autorizados;
+pruebas locales con dobles y procesos propios, sin inferencias reales ni entregas.
+Respaldo consistente y despliegue reversible del runtime, conservando catálogo
+íntegro,cinco cuentas,cuotas y servicios ajenos. No reabrir campañas históricas.

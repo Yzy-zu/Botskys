@@ -31,7 +31,7 @@ class AuditPoolTests(unittest.IsolatedAsyncioTestCase):
   self.assertEqual(len(self.calls),70)
   self.assertTrue(all(self.calls.count(path)==10 for path in set(self.calls)))
   self.assertEqual(len(set(self.calls)),7)
- async def test_revoked_token_is_not_quarantined_observed_limitation(self):
+ async def test_revoked_token_is_quarantined_between_turns(self):
   self.registry(2)
   def handler(r):
    if format(1,'032x') in r.url.path:
@@ -39,14 +39,17 @@ class AuditPoolTests(unittest.IsolatedAsyncioTestCase):
    return self.ok(r)
   async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
    pool=self.pool(http)
-   for _ in range(2):
-    with self.assertRaisesRegex(InterpreterError,'provider_http_401'):await pool.propose([],self.tools)
-    await pool.propose([],self.tools)
+   with self.assertRaisesRegex(InterpreterError,'provider_http_401'):await pool.propose([],self.tools)
+   for _ in range(3):await pool.propose([],self.tools)
    self.assertEqual(pool.pauses,{})
+   self.assertEqual(sum(format(1,'032x') in path for path in self.calls),1)
+   self.assertEqual(len(read_private(pool.auth_path)['blocked_credentials']),1)
   self.assertEqual(len(self.calls),4)
- async def test_disabled_broken_credential_blocks_pool_observed_limitation(self):
+ async def test_disabled_broken_credential_is_not_read(self):
   self.registry(2);p=self.root/'private/pool.json';data=read_private(p);data['entries'][0]['enabled']=False;write_private(p,data);write_private(self.root/'private/cf1.json',{'broken':True})
-  with self.assertRaisesRegex(InterpreterError,'credentials_invalid'):self.pool(None)
+  pool=self.pool(None)
+  self.assertEqual([entry[0] for entry in pool.entries],['cf2'])
+  self.assertEqual(pool.credential_errors,{})
  async def parallel_quota(self,instances):
   self.registry(2);started=[asyncio.Event(),asyncio.Event()];release=[asyncio.Event(),asyncio.Event()]
   async def handler(r):
@@ -61,4 +64,4 @@ class AuditPoolTests(unittest.IsolatedAsyncioTestCase):
    release[1].set();await asyncio.gather(b,return_exceptions=True)
   return read_private(self.root/'private/quota-state.json')['paused_until']
  async def test_concurrent_quota_single_instance_preserves_both_pauses(self):self.assertEqual(len(await self.parallel_quota(1)),2)
- async def test_multiple_instances_can_lose_pause_observed_limitation(self):self.assertEqual(len(await self.parallel_quota(2)),1)
+ async def test_multiple_instances_preserve_both_pauses(self):self.assertEqual(len(await self.parallel_quota(2)),2)

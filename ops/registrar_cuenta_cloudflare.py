@@ -15,7 +15,8 @@ def register(root,pool_file,alias,credentials_file,replace=False):
     registry.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
     data=read_private(registry) if registry.exists() else {'version':1,'entries':[]}
     if set(data)!={'version','entries'} or type(data.get('version')) is not int or data.get('version')!=1 or not isinstance(data.get('entries'),list):raise ValueError('invalid_registry')
-    if registry.name in (alias+'.json','quota-state.json'):raise ValueError('registry_filename_collision')
+    reserved={'quota-state.json','authentication-state.json','pool-state.lock'}
+    if registry.name in reserved or alias+'.json' in reserved or registry.name==alias+'.json':raise ValueError('registry_filename_collision')
     credentials=read_credentials(credentials_file)
     found=None
     for entry in data['entries']:

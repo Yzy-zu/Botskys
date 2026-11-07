@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "local_tests": 54,
+  "network_requests": 0,
+  "source_sha256": {
+    "src/botsky/adapters/cloudflare_pool.py": "b7a6d844e2df7ef0c2045630c3ba09d18f554687df178dfe6610045703f4a120",
+    "ops/registrar_cuenta_cloudflare.py": "79d5ffb2b2c72dc715339741c79ef312e92eaf2e277b9e9d9049547d0fe9e0f6"
+  },
+  "cases": [
+    "invalid_active_credential_isolated",
+    "disabled_credential_not_read",
+    "401_403_persistent_quarantine",
+    "renewed_token_recovered",
+    "inflight_old_token_does_not_block_new",
+    "two_real_processes_merge_pauses",
+    "duplicate_account_rejected",
+    "one_request_per_turn",
+    "corrupt_global_state_fails_closed",
+    "reserved_names_protected"
+  ]
+}
