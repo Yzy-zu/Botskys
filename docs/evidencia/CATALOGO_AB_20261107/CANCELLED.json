@@ -1,0 +1,9 @@
+{
+  "status": "cancelled_by_owner",
+  "cancelled_at_utc": "2026-11-07T18:01:22.521354+00:00",
+  "automatic_resume": false,
+  "completed_results": 17,
+  "inflight_request_possible": true,
+  "production_changes": 0,
+  "backend_effects": 0
+}

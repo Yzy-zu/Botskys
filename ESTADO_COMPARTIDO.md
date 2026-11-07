@@ -1,5 +1,19 @@
 # Relevo Botsky
 
+## 07/11 · Comparación de catálogo cancelada expresamente
+
+Propietario encargó comparar actual/compacto sin cambiar producción;manifest y
+oracles12casos congelados80f1fd4. Compacto conserva155variantes/campos/constantes/
+restricciones por prueba local yreduce59%bytes,pero las muestras no acreditaron
+mejora consistente de latencia. No se extrapola precisión/rendimiento global.
+El propietario canceló durante la corrida:SIGTERM al proceso3819825,17resultados
+terminados conservados;posible petición enviada en vuelo sin respuesta final.
+No reintentar ni completar casos restantes. CANCELLED.json impide --live de esta
+comparación. Evidencia parcial docs/evidencia/CATALOGO_AB_20261107;private conserva
+checkpoint anterior a cancelación. Prototipo soloops;runtime productivo sigue
+igual,PID3801640 al comprobar,sin cambios de código/perfil o servicios.
+Sin efectos de herramientas,envíos,llamadas ni nueva ejecución automática.
+
 ## 07/11 · F8 desplegado y frontend productivo activo
 
 Propietario amplió puntos1/2 a «desplegarlo ya,todo activo»;autorización enAGENTS.

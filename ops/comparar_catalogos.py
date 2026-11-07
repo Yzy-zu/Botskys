@@ -58,6 +58,8 @@ def create_manifest():
 
 
 async def main(live):
+    if live and (EVIDENCE/'CANCELLED.json').exists():
+        raise SystemExit('Comparación cancelada por el propietario; no reanudar esta corrida.')
     manifest=json.loads((EVIDENCE/'manifest.json').read_text())
     catalogs={'actual':Catalog(),'compacto':CompactCatalog()}
     for catalog in catalogs.values():catalog.configure_downloads(SimpleNamespace(enabled=True,adult_sources_enabled=True))
