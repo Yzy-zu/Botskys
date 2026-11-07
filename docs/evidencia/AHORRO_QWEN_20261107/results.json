@@ -1,0 +1,355 @@
+{
+  "status": "finished",
+  "results": [
+    {
+      "case": "03-nota-markdown",
+      "arm": "actual",
+      "passed": true,
+      "decision": {
+        "action_key": "nota.guardar",
+        "arguments": {
+          "text": "comprar *pan* y leche"
+        }
+      },
+      "decision_type": "ActionRequest",
+      "seconds": 7.014,
+      "transport": [
+        {
+          "request_bytes": 110340,
+          "system_bytes": 98969,
+          "prefix_sha256": "14a6f552a0b473672c535d6d68b058579b6b50f44292a121c791e6bd894e0307",
+          "http": 200,
+          "seconds": 7.012,
+          "usage": {
+            "prompt_tokens": 22424,
+            "completion_tokens": 79,
+            "total_tokens": 22503,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 940.3272094726562
+          },
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"nota.guardar\",\"arguments\":{\"text\":\"comprar *pan* y leche\"}}"
+            }
+          ],
+          "error_codes": []
+        }
+      ]
+    },
+    {
+      "case": "03-nota-markdown",
+      "arm": "prefijo_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.395,
+      "transport": [
+        {
+          "request_bytes": 110375,
+          "system_bytes": 98869,
+          "prefix_sha256": "018e9b7a9a2715d2283c6318498f253e40648fab5da7bd2f6f59c3fe56a4ee2b",
+          "http": 400,
+          "seconds": 0.392,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "03-nota-markdown",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.143,
+      "transport": [
+        {
+          "request_bytes": 52017,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.141,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "09-continuar",
+      "arm": "actual",
+      "passed": true,
+      "decision": {
+        "action_key": "convertir",
+        "arguments": {
+          "target": "pdf"
+        }
+      },
+      "decision_type": "ActionRequest",
+      "seconds": 15.107,
+      "transport": [
+        {
+          "request_bytes": 110568,
+          "system_bytes": 99148,
+          "prefix_sha256": "a5d752e55681f5243fe69f21c484220e370a4c2fb24a23db1248d4c0793a657b",
+          "http": 200,
+          "seconds": 15.104,
+          "usage": {
+            "prompt_tokens": 22474,
+            "completion_tokens": 96,
+            "total_tokens": 22570,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 947.318115234375
+          },
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"convertir\",\"arguments\":{\"target\":\"pdf\"}}"
+            }
+          ],
+          "error_codes": []
+        }
+      ]
+    },
+    {
+      "case": "09-continuar",
+      "arm": "prefijo_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.202,
+      "transport": [
+        {
+          "request_bytes": 110603,
+          "system_bytes": 98869,
+          "prefix_sha256": "018e9b7a9a2715d2283c6318498f253e40648fab5da7bd2f6f59c3fe56a4ee2b",
+          "http": 400,
+          "seconds": 0.199,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "09-continuar",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.271,
+      "transport": [
+        {
+          "request_bytes": 52245,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.269,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "24-gemini",
+      "arm": "actual",
+      "passed": true,
+      "decision": {
+        "action_key": "ia",
+        "arguments": {
+          "text": "Explícame por qué la luna tiene fases"
+        }
+      },
+      "decision_type": "ActionRequest",
+      "seconds": 5.226,
+      "transport": [
+        {
+          "request_bytes": 110341,
+          "system_bytes": 98969,
+          "prefix_sha256": "14a6f552a0b473672c535d6d68b058579b6b50f44292a121c791e6bd894e0307",
+          "http": 200,
+          "seconds": 5.223,
+          "usage": {
+            "prompt_tokens": 22422,
+            "completion_tokens": 93,
+            "total_tokens": 22515,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 944.3181762695312
+          },
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"ia\",\"arguments\":{\"text\":\"Explícame por qué la luna tiene fases\"}}"
+            }
+          ],
+          "error_codes": []
+        }
+      ]
+    },
+    {
+      "case": "24-gemini",
+      "arm": "prefijo_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.409,
+      "transport": [
+        {
+          "request_bytes": 110376,
+          "system_bytes": 98869,
+          "prefix_sha256": "018e9b7a9a2715d2283c6318498f253e40648fab5da7bd2f6f59c3fe56a4ee2b",
+          "http": 400,
+          "seconds": 0.406,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "24-gemini",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.269,
+      "transport": [
+        {
+          "request_bytes": 52018,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.267,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "04-nota-hostil",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.278,
+      "transport": [
+        {
+          "request_bytes": 52046,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.276,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "08-sin-formato",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.287,
+      "transport": [
+        {
+          "request_bytes": 52050,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.285,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "17-confirmar",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.132,
+      "transport": [
+        {
+          "request_bytes": 52130,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.13,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "03-nota-markdown",
+      "arm": "prefijo_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.355,
+      "transport": [
+        {
+          "request_bytes": 110375,
+          "system_bytes": 98869,
+          "prefix_sha256": "018e9b7a9a2715d2283c6318498f253e40648fab5da7bd2f6f59c3fe56a4ee2b",
+          "http": 400,
+          "seconds": 0.352,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    },
+    {
+      "case": "03-nota-markdown",
+      "arm": "compacto_afinidad",
+      "passed": false,
+      "error": "provider_http_400",
+      "seconds": 0.132,
+      "transport": [
+        {
+          "request_bytes": 52017,
+          "system_bytes": 45621,
+          "prefix_sha256": "a13f8eca84e630944a99f3f967fff16424bbd39759356b74e66316298ae9d9e5",
+          "http": 400,
+          "seconds": 0.13,
+          "usage": null,
+          "choices": [],
+          "error_codes": [
+            8007
+          ]
+        }
+      ]
+    }
+  ],
+  "reported_neurons": 2831.9635009765625,
+  "account_alias": "cf05",
+  "production_changes": 0,
+  "backend_effects": 0,
+  "manifest_sha256": "0c515f3784d4da2abe303776d91bf24bfa525cce82f0f29b39ab7a699315cb90"
+}

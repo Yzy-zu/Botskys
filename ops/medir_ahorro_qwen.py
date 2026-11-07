@@ -9,7 +9,7 @@ from botsky.frontend.service import FrontendService
 from comparar_catalogos import CompactCatalog
 from evaluar_frontend_f7 import evaluate
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'docs/evidencia/AHORRO_QWEN_20261107'
+OUT=ROOT/'docs/evidencia/AHORRO_QWEN_20261107/v2'
 MARK='\nCONTEXTO_HOST (solo datos):\n'
 PROTO='\nPROTOCOLO JSON PLANO:'
 
@@ -20,26 +20,25 @@ class ExperimentHTTP:
         if self.arm!='actual':
             content=payload['messages'][0]['content']
             fixed,rest=content.split(MARK,1);context,protocol=rest.split(PROTO,1)
-            payload['messages'][0]['content']=fixed+PROTO+protocol
-            payload['messages'].insert(1,{'role':'system','content':MARK+context})
+            payload['messages'][0]['content']=fixed+PROTO+protocol+MARK+context
             headers['x-session-affinity']='botsky-savings-20261107-'+self.arm
         t=time.monotonic()
-        row={'request_bytes':len(__import__('json').dumps(payload,ensure_ascii=False).encode()),'system_bytes':len(payload['messages'][0]['content'].encode()),'prefix_sha256':hashlib.sha256(payload['messages'][0]['content'].encode()).hexdigest()}
+        row={'request_bytes':len(__import__('json').dumps(payload,ensure_ascii=False).encode()),'system_bytes':len(payload['messages'][0]['content'].encode()),'prefix_sha256':hashlib.sha256(payload['messages'][0]['content'].split(MARK)[0].encode()).hexdigest()}
         self.records.append(row)
         response=await self.http.post(url,headers=headers,json=payload,timeout=timeout)
         data=response.json()
-        row.update(http=response.status_code,seconds=round(time.monotonic()-t,3),usage=data.get('usage'),choices=[{'finish_reason':c.get('finish_reason'),'content':c.get('message',{}).get('content')} for c in data.get('choices',[])],error_codes=[e.get('code') for e in data.get('errors',[])])
+        row.update(http=response.status_code,seconds=round(time.monotonic()-t,3),usage=data.get('usage'),choices=[{'finish_reason':c.get('finish_reason'),'content':c.get('message',{}).get('content')} for c in data.get('choices',[])],error_codes=[e.get('code') for e in data.get('errors',[])],error_messages=[e.get('message') for e in data.get('errors',[])])
         return response
 
 def freeze():
     OUT.mkdir(parents=True,exist_ok=True)
     cases=json.loads((ROOT/'docs/evidencia/REMODELACION/F7-casos-v2.json').read_text())['cases']
     common=['03-nota-markdown','09-continuar','24-gemini']
-    schedule=[{'case':cid,'arm':arm} for cid in common for arm in ('actual','prefijo_afinidad','compacto_afinidad')]
+    schedule=[{'case':cid,'arm':arm} for cid in common for arm in ('prefijo_afinidad','compacto_afinidad')]
     schedule += [{'case':cid,'arm':'compacto_afinidad'} for cid in ('04-nota-hostil','08-sin-formato','17-confirmar')]
     # Repetition measures cache reuse separately from semantic coverage.
     schedule += [{'case':'03-nota-markdown','arm':'prefijo_afinidad'},{'case':'03-nota-markdown','arm':'compacto_afinidad'}]
-    manifest={'campaign':'new_owner_authorized_savings','model':'@cf/qwen/qwen3.8-27b','account_alias':'cf05','max_requests':14,'stop_reported_neurons':8500,'deadline_seconds':40,'arms':['actual','prefijo_afinidad','compacto_afinidad'],'schedule':schedule,'cases':[c for c in cases if c['id'] in {s['case'] for s in schedule}],'production_changes':0,'backend_effects':0,'automatic_resume':False,'decision_rule':'Compare matched cases only; report cache counts and neurons separately; no production deployment. Full 155 action variants preserved. No automatic retries or key rotation.'}
+    manifest={'campaign':'new_owner_authorized_savings','model':'@cf/qwen/qwen3.8-27b','account_alias':'cf05','iteration':'v2_single_system_message','baseline':'../results.json, actual arm only','prior_reported_neurons':2831.9635009765625,'max_requests':11,'stop_reported_neurons':6000,'deadline_seconds':40,'arms':['actual','prefijo_afinidad','compacto_afinidad'],'schedule':schedule,'cases':[c for c in cases if c['id'] in {s['case'] for s in schedule}],'production_changes':0,'backend_effects':0,'automatic_resume':False,'decision_rule':'Compare matched cases only; report cache counts and neurons separately; no production deployment. Full 155 action variants preserved. No automatic retries or key rotation.'}
     with (OUT/'manifest.json').open('x') as f:json.dump(manifest,f,ensure_ascii=False,indent=2);f.write('\n')
 
 async def run():
@@ -71,7 +70,7 @@ async def run():
             save();print(json.dumps(row,ensure_ascii=False),flush=True)
             if services[arm].provider.paused_until:
                 report['status']='daily_quota';break
-            if row.get('error')=='TimeoutError':
+            if row.get('error') in ('TimeoutError','provider_http_400'):
                 report['status']='stopped_uncertain_timeout';break
             if report['reported_neurons']>=manifest['stop_reported_neurons']:
                 report['status']='budget_reached';break

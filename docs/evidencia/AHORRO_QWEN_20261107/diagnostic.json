@@ -1,0 +1,10 @@
+{
+  "http": 400,
+  "errors": [
+    {
+      "message": "AiError: AiError: {\"error\":{\"message\":\"System message must be at the beginning.\",\"type\":\"BadRequestError\",\"param\":null,\"code\":400}} (0e39964f-363d-417e-916f-7d059fbf4d08)",
+      "code": 8007
+    }
+  ],
+  "usage": null
+}

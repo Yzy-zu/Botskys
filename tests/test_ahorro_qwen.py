@@ -14,8 +14,9 @@ class SavingsTests(unittest.IsolatedAsyncioTestCase):
         h=HTTP();transport=ExperimentHTTP(h,'prefijo_afinidad')
         for n in [1,2]:
             await transport.post('synthetic',headers={},json={'messages':[{'role':'system','content':'CATALOGO'+MARK+json.dumps({'now':n})+PROTO+'schema'},{'role':'assistant','content':'¿Formato?'},{'role':'user','content':'PDF'}]},timeout=1)
-        self.assertEqual(h.calls[0]['json']['messages'][0],h.calls[1]['json']['messages'][0])
-        self.assertNotEqual(h.calls[0]['json']['messages'][1],h.calls[1]['json']['messages'][1])
+        self.assertEqual(h.calls[0]['json']['messages'][0]['content'].split(MARK)[0],h.calls[1]['json']['messages'][0]['content'].split(MARK)[0])
+        self.assertNotEqual(h.calls[0]['json']['messages'][0],h.calls[1]['json']['messages'][0])
+        self.assertEqual(sum(m['role']=='system' for m in h.calls[0]['json']['messages']),1)
         for call in h.calls:
             self.assertEqual(call['json']['messages'][-1],{'role':'user','content':'PDF'})
             self.assertIn('x-session-affinity',call['headers'])
