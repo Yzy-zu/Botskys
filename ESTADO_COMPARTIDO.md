@@ -1,5 +1,13 @@
 # Relevo Botsky
 
+## 07/11 · Tercera cuenta Cloudflare registrada
+
+Encargo expreso de incorporar cada credencial enviada al pool. cf03 verificada:
+token activo y acceso AI de cuenta HTTP200; cuenta distinta, tres en total.
+Alta atómica en registro canónico y productivo, secretos0600. Pool recarga en
+siguiente turno sin reiniciar. Sin inferencias ni mensajes; cuota disponible
+NOT_TESTED. Evidencia saneada POOL_CLOUDFLARE_20261107/cf03.json.
+
 ## 07/11 · Prueba Qwen local cancelada por el propietario
 
 Descargado Qwen3.5:2b (Q8_0); descarga 4b interrumpida. Primera inferencia 2b
