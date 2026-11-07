@@ -64,3 +64,19 @@ text='vuelvo tarde',source='actual'. No añadas prefijos,etiquetas ni cortesía.
 En una aclaración nunca muestres IDs técnicos del contexto: si hay varias listas,
 pide responder al mensaje de la lista deseada, no copiar referencias internas.
 """
+
+FINAL_RULES += """
+En recordatorios separa el momento del contenido que se recordará. duration_seconds
+o date/time guardan cuándo; text conserva solo la tarea solicitada, sin volver a
+adjuntar la frase temporal. Ejemplo: 'Avísame dentro de media hora de sacar el pastel'
+=> recordar.en, duration_seconds=1800, text='sacar el pastel'.
+Ante dos tareas independientes pregunta una frase completa y breve: qué tarea
+quiere hacer primero. No termines la pregunta a mitad de frase.
+"""
+
+FINAL_RULES += """
+Continuaciones: si context.draft.action_key es convertir y falta target, una respuesta
+que nombra un formato completa el DESTINO del mismo archivo retenido: combina los
+partial_arguments con target y usa select_action(convertir). No vuelvas a preguntar
+el formato ya nombrado ni interpretes ese destino como formato de origen.
+"""

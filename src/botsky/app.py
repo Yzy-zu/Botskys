@@ -153,14 +153,26 @@ class Application:
             try:
                 command = self.router.parse(incoming.text)
             except CommandError as exc:
-                return None, Result("needs_input", exc.code, exc.reply), "completed"
+                if self.frontend is None:
+                    return None, Result("needs_input", exc.code, exc.reply), "completed"
+                command = None
             if command is None and self.frontend is not None:
                 from .presentation.quotes import own_delivered_parent
                 own_quote = incoming.quoted_message_id and own_delivered_parent(
                     db, context, incoming.quoted_message_id, self.clock())
-                directed = (bool(own_quote) or not incoming.scope.is_group or bool(set(incoming.mentioned_ids) & self.settings.bot_ids)
-                            or ai.named(incoming.text))
+                from .domains.notes import SCOPE_SQL
+                pending = db.execute(f"SELECT id FROM interactions WHERE {SCOPE_SQL} AND kind IN ('frontend_draft','file') AND state='active' AND expires_ms>? LIMIT 2", (*context.scope_key, self.clock())).fetchall()
+                import re
+                vocative = bool(re.match(r'^\s*@?Botsky\b', incoming.text, re.IGNORECASE))
+                directed = (len(pending) == 1 or bool(own_quote) or not incoming.scope.is_group or bool(set(incoming.mentioned_ids) & self.settings.bot_ids)
+                            or vocative)
                 if directed:
+                    if incoming.attachments and not incoming.text.strip():
+                        resumed = interactions.resume_file(db, context, incoming, self.router.registry, self.clock())
+                        if resumed is not None:
+                            return resumed, None, 'queued'
+                    if not incoming.text.strip() and not incoming.attachments:
+                        return None, None, 'ignored'
                     if denied := access.authorize("friend", context, self.settings):
                         return None, denied, "completed"
                     spec = self.router.registry.paths[("nota", "guardar")]

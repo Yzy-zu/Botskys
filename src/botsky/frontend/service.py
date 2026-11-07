@@ -13,7 +13,7 @@ class FrontendService:
         self.catalog = catalog or Catalog()
 
     async def decide(self, text, context=None):
-        if type(text) is not str or not text.strip() or len(text) > 64000:
+        if type(text) is not str or len(text) > 64000 or (not text.strip() and not (context or {}).get('attachments')):
             raise InterpreterError('invalid_input')
         messages = [{'role': 'system', 'content': SYSTEM + '\nCATALOGO:\n' + json.dumps(self.catalog.describe(), ensure_ascii=False, separators=(',', ':')) + '\n' + FINAL_RULES},
                     {'role': 'user', 'content': json.dumps({'message': text, 'context': context or {}}, ensure_ascii=False)}]
