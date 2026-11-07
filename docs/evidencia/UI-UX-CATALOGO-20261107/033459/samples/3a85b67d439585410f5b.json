@@ -1,0 +1,34 @@
+{
+  "route": "/voz ultima",
+  "operation": "make_voice.verbatim",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/voz ultima",
+  "result": {
+    "code": "tts_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "La voz no está configurada en este laboratorio."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La voz no está configurada en este laboratorio.",
+      "visual_version": 2,
+      "content_sha256": "375ff902a54f30b12126a097ea62a82070ed107c0ea93d70caf8ea2350794a2f",
+      "rich_payload": {
+        "source_full": "La voz no está configurada en este laboratorio.",
+        "source_text": "La voz no está configurada en este laboratorio."
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

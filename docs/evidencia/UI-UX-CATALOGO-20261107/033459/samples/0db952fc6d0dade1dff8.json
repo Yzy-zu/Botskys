@@ -1,0 +1,55 @@
+{
+  "route": "/voz",
+  "operation": "make_voice.verbatim",
+  "test": "test_ai.AITest.test_voice_literal_and_composed_are_distinct_and_produce_real_opus",
+  "input": "/voz Texto EXACTO; /daily\n--pan  ",
+  "result": {
+    "code": "voice_ready",
+    "data": {
+      "artifacts": [
+        "911a58df0d4841289f0a11f0ced514b6"
+      ],
+      "effect": "none",
+      "file_facts": [
+        {
+          "bytes": 5040,
+          "duration_seconds": 1.0065,
+          "extension": "ogg",
+          "format": "ogg"
+        }
+      ],
+      "mode": "verbatim",
+      "spoken_text": "Texto EXACTO; /daily\n--pan  ",
+      "voice": "botsky"
+    },
+    "status": "ok",
+    "text": "Voz literal lista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "a5d0bcde76324441f7a4c23e072c5c6fc7f9135040aace1a5f84ddf0130c2cea",
+      "rich_payload": {
+        "artifacts": [
+          "911a58df0d4841289f0a11f0ced514b6"
+        ],
+        "caption": "",
+        "name": "Voz Botsky.ogg",
+        "source_full": "Texto EXACTO; /daily\n--pan  ",
+        "source_text": "Texto EXACTO; /daily\n--pan  "
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

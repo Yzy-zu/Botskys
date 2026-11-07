@@ -1,0 +1,37 @@
+{
+  "route": "/pdf iniciar",
+  "operation": "manage_pdf.start",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/pdf iniciar",
+  "result": {
+    "code": "pdf_session_started",
+    "data": {
+      "session_id": "a471bd8e4e744ba1a800b0f17a4f6e1f",
+      "sources": 0
+    },
+    "status": "ok",
+    "text": "Sesión PDF: 0 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Sesión PDF: 0 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar",
+      "visual_version": 2,
+      "content_sha256": "8598ef50568bdd692fac68f2da1805569ae20e7d53d9aa5b8924304d65c11aee",
+      "rich_payload": {
+        "source_full": "Sesión PDF: 0 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar",
+        "source_text": "Sesión PDF: 0 archivos.\n/pdf agregar\n/pdf terminar\n/pdf cancelar"
+      },
+      "utf16_units": 64
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

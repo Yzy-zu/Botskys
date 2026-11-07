@@ -1,0 +1,58 @@
+{
+  "route": "/recordar en",
+  "operation": "manage_reminder.create",
+  "test": "test_scheduled_presentation.ScheduledPresentationTest.test_reminder_notice_keeps_literal_and_timezone_without_executing_its_content",
+  "input": "/recordar en 1m *Aviso* /daily\n/nota guardar NO",
+  "result": {
+    "code": "reminder_created",
+    "data": {
+      "due_ms": 1793977260000,
+      "reminder_id": 1,
+      "text": "*Aviso* /daily\n/nota guardar NO"
+    },
+    "status": "ok",
+    "text": "Recordatorio 1: *Aviso* /daily\n/nota guardar NO\n2026-11-06 09:01:00 · Ciudad de México. Aviso pendiente; entrega aún no comprobada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorio 1 guardado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2026-11-06 09:01:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "*Aviso* /daily\n/nota guardar NO"
+      },
+      {
+        "kind": "notice",
+        "text": "Aviso pendiente; entrega aún no comprobada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorio 1 guardado*\n\n2026-11-06 09:01:00 · America/Mexico_City\n\n```\n*Aviso* /daily\n/nota guardar NO\n```\n\nAviso pendiente; entrega aún no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "dfd3696ac31a8d3514d45d59f153219bb66819d62148bd4ad69dad43e12b5777",
+      "rich_payload": {
+        "source_full": "Recordatorio 1 guardado\n\n2026-11-06 09:01:00 · America/Mexico_City\n\n*Aviso* /daily\n/nota guardar NO\n\nAviso pendiente; entrega aún no comprobada.",
+        "source_text": "Recordatorio 1 guardado\n\n2026-11-06 09:01:00 · America/Mexico_City\n\n*Aviso* /daily\n/nota guardar NO\n\nAviso pendiente; entrega aún no comprobada."
+      },
+      "utf16_units": 154
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

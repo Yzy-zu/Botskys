@@ -1,0 +1,34 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_games.GamesTest.test_group_message_credit_duplicate_old_and_commands_excluded",
+  "input": "/ayuda",
+  "result": {
+    "code": "help",
+    "data": {},
+    "status": "ok",
+    "text": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`",
+      "visual_version": 2,
+      "content_sha256": "6eb5b5cc55da0b331e0eeb9b48046f0f30439a020524078fd35b9cb4c52f185b",
+      "rich_payload": {
+        "source_full": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`",
+        "source_text": "*Botsky · ayuda*\n\n*Buscar y crear*\n\n/buscar · /dl · /ia · /voz · /transcribir · /ocr · /qr\n\n*Archivos*\n\n/sticker · /reaccion · /editar · /convertir · /pdf · /drive\n\n*Organizar*\n\n/nota · /notas · /mem · /recordar · /recordatorios · /escuela · /horario · /encuesta · /recado · /contactos\n\n*Jugar*\n\n/saldo · /daily · /top · /bj · /ruleta · /pack · /coop · /hh · /broma\n\n*Llamadas y video*\n\n/llamar · /llamada · /clip · /avatar\n\n*Control*\n\n/bot · /admin · /mc · /estado · /cancelar · /confirmar · /ayuda\n\n/recordatorio · /tarea · /tareas · /voces\n\n`Usa /ayuda COMANDO o /ayuda COMANDO ACCION para ver ejemplos y límites.`"
+      },
+      "utf16_units": 617
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

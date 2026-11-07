@@ -1,0 +1,68 @@
+{
+  "route": "/pdf extraer",
+  "operation": "manage_pdf.extract",
+  "test": "test_media.MediaTest.test_file_output_quote_requires_accepted_own_receipt",
+  "input": "/pdf extraer 1",
+  "result": {
+    "code": "pdf_extracted",
+    "data": {
+      "artifacts": [
+        "34f50b3537e5480ea93d1d343fe0e95b"
+      ],
+      "file_facts": [
+        {
+          "bytes": 10613,
+          "extension": "pdf",
+          "format": "pdf",
+          "pages": 1
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Páginas extraídas."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Páginas extraídas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: PDF · 10.36 KiB (10613 bytes) · Páginas: 1"
+      },
+      {
+        "kind": "notice",
+        "text": "Páginas extraídas."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "0ab4c4e0adb65273e2c3c3d1e5a417a063baa5ce2de101efee9a6603b075f039",
+      "rich_payload": {
+        "artifacts": [
+          "34f50b3537e5480ea93d1d343fe0e95b"
+        ],
+        "caption": "*Páginas extraídas*\n\nFormato final: PDF · 10.36 KiB (10613 bytes) · Páginas: 1\n\nPáginas extraídas.",
+        "caption_frozen": true,
+        "name": "Páginas.pdf",
+        "source_full": "Páginas extraídas\n\nFormato final: PDF · 10.36 KiB (10613 bytes) · Páginas: 1\n\nPáginas extraídas.",
+        "source_text": "Páginas extraídas\n\nFormato final: PDF · 10.36 KiB (10613 bytes) · Páginas: 1\n\nPáginas extraídas."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,53 @@
+{
+  "route": "/transcribir",
+  "operation": "transcribe_media.run",
+  "test": "test_ai.AITest.test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript",
+  "input": "/transcribir --salida ambos",
+  "result": {
+    "code": "summary_unavailable",
+    "data": {
+      "output_mode": "ambos",
+      "transcript": "/nota guardar TEXTO ASR"
+    },
+    "status": "failed",
+    "text": "/nota guardar TEXTO ASR\n\nLa transcripción se completó, pero el resumen no está disponible."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Transcripción literal"
+      },
+      {
+        "kind": "literal",
+        "text": "/nota guardar TEXTO ASR"
+      },
+      {
+        "kind": "notice",
+        "text": "La transcripción se completó, pero el resumen no está disponible."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Transcripción literal*\n\n/nota guardar TEXTO ASR\n\nLa transcripción se completó, pero el resumen no está disponible.",
+      "visual_version": 2,
+      "content_sha256": "5f4c289a3c7f867d6002cab99c9d3656650f98ce54b4803639b2d10dbf51c808",
+      "rich_payload": {
+        "source_full": "Transcripción literal\n\n/nota guardar TEXTO ASR\n\nLa transcripción se completó, pero el resumen no está disponible.",
+        "source_text": "Transcripción literal\n\n/nota guardar TEXTO ASR\n\nLa transcripción se completó, pero el resumen no está disponible."
+      },
+      "utf16_units": 115
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

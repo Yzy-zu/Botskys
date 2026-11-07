@@ -1,0 +1,62 @@
+{
+  "route": "/llamada estado",
+  "operation": "control_call.status",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+  "input": "/llamada estado",
+  "result": {
+    "code": "call_status",
+    "data": {
+      "call": {
+        "connectedAt": 1793988000000,
+        "id": "16c9957d-aaa9-4463-b69e-d05e424fd08d",
+        "requestedAt": 1793988000000,
+        "state": "connected",
+        "video": true
+      }
+    },
+    "status": "ok",
+    "text": "Llamada: connected."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Llamada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Conectada según el servicio"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Conectada desde: 2026-11-06 12:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "notice",
+        "text": "Estado del servicio; no acredita escucha ni recepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Llamada*\n\nConectada según el servicio\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nEstado del servicio; no acredita escucha ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "af7b64c753acca2371fb9c2cf5ab89685ef65376389de48176c7e00dbcbf635a",
+      "rich_payload": {
+        "source_full": "Llamada\n\nConectada según el servicio\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nEstado del servicio; no acredita escucha ni recepción humana.",
+        "source_text": "Llamada\n\nConectada según el servicio\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nEstado del servicio; no acredita escucha ni recepción humana."
+      },
+      "utf16_units": 161
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

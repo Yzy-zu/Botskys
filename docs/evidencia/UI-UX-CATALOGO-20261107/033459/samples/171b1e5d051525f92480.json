@@ -1,0 +1,72 @@
+{
+  "route": "/llamada estado",
+  "operation": "control_call.status",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/llamada estado",
+  "result": {
+    "code": "call_status",
+    "data": {
+      "call": {
+        "connectedAt": 1793988000000,
+        "endedAt": 1793988000000,
+        "id": "982c1dcb-26a2-4223-95f8-a20fdad90731",
+        "reason": "requested",
+        "requestedAt": 1793988000000,
+        "state": "ended",
+        "video": true
+      }
+    },
+    "status": "ok",
+    "text": "Llamada: ended."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Llamada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Terminada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Conectada desde: 2026-11-06 12:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Duración observada: Duración desconocida"
+      },
+      {
+        "kind": "notice",
+        "text": "Terminada a petición del usuario"
+      },
+      {
+        "kind": "notice",
+        "text": "Estado del servicio; no acredita escucha ni recepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Llamada*\n\nTerminada\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nDuración observada: Duración desconocida\n\nTerminada a petición del usuario\n\nEstado del servicio; no acredita escucha ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "abdf7be656716382d2b5eefbb6fe4c0d268a558673b26a890abd17db62d493b8",
+      "rich_payload": {
+        "source_full": "Llamada\n\nTerminada\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nDuración observada: Duración desconocida\n\nTerminada a petición del usuario\n\nEstado del servicio; no acredita escucha ni recepción humana.",
+        "source_text": "Llamada\n\nTerminada\n\nConectada desde: 2026-11-06 12:00:00 · America/Mexico_City\n\nDuración observada: Duración desconocida\n\nTerminada a petición del usuario\n\nEstado del servicio; no acredita escucha ni recepción humana."
+      },
+      "utf16_units": 219
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,13 +1,15 @@
 # Modernización visual y de experiencia de Botsky
 
 Versión 1 · 07/11/2026 · Encargo: recuperar la calidad visual de Zhana en toda la experiencia.
-Estado: **implementación parcial V1–V6 en commits locales; V7 en verificación. Plan completo NO cerrado**.
+Estado: **V1–V6 implementadas y verificadas en alcance local; V7 en cierre técnico.
+Plan completo NO cerrado: observación de cliente/canal y audiovisual real NO_PROBADO**.
 
-Encargo posterior: implementación y despliegue autorizados, sin llamadas/envíos de
-prueba. Evidencias separadas UI-UX-V1 a V6-20261107; matriz conserva pendientes.
-Quedan catálogo exhaustivo154rutas, literalidad visual completa, fallos/casos
-difíciles restantes y observación Android/Web/compresión/frames/voz. Un transporte
-instalado o una prueba local no cierran estos pendientes. V0 histórico intacto.
+Encargo posterior: implementación y despliegue reversible autorizados, sin llamadas
+ni envíos de prueba. Evidencia de continuación en UI-UX-CONT-20261107 y catálogo
+UI-UX-CATALOGO-20261107. Registro actual155rutas/192campos/32raíces (34familias
+al desglosar audiovisual). La ruta nueva `/dl detalle` añade2campos; V0 y campañas
+históricas154/190 no se reescriben. Pruebas locales y capturas sintéticas no acreditan
+renderizado real. Ver estado por fase y pendientes expresos al final.
 Este documento amplía `PROPUESTA_UI_UX_20261107.md` y concreta una continuación de
 R1/R3/R7/R8/R9/R11 del plan de construcción, sin reabrir campañas históricas.
 
@@ -18,8 +20,8 @@ resultado, distingue las opciones y sabe qué hacer después sin leer identifica
 internos. Recuperar de Zhana sus composiciones, tablas y recursos visuales útiles,
 con datos y persistencia propios de Botsky. El alcance incluye las 30 herramientas
 de dominio, el núcleo de ayuda/seguimiento y las adaptaciones audiovisuales:
-**154 rutas actuales, 190 campos declarados entre sus rutas y 32 raíces de operación**,
-según el registro de comandos. Los campos se cuentan por ruta; no son 190 nombres únicos.
+**155 rutas actuales, 192 campos declarados entre sus rutas y 32 raíces de operación**,
+según el registro de comandos. Los campos se cuentan por ruta; no son 192 nombres únicos.
 
 La presentación respeta la sintaxis explícita vigente. No se recupera la entrada
 NLP de Zhana. Su frase «elige la segunda» se adapta a un comando corto y verificable;
@@ -136,9 +138,8 @@ _Lista disponible durante 15 minutos._
 `/dl elegir 2`
 ```
 
-Ejemplo de diseño futuro: `/dl elegir 2` es una adaptación propuesta, **no una
-sintaxis existente**. Mientras se construye, el presentador debe mostrar únicamente
-comandos realmente admitidos. Al publicar una lista con menos opciones, el pie
+Implementado: `/dl elegir 2` es sintaxis explícita determinista; la forma con
+referencia de lista sigue admitida. El presentador muestra comandos admitidos. Al publicar una lista con menos opciones, el pie
 indica el rango real. El TTL mostrado procede de la vista durable, no de una frase fija.
 
 Requisitos pequeños que forman parte del cierre:
@@ -249,7 +250,8 @@ error, contenido largo y aislamiento. Los números/fechas de las muestras son si
 
 Matriz completa: `UI_UX_MATRIZ_RUTAS.csv`, una fila por cada ruta y todos sus campos
 actuales, con fase, presentador y criterios aplicables. Inventario no equivale a
-aceptación: todas las rutas comienzan en **PENDIENTE_IMPLEMENTAR**.
+aceptación: el estado inicial fue **PENDIENTE_IMPLEMENTAR**; la matriz actual distingue
+verificación local y observación visual pendiente.
 
 ## 7. Audiovisual y superficies fuera del texto
 
@@ -288,9 +290,10 @@ flowchart LR
   H --> I[Selección y seguimiento por ámbito]
 ```
 
-Módulos propuestos, aún inexistentes: `presentation/models.py`, `theme.py`,
-`formatters.py`, `splitter.py`, `presenters/`, `engines/search_collage.py`.
-El nombre/ruta se ajustará al implementar; no se importa código de Zhana al arrancar.
+Módulos implementados: `presentation/` (bloques, plan, splitter, tablas, citas,
+búsquedas y presentadores por dominio), `engines/search_collage.py` y metadatos de
+archivos medidos. Las rutas definitivas se consultan en código/evidencia; no se
+importa código de Zhana al arrancar.
 
 - Bloques mínimos: heading, paragraph, literal, quote, numbered_list, native_table,
   media con nombre/caption, notice y next_action. Reacción/presencia con ciclo y
@@ -424,3 +427,35 @@ modificarlos. No ejecutar todo como una sustitución masiva sin cierres verifica
 
 La prioridad visual es explícita: un comando que funciona pero produce una
 respuesta confusa aún no cumple el contrato de experiencia de este plan.
+
+## 13. Estado de ejecución de la continuación del07/11
+
+Fuente de regresión final: `bf2fba9`;321PythonPASS,0omisiones,0conexionesfuera de
+loopback. Catálogo033459:155rutas,32raíces/34familias,776muestras, fuente hash
+inmutable durante ejecución. `revision-rutas.json` enlaza muestras con pruebas y
+assertions de dominio; no transforma captura, código ok o guardia en aceptación
+visual. La matriz expresa el alcance local y el pendiente visual por separado.
+Las corridas031805 y033037 fallidas se conservan; no sustituyen el resultado final.
+
+| Fase | Resultado técnico comprobado | Pendiente expreso para cierre visual |
+| --- | --- | --- |
+| V1 | Bloques/Unicode/literalidad, ayuda desde registro, seguimiento propio/ambiguo/citado; sin sufijo técnico automático. | Android/Web, legibilidad con tamaño de fuente y RTL reales. |
+| V2 | Layouts1–6JPEG inspeccionados localmente; orden/elección inmutables, detalle íntegro, miniaturas acotadas y fallos parciales; búsquedas con URL/metadatos/fuentes. | Compresión del canal y lectura real a320–390px. |
+| V3 | Tablas tipadas y transporte codificado localmente; fallback previo a envío, outbox0/1/2, hash/citas/TTL/barrera y recuperación/cancelación incierta. | Render de tabla instalada en Android/Web; no se hicieron envíos nuevos. |
+| V4 | Organización/paginación/filtros, literal OCR/QR/transcripción, PDF/archivos medidos/caption, Drive/recado con ámbito y confirmación. | Recepción, apariencia/fidelidad en cliente y documentos complejos no incluidos en fixtures. |
+| V5 | Costes/reglas/consentimiento, manos/carta oculta, previews censuradas y barreras, HH/admin/MC; guardias y efectos externos comprobados con dobles. | Render en chat y percepción de tablas/medios; ningún nuevo efecto remoto de prueba. |
+| V6 | Marca, controles/agenda/zona y estado observado por fixture; composición PIP/pausa/reanudación/fin/reconexión/sesión mediante VM y suite Node. | Frames WebGL/raster, movimiento/labios, voz y recepción audiovisual reales. VM no los acredita. |
+| V7 | Regresión/catálogo/trazabilidad y benchmark comparativo disponibles; despliegue propio reversible según evidencia del corte. | Aceptación visual global y humana NO_PROBADO. No se declara el plan completo. |
+
+En `evidencia/UI-UX-CONT-20261107/benchmark.json`:40fixturesidénticos porcaso frente
+al código4482c46. PDF/sticker2→1parte; notas1→1/top2→2. Coste local de planificación
+medido en fracciones de ms, con mayor almacenamiento para fuente canónica íntegra.
+No es una medida de latencia/red/proveedor, ni una promesa universal de mejora.
+
+Pendientes que requieren observación adicional: Android yWeb, modo claro/oscuro,
+fuente grande/lector/orden de lectura real, compresión de imágenes por el canal,
+frames y audio de sesión real. Se mantienen NO_PROBADO por la prohibición de nuevos
+envíos/llamadas de prueba; no impiden el trabajo técnico independiente realizado.
+No se han reincorporado NLP ni SoundCloud. La reversión conserva la base viva y
+requiere no degradar planes2 pendientes al lector anterior; no restaura un backup
+antiguo sobre efectos nuevos. Ver `evidencia/UI-UX-CONT-20261107/reversion.md`.

@@ -1,0 +1,37 @@
+{
+  "route": "/pdf reintentar",
+  "operation": "manage_pdf.retry",
+  "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+  "input": "/pdf reintentar a2f5bd8c966b8a1a82e1f3f1b812aec6",
+  "result": {
+    "code": "delivery_retry_preview",
+    "data": {
+      "confirmation_id": "4b6dec76e92c4a7b94f10f2e1c6d13f4",
+      "target": "a2f5bd8c966b8a1a82e1f3f1b812aec6"
+    },
+    "status": "needs_input",
+    "text": "Voy a reenviar 1 partes fallidas o inciertas del PDF a2f5bd8c966b8a1a82e1f3f1b812aec6. Un reenvío de una parte incierta podría duplicarla. No repetiré el motor.\n/confirmar 4b6dec76e92c4a7b94f10f2e1c6d13f4"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Voy a reenviar 1 partes fallidas o inciertas del PDF a2f5bd8c966b8a1a82e1f3f1b812aec6. Un reenvío de una parte incierta podría duplicarla. No repetiré el motor.\n/confirmar 4b6dec76e92c4a7b94f10f2e1c6d13f4",
+      "visual_version": 2,
+      "content_sha256": "6ad5dad1fc4bfb7e8b982d4755218f3644b955de0467a567273723422c3702af",
+      "rich_payload": {
+        "source_full": "Voy a reenviar 1 partes fallidas o inciertas del PDF a2f5bd8c966b8a1a82e1f3f1b812aec6. Un reenvío de una parte incierta podría duplicarla. No repetiré el motor.\n/confirmar 4b6dec76e92c4a7b94f10f2e1c6d13f4",
+        "source_text": "Voy a reenviar 1 partes fallidas o inciertas del PDF a2f5bd8c966b8a1a82e1f3f1b812aec6. Un reenvío de una parte incierta podría duplicarla. No repetiré el motor.\n/confirmar 4b6dec76e92c4a7b94f10f2e1c6d13f4"
+      },
+      "utf16_units": 204
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

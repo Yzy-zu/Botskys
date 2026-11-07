@@ -1,0 +1,54 @@
+{
+  "route": "/coop aportar",
+  "operation": "manage_cooperacha.contribute",
+  "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+  "input": "/coop aportar b26e8b9282334797a7e5ecbc870660f5 1",
+  "result": {
+    "code": "coop_status",
+    "data": {
+      "category": "sintetico",
+      "challenge_id": "b26e8b9282334797a7e5ecbc870660f5",
+      "expires_ms": 1793963400000,
+      "refund": 0,
+      "state": "open",
+      "target": 100,
+      "total": 1
+    },
+    "status": "ok",
+    "text": "Cooperacha b26e8b9282334797a7e5ecbc870660f5: open · 1/100 XP · devuelto 0 XP."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Categoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar b26e8b9282334797a7e5ecbc870660f5 CANTIDAD"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Cooperacha*\n\nCategoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar b26e8b9282334797a7e5ecbc870660f5 CANTIDAD",
+      "visual_version": 2,
+      "content_sha256": "8f42359efd5b417875c9a5200d2936c60d3abfef493b661ad6d8b7dc2b2411d3",
+      "rich_payload": {
+        "source_full": "Cooperacha\n\nCategoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar b26e8b9282334797a7e5ecbc870660f5 CANTIDAD",
+        "source_text": "Cooperacha\n\nCategoría: sintetico\nEstado: abierta\nAvance: 1/100 XP\nDevuelto: 0 XP\nVence: 2026-11-06 05:10:00 · America/Mexico_City\n/coop aportar b26e8b9282334797a7e5ecbc870660f5 CANTIDAD"
+      },
+      "utf16_units": 187
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

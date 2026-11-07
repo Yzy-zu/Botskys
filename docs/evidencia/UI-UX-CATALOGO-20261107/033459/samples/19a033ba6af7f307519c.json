@@ -1,0 +1,96 @@
+{
+  "route": "/pack confirmar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+  "input": "/pack confirmar 756b110c7d6f4defb91ffaeb5cb9d929",
+  "result": {
+    "code": "pack_status",
+    "data": {
+      "parts": [
+        {
+          "cost": 38,
+          "error_code": null,
+          "position": 0,
+          "state": "accepted"
+        },
+        {
+          "cost": 38,
+          "error_code": null,
+          "position": 1,
+          "state": "accepted"
+        },
+        {
+          "cost": 37,
+          "error_code": null,
+          "position": 2,
+          "state": "accepted"
+        },
+        {
+          "cost": 37,
+          "error_code": null,
+          "position": 3,
+          "state": "accepted"
+        }
+      ],
+      "price": 150,
+      "purchase_id": "756b110c7d6f4defb91ffaeb5cb9d929",
+      "refund": 0,
+      "state": "completed"
+    },
+    "status": "ok",
+    "text": "Pack 756b110c7d6f4defb91ffaeb5cb9d929: completed. Precio 150 XP · devuelto 0 XP.\nFoto 1: accepted · 38 XP\nFoto 2: accepted · 38 XP\nFoto 3: accepted · 37 XP\nFoto 4: accepted · 37 XP"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Entrega de pack",
+      "headers": [
+        "Foto",
+        "Estado",
+        "XP"
+      ],
+      "rows": [
+        [
+          "1",
+          "aceptado por el servicio",
+          "38"
+        ],
+        [
+          "2",
+          "aceptado por el servicio",
+          "38"
+        ],
+        [
+          "3",
+          "aceptado por el servicio",
+          "37"
+        ],
+        [
+          "4",
+          "aceptado por el servicio",
+          "37"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Precio: 150 XP · Devuelto: 0 XP · completada\n\n```\nEntrega de pack\n\nFoto: 1\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 2\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 3\nEstado: aceptado por el servicio\nXP: 37\n\nFoto: 4\nEstado: aceptado por el servicio\nXP: 37\n```\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+      "visual_version": 2,
+      "content_sha256": "49617f1e11928e606299150a101e303a93a981f83750cd7c5e1aa6d337c5e7b1",
+      "rich_payload": {
+        "source_full": "Precio: 150 XP · Devuelto: 0 XP · completada\n\nEntrega de pack\n\nFoto: 1\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 2\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 3\nEstado: aceptado por el servicio\nXP: 37\n\nFoto: 4\nEstado: aceptado por el servicio\nXP: 37\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+        "source_text": "Precio: 150 XP · Devuelto: 0 XP · completada\n\nEntrega de pack\n\nFoto: 1\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 2\nEstado: aceptado por el servicio\nXP: 38\n\nFoto: 3\nEstado: aceptado por el servicio\nXP: 37\n\nFoto: 4\nEstado: aceptado por el servicio\nXP: 37\n\nLa entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente."
+      },
+      "utf16_units": 376
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

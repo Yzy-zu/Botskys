@@ -1,0 +1,84 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_native_tables.TableEvolutionTest.test_evolution_sends_typed_table_and_never_text_substitute",
+  "input": "/ayuda",
+  "result": {
+    "code": "synthetic",
+    "data": {
+      "native_table": {
+        "headers": [
+          "Nombre",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "Uno"
+          ],
+          [
+            "RTL עברית",
+            "2"
+          ]
+        ],
+        "title": "Comparación"
+      }
+    },
+    "status": "ok",
+    "text": "Fuente"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Comparación",
+      "headers": [
+        "Nombre",
+        "Valor"
+      ],
+      "rows": [
+        [
+          "*literal*",
+          "Uno"
+        ],
+        [
+          "RTL עברית",
+          "2"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "4f3d2e3ce528e84fd89b3a0bff7147cfde8976e4acb027eae0cd3ff2629626e9",
+      "rich_payload": {
+        "headers": [
+          "Nombre",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "Uno"
+          ],
+          [
+            "RTL עברית",
+            "2"
+          ]
+        ],
+        "source_full": "Fuente",
+        "title": "Comparación"
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

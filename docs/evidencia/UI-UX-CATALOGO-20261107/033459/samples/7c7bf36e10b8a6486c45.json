@@ -1,0 +1,55 @@
+{
+  "route": "/voz cita",
+  "operation": "make_voice.verbatim",
+  "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+  "input": "/voz cita --voz argentino --efecto radio",
+  "result": {
+    "code": "voice_ready",
+    "data": {
+      "artifacts": [
+        "b948f376abb9430f9c145d2ea249692a"
+      ],
+      "effect": "radio",
+      "file_facts": [
+        {
+          "bytes": 4927,
+          "duration_seconds": 1.0065,
+          "extension": "ogg",
+          "format": "ogg"
+        }
+      ],
+      "mode": "verbatim",
+      "spoken_text": "Texto propio literal.",
+      "voice": "argentino"
+    },
+    "status": "ok",
+    "text": "Voz literal lista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "1a0469af4febdb2a96009dcb9c491520d7ae80ddf260bf42646f58b72c8f9cc0",
+      "rich_payload": {
+        "artifacts": [
+          "b948f376abb9430f9c145d2ea249692a"
+        ],
+        "caption": "",
+        "name": "Voz Botsky.ogg",
+        "source_full": "Texto propio literal.",
+        "source_text": "Texto propio literal."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

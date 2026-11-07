@@ -1,0 +1,36 @@
+{
+  "route": "/ruleta jugar",
+  "operation": "manage_roulette.play",
+  "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+  "input": "/ruleta jugar f1329da828ae4ddc8039948163407a23",
+  "result": {
+    "code": "roulette_uncertain",
+    "data": {
+      "room_id": "f1329da828ae4ddc8039948163407a23"
+    },
+    "status": "uncertain",
+    "text": "Efecto incierto; apuestas retenidas, sin repetir."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Efecto incierto; apuestas retenidas, sin repetir.",
+      "visual_version": 2,
+      "content_sha256": "dc96f2ea34e161bbe84e988de9f6c8b03cc66922268dae76e2d034bd63354715",
+      "rich_payload": {
+        "source_full": "Efecto incierto; apuestas retenidas, sin repetir.",
+        "source_text": "Efecto incierto; apuestas retenidas, sin repetir."
+      },
+      "utf16_units": 49
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

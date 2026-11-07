@@ -1,0 +1,38 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_analysis_forwards_presentation_and_malformed_json_content",
+  "input": "/ia analiza el archivo",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "Contenido recibido.",
+      "purpose": "answer",
+      "qr_readings": []
+    },
+    "status": "ok",
+    "text": "Contenido recibido."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Contenido recibido.",
+      "visual_version": 2,
+      "content_sha256": "c8ae51e37c3aeb30dc94128e436dd2eef252e37f488c827c44f89cfb7cdfd48c",
+      "rich_payload": {
+        "source_full": "Contenido recibido.",
+        "source_text": "Contenido recibido."
+      },
+      "utf16_units": 19
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

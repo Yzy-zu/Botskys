@@ -1,0 +1,34 @@
+{
+  "route": "/tarea completar",
+  "operation": "manage_school.complete_task",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/tarea completar 1",
+  "result": {
+    "code": "task_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una tarea admisible con ese ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una tarea admisible con ese ID.",
+      "visual_version": 2,
+      "content_sha256": "d519c1a9a602c30451fffdef0a4415ab5b6fa2ec55c9f2d35f9169d7b12fda2f",
+      "rich_payload": {
+        "source_full": "No hay una tarea admisible con ese ID.",
+        "source_text": "No hay una tarea admisible con ese ID."
+      },
+      "utf16_units": 38
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

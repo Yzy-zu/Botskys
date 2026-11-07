@@ -1,0 +1,147 @@
+{
+  "route": "/dl buscar",
+  "operation": "download_media.search",
+  "test": "test_search_presentation.SearchPresentationTest.test_detail_retains_complete_title_author_without_refetch_or_backend",
+  "input": "/dl buscar mp4 muestra",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp4",
+        "quality": "standard",
+        "source": "youtube",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "e8739de049cf454481321297a52bb0dd"
+      ],
+      "choices": [
+        {
+          "author": "Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo ",
+          "duration": 85,
+          "thumbnail_url": null,
+          "title": "Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* ",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "literal",
+            "text": "1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]"
+          },
+          {
+            "kind": "quote",
+            "text": "1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C"
+          },
+          {
+            "kind": "paragraph",
+            "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "Título y autor completos: /dl detalle NUMERO"
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 79317,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "search_note": "",
+      "view_id": "4775a1e9d0c748a08903c62e0aff2aea"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n\n> 1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "literal",
+        "text": "1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]"
+      },
+      {
+        "kind": "quote",
+        "text": "1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C"
+      },
+      {
+        "kind": "paragraph",
+        "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "Título y autor completos: /dl detalle NUMERO"
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "0a0767950eee905c4f29a6e680de61e9c835067b6d858fa156deb2eaa0b3b28b",
+      "rich_payload": {
+        "artifacts": [
+          "e8739de049cf454481321297a52bb0dd"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg",
+        "source_full": "Videos\n\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n```\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n```\n\n> 1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "3679cc334afda93341bb3ba9adb00d17e1214881aa7caa0b56995e28c8234827",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal* Título completo *literal… [vista previa]\n\n1:25 · Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Autor largo Auto… [vista previa] · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 577
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

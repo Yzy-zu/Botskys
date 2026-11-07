@@ -1,0 +1,34 @@
+{
+  "route": "/confirmar",
+  "operation": "core.confirmar",
+  "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+  "input": "/confirmar 1d3116ac26374d8d8a1cba4e7b25e8fb",
+  "result": {
+    "code": "confirmation_stale",
+    "data": {},
+    "status": "needs_input",
+    "text": "Los recuerdos cambiaron; solicita otra vista previa."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Los recuerdos cambiaron; solicita otra vista previa.",
+      "visual_version": 2,
+      "content_sha256": "4a14bdf9d852bb1f28bbb17ca1e7520c983327b7870c05db4b7c717c8445b6c9",
+      "rich_payload": {
+        "source_full": "Los recuerdos cambiaron; solicita otra vista previa.",
+        "source_text": "Los recuerdos cambiaron; solicita otra vista previa."
+      },
+      "utf16_units": 52
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,70 @@
+{
+  "route": "/bj doblar",
+  "operation": "manage_blackjack.double",
+  "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+  "input": "/bj doblar 51d1e7fc85104911b6d335d7b559b1b1",
+  "result": {
+    "code": "blackjack_settled",
+    "data": {
+      "dealer": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        },
+        {
+          "rank": "7",
+          "suit": "♠",
+          "value": 7
+        }
+      ],
+      "game_id": "51d1e7fc85104911b6d335d7b559b1b1",
+      "players": [
+        {
+          "bet": 100,
+          "outcome": "gana",
+          "payout": 200,
+          "score": 21,
+          "seat": 1
+        }
+      ],
+      "state": "settled"
+    },
+    "status": "ok",
+    "text": "Crupier: 17\nAsiento 1: gana · pago 200 XP"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack · final"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Crupier: 17 puntos\n\nAsiento 1 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack · final*\n\nCrupier: 17 puntos\n\nAsiento 1 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP",
+      "visual_version": 2,
+      "content_sha256": "1e7729e9c95280cc4eb04eadf6cb9ba341796b8a02d931a686e5c6b36ad10e4f",
+      "rich_payload": {
+        "source_full": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP",
+        "source_text": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP"
+      },
+      "utf16_units": 132
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

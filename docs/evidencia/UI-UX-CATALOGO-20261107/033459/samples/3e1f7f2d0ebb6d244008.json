@@ -1,0 +1,34 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again",
+  "input": "/dl elegir 1",
+  "result": {
+    "code": "selection_ambiguous",
+    "data": {},
+    "status": "needs_input",
+    "text": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir bde84b8ac8ef4f1baa1f811c7cdc78b3 NUMERO\n/dl elegir 0da5945549864c75bc510af078c5622e NUMERO"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir bde84b8ac8ef4f1baa1f811c7cdc78b3 NUMERO\n/dl elegir 0da5945549864c75bc510af078c5622e NUMERO",
+      "visual_version": 2,
+      "content_sha256": "bad37845b84cadd9c9bd7beac86d619995d6dbe35c58108e4a1db5b6d1a61289",
+      "rich_payload": {
+        "source_full": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir bde84b8ac8ef4f1baa1f811c7cdc78b3 NUMERO\n/dl elegir 0da5945549864c75bc510af078c5622e NUMERO",
+        "source_text": "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n/dl elegir bde84b8ac8ef4f1baa1f811c7cdc78b3 NUMERO\n/dl elegir 0da5945549864c75bc510af078c5622e NUMERO"
+      },
+      "utf16_units": 172
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

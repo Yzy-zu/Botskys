@@ -1,0 +1,36 @@
+{
+  "route": "/mem guardar",
+  "operation": "manage_memory.remember",
+  "test": "test_pagination_presentation.PaginationPresentationTest.test_memory_and_closed_lists_keep_explicit_filters_on_next_page",
+  "input": "/mem guardar --tipo preferencia Preferencia 0",
+  "result": {
+    "code": "memory_saved",
+    "data": {
+      "memory_id": 1
+    },
+    "status": "ok",
+    "text": "Recuerdo 1 guardado como preferencia."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recuerdo 1 guardado como preferencia.",
+      "visual_version": 2,
+      "content_sha256": "13ecba9338c1a98ce2d6edaf11453f22c9b699a4c22aeafbc3a8419556e2a6ad",
+      "rich_payload": {
+        "source_full": "Recuerdo 1 guardado como preferencia.",
+        "source_text": "Recuerdo 1 guardado como preferencia."
+      },
+      "utf16_units": 37
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

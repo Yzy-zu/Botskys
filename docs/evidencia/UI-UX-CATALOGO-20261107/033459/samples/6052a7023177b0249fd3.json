@@ -1,0 +1,75 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+  "input": "/dl elegir ee480c607b8b448cad4e00a65f4b0e66 1",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "76554e3d215d43dc8d600a341aa978e6"
+      ],
+      "file_facts": [
+        {
+          "bytes": 15322,
+          "duration_seconds": 0.8,
+          "extension": "mp4",
+          "format": "mp4"
+        }
+      ],
+      "format": "mp4",
+      "title": "Video sintético /nota guardar NO",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video sintético /nota guardar NO"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "2ba266defe0e06d0b28951551c97c38ad9a0d4178057defabcf646c5db374dd9",
+      "rich_payload": {
+        "artifacts": [
+          "76554e3d215d43dc8d600a341aa978e6"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo sintético /nota guardar NO\n\nFormato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "nota guardar NO.mp4",
+        "source_full": "Descarga preparada\n\nVideo sintético /nota guardar NO\n\nFormato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "source_text": "Descarga preparada\n\nVideo sintético /nota guardar NO\n\nFormato final: MP4 · 14.96 KiB (15322 bytes) · Duración: 0:01\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

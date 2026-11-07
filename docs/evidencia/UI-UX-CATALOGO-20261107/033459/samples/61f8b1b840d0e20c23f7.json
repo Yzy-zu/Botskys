@@ -1,0 +1,69 @@
+{
+  "route": "/dl anterior",
+  "operation": "download_media.previous",
+  "test": "test_downloads.DownloadsTest.test_view_accepted_scope_choice_format_and_previous_reuses_file",
+  "input": "/dl anterior mp3",
+  "result": {
+    "code": "media_edited",
+    "data": {
+      "artifacts": [
+        "aca61d311870413980e9437fd2971d6a"
+      ],
+      "file_facts": [
+        {
+          "bytes": 13971,
+          "duration_seconds": 0.810667,
+          "extension": "mp3",
+          "format": "mp3"
+        }
+      ],
+      "format": "mp3"
+    },
+    "status": "ok",
+    "text": "Archivo convertido."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Audio o video convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo convertido."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "4c643f3381fc0826c502d2df2d359e13f0a829753f274c728cd4513de0c5c0a5",
+      "rich_payload": {
+        "artifacts": [
+          "aca61d311870413980e9437fd2971d6a"
+        ],
+        "caption": "*Audio o video convertido*\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo convertido.",
+        "caption_frozen": true,
+        "name": "Botsky.mp3",
+        "source_full": "Audio o video convertido\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo convertido.",
+        "source_text": "Audio o video convertido\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo convertido."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

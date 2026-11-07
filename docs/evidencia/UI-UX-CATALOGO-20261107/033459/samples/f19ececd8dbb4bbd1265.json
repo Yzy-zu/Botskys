@@ -1,0 +1,58 @@
+{
+  "route": "/recordar el",
+  "operation": "manage_reminder.create",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/recordar el 2026-12-01 12:00 ejemplo",
+  "result": {
+    "code": "reminder_created",
+    "data": {
+      "due_ms": 1796148000000,
+      "reminder_id": 1,
+      "text": "ejemplo"
+    },
+    "status": "ok",
+    "text": "Recordatorio 1: ejemplo\n2026-12-01 12:00:00 · Ciudad de México. Aviso pendiente; entrega aún no comprobada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorio 1 guardado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2026-12-01 12:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "ejemplo"
+      },
+      {
+        "kind": "notice",
+        "text": "Aviso pendiente; entrega aún no comprobada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorio 1 guardado*\n\n2026-12-01 12:00:00 · America/Mexico_City\n\nejemplo\n\nAviso pendiente; entrega aún no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "4956793e80e9cb1a57896ad326762170917a560ee79e76654081a087f15a8a15",
+      "rich_payload": {
+        "source_full": "Recordatorio 1 guardado\n\n2026-12-01 12:00:00 · America/Mexico_City\n\nejemplo\n\nAviso pendiente; entrega aún no comprobada.",
+        "source_text": "Recordatorio 1 guardado\n\n2026-12-01 12:00:00 · America/Mexico_City\n\nejemplo\n\nAviso pendiente; entrega aún no comprobada."
+      },
+      "utf16_units": 122
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

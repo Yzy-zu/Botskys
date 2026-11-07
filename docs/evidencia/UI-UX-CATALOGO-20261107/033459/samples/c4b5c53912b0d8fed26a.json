@@ -1,0 +1,60 @@
+{
+  "route": "/tarea crear",
+  "operation": "manage_school.add_task",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/tarea crear --materia Historia --fecha 2026-12-01 --hora 12:00 Texto literal",
+  "result": {
+    "code": "school_task_created",
+    "data": {
+      "due_date": "2026-12-01",
+      "due_time": "12:00",
+      "subject": "Historia",
+      "task_id": 1,
+      "text": "Texto literal"
+    },
+    "status": "ok",
+    "text": "Tarea 1 guardada para 2026-12-01 12:00"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Tarea 1 guardada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Entrega: 2026-12-01 12:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Historia"
+      },
+      {
+        "kind": "literal",
+        "text": "Texto literal"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Tarea 1 guardada*\n\nEntrega: 2026-12-01 12:00 · America/Mexico_City\n\nHistoria\n\nTexto literal",
+      "visual_version": 2,
+      "content_sha256": "25f1356daac80df20bd178c2b10589ac092d1a5fbea237c05ca49f7042ca055c",
+      "rich_payload": {
+        "source_full": "Tarea 1 guardada\n\nEntrega: 2026-12-01 12:00 · America/Mexico_City\n\nHistoria\n\nTexto literal",
+        "source_text": "Tarea 1 guardada\n\nEntrega: 2026-12-01 12:00 · America/Mexico_City\n\nHistoria\n\nTexto literal"
+      },
+      "utf16_units": 92
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

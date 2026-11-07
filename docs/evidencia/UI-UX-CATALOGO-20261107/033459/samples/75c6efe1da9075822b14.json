@@ -1,0 +1,60 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+  "input": "/admin nuclear-confirmar bcf4e93ebbef4e778c7e8255e20ab79f",
+  "result": {
+    "code": "nuclear_status",
+    "data": {
+      "cost": 5000,
+      "counts": {
+        "skipped": 1,
+        "uncertain": 1
+      },
+      "draft_id": "bcf4e93ebbef4e778c7e8255e20ab79f",
+      "state": "uncertain"
+    },
+    "status": "uncertain",
+    "text": "Nuclear bcf4e93ebbef4e778c7e8255e20ab79f: uncertain · coste 5000 XP. skipped: 1, uncertain: 1"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Estado de operación nuclear",
+      "headers": [
+        "Estado de destinatarios",
+        "Cantidad"
+      ],
+      "rows": [
+        [
+          "omitido",
+          "1"
+        ],
+        [
+          "incierto",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Coste: 5000 XP · incierto\n\n```\nEstado de operación nuclear\n\nEstado de destinatarios: omitido\nCantidad: 1\n\nEstado de destinatarios: incierto\nCantidad: 1\n```\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+      "visual_version": 2,
+      "content_sha256": "f1b87cbc85fe7c2841554c63b1e69082c414114da5f440607130f22f86bbafe6",
+      "rich_payload": {
+        "source_full": "Coste: 5000 XP · incierto\n\nEstado de operación nuclear\n\nEstado de destinatarios: omitido\nCantidad: 1\n\nEstado de destinatarios: incierto\nCantidad: 1\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+        "source_text": "Coste: 5000 XP · incierto\n\nEstado de operación nuclear\n\nEstado de destinatarios: omitido\nCantidad: 1\n\nEstado de destinatarios: incierto\nCantidad: 1\n\nUna parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación."
+      },
+      "utf16_units": 269
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

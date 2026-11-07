@@ -1,0 +1,34 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+  "input": "/recado enviar d798ba02c0a34c30846f703b2d7144a5",
+  "result": {
+    "code": "message_preview_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Recibe la vista completa y después confirma su ID desde este privado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Recibe la vista completa y después confirma su ID desde este privado.",
+      "visual_version": 2,
+      "content_sha256": "3f842e1ba02fb4ee6e6e740a58945ee6cff3280b084fb0c9d97efff5ac6e63c9",
+      "rich_payload": {
+        "source_full": "Recibe la vista completa y después confirma su ID desde este privado.",
+        "source_text": "Recibe la vista completa y después confirma su ID desde este privado."
+      },
+      "utf16_units": 69
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

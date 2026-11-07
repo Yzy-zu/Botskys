@@ -1,0 +1,36 @@
+{
+  "route": "/pdf reintentar",
+  "operation": "manage_pdf.retry",
+  "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+  "input": "/pdf reintentar a2f5bd8c966b8a1a82e1f3f1b812aec6 --confirmar-incierto",
+  "result": {
+    "code": "delivery_retry_authorized",
+    "data": {
+      "target": "a2f5bd8c966b8a1a82e1f3f1b812aec6"
+    },
+    "status": "ok",
+    "text": "Reintento de entrega autorizado. Se conservan las partes ya aceptadas y el resultado del motor."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Reintento de entrega autorizado. Se conservan las partes ya aceptadas y el resultado del motor.",
+      "visual_version": 2,
+      "content_sha256": "175eaaef0136a0019ec109326dabce5b0fb352b7954c4dac1d68a3e41b344d44",
+      "rich_payload": {
+        "source_full": "Reintento de entrega autorizado. Se conservan las partes ya aceptadas y el resultado del motor.",
+        "source_text": "Reintento de entrega autorizado. Se conservan las partes ya aceptadas y el resultado del motor."
+      },
+      "utf16_units": 95
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,97 @@
+{
+  "route": "/bj repartir",
+  "operation": "manage_blackjack.deal",
+  "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+  "input": "/bj repartir a3a36a915da4485dad0f1fccd4d17775",
+  "result": {
+    "code": "blackjack_board",
+    "data": {
+      "bet": 50,
+      "dealer_visible": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        }
+      ],
+      "game_id": "a3a36a915da4485dad0f1fccd4d17775",
+      "players": [
+        {
+          "bet": 50,
+          "hand": [
+            {
+              "rank": "A",
+              "suit": "♠",
+              "value": 11
+            },
+            {
+              "rank": "K",
+              "suit": "♠",
+              "value": 10
+            }
+          ],
+          "score": 21,
+          "seat": 1,
+          "state": "blackjack"
+        },
+        {
+          "bet": 50,
+          "hand": [
+            {
+              "rank": "5",
+              "suit": "♠",
+              "value": 5
+            },
+            {
+              "rank": "6",
+              "suit": "♠",
+              "value": 6
+            }
+          ],
+          "score": 11,
+          "seat": 2,
+          "state": "playing"
+        }
+      ],
+      "revision": 4,
+      "state": "playing",
+      "turn": 2
+    },
+    "status": "ok",
+    "text": "Blackjack a3a36a915da4485dad0f1fccd4d17775 · playing · apuesta 50 XP.\nCrupier: 10♠ · carta oculta\nAsiento 1: A♠ K♠ (21) · blackjack\nAsiento 2: 5♠ 6♠ (11) · playing\nTurno: asiento 2\n/bj pedir a3a36a915da4485dad0f1fccd4d17775\n/bj plantarse a3a36a915da4485dad0f1fccd4d17775\n/bj doblar a3a36a915da4485dad0f1fccd4d17775"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Mesa a3a36a915da4485dad0f1fccd4d17775 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · A♠ K♠ · 21 puntos · blackjack\n\nAsiento 2 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 2\n/bj pedir a3a36a915da4485dad0f1fccd4d17775\n/bj plantarse a3a36a915da4485dad0f1fccd4d17775\n/bj doblar a3a36a915da4485dad0f1fccd4d17775"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack*\n\nMesa a3a36a915da4485dad0f1fccd4d17775 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · A♠ K♠ · 21 puntos · blackjack\n\nAsiento 2 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 2\n/bj pedir a3a36a915da4485dad0f1fccd4d17775\n/bj plantarse a3a36a915da4485dad0f1fccd4d17775\n/bj doblar a3a36a915da4485dad0f1fccd4d17775",
+      "visual_version": 2,
+      "content_sha256": "1a3ca8fac1320d802ac6f3a4b2e77370d6a1908a6848010eff83828a5baa3c82",
+      "rich_payload": {
+        "source_full": "Blackjack\n\nMesa a3a36a915da4485dad0f1fccd4d17775 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · A♠ K♠ · 21 puntos · blackjack\n\nAsiento 2 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 2\n/bj pedir a3a36a915da4485dad0f1fccd4d17775\n/bj plantarse a3a36a915da4485dad0f1fccd4d17775\n/bj doblar a3a36a915da4485dad0f1fccd4d17775",
+        "source_text": "Blackjack\n\nMesa a3a36a915da4485dad0f1fccd4d17775 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · A♠ K♠ · 21 puntos · blackjack\n\nAsiento 2 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 2\n/bj pedir a3a36a915da4485dad0f1fccd4d17775\n/bj plantarse a3a36a915da4485dad0f1fccd4d17775\n/bj doblar a3a36a915da4485dad0f1fccd4d17775"
+      },
+      "utf16_units": 355
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,77 @@
+{
+  "route": "/bj doblar",
+  "operation": "manage_blackjack.double",
+  "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+  "input": "/bj doblar a3a36a915da4485dad0f1fccd4d17775",
+  "result": {
+    "code": "blackjack_settled",
+    "data": {
+      "dealer": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        },
+        {
+          "rank": "7",
+          "suit": "♠",
+          "value": 7
+        }
+      ],
+      "game_id": "a3a36a915da4485dad0f1fccd4d17775",
+      "players": [
+        {
+          "bet": 50,
+          "outcome": "blackjack",
+          "payout": 125,
+          "score": 21,
+          "seat": 1
+        },
+        {
+          "bet": 100,
+          "outcome": "gana",
+          "payout": 200,
+          "score": 21,
+          "seat": 2
+        }
+      ],
+      "state": "settled"
+    },
+    "status": "ok",
+    "text": "Crupier: 17\nAsiento 1: blackjack · pago 125 XP\nAsiento 2: gana · pago 200 XP"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack · final"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Crupier: 17 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 50 XP · pago bruto: 125 XP · resultado neto: +75 XP\n\nAsiento 2 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack · final*\n\nCrupier: 17 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 50 XP · pago bruto: 125 XP · resultado neto: +75 XP\n\nAsiento 2 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP",
+      "visual_version": 2,
+      "content_sha256": "621fec0d7a215fcef23d0f6835e16f0a9e1b24133c888047999bc454fe2f7a2e",
+      "rich_payload": {
+        "source_full": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 50 XP · pago bruto: 125 XP · resultado neto: +75 XP\n\nAsiento 2 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP",
+        "source_text": "Blackjack · final\n\nCrupier: 17 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 50 XP · pago bruto: 125 XP · resultado neto: +75 XP\n\nAsiento 2 · gana · 21 puntos\nApuesta: 100 XP · pago bruto: 200 XP · resultado neto: +100 XP"
+      },
+      "utf16_units": 228
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

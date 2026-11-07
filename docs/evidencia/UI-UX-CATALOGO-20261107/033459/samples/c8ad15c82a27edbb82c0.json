@@ -1,0 +1,40 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_core.CoreTest.test_newer_unaccepted_view_does_not_replace_delivered_filter",
+  "input": "/notas --pagina 2",
+  "result": {
+    "code": "note_page_out_of_range",
+    "data": {
+      "items": [],
+      "page": 2,
+      "pages": 1,
+      "query": "cable",
+      "total": 0
+    },
+    "status": "needs_input",
+    "text": "Página fuera de rango: 1–1."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Página fuera de rango: 1–1.",
+      "visual_version": 2,
+      "content_sha256": "158889b4abda6fe5e626dfd8ce0ad3b81f7f89c5cc6449414465fd6951b176fc",
+      "rich_payload": {
+        "source_full": "Página fuera de rango: 1–1.",
+        "source_text": "Página fuera de rango: 1–1."
+      },
+      "utf16_units": 27
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

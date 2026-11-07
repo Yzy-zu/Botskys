@@ -1,0 +1,34 @@
+{
+  "route": "/bj pedir",
+  "operation": "manage_blackjack.hit",
+  "test": "test_games.GamesTest.test_blackjack_table_natural_and_double_settle_all_wallets_once",
+  "input": "/bj pedir a3a36a915da4485dad0f1fccd4d17775",
+  "result": {
+    "code": "blackjack_not_your_turn",
+    "data": {},
+    "status": "failed",
+    "text": "No es tu turno en esa partida."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No es tu turno en esa partida.",
+      "visual_version": 2,
+      "content_sha256": "3dbb84467e581f9a3289c05f03c631e60a044b6f0294f1e1639c2975c7966ee1",
+      "rich_payload": {
+        "source_full": "No es tu turno en esa partida.",
+        "source_text": "No es tu turno en esa partida."
+      },
+      "utf16_units": 30
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,123 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+  "input": "/notas cable",
+  "result": {
+    "code": "notes_found",
+    "data": {
+      "items": [
+        {
+          "created_ms": 1793930400000,
+          "id": 1,
+          "text": "cable 0"
+        },
+        {
+          "created_ms": 1793930400000,
+          "id": 2,
+          "text": "cable 1"
+        },
+        {
+          "created_ms": 1793930400000,
+          "id": 3,
+          "text": "cable 2"
+        },
+        {
+          "created_ms": 1793930400000,
+          "id": 4,
+          "text": "cable 3"
+        },
+        {
+          "created_ms": 1793930400000,
+          "id": 5,
+          "text": "cable 4"
+        }
+      ],
+      "page": 1,
+      "pages": 2,
+      "query": "cable",
+      "total": 7,
+      "view_id": "b46645821df74e1d9146ba415748f4f8"
+    },
+    "status": "ok",
+    "text": "Notas: 7. Página 1/2.\n1: cable 0\n2: cable 1\n3: cable 2\n4: cable 3\n5: cable 4\n/notas --pagina 2"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Notas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "7 notas · Página 1/2"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 1 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "cable 0"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 2 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "cable 1"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 3 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "cable 2"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 4 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "cable 3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 5 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "cable 4"
+      },
+      {
+        "kind": "next_action",
+        "text": "/notas --pagina 2 -- cable"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Notas*\n\n7 notas · Página 1/2\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 0\n\nNota 2 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 1\n\nNota 3 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 2\n\nNota 4 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 3\n\nNota 5 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 4\n\n`/notas --pagina 2 -- cable`",
+      "visual_version": 2,
+      "content_sha256": "9905ec3760e9119b95ae4bb6df2cd9e25ec7c26fffecf29393148463300dffa7",
+      "rich_payload": {
+        "source_full": "Notas\n\n7 notas · Página 1/2\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 0\n\nNota 2 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 1\n\nNota 3 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 2\n\nNota 4 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 3\n\nNota 5 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 4\n\n/notas --pagina 2 -- cable",
+        "source_text": "Notas\n\n7 notas · Página 1/2\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 0\n\nNota 2 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 1\n\nNota 3 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 2\n\nNota 4 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 3\n\nNota 5 · 2026-11-05 20:00:00 · America/Mexico_City\n\ncable 4\n\n/notas --pagina 2 -- cable"
+      },
+      "utf16_units": 364
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

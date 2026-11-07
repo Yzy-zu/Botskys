@@ -1,0 +1,101 @@
+{
+  "route": "/pack catalogo",
+  "operation": "manage_pack.catalog",
+  "test": "test_packs.PacksTest.test_catalog_next_page_keeps_literal_category_filter",
+  "input": "/pack catalogo --categoria \"Misma categoría\"",
+  "result": {
+    "code": "pack_catalog",
+    "data": {
+      "category_filter": "Misma categoría",
+      "items": [
+        {
+          "category": "extra0",
+          "count": 0,
+          "name": "Misma categoría"
+        },
+        {
+          "category": "extra1",
+          "count": 0,
+          "name": "Misma categoría"
+        },
+        {
+          "category": "extra2",
+          "count": 0,
+          "name": "Misma categoría"
+        },
+        {
+          "category": "extra3",
+          "count": 0,
+          "name": "Misma categoría"
+        },
+        {
+          "category": "extra4",
+          "count": 0,
+          "name": "Misma categoría"
+        }
+      ],
+      "page": 1,
+      "pages": 2
+    },
+    "status": "ok",
+    "text": "Packs publicados ·150 XP, hora feliz75 XP.\nMisma categoría (extra0): 0 fotos\nMisma categoría (extra1): 0 fotos\nMisma categoría (extra2): 0 fotos\nMisma categoría (extra3): 0 fotos\nMisma categoría (extra4): 0 fotos"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Packs publicados",
+      "headers": [
+        "Categoría",
+        "Referencia",
+        "Fotos"
+      ],
+      "rows": [
+        [
+          "Misma categoría",
+          "extra0",
+          "0"
+        ],
+        [
+          "Misma categoría",
+          "extra1",
+          "0"
+        ],
+        [
+          "Misma categoría",
+          "extra2",
+          "0"
+        ],
+        [
+          "Misma categoría",
+          "extra3",
+          "0"
+        ],
+        [
+          "Misma categoría",
+          "extra4",
+          "0"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nPacks publicados\n\nCategoría: Misma categoría\nReferencia: extra0\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra1\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra2\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra3\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra4\nFotos: 0\n```\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/2\n/pack catalogo --pagina 2 --categoria \"Misma categoría\"",
+      "visual_version": 2,
+      "content_sha256": "fbd318432b8ef75af8bd444f379d1a7a67a89168a9e91f4863124218f76abcd4",
+      "rich_payload": {
+        "source_full": "Packs publicados\n\nCategoría: Misma categoría\nReferencia: extra0\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra1\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra2\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra3\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra4\nFotos: 0\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/2\n/pack catalogo --pagina 2 --categoria \"Misma categoría\"",
+        "source_text": "Packs publicados\n\nCategoría: Misma categoría\nReferencia: extra0\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra1\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra2\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra3\nFotos: 0\n\nCategoría: Misma categoría\nReferencia: extra4\nFotos: 0\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/2\n/pack catalogo --pagina 2 --categoria \"Misma categoría\""
+      },
+      "utf16_units": 500
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

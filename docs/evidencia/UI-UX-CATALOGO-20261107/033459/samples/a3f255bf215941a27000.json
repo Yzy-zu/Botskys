@@ -1,0 +1,58 @@
+{
+  "route": "/sticker",
+  "operation": "make_sticker.run",
+  "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+  "input": "/sticker",
+  "result": {
+    "code": "attachment_required",
+    "data": {
+      "example": "/sticker",
+      "expires_ms": 1793934900000,
+      "interaction_id": "5fdbe49a31554a7181772cbd872fa4e7"
+    },
+    "status": "needs_input",
+    "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /sticker"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Falta el archivo"
+      },
+      {
+        "kind": "notice",
+        "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene."
+      },
+      {
+        "kind": "notice",
+        "text": "Espera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ejemplo: /sticker"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Falta el archivo*\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /sticker",
+      "visual_version": 2,
+      "content_sha256": "25c0f67b527eace4f2e8107c31410f24695e691baebea428b6f3fd6bf0f77587",
+      "rich_payload": {
+        "source_full": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /sticker",
+        "source_text": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /sticker"
+      },
+      "utf16_units": 176
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

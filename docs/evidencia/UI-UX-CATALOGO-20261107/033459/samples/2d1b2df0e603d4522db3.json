@@ -1,0 +1,70 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_multiple_sheet_csv_keeps_sheets_and_neutralizes_formula_text",
+  "input": "/convertir csv",
+  "result": {
+    "code": "document_converted",
+    "data": {
+      "artifacts": [
+        "70ca8d3f7fec4e6e95ca446543517b51"
+      ],
+      "file_facts": [
+        {
+          "bytes": 256,
+          "extension": "zip",
+          "files": 2,
+          "format": "zip"
+        }
+      ],
+      "source_format": "xlsx",
+      "target_format": "csv"
+    },
+    "status": "ok",
+    "text": "Conversión lista. Las fórmulas usan el valor guardado, si existe; los textos con aspecto de fórmula se neutralizan. Cada hoja está en un CSV dentro del ZIP."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Documento convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: ZIP · 256 B · Archivos: 2"
+      },
+      {
+        "kind": "notice",
+        "text": "Conversión lista. Las fórmulas usan el valor guardado, si existe; los textos con aspecto de fórmula se neutralizan. Cada hoja está en un CSV dentro del ZIP."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "81ada7da38013bf49e59ce7fb64ba73bbe953a7a33bc6d9ffb65568dec77a1f6",
+      "rich_payload": {
+        "artifacts": [
+          "70ca8d3f7fec4e6e95ca446543517b51"
+        ],
+        "caption": "*Documento convertido*\n\nFormato final: ZIP · 256 B · Archivos: 2\n\nConversión lista. Las fórmulas usan el valor guardado, si existe; los textos con aspecto de fórmula se neutralizan. Cada hoja está en un CSV dentro del ZIP.",
+        "caption_frozen": true,
+        "name": "Documento convertido.zip",
+        "source_full": "Documento convertido\n\nFormato final: ZIP · 256 B · Archivos: 2\n\nConversión lista. Las fórmulas usan el valor guardado, si existe; los textos con aspecto de fórmula se neutralizan. Cada hoja está en un CSV dentro del ZIP.",
+        "source_text": "Documento convertido\n\nFormato final: ZIP · 256 B · Archivos: 2\n\nConversión lista. Las fórmulas usan el valor guardado, si existe; los textos con aspecto de fórmula se neutralizan. Cada hoja está en un CSV dentro del ZIP."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

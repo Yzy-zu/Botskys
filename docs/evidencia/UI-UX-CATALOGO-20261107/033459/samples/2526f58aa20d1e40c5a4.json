@@ -1,0 +1,36 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+  "input": "/cancelar 62b0d1e638a9f8355928d0e294309f4d",
+  "result": {
+    "code": "request_cancelled",
+    "data": {
+      "id": "62b0d1e638a9f8355928d0e294309f4d"
+    },
+    "status": "cancelled",
+    "text": "Cancelado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cancelado.",
+      "visual_version": 2,
+      "content_sha256": "2c9f25537f1348bdc523d459ef2f7da684bdb2585593f24f204fa7357dfce37c",
+      "rich_payload": {
+        "source_full": "Cancelado.",
+        "source_text": "Cancelado."
+      },
+      "utf16_units": 10
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

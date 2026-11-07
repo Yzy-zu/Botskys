@@ -1,0 +1,42 @@
+{
+  "route": "/mc diagnostico",
+  "operation": "manage_minecraft.discover",
+  "test": "test_visual_route_gaps.MinecraftVisualGaps.test_discover_stop_restart_use_only_runner_and_restart_health_is_observed",
+  "input": "/mc diagnostico",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "discover",
+      "response": {
+        "active_world": "synthetic-world",
+        "available": true,
+        "fingerprint": "fixture-only",
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Entorno Minecraft descubierto y validado. Mundo: synthetic-world. Montaje e identidad Docker verificados."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Entorno Minecraft descubierto y validado. Mundo: synthetic-world. Montaje e identidad Docker verificados.",
+      "visual_version": 2,
+      "content_sha256": "b5d84a8ac6324c8626d1f2d901a7db1dcc36fa927cab816617d7b274e4fc77fa",
+      "rich_payload": {
+        "source_full": "Entorno Minecraft descubierto y validado. Mundo: synthetic-world. Montaje e identidad Docker verificados.",
+        "source_text": "Entorno Minecraft descubierto y validado. Mundo: synthetic-world. Montaje e identidad Docker verificados."
+      },
+      "utf16_units": 105
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

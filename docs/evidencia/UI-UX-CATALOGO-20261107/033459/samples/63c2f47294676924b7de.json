@@ -1,0 +1,34 @@
+{
+  "route": "/bj entrar",
+  "operation": "manage_blackjack.join",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/bj entrar",
+  "result": {
+    "code": "blackjack_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una partida admisible con ese ID aquí."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una partida admisible con ese ID aquí.",
+      "visual_version": 2,
+      "content_sha256": "b96831ce6fca201b9ad47af826cd469e03cc2eabec2286deb228333dc6505938",
+      "rich_payload": {
+        "source_full": "No hay una partida admisible con ese ID aquí.",
+        "source_text": "No hay una partida admisible con ese ID aquí."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

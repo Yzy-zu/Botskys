@@ -1,0 +1,34 @@
+{
+  "route": "/horario borrar",
+  "operation": "manage_school.delete_lesson",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/horario borrar 1",
+  "result": {
+    "code": "lesson_not_found",
+    "data": {},
+    "status": "empty",
+    "text": "No hay una clase con ese ID."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay una clase con ese ID.",
+      "visual_version": 2,
+      "content_sha256": "80b70d84715543d683f5fae871fc270d1f8b648e8928fe01d6a8c7389f21b783",
+      "rich_payload": {
+        "source_full": "No hay una clase con ese ID.",
+        "source_text": "No hay una clase con ese ID."
+      },
+      "utf16_units": 28
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

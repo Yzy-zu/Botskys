@@ -1,0 +1,45 @@
+{
+  "route": "/tarea borrar",
+  "operation": "manage_school.delete_task",
+  "test": "test_visual_route_gaps.SchoolVisualGaps.test_author_completes_and_deletes_actual_task_with_visible_result",
+  "input": "/tarea borrar 1",
+  "result": {
+    "code": "school_task_deleted",
+    "data": {
+      "state": "deleted",
+      "task_id": 1
+    },
+    "status": "ok",
+    "text": "Tarea deleted."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "notice",
+        "text": "Tarea 1 borrada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Tarea 1 borrada.",
+      "visual_version": 2,
+      "content_sha256": "09b01f996dcb33b66e5b07971574f79a98b88f81166f8759ffedcee1ab53f628",
+      "rich_payload": {
+        "source_full": "Tarea 1 borrada.",
+        "source_text": "Tarea 1 borrada."
+      },
+      "utf16_units": 16
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

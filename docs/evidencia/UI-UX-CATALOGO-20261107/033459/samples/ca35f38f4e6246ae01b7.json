@@ -1,0 +1,40 @@
+{
+  "route": "/encuesta crear",
+  "operation": "manage_poll.create",
+  "test": "test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads",
+  "input": "/encuesta crear \"¿Hora?\" \"Dos *literal*\" \"Tres\"",
+  "result": {
+    "code": "poll_created",
+    "data": {
+      "options": [
+        "Dos *literal*",
+        "Tres"
+      ],
+      "poll_id": 1
+    },
+    "status": "ok",
+    "text": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2",
+      "visual_version": 2,
+      "content_sha256": "c3b4c9b94ad5a09baec66e907bd29580712ab15140330604d66cc837e55d5a61",
+      "rich_payload": {
+        "source_full": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2",
+        "source_text": "Encuesta 1: ¿Hora?\n1. Dos *literal*\n/encuesta votar 1 1\n2. Tres\n/encuesta votar 1 2"
+      },
+      "utf16_units": 83
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

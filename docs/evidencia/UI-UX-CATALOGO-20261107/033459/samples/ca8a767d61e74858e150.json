@@ -1,0 +1,53 @@
+{
+  "route": "/admin expulsar",
+  "operation": "manage_admin.kick",
+  "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+  "input": "/admin expulsar alice",
+  "result": {
+    "code": "admin_completed",
+    "data": {
+      "action": "kick",
+      "target_label": "Participante verificado del comando"
+    },
+    "status": "ok",
+    "text": "Acción administrativa: completed. Una acción incierta no se repetirá."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Administración"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Expulsar · Participante verificado del comando"
+      },
+      {
+        "kind": "notice",
+        "text": "Aceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Administración*\n\nExpulsar · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+      "visual_version": 2,
+      "content_sha256": "e466a75444b2758c3e99bc0218e93c7fb77b82ec2ca101b9b00b7bf7a292f06e",
+      "rich_payload": {
+        "source_full": "Administración\n\nExpulsar · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+        "source_text": "Administración\n\nExpulsar · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      },
+      "utf16_units": 170
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,42 @@
+{
+  "route": "/mc recuperar",
+  "operation": "manage_minecraft.recover",
+  "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+  "input": "/mc recuperar",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "recover",
+      "response": {
+        "changed": false,
+        "offline_verified": true,
+        "recovered": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "No hay cambios que recuperar en este mundo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay cambios que recuperar en este mundo.",
+      "visual_version": 2,
+      "content_sha256": "29b2a447d09b319788c5ec9e05df13526c7e30f104fa05ef4d3bdec860b63208",
+      "rich_payload": {
+        "source_full": "No hay cambios que recuperar en este mundo.",
+        "source_text": "No hay cambios que recuperar en este mundo."
+      },
+      "utf16_units": 43
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

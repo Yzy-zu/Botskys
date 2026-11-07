@@ -1,0 +1,64 @@
+{
+  "route": "/llamada agenda",
+  "operation": "audiovisual.agenda.list",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+  "input": "/llamada agenda",
+  "result": {
+    "code": "agenda_list",
+    "data": {
+      "schedules": [
+        {
+          "dueAt": 1794082200000,
+          "id": "cf7297c0",
+          "mode": "audio preparado",
+          "revision": 1,
+          "state": "pending",
+          "target": "llamada privada",
+          "timeZone": "America/Mexico_City"
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Agenda (America/Mexico_City):\ncf7297c0 · 2026-11-07 14:10 · pending"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Agenda de llamadas",
+      "headers": [
+        "Referencia",
+        "Fecha",
+        "Modo y duración",
+        "Estado"
+      ],
+      "rows": [
+        [
+          "cf7297c0",
+          "2026-11-07 14:10:00 · America/Mexico_City",
+          "Modo no informado · duración no informada",
+          "pendiente"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nAgenda de llamadas\n\nReferencia: cf7297c0\nFecha: 2026-11-07 14:10:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n```\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "beae82ec547262062191ef2849a3c56e7f47d7db37bfa93c38b661762a274c77",
+      "rich_payload": {
+        "source_full": "Agenda de llamadas\n\nReferencia: cf7297c0\nFecha: 2026-11-07 14:10:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+        "source_text": "Agenda de llamadas\n\nReferencia: cf7297c0\nFecha: 2026-11-07 14:10:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n\nLa programación no acredita una llamada conectada ni recepción humana."
+      },
+      "utf16_units": 246
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,67 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_core.CoreTest.test_vertical_notes_literal_filter_and_real_delivery_receipt",
+  "input": "/notas cable",
+  "result": {
+    "code": "notes_found",
+    "data": {
+      "items": [
+        {
+          "created_ms": 1793930400000,
+          "id": 1,
+          "text": "Comprar cable azul; /daily\n--pan  "
+        }
+      ],
+      "page": 1,
+      "pages": 1,
+      "query": "cable",
+      "total": 1,
+      "view_id": "c9c7b17d57de43eeac4ab9498c29308f"
+    },
+    "status": "ok",
+    "text": "Notas: 1. Página 1/1.\n1: Comprar cable azul; /daily\n--pan  "
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Notas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "1 notas · Página 1/1"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 1 · 2026-11-05 20:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Comprar cable azul; /daily\n--pan  "
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Notas*\n\n1 notas · Página 1/1\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\n```\nComprar cable azul; /daily\n--pan  \n```",
+      "visual_version": 2,
+      "content_sha256": "f849a8993162d3de951309aeededcc71654412897fdcd9fb55f67812a3038cba",
+      "rich_payload": {
+        "source_full": "Notas\n\n1 notas · Página 1/1\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\nComprar cable azul; /daily\n--pan  ",
+        "source_text": "Notas\n\n1 notas · Página 1/1\n\nNota 1 · 2026-11-05 20:00:00 · America/Mexico_City\n\nComprar cable azul; /daily\n--pan  "
+      },
+      "utf16_units": 125
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

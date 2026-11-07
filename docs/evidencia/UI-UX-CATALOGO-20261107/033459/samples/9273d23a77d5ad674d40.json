@@ -1,0 +1,50 @@
+{
+  "route": "/recado cancelar",
+  "operation": "manage_messages.cancel",
+  "test": "test_integrations.IntegrationsTest.test_message_directory_change_expiry_cancel_and_stale_confirmation",
+  "input": "/recado cancelar 03ec5627f3964aefb88d3c6a313ab1b3",
+  "result": {
+    "code": "message_status",
+    "data": {
+      "draft_id": "03ec5627f3964aefb88d3c6a313ab1b3",
+      "parts": [],
+      "state": "cancelled"
+    },
+    "status": "ok",
+    "text": "Recado 03ec5627f3964aefb88d3c6a313ab1b3: cancelled."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "cancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado del recado*\n\ncancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "094319f00256f5644906e2b1de0cc1af9678244bfcae80f86b5b8d77b62fb961",
+      "rich_payload": {
+        "source_full": "Estado del recado\n\ncancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+        "source_text": "Estado del recado\n\ncancelado\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      },
+      "utf16_units": 127
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

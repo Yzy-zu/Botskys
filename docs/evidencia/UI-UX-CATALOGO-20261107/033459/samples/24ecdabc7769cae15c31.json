@@ -1,0 +1,34 @@
+{
+  "route": "/pdf reintentar",
+  "operation": "manage_pdf.retry",
+  "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+  "input": "/pdf reintentar a2f5bd8c966b8a1a82e1f3f1b812aec6 --confirmar-incierto",
+  "result": {
+    "code": "no_retryable_delivery",
+    "data": {},
+    "status": "empty",
+    "text": "No hay partes fallidas o inciertas que reintentar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay partes fallidas o inciertas que reintentar.",
+      "visual_version": 2,
+      "content_sha256": "244f314c5c5eda68c13c8cec807aea328e0a46517a5832e2105a0aac386022ad",
+      "rich_payload": {
+        "source_full": "No hay partes fallidas o inciertas que reintentar.",
+        "source_text": "No hay partes fallidas o inciertas que reintentar."
+      },
+      "utf16_units": 50
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

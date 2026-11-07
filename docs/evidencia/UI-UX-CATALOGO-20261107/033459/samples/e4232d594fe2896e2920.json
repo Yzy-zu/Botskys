@@ -1,0 +1,53 @@
+{
+  "route": "/bot pausa",
+  "operation": "manage_conversation.pause",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/bot pausa 15",
+  "result": {
+    "code": "bot_mode_updated",
+    "data": {
+      "mode": "discreto",
+      "paused_until_ms": 1793988900000
+    },
+    "status": "ok",
+    "text": "Modo discreto. Pausa activada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado de Botsky"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Modo: discreto"
+      },
+      {
+        "kind": "notice",
+        "text": "Pausa hasta: 2026-11-06 12:15:00 · America/Mexico_City"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado de Botsky*\n\nModo: discreto\n\nPausa hasta: 2026-11-06 12:15:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "584777ccef3529aa4d352bf0ca32ee49fc1a7196ff277692e0e199dfb34005e0",
+      "rich_payload": {
+        "source_full": "Estado de Botsky\n\nModo: discreto\n\nPausa hasta: 2026-11-06 12:15:00 · America/Mexico_City",
+        "source_text": "Estado de Botsky\n\nModo: discreto\n\nPausa hasta: 2026-11-06 12:15:00 · America/Mexico_City"
+      },
+      "utf16_units": 90
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

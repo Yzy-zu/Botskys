@@ -1,0 +1,66 @@
+{
+  "route": "/bot estado",
+  "operation": "manage_conversation.status",
+  "test": "test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped",
+  "input": "/bot estado",
+  "result": {
+    "code": "bot_status",
+    "data": {
+      "capabilities": {
+        "asr_configurado": false,
+        "comandos": true,
+        "descargas_configuradas": false,
+        "gemini_configurado": false,
+        "medios_locales": true,
+        "notas": true,
+        "tts_configurado": false
+      },
+      "mode": "discreto",
+      "paused_until_ms": 0
+    },
+    "status": "ok",
+    "text": "Modo: discreto. Capacidades locales/configuradas: comandos, notas, medios_locales."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado de Botsky"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Modo: discreto"
+      },
+      {
+        "kind": "notice",
+        "text": "Sin pausa."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Configuración (no prueba del proveedor):\nComandos explícitos: configurado\nNotas: configurado\nArchivos locales: configurado\nIA: sin configurar\nVoz: sin configurar\nTranscripción: sin configurar\nDescargas: sin configurar"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado de Botsky*\n\nModo: discreto\n\nSin pausa.\n\nConfiguración (no prueba del proveedor):\nComandos explícitos: configurado\nNotas: configurado\nArchivos locales: configurado\nIA: sin configurar\nVoz: sin configurar\nTranscripción: sin configurar\nDescargas: sin configurar",
+      "visual_version": 2,
+      "content_sha256": "23cde491845fbcd2f0f1152a255f5bbb6a4f962446b64d6746b6cc01c619edfe",
+      "rich_payload": {
+        "source_full": "Estado de Botsky\n\nModo: discreto\n\nSin pausa.\n\nConfiguración (no prueba del proveedor):\nComandos explícitos: configurado\nNotas: configurado\nArchivos locales: configurado\nIA: sin configurar\nVoz: sin configurar\nTranscripción: sin configurar\nDescargas: sin configurar",
+        "source_text": "Estado de Botsky\n\nModo: discreto\n\nSin pausa.\n\nConfiguración (no prueba del proveedor):\nComandos explícitos: configurado\nNotas: configurado\nArchivos locales: configurado\nIA: sin configurar\nVoz: sin configurar\nTranscripción: sin configurar\nDescargas: sin configurar"
+      },
+      "utf16_units": 265
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

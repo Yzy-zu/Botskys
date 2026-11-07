@@ -1,0 +1,38 @@
+{
+  "route": "/escuela resumen estado",
+  "operation": "manage_school.status_digest",
+  "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+  "input": "/escuela resumen estado",
+  "result": {
+    "code": "school_digest_status",
+    "data": {
+      "digest_time": "",
+      "enabled": 0,
+      "revision": 2
+    },
+    "status": "ok",
+    "text": "Resumen desactivado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Resumen desactivado.",
+      "visual_version": 2,
+      "content_sha256": "e7478c9ffb31fcbed828a54306758cb94aaebba4752bd7dfec9f0304e0de34a0",
+      "rich_payload": {
+        "source_full": "Resumen desactivado.",
+        "source_text": "Resumen desactivado."
+      },
+      "utf16_units": 20
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

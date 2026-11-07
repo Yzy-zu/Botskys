@@ -1,0 +1,53 @@
+{
+  "route": "/admin ban",
+  "operation": "manage_admin.ban",
+  "test": "test_visual_route_gaps.AdminVisualGaps.test_ban_stores_verified_target_and_known_ack_without_repeating",
+  "input": "/admin ban bob-target",
+  "result": {
+    "code": "admin_completed",
+    "data": {
+      "action": "ban",
+      "target_label": "Participante verificado del comando"
+    },
+    "status": "ok",
+    "text": "Acción administrativa: completed. Una acción incierta no se repetirá."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Administración"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Bloquear · Participante verificado del comando"
+      },
+      {
+        "kind": "notice",
+        "text": "Aceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Administración*\n\nBloquear · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+      "visual_version": 2,
+      "content_sha256": "2087617421ffa5b91243763dbee8a070a011b2d31cdf60c5792650730cc93cf7",
+      "rich_payload": {
+        "source_full": "Administración\n\nBloquear · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+        "source_text": "Administración\n\nBloquear · Participante verificado del comando\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      },
+      "utf16_units": 170
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

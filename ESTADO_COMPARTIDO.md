@@ -1,5 +1,20 @@
 # Relevo Botsky
 
+## 07/11 · V7 local final verificada; despliegue de continuación preparado
+
+Fuente bf2fba9: suite final033459 con321PythonPASS,0fallos/errores/omisiones,
+0conexionesfuera de loopback; fuente hash sin cambios durante corrida. Catálogo
+776muestras/155rutas,32raíces/34familias; revisión enlaza prueba/assertions y alcance
+por ruta, sin declarar render visual ni todas las capturas como PASS semántico.
+17packsPASS incluye filtro literal conservado entre páginas;5huecosPASS incluye
+2videos normalizados reales con driverdoble. Histórico033037 conserva timeoutIPC5s;
+solo fixture ampliado30s. Benchmark40/casoPDF/sticker2→1, conservación de fuente
+incrementa almacenamiento; no promete latencia de red. Matriz/plan conciliados155/
+192 actuales,154/190 históricos intactos. V1–V6 local y V7 técnico; plan NO completo.
+Android/Web/compresión/accesibilidad/frames/voz/recepción siguen NO_PROBADO.
+Script de despliegue y reversión en UI-UX-CONT-20261107; aún sin ejecutar este corte.
+No llamadas/envíos/proveedores nuevos. Cuota5h35% última consulta; semanal irrelevante.
+
 ## 07/11 · Revisión V7 inicial: hallazgos corregidos antes de repetir
 
 Catálogoinicial031805captura155rutascon311tests;3fallos(Spotifyperdiónotametadatos,

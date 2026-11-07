@@ -1,0 +1,68 @@
+{
+  "route": "/clip ajustar",
+  "operation": "audiovisual.clip.volume",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+  "input": "/clip ajustar bajar 0.1",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clip": {
+        "name": "Prueba audiovisual V3",
+        "state": "playing",
+        "volume": 0.6
+      },
+      "message": "Volumen del clip: 60%.",
+      "presentation_action": "volume",
+      "presentation_family": "clip",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Volumen del clip: 60%."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "literal",
+        "text": "Prueba audiovisual V3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: Reproduciendo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen aplicado: 60 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Volumen del clip: 60%."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nVolumen del clip: 60%.",
+      "visual_version": 2,
+      "content_sha256": "1a4c91f1781f012ee9b46b90f328021c338b58bf6a9c67c28cd7bbfd08ea9ff2",
+      "rich_payload": {
+        "source_full": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nVolumen del clip: 60%.",
+        "source_text": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nVolumen del clip: 60%."
+      },
+      "utf16_units": 113
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

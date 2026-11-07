@@ -1,0 +1,52 @@
+{
+  "route": "/qr",
+  "operation": "read_image.run",
+  "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+  "input": "/qr",
+  "result": {
+    "code": "image_read",
+    "data": {
+      "mode": "qr",
+      "symbols": [
+        "SYNTHETIC:BOTSKY-2026"
+      ],
+      "truncated": false
+    },
+    "status": "ok",
+    "text": "SYNTHETIC:BOTSKY-2026"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Contenido QR"
+      },
+      {
+        "kind": "literal",
+        "text": "SYNTHETIC:BOTSKY-2026"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Contenido QR*\n\nSYNTHETIC:BOTSKY-2026",
+      "visual_version": 2,
+      "content_sha256": "5abb626035d4d54ea1c133112688ce7fc67d7eeb986e999994ec34936e2c3650",
+      "rich_payload": {
+        "source_full": "Contenido QR\n\nSYNTHETIC:BOTSKY-2026",
+        "source_text": "Contenido QR\n\nSYNTHETIC:BOTSKY-2026"
+      },
+      "utf16_units": 37
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

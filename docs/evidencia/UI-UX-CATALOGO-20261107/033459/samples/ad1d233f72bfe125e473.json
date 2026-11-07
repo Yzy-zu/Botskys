@@ -1,0 +1,41 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_core.CoreTest.test_newer_unaccepted_view_does_not_replace_delivered_filter",
+  "input": "/notas cable",
+  "result": {
+    "code": "notes_empty",
+    "data": {
+      "items": [],
+      "page": 1,
+      "pages": 1,
+      "query": "cable",
+      "total": 0,
+      "view_id": "25d3e296f2fd4c579415ce940892c5f5"
+    },
+    "status": "empty",
+    "text": "Notas: 0. Página 1/1.\nSin coincidencias."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Notas: 0. Página 1/1.\nSin coincidencias.",
+      "visual_version": 2,
+      "content_sha256": "4896d748d96ccec1b27cf6942e428cafe3b75ae6a03f73940daa409f9d7ab56b",
+      "rich_payload": {
+        "source_full": "Notas: 0. Página 1/1.\nSin coincidencias.",
+        "source_text": "Notas: 0. Página 1/1.\nSin coincidencias."
+      },
+      "utf16_units": 40
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

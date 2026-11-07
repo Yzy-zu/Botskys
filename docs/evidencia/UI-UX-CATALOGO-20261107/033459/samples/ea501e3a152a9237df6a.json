@@ -1,0 +1,58 @@
+{
+  "route": "/editar",
+  "operation": "edit_media.run",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/editar mp3",
+  "result": {
+    "code": "attachment_required",
+    "data": {
+      "example": "/editar mp3",
+      "expires_ms": 1793988900000,
+      "interaction_id": "3cf92696d19d42d582d38e686d05bbfd"
+    },
+    "status": "needs_input",
+    "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /editar mp3"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Falta el archivo"
+      },
+      {
+        "kind": "notice",
+        "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene."
+      },
+      {
+        "kind": "notice",
+        "text": "Espera disponible hasta: 2026-11-06 12:15:00 · America/Mexico_City"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ejemplo: /editar mp3"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Falta el archivo*\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-06 12:15:00 · America/Mexico_City\n\nEjemplo: /editar mp3",
+      "visual_version": 2,
+      "content_sha256": "0f0a180f431ea770c13cb6f19c90e4f7846c360d822328d0251ea5a00daedd54",
+      "rich_payload": {
+        "source_full": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-06 12:15:00 · America/Mexico_City\n\nEjemplo: /editar mp3",
+        "source_text": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-06 12:15:00 · America/Mexico_City\n\nEjemplo: /editar mp3"
+      },
+      "utf16_units": 179
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

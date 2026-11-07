@@ -1,0 +1,49 @@
+{
+  "route": "/estado",
+  "operation": "core.estado",
+  "test": "test_visual_integrity.VisualIntegrityTest.test_file_only_literal_remains_an_exact_citable_source",
+  "input": "/estado",
+  "result": {
+    "code": "receipt_state",
+    "data": {
+      "delivery": [
+        {
+          "position": 0,
+          "state": "accepted"
+        },
+        {
+          "position": 1,
+          "state": "accepted"
+        }
+      ],
+      "id": "62b0d1e638a9f8355928d0e294309f4d",
+      "job": null,
+      "revision": 1,
+      "state": "completed"
+    },
+    "status": "ok",
+    "text": "Terminado. El servicio aceptó la entrega; lectura no comprobada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Terminado. El servicio aceptó la entrega; lectura no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "88870f691be695f8b3192c756537f93c36d50cbe622d79747388fe3ab216f4f1",
+      "rich_payload": {
+        "source_full": "Terminado. El servicio aceptó la entrega; lectura no comprobada.",
+        "source_text": "Terminado. El servicio aceptó la entrega; lectura no comprobada."
+      },
+      "utf16_units": 64
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

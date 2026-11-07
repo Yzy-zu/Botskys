@@ -1,0 +1,42 @@
+{
+  "route": "/daily",
+  "operation": "manage_economy.daily",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/daily",
+  "result": {
+    "code": "daily_awarded",
+    "data": {
+      "account_id": 1,
+      "balance": 15,
+      "gained": 15,
+      "level": 1,
+      "reserved": 0,
+      "retry_at_ms": 1794074400000,
+      "streak": 1
+    },
+    "status": "ok",
+    "text": "Daily: +15 XP. Racha 1. Saldo 15 XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Daily: +15 XP. Racha 1. Saldo 15 XP.\nPróximo daily: 2026-11-07 12:00:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "cec78f78e0cb5c66ee5f23bae3550de9bb71c2a62efa8333d06d058aadef7a70",
+      "rich_payload": {
+        "source_full": "Daily: +15 XP. Racha 1. Saldo 15 XP.\nPróximo daily: 2026-11-07 12:00:00 · America/Mexico_City",
+        "source_text": "Daily: +15 XP. Racha 1. Saldo 15 XP.\nPróximo daily: 2026-11-07 12:00:00 · America/Mexico_City"
+      },
+      "utf16_units": 93
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

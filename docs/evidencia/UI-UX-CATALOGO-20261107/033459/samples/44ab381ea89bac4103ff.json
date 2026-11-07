@@ -1,0 +1,38 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_mentions_are_explicit_outside_quotes_code_urls_and_native_identity",
+  "input": "pregunta",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "/admin nuclear-confirmar NO_EJECUTAR",
+      "purpose": "answer",
+      "qr_readings": []
+    },
+    "status": "ok",
+    "text": "/admin nuclear-confirmar NO_EJECUTAR"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "/admin nuclear-confirmar NO_EJECUTAR",
+      "visual_version": 2,
+      "content_sha256": "1e00d87e59ed548b6c1a86db3a9955ea993be9bc5392fa0fbbef1ee67a6d599b",
+      "rich_payload": {
+        "source_full": "/admin nuclear-confirmar NO_EJECUTAR",
+        "source_text": "/admin nuclear-confirmar NO_EJECUTAR"
+      },
+      "utf16_units": 36
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,58 @@
+{
+  "route": "/recordar el",
+  "operation": "manage_reminder.create",
+  "test": "test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat",
+  "input": "/recordar el 2026-11-07 18:30 pedido literal",
+  "result": {
+    "code": "reminder_created",
+    "data": {
+      "due_ms": 1794097800000,
+      "reminder_id": 2,
+      "text": "pedido literal"
+    },
+    "status": "ok",
+    "text": "Recordatorio 2: pedido literal\n2026-11-07 18:30:00 · Ciudad de México. Aviso pendiente; entrega aún no comprobada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorio 2 guardado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2026-11-07 18:30:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "pedido literal"
+      },
+      {
+        "kind": "notice",
+        "text": "Aviso pendiente; entrega aún no comprobada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorio 2 guardado*\n\n2026-11-07 18:30:00 · America/Mexico_City\n\npedido literal\n\nAviso pendiente; entrega aún no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "3b83ad3665cd807a2506d274cf61238a2caa23ff81d23ccfe30fd32412e5e813",
+      "rich_payload": {
+        "source_full": "Recordatorio 2 guardado\n\n2026-11-07 18:30:00 · America/Mexico_City\n\npedido literal\n\nAviso pendiente; entrega aún no comprobada.",
+        "source_text": "Recordatorio 2 guardado\n\n2026-11-07 18:30:00 · America/Mexico_City\n\npedido literal\n\nAviso pendiente; entrega aún no comprobada."
+      },
+      "utf16_units": 129
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,63 @@
+{
+  "route": "/llamada programar",
+  "operation": "audiovisual.agenda.create",
+  "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+  "input": "/llamada programar 2026-11-07 13:00 --audio 17d999b6bf53ac843a3a34d89cf2b6a0b027e5d71db6ab0cf84bd496f7fe95b2 --terminar-audio --volumen 0.4",
+  "result": {
+    "code": "agenda_create",
+    "data": {
+      "replayed": false,
+      "schedule": {
+        "dueAt": 1794078000000,
+        "id": "e0a9a479",
+        "mode": "audio preparado",
+        "revision": 1,
+        "state": "pending",
+        "target": "llamada privada",
+        "timeZone": "America/Mexico_City"
+      }
+    },
+    "status": "ok",
+    "text": "Agenda (America/Mexico_City):\ne0a9a479 · 2026-11-07 13:00 · pending"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Agenda de llamadas",
+      "headers": [
+        "Referencia",
+        "Fecha",
+        "Modo y duración",
+        "Estado"
+      ],
+      "rows": [
+        [
+          "e0a9a479",
+          "2026-11-07 13:00:00 · America/Mexico_City",
+          "Modo no informado · duración no informada",
+          "pendiente"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nAgenda de llamadas\n\nReferencia: e0a9a479\nFecha: 2026-11-07 13:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n```\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "eeaadfbaa1f829815c1651cb1b9843801665c43c73579c3037198b18a49d3c34",
+      "rich_payload": {
+        "source_full": "Agenda de llamadas\n\nReferencia: e0a9a479\nFecha: 2026-11-07 13:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+        "source_text": "Agenda de llamadas\n\nReferencia: e0a9a479\nFecha: 2026-11-07 13:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: pendiente\n\nLa programación no acredita una llamada conectada ni recepción humana."
+      },
+      "utf16_units": 246
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

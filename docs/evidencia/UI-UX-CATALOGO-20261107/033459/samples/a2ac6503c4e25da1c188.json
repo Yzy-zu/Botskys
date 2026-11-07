@@ -1,0 +1,58 @@
+{
+  "route": "/avatar expresion",
+  "operation": "audiovisual.avatar.expression",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+  "input": "/avatar expresion happy --duracion 4",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "avatar": {
+        "appliedExpression": {
+          "applied": true,
+          "requested": "happy"
+        },
+        "background": "happy"
+      },
+      "message": "Expresión actualizada.",
+      "presentation_action": "expression",
+      "presentation_family": "avatar",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Expresión actualizada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Avatar"
+      },
+      {
+        "kind": "notice",
+        "text": "Expresión actualizada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Avatar*\n\nExpresión actualizada.",
+      "visual_version": 2,
+      "content_sha256": "b363486b4abf86a4afcaaa5796ab0dcc23eabc9c332c25299d20c7df5d209953",
+      "rich_payload": {
+        "source_full": "Avatar\n\nExpresión actualizada.",
+        "source_text": "Avatar\n\nExpresión actualizada."
+      },
+      "utf16_units": 32
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

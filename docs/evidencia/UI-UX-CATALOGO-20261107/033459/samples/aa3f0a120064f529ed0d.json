@@ -1,0 +1,45 @@
+{
+  "route": "/tarea completar",
+  "operation": "manage_school.complete_task",
+  "test": "test_visual_route_gaps.SchoolVisualGaps.test_author_completes_and_deletes_actual_task_with_visible_result",
+  "input": "/tarea completar 1",
+  "result": {
+    "code": "school_task_completed",
+    "data": {
+      "state": "completed",
+      "task_id": 1
+    },
+    "status": "ok",
+    "text": "Tarea completed."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "notice",
+        "text": "Tarea 1 completada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Tarea 1 completada.",
+      "visual_version": 2,
+      "content_sha256": "b86ef72121206176293c8ec523a5811eebef893dd7eb291d5c6a8a8131b9fcf7",
+      "rich_payload": {
+        "source_full": "Tarea 1 completada.",
+        "source_text": "Tarea 1 completada."
+      },
+      "utf16_units": 19
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

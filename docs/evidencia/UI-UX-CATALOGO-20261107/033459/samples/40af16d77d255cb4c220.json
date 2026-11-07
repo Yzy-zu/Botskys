@@ -1,0 +1,62 @@
+{
+  "route": "/llamada cancelar-agenda",
+  "operation": "audiovisual.agenda.cancel",
+  "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+  "input": "/llamada cancelar-agenda 43350e99",
+  "result": {
+    "code": "agenda_cancel",
+    "data": {
+      "schedule": {
+        "dueAt": 1794081600000,
+        "id": "43350e99",
+        "mode": "conversación",
+        "revision": 2,
+        "state": "cancelled",
+        "target": "llamada privada",
+        "timeZone": "America/Mexico_City"
+      }
+    },
+    "status": "ok",
+    "text": "Agenda (America/Mexico_City):\n43350e99 · 2026-11-07 14:00 · cancelled"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Agenda de llamadas",
+      "headers": [
+        "Referencia",
+        "Fecha",
+        "Modo y duración",
+        "Estado"
+      ],
+      "rows": [
+        [
+          "43350e99",
+          "2026-11-07 14:00:00 · America/Mexico_City",
+          "Modo no informado · duración no informada",
+          "cancelado"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nAgenda de llamadas\n\nReferencia: 43350e99\nFecha: 2026-11-07 14:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: cancelado\n```\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+      "visual_version": 2,
+      "content_sha256": "f750e61df53ef7916972829deca2f183823417ce2f5ded94aa72810a3fd50614",
+      "rich_payload": {
+        "source_full": "Agenda de llamadas\n\nReferencia: 43350e99\nFecha: 2026-11-07 14:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: cancelado\n\nLa programación no acredita una llamada conectada ni recepción humana.",
+        "source_text": "Agenda de llamadas\n\nReferencia: 43350e99\nFecha: 2026-11-07 14:00:00 · America/Mexico_City\nModo y duración: Modo no informado · duración no informada\nEstado: cancelado\n\nLa programación no acredita una llamada conectada ni recepción humana."
+      },
+      "utf16_units": 246
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

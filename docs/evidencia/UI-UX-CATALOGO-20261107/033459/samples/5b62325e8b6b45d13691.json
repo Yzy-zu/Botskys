@@ -1,0 +1,123 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_pagination_presentation.PaginationPresentationTest.test_note_filter_is_explicit_even_after_a_different_delivered_search",
+  "input": "/notas Clave",
+  "result": {
+    "code": "notes_found",
+    "data": {
+      "items": [
+        {
+          "created_ms": 1793977200000,
+          "id": 1,
+          "text": "Clave 0"
+        },
+        {
+          "created_ms": 1793977200000,
+          "id": 2,
+          "text": "Clave 1"
+        },
+        {
+          "created_ms": 1793977200000,
+          "id": 3,
+          "text": "Clave 2"
+        },
+        {
+          "created_ms": 1793977200000,
+          "id": 4,
+          "text": "Clave 3"
+        },
+        {
+          "created_ms": 1793977200000,
+          "id": 5,
+          "text": "Clave 4"
+        }
+      ],
+      "page": 1,
+      "pages": 2,
+      "query": "Clave",
+      "total": 6,
+      "view_id": "bd7d3c3d3d184ab7a011225b4497adb1"
+    },
+    "status": "ok",
+    "text": "Notas: 6. Página 1/2.\n1: Clave 0\n2: Clave 1\n3: Clave 2\n4: Clave 3\n5: Clave 4\n/notas --pagina 2"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Notas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "6 notas · Página 1/2"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 1 · 2026-11-06 09:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Clave 0"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 2 · 2026-11-06 09:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Clave 1"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 3 · 2026-11-06 09:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Clave 2"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 4 · 2026-11-06 09:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Clave 3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nota 5 · 2026-11-06 09:00:00 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Clave 4"
+      },
+      {
+        "kind": "next_action",
+        "text": "/notas --pagina 2 -- Clave"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Notas*\n\n6 notas · Página 1/2\n\nNota 1 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 0\n\nNota 2 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 1\n\nNota 3 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 2\n\nNota 4 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 3\n\nNota 5 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 4\n\n`/notas --pagina 2 -- Clave`",
+      "visual_version": 2,
+      "content_sha256": "d46cf3a126b54c1e7ff7b72cebb32c7fefdaa9199da7b58ffef7efbe9991bd91",
+      "rich_payload": {
+        "source_full": "Notas\n\n6 notas · Página 1/2\n\nNota 1 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 0\n\nNota 2 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 1\n\nNota 3 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 2\n\nNota 4 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 3\n\nNota 5 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 4\n\n/notas --pagina 2 -- Clave",
+        "source_text": "Notas\n\n6 notas · Página 1/2\n\nNota 1 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 0\n\nNota 2 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 1\n\nNota 3 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 2\n\nNota 4 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 3\n\nNota 5 · 2026-11-06 09:00:00 · America/Mexico_City\n\nClave 4\n\n/notas --pagina 2 -- Clave"
+      },
+      "utf16_units": 364
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

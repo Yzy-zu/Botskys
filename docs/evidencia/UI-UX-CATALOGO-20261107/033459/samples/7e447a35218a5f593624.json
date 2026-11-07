@@ -1,0 +1,34 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/cancelar",
+  "result": {
+    "code": "no_current_request",
+    "data": {},
+    "status": "empty",
+    "text": "No hay un encargo propio vigente en este chat."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No hay un encargo propio vigente en este chat.",
+      "visual_version": 2,
+      "content_sha256": "73adc9798086826bea062517419091d9b6773902ecf3f743f81cd0c181297b60",
+      "rich_payload": {
+        "source_full": "No hay un encargo propio vigente en este chat.",
+        "source_text": "No hay un encargo propio vigente en este chat."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

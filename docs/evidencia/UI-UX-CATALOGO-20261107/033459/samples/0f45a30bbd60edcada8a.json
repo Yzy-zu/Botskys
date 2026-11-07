@@ -1,0 +1,34 @@
+{
+  "route": "/admin xp-quitar",
+  "operation": "manage_admin.xp_remove",
+  "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+  "input": "/admin xp-quitar --objetivo alice 3",
+  "result": {
+    "code": "admin_xp_changed",
+    "data": {},
+    "status": "ok",
+    "text": "Cuenta #1: ajuste -3 XP."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cuenta #1: ajuste -3 XP.",
+      "visual_version": 2,
+      "content_sha256": "b9ce6aa6083f78c55e2ced375315d51ea26a89a1c3fe0a2dd2e73dec6397db44",
+      "rich_payload": {
+        "source_full": "Cuenta #1: ajuste -3 XP.",
+        "source_text": "Cuenta #1: ajuste -3 XP."
+      },
+      "utf16_units": 24
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

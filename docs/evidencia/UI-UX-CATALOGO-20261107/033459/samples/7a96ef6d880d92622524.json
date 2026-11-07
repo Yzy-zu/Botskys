@@ -1,0 +1,52 @@
+{
+  "route": "/mc jugadores",
+  "operation": "manage_minecraft.players",
+  "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+  "input": "/mc jugadores",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "players",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "No hay una lista actual verificada de jugadores."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Jugadores"
+      },
+      {
+        "kind": "notice",
+        "text": "No hay una lista actual verificada de jugadores."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Jugadores*\n\nNo hay una lista actual verificada de jugadores.",
+      "visual_version": 2,
+      "content_sha256": "4953d2a1104ee00725823e122711604bdae66764aeb05ee5aa4a4083622c3f4c",
+      "rich_payload": {
+        "source_full": "Jugadores\n\nNo hay una lista actual verificada de jugadores.",
+        "source_text": "Jugadores\n\nNo hay una lista actual verificada de jugadores."
+      },
+      "utf16_units": 61
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

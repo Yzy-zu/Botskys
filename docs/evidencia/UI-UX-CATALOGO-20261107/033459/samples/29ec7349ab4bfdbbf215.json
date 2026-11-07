@@ -1,0 +1,41 @@
+{
+  "route": "/llamar",
+  "operation": "control_call.start",
+  "test": "test_visual_route_gaps.ClipVisualGaps.test_next_selects_second_actual_synthetic_clip_and_reports_observed_name",
+  "input": "/llamar --video",
+  "result": {
+    "code": "call_requested",
+    "data": {
+      "call": {
+        "id": "a5892c66-6953-457d-8cc8-5d6c614f5876",
+        "requestedAt": 1793988000000,
+        "state": "starting",
+        "video": true
+      }
+    },
+    "status": "ok",
+    "text": "Llamada solicitada; aún no confirma conexión ni escucha."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Llamada solicitada; aún no confirma conexión ni escucha.",
+      "visual_version": 2,
+      "content_sha256": "6b772e34c96e0f25ae3f4bc3ae89c27ea79520612b28de5e81fb80705df55cab",
+      "rich_payload": {
+        "source_full": "Llamada solicitada; aún no confirma conexión ni escucha.",
+        "source_text": "Llamada solicitada; aún no confirma conexión ni escucha."
+      },
+      "utf16_units": 56
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

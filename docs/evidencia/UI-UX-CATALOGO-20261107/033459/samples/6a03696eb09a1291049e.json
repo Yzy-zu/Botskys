@@ -1,0 +1,39 @@
+{
+  "route": "/ruleta cancelar",
+  "operation": "manage_roulette.cancel",
+  "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+  "input": "/ruleta cancelar 2c2b59bcff6c450282b687b704e890ca",
+  "result": {
+    "code": "roulette_cancelled",
+    "data": {
+      "payout_each": 0,
+      "room_id": "2c2b59bcff6c450282b687b704e890ca",
+      "state": "cancelled",
+      "target": null
+    },
+    "status": "cancelled",
+    "text": "Ruleta 2c2b59bcff6c450282b687b704e890ca: cancelled. Apuestas devueltas una sola vez."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ruleta 2c2b59bcff6c450282b687b704e890ca: cancelled. Apuestas devueltas una sola vez.",
+      "visual_version": 2,
+      "content_sha256": "8aa8889585c614f1497b76264e1baa1e9bc9cc711c04cf0116c01c88514903b5",
+      "rich_payload": {
+        "source_full": "Ruleta 2c2b59bcff6c450282b687b704e890ca: cancelled. Apuestas devueltas una sola vez.",
+        "source_text": "Ruleta 2c2b59bcff6c450282b687b704e890ca: cancelled. Apuestas devueltas una sola vez."
+      },
+      "utf16_units": 84
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

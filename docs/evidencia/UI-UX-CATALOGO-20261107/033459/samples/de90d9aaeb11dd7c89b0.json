@@ -1,0 +1,34 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+  "input": "/convertir docx",
+  "result": {
+    "code": "document_no_text",
+    "data": {},
+    "status": "failed",
+    "text": "No encontré texto extraíble. Si es un escaneo, necesitas OCR."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No encontré texto extraíble. Si es un escaneo, necesitas OCR.",
+      "visual_version": 2,
+      "content_sha256": "f567a29a89c7d0122860e02ccabeaf190af608c1dbcec07fed7a8999ffac0685",
+      "rich_payload": {
+        "source_full": "No encontré texto extraíble. Si es un escaneo, necesitas OCR.",
+        "source_text": "No encontré texto extraíble. Si es un escaneo, necesitas OCR."
+      },
+      "utf16_units": 61
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

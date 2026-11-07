@@ -1,0 +1,58 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_file_wait_only_after_own_delivered_prompt_and_new_order_replaces_it",
+  "input": "/convertir pdf",
+  "result": {
+    "code": "attachment_required",
+    "data": {
+      "example": "/convertir pdf",
+      "expires_ms": 1793934900000,
+      "interaction_id": "796f5e8423034703b58c2932f08338ba"
+    },
+    "status": "needs_input",
+    "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene. Esta espera dura 15 minutos.\nEjemplo: /convertir pdf"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Falta el archivo"
+      },
+      {
+        "kind": "notice",
+        "text": "Adjunta el archivo aquí o responde al mensaje exacto que lo contiene."
+      },
+      {
+        "kind": "notice",
+        "text": "Espera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ejemplo: /convertir pdf"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Falta el archivo*\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /convertir pdf",
+      "visual_version": 2,
+      "content_sha256": "30527c5cd450f0cd10b5bad65b2dd5a60958ded242c18669f8fc260a8ce8e284",
+      "rich_payload": {
+        "source_full": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /convertir pdf",
+        "source_text": "Falta el archivo\n\nAdjunta el archivo aquí o responde al mensaje exacto que lo contiene.\n\nEspera disponible hasta: 2026-11-05 21:15:00 · America/Mexico_City\n\nEjemplo: /convertir pdf"
+      },
+      "utf16_units": 182
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

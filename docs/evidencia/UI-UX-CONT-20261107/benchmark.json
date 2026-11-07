@@ -1,36 +1,36 @@
 {
   "baseline": "4482c46",
-  "current": "4aa76ca10b558e55a1e9f126569dd8c4ce4fbf8e",
+  "current": "bf2fba91e4b39ca9a9f85c1c917e5db2fcf9b79e",
   "scope": "Planificación local de40fixtures porcaso; no motor/proveedor/red/cliente. Másbytesinternospuedenconservarfuente literal.",
   "before": {
     "notes_literal": {
       "iterations": 40,
-      "plan_median_ms": 0.115,
-      "plan_p95_ms": 0.185,
+      "plan_median_ms": 0.112,
+      "plan_p95_ms": 0.146,
       "parts_median": 1.0,
       "storage_bytes_median": 75.0,
       "text_or_caption_bytes_median": 73.0
     },
     "pdf_caption": {
       "iterations": 40,
-      "plan_median_ms": 0.17,
-      "plan_p95_ms": 0.261,
+      "plan_median_ms": 0.166,
+      "plan_p95_ms": 0.25,
       "parts_median": 2.0,
       "storage_bytes_median": 116.0,
       "text_or_caption_bytes_median": 28.0
     },
     "sticker": {
       "iterations": 40,
-      "plan_median_ms": 0.167,
-      "plan_p95_ms": 0.243,
+      "plan_median_ms": 0.163,
+      "plan_p95_ms": 0.216,
       "parts_median": 2.0,
       "storage_bytes_median": 100.0,
       "text_or_caption_bytes_median": 14.0
     },
     "xp_table": {
       "iterations": 40,
-      "plan_median_ms": 0.212,
-      "plan_p95_ms": 0.291,
+      "plan_median_ms": 0.206,
+      "plan_p95_ms": 0.414,
       "parts_median": 2.0,
       "storage_bytes_median": 186.0,
       "text_or_caption_bytes_median": 83.0
@@ -39,34 +39,34 @@
   "after": {
     "notes_literal": {
       "iterations": 40,
-      "plan_median_ms": 0.202,
-      "plan_p95_ms": 0.267,
+      "plan_median_ms": 0.253,
+      "plan_p95_ms": 0.972,
       "parts_median": 1.0,
-      "storage_bytes_median": 176.0,
+      "storage_bytes_median": 270.0,
       "text_or_caption_bytes_median": 81.0
     },
     "pdf_caption": {
       "iterations": 40,
-      "plan_median_ms": 0.266,
-      "plan_p95_ms": 0.381,
+      "plan_median_ms": 0.284,
+      "plan_p95_ms": 0.782,
       "parts_median": 1.0,
-      "storage_bytes_median": 281.0,
+      "storage_bytes_median": 375.0,
       "text_or_caption_bytes_median": 75.0
     },
     "sticker": {
       "iterations": 40,
-      "plan_median_ms": 0.155,
-      "plan_p95_ms": 0.221,
+      "plan_median_ms": 0.165,
+      "plan_p95_ms": 0.454,
       "parts_median": 1.0,
-      "storage_bytes_median": 101.0,
+      "storage_bytes_median": 132.0,
       "text_or_caption_bytes_median": 0.0
     },
     "xp_table": {
       "iterations": 40,
-      "plan_median_ms": 0.248,
-      "plan_p95_ms": 0.352,
+      "plan_median_ms": 0.291,
+      "plan_p95_ms": 0.382,
       "parts_median": 2.0,
-      "storage_bytes_median": 285.0,
+      "storage_bytes_median": 449.0,
       "text_or_caption_bytes_median": 83.0
     }
   }

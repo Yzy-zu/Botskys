@@ -1,0 +1,147 @@
+{
+  "route": "/dl buscar",
+  "operation": "download_media.search",
+  "test": "test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice",
+  "input": "/dl buscar mp4 muestra",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp4",
+        "quality": "standard",
+        "source": "youtube",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "e6cc590946af4c63a4263bb3a4d723ca"
+      ],
+      "choices": [
+        {
+          "author": "Autor",
+          "duration": 252,
+          "thumbnail_url": null,
+          "title": "Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro ",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "heading",
+            "text": "1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]"
+          },
+          {
+            "kind": "quote",
+            "text": "4:12 · Autor · W3C"
+          },
+          {
+            "kind": "paragraph",
+            "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "Título y autor completos: /dl detalle NUMERO"
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 71745,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "search_note": "",
+      "view_id": "11a1832698ad4bddb85d3a59ef4e15b5"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n*1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]*\n\n> 4:12 · Autor · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "heading",
+        "text": "1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]"
+      },
+      {
+        "kind": "quote",
+        "text": "4:12 · Autor · W3C"
+      },
+      {
+        "kind": "paragraph",
+        "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "Título y autor completos: /dl detalle NUMERO"
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "b0a6136f2fadccf98738dc2d9136e2b7dfa35ecb01a40f0dd70b26103ad5188a",
+      "rich_payload": {
+        "artifacts": [
+          "e6cc590946af4c63a4263bb3a4d723ca"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg",
+        "source_full": "Videos\n\n1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n\n4:12 · Autor · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n*1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]*\n\n> 4:12 · Autor · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`Título y autor completos: /dl detalle NUMERO`\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "bc516c919a427de27e505348d4c7bfe33dcbcdbc0af2b267ddc965d6822fda80",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro Título íntegro … [vista previa]\n\n4:12 · Autor · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\nTítulo y autor completos: /dl detalle NUMERO\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 460
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

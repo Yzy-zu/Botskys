@@ -1,0 +1,68 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_visual_integrity.VisualIntegrityTest.test_literal_pdf_header_is_text_artifact_and_preserved_across_restart",
+  "input": "/ayuda",
+  "result": {
+    "code": "own_fixture",
+    "data": {
+      "document": {
+        "blocks": [
+          {
+            "kind": "literal",
+            "text": "%PDF-1.4\n```\n/daily\n*unchanged*\n"
+          }
+        ],
+        "version": 1
+      }
+    },
+    "status": "ok",
+    "text": "%PDF-1.4\n```\n/daily\n*unchanged*\n"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "literal",
+        "text": "%PDF-1.4\n```\n/daily\n*unchanged*\n"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres.",
+      "visual_version": 2,
+      "content_sha256": "1695efe128fbd2d3b18975d5aded322bb81594899a33ba0620f77d85131670bd",
+      "rich_payload": {
+        "source_full": "%PDF-1.4\n```\n/daily\n*unchanged*\n",
+        "source_text": ""
+      },
+      "utf16_units": 89
+    },
+    {
+      "position": 1,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "0bba5c0f5c11b8ce69c015911a1afa4d875ce7f5e59f7930e236ffcb1bffdbdc",
+      "rich_payload": {
+        "artifacts": [
+          "97c4614c74534fa683d24e90dc470415"
+        ],
+        "caption": "Contenido literal completo · UTF-8",
+        "name": "Contenido literal.txt",
+        "role": "literal_source"
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

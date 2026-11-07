@@ -1,0 +1,57 @@
+{
+  "route": "/mc parar",
+  "operation": "manage_minecraft.stop",
+  "test": "test_visual_route_gaps.MinecraftVisualGaps.test_discover_stop_restart_use_only_runner_and_restart_health_is_observed",
+  "input": "/mc parar",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "stop",
+      "response": {
+        "online": false,
+        "status": "ok",
+        "verified": true
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft stop:\n{\"status\": \"ok\", \"online\": false, \"verified\": true}"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Minecraft"
+      },
+      {
+        "kind": "notice",
+        "text": "El servicio informó la parada."
+      },
+      {
+        "kind": "next_action",
+        "text": "/mc estado"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Minecraft*\n\nEl servicio informó la parada.\n\n`/mc estado`",
+      "visual_version": 2,
+      "content_sha256": "a2e5765d86185c0fb6caa09754a908e777b91e227680aab962dcfe564e067ff2",
+      "rich_payload": {
+        "source_full": "Minecraft\n\nEl servicio informó la parada.\n\n/mc estado",
+        "source_text": "Minecraft\n\nEl servicio informó la parada.\n\n/mc estado"
+      },
+      "utf16_units": 57
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

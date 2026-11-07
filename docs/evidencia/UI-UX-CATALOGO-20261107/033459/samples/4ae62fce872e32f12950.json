@@ -1,0 +1,49 @@
+{
+  "route": "/ocr",
+  "operation": "read_image.run",
+  "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+  "input": "/ocr",
+  "result": {
+    "code": "image_read",
+    "data": {
+      "mode": "text",
+      "truncated": false
+    },
+    "status": "ok",
+    "text": "BOTSKY CABLE AZUL 2026"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Texto de imagen (OCR)"
+      },
+      {
+        "kind": "literal",
+        "text": "BOTSKY CABLE AZUL 2026"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Texto de imagen (OCR)*\n\nBOTSKY CABLE AZUL 2026",
+      "visual_version": 2,
+      "content_sha256": "77ac02241b8758cf04e715a720bfd1c8b719bdfa5f9234437d6d24a0c91805aa",
+      "rich_payload": {
+        "source_full": "Texto de imagen (OCR)\n\nBOTSKY CABLE AZUL 2026",
+        "source_text": "Texto de imagen (OCR)\n\nBOTSKY CABLE AZUL 2026"
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

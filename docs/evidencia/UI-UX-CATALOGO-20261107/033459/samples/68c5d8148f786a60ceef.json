@@ -1,0 +1,52 @@
+{
+  "route": "/reaccion",
+  "operation": "send_sticker.run",
+  "test": "test_media.MediaTest.test_webm_and_embedded_subtitle_outputs_and_catalog_assets",
+  "input": "/reaccion saludo",
+  "result": {
+    "code": "reaction_ready",
+    "data": {
+      "artifacts": [
+        "54d5fa393d164a70b5431da5452b51cb"
+      ],
+      "file_facts": [
+        {
+          "bytes": 37968,
+          "extension": "webp",
+          "format": "webp",
+          "height": 512,
+          "width": 512
+        }
+      ]
+    },
+    "status": "ok",
+    "text": ""
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "a7311bd8a14b00154130f71b284bac9d8824144c833bb58b0387b50eb19ae730",
+      "rich_payload": {
+        "artifacts": [
+          "54d5fa393d164a70b5431da5452b51cb"
+        ],
+        "caption": "",
+        "name": "Botsky.webp",
+        "source_full": "",
+        "source_text": ""
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

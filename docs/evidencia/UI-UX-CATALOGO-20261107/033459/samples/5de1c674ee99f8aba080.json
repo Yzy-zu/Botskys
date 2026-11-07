@@ -1,0 +1,108 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_native_tables.TableRecoveryTest.test_restart_sending_table_becomes_uncertain_and_retains_frozen_plan",
+  "input": "/ayuda",
+  "result": {
+    "code": "table_fixture",
+    "data": {
+      "native_footer": "Fin",
+      "native_intro": "Inicio",
+      "native_table": {
+        "headers": [
+          "Nombre",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "Uno"
+          ],
+          [
+            "RTL עברית",
+            "2"
+          ]
+        ],
+        "title": "Comparación"
+      }
+    },
+    "status": "ok",
+    "text": "Fuente canónica"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Comparación",
+      "headers": [
+        "Nombre",
+        "Valor"
+      ],
+      "rows": [
+        [
+          "*literal*",
+          "Uno"
+        ],
+        [
+          "RTL עברית",
+          "2"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Inicio",
+      "visual_version": 2,
+      "content_sha256": "e3b8ae532c551c8766e4f84354f11028cca4e3c06d4fa444645ca97e92c91df2",
+      "rich_payload": {
+        "source_full": "Fuente canónica",
+        "source_text": "Inicio"
+      },
+      "utf16_units": 6
+    },
+    {
+      "position": 1,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "3879211ac42e927dd296c998def9362f79b910c9f9c7a9e5ca1d5d9b81b5ea88",
+      "rich_payload": {
+        "headers": [
+          "Nombre",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "Uno"
+          ],
+          [
+            "RTL עברית",
+            "2"
+          ]
+        ],
+        "title": "Comparación"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 2,
+      "kind": "text",
+      "payload": "Fin",
+      "visual_version": 2,
+      "content_sha256": "b95fb087e855cc9f1350f36b582cae4d552349798a2504e87fe57d8124bdc23b",
+      "rich_payload": {
+        "source_text": "Fin"
+      },
+      "utf16_units": 3
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

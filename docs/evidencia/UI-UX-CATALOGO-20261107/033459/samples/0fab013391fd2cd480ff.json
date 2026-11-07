@@ -1,0 +1,54 @@
+{
+  "route": "/avatar fondo",
+  "operation": "audiovisual.avatar.background",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+  "input": "/avatar fondo neon",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "avatar": {
+        "background": "neon"
+      },
+      "message": "Fondo actualizado.",
+      "presentation_action": "background",
+      "presentation_family": "avatar",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Fondo actualizado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Avatar"
+      },
+      {
+        "kind": "notice",
+        "text": "Fondo actualizado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Avatar*\n\nFondo actualizado.",
+      "visual_version": 2,
+      "content_sha256": "8b3f975ce0442246a24292501bb2f93a1a030b9163ca1f24720ad38524bfdda6",
+      "rich_payload": {
+        "source_full": "Avatar\n\nFondo actualizado.",
+        "source_text": "Avatar\n\nFondo actualizado."
+      },
+      "utf16_units": 28
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

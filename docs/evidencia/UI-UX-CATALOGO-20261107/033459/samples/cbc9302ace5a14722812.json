@@ -1,0 +1,58 @@
+{
+  "route": "/recordar en",
+  "operation": "manage_reminder.create",
+  "test": "test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter",
+  "input": "/recordar en 30s filtro",
+  "result": {
+    "code": "reminder_created",
+    "data": {
+      "due_ms": 1793977230000,
+      "reminder_id": 1,
+      "text": "filtro"
+    },
+    "status": "ok",
+    "text": "Recordatorio 1: filtro\n2026-11-06 09:00:30 · Ciudad de México. Aviso pendiente; entrega aún no comprobada."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Recordatorio 1 guardado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2026-11-06 09:00:30 · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "filtro"
+      },
+      {
+        "kind": "notice",
+        "text": "Aviso pendiente; entrega aún no comprobada."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Recordatorio 1 guardado*\n\n2026-11-06 09:00:30 · America/Mexico_City\n\nfiltro\n\nAviso pendiente; entrega aún no comprobada.",
+      "visual_version": 2,
+      "content_sha256": "5dbf7047094f9baee58555678e83acfaf539438ce60ba9406ec368828139d05f",
+      "rich_payload": {
+        "source_full": "Recordatorio 1 guardado\n\n2026-11-06 09:00:30 · America/Mexico_City\n\nfiltro\n\nAviso pendiente; entrega aún no comprobada.",
+        "source_text": "Recordatorio 1 guardado\n\n2026-11-06 09:00:30 · America/Mexico_City\n\nfiltro\n\nAviso pendiente; entrega aún no comprobada."
+      },
+      "utf16_units": 121
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

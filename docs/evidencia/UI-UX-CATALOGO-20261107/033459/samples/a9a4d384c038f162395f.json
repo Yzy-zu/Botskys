@@ -1,0 +1,65 @@
+{
+  "route": "/pack comprar",
+  "operation": "manage_pack.buy",
+  "test": "test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched",
+  "input": "/pack comprar sintetico",
+  "result": {
+    "code": "pack_offer",
+    "data": {
+      "category": "sintetico",
+      "expires_ms": 1793963100000,
+      "max_photos": 5,
+      "min_photos": 3,
+      "price": 150,
+      "purchase_id": "3eeb733f44e7498a8557b18024b363ba"
+    },
+    "status": "needs_input",
+    "text": "Pack 3eeb733f44e7498a8557b18024b363ba: sintetico · 150 XP · 3–5 fotos (mínimo3 por stock), visualización única en tu privado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. No he cobrado. Caduca en5min.\n/pack confirmar 3eeb733f44e7498a8557b18024b363ba"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Oferta de pack"
+      },
+      {
+        "kind": "literal",
+        "text": "Categoría: sintetico"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Precio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado."
+      },
+      {
+        "kind": "notice",
+        "text": "No he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 05:05:00 · America/Mexico_City"
+      },
+      {
+        "kind": "next_action",
+        "text": "/pack confirmar 3eeb733f44e7498a8557b18024b363ba"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Oferta de pack*\n\nCategoría: sintetico\n\nPrecio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado.\n\nNo he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 05:05:00 · America/Mexico_City\n\n`/pack confirmar 3eeb733f44e7498a8557b18024b363ba`",
+      "visual_version": 2,
+      "content_sha256": "450e393b8306a555d880fb29daed6d1c1840bbf11e4c2dad118e512884effae6",
+      "rich_payload": {
+        "source_full": "Oferta de pack\n\nCategoría: sintetico\n\nPrecio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado.\n\nNo he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 05:05:00 · America/Mexico_City\n\n/pack confirmar 3eeb733f44e7498a8557b18024b363ba",
+        "source_text": "Oferta de pack\n\nCategoría: sintetico\n\nPrecio: 150 XP · 3–5 fotos (mínimo 3 según stock). Visualización única en tu privado.\n\nNo he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: 2026-11-06 05:05:00 · America/Mexico_City\n\n/pack confirmar 3eeb733f44e7498a8557b18024b363ba"
+      },
+      "utf16_units": 318
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

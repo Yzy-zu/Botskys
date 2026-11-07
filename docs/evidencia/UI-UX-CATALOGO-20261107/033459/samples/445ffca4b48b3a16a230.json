@@ -1,0 +1,58 @@
+{
+  "route": "/avatar rubor",
+  "operation": "audiovisual.avatar.blush",
+  "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+  "input": "/avatar rubor suave",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "avatar": {
+        "appliedBlush": {
+          "applied": true,
+          "requested": "soft"
+        },
+        "background": "soft"
+      },
+      "message": "Rubor aplicado.",
+      "presentation_action": "blush",
+      "presentation_family": "avatar",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Rubor aplicado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Avatar"
+      },
+      {
+        "kind": "notice",
+        "text": "Rubor aplicado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Avatar*\n\nRubor aplicado.",
+      "visual_version": 2,
+      "content_sha256": "379b265d2309ce51ca6f138bd93f8cafe9e3d5be14f59760a2a08d385ea192e6",
+      "rich_payload": {
+        "source_full": "Avatar\n\nRubor aplicado.",
+        "source_text": "Avatar\n\nRubor aplicado."
+      },
+      "utf16_units": 25
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

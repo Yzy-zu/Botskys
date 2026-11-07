@@ -1,0 +1,40 @@
+{
+  "route": "/mc consola",
+  "operation": "manage_minecraft.console",
+  "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+  "input": "/mc consola /list",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "console",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Comando enviado al puente Minecraft; no hay confirmación de ejecución dentro del juego."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Comando enviado al puente Minecraft; no hay confirmación de ejecución dentro del juego.",
+      "visual_version": 2,
+      "content_sha256": "caa9f78699f7c5d7a605f6300475fb87ce5b7a88798a9181ec025c05b6b0c33b",
+      "rich_payload": {
+        "source_full": "Comando enviado al puente Minecraft; no hay confirmación de ejecución dentro del juego.",
+        "source_text": "Comando enviado al puente Minecraft; no hay confirmación de ejecución dentro del juego."
+      },
+      "utf16_units": 87
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}
