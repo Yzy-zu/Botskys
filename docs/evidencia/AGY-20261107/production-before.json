@@ -1,0 +1,28 @@
+{
+  "runtime": {
+    "http_status": 200,
+    "health": {
+      "ready": true
+    }
+  },
+  "calls": {
+    "http_status": 200,
+    "health": {
+      "ready": true
+    }
+  },
+  "supervisors": [
+    {
+      "name": "botsky-production-runtime",
+      "pid": 3256051,
+      "status": "online",
+      "restarts": 0
+    },
+    {
+      "name": "botsky-production-webhook-bridge",
+      "pid": 3256052,
+      "status": "online",
+      "restarts": 0
+    }
+  ]
+}

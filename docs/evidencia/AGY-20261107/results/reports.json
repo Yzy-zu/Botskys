@@ -1,0 +1,1957 @@
+{
+  "download_media": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 1,
+    "blocked_items": 1,
+    "coverage_gaps": [
+      "Descarga exitosa de contenedor WebM desde fuentes HTTP directas libres de verificación anti-bot.",
+      "Comprobación de descarga de subtítulos en otros idiomas (--idioma en) o con fuentes que incluyan pistas embebidas/asociadas garantizadas.",
+      "Búsqueda y descarga en el resto de fuentes del catálogo (dailymotion, vimeo, facebook, instagram, tiktok, spotify)."
+    ],
+    "report": {
+      "tool": "download_media",
+      "works": [
+        "Descarga directa de fragmentos de vídeo MP4 con recorte (--desde/--hasta) y calidad standard desde URL directa (c01, código download_ready, artefacto de 5.0s generado).",
+        "Extracción y transcodificación de audio a MP3 con recorte y calidad small desde fuente de vídeo directa (c02, código download_ready, artefacto de 3.0s generado).",
+        "Búsqueda de contenidos en YouTube vía /dl buscar con retorno correcto de opciones interactivas y view_id (c05, status needs_input, código download_choices).",
+        "Reutilización de contexto multimedia previo mediante /dl anterior para conversión a MP3 con recorte (c07, código media_edited, artefacto de 3.0s generado)."
+      ],
+      "suspected_errors": [
+        {
+          "cases": [
+            "c08"
+          ],
+          "code": "source_search_unavailable",
+          "status": "failed",
+          "detail": "La búsqueda en SoundCloud reportó 'source_search_unavailable' a pesar de estar listada como opción admitida en el catálogo."
+        },
+        {
+          "cases": [
+            "c04"
+          ],
+          "code": "subtitles_failed",
+          "status": "failed",
+          "detail": "Fallo en la descarga de subtítulos SRT en español desde YouTube devolviendo código subtitles_failed."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c09",
+            "c10",
+            "c11",
+            "c12"
+          ],
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "needs_input",
+          "codes": [
+            "invalid_field",
+            "incompatible_fields"
+          ],
+          "detail": "El oráculo de prueba anticipó status 'failed' para entradas inválidas (URL no válida, rango temporal invertido, opción fuera de rango 1-6 y calidad no permitida), pero el backend modela las correcciones de parámetros con status 'needs_input' y mensaje explicativo de sintaxis."
+        }
+      ],
+      "blocked": [
+        {
+          "cases": [
+            "c03",
+            "c06"
+          ],
+          "code": "source_verification_required",
+          "status": "failed",
+          "detail": "Bloqueo por desafío de verificación de proveedor (anti-bot / verificación requerida por YouTube) al intentar descargar el stream de vídeo WebM directo o al materializar la selección de búsqueda (/dl elegir)."
+        }
+      ],
+      "coverage_gaps": [
+        "Descarga exitosa de contenedor WebM desde fuentes HTTP directas libres de verificación anti-bot.",
+        "Comprobación de descarga de subtítulos en otros idiomas (--idioma en) o con fuentes que incluyan pistas embebidas/asociadas garantizadas.",
+        "Búsqueda y descarga en el resto de fuentes del catálogo (dailymotion, vimeo, facebook, instagram, tiktok, spotify)."
+      ],
+      "recommendations": [
+        "Actualizar los oráculos de prueba para errores de validación de sintaxis/parámetros de modo que esperen status 'needs_input' con códigos 'invalid_field' o 'incompatible_fields' en lugar de 'failed'.",
+        "Incorporar fixtures o URLs directas con contenedor WebM para evaluar la transcodificación sin dependencia de proveedores con control anti-bot.",
+        "Revisar la disponibilidad del conector de búsqueda para SoundCloud o actualizar la definición del catálogo si la fuente ha quedado deprecada."
+      ]
+    }
+  },
+  "convert_document": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 3,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "No se evaluaron formatos de código abierto contemplados en el catálogo (odt, ods, odp, rtf, doc, xls, ppt).",
+      "No se validaron conversiones hacia o desde formatos de intercambio estructurado (json, webp, jpg).",
+      "No se probó el comportamiento con hojas de cálculo múltiples utilizando el fixture multisheet_xlsx.",
+      "No se probó la conversión mediante cita/respuesta a un mensaje previo que contiene el documento."
+    ],
+    "report": {
+      "tool": "convert_document",
+      "works": [
+        "Conversión documental operativa entre formatos de oficina y texto: DOCX a PDF (c01), PDF a DOCX (c02), DOCX a TXT (c03), CSV a XLSX (c04), XLSX a PDF (c05), MD a PDF (c06), PPTX a PDF (c09) y PDF a TXT (c08), generando artefactos íntegros con status 'ok' y código 'document_converted'.",
+        "Conversión de documentos multipágina a imágenes empaquetando páginas resultantes en contenedor ZIP (c10).",
+        "Gestión interactiva ante comando sin adjunto solicitando archivo con status 'needs_input' y código 'attachment_required' (c11).",
+        "Detección y rechazo controlado de archivos corruptos o protegidos con contraseña mediante código 'invalid_or_protected_pdf' y status 'failed' (c13, c14).",
+        "Rechazo de conversiones entre tipos incompatibles (video a hoja de cálculo) con código 'unsupported_document' y status 'failed' (c15).",
+        "Filtrado perimetral de adjuntos sobredimensionados en la capa de ingreso con código 'input_size' y status 'failed' (c16)."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c07",
+          "effect": "La conversión de HTML a PDF no interpreta etiquetas ni renderiza el marcado, insertando el código fuente como texto plano visible en el documento de salida.",
+          "evidence": "Artifact c07 extracted_text: '<h1>Botsky Lab31415</h1><p>Contenido sintetico</p>' y mensaje de respuesta advirtiendo que el contenido se presenta como texto plano sin interpretar formato."
+        },
+        {
+          "case": "c12",
+          "effect": "Especificar un formato destino inexistente o no permitido devuelve status 'needs_input' en lugar de un fallo definitivo 'failed'.",
+          "evidence": "Resultado c12: status 'needs_input', code 'invalid_field', solicitando interactividad en lugar de terminar en 'failed'."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c01",
+            "c03",
+            "c05",
+            "c08"
+          ],
+          "issue": "Falso positivo del oráculo por verificación de texto ausente ('Expected text absent'). La evidencia muestra que el texto sí fue extraído en los artefactos (c01: 'Botsky Lab31415 - Contenido sintetico', c03: 'Botsky Lab31415 - Contenido sintetico', c05: 'nombre cantidad\\nalpha 3\\nbeta 7', c08: 'BOTSKY LAB 31415 - documento sintetico'). Discrepancia originada por normalización estricta de espacios en blanco en la aserción."
+        },
+        {
+          "cases": [
+            "c02",
+            "c04"
+          ],
+          "issue": "El oráculo reportó 'Expected text absent' al inspeccionar archivos empaquetados OOXML (.docx y .xlsx) a pesar de que los artefactos fueron generados con estructura XML válida (17 y 9 entradas ZIP respectivamente). El oráculo carece de parser de texto para contenedores XML binarios/comprimidos."
+        },
+        {
+          "cases": [
+            "c10"
+          ],
+          "issue": "El oráculo marcó 'Expected verified artifact absent' porque esperaba estrictamente un archivo de formato 'png', mientras que el backend generó legítimamente un archivo 'zip' con 2 entradas que contiene los PNG correspondientes a cada página del PDF."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "No se evaluaron formatos de código abierto contemplados en el catálogo (odt, ods, odp, rtf, doc, xls, ppt).",
+        "No se validaron conversiones hacia o desde formatos de intercambio estructurado (json, webp, jpg).",
+        "No se probó el comportamiento con hojas de cálculo múltiples utilizando el fixture multisheet_xlsx.",
+        "No se probó la conversión mediante cita/respuesta a un mensaje previo que contiene el documento."
+      ],
+      "recommendations": [
+        "Actualizar el validador del oráculo para soportar artefactos de tipo 'zip' cuando la conversión a imagen provenga de documentos con múltiples páginas.",
+        "Añadir soporte de extracción de cadenas (Shared Strings / document.xml) en el oráculo para evaluar contenido textual dentro de contenedores DOCX y XLSX.",
+        "Normalizar espacios y caracteres de escape en las aserciones de subcadenas del oráculo.",
+        "Determinar y documentar formalmente si el envío de un target inválido debe permanecer como interactivo ('needs_input') o resolverse como rechazo unívoco ('failed').",
+        "Evaluar si el soporte para HTML debe incorporar motor de renderizado o si la conversión como texto plano verbatim es el comportamiento oficial esperado."
+      ]
+    }
+  },
+  "edit_media": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 1,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Pruebas de extracción o generación de subtítulos srt directamente a partir de fuentes de video con pista de diálogo.",
+      "Comportamiento de recorte temporal sobre archivos de mayor longitud ('long_video', 'large_audio') para validar límites altos de start_seconds y end_seconds.",
+      "Combinaciones de calidad 'high' y 'small' aplicadas sobre audio mp3 puro y contenedor webm con audio.",
+      "Conversión cruzada entre formatos de video completos sin recorte de tiempo."
+    ],
+    "report": {
+      "tool": "edit_media",
+      "works": [
+        "Recorte y transcodificación de video a formato webm con perfil de compresión small (caso c03: duración 2.008s, códecs vp9/opus).",
+        "Recorte y transcodificación de video a formato mp4 con perfil de compresión high (caso c04: duración 3.000s, códecs h264/aac).",
+        "Recorte y conversión de audio a formato mp3 con calidad standard (caso c05: duración 3.000s, códec mp3).",
+        "Procesamiento de pista de audio silenciosa generando contenedor mp3 válido (caso c07: duración 2.000s).",
+        "Detección y rechazo controlado con código 'audio_unavailable' al intentar extraer mp3 de un video sin pista de audio (caso c08).",
+        "Solicitud interactiva de adjunto con estado 'needs_input' y código 'attachment_required' ante comandos sin archivo (caso c09).",
+        "Rechazo controlado con código 'unsupported_media' ante formatos incompatibles como imágenes estáticas (caso c13).",
+        "Gestión controlada de archivos dañados con código 'invalid_media' ante 'broken_audio' (caso c14)."
+      ],
+      "suspected_errors": [
+        {
+          "cases": [
+            "c01",
+            "c02"
+          ],
+          "command": "/editar mp4 --desde 0 --hasta 4 / /editar mp3 --desde 0 --hasta 5",
+          "observed": "status: failed, code: invalid_range",
+          "hypothesis": "El backend rechaza con 'invalid_range' cuando el parámetro --hasta excede la duración nativa del fixture (el video base tiene ~3.0s según evidencia de c04), en lugar de ajustar el recorte al final del archivo (EOF)."
+        },
+        {
+          "cases": [
+            "c06"
+          ],
+          "command": "/editar srt --idioma es",
+          "observed": "status: failed, code: unsupported_media",
+          "hypothesis": "El contenedor 'srt' figura en el catálogo de opciones válidas para la herramienta, pero el backend rechaza el fixture de subtítulo 'srt' como medio no soportado."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c10",
+            "c11",
+            "c12"
+          ],
+          "commands": [
+            "/editar avi",
+            "/editar mp4 --desde 10 --hasta 5",
+            "/editar mp4 --desde 12000"
+          ],
+          "discrepancy": "El oráculo esperaba status 'failed', pero la interfaz devuelve status 'needs_input' con códigos 'invalid_field' o 'incompatible_fields' y el texto de ayuda para permitir la corrección interactiva del comando."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Pruebas de extracción o generación de subtítulos srt directamente a partir de fuentes de video con pista de diálogo.",
+        "Comportamiento de recorte temporal sobre archivos de mayor longitud ('long_video', 'large_audio') para validar límites altos de start_seconds y end_seconds.",
+        "Combinaciones de calidad 'high' y 'small' aplicadas sobre audio mp3 puro y contenedor webm con audio.",
+        "Conversión cruzada entre formatos de video completos sin recorte de tiempo."
+      ],
+      "recommendations": [
+        "Ajustar los oráculos de validación sintáctica y de parámetros para aceptar 'needs_input' cuando el bot ofrece reingreso asistido.",
+        "Definir si los rangos con '--hasta' superiores a la duración total deben recortarse automáticamente al final del stream o mantenerse como error 'invalid_range'.",
+        "Clarificar o corregir el soporte del contenedor 'srt' en el backend para determinar si requiere entrada audiovisual o soporte específico de subtítulos."
+      ]
+    }
+  },
+  "manage_pdf": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 1,
+    "blocked_items": 1,
+    "coverage_gaps": [
+      "Prueba de la operación manage_pdf.retry bloqueada por falta de propagación de task_id.",
+      "Efecto de ejecutar /pdf terminar o /pdf cancelar sin una sesión previamente abierta.",
+      "Comportamiento de /pdf terminar tras haber agregado un broken_pdf aceptado en la fase de inicio.",
+      "Extracción de páginas combinadas con sintaxis mixta (ej. '1,3-5') en fixtures con rango de páginas intermedio."
+    ],
+    "report": {
+      "tool": "manage_pdf",
+      "works": [
+        "Inicio de sesión de ensamblado (/pdf iniciar) con documentos PDF estándar y escaneados (c01, c05).",
+        "Adición incremental de imágenes (/pdf agregar) en formato JPG y genérico a la sesión abierta (c02, c03).",
+        "Compilación y cierre de sesión (/pdf terminar) generando el artefacto final combinado con texto y páginas preservadas (c04).",
+        "Cancelación de sesión activa (/pdf cancelar) devolviendo estado cancelled sin generar artefactos (c06).",
+        "Extracción de página individual (/pdf extraer 1) desde un PDF válido generando el artefacto correspondiente (c07).",
+        "Detección y rechazo controlado al intentar extraer páginas de un documento cifrado (/pdf extraer con encrypted_pdf) reportando protected_pdf (c13)."
+      ],
+      "suspected_errors": [
+        {
+          "cases": [
+            "c08",
+            "c09"
+          ],
+          "command": "/pdf extraer 1,2 y /pdf extraer 1-3",
+          "symptom": "Fallo con código document_pages y mensaje 'El PDF debe tener entre 1 y 500 páginas' al procesar many_pages_pdf",
+          "detail": "La operación de extracción falla tanto con lista separada por comas como con rango de guión en el fixture multipágina, lo que sugiere un defecto en la detección del conteo de páginas del fixture o un límite rígido no cumplido por el archivo."
+        },
+        {
+          "cases": [
+            "c12"
+          ],
+          "command": "/pdf iniciar con broken_pdf",
+          "symptom": "Retorna status 'ok' y código 'pdf_session_started'",
+          "detail": "El comando no realiza validación de integridad o estructura al momento de iniciar la sesión con un archivo dañado, aceptándolo como válido en lugar de rechazarlo."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c10",
+            "c11"
+          ],
+          "description": "Discrepancia en el status esperado para validaciones de entrada del campo pages.",
+          "detail": "El caso c10 (rango fuera de límite 999-1000) y c11 (caracteres no numéricos 'abc') esperaban status 'failed', pero el backend responde 'needs_input' con código 'invalid_field' y texto de ayuda descriptivo."
+        }
+      ],
+      "blocked": [
+        {
+          "cases": [
+            "c14",
+            "c15"
+          ],
+          "command": "/pdf reintentar {c07.task_id} y /pdf reintentar {c07.task_id} --confirmar-incierto",
+          "reason": "Dependencia no resuelta c07.task_id en el runner (evidence_level: not_executed_dependency)",
+          "impact": "La operación manage_pdf.retry y el flag opcional --confirmar-incierto no pudieron ser evaluados."
+        }
+      ],
+      "coverage_gaps": [
+        "Prueba de la operación manage_pdf.retry bloqueada por falta de propagación de task_id.",
+        "Efecto de ejecutar /pdf terminar o /pdf cancelar sin una sesión previamente abierta.",
+        "Comportamiento de /pdf terminar tras haber agregado un broken_pdf aceptado en la fase de inicio.",
+        "Extracción de páginas combinadas con sintaxis mixta (ej. '1,3-5') en fixtures con rango de páginas intermedio."
+      ],
+      "recommendations": [
+        "Alinear las expectativas de los oráculos para parámetros inválidos incorporando el estado 'needs_input' y código 'invalid_field'.",
+        "Revisar el comportamiento del validador de páginas en /pdf extraer frente al fixture many_pages_pdf para determinar si el problema reside en la lectura del archivo o en la regla de validación de límites.",
+        "Considerar la incorporación de validación estructural inmediata de archivos PDF al invocar /pdf iniciar y /pdf agregar.",
+        "Configurar el entorno del runner para exponer y enlazar correctamente el task_id de ejecuciones previas y poder testear el flujo de reintento."
+      ]
+    }
+  },
+  "make_sticker": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 1,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Invocación mediante respuesta/cita exacta a un mensaje previo en vez de adjunto directo",
+      "Prueba con otros formatos de imagen estática (BMP, GIF estático, TIFF)",
+      "Conversión de fragmentos de video para stickers en movimiento si la herramienta lo contemplara",
+      "Comportamiento tras expiración de los 15 minutos de espera informados en needs_input"
+    ],
+    "report": {
+      "tool": "make_sticker",
+      "works": [
+        "Conversión de imágenes PNG estándar a sticker WebP de 512x512 con código sticker_created (c01)",
+        "Conversión de imágenes JPG a sticker WebP de 512x512 con código sticker_created (c02)",
+        "Procesamiento y optimización de WebP estático a sticker WebP de 512x512 (c03)",
+        "Reescalado de imagen de alta resolución (large_image) a WebP de 512x512 (c05)",
+        "Generación exitosa de sticker a partir de imagen uniforme/blanca (blank_image) en WebP 512x512 (c07)",
+        "Conversión de imagen QR preservando contenido en WebP 512x512 (c08)",
+        "Solicitud interactiva (needs_input) con código attachment_required al invocar sin adjunto ni cita (c09)",
+        "Rechazo controlado con código invalid_image ante archivo corrupto (c10)",
+        "Rechazo controlado con código unsupported_image ante formato no soportado como PDF (c11)",
+        "Filtrado a nivel de ingress con código input_size ante archivos que exceden límites de tamaño o vacíos (c12, c13)"
+      ],
+      "suspected_errors": [
+        {
+          "case": "c04",
+          "command": "/sticker",
+          "observed": "status: failed, code: image_dimensions",
+          "detail": "La herramienta falló ante una imagen panorámica (wide_image) retornando el código image_dimensions en lugar de aplicar padding o escalado proporcional"
+        },
+        {
+          "case": "c06",
+          "command": "/sticker",
+          "observed": "status: failed, code: unsupported_image",
+          "detail": "La herramienta rechazó un archivo animated_webp con unsupported_image, sin generar sticker animado ni extraer el fotograma inicial"
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c04",
+            "c06"
+          ],
+          "description": "Discrepancia entre la expectativa positiva del oráculo y la política del backend: el oráculo asumió adaptación automática de aspecto y soporte de WebP animado, mientras que el backend implementa restricciones estrictas de dimensiones (image_dimensions) y rechazo de WebP animado (unsupported_image)"
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Invocación mediante respuesta/cita exacta a un mensaje previo en vez de adjunto directo",
+        "Prueba con otros formatos de imagen estática (BMP, GIF estático, TIFF)",
+        "Conversión de fragmentos de video para stickers en movimiento si la herramienta lo contemplara",
+        "Comportamiento tras expiración de los 15 minutos de espera informados en needs_input"
+      ],
+      "recommendations": [
+        "Alinear la especificación de catálogo indicando explícitamente los límites de relación de aspecto aceptados y si se rechaza animated_webp por diseño",
+        "Si image_dimensions y unsupported_image son comportamientos previstos para wide_image y animated_webp, actualizar el oráculo de pruebas a kind negative con dichos códigos",
+        "En caso de requerir soporte de imágenes panorámicas, implementar adaptación automática de lienzo/proporción antes de la generación del sticker"
+      ]
+    }
+  },
+  "read_image": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Pruebas de OCR sobre imágenes con rotación o texto en múltiples orientaciones.",
+      "Imágenes animadas (animated_webp).",
+      "Lectura de múltiples códigos QR en una sola imagen dentro del arreglo 'symbols'.",
+      "Otros formatos de códigos de barras (DataMatrix, Aztec, EAN) frente al endpoint /qr.",
+      "Flujo de respuesta y resolución posterior al estado 'needs_input' con interaction_id (c10, c14)."
+    ],
+    "report": {
+      "tool": "read_image",
+      "works": [
+        "Extracción OCR (/ocr) sobre formatos estándar PNG (c01), JPG (c02) y WebP (c03) devolviendo status 'ok', code 'image_read' y el texto 'BOTSKY LAB 31415'.",
+        "Identificación de ausencia de texto en imagen en blanco (c06), respondiendo status 'empty' con code 'image_empty'.",
+        "Manejo controlado de errores en /ocr ante archivo dañado (c07: failed, invalid_image), formato no admisible (c09: failed, unsupported_image) y archivo excedido en ingress (c08: failed, input_size).",
+        "Requerimiento interactivo de archivo (/ocr y /qr sin adjuntos en c10 y c14), devolviendo status 'needs_input', code 'attachment_required' e interaction_id.",
+        "Decodificación exitosa de código QR (/qr en c11), retornando status 'ok', code 'image_read' y símbolo 'BOTSKY-LAB-27182'.",
+        "Manejo de imagen sin código QR en /qr (c12), retornando status 'empty', code 'image_empty' y symbols vacío.",
+        "Rechazo de imagen corrupta en /qr (c13), retornando status 'failed' con code 'invalid_image'."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c04",
+          "command": "/ocr",
+          "observed": "status: 'empty', code: 'image_empty', text: 'No encontré contenido extraíble.'",
+          "impact": "Imágenes de gran tamaño o alta resolución (large_image) no extraen el texto existente, posiblemente por submuestreo o fallo en el motor OCR."
+        },
+        {
+          "case": "c05",
+          "command": "/ocr",
+          "observed": "status: 'failed', code: 'image_dimensions', text: 'No pude completar el archivo. Código: image_dimensions'",
+          "impact": "Imágenes panorámicas o con relación de aspecto extrema (wide_image) son rechazadas por validación de dimensiones."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "case": "c05",
+          "description": "La expectativa preveía status 'ok' asumiendo soporte general de relaciones de aspecto, omitiendo la regla no documentada de límites dimensionales ('image_dimensions')."
+        },
+        {
+          "case": "c04",
+          "description": "La expectativa asumió status 'ok' sin considerar si la resolución de 'large_image' activaría un pipeline de reducción de escala que degrada la legibilidad del texto."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Pruebas de OCR sobre imágenes con rotación o texto en múltiples orientaciones.",
+        "Imágenes animadas (animated_webp).",
+        "Lectura de múltiples códigos QR en una sola imagen dentro del arreglo 'symbols'.",
+        "Otros formatos de códigos de barras (DataMatrix, Aztec, EAN) frente al endpoint /qr.",
+        "Flujo de respuesta y resolución posterior al estado 'needs_input' con interaction_id (c10, c14)."
+      ],
+      "recommendations": [
+        "Definir y documentar los límites de relación de aspecto y dimensiones admitidas que disparan 'image_dimensions' para calibrar oráculos futuros.",
+        "Revisar el pipeline de preprocesamiento de 'large_image' para verificar si el redimensionado afecta la tasa de detección OCR.",
+        "Diseñar pruebas en dos pasos para completar las interacciones que requieren adjunto ('attachment_required')."
+      ]
+    }
+  },
+  "transcribe_media": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 1,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "No se evaluó la transcripción mediante citas exactas de mensajes previos que contienen medios (solo se evaluaron fixtures adjuntos directos).",
+      "No se verificaron formatos específicos adicionales del catálogo multimedia como webm, ogg o srt.",
+      "Falta determinar con precisión el umbral exacto en MB o minutos donde se dispara el error 'audio_too_large'."
+    ],
+    "report": {
+      "tool": "transcribe_media",
+      "works": [
+        "Transcripción estándar de archivos de audio por defecto y con parámetro explícito '--salida texto' devolviendo código 'transcript_ready' y status 'ok' (c01, c02).",
+        "Generación de resumen con '--salida resumen' y salida combinada transcripción + resumen con '--salida ambos' con código 'transcript_summary_ready' y status 'ok' (c03, c04).",
+        "Extracción y transcripción de pista de audio a partir de contenedores de video estándar y de larga duración (c05, c06).",
+        "Detección y manejo correcto de audios silenciosos devolviendo status 'empty' con código 'asr_empty' (c08).",
+        "Detección de videos sin pista de audio devolviendo status 'failed' con código 'no_audio' (c09).",
+        "Validación de esquemas y parámetros: rechazo de valores enum inválidos para '--salida' devolviendo status 'needs_input' con código 'invalid_field' y mensaje de ayuda (c10).",
+        "Manejo de peticiones sin adjunto solicitando archivo o cita con status 'needs_input' y código 'attachment_required' (c11).",
+        "Rechazo controlado de tipos MIME incompatibles (PDF) y archivos de audio corruptos devolviendo status 'failed' con código 'invalid_audio' (c12, c13).",
+        "Rechazo en capa de ingreso (attachment_ingress) de archivos de tamaño cero (vacíos) con status 'failed' y código 'input_size' (c14)."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c07",
+          "command": "/transcribir",
+          "fixture": "large_audio",
+          "observed": "status 'failed' con código 'audio_too_large'",
+          "detail": "El backend no pudo completar el procesamiento del archivo 'large_audio' al exceder el límite de tamaño fijado por el proveedor o el pipeline de ASR."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "case": "c07",
+          "detail": "Desajuste de expectativa en el oráculo del test: se definió statuses=['ok'] asumiendo procesamiento exitoso para 'large_audio', pero el backend rechaza legítimamente archivos por encima de su umbral de capacidad con 'audio_too_large' y status 'failed'."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "No se evaluó la transcripción mediante citas exactas de mensajes previos que contienen medios (solo se evaluaron fixtures adjuntos directos).",
+        "No se verificaron formatos específicos adicionales del catálogo multimedia como webm, ogg o srt.",
+        "Falta determinar con precisión el umbral exacto en MB o minutos donde se dispara el error 'audio_too_large'."
+      ],
+      "recommendations": [
+        "Ajustar el oráculo para 'large_audio' en la suite de pruebas para contemplar status 'failed' con código 'audio_too_large' como comportamiento esperado de límite de tamaño.",
+        "Documentar en el catálogo y ayuda del comando el límite máximo de tamaño y duración de archivo soportado para evitar rechazos inesperados.",
+        "Añadir casos de prueba adicionales con citas de mensajes y variaciones de formatos de audio (ogg, mp3, webm) dentro del umbral de tamaño permitido."
+      ]
+    }
+  },
+  "make_voice": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 3,
+    "blocked_items": 2,
+    "coverage_gaps": [
+      "Prueba de `/voz cita` dentro de un hilo que posea un mensaje citado accesible.",
+      "Cobertura del resto de las voces del catálogo (colombiana, peruano, venezolano, mexicano, etc.).",
+      "Pruebas de límites de longitud máxima de texto (hasta 8000 caracteres) en modo verbatim.",
+      "Verificación de fidelidad de audio ante duraciones intermedias en `/voz crear`."
+    ],
+    "report": {
+      "tool": "make_voice",
+      "works": [
+        "Consulta de catálogo `/voces` (c01) retorna lista completa de 13 variantes de voz y texto de ayuda con status 'ok' y código 'voice_catalog'.",
+        "Validación de campo requerido faltante `/voz` (c12) responde adecuadamente con status 'needs_input', código 'missing_field' y mensaje de uso.",
+        "Validación sintáctica de opciones inválidas en `/voz` y `/voz crear` rechaza parámetros desconocidos o fuera de rango (voz no soportada en c13, efecto inválido en c14, duración > 600 en c15) emitiendo código 'invalid_field' y status 'needs_input'.",
+        "Generación de audio en modo verbatim (`/voz`) produce archivos de audio válidos en formato ogg (codec opus) aplicando voz base y filtros de efecto (none en c02, robot en c03, ardilla en c04, demonio en c05, radio en c06).",
+        "Composición automática `/voz crear` genera texto compuesto y sintetiza audio (c07, c09).",
+        "Lectura de buffer previo `/voz ultima` (c11) recupera el texto de la última interacción y genera el audio con el efecto solicitado ('robot')."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c08",
+          "command": "/voz crear --voz espanol --efecto radio --duracion 10 Comunicado especial para la comunidad",
+          "observation": "Fallo en backend con status 'failed' y código 'gemini_unavailable' al intentar componer el mensaje de voz."
+        },
+        {
+          "cases": [
+            "c07",
+            "c09"
+          ],
+          "observation": "Discrepancia en el parámetro `--duracion` de `/voz crear`: en c07 solicitando 5s el audio final dura 10.35s; en c09 solicitando 0.5s el audio final dura 4.80s."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c02",
+            "c03",
+            "c04",
+            "c05",
+            "c06",
+            "c07",
+            "c09",
+            "c11"
+          ],
+          "issue": "El oráculo de pruebas esperaba artefacto en formato 'mp3', mientras que el backend genera de manera uniforme archivos de audio en formato 'ogg' con códec 'opus'.",
+          "impact": "8 casos funcionales clasificados como SUSPECTED por discrepancia de extensión/formato de artefacto esperado."
+        },
+        {
+          "cases": [
+            "c13",
+            "c14",
+            "c15"
+          ],
+          "issue": "El oráculo esperaba status 'failed' para parámetros inválidos, pero el diseño de Botsky implementa flujo interactivo devolviendo status 'needs_input' con código 'invalid_field'.",
+          "impact": "3 casos de validación negativa clasificados como SUSPECTED."
+        },
+        {
+          "case": "c10",
+          "issue": "El oráculo esperaba status 'ok' o 'empty' para `/voz cita`, pero ante ausencia de mensaje citado el backend responde con status 'needs_input' y código 'voice_source_unavailable'.",
+          "impact": "1 caso clasificado como SUSPECTED por falta de inclusión de 'needs_input' en la lista esperada."
+        }
+      ],
+      "blocked": [
+        {
+          "case": "c08",
+          "reason": "Indisponibilidad del proveedor LLM externo ('gemini_unavailable')."
+        },
+        {
+          "case": "c10",
+          "reason": "Falta de contexto previo con cita activa en el entorno de ejecución, resultando en 'voice_source_unavailable'."
+        }
+      ],
+      "coverage_gaps": [
+        "Prueba de `/voz cita` dentro de un hilo que posea un mensaje citado accesible.",
+        "Cobertura del resto de las voces del catálogo (colombiana, peruano, venezolano, mexicano, etc.).",
+        "Pruebas de límites de longitud máxima de texto (hasta 8000 caracteres) en modo verbatim.",
+        "Verificación de fidelidad de audio ante duraciones intermedias en `/voz crear`."
+      ],
+      "recommendations": [
+        "Alinear la especificación de artefactos esperados en los casos de make_voice a formato 'ogg' con códec opus en lugar de 'mp3'.",
+        "Actualizar la lista de estados esperados para validación negativa y fuentes no disponibles para incluir 'needs_input'.",
+        "Implementar reintentos o respuestas de degradación controlada ante eventos 'gemini_unavailable' en `/voz crear`.",
+        "Revisar el cálculo de tasa de habla y síntesis en `/voz crear` si se pretende que `--duracion` sea restrictiva respecto a la longitud del audio generado."
+      ]
+    }
+  },
+  "conversation": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 1,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Pruebas de límite de longitud en el campo 'text' (max_length: 8000).",
+      "Evaluación de adjuntos multimedia adicionales del catálogo de fixtures (audio, video, srt, docx, pptx).",
+      "Evaluación de fixtures de tamaño extremo o paginación masiva (oversized, many_pages_pdf, large_image).",
+      "Validación de comportamiento ante caracteres de control, saltos de línea y delimitadores complejos en 'text'."
+    ],
+    "report": {
+      "tool": "conversation",
+      "works": [
+        "Generación de respuestas conversacionales básicas sin adjuntos devolviendo status 'ok' y code 'ai_reply' (c01, c10).",
+        "Validación de campos obligatorios retornando status 'needs_input' y code 'missing_field' ante omisión del parámetro 'text' (c02).",
+        "Análisis multimodal de imágenes estándar extrayendo el contenido textual visible (c03).",
+        "Extracción y síntesis de contenido desde documentos PDF de múltiples páginas (c04).",
+        "Rechazo controlado de imágenes corruptas devolviendo status 'failed' y code 'invalid_image' (c05).",
+        "Lectura y resumen semántico de archivos de texto plano (.txt) (c06).",
+        "Filtrado a nivel de ingress para archivos vacíos devolviendo status 'failed' con code 'input_size' (c08).",
+        "Interpretación de estructuras tabulares y lectura de registros en archivos XLSX (c09).",
+        "Capacidad de cálculo aritmético determinista y resolución directa (c10)."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c07",
+          "command": "/ia Lee el código QR presente en la imagen",
+          "observed": "El modelo reportó que el QR contenía 'BOTSKY LAB 31415' en lugar de 'BOTSKY-LAB-27182'.",
+          "hypothesis": "El proveedor podría estar realizando OCR del texto de la imagen en vez de decodificar el payload binario del QR, o bien confundiendo el identificador sintético estándar."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "case": "c07",
+          "issue": "El oráculo exigía la presencia exacta de 'BOTSKY-LAB-27182' según las especificaciones del entorno; si el fixture 'qr' sintético contiene en realidad 'BOTSKY LAB 31415', la expectativa del oráculo causó el fallo por desacople con el fixture real."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Pruebas de límite de longitud en el campo 'text' (max_length: 8000).",
+        "Evaluación de adjuntos multimedia adicionales del catálogo de fixtures (audio, video, srt, docx, pptx).",
+        "Evaluación de fixtures de tamaño extremo o paginación masiva (oversized, many_pages_pdf, large_image).",
+        "Validación de comportamiento ante caracteres de control, saltos de línea y delimitadores complejos en 'text'."
+      ],
+      "recommendations": [
+        "Inspeccionar el valor binario del código QR en el fixture 'qr' para determinar si la discrepancia proviene de la expectativa del oráculo o de la decodificación del modelo.",
+        "Añadir pruebas con textos extensos próximos al límite de 8000 caracteres para verificar truncamiento o sobrecarga.",
+        "Ampliar la matriz de pruebas con formatos ofimáticos y multimedia admitidos por la plataforma para medir cobertura multimodal."
+      ]
+    }
+  },
+  "search_web": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "No se evaluaron términos compuestos con espacios o comillas dentro del parámetro --terminos.",
+      "Falta verificar si existe alguna configuración o sintaxis de --terminos que retorne efectivamente resultados no vacíos (status ok).",
+      "No se evaluaron escenarios de timeout o indisponibilidad del proveedor de búsqueda subyacente."
+    ],
+    "report": {
+      "tool": "search_web",
+      "works": [
+        "Ejecución de búsquedas web estándar mediante consulta textual simple (/buscar QUERY), devolviendo lista estructurada de resultados con código web_results y status ok (caso c01).",
+        "Búsqueda con sintaxis avanzada de operadores y términos entrecomillados (p. ej. 'machine learning' site:wikipedia.org) procesada satisfactoriamente (caso c05).",
+        "Manejo de consultas largas dentro del límite máximo de 300 caracteres sin truncamiento anormal (caso c07).",
+        "Procesamiento controlado de cadenas atípicas o sin correspondencia exacta (caso c06).",
+        "Detección y rechazo inmediato por omisión del parámetro obligatorio 'query', tanto en llamadas sin argumentos como en llamadas únicamente con opciones (casos c08 y c09 con código missing_field y status needs_input)."
+      ],
+      "suspected_errors": [
+        "Comportamiento anómalo en la opción --terminos: consultas válidas y habituales con términos requeridos simples (c02: 'Python,docs', c03: 'rust', c04: 8 términos) retornan sistemáticamente status 'empty' (código web_empty) con el mensaje 'No encontré resultados que cumplan los términos y las fuentes solicitadas', sugiriendo un filtrado defectuoso o una construcción incompatible de la query hacia el proveedor de búsqueda."
+      ],
+      "oracle_issues": [
+        "Discrepancia de estado esperado en casos negativos de validación: los casos c10 (exceso de max_items en --terminos), c11 (exceso de max_length en query) y c12 (términos vacíos) esperaban status 'failed', pero el runner/parser responde con status 'needs_input' y código 'invalid_field', marcándolos como SUSPECTED a pesar de rechazar adecuadamente la entrada.",
+        "El oráculo para c02, c03 y c04 asumía exclusivamente status 'ok'; al retornar 'empty' el oráculo falló por discrepancia de estado esperado."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "No se evaluaron términos compuestos con espacios o comillas dentro del parámetro --terminos.",
+        "Falta verificar si existe alguna configuración o sintaxis de --terminos que retorne efectivamente resultados no vacíos (status ok).",
+        "No se evaluaron escenarios de timeout o indisponibilidad del proveedor de búsqueda subyacente."
+      ],
+      "recommendations": [
+        "Ajustar los oráculos de prueba para contemplar status 'needs_input' en validaciones sintácticas de campos (código invalid_field).",
+        "Revisar en el backend la transformación y concatenación del parámetro required_terms hacia la API de búsqueda web para determinar por qué anula los resultados en consultas comunes."
+      ]
+    }
+  },
+  "manage_conversation": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 1,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Comportamiento de '/bot reanudar' cuando la conversación no se encuentra pausada.",
+      "Persistencia del modo previo tras cumplirse la pausa o al reanudar (se observó que reanudar fija modo 'discreto' independientemente del modo previo a la pausa).",
+      "Ejecución consecutiva de pausas para verificar si el timestamp se acumula o se sobrescribe."
+    ],
+    "report": {
+      "tool": "manage_conversation",
+      "works": [
+        "Consulta del estado actual de la conversación y capacidades configuradas mediante '/bot estado' (code: 'bot_status', status: 'ok').",
+        "Transición entre modos operativos 'activo', 'discreto' y 'apagado' mediante '/bot modo <mode>' (code: 'bot_mode_updated', status: 'ok').",
+        "Pausa temporal de la conversación en intervalos de 15, 30 y 60 minutos mediante '/bot pausa <minutes>' actualizando 'paused_until_ms' y cambiando a modo apagado (code: 'bot_mode_updated', status: 'ok').",
+        "Reanudación de la conversación mediante '/bot reanudar' restableciendo la pausa a 0 y modo a discreto (code: 'bot_mode_updated', status: 'ok').",
+        "Validación de campos obligatorios ausentes en '/bot modo' y '/bot pausa', retornando código 'missing_field' con status 'needs_input' y texto de ayuda."
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c05",
+            "c10"
+          ],
+          "observed": "El backend responde status 'needs_input' con código 'invalid_field' y mensaje de uso cuando se proporcionan valores no contemplados en el enum ('silencioso', '45').",
+          "expected_by_oracle": "status 'failed'",
+          "discrepancy": "El oráculo de prueba esperaba un fallo terminal ('failed'), pero la herramienta implementa una recuperación conversacional guiada ('needs_input') ante valores inválidos."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Comportamiento de '/bot reanudar' cuando la conversación no se encuentra pausada.",
+        "Persistencia del modo previo tras cumplirse la pausa o al reanudar (se observó que reanudar fija modo 'discreto' independientemente del modo previo a la pausa).",
+        "Ejecución consecutiva de pausas para verificar si el timestamp se acumula o se sobrescribe."
+      ],
+      "recommendations": [
+        "Alinear los oráculos de prueba para incluir 'needs_input' en las expectativas de casos negativos con campos inválidos ('invalid_field').",
+        "Documentar la especificación de comportamiento de '/bot reanudar' respecto a si debe restaurar el modo previo o si siempre regresa por defecto a 'discreto'."
+      ]
+    }
+  },
+  "save_note": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Verificación de lectura/recuperación: el catálogo únicamente proporciona la operación 'save_note.run', por lo que no es posible constatar la integridad del texto almacenado en base de datos tras el guardado.",
+      "Límite máximo de caracteres: no se evaluó el comportamiento en el umbral exacto de 8000 caracteres ni ante entradas que superen dicho límite.",
+      "Textos con saltos de línea literales (multilínea) para evaluar la preservación de formato dentro de la carga útil."
+    ],
+    "report": {
+      "tool": "save_note",
+      "works": [
+        "Guardado y asignación de identificadores de nota correlativos (note_id: 1 a 7) con estado 'ok' y código 'note_saved' (evidenciado en c01 a c07).",
+        "Validación de campo obligatorio 'text' ante argumentos vacíos (/nota guardar), retornando estado 'needs_input' y código 'missing_field' (evidenciado en c08).",
+        "Validación y rechazo de cadenas que contienen únicamente espacios en blanco (/nota guardar    ), retornando 'needs_input' y código 'missing_field' (evidenciado en c09).",
+        "Validación de comando base sin subcomando (/nota), retornando estado 'needs_input' con código 'unknown_action' y texto de ayuda (evidenciado en c10)."
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        "Falsos sospechosos en c01, c02, c03, c04, c05 y c07: el oráculo configuró la verificación 'contains' asumiendo que el backend reflejaría el contenido de la nota en la propiedad 'text', pero el servicio responde con la plantilla estándar 'Nota {note_id} guardada.'.",
+        "Falso positivo en c06: el caso pasó la verificación 'contains: \"A\"' únicamente por coincidencia léxica con los caracteres de la plantilla de confirmación ('Nota 6 guardada.') y no por validación real del cuerpo guardado."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Verificación de lectura/recuperación: el catálogo únicamente proporciona la operación 'save_note.run', por lo que no es posible constatar la integridad del texto almacenado en base de datos tras el guardado.",
+        "Límite máximo de caracteres: no se evaluó el comportamiento en el umbral exacto de 8000 caracteres ni ante entradas que superen dicho límite.",
+        "Textos con saltos de línea literales (multilínea) para evaluar la preservación de formato dentro de la carga útil."
+      ],
+      "recommendations": [
+        "Actualizar las expectativas de los casos de guardado para comprobar 'status: ok', 'code: note_saved' y la existencia de 'data.note_id' en lugar de buscar el texto de entrada dentro del mensaje de confirmación.",
+        "Incluir en el catálogo herramientas de lectura o consulta asociadas (p. ej., get_note / read_note) para posibilitar validaciones funcionales completas del ciclo de vida del dato.",
+        "Añadir pruebas de frontera que evalúen el límite superior de 8000 caracteres especificado en el esquema del campo 'text'."
+      ]
+    }
+  },
+  "find_notes": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Navegación efectiva a páginas intermedias existentes (ej. /notas --pagina 2 y --pagina 3 sobre el dataset de 12 elementos detectado en c01).",
+      "Comportamiento de la búsqueda cuando el query coincide parcialmente o con diferencias de mayúsculas/minúsculas y acentuación.",
+      "Límite inferior exacto de páginas disponibles (ej. consultar página 3 sobre 3, y página 4 inmediatamente posterior al límite real)."
+    ],
+    "report": {
+      "tool": "find_notes",
+      "works": [
+        "Listado de notas por defecto sin parámetros (/notas, c01): devuelve status 'ok', código 'notes_found', paginando 5 elementos por página (total 12 notas, 3 páginas).",
+        "Búsqueda por término simple (/notas proyecto, c02): filtra y devuelve coincidencias correctamente con status 'ok'.",
+        "Búsqueda con query de múltiples palabras en tail (/notas reporte semanal de avance, c03): procesa la cadena completa devolviendo status 'empty' y código 'notes_empty'.",
+        "Paginación explícita válida (/notas --pagina 1, c04): devuelve la primera página de resultados con status 'ok'.",
+        "Límite máximo permitido en query de 200 caracteres (c10): procesado exitosamente sin error de validación, respondiendo status 'empty'.",
+        "Soporte de caracteres especiales, tildes y puntuación en query (/notas notas: gestión & análisis #2026 (urgente), c12): procesado correctamente con status 'empty'."
+      ],
+      "suspected_errors": [
+        "Retorno de status 'needs_input' con código 'note_page_out_of_range' en consultas con página superior a las páginas disponibles (c05, c06): al solicitar una página numéricamente válida según esquema (1–10000) pero mayor al conteo real de páginas resultantes (ej. página 2 en resultado de 1 página, o página 10000 sobre 3 páginas), el servicio devuelve status 'needs_input' en lugar de resolverlo como lista vacía ('empty') o error terminal."
+      ],
+      "oracle_issues": [
+        "Discrepancia de estado esperado en validaciones negativas (c07, c08, c09, c11): el oráculo esperaba status 'failed' para argumentos inválidos (página 0, página 10001, página 'primera', query de 201 caracteres), pero el backend implementa status 'needs_input' con código 'invalid_field' y mensaje de uso.",
+        "Omisión de status 'needs_input' en consultas de páginas fuera de rango de datos (c05, c06): el oráculo solo contemplaba ['ok', 'empty'] para páginas permitidas por esquema, sin prever el código 'note_page_out_of_range' con status 'needs_input'."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Navegación efectiva a páginas intermedias existentes (ej. /notas --pagina 2 y --pagina 3 sobre el dataset de 12 elementos detectado en c01).",
+        "Comportamiento de la búsqueda cuando el query coincide parcialmente o con diferencias de mayúsculas/minúsculas y acentuación.",
+        "Límite inferior exacto de páginas disponibles (ej. consultar página 3 sobre 3, y página 4 inmediatamente posterior al límite real)."
+      ],
+      "recommendations": [
+        "Alinear los oráculos de pruebas para aceptar status 'needs_input' con código 'invalid_field' en todas las pruebas negativas de validación de sintaxis y límites de campo.",
+        "Añadir el estado 'needs_input' (código 'note_page_out_of_range') a las expectativas al probar valores de página que superen el total de páginas de la consulta.",
+        "Incorporar un caso positivo explícito para la página 2 sobre el listado general (/notas --pagina 2) aprovechando que la evidencia confirmó 3 páginas existentes."
+      ]
+    }
+  },
+  "manage_memory": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 2,
+    "blocked_items": 1,
+    "coverage_gaps": [
+      "Flujo completo de borrado masivo confirmando el token generado (/confirmar {c11.confirmation_id})",
+      "Comportamiento de /mem listar sobre un almacén completamente vacío tras borrado confirmado",
+      "Límites superiores de longitud de texto (max_length: 1000)",
+      "Valores límite superiores de identificador memory_id (máximo: [PHONE_OR_ID]) y páginas (--pagina 10000)",
+      "Intento de corregir u olvidar un memory_id inexistente o previamente eliminado"
+    ],
+    "report": {
+      "tool": "manage_memory",
+      "works": [
+        "Creación de recuerdos con tipo por defecto (preferencia) mediante /mem guardar asignando memory_id incremental (c01)",
+        "Creación de recuerdos con tipo explícito (--tipo dato) mediante /mem guardar asignando memory_id (c02)",
+        "Listado completo de recuerdos con paginación y metadata mediante /mem listar (c03)",
+        "Filtrado de listado por clasificación con opción --tipo dato (c04)",
+        "Paginación válida con opción --pagina 1 (c05)",
+        "Modificación de contenido de un recuerdo existente mediante /mem corregir {memory_id} (c06)",
+        "Eliminación individual de un recuerdo existente mediante /mem olvidar {memory_id} (c07)"
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c08",
+            "c09",
+            "c10"
+          ],
+          "observed": "status: needs_input con code: invalid_field y mensaje de uso/guía interactiva",
+          "oracle_expected": "status: failed",
+          "cause": "El oráculo de pruebas asumió status failed ante entradas no válidas (enum fuera de opción, id < 1, página < 1), pero el diseño del producto devuelve needs_input solicitando corrección interactiva."
+        },
+        {
+          "cases": [
+            "c11"
+          ],
+          "observed": "status: needs_input con code: memory_delete_preview y generación de confirmation_id (/confirmar [ID])",
+          "oracle_expected": "status: ok",
+          "cause": "El oráculo esperaba ejecución destructiva inmediata, pero /mem borrar-todo implementa un flujo de confirmación en dos pasos que requiere invocar /confirmar."
+        }
+      ],
+      "blocked": [
+        {
+          "case": "c11",
+          "reason": "La operación de vaciado masivo requiere comando auxiliar de confirmación interactiva (/confirmar [ID]) que no formaba parte del caso atómico."
+        }
+      ],
+      "coverage_gaps": [
+        "Flujo completo de borrado masivo confirmando el token generado (/confirmar {c11.confirmation_id})",
+        "Comportamiento de /mem listar sobre un almacén completamente vacío tras borrado confirmado",
+        "Límites superiores de longitud de texto (max_length: 1000)",
+        "Valores límite superiores de identificador memory_id (máximo: [PHONE_OR_ID]) y páginas (--pagina 10000)",
+        "Intento de corregir u olvidar un memory_id inexistente o previamente eliminado"
+      ],
+      "recommendations": [
+        "Alinear los oráculos de validación de sintaxis y límites para aceptar status 'needs_input' con código 'invalid_field'",
+        "Diseñar la prueba de /mem borrar-todo como flujo compuesto: solicitud de borrado (esperando needs_input y memory_delete_preview) seguido de /confirmar",
+        "Añadir casos de prueba para memory_id no encontrado y límites máximos de campos"
+      ]
+    }
+  },
+  "manage_reminder": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Verificación del ciclo completo de archivado sobre un recordatorio previamente cancelado (state: 'cancelled').",
+      "Pruebas de límite superior para duration_seconds (31536000), longitud de text (1000 caracteres) y page (10000).",
+      "Paginación con múltiples páginas reales (total > items por página).",
+      "Manejo de fechas inválidas o pasadas en la sintaxis absoluta (/recordar el DATE TIME TEXT)."
+    ],
+    "report": {
+      "tool": "manage_reminder",
+      "works": [
+        "Creación de recordatorios relativos con duración y texto (/recordar en DURATION TEXT), validado en c01 y c02 incluyendo el límite inferior de 1s (code: reminder_created, status: ok).",
+        "Creación de recordatorios absolutos con fecha y hora específicas (/recordar el DATE TIME TEXT), validado en c03 (code: reminder_created, status: ok).",
+        "Consulta de recordatorios activos (/recordatorios) con paginación por defecto y explícita (--pagina 1), validado en c04 y c05 (code: organization_list, status: ok).",
+        "Listado de recordatorios incluyendo estados cerrados/cancelados (--cerradas), validado en c06 y c09 (code: organization_list, status: ok).",
+        "Cancelación de recordatorios pendientes mediante ID (/recordatorio cancelar REMINDER_ID), validado en c07 (code: reminder_cancelled, status: ok; c09 refleja estado 'cancelled')."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c08",
+          "command": "/recordatorio archivar 3",
+          "observed": "Retorna status 'needs_input' con code 'reminder_still_pending' y mensaje 'Cancela el recordatorio antes de archivarlo.'",
+          "hypothesis": "Restricción de máquina de estados no documentada en el catálogo: no se permite archivar un recordatorio en estado pendiente sin cancelarlo previamente."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c10",
+            "c11",
+            "c12"
+          ],
+          "issue": "Discrepancia en status esperado vs observado para errores de validación de argumentos.",
+          "detail": "El oráculo esperaba status 'failed', pero la plataforma devuelve sistemáticamente status 'needs_input' con code 'invalid_field' y texto de ayuda cuando un campo viola los límites (duration_seconds < 1, reminder_id < 1, page < 1)."
+        },
+        {
+          "case": "c08",
+          "issue": "Discrepancia en precondición de negocio para archivar.",
+          "detail": "El oráculo esperaba status 'ok' asumiendo que un recordatorio activo podía archivarse directamente, sin prever el requisito de cancelación previa."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Verificación del ciclo completo de archivado sobre un recordatorio previamente cancelado (state: 'cancelled').",
+        "Pruebas de límite superior para duration_seconds (31536000), longitud de text (1000 caracteres) y page (10000).",
+        "Paginación con múltiples páginas reales (total > items por página).",
+        "Manejo de fechas inválidas o pasadas en la sintaxis absoluta (/recordar el DATE TIME TEXT)."
+      ],
+      "recommendations": [
+        "Actualizar los oráculos de prueba para errores sintácticos y de límites de campo esperando status 'needs_input' con code 'invalid_field'.",
+        "Diseñar la suite de pruebas de '/recordatorio archivar' encadenando previamente la cancelación del recordatorio objetivo.",
+        "Documentar en la especificación de la herramienta que 'manage_reminder.archive' requiere que el recordatorio esté cancelado o completado."
+      ]
+    }
+  },
+  "manage_school": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Consulta del horario semanal completo sin especificar el parámetro opcional '--dia'.",
+      "Navegación paginada en '/tareas' para conjuntos de datos con más de una página.",
+      "Comportamiento de '/tarea archivo' sobre tareas que no tienen archivo adjunto asociado.",
+      "Validación de tipos de archivos adjuntos alternativos (imágenes, documentos de texto, planillas)."
+    ],
+    "report": {
+      "tool": "manage_school",
+      "works": [
+        "Consulta y actualización de la configuración del resumen escolar diario (/escuela resumen estado, /escuela resumen configurar si --hora, /escuela resumen configurar no).",
+        "Alta, consulta por día y eliminación de clases en el horario escolar (/horario agregar, /horario listar --dia, /horario borrar).",
+        "Creación de tareas escolares con combinaciones completa, mínima (sin materia ni hora) y con adjunto (/tarea crear).",
+        "Consulta paginada de tareas activas y consulta con inclusión de tareas cerradas (/tareas, /tareas --cerradas).",
+        "Completado y eliminación de tareas existentes por identificador dinámico (/tarea completar, /tarea borrar)."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c11",
+          "command": "/tarea archivo 3",
+          "observation": "El comando respondió con estado 'ok' y código 'task_attachment' conteniendo un identificador de artefacto en data.artifacts, pero la lista de artefactos verificados retornada por el runner estuvo vacía ([])."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c07",
+            "c16"
+          ],
+          "commands": [
+            "/horario agregar --materia Fisica --dia 8 --inicio 10:00 --fin 11:00",
+            "/tarea borrar 0"
+          ],
+          "mismatch": "El oráculo esperaba estado 'failed', pero la herramienta reporta de forma consistente errores de validación de argumentos fuera de rango con estado 'needs_input' y código 'invalid_field'."
+        },
+        {
+          "case": "c11",
+          "command": "/tarea archivo 3",
+          "mismatch": "El oráculo esperaba la entrega de un archivo binario verificado 'pdf', mientras que el backend procesó la solicitud entregando una referencia de artefacto en metadatos ('data.artifacts: [ID]')."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Consulta del horario semanal completo sin especificar el parámetro opcional '--dia'.",
+        "Navegación paginada en '/tareas' para conjuntos de datos con más de una página.",
+        "Comportamiento de '/tarea archivo' sobre tareas que no tienen archivo adjunto asociado.",
+        "Validación de tipos de archivos adjuntos alternativos (imágenes, documentos de texto, planillas)."
+      ],
+      "recommendations": [
+        "Actualizar los oráculos de prueba negativos para validar 'needs_input' y código 'invalid_field' ante errores de sintaxis y rangos de campos CLI.",
+        "Revisar el mecanismo de transporte de artefactos de '/tarea archivo' para clarificar si debe generar descargas de binarios al runner o únicamente emitir identificadores en metadatos.",
+        "Incorporar casos para consultar '/horario listar' globalmente sin filtros de día para evaluar la vista completa del horario."
+      ]
+    }
+  },
+  "manage_poll": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 4,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      {
+        "area": "poll_id inexistente",
+        "description": "No se evaluó el comportamiento al consultar, votar o cerrar sobre un poll_id numéricamente válido pero que no existe en el almacenamiento."
+      },
+      {
+        "area": "Límites de texto",
+        "description": "Falta verificar el comportamiento con longitudes máximas exactas y excesivas en la pregunta (max_length: 300) y en las opciones (max_length: 100)."
+      },
+      {
+        "area": "Límite superior de opciones",
+        "description": "No se evaluó el rechazo cuando se envían más de 10 opciones (min_items: 2, max_items: 10)."
+      },
+      {
+        "area": "Votación concurrente / múltiples usuarios",
+        "description": "Los casos evaluaron votos de un único usuario/contexto local; queda pendiente verificar concurrencia y persistencia entre diferentes participantes."
+      }
+    ],
+    "report": {
+      "tool": "manage_poll",
+      "works": [
+        {
+          "operation": "manage_poll.create",
+          "evidence": [
+            "c01",
+            "c05"
+          ],
+          "observed": "Creación exitosa de encuestas tanto con el mínimo de 2 opciones como con el máximo permitido de 10 opciones, devolviendo status 'ok', código 'poll_created' y asignación secuencial de poll_id."
+        },
+        {
+          "operation": "manage_poll.vote",
+          "evidence": [
+            "c02",
+            "c04",
+            "c06"
+          ],
+          "observed": "Registro correcto de votos en opciones válidas (incluyendo límites como la opción 10) y actualización del conteo de participantes y votos por opción, retornando status 'ok' y código 'poll_results'."
+        },
+        {
+          "operation": "manage_poll.results",
+          "evidence": [
+            "c03",
+            "c08"
+          ],
+          "observed": "Consulta de resultados consistente tanto en encuestas abiertas como en encuestas cerradas, mostrando votos acumulados y participantes con status 'ok' y código 'poll_results'."
+        },
+        {
+          "operation": "manage_poll.close",
+          "evidence": [
+            "c07"
+          ],
+          "observed": "Cierre efectivo de encuesta activa devolviendo status 'ok' y el resumen final de resultados en 'poll_results'."
+        }
+      ],
+      "suspected_errors": [
+        {
+          "case": "c12",
+          "command": "/encuesta cerrar 1",
+          "observed": "Al invocar /encuesta cerrar sobre una encuesta previamente cerrada, el sistema devuelve status 'ok' y 'poll_results' sin emitir advertencia ni código de estado diferenciado (por ejemplo, 'poll_already_closed'). Puede tratarse de idempotencia intencional o de omisión de validación de precondición."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "case": "c09",
+          "command": "/encuesta votar 1 1",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "needs_input",
+          "observed_code": "poll_closed",
+          "analysis": "El oráculo esperaba status 'failed', pero la herramienta gestiona el intento de votar en encuesta cerrada mediante status 'needs_input' con mensaje 'La encuesta ya está cerrada.'."
+        },
+        {
+          "case": "c10",
+          "command": "/encuesta crear \"¿Pregunta sin alternativas?\" \"Única opción\"",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "needs_input",
+          "observed_code": "missing_values",
+          "analysis": "El oráculo esperaba status 'failed', pero el backend maneja el déficit de opciones obligatorias (< 2) mediante 'needs_input' junto con el texto de ayuda y sintaxis."
+        },
+        {
+          "case": "c11",
+          "command": "/encuesta votar 2 11",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "needs_input",
+          "observed_code": "invalid_field",
+          "analysis": "El oráculo esperaba status 'failed' para una opción fuera de rango (11 > 10), mientras que la plataforma retorna 'needs_input' con el código 'invalid_field' y la indicación del rango permitido."
+        },
+        {
+          "case": "c12",
+          "command": "/encuesta cerrar 1",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "ok",
+          "observed_code": "poll_results",
+          "analysis": "El oráculo asumió que re-cerrar una encuesta cerrada debía fallar, mientras que la implementación actual responde con idempotencia devolviendo 'ok'."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        {
+          "area": "poll_id inexistente",
+          "description": "No se evaluó el comportamiento al consultar, votar o cerrar sobre un poll_id numéricamente válido pero que no existe en el almacenamiento."
+        },
+        {
+          "area": "Límites de texto",
+          "description": "Falta verificar el comportamiento con longitudes máximas exactas y excesivas en la pregunta (max_length: 300) y en las opciones (max_length: 100)."
+        },
+        {
+          "area": "Límite superior de opciones",
+          "description": "No se evaluó el rechazo cuando se envían más de 10 opciones (min_items: 2, max_items: 10)."
+        },
+        {
+          "area": "Votación concurrente / múltiples usuarios",
+          "description": "Los casos evaluaron votos de un único usuario/contexto local; queda pendiente verificar concurrencia y persistencia entre diferentes participantes."
+        }
+      ],
+      "recommendations": [
+        "Alinear los oráculos de prueba para contemplar el estado 'needs_input' en validaciones sintácticas y de estado de negocio (missing_values, invalid_field, poll_closed).",
+        "Determinar y documentar en la especificación si /encuesta cerrar debe ser idempotente ('ok') o rechazar con error específico cuando la encuesta ya está cerrada.",
+        "Incorporar casos para IDs de encuestas inexistentes y exceso de opciones (> 10) para cerrar la cobertura de límites declarados en el catálogo."
+      ]
+    }
+  },
+  "manage_drive": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 2,
+    "blocked_items": 2,
+    "coverage_gaps": [
+      "Flujo positivo de selección de elementos mediante /drive elegir {view_id} {choice} no ejecutado por falta de elementos en la unidad de prueba.",
+      "Comprobaciones de límites y tipos sobre choice (0, 6, no numérico) asociadas a una vista válida no evaluadas.",
+      "Operación manage_drive.save completamente inexplorada por deshabilitación de la funcionalidad en el entorno de pruebas."
+    ],
+    "report": {
+      "tool": "manage_drive",
+      "works": [
+        "Consulta de capacidad y almacenamiento con /drive cuota (c01) retorna estado ok, código drive_capacity y desglose de cuota (limit, usage, usageInDrive, usageInDriveTrash).",
+        "Búsqueda general y filtrada con /drive buscar (c02, c03, c04) responde correctamente con estado empty y código drive_empty ante la ausencia de archivos coincidentes en el ámbito.",
+        "Validación de parámetros obligatorios en /drive elegir (c10) responde con estado needs_input y código missing_field detallando el uso del comando.",
+        "Comando de ayuda contextual /ayuda drive (c13) responde con estado ok, código help y descripción detallada de permisos y ejemplos."
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        "c09 (/drive elegir VIEW_INEXISTENTE_0000 1): el oráculo esperaba estado failed, pero el backend devolvió status needs_input con código drive_view_unavailable solicitando una vista propia, entregada y vigente.",
+        "c11 (/drive buscar con consulta > 200 caracteres): el oráculo esperaba estado failed, pero el validador del backend reportó status needs_input con código invalid_field solicitando texto de 1 a 200 caracteres."
+      ],
+      "blocked": [
+        "Casos c05, c06, c07 y c08 bloqueados por el runner (evidence_level not_executed_dependency) debido a que c02 retornó estado empty sin emitir un view_id en su payload de datos.",
+        "Caso c12 (/drive guardar) bloqueado por política de entorno/configuración (código operation_not_enabled con mensaje 'Esta función o este chat no está habilitado en la configuración de Botsky')."
+      ],
+      "coverage_gaps": [
+        "Flujo positivo de selección de elementos mediante /drive elegir {view_id} {choice} no ejecutado por falta de elementos en la unidad de prueba.",
+        "Comprobaciones de límites y tipos sobre choice (0, 6, no numérico) asociadas a una vista válida no evaluadas.",
+        "Operación manage_drive.save completamente inexplorada por deshabilitación de la funcionalidad en el entorno de pruebas."
+      ],
+      "recommendations": [
+        "Alinear los oráculos de prueba para contemplar el estado needs_input en errores de validación de campos (invalid_field) y vistas no disponibles (drive_view_unavailable).",
+        "Aprovisionar al menos un archivo en el entorno de Google Drive de pruebas para permitir que /drive buscar entregue un view_id y desbloquear los casos dependientes de /drive elegir.",
+        "Habilitar de forma explícita el permiso o chat para manage_drive.save en un entorno sandbox controlado si se requiere evaluar el comportamiento ante cargas y citas."
+      ]
+    }
+  },
+  "manage_messages": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 5,
+    "blocked_items": 3,
+    "coverage_gaps": [
+      "Flujo positivo completo de creación, consulta de estado (/recado estado) y envío (/recado enviar) con un contacto real ('Botsky Lab').",
+      "Flujo positivo de cancelación (/recado cancelar) sobre un borrador creado exitosamente.",
+      "Comportamiento de /recado preparar con '--fuente cita' sin proporcionar texto adicional.",
+      "Comportamiento de /recado preparar con '--adjunto' y fixture sin texto adicional para un contacto válido."
+    ],
+    "report": {
+      "tool": "manage_messages",
+      "works": [
+        {
+          "case": "c01",
+          "command": "/contactos",
+          "status": "ok",
+          "code": "message_contacts",
+          "evidence": "Devuelve la lista de contactos configurados con nombres=['Botsky Lab'] y estado 'ok'."
+        }
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c02",
+            "c07"
+          ],
+          "issue": "Destinatario no configurado",
+          "detail": "El oráculo usó '--para Amiga' basándose en el ejemplo del catálogo, pero el backend valida estrictamente contra los contactos existentes ('Botsky Lab'), retornando status 'needs_input' con código 'message_recipient_unknown'."
+        },
+        {
+          "case": "c05",
+          "issue": "Incompatibilidad de campos con --fuente cita",
+          "detail": "El oráculo esperaba 'ok' al enviar texto con '--fuente cita', pero el backend impone que con dicha fuente se usa exclusivamente la cita exacta, devolviendo status 'needs_input' con código 'incompatible_fields'."
+        },
+        {
+          "case": "c08",
+          "issue": "Obligatoriedad de texto o adjunto",
+          "detail": "El oráculo esperaba 'ok' al omitir el texto sin adjunto, pero el backend exige texto literal o adjunto solicitado, respondiendo status 'needs_input' con código 'incompatible_fields'."
+        },
+        {
+          "cases": [
+            "c09",
+            "c10"
+          ],
+          "issue": "Discrepancia en status de validación de argumentos",
+          "detail": "El oráculo esperaba status 'failed' para parámetros faltantes o enums inválidos, mientras que el backend responde de forma interactiva con status 'needs_input' (códigos 'missing_field' e 'invalid_field')."
+        },
+        {
+          "cases": [
+            "c11",
+            "c12",
+            "c13"
+          ],
+          "issue": "Discrepancia en status de entidad inexistente",
+          "detail": "El oráculo esperaba status 'failed' para DRAFT_ID inexistente, pero el backend responde con status 'empty' y código 'message_draft_not_found'."
+        }
+      ],
+      "blocked": [
+        {
+          "case": "c03",
+          "command": "/recado estado {c02.draft_id}",
+          "dependency": "c02.draft_id",
+          "reason": "Bloqueado por fallo en c02 al no generarse el draft_id requerido."
+        },
+        {
+          "case": "c04",
+          "command": "/recado enviar {c02.draft_id}",
+          "dependency": "c02.draft_id",
+          "reason": "Bloqueado por fallo en c02 al no generarse el draft_id requerido."
+        },
+        {
+          "case": "c06",
+          "command": "/recado cancelar {c05.draft_id}",
+          "dependency": "c05.draft_id",
+          "reason": "Bloqueado por fallo en c05 al no generarse el draft_id requerido."
+        }
+      ],
+      "coverage_gaps": [
+        "Flujo positivo completo de creación, consulta de estado (/recado estado) y envío (/recado enviar) con un contacto real ('Botsky Lab').",
+        "Flujo positivo de cancelación (/recado cancelar) sobre un borrador creado exitosamente.",
+        "Comportamiento de /recado preparar con '--fuente cita' sin proporcionar texto adicional.",
+        "Comportamiento de /recado preparar con '--adjunto' y fixture sin texto adicional para un contacto válido."
+      ],
+      "recommendations": [
+        "Sustituir 'Amiga' por el contacto configurado real ('Botsky Lab') en las pruebas de preparación de recados.",
+        "Ajustar los oráculos de prueba para contemplar 'needs_input' en errores de validación de campos y 'empty' cuando un draft_id no existe en la sesión.",
+        "Evitar pasar texto arbitrario junto con '--fuente cita' en pruebas positivas.",
+        "Ejecutar nuevamente los casos dependientes de draft_id (estado, envío y cancelación) tras corregir el destinatario."
+      ]
+    }
+  },
+  "send_sticker": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 3,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "No se evaluaron secuencias conversacionales completas de respuesta al estado 'needs_input' (reintento tras solicitar parámetro).",
+      "No se probaron caracteres especiales, strings de longitud extrema cercana a max_length (8000) ni caracteres Unicode/emojis como sticker_id.",
+      "No se verificaron comandos de cancelación o confirmación en contexto de entrada pendiente."
+    ],
+    "report": {
+      "tool": "send_sticker",
+      "works": [
+        "Envío y renderizado de stickers para todas las opciones del catálogo ('saludo', 'risa', 'pensando', 'sonrojo') retornando status 'ok', código 'reaction_ready' y artefactos válidos en formato webp de 512x512 píxeles (c01, c02, c03, c04).",
+        "Manejo de la bandera publish=true capturada localmente generando el artefacto esperado sin publicar externamente (c05).",
+        "Detección y reporte interactivo de argumento faltante al invocar el comando sin parámetros, devolviendo status 'needs_input' y código 'missing_field' con mensaje de ayuda (c06).",
+        "Soporte del comando auxiliar '/ayuda reaccion' devolviendo status 'ok' y código 'help' con la sintaxis y permisos correspondientes (c11)."
+      ],
+      "suspected_errors": [
+        "No se evidencian fallas internas no recuperables (crashes o 500) en el backend; el comportamiento ante entradas inválidas es consistente devolviendo status 'needs_input' en lugar de 'failed'."
+      ],
+      "oracle_issues": [
+        "En c07 y c09 (valores no enumerados 'desconocido' y '123'): el oráculo esperaba status 'failed', pero la herramienta devuelve status 'needs_input' con código 'invalid_field' y texto de asistencia.",
+        "En c08 ('/reaccion SALUDO'): el oráculo esperaba un fallo por validación estricta de mayúsculas/minúsculas, pero el backend implementa normalización a minúsculas y procesa la reacción con status 'ok' y código 'reaction_ready' generando el artefacto de 'saludo'.",
+        "En c10 ('/reaccion saludo risa'): el oráculo esperaba status 'failed' por exceso de argumentos, pero el backend devuelve status 'needs_input' con código 'extra_argument'."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "No se evaluaron secuencias conversacionales completas de respuesta al estado 'needs_input' (reintento tras solicitar parámetro).",
+        "No se probaron caracteres especiales, strings de longitud extrema cercana a max_length (8000) ni caracteres Unicode/emojis como sticker_id.",
+        "No se verificaron comandos de cancelación o confirmación en contexto de entrada pendiente."
+      ],
+      "recommendations": [
+        "Alinear los oráculos de prueba para comandos interactivos: admitir status 'needs_input' junto a 'failed' cuando la interfaz proporcione retroalimentación guiada al usuario (invalid_field, extra_argument).",
+        "Actualizar la especificación del catálogo para documentar formalmente si el enum de sticker_id debe ser case-insensitive (aceptando 'SALUDO') o case-sensitive.",
+        "Incluir casos de prueba con payloads extremos y caracteres especiales para verificar la robustez del parser ante entradas anómalas."
+      ]
+    }
+  },
+  "manage_pack": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 3,
+    "blocked_items": 2,
+    "coverage_gaps": [
+      "Flujo exitoso completo de compra (/pack comprar CATEGORIA_EXISTENTE) utilizando una categoría presente en el fixture ('lab-sintetico').",
+      "Ejecución efectiva de confirmación (/pack confirmar PURCHASE_ID) con un purchase_id válido generado por una compra exitosa.",
+      "Consulta de estado (/pack estado PURCHASE_ID) sobre una compra existente.",
+      "Comportamiento de paginación sobre catálogos con múltiples páginas (pages > 1)."
+    ],
+    "report": {
+      "tool": "manage_pack",
+      "works": [
+        "Consulta básica del catálogo (/pack catalogo) devolviendo status ok, código pack_catalog y lista de packs (lab-sintetico, 8 ítems, 1 página).",
+        "Filtro por categoría inexistente en catálogo (/pack catalogo --categoria stickers) devolviendo status empty y lista vacía.",
+        "Paginación válida existente (/pack catalogo --pagina 1) devolviendo status ok y los ítems correspondientes.",
+        "Validación de categoría inexistente al comprar (/pack comprar stickers) rechazando la operación con status needs_input y código pack_category_unavailable."
+      ],
+      "suspected_errors": [
+        "c04 (/pack catalogo --pagina 20): Retorna status 'needs_input' con código 'page_out_of_range' ('Página fuera de rango:1–1') para una página dentro del rango sintáctico permitido (1-20), en lugar de responder con status 'empty' o lista vacía de ítems."
+      ],
+      "oracle_issues": [
+        "c05 y c06 (/pack catalogo --pagina 0 y --pagina 21): El oráculo esperaba status 'failed', pero la herramienta responde contractualmente con status 'needs_input' y código 'invalid_field' acompañado del mensaje de uso.",
+        "c10, c11 y c12 (/pack comprar, /pack confirmar, /pack estado): El oráculo esperaba status 'failed' ante la falta de argumentos requeridos, pero la herramienta emite status 'needs_input' y código 'missing_field'.",
+        "c07 (/pack comprar stickers): El oráculo asumió que la categoría 'stickers' procedería a crear una orden generando purchase_id, pero al no existir en el catálogo fixture sólo produjo 'pack_category_unavailable', bloqueando la cadena dependiente."
+      ],
+      "blocked": [
+        "c08 (/pack confirmar {c07.purchase_id}): Bloqueado por dependencia no resuelta ('c07.purchase_id') al no haberse creado la orden en c07.",
+        "c09 (/pack estado {c07.purchase_id}): Bloqueado por dependencia no resuelta ('c07.purchase_id') al no haberse creado la orden en c07."
+      ],
+      "coverage_gaps": [
+        "Flujo exitoso completo de compra (/pack comprar CATEGORIA_EXISTENTE) utilizando una categoría presente en el fixture ('lab-sintetico').",
+        "Ejecución efectiva de confirmación (/pack confirmar PURCHASE_ID) con un purchase_id válido generado por una compra exitosa.",
+        "Consulta de estado (/pack estado PURCHASE_ID) sobre una compra existente.",
+        "Comportamiento de paginación sobre catálogos con múltiples páginas (pages > 1)."
+      ],
+      "recommendations": [
+        "Alinear las expectativas del oráculo para admitir status 'needs_input' en rechazos de validación de sintaxis y campos obligatorios ('invalid_field' y 'missing_field').",
+        "Configurar el caso de compra utilizando la categoría disponible en el catálogo ('lab-sintetico') para permitir la generación del identificador y desbloquear c08 y c09.",
+        "Determinar si solicitar una página vacía dentro del rango permitido (1–20) debe responder con status 'empty' en vez del error interactivo 'page_out_of_range' ('needs_input')."
+      ]
+    }
+  },
+  "manage_cooperacha": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 1,
+    "blocked_items": 1,
+    "coverage_gaps": [
+      "No se evaluó la cancelación de retos con saldo acumulado ni el cálculo de reembolsos (refund).",
+      "No se probó el comportamiento ante identificadores de cooperacha sintácticamente inválidos o inexistentes en /coop aportar, /coop estado y /coop cancelar.",
+      "Falta cobertura sobre cadenas de categoría con longitud límite (120 caracteres) o caracteres especiales.",
+      "No se verificaron restricciones de balance de XP del usuario aportante."
+    ],
+    "report": {
+      "tool": "manage_cooperacha",
+      "works": [
+        "Creación de cooperachas (/coop crear) responde con status 'ok', asigna challenge_id y refleja correctamente el target_xp solicitado (c01, c06, c07).",
+        "Consulta de estado general (/coop estado) y por identificador (/coop estado [ID]) retorna status 'ok' y payload estructurado coop_status (c02, c03).",
+        "Comando de cancelación (/coop cancelar [ID]) es procesado exitosamente con status 'ok' (c08).",
+        "Validación de rangos numéricos para target_xp (50-50000) y amount (1-50000) detecta valores fuera de límite y emite mensaje de uso con código invalid_field (c09, c10, c11, c12)."
+      ],
+      "suspected_errors": [
+        "Estado inicial inconsistente: al crearse una cooperacha mediante /coop crear, el payload devuelto registra data.state = 'failed' de forma inmediata en lugar de un estado abierto/activo (observado en c01, c06 y c07).",
+        "Fallo en aportaciones consecutivas: las operaciones /coop aportar sobre cooperachas recién creadas son rechazadas con status 'failed' y código 'coop_not_open' ('El reto no está abierto para nuevos aportes'), derivado del estado inicial fallido (c04, c05)."
+      ],
+      "oracle_issues": [
+        "Discrepancia en status de validación en c09, c10, c11 y c12: el oráculo esperaba status 'failed', mientras que el contrato del runner devuelve 'needs_input' con code 'invalid_field' ante parámetros fuera de rango."
+      ],
+      "blocked": [
+        "Flujo funcional de aportes y compleción de cooperachas (c04, c05) bloqueado por el estado prematuramente cerrado/fallido de los retos creados."
+      ],
+      "coverage_gaps": [
+        "No se evaluó la cancelación de retos con saldo acumulado ni el cálculo de reembolsos (refund).",
+        "No se probó el comportamiento ante identificadores de cooperacha sintácticamente inválidos o inexistentes en /coop aportar, /coop estado y /coop cancelar.",
+        "Falta cobertura sobre cadenas de categoría con longitud límite (120 caracteres) o caracteres especiales.",
+        "No se verificaron restricciones de balance de XP del usuario aportante."
+      ],
+      "recommendations": [
+        "Actualizar la expectativa de oráculo para casos negativos de validación de campo, incluyendo 'needs_input' en los statuses esperados.",
+        "Investigar en backend la máquina de estados de manage_cooperacha.start para determinar la causa de que los retos nuevos se inicialicen con state: 'failed'.",
+        "Reanudar la verificación de aportes (/coop aportar) una vez que el ciclo de vida permita que los retos permanezcan abiertos tras su creación."
+      ]
+    }
+  },
+  "manage_happy_hour": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      {
+        "description": "Prueba de reclamo utilizando explícitamente el 'drop_id' generado en lugar de 'event_id' para determinar si el catálogo documenta erróneamente el nombre del campo."
+      },
+      {
+        "description": "Validación de valores límite exactos para duración: mínimo 60s y máximo 86400s."
+      },
+      {
+        "description": "Comportamiento ante múltiples invocaciones consecutivas de lluvia y airdrop dentro de una misma sesión activa."
+      }
+    ],
+    "report": {
+      "tool": "manage_happy_hour",
+      "works": [
+        {
+          "command": "/hh estado",
+          "evidence": "c01",
+          "status": "empty",
+          "code": "happy_not_found",
+          "observation": "Consulta el estado general cuando no hay eventos activos y responde con status empty informando la ausencia de Happy Hour."
+        },
+        {
+          "command": "/hh iniciar",
+          "evidence": "c02",
+          "status": "ok",
+          "code": "happy_started",
+          "observation": "Inicia correctamente un evento de Happy Hour con duración predeterminada de 3600s devolviendo event_id."
+        },
+        {
+          "command": "/hh estado [ID]",
+          "evidence": "c03",
+          "status": "ok",
+          "code": "happy_status",
+          "observation": "Muestra adecuadamente el estado activo ('state': 'active') y expiración en milisegundos para el event_id provisto."
+        },
+        {
+          "command": "/hh lluvia [ID]",
+          "evidence": "c04",
+          "status": "ok",
+          "code": "happy_photos_result",
+          "observation": "Ejecuta la dinámica de lluvia aceptando las fotos locales sin recurrir a fuentes externas."
+        },
+        {
+          "command": "/hh airdrop [ID]",
+          "evidence": "c05",
+          "status": "ok",
+          "code": "happy_drop_announced",
+          "observation": "Anuncia y crea un airdrop asociado al evento retornando drop_id y event_id."
+        },
+        {
+          "command": "/hh parar [ID]",
+          "evidence": "c07",
+          "status": "ok",
+          "code": "happy_stopped",
+          "observation": "Detiene y cierra el evento activo de Happy Hour especificando el event_id."
+        },
+        {
+          "command": "/hh iniciar --duracion 10m",
+          "evidence": "c08",
+          "status": "ok",
+          "code": "happy_started",
+          "observation": "Acepta duraciones formateadas (ej. 10m / 600s) e inicia la sesión correctamente."
+        },
+        {
+          "command": "/hh parar",
+          "evidence": "c09",
+          "status": "ok",
+          "code": "happy_stopped",
+          "observation": "Detiene exitosamente la hora feliz activa sin requerir explícitamente el argumento event_id."
+        },
+        {
+          "command": "/hh reclamar",
+          "evidence": "c10",
+          "status": "needs_input",
+          "code": "missing_field",
+          "observation": "Valida adecuadamente la ausencia del argumento requerido event_id retornando status needs_input y uso."
+        }
+      ],
+      "suspected_errors": [
+        {
+          "case": "c06",
+          "command": "/hh reclamar [ID]",
+          "status": "empty",
+          "code": "happy_drop_unavailable",
+          "observation": "Tras crearse el airdrop en c05, el intento de reclamación con el identificador del evento retornó 'happy_drop_unavailable'. Posible discrepancia de diseño entre el identificador del evento ('event_id') requerido por catálogo y el 'drop_id' retornado por la creación del airdrop."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c11",
+            "c12"
+          ],
+          "commands": [
+            "/hh iniciar --duracion 10s",
+            "/hh iniciar --duracion 100000s"
+          ],
+          "discrepancy": "El oráculo esperaba status 'failed' para valores fuera de rango de duración, pero el validador del backend responde sistemáticamente con status 'needs_input' y código 'invalid_field'."
+        },
+        {
+          "cases": [
+            "c06"
+          ],
+          "commands": [
+            "/hh reclamar [ID]"
+          ],
+          "discrepancy": "El oráculo preveía únicamente status 'ok' asumiendo reclamo inmediato, omitiendo la posibilidad de respuesta 'empty' por indisponibilidad o expiración inmediata del drop."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        {
+          "description": "Prueba de reclamo utilizando explícitamente el 'drop_id' generado en lugar de 'event_id' para determinar si el catálogo documenta erróneamente el nombre del campo."
+        },
+        {
+          "description": "Validación de valores límite exactos para duración: mínimo 60s y máximo 86400s."
+        },
+        {
+          "description": "Comportamiento ante múltiples invocaciones consecutivas de lluvia y airdrop dentro de una misma sesión activa."
+        }
+      ],
+      "recommendations": [
+        {
+          "target": "test_suite_oracle",
+          "action": "Actualizar oráculos de validación de campos numéricos/duración para esperar 'needs_input' en lugar de 'failed' ante 'invalid_field'."
+        },
+        {
+          "target": "catalog_and_implementation",
+          "action": "Clarificar en la firma de /hh reclamar si el argumento esperado es 'event_id' o 'drop_id' para alinear el mensaje de anuncio de /hh airdrop con el handler de reclamación."
+        }
+      ]
+    }
+  },
+  "manage_economy": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Comportamiento de /daily tras la expiración del cooldown (avance de racha de 1 a N).",
+      "Paginación, límites o visualización de múltiples participantes en el ranking /top (actualmente solo se verificó con 1 item self).",
+      "Comportamiento del saldo frente a deducciones o reservas ('reserved' siempre observado en 0)."
+    ],
+    "report": {
+      "tool": "manage_economy",
+      "works": [
+        "Consulta de saldo (/saldo) retorna status 'ok', balance, nivel y reservas con código 'xp_balance' (c01, c03).",
+        "Reclamo de recompensa diaria (/daily) acredita correctamente XP (+100 XP), incrementa nivel y actualiza racha con código 'daily_awarded' (c02).",
+        "Persistencia de saldo comprobada: el saldo de 5000 XP en c01 pasa a 5100 XP tras /daily en c02 y se mantiene en c03.",
+        "Control de cooldown en /daily funcional a nivel de negocio: c04 detecta que el daily ya fue reclamado y expone 'retry_at_ms' ([PHONE_OR_ID]) y código 'daily_cooldown'.",
+        "Ranking de economía (/top) operativo: retorna status 'ok', código 'xp_top' y lista de items con posición y saldo del usuario (c05).",
+        "Subcomandos auxiliares de ayuda (/ayuda saldo, /ayuda daily, /ayuda top) retornan status 'ok' y documentación R7 de cada operación (c06, c07, c08)."
+      ],
+      "suspected_errors": [
+        {
+          "case": "c12",
+          "command": "/saldo [fixture: image]",
+          "observation": "El backend procesó la consulta de saldo ignorando silenciosamente el archivo adjunto (fixture: 'image') retornando status 'ok' y 'xp_balance' en lugar de validar o rechazar la presencia de multimedia innecesaria."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "case": "c04",
+          "command": "/daily",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "ok",
+          "observed_code": "daily_cooldown",
+          "analysis": "Discrepancia de oráculo: el backend modela el cooldown como una respuesta informativa exitosa (status: 'ok') en lugar de un fallo de ejecución (status: 'failed')."
+        },
+        {
+          "cases": [
+            "c09",
+            "c10",
+            "c11"
+          ],
+          "command": "/saldo, /daily, /top con argumentos adicionales",
+          "expected_status": [
+            "failed"
+          ],
+          "observed_status": "needs_input",
+          "observed_code": "extra_argument",
+          "analysis": "Discrepancia de oráculo: cuando se envían argumentos sobrantes a comandos sin parámetros, la API responde semánticamente con status 'needs_input' y código 'extra_argument', mientras que la suite esperaba status 'failed'."
+        }
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Comportamiento de /daily tras la expiración del cooldown (avance de racha de 1 a N).",
+        "Paginación, límites o visualización de múltiples participantes en el ranking /top (actualmente solo se verificó con 1 item self).",
+        "Comportamiento del saldo frente a deducciones o reservas ('reserved' siempre observado en 0)."
+      ],
+      "recommendations": [
+        "Alinear oráculos de prueba: actualizar la expectativa de argumentos sobrantes para aceptar status 'needs_input' con código 'extra_argument'.",
+        "Alinear oráculo de cooldown: registrar status 'ok' con código 'daily_cooldown' como respuesta esperada en reintentos inmediatos de /daily.",
+        "Definir política para fixtures multimedia en comandos de texto: determinar si ignorar adjuntos en /saldo es el comportamiento intencionado o si debe emitirse advertencia/rechazo."
+      ]
+    }
+  },
+  "manage_blackjack": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 2,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Pruebas de unión a mesa (/bj entrar) ejecutadas desde una sesión o identificador de jugador secundario.",
+      "Acciones de plantarse (/bj plantarse) y pedir cartas consecutivas mientras el puntaje se mantenga estrictamente por debajo de 21 sin resolver inmediatamente.",
+      "Cancelación de mesa (/bj cancelar) en estado 'lobby' antes de efectuar el reparto (/bj repartir).",
+      "Validación de valores exactos en los límites de apuesta permitidos (apuesta mínima de 20 y máxima de 1000)."
+    ],
+    "report": {
+      "tool": "manage_blackjack",
+      "works": [
+        "Inicio de partida individual con apuesta por defecto (/bj iniciar, c01) generando tablero y estado 'playing'.",
+        "Acción de pedir carta (/bj pedir [ID], c02) calculando mano y resolviendo partida con estado 'settled' y pago correspondiente.",
+        "Consulta de estado con ID explícito (/bj estado [ID], c04) recuperando la resolución de la partida terminada.",
+        "Creación de mesa multijugador con apuesta personalizada (/bj mesa 50, c07) dejando la partida en estado 'lobby'.",
+        "Reparto inicial en mesa (/bj repartir [ID], c09) cambiando el estado a 'playing' y asignando cartas iniciales.",
+        "Acción de doblar apuesta (/bj doblar [ID], c10) duplicando la apuesta (a 100 XP) y resolviendo la mano.",
+        "Consulta de estado general sin identificador (/bj estado, c12) retornando status 'empty' y código 'blackjack_not_found'."
+      ],
+      "suspected_errors": [
+        "En c03 y c11, ejecutar comandos de juego o cancelación (/bj plantarse, /bj cancelar) sobre partidas ya en estado 'settled' retorna status 'ok' repitiendo el resultado anterior sin alertar que la partida ya había concluido.",
+        "En c08, el comando /bj entrar sobre una mesa creada por el mismo participante genera 'blackjack_already_active' con status 'failed', impidiendo operaciones de unión con una sola sesión activa."
+      ],
+      "oracle_issues": [
+        "En c05 y c06, el oráculo esperaba status 'failed' para apuestas fuera de rango (10 y 1500), pero el sistema responde con status 'needs_input' y código 'invalid_field'.",
+        "En c08, el oráculo anticipaba status 'ok' para /bj entrar sin prever que el usuario creador de la mesa ya ocupa un asiento activo."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Pruebas de unión a mesa (/bj entrar) ejecutadas desde una sesión o identificador de jugador secundario.",
+        "Acciones de plantarse (/bj plantarse) y pedir cartas consecutivas mientras el puntaje se mantenga estrictamente por debajo de 21 sin resolver inmediatamente.",
+        "Cancelación de mesa (/bj cancelar) en estado 'lobby' antes de efectuar el reparto (/bj repartir).",
+        "Validación de valores exactos en los límites de apuesta permitidos (apuesta mínima de 20 y máxima de 1000)."
+      ],
+      "recommendations": [
+        "Ajustar las expectativas del oráculo para validaciones de campo numérico fuera de rango admitiendo status 'needs_input'.",
+        "Evaluar si los comandos interactivos (/bj pedir, /bj plantarse, /bj cancelar) deben rechazar operaciones con un código específico (ej. 'game_already_settled') cuando la partida ya finalizó.",
+        "Soportar pruebas multiusuario o desvincular al anfitrión para comprobar el flujo positivo de /bj entrar."
+      ]
+    }
+  },
+  "manage_roulette": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 3,
+    "blocked_items": 2,
+    "coverage_gaps": [
+      "Flujo completo del ciclo de vida de sala (creación exitosa, unión de jugadores, inicio de partida y cancelación de sala activa) no probado por restricciones de grupo.",
+      "Validación de unicidad de salas y límites de jugadores en simultáneo.",
+      "Verificación de resolución de apuestas y consecuencias de ruleta."
+    ],
+    "report": {
+      "tool": "manage_roulette",
+      "works": [
+        "Validación sintáctica y de rango en parámetros numéricos: valores fuera de rango como bet=0 (c06) y bet=1001 (c07) son interceptados correctamente emitiendo el código invalid_field con mensaje de uso.",
+        "Comprobación de precondiciones de entorno: el sistema valida si el chat actual cuenta con la función y configuración de grupo habilitada (c02, c12 devuelven roulette_group_not_configured; c01, c04, c05, c11 devuelven operation_not_enabled)."
+      ],
+      "suspected_errors": [
+        "Inconsistencia en el orden o tipo de validación preliminar: comandos como /ruleta crear y /ruleta entrar fallan con 'operation_not_enabled', mientras que /ruleta estado y /ruleta cancelar reportan 'roulette_group_not_configured' bajo el mismo contexto de ejecución.",
+        "La validación de rango numérico (c06, c07) se evalúa antes de verificar si el chat o la operación están habilitados, exponiendo un flujo de control disímil frente a ejecuciones con argumentos válidos."
+      ],
+      "oracle_issues": [
+        "En c06 y c07 el oráculo esperaba status 'failed', pero la plataforma devuelve 'needs_input' con código invalid_field para permitir reintento de entrada.",
+        "En c02 el oráculo asumió que /ruleta estado respondería 'ok'/'empty' de forma global, sin contemplar el requisito obligatorio de grupo configurado (roulette_group_not_configured).",
+        "En c12 el veredicto fue PASS incidental: coincidió con el status 'failed' esperado, pero la razón real fue el bloqueo de grupo (roulette_group_not_configured) y no la no existencia de la sala."
+      ],
+      "blocked": [
+        "Bloqueo por configuración de entorno: c01, c04, c05 y c11 no pudieron ejecutarse debido a 'operation_not_enabled' en el chat de pruebas.",
+        "Bloqueo en cascada por dependencia no resuelta: c03, c08, c09 y c10 quedaron sin ejecutar (not_executed_dependency) al no generarse el identificador {c01.room_id} tras fallar c01."
+      ],
+      "coverage_gaps": [
+        "Flujo completo del ciclo de vida de sala (creación exitosa, unión de jugadores, inicio de partida y cancelación de sala activa) no probado por restricciones de grupo.",
+        "Validación de unicidad de salas y límites de jugadores en simultáneo.",
+        "Verificación de resolución de apuestas y consecuencias de ruleta."
+      ],
+      "recommendations": [
+        "Habilitar explícitamente la herramienta y configurar el chat de pruebas como grupo autorizado de ruleta para desbloquear la ejecución de casos positivos.",
+        "Actualizar los oráculos de validación de argumentos para aceptar el status 'needs_input' cuando se emita invalid_field.",
+        "Estandarizar el orden de las comprobaciones de guardia (permiso de operación vs. configuración de grupo vs. validación de campos) en todas las operaciones del catálogo."
+      ]
+    }
+  },
+  "manage_admin": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 0,
+    "oracle_issues": 1,
+    "blocked_items": 2,
+    "coverage_gaps": [
+      "Operaciones de mutación de grupo (/admin expulsar, /admin ban, /admin unban, /admin promover, /admin degradar, /admin silenciar, /admin desilenciar, /admin cerrar, /admin abrir) no fueron cubiertas en cumplimiento de la directiva de seguridad que prohíbe cambios remotos en grupos.",
+      "Operaciones de advertencia individual (/admin advertir, /admin quitar-aviso) no fueron ejecutadas por no disponer de TARGET IDs preexistentes sin inventar identificadores.",
+      "El flujo completo del ciclo nuclear (/admin nuclear-preparar, /admin nuclear-confirmar, /admin nuclear-cancelar) permanece sin cobertura operativa activa debido al bloqueo por función deshabilitada en la configuración del chat.",
+      "El parámetro opcional --objetivo TARGET en /admin xp-dar y /admin xp-quitar no fue probado por ausencia de identificadores de usuario reales asignados."
+    ],
+    "report": {
+      "tool": "manage_admin",
+      "works": [
+        "Consulta de avisos administrativos (/admin avisos) retorna exitosamente con estado 'empty' y lista de items vacía cuando no existen avisos registrados (c01).",
+        "Acreditación de experiencia (/admin xp-dar --cuenta ACCOUNT_ID AMOUNT) opera correctamente en valores nominales (100 XP) y en los límites exactos del rango permitido: valor mínimo 1 XP (c03) y valor máximo 50000 XP (c04), reportando status 'ok' y código 'admin_xp_changed'.",
+        "Deducción de experiencia (/admin xp-quitar --cuenta ACCOUNT_ID AMOUNT) opera correctamente en valores nominales (50 XP) y en los límites exactos del rango permitido: valor mínimo 1 XP (c09) y valor máximo 50000 XP (c10), reportando status 'ok' y código 'admin_xp_changed'."
+      ],
+      "suspected_errors": [],
+      "oracle_issues": [
+        "Discrepancia de oráculo en c05, c06, c07, c11 y c12: las expectativas asumían status 'failed' para entradas fuera de rango (amount=0, amount=50001, account_id=0), pero el backend implementa una respuesta interactiva con status 'needs_input', código 'invalid_field' y texto de ayuda explicativo indicando el rango válido (1–50000 y 1–[PHONE_OR_ID])."
+      ],
+      "blocked": [
+        "c13 (/admin nuclear-preparar): Rechazado por política de entorno/configuración con status 'failed' y código 'operation_not_enabled' ('Esta función o este chat no está habilitado en la configuración de Botsky. No se ejecutó la acción.').",
+        "c14 (/admin nuclear-cancelar): Bloqueado sin ejecución (evidence_level 'not_executed_dependency') debido a la falta de resolución del valor dinámico {c13.draft_id} al haber fallado c13."
+      ],
+      "coverage_gaps": [
+        "Operaciones de mutación de grupo (/admin expulsar, /admin ban, /admin unban, /admin promover, /admin degradar, /admin silenciar, /admin desilenciar, /admin cerrar, /admin abrir) no fueron cubiertas en cumplimiento de la directiva de seguridad que prohíbe cambios remotos en grupos.",
+        "Operaciones de advertencia individual (/admin advertir, /admin quitar-aviso) no fueron ejecutadas por no disponer de TARGET IDs preexistentes sin inventar identificadores.",
+        "El flujo completo del ciclo nuclear (/admin nuclear-preparar, /admin nuclear-confirmar, /admin nuclear-cancelar) permanece sin cobertura operativa activa debido al bloqueo por función deshabilitada en la configuración del chat.",
+        "El parámetro opcional --objetivo TARGET en /admin xp-dar y /admin xp-quitar no fue probado por ausencia de identificadores de usuario reales asignados."
+      ],
+      "recommendations": [
+        "Actualizar los oráculos de validación de argumentos inválidos en manage_admin para contemplar status 'needs_input' con código 'invalid_field' además de 'failed'.",
+        "Habilitar el flag de configuración de pruebas para la operación nuclear en el entorno controlado si se requiere validar el ciclo de vida del borrador administrativo.",
+        "Proveer identificadores de prueba sintéticos o cuentas fijas de sandbox para evaluar la asignación de XP por --objetivo sin interactuar con miembros reales del grupo."
+      ]
+    }
+  },
+  "manage_minecraft": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 1,
+    "blocked_items": 1,
+    "coverage_gaps": [
+      {
+        "area": "Mutaciones de ciclo de vida del servidor",
+        "operations": [
+          "manage_minecraft.start",
+          "manage_minecraft.stop",
+          "manage_minecraft.restart",
+          "manage_minecraft.backup",
+          "manage_minecraft.recover"
+        ],
+        "commands": [
+          "/mc iniciar",
+          "/mc parar",
+          "/mc reiniciar",
+          "/mc backup",
+          "/mc recuperar"
+        ],
+        "reason": "Excluidas de la ejecución por la regla de seguridad de campaña: solo consultas permitidas, sin mutaciones sobre infraestructura real."
+      },
+      {
+        "area": "Gestión de mods y consola remota",
+        "operations": [
+          "manage_minecraft.enable_mod",
+          "manage_minecraft.disable_mod",
+          "manage_minecraft.console"
+        ],
+        "commands": [
+          "/mc mod activar NAME",
+          "/mc mod desactivar NAME",
+          "/mc consola COMMAND"
+        ],
+        "reason": "No ejercitadas ni validadas en sus límites de longitud (100 y 1000 caracteres) debido a restricciones contra mutaciones y ejecución de comandos directos en el servidor."
+      }
+    ],
+    "report": {
+      "tool": "manage_minecraft",
+      "works": [
+        {
+          "case": "c01",
+          "command": "/mc estado",
+          "observation": "Consulta de estado del servidor de Minecraft completada exitosamente con status 'ok' y code 'minecraft_completed'."
+        },
+        {
+          "case": "c02",
+          "command": "/mc jugadores",
+          "observation": "Listado de jugadores completado correctamente con status 'ok' y code 'minecraft_completed'."
+        },
+        {
+          "case": "c03",
+          "command": "/mc mundos",
+          "observation": "Consulta de mundos disponibles resuelta con status 'ok' y code 'minecraft_completed'."
+        },
+        {
+          "case": "c04",
+          "command": "/mc mods",
+          "observation": "Consulta de mods instalados resuelta con status 'ok' y code 'minecraft_completed'."
+        },
+        {
+          "case": "c05",
+          "command": "/mc config",
+          "observation": "Consulta de configuración del servidor resuelta con status 'ok' y code 'minecraft_completed'."
+        },
+        {
+          "case": "c07",
+          "command": "/ayuda mc",
+          "observation": "Comando de ayuda contextual para el dominio mc devuelto con status 'ok' y code 'help'."
+        },
+        {
+          "case": "c08",
+          "command": "/ayuda",
+          "observation": "Comando general de ayuda devuelto exitosamente con status 'ok' y code 'help'."
+        }
+      ],
+      "suspected_errors": [
+        {
+          "cases": [
+            "c09",
+            "c10",
+            "c11"
+          ],
+          "commands": [
+            "/estado",
+            "/confirmar",
+            "/cancelar"
+          ],
+          "observation": "Los comandos auxiliares invocados sin argumentos devolvieron status 'needs_input' con code 'missing_field' en lugar de resolver el estado global, confirmar o cancelar según contexto.",
+          "suspected_root_cause": "El despachador de comandos auxiliares requiere campos obligatorios adicionales no documentados o espera un contexto/ID de sesión activo para operar sin parámetros."
+        }
+      ],
+      "oracle_issues": [
+        {
+          "cases": [
+            "c09",
+            "c10",
+            "c11"
+          ],
+          "commands": [
+            "/estado",
+            "/confirmar",
+            "/cancelar"
+          ],
+          "observation": "El oráculo de prueba esperaba estados 'ok', 'empty' o 'failed', pero la plataforma respondió con 'needs_input'. La especificación del caso no contempló la solicitud de campos adicionales por parte del backend."
+        }
+      ],
+      "blocked": [
+        {
+          "case": "c06",
+          "command": "/mc diagnostico",
+          "reason": "operation_not_enabled",
+          "result_code": "operation_not_enabled",
+          "observation": "La operación discover/diagnóstico no está habilitada en la configuración actual del proveedor real (status 'failed', code 'operation_not_enabled')."
+        }
+      ],
+      "coverage_gaps": [
+        {
+          "area": "Mutaciones de ciclo de vida del servidor",
+          "operations": [
+            "manage_minecraft.start",
+            "manage_minecraft.stop",
+            "manage_minecraft.restart",
+            "manage_minecraft.backup",
+            "manage_minecraft.recover"
+          ],
+          "commands": [
+            "/mc iniciar",
+            "/mc parar",
+            "/mc reiniciar",
+            "/mc backup",
+            "/mc recuperar"
+          ],
+          "reason": "Excluidas de la ejecución por la regla de seguridad de campaña: solo consultas permitidas, sin mutaciones sobre infraestructura real."
+        },
+        {
+          "area": "Gestión de mods y consola remota",
+          "operations": [
+            "manage_minecraft.enable_mod",
+            "manage_minecraft.disable_mod",
+            "manage_minecraft.console"
+          ],
+          "commands": [
+            "/mc mod activar NAME",
+            "/mc mod desactivar NAME",
+            "/mc consola COMMAND"
+          ],
+          "reason": "No ejercitadas ni validadas en sus límites de longitud (100 y 1000 caracteres) debido a restricciones contra mutaciones y ejecución de comandos directos en el servidor."
+        }
+      ],
+      "recommendations": [
+        {
+          "target": "Comandos auxiliares (/estado, /confirmar, /cancelar)",
+          "action": "Documentar los parámetros o identificadores requeridos que originan el código 'missing_field' y status 'needs_input' cuando se ejecutan sin argumentos."
+        },
+        {
+          "target": "manage_minecraft.discover (/mc diagnostico)",
+          "action": "Verificar si la funcionalidad 'operation_not_enabled' debe ser activada en el perfil del proveedor o si debe ser documentada como restringida/no disponible."
+        },
+        {
+          "target": "Entorno de pruebas para mutaciones",
+          "action": "Habilitar un entorno sandbox dedicado o un servidor de prueba efímero para validar de forma segura el ciclo de vida (iniciar, parar, backup, mods, consola) sin violar las políticas de producción."
+        }
+      ]
+    }
+  },
+  "make_prank": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 1,
+    "oracle_issues": 3,
+    "blocked_items": 0,
+    "coverage_gaps": [
+      "Casos positivos válidos bajo la regla de restricción real: etiquetas que incluyan guiones (p. ej., 'broma-prueba') o longitud límite de 40 caracteres compuesta estrictamente por letras y espacios.",
+      "Variabilidad y aleatoriedad del texto generado en ejecuciones consecutivas con idéntico parámetro.",
+      "Evaluación de comportamiento ante otros tipos de adjuntos no contemplados en el handler (audio, video, documentos)."
+    ],
+    "report": {
+      "tool": "make_prank",
+      "works": [
+        "Ejecución básica de /broma sin parámetros (c01), devolviendo status 'ok', código 'prank_fiction' y texto de ficción predeterminado con 'Personaje ficticio'.",
+        "Generación de bromas personalizadas con una sola palabra alfabética dentro del límite (c02, 'Inocente'), devolviendo status 'ok' y código 'prank_fiction'.",
+        "Aceptación de etiquetas de múltiples palabras con espacios (c03, 'Alerta de seguridad del sistema') como argumento tail, devolviendo status 'ok'.",
+        "Compatibilidad con fixtures de imagen adjuntos (c08, c09), respondiendo 'ok' sin fallos en la canalización del comando.",
+        "El filtro de entrada de adjuntos ('attachment_ingress') rechaza correctamente archivos vacíos de 0 bytes (c11) con status 'failed' y código 'input_size' antes de invocar el handler."
+      ],
+      "suspected_errors": [
+        "c10: Silenciamiento o desatención de adjuntos corruptos. Al enviar un archivo 'broken_png', la herramienta devolvió status 'ok' y generó la broma ignorando por completo la carga corrupta, evidenciando que no procesa ni valida las imágenes recibidas a nivel de handler."
+      ],
+      "oracle_issues": [
+        "c04, c06, c07: El catálogo declara 'label' únicamente como texto libre con max_length 40, pero el backend implementa una validación restrictiva no documentada que exige letras, espacios o guiones sin dígitos, símbolos ni emojis (código 'prank_invalid_label', status 'needs_input'). El oráculo esperaba status 'ok'.",
+        "c05: Discrepancia en la convención de estados para validación de longitud. Ante una cadena que excede 40 caracteres, el backend devuelve status 'needs_input' con código 'invalid_field', mientras que el oráculo esperaba status 'failed'.",
+        "c10: El oráculo esperaba un fallo de decodificación ('failed') para 'broken_png', pero la herramienta no consume activamente el payload de imagen en la generación de la broma."
+      ],
+      "blocked": [],
+      "coverage_gaps": [
+        "Casos positivos válidos bajo la regla de restricción real: etiquetas que incluyan guiones (p. ej., 'broma-prueba') o longitud límite de 40 caracteres compuesta estrictamente por letras y espacios.",
+        "Variabilidad y aleatoriedad del texto generado en ejecuciones consecutivas con idéntico parámetro.",
+        "Evaluación de comportamiento ante otros tipos de adjuntos no contemplados en el handler (audio, video, documentos)."
+      ],
+      "recommendations": [
+        "Actualizar el catálogo de make_prank para reflejar la restricción de formato en 'label' (alfabético, espacios y guiones; prohibición de dígitos y símbolos/emojis).",
+        "Alinear los oráculos de validación de sintaxis/esquema para esperar status 'needs_input' en lugar de 'failed' cuando ocurren errores como 'invalid_field' y 'prank_invalid_label'.",
+        "Definir contractualmente si make_prank debe rechazar adjuntos no soportados o advertir al usuario cuando se envían archivos que la herramienta no procesa."
+      ]
+    }
+  },
+  "control_call": {
+    "available": true,
+    "session_phase": "complete",
+    "suspected_claims": 2,
+    "oracle_issues": 3,
+    "blocked_items": 6,
+    "coverage_gaps": [
+      "No se evaluó la sintaxis válida con sufijo de unidad en '--duracion' (ej. '--duracion 5s', '--duracion 10m', '--duracion 1h').",
+      "Límites numéricos válidos (5s mínimo y 3600s / 1h máximo) y fuera de rango con unidades (4s, 3601s) no fueron evaluados debido al error sintáctico previo.",
+      "Flujo operativo completo con proveedor configurado (establecimiento de llamada, alternancia de vídeo, consulta de llamada activa, colgado y cancelación real) permanece sin cobertura por falta de configuración de llamadas en el entorno."
+    ],
+    "report": {
+      "tool": "control_call",
+      "works": [
+        "El analizador de comandos procesa correctamente flags sin argumentos como '--video' y parámetros de texto como '--tema' sin errores sintácticos previos a la invocación del servicio.",
+        "El validador de campos detecta formatos incompatibles en '--duracion' e informa el formato de intervalo requerido (30s, 10m, 2h, 1d) junto con el texto de ayuda y uso del comando.",
+        "El guardián de llamadas intercepta consistentemente peticiones operativas cuando el subsistema no está habilitado, devolviendo el código estructurado 'call_not_configured'."
+      ],
+      "suspected_errors": [
+        "Discrepancia entre la firma de ayuda y el parser: el uso indica '--duracion MAX_SECONDS' sugiriendo enteros en segundos, pero el parser rechaza enteros puros (como 600, 5, 3600) requiriendo obligatoriamente sufijos de unidad de tiempo (s, m, h, d).",
+        "Los errores sintácticos de validación de campo ('invalid_field') retornan con status 'needs_input' en lugar de 'failed' al procesar comandos ejecutados por línea de comandos."
+      ],
+      "oracle_issues": [
+        "Los casos c04, c06, c07 y c08 asumieron que el argumento de '--duracion' aceptaba enteros directos sin sufijo, provocando que el parser fallara antes de alcanzar el guardián de llamada.",
+        "Los oráculos de c04, c06, c07 y c08 esperaban estados ['failed', 'cancelled'] correspondientes al bloqueo del servicio, omitiendo 'needs_input' que emite el validador sintáctico.",
+        "Los casos negativos c09 y c10 esperaban status 'failed' para valores fuera de rango, pero el sistema emitió 'needs_input' con código 'invalid_field' debido a la ausencia del sufijo de unidad."
+      ],
+      "blocked": [
+        "c01 (/llamada estado): bloqueado con code 'call_not_configured', status 'failed' y mensaje 'Las llamadas todavía no están configuradas en Botsky.'",
+        "c02 (/llamar): bloqueado con code 'call_not_configured', status 'failed' por ausencia de configuración del subsistema de llamadas.",
+        "c03 (/llamar --video): bloqueado con code 'call_not_configured', status 'failed'.",
+        "c05 (/llamar --tema Coordinacion): bloqueado con code 'call_not_configured', status 'failed'.",
+        "c11 (/llamada colgar): bloqueado con code 'call_not_configured', status 'failed'.",
+        "c12 (/llamada cancelar): bloqueado con code 'call_not_configured', status 'failed'."
+      ],
+      "coverage_gaps": [
+        "No se evaluó la sintaxis válida con sufijo de unidad en '--duracion' (ej. '--duracion 5s', '--duracion 10m', '--duracion 1h').",
+        "Límites numéricos válidos (5s mínimo y 3600s / 1h máximo) y fuera de rango con unidades (4s, 3601s) no fueron evaluados debido al error sintáctico previo.",
+        "Flujo operativo completo con proveedor configurado (establecimiento de llamada, alternancia de vídeo, consulta de llamada activa, colgado y cancelación real) permanece sin cobertura por falta de configuración de llamadas en el entorno."
+      ],
+      "recommendations": [
+        "Alinear la especificación de uso en ayuda y catálogo: cambiar la etiqueta '--duracion MAX_SECONDS' por '--duracion INTERVAL' o permitir enteros puros interpretados como segundos por defecto.",
+        "Actualizar los casos de prueba para el tipo 'duration' utilizando sufijos de unidad explícitos (ej. '30s', '10m', '1h') conforme a lo requerido por el validador.",
+        "Revisar si los fallos de validación en comandos no interactivos deben retornar status 'failed' en lugar de 'needs_input'."
+      ]
+    }
+  }
+}

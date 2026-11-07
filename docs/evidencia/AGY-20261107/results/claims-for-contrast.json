@@ -1,0 +1,376 @@
+[
+  {
+    "id": "download_media-01",
+    "tool": "download_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c08"
+      ],
+      "code": "source_search_unavailable",
+      "status": "failed",
+      "detail": "La búsqueda en SoundCloud reportó 'source_search_unavailable' a pesar de estar listada como opción admitida en el catálogo."
+    }
+  },
+  {
+    "id": "download_media-02",
+    "tool": "download_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c04"
+      ],
+      "code": "subtitles_failed",
+      "status": "failed",
+      "detail": "Fallo en la descarga de subtítulos SRT en español desde YouTube devolviendo código subtitles_failed."
+    }
+  },
+  {
+    "id": "convert_document-01",
+    "tool": "convert_document",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c07",
+      "effect": "La conversión de HTML a PDF no interpreta etiquetas ni renderiza el marcado, insertando el código fuente como texto plano visible en el documento de salida.",
+      "evidence": "Artifact c07 extracted_text: '<h1>Botsky Lab31415</h1><p>Contenido sintetico</p>' y mensaje de respuesta advirtiendo que el contenido se presenta como texto plano sin interpretar formato."
+    }
+  },
+  {
+    "id": "convert_document-02",
+    "tool": "convert_document",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c12",
+      "effect": "Especificar un formato destino inexistente o no permitido devuelve status 'needs_input' en lugar de un fallo definitivo 'failed'.",
+      "evidence": "Resultado c12: status 'needs_input', code 'invalid_field', solicitando interactividad en lugar de terminar en 'failed'."
+    }
+  },
+  {
+    "id": "edit_media-01",
+    "tool": "edit_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c01",
+        "c02"
+      ],
+      "command": "/editar mp4 --desde 0 --hasta 4 / /editar mp3 --desde 0 --hasta 5",
+      "observed": "status: failed, code: invalid_range",
+      "hypothesis": "El backend rechaza con 'invalid_range' cuando el parámetro --hasta excede la duración nativa del fixture (el video base tiene ~3.0s según evidencia de c04), en lugar de ajustar el recorte al final del archivo (EOF)."
+    }
+  },
+  {
+    "id": "edit_media-02",
+    "tool": "edit_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c06"
+      ],
+      "command": "/editar srt --idioma es",
+      "observed": "status: failed, code: unsupported_media",
+      "hypothesis": "El contenedor 'srt' figura en el catálogo de opciones válidas para la herramienta, pero el backend rechaza el fixture de subtítulo 'srt' como medio no soportado."
+    }
+  },
+  {
+    "id": "manage_pdf-01",
+    "tool": "manage_pdf",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c08",
+        "c09"
+      ],
+      "command": "/pdf extraer 1,2 y /pdf extraer 1-3",
+      "symptom": "Fallo con código document_pages y mensaje 'El PDF debe tener entre 1 y 500 páginas' al procesar many_pages_pdf",
+      "detail": "La operación de extracción falla tanto con lista separada por comas como con rango de guión en el fixture multipágina, lo que sugiere un defecto en la detección del conteo de páginas del fixture o un límite rígido no cumplido por el archivo."
+    }
+  },
+  {
+    "id": "manage_pdf-02",
+    "tool": "manage_pdf",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c12"
+      ],
+      "command": "/pdf iniciar con broken_pdf",
+      "symptom": "Retorna status 'ok' y código 'pdf_session_started'",
+      "detail": "El comando no realiza validación de integridad o estructura al momento de iniciar la sesión con un archivo dañado, aceptándolo como válido en lugar de rechazarlo."
+    }
+  },
+  {
+    "id": "make_sticker-01",
+    "tool": "make_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c04",
+      "command": "/sticker",
+      "observed": "status: failed, code: image_dimensions",
+      "detail": "La herramienta falló ante una imagen panorámica (wide_image) retornando el código image_dimensions en lugar de aplicar padding o escalado proporcional"
+    }
+  },
+  {
+    "id": "make_sticker-02",
+    "tool": "make_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c06",
+      "command": "/sticker",
+      "observed": "status: failed, code: unsupported_image",
+      "detail": "La herramienta rechazó un archivo animated_webp con unsupported_image, sin generar sticker animado ni extraer el fotograma inicial"
+    }
+  },
+  {
+    "id": "read_image-01",
+    "tool": "read_image",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c04",
+      "command": "/ocr",
+      "observed": "status: 'empty', code: 'image_empty', text: 'No encontré contenido extraíble.'",
+      "impact": "Imágenes de gran tamaño o alta resolución (large_image) no extraen el texto existente, posiblemente por submuestreo o fallo en el motor OCR."
+    }
+  },
+  {
+    "id": "read_image-02",
+    "tool": "read_image",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c05",
+      "command": "/ocr",
+      "observed": "status: 'failed', code: 'image_dimensions', text: 'No pude completar el archivo. Código: image_dimensions'",
+      "impact": "Imágenes panorámicas o con relación de aspecto extrema (wide_image) son rechazadas por validación de dimensiones."
+    }
+  },
+  {
+    "id": "transcribe_media-01",
+    "tool": "transcribe_media",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c07",
+      "command": "/transcribir",
+      "fixture": "large_audio",
+      "observed": "status 'failed' con código 'audio_too_large'",
+      "detail": "El backend no pudo completar el procesamiento del archivo 'large_audio' al exceder el límite de tamaño fijado por el proveedor o el pipeline de ASR."
+    }
+  },
+  {
+    "id": "make_voice-01",
+    "tool": "make_voice",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c08",
+      "command": "/voz crear --voz espanol --efecto radio --duracion 10 Comunicado especial para la comunidad",
+      "observation": "Fallo en backend con status 'failed' y código 'gemini_unavailable' al intentar componer el mensaje de voz."
+    }
+  },
+  {
+    "id": "make_voice-02",
+    "tool": "make_voice",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c07",
+        "c09"
+      ],
+      "observation": "Discrepancia en el parámetro `--duracion` de `/voz crear`: en c07 solicitando 5s el audio final dura 10.35s; en c09 solicitando 0.5s el audio final dura 4.80s."
+    }
+  },
+  {
+    "id": "conversation-01",
+    "tool": "conversation",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c07",
+      "command": "/ia Lee el código QR presente en la imagen",
+      "observed": "El modelo reportó que el QR contenía 'BOTSKY LAB 31415' en lugar de 'BOTSKY-LAB-27182'.",
+      "hypothesis": "El proveedor podría estar realizando OCR del texto de la imagen en vez de decodificar el payload binario del QR, o bien confundiendo el identificador sintético estándar."
+    }
+  },
+  {
+    "id": "search_web-01",
+    "tool": "search_web",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Comportamiento anómalo en la opción --terminos: consultas válidas y habituales con términos requeridos simples (c02: 'Python,docs', c03: 'rust', c04: 8 términos) retornan sistemáticamente status 'empty' (código web_empty) con el mensaje 'No encontré resultados que cumplan los términos y las fuentes solicitadas', sugiriendo un filtrado defectuoso o una construcción incompatible de la query hacia el proveedor de búsqueda."
+  },
+  {
+    "id": "find_notes-01",
+    "tool": "find_notes",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Retorno de status 'needs_input' con código 'note_page_out_of_range' en consultas con página superior a las páginas disponibles (c05, c06): al solicitar una página numéricamente válida según esquema (1–10000) pero mayor al conteo real de páginas resultantes (ej. página 2 en resultado de 1 página, o página 10000 sobre 3 páginas), el servicio devuelve status 'needs_input' en lugar de resolverlo como lista vacía ('empty') o error terminal."
+  },
+  {
+    "id": "manage_reminder-01",
+    "tool": "manage_reminder",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c08",
+      "command": "/recordatorio archivar 3",
+      "observed": "Retorna status 'needs_input' con code 'reminder_still_pending' y mensaje 'Cancela el recordatorio antes de archivarlo.'",
+      "hypothesis": "Restricción de máquina de estados no documentada en el catálogo: no se permite archivar un recordatorio en estado pendiente sin cancelarlo previamente."
+    }
+  },
+  {
+    "id": "manage_school-01",
+    "tool": "manage_school",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c11",
+      "command": "/tarea archivo 3",
+      "observation": "El comando respondió con estado 'ok' y código 'task_attachment' conteniendo un identificador de artefacto en data.artifacts, pero la lista de artefactos verificados retornada por el runner estuvo vacía ([])."
+    }
+  },
+  {
+    "id": "manage_poll-01",
+    "tool": "manage_poll",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c12",
+      "command": "/encuesta cerrar 1",
+      "observed": "Al invocar /encuesta cerrar sobre una encuesta previamente cerrada, el sistema devuelve status 'ok' y 'poll_results' sin emitir advertencia ni código de estado diferenciado (por ejemplo, 'poll_already_closed'). Puede tratarse de idempotencia intencional o de omisión de validación de precondición."
+    }
+  },
+  {
+    "id": "send_sticker-01",
+    "tool": "send_sticker",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "No se evidencian fallas internas no recuperables (crashes o 500) en el backend; el comportamiento ante entradas inválidas es consistente devolviendo status 'needs_input' en lugar de 'failed'."
+  },
+  {
+    "id": "manage_pack-01",
+    "tool": "manage_pack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "c04 (/pack catalogo --pagina 20): Retorna status 'needs_input' con código 'page_out_of_range' ('Página fuera de rango:1–1') para una página dentro del rango sintáctico permitido (1-20), en lugar de responder con status 'empty' o lista vacía de ítems."
+  },
+  {
+    "id": "manage_cooperacha-01",
+    "tool": "manage_cooperacha",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Estado inicial inconsistente: al crearse una cooperacha mediante /coop crear, el payload devuelto registra data.state = 'failed' de forma inmediata en lugar de un estado abierto/activo (observado en c01, c06 y c07)."
+  },
+  {
+    "id": "manage_cooperacha-02",
+    "tool": "manage_cooperacha",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Fallo en aportaciones consecutivas: las operaciones /coop aportar sobre cooperachas recién creadas son rechazadas con status 'failed' y código 'coop_not_open' ('El reto no está abierto para nuevos aportes'), derivado del estado inicial fallido (c04, c05)."
+  },
+  {
+    "id": "manage_happy_hour-01",
+    "tool": "manage_happy_hour",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c06",
+      "command": "/hh reclamar [ID]",
+      "status": "empty",
+      "code": "happy_drop_unavailable",
+      "observation": "Tras crearse el airdrop en c05, el intento de reclamación con el identificador del evento retornó 'happy_drop_unavailable'. Posible discrepancia de diseño entre el identificador del evento ('event_id') requerido por catálogo y el 'drop_id' retornado por la creación del airdrop."
+    }
+  },
+  {
+    "id": "manage_economy-01",
+    "tool": "manage_economy",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "case": "c12",
+      "command": "/saldo [fixture: image]",
+      "observation": "El backend procesó la consulta de saldo ignorando silenciosamente el archivo adjunto (fixture: 'image') retornando status 'ok' y 'xp_balance' en lugar de validar o rechazar la presencia de multimedia innecesaria."
+    }
+  },
+  {
+    "id": "manage_blackjack-01",
+    "tool": "manage_blackjack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "En c03 y c11, ejecutar comandos de juego o cancelación (/bj plantarse, /bj cancelar) sobre partidas ya en estado 'settled' retorna status 'ok' repitiendo el resultado anterior sin alertar que la partida ya había concluido."
+  },
+  {
+    "id": "manage_blackjack-02",
+    "tool": "manage_blackjack",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "En c08, el comando /bj entrar sobre una mesa creada por el mismo participante genera 'blackjack_already_active' con status 'failed', impidiendo operaciones de unión con una sola sesión activa."
+  },
+  {
+    "id": "manage_roulette-01",
+    "tool": "manage_roulette",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Inconsistencia en el orden o tipo de validación preliminar: comandos como /ruleta crear y /ruleta entrar fallan con 'operation_not_enabled', mientras que /ruleta estado y /ruleta cancelar reportan 'roulette_group_not_configured' bajo el mismo contexto de ejecución."
+  },
+  {
+    "id": "manage_roulette-02",
+    "tool": "manage_roulette",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "La validación de rango numérico (c06, c07) se evalúa antes de verificar si el chat o la operación están habilitados, exponiendo un flujo de control disímil frente a ejecuciones con argumentos válidos."
+  },
+  {
+    "id": "manage_minecraft-01",
+    "tool": "manage_minecraft",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": {
+      "cases": [
+        "c09",
+        "c10",
+        "c11"
+      ],
+      "commands": [
+        "/estado",
+        "/confirmar",
+        "/cancelar"
+      ],
+      "observation": "Los comandos auxiliares invocados sin argumentos devolvieron status 'needs_input' con code 'missing_field' en lugar de resolver el estado global, confirmar o cancelar según contexto.",
+      "suspected_root_cause": "El despachador de comandos auxiliares requiere campos obligatorios adicionales no documentados o espera un contexto/ID de sesión activo para operar sin parámetros."
+    }
+  },
+  {
+    "id": "make_prank-01",
+    "tool": "make_prank",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "c10: Silenciamiento o desatención de adjuntos corruptos. Al enviar un archivo 'broken_png', la herramienta devolvió status 'ok' y generó la broma ignorando por completo la carga corrupta, evidenciando que no procesa ni valida las imágenes recibidas a nivel de handler."
+  },
+  {
+    "id": "control_call-01",
+    "tool": "control_call",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Discrepancia entre la firma de ayuda y el parser: el uso indica '--duracion MAX_SECONDS' sugiriendo enteros en segundos, pero el parser rechaza enteros puros (como 600, 5, 3600) requiriendo obligatoriamente sufijos de unidad de tiempo (s, m, h, d)."
+  },
+  {
+    "id": "control_call-02",
+    "tool": "control_call",
+    "review_status": "UNREVIEWED_AGENT_CLAIM",
+    "classification": "NOT_ADJUDICATED",
+    "claim": "Los errores sintácticos de validación de campo ('invalid_field') retornan con status 'needs_input' en lugar de 'failed' al procesar comandos ejecutados por línea de comandos."
+  }
+]

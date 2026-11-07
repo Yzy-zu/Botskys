@@ -1,0 +1,239 @@
+{
+  "models": {
+    "send_sticker": "gemini-3.8-flash-medium",
+    "manage_memory": "gemini-3.8-flash-medium",
+    "save_note": "gemini-3.8-flash-medium",
+    "manage_school": "gemini-3.8-flash-medium",
+    "manage_conversation": "gemini-3.8-flash-medium",
+    "manage_drive": "gemini-3.8-flash-medium",
+    "manage_reminder": "gemini-3.8-flash-medium",
+    "find_notes": "gemini-3.8-flash-medium",
+    "manage_messages": "gemini-3.8-flash-medium",
+    "manage_poll": "gemini-3.8-flash-medium",
+    "manage_minecraft": "gemini-3.8-flash-medium",
+    "manage_pack": "gemini-3.8-flash-medium",
+    "manage_economy": "gemini-3.8-flash-medium",
+    "make_prank": "gemini-3.8-flash-medium",
+    "control_call": "gemini-3.8-flash-medium",
+    "manage_blackjack": "gemini-3.8-flash-medium",
+    "manage_admin": "gemini-3.8-flash-medium",
+    "manage_happy_hour": "gemini-3.8-flash-medium",
+    "manage_cooperacha": "gemini-3.8-flash-medium",
+    "manage_roulette": "gemini-3.8-flash-medium",
+    "transcribe_media": "gemini-3.8-flash-medium",
+    "edit_media": "gemini-3.8-flash-medium",
+    "conversation": "gemini-3.8-flash-medium",
+    "download_media": "gemini-3.8-flash-medium",
+    "make_sticker": "gemini-3.8-flash-medium",
+    "make_voice": "gemini-3.8-flash-medium",
+    "manage_pdf": "gemini-3.8-flash-medium",
+    "read_image": "gemini-3.8-flash-medium",
+    "search_web": "gemini-3.8-flash-medium",
+    "convert_document": "gemini-3.8-flash-medium"
+  },
+  "models_match": true,
+  "database_checks": [
+    {
+      "tool": "send_sticker",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_memory",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "save_note",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_school",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_conversation",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_drive",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_reminder",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "find_notes",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_messages",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_poll",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_minecraft",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_pack",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_economy",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "make_prank",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "control_call",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_blackjack",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_admin",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_happy_hour",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_cooperacha",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_roulette",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "transcribe_media",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "edit_media",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "conversation",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "download_media",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "make_sticker",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "make_voice",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "manage_pdf",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "read_image",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "search_web",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    },
+    {
+      "tool": "convert_document",
+      "integrity": "ok",
+      "foreign_key_errors": 0,
+      "running_jobs": 0
+    }
+  ],
+  "isolated_profiles_effects_disabled": true,
+  "sandbox_auth_removed": true,
+  "message_posts_by_level": {
+    "delivery_fixture": 32
+  },
+  "provider_message_posts": 0,
+  "verified_artifacts": 39,
+  "artifact_formats": {
+    "webp": 12,
+    "webm": 1,
+    "mp4": 2,
+    "mp3": 4,
+    "ogg": 8,
+    "pdf": 7,
+    "docx": 1,
+    "txt": 2,
+    "xlsx": 1,
+    "zip": 1
+  },
+  "confirmed_product_bugs": "NOT_ADJUDICATED",
+  "human_receipt": "NOT_TESTED",
+  "production_same_supervisors_and_health": true
+}

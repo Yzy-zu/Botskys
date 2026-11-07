@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "download_media",
+    "attempt": "execution",
+    "bytes": 19409,
+    "sha256": "36b98cfeed457d0a0297275039a611d35331a44a7489169b344d1b9469b525ba"
+  },
+  {
+    "tool": "convert_document",
+    "attempt": "execution",
+    "bytes": 22214,
+    "sha256": "064925fc620ad1362e6ddc60dc0cc4c5356abf6d98c56ac7ee356e54e7efb1a4"
+  },
+  {
+    "tool": "edit_media",
+    "attempt": "execution",
+    "bytes": 19910,
+    "sha256": "977d8b48316d203436264ba5a9c66660e34062bef5aa7f96bd54778fe1188860"
+  },
+  {
+    "tool": "manage_pdf",
+    "attempt": "execution",
+    "bytes": 17236,
+    "sha256": "99b5544bb761b5f8ea21f5d30a66e6fb5ccaccac3075b0bd9ad22924bf82e3fc"
+  },
+  {
+    "tool": "make_sticker",
+    "attempt": "execution",
+    "bytes": 15724,
+    "sha256": "940c1b1eba81ceec68db258bcf319931cca1595212fe0aff9dd4b0b896c0b72f"
+  },
+  {
+    "tool": "read_image",
+    "attempt": "execution",
+    "bytes": 15378,
+    "sha256": "ffa0e4107c5fea322fbc496dee9d6a353dabf184b889a141267f3c91f3bd04df"
+  },
+  {
+    "tool": "transcribe_media",
+    "attempt": "execution",
+    "bytes": 17017,
+    "sha256": "55c6d78d26ab042ce23038fd344a9bfbec366a237c90e68cb44ea686230e4413"
+  },
+  {
+    "tool": "make_voice",
+    "attempt": "execution",
+    "bytes": 24871,
+    "sha256": "93847e2671ad02b0e4aebdb6578b4bb1f09845f7f24d32d4ae0e0b01b230a7f4"
+  },
+  {
+    "tool": "conversation",
+    "attempt": "execution",
+    "bytes": 12071,
+    "sha256": "3fdb0d4b18cc4ddb27ea41f57db6598b644161d59013c669c31a0705a8bddeab"
+  },
+  {
+    "tool": "search_web",
+    "attempt": "execution",
+    "bytes": 28316,
+    "sha256": "e165d0cdeffd8b3c6879f86aca9cb4e2dcf39b7d51f7c02d221f21f19e2234cc"
+  },
+  {
+    "tool": "manage_conversation",
+    "attempt": "execution",
+    "bytes": 14320,
+    "sha256": "ee92a2d860a13d4ac763c329a60c1c08bad22c5170ed1bc7e97d4880c7971d88"
+  },
+  {
+    "tool": "save_note",
+    "attempt": "execution",
+    "bytes": 12917,
+    "sha256": "e26bd40043b08f5d5f2f424f461ad3b3f8c81ef82797541d4897338487930315"
+  },
+  {
+    "tool": "find_notes",
+    "attempt": "execution",
+    "bytes": 18818,
+    "sha256": "497dedd4f034b4790162c6395fb18caf7ffd17a6bf462df358f13f0df0424d7a"
+  },
+  {
+    "tool": "manage_memory",
+    "attempt": "execution",
+    "bytes": 17891,
+    "sha256": "ffffb508edac06119f097b0b05f038367d180a0fafe2d866f66ec85486c19967"
+  },
+  {
+    "tool": "manage_reminder",
+    "attempt": "execution",
+    "bytes": 22726,
+    "sha256": "3ab13dc2488cee9f629186cff0b12be29e80826222c6d076f93f1d94ec1cba08"
+  },
+  {
+    "tool": "manage_school",
+    "attempt": "execution",
+    "bytes": 24894,
+    "sha256": "58c494553c1ee2284cefc0f1ea09b0730b169e7b9a9d68cdd4f4ad10be5ff882"
+  },
+  {
+    "tool": "manage_poll",
+    "attempt": "execution",
+    "bytes": 18480,
+    "sha256": "9e5324daded392e4a099229b513bcd5c67f68efbe8e86d8278d0b9048e8a6369"
+  },
+  {
+    "tool": "manage_drive",
+    "attempt": "execution",
+    "bytes": 14510,
+    "sha256": "258653af0038cae60423c668b4f525f623d2665342ff1ed799bea0ff27b31253"
+  },
+  {
+    "tool": "manage_messages",
+    "attempt": "execution",
+    "bytes": 14378,
+    "sha256": "19a519d955548c0e1731e1791320a8468fccff32dba96faddc10048574973e7e"
+  },
+  {
+    "tool": "send_sticker",
+    "attempt": "execution",
+    "bytes": 14386,
+    "sha256": "440b4e9776f4da27ca477b4580f65dc07b0bb4538357e44d97c56b722af9f03f"
+  },
+  {
+    "tool": "manage_pack",
+    "attempt": "execution",
+    "bytes": 13524,
+    "sha256": "ce76c1334b89677eeed8291a8cc5362bba7902d17bb0e38353768b4d49ee7ec7"
+  },
+  {
+    "tool": "manage_cooperacha",
+    "attempt": "execution",
+    "bytes": 15644,
+    "sha256": "c49842a8ef182290fe454087ef5e6a673decc7052566c3e525e55fe6108ee8c8"
+  },
+  {
+    "tool": "manage_happy_hour",
+    "attempt": "execution",
+    "bytes": 15173,
+    "sha256": "a0343ffd15632cc642b17b4e85c9c400c7d6e9e8f198e35a978dd70d798cc9c4"
+  },
+  {
+    "tool": "manage_economy",
+    "attempt": "execution",
+    "bytes": 14080,
+    "sha256": "7be120f667b0b21b06b3d1b16e2664c54b63d3e2ebe3c8d27e67be813a30eed3"
+  },
+  {
+    "tool": "manage_blackjack",
+    "attempt": "execution",
+    "bytes": 18553,
+    "sha256": "ff5c1c7934bd9e3e554bd5e5a762c8bb9952f81f4518d4afe321a0f6ced3c411"
+  },
+  {
+    "tool": "manage_roulette",
+    "attempt": "execution",
+    "bytes": 11959,
+    "sha256": "46419877da1fd1b173fc8119ea7a53479a26ff0f9ab26252b8914da78a9f66e5"
+  },
+  {
+    "tool": "manage_admin",
+    "attempt": "execution",
+    "bytes": 16625,
+    "sha256": "7771f6d6f2436bc94133b35f8703797c623b00675db5557e44c7aaa4fc397532"
+  },
+  {
+    "tool": "manage_minecraft",
+    "attempt": "execution",
+    "bytes": 51223,
+    "sha256": "1f01e2221fafdbbca8b06185dd4801399e87984ba3e646bbc1762eb7ab57cc6b"
+  },
+  {
+    "tool": "make_prank",
+    "attempt": "execution",
+    "bytes": 13532,
+    "sha256": "298c579b2c906d218b9bd0553c36a79b72deec2d58579e58dcd9a59027b11c66"
+  },
+  {
+    "tool": "control_call",
+    "attempt": "execution",
+    "bytes": 14412,
+    "sha256": "2fb82655503edba1896392770bb774d0fbaab0b1123bb42cdc5beecc3414951f"
+  }
+]

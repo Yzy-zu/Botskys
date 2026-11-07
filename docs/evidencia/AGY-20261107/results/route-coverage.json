@@ -1,0 +1,2759 @@
+[
+  {
+    "route": "/ayuda",
+    "family": "core",
+    "operation": "core.help",
+    "parsed_cases": [
+      "manage_drive:c13:execution",
+      "send_sticker:c11:execution",
+      "manage_economy:c06:execution",
+      "manage_economy:c07:execution",
+      "manage_economy:c08:execution",
+      "manage_minecraft:c07:execution",
+      "manage_minecraft:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_drive:c13:execution",
+      "send_sticker:c11:execution",
+      "manage_economy:c06:execution",
+      "manage_economy:c07:execution",
+      "manage_economy:c08:execution",
+      "manage_minecraft:c07:execution",
+      "manage_minecraft:c08:execution"
+    ],
+    "effective_fields": [
+      "topic"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/estado",
+    "family": "core",
+    "operation": "core.estado",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/cancelar",
+    "family": "core",
+    "operation": "core.cancelar",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/confirmar",
+    "family": "core",
+    "operation": "core.confirmar",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/bot estado",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.status",
+    "parsed_cases": [
+      "manage_conversation:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_conversation:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bot modo",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.mode",
+    "parsed_cases": [
+      "manage_conversation:c02:execution",
+      "manage_conversation:c03:execution",
+      "manage_conversation:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_conversation:c02:execution",
+      "manage_conversation:c03:execution",
+      "manage_conversation:c04:execution"
+    ],
+    "effective_fields": [
+      "mode"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bot pausa",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.pause",
+    "parsed_cases": [
+      "manage_conversation:c07:execution",
+      "manage_conversation:c08:execution",
+      "manage_conversation:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_conversation:c07:execution",
+      "manage_conversation:c08:execution",
+      "manage_conversation:c09:execution"
+    ],
+    "effective_fields": [
+      "minutes"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bot reanudar",
+    "family": "manage_conversation",
+    "operation": "manage_conversation.resume",
+    "parsed_cases": [
+      "manage_conversation:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_conversation:c12:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/reaccion",
+    "family": "send_sticker",
+    "operation": "send_sticker.run",
+    "parsed_cases": [
+      "send_sticker:c01:execution",
+      "send_sticker:c02:execution",
+      "send_sticker:c03:execution",
+      "send_sticker:c04:execution",
+      "send_sticker:c05:execution",
+      "send_sticker:c08:execution"
+    ],
+    "observed_cases": [
+      "send_sticker:c01:execution",
+      "send_sticker:c02:execution",
+      "send_sticker:c03:execution",
+      "send_sticker:c04:execution",
+      "send_sticker:c05:execution",
+      "send_sticker:c08:execution"
+    ],
+    "effective_fields": [
+      "sticker_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/sticker",
+    "family": "make_sticker",
+    "operation": "make_sticker.run",
+    "parsed_cases": [
+      "make_sticker:c01:execution",
+      "make_sticker:c02:execution",
+      "make_sticker:c03:execution",
+      "make_sticker:c04:execution",
+      "make_sticker:c05:execution",
+      "make_sticker:c06:execution",
+      "make_sticker:c07:execution",
+      "make_sticker:c08:execution",
+      "make_sticker:c09:execution",
+      "make_sticker:c10:execution",
+      "make_sticker:c11:execution"
+    ],
+    "observed_cases": [
+      "make_sticker:c01:execution",
+      "make_sticker:c02:execution",
+      "make_sticker:c03:execution",
+      "make_sticker:c04:execution",
+      "make_sticker:c05:execution",
+      "make_sticker:c06:execution",
+      "make_sticker:c07:execution",
+      "make_sticker:c08:execution",
+      "make_sticker:c09:execution",
+      "make_sticker:c10:execution",
+      "make_sticker:c11:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ia",
+    "family": "conversation",
+    "operation": "conversation.respond",
+    "parsed_cases": [
+      "conversation:c01:execution",
+      "conversation:c03:execution",
+      "conversation:c04:execution",
+      "conversation:c05:execution",
+      "conversation:c06:execution",
+      "conversation:c07:execution",
+      "conversation:c09:execution",
+      "conversation:c10:execution"
+    ],
+    "observed_cases": [
+      "conversation:c01:execution",
+      "conversation:c03:execution",
+      "conversation:c04:execution",
+      "conversation:c05:execution",
+      "conversation:c06:execution",
+      "conversation:c07:execution",
+      "conversation:c09:execution",
+      "conversation:c10:execution"
+    ],
+    "effective_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/nota guardar",
+    "family": "save_note",
+    "operation": "save_note.run",
+    "parsed_cases": [
+      "save_note:c01:execution",
+      "save_note:c02:execution",
+      "save_note:c03:execution",
+      "save_note:c04:execution",
+      "save_note:c05:execution",
+      "save_note:c06:execution",
+      "save_note:c07:execution"
+    ],
+    "observed_cases": [
+      "save_note:c01:execution",
+      "save_note:c02:execution",
+      "save_note:c03:execution",
+      "save_note:c04:execution",
+      "save_note:c05:execution",
+      "save_note:c06:execution",
+      "save_note:c07:execution"
+    ],
+    "effective_fields": [
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/notas",
+    "family": "find_notes",
+    "operation": "find_notes.run",
+    "parsed_cases": [
+      "find_notes:c01:execution",
+      "find_notes:c02:execution",
+      "find_notes:c03:execution",
+      "find_notes:c04:execution",
+      "find_notes:c05:execution",
+      "find_notes:c06:execution",
+      "find_notes:c10:execution",
+      "find_notes:c12:execution"
+    ],
+    "observed_cases": [
+      "find_notes:c01:execution",
+      "find_notes:c02:execution",
+      "find_notes:c03:execution",
+      "find_notes:c04:execution",
+      "find_notes:c05:execution",
+      "find_notes:c06:execution",
+      "find_notes:c10:execution",
+      "find_notes:c12:execution"
+    ],
+    "effective_fields": [
+      "page",
+      "query"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ocr",
+    "family": "read_image",
+    "operation": "read_image.run",
+    "parsed_cases": [
+      "read_image:c01:execution",
+      "read_image:c02:execution",
+      "read_image:c03:execution",
+      "read_image:c04:execution",
+      "read_image:c05:execution",
+      "read_image:c06:execution",
+      "read_image:c07:execution",
+      "read_image:c09:execution",
+      "read_image:c10:execution"
+    ],
+    "observed_cases": [
+      "read_image:c01:execution",
+      "read_image:c02:execution",
+      "read_image:c03:execution",
+      "read_image:c04:execution",
+      "read_image:c05:execution",
+      "read_image:c06:execution",
+      "read_image:c07:execution",
+      "read_image:c09:execution",
+      "read_image:c10:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/qr",
+    "family": "read_image",
+    "operation": "read_image.run",
+    "parsed_cases": [
+      "read_image:c11:execution",
+      "read_image:c12:execution",
+      "read_image:c13:execution",
+      "read_image:c14:execution"
+    ],
+    "observed_cases": [
+      "read_image:c11:execution",
+      "read_image:c12:execution",
+      "read_image:c13:execution",
+      "read_image:c14:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/transcribir",
+    "family": "transcribe_media",
+    "operation": "transcribe_media.run",
+    "parsed_cases": [
+      "transcribe_media:c01:execution",
+      "transcribe_media:c02:execution",
+      "transcribe_media:c03:execution",
+      "transcribe_media:c04:execution",
+      "transcribe_media:c05:execution",
+      "transcribe_media:c06:execution",
+      "transcribe_media:c07:execution",
+      "transcribe_media:c08:execution",
+      "transcribe_media:c09:execution",
+      "transcribe_media:c11:execution",
+      "transcribe_media:c12:execution",
+      "transcribe_media:c13:execution"
+    ],
+    "observed_cases": [
+      "transcribe_media:c01:execution",
+      "transcribe_media:c02:execution",
+      "transcribe_media:c03:execution",
+      "transcribe_media:c04:execution",
+      "transcribe_media:c05:execution",
+      "transcribe_media:c06:execution",
+      "transcribe_media:c07:execution",
+      "transcribe_media:c08:execution",
+      "transcribe_media:c09:execution",
+      "transcribe_media:c11:execution",
+      "transcribe_media:c12:execution",
+      "transcribe_media:c13:execution"
+    ],
+    "effective_fields": [
+      "output_mode"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl mp3",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download_media:c02:execution"
+    ],
+    "observed_cases": [
+      "download_media:c02:execution"
+    ],
+    "effective_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl mp4",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download_media:c01:execution"
+    ],
+    "observed_cases": [
+      "download_media:c01:execution"
+    ],
+    "effective_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl webm",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download_media:c03:execution"
+    ],
+    "observed_cases": [
+      "download_media:c03:execution"
+    ],
+    "effective_fields": [
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl srt",
+    "family": "download_media",
+    "operation": "download_media.url",
+    "parsed_cases": [
+      "download_media:c04:execution"
+    ],
+    "observed_cases": [
+      "download_media:c04:execution"
+    ],
+    "effective_fields": [
+      "subtitle_language",
+      "url"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl buscar",
+    "family": "download_media",
+    "operation": "download_media.search",
+    "parsed_cases": [
+      "download_media:c05:execution",
+      "download_media:c08:execution"
+    ],
+    "observed_cases": [
+      "download_media:c05:execution",
+      "download_media:c08:execution"
+    ],
+    "effective_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "query",
+      "source",
+      "start_seconds"
+    ],
+    "unobserved_fields": [
+      "subtitle_language"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl elegir",
+    "family": "download_media",
+    "operation": "download_media.choose",
+    "parsed_cases": [
+      "download_media:c06:execution"
+    ],
+    "observed_cases": [
+      "download_media:c06:execution"
+    ],
+    "effective_fields": [
+      "choice",
+      "view_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/dl anterior",
+    "family": "download_media",
+    "operation": "download_media.previous",
+    "parsed_cases": [
+      "download_media:c07:execution"
+    ],
+    "observed_cases": [
+      "download_media:c07:execution"
+    ],
+    "effective_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds"
+    ],
+    "unobserved_fields": [
+      "subtitle_language"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/editar",
+    "family": "edit_media",
+    "operation": "edit_media.run",
+    "parsed_cases": [
+      "edit_media:c01:execution",
+      "edit_media:c02:execution",
+      "edit_media:c03:execution",
+      "edit_media:c04:execution",
+      "edit_media:c05:execution",
+      "edit_media:c06:execution",
+      "edit_media:c07:execution",
+      "edit_media:c08:execution",
+      "edit_media:c09:execution",
+      "edit_media:c13:execution",
+      "edit_media:c14:execution"
+    ],
+    "observed_cases": [
+      "edit_media:c01:execution",
+      "edit_media:c02:execution",
+      "edit_media:c03:execution",
+      "edit_media:c04:execution",
+      "edit_media:c05:execution",
+      "edit_media:c06:execution",
+      "edit_media:c07:execution",
+      "edit_media:c08:execution",
+      "edit_media:c09:execution",
+      "edit_media:c13:execution",
+      "edit_media:c14:execution"
+    ],
+    "effective_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/voz",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [
+      "make_voice:c02:execution",
+      "make_voice:c03:execution",
+      "make_voice:c04:execution",
+      "make_voice:c05:execution",
+      "make_voice:c06:execution"
+    ],
+    "observed_cases": [
+      "make_voice:c02:execution",
+      "make_voice:c03:execution",
+      "make_voice:c04:execution",
+      "make_voice:c05:execution",
+      "make_voice:c06:execution"
+    ],
+    "effective_fields": [
+      "effect",
+      "text",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/voz crear",
+    "family": "make_voice",
+    "operation": "make_voice.compose",
+    "parsed_cases": [
+      "make_voice:c07:execution",
+      "make_voice:c08:execution",
+      "make_voice:c09:execution"
+    ],
+    "observed_cases": [
+      "make_voice:c07:execution",
+      "make_voice:c08:execution",
+      "make_voice:c09:execution"
+    ],
+    "effective_fields": [
+      "effect",
+      "requested_seconds",
+      "text",
+      "voice"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/voz cita",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [
+      "make_voice:c10:execution"
+    ],
+    "observed_cases": [
+      "make_voice:c10:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "effect",
+      "voice"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/voz ultima",
+    "family": "make_voice",
+    "operation": "make_voice.verbatim",
+    "parsed_cases": [
+      "make_voice:c11:execution"
+    ],
+    "observed_cases": [
+      "make_voice:c11:execution"
+    ],
+    "effective_fields": [
+      "effect"
+    ],
+    "unobserved_fields": [
+      "voice"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/voces",
+    "family": "make_voice",
+    "operation": "make_voice.catalog",
+    "parsed_cases": [
+      "make_voice:c01:execution"
+    ],
+    "observed_cases": [
+      "make_voice:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/llamar",
+    "family": "control_call",
+    "operation": "control_call.start",
+    "parsed_cases": [
+      "control_call:c02:execution",
+      "control_call:c03:execution",
+      "control_call:c05:execution"
+    ],
+    "observed_cases": [
+      "control_call:c02:execution",
+      "control_call:c03:execution",
+      "control_call:c05:execution"
+    ],
+    "effective_fields": [
+      "topic",
+      "video"
+    ],
+    "unobserved_fields": [
+      "max_seconds"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/llamada estado",
+    "family": "control_call",
+    "operation": "control_call.status",
+    "parsed_cases": [
+      "control_call:c01:execution"
+    ],
+    "observed_cases": [
+      "control_call:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/llamada colgar",
+    "family": "control_call",
+    "operation": "control_call.hangup",
+    "parsed_cases": [
+      "control_call:c11:execution"
+    ],
+    "observed_cases": [
+      "control_call:c11:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/llamada cancelar",
+    "family": "control_call",
+    "operation": "control_call.cancel",
+    "parsed_cases": [
+      "control_call:c12:execution"
+    ],
+    "observed_cases": [
+      "control_call:c12:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf iniciar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.start",
+    "parsed_cases": [
+      "manage_pdf:c01:execution",
+      "manage_pdf:c05:execution",
+      "manage_pdf:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_pdf:c01:execution",
+      "manage_pdf:c05:execution",
+      "manage_pdf:c12:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf agregar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.add",
+    "parsed_cases": [
+      "manage_pdf:c02:execution",
+      "manage_pdf:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_pdf:c02:execution",
+      "manage_pdf:c03:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf terminar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.finish",
+    "parsed_cases": [
+      "manage_pdf:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_pdf:c04:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf cancelar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.cancel",
+    "parsed_cases": [
+      "manage_pdf:c06:execution"
+    ],
+    "observed_cases": [
+      "manage_pdf:c06:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf extraer",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.extract",
+    "parsed_cases": [
+      "manage_pdf:c07:execution",
+      "manage_pdf:c08:execution",
+      "manage_pdf:c09:execution",
+      "manage_pdf:c13:execution"
+    ],
+    "observed_cases": [
+      "manage_pdf:c07:execution",
+      "manage_pdf:c08:execution",
+      "manage_pdf:c09:execution",
+      "manage_pdf:c13:execution"
+    ],
+    "effective_fields": [
+      "pages"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pdf reintentar",
+    "family": "manage_pdf",
+    "operation": "manage_pdf.retry",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/convertir",
+    "family": "convert_document",
+    "operation": "convert_document.run",
+    "parsed_cases": [
+      "convert_document:c01:execution",
+      "convert_document:c02:execution",
+      "convert_document:c03:execution",
+      "convert_document:c04:execution",
+      "convert_document:c05:execution",
+      "convert_document:c06:execution",
+      "convert_document:c07:execution",
+      "convert_document:c08:execution",
+      "convert_document:c09:execution",
+      "convert_document:c10:execution",
+      "convert_document:c11:execution",
+      "convert_document:c13:execution",
+      "convert_document:c14:execution",
+      "convert_document:c15:execution"
+    ],
+    "observed_cases": [
+      "convert_document:c01:execution",
+      "convert_document:c02:execution",
+      "convert_document:c03:execution",
+      "convert_document:c04:execution",
+      "convert_document:c05:execution",
+      "convert_document:c06:execution",
+      "convert_document:c07:execution",
+      "convert_document:c08:execution",
+      "convert_document:c09:execution",
+      "convert_document:c10:execution",
+      "convert_document:c11:execution",
+      "convert_document:c13:execution",
+      "convert_document:c14:execution",
+      "convert_document:c15:execution"
+    ],
+    "effective_fields": [
+      "target"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/tarea crear",
+    "family": "manage_school",
+    "operation": "manage_school.add_task",
+    "parsed_cases": [
+      "manage_school:c08:execution",
+      "manage_school:c09:execution",
+      "manage_school:c10:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c08:execution",
+      "manage_school:c09:execution",
+      "manage_school:c10:execution"
+    ],
+    "effective_fields": [
+      "attach",
+      "due_date",
+      "due_time",
+      "subject",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/tareas",
+    "family": "manage_school",
+    "operation": "manage_school.list_tasks",
+    "parsed_cases": [
+      "manage_school:c12:execution",
+      "manage_school:c14:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c12:execution",
+      "manage_school:c14:execution"
+    ],
+    "effective_fields": [
+      "include_closed",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/tarea completar",
+    "family": "manage_school",
+    "operation": "manage_school.complete_task",
+    "parsed_cases": [
+      "manage_school:c13:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c13:execution"
+    ],
+    "effective_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/tarea borrar",
+    "family": "manage_school",
+    "operation": "manage_school.delete_task",
+    "parsed_cases": [
+      "manage_school:c15:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c15:execution"
+    ],
+    "effective_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/tarea archivo",
+    "family": "manage_school",
+    "operation": "manage_school.get_attachment",
+    "parsed_cases": [
+      "manage_school:c11:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c11:execution"
+    ],
+    "effective_fields": [
+      "task_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/horario agregar",
+    "family": "manage_school",
+    "operation": "manage_school.set_lesson",
+    "parsed_cases": [
+      "manage_school:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c04:execution"
+    ],
+    "effective_fields": [
+      "end_time",
+      "start_time",
+      "subject",
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/horario listar",
+    "family": "manage_school",
+    "operation": "manage_school.list_schedule",
+    "parsed_cases": [
+      "manage_school:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c05:execution"
+    ],
+    "effective_fields": [
+      "weekday"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/horario borrar",
+    "family": "manage_school",
+    "operation": "manage_school.delete_lesson",
+    "parsed_cases": [
+      "manage_school:c06:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c06:execution"
+    ],
+    "effective_fields": [
+      "lesson_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/escuela resumen configurar",
+    "family": "manage_school",
+    "operation": "manage_school.configure_digest",
+    "parsed_cases": [
+      "manage_school:c02:execution",
+      "manage_school:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c02:execution",
+      "manage_school:c03:execution"
+    ],
+    "effective_fields": [
+      "digest_time",
+      "enabled"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/escuela resumen estado",
+    "family": "manage_school",
+    "operation": "manage_school.status_digest",
+    "parsed_cases": [
+      "manage_school:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_school:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/encuesta crear",
+    "family": "manage_poll",
+    "operation": "manage_poll.create",
+    "parsed_cases": [
+      "manage_poll:c01:execution",
+      "manage_poll:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_poll:c01:execution",
+      "manage_poll:c05:execution"
+    ],
+    "effective_fields": [
+      "options",
+      "question"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/encuesta votar",
+    "family": "manage_poll",
+    "operation": "manage_poll.vote",
+    "parsed_cases": [
+      "manage_poll:c02:execution",
+      "manage_poll:c04:execution",
+      "manage_poll:c06:execution",
+      "manage_poll:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_poll:c02:execution",
+      "manage_poll:c04:execution",
+      "manage_poll:c06:execution",
+      "manage_poll:c09:execution"
+    ],
+    "effective_fields": [
+      "choice",
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/encuesta resultados",
+    "family": "manage_poll",
+    "operation": "manage_poll.results",
+    "parsed_cases": [
+      "manage_poll:c03:execution",
+      "manage_poll:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_poll:c03:execution",
+      "manage_poll:c08:execution"
+    ],
+    "effective_fields": [
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/encuesta cerrar",
+    "family": "manage_poll",
+    "operation": "manage_poll.close",
+    "parsed_cases": [
+      "manage_poll:c07:execution",
+      "manage_poll:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_poll:c07:execution",
+      "manage_poll:c12:execution"
+    ],
+    "effective_fields": [
+      "poll_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recado preparar",
+    "family": "manage_messages",
+    "operation": "manage_messages.prepare",
+    "parsed_cases": [
+      "manage_messages:c02:execution",
+      "manage_messages:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_messages:c02:execution",
+      "manage_messages:c07:execution"
+    ],
+    "effective_fields": [
+      "attach",
+      "recipients",
+      "text"
+    ],
+    "unobserved_fields": [
+      "source"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recado estado",
+    "family": "manage_messages",
+    "operation": "manage_messages.status",
+    "parsed_cases": [
+      "manage_messages:c11:execution"
+    ],
+    "observed_cases": [
+      "manage_messages:c11:execution"
+    ],
+    "effective_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recado enviar",
+    "family": "manage_messages",
+    "operation": "manage_messages.send",
+    "parsed_cases": [
+      "manage_messages:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_messages:c12:execution"
+    ],
+    "effective_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recado cancelar",
+    "family": "manage_messages",
+    "operation": "manage_messages.cancel",
+    "parsed_cases": [
+      "manage_messages:c13:execution"
+    ],
+    "observed_cases": [
+      "manage_messages:c13:execution"
+    ],
+    "effective_fields": [
+      "draft_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/contactos",
+    "family": "manage_messages",
+    "operation": "manage_messages.contacts",
+    "parsed_cases": [
+      "manage_messages:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_messages:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pack catalogo",
+    "family": "manage_pack",
+    "operation": "manage_pack.catalog",
+    "parsed_cases": [
+      "manage_pack:c01:execution",
+      "manage_pack:c02:execution",
+      "manage_pack:c03:execution",
+      "manage_pack:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_pack:c01:execution",
+      "manage_pack:c02:execution",
+      "manage_pack:c03:execution",
+      "manage_pack:c04:execution"
+    ],
+    "effective_fields": [
+      "category",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pack comprar",
+    "family": "manage_pack",
+    "operation": "manage_pack.buy",
+    "parsed_cases": [
+      "manage_pack:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_pack:c07:execution"
+    ],
+    "effective_fields": [
+      "category"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/pack confirmar",
+    "family": "manage_pack",
+    "operation": "manage_pack.buy",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "purchase_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/pack estado",
+    "family": "manage_pack",
+    "operation": "manage_pack.status",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "purchase_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/coop crear",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.start",
+    "parsed_cases": [
+      "manage_cooperacha:c01:execution",
+      "manage_cooperacha:c06:execution",
+      "manage_cooperacha:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_cooperacha:c01:execution",
+      "manage_cooperacha:c06:execution",
+      "manage_cooperacha:c07:execution"
+    ],
+    "effective_fields": [
+      "category",
+      "target_xp"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/coop aportar",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.contribute",
+    "parsed_cases": [
+      "manage_cooperacha:c04:execution",
+      "manage_cooperacha:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_cooperacha:c04:execution",
+      "manage_cooperacha:c05:execution"
+    ],
+    "effective_fields": [
+      "amount",
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/coop estado",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.status",
+    "parsed_cases": [
+      "manage_cooperacha:c02:execution",
+      "manage_cooperacha:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_cooperacha:c02:execution",
+      "manage_cooperacha:c03:execution"
+    ],
+    "effective_fields": [
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/coop cancelar",
+    "family": "manage_cooperacha",
+    "operation": "manage_cooperacha.cancel",
+    "parsed_cases": [
+      "manage_cooperacha:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_cooperacha:c08:execution"
+    ],
+    "effective_fields": [
+      "challenge_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh iniciar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.start",
+    "parsed_cases": [
+      "manage_happy_hour:c02:execution",
+      "manage_happy_hour:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c02:execution",
+      "manage_happy_hour:c08:execution"
+    ],
+    "effective_fields": [
+      "duration_seconds"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh parar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.stop",
+    "parsed_cases": [
+      "manage_happy_hour:c07:execution",
+      "manage_happy_hour:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c07:execution",
+      "manage_happy_hour:c09:execution"
+    ],
+    "effective_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh estado",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.status",
+    "parsed_cases": [
+      "manage_happy_hour:c01:execution",
+      "manage_happy_hour:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c01:execution",
+      "manage_happy_hour:c03:execution"
+    ],
+    "effective_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh lluvia",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.rain",
+    "parsed_cases": [
+      "manage_happy_hour:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c04:execution"
+    ],
+    "effective_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh airdrop",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.airdrop",
+    "parsed_cases": [
+      "manage_happy_hour:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c05:execution"
+    ],
+    "effective_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/hh reclamar",
+    "family": "manage_happy_hour",
+    "operation": "manage_happy_hour.claim",
+    "parsed_cases": [
+      "manage_happy_hour:c06:execution"
+    ],
+    "observed_cases": [
+      "manage_happy_hour:c06:execution"
+    ],
+    "effective_fields": [
+      "event_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mem guardar",
+    "family": "manage_memory",
+    "operation": "manage_memory.remember",
+    "parsed_cases": [
+      "manage_memory:c01:execution",
+      "manage_memory:c02:execution"
+    ],
+    "observed_cases": [
+      "manage_memory:c01:execution",
+      "manage_memory:c02:execution"
+    ],
+    "effective_fields": [
+      "kind",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mem listar",
+    "family": "manage_memory",
+    "operation": "manage_memory.list",
+    "parsed_cases": [
+      "manage_memory:c03:execution",
+      "manage_memory:c04:execution",
+      "manage_memory:c05:execution",
+      "manage_memory:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_memory:c03:execution",
+      "manage_memory:c04:execution",
+      "manage_memory:c05:execution",
+      "manage_memory:c12:execution"
+    ],
+    "effective_fields": [
+      "kind",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mem corregir",
+    "family": "manage_memory",
+    "operation": "manage_memory.correct",
+    "parsed_cases": [
+      "manage_memory:c06:execution"
+    ],
+    "observed_cases": [
+      "manage_memory:c06:execution"
+    ],
+    "effective_fields": [
+      "memory_id",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mem olvidar",
+    "family": "manage_memory",
+    "operation": "manage_memory.forget",
+    "parsed_cases": [
+      "manage_memory:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_memory:c07:execution"
+    ],
+    "effective_fields": [
+      "memory_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mem borrar-todo",
+    "family": "manage_memory",
+    "operation": "manage_memory.forget_all",
+    "parsed_cases": [
+      "manage_memory:c11:execution"
+    ],
+    "observed_cases": [
+      "manage_memory:c11:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc estado",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.status",
+    "parsed_cases": [
+      "manage_minecraft:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc jugadores",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.players",
+    "parsed_cases": [
+      "manage_minecraft:c02:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c02:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc mundos",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.worlds",
+    "parsed_cases": [
+      "manage_minecraft:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c03:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc mods",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.mods",
+    "parsed_cases": [
+      "manage_minecraft:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c04:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc config",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.config",
+    "parsed_cases": [
+      "manage_minecraft:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c05:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc diagnostico",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.discover",
+    "parsed_cases": [
+      "manage_minecraft:c06:execution"
+    ],
+    "observed_cases": [
+      "manage_minecraft:c06:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/mc iniciar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.start",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc parar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.stop",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc reiniciar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.restart",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc backup",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.backup",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc recuperar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.recover",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc mod activar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.enable_mod",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc mod desactivar",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.disable_mod",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/mc consola",
+    "family": "manage_minecraft",
+    "operation": "manage_minecraft.console",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "command"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin advertir",
+    "family": "manage_admin",
+    "operation": "manage_admin.warn",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin quitar-aviso",
+    "family": "manage_admin",
+    "operation": "manage_admin.unwarn",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target",
+      "warning_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin avisos",
+    "family": "manage_admin",
+    "operation": "manage_admin.warnings",
+    "parsed_cases": [
+      "manage_admin:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_admin:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/admin expulsar",
+    "family": "manage_admin",
+    "operation": "manage_admin.kick",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin ban",
+    "family": "manage_admin",
+    "operation": "manage_admin.ban",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin unban",
+    "family": "manage_admin",
+    "operation": "manage_admin.unban",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin promover",
+    "family": "manage_admin",
+    "operation": "manage_admin.promote",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin degradar",
+    "family": "manage_admin",
+    "operation": "manage_admin.demote",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin silenciar",
+    "family": "manage_admin",
+    "operation": "manage_admin.mute",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin desilenciar",
+    "family": "manage_admin",
+    "operation": "manage_admin.unmute",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin cerrar",
+    "family": "manage_admin",
+    "operation": "manage_admin.lock",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin abrir",
+    "family": "manage_admin",
+    "operation": "manage_admin.unlock",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin xp-dar",
+    "family": "manage_admin",
+    "operation": "manage_admin.xp_grant",
+    "parsed_cases": [
+      "manage_admin:c02:execution",
+      "manage_admin:c03:execution",
+      "manage_admin:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_admin:c02:execution",
+      "manage_admin:c03:execution",
+      "manage_admin:c04:execution"
+    ],
+    "effective_fields": [
+      "account_id",
+      "amount"
+    ],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/admin xp-quitar",
+    "family": "manage_admin",
+    "operation": "manage_admin.xp_remove",
+    "parsed_cases": [
+      "manage_admin:c08:execution",
+      "manage_admin:c09:execution",
+      "manage_admin:c10:execution"
+    ],
+    "observed_cases": [
+      "manage_admin:c08:execution",
+      "manage_admin:c09:execution",
+      "manage_admin:c10:execution"
+    ],
+    "effective_fields": [
+      "account_id",
+      "amount"
+    ],
+    "unobserved_fields": [
+      "target"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/admin nuclear-preparar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_prepare",
+    "parsed_cases": [
+      "manage_admin:c13:execution"
+    ],
+    "observed_cases": [
+      "manage_admin:c13:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/admin nuclear-confirmar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_confirm",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/admin nuclear-cancelar",
+    "family": "manage_admin",
+    "operation": "manage_admin.nuclear_cancel",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "draft_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/bj iniciar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.start",
+    "parsed_cases": [
+      "manage_blackjack:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "bet"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj mesa",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.table",
+    "parsed_cases": [
+      "manage_blackjack:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c07:execution"
+    ],
+    "effective_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj entrar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.join",
+    "parsed_cases": [
+      "manage_blackjack:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c08:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj repartir",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.deal",
+    "parsed_cases": [
+      "manage_blackjack:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c09:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj pedir",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.hit",
+    "parsed_cases": [
+      "manage_blackjack:c02:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c02:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj plantarse",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.stand",
+    "parsed_cases": [
+      "manage_blackjack:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c03:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj doblar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.double",
+    "parsed_cases": [
+      "manage_blackjack:c10:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c10:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj estado",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.status",
+    "parsed_cases": [
+      "manage_blackjack:c04:execution",
+      "manage_blackjack:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c04:execution",
+      "manage_blackjack:c12:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/bj cancelar",
+    "family": "manage_blackjack",
+    "operation": "manage_blackjack.cancel",
+    "parsed_cases": [
+      "manage_blackjack:c11:execution"
+    ],
+    "observed_cases": [
+      "manage_blackjack:c11:execution"
+    ],
+    "effective_fields": [
+      "game_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ruleta crear",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.create",
+    "parsed_cases": [
+      "manage_roulette:c01:execution",
+      "manage_roulette:c04:execution",
+      "manage_roulette:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_roulette:c01:execution",
+      "manage_roulette:c04:execution",
+      "manage_roulette:c05:execution"
+    ],
+    "effective_fields": [
+      "bet"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ruleta entrar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.join",
+    "parsed_cases": [
+      "manage_roulette:c11:execution"
+    ],
+    "observed_cases": [
+      "manage_roulette:c11:execution"
+    ],
+    "effective_fields": [
+      "room_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ruleta jugar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.play",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/ruleta estado",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.status",
+    "parsed_cases": [
+      "manage_roulette:c02:execution"
+    ],
+    "observed_cases": [
+      "manage_roulette:c02:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "room_id"
+    ],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "family": "manage_roulette",
+    "operation": "manage_roulette.cancel",
+    "parsed_cases": [
+      "manage_roulette:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_roulette:c12:execution"
+    ],
+    "effective_fields": [
+      "room_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/broma",
+    "family": "make_prank",
+    "operation": "make_prank.run",
+    "parsed_cases": [
+      "make_prank:c01:execution",
+      "make_prank:c02:execution",
+      "make_prank:c03:execution",
+      "make_prank:c04:execution",
+      "make_prank:c06:execution",
+      "make_prank:c07:execution",
+      "make_prank:c08:execution",
+      "make_prank:c09:execution",
+      "make_prank:c10:execution"
+    ],
+    "observed_cases": [
+      "make_prank:c01:execution",
+      "make_prank:c02:execution",
+      "make_prank:c03:execution",
+      "make_prank:c04:execution",
+      "make_prank:c06:execution",
+      "make_prank:c07:execution",
+      "make_prank:c08:execution",
+      "make_prank:c09:execution",
+      "make_prank:c10:execution"
+    ],
+    "effective_fields": [
+      "label"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/daily",
+    "family": "manage_economy",
+    "operation": "manage_economy.daily",
+    "parsed_cases": [
+      "manage_economy:c02:execution",
+      "manage_economy:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_economy:c02:execution",
+      "manage_economy:c04:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/saldo",
+    "family": "manage_economy",
+    "operation": "manage_economy.balance",
+    "parsed_cases": [
+      "manage_economy:c01:execution",
+      "manage_economy:c03:execution",
+      "manage_economy:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_economy:c01:execution",
+      "manage_economy:c03:execution",
+      "manage_economy:c12:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/top",
+    "family": "manage_economy",
+    "operation": "manage_economy.top",
+    "parsed_cases": [
+      "manage_economy:c05:execution"
+    ],
+    "observed_cases": [
+      "manage_economy:c05:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recordar en",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.create",
+    "parsed_cases": [
+      "manage_reminder:c01:execution",
+      "manage_reminder:c02:execution"
+    ],
+    "observed_cases": [
+      "manage_reminder:c01:execution",
+      "manage_reminder:c02:execution"
+    ],
+    "effective_fields": [
+      "duration_seconds",
+      "text"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recordar el",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.create",
+    "parsed_cases": [
+      "manage_reminder:c03:execution"
+    ],
+    "observed_cases": [
+      "manage_reminder:c03:execution"
+    ],
+    "effective_fields": [
+      "date",
+      "text",
+      "time"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recordatorios",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.list",
+    "parsed_cases": [
+      "manage_reminder:c04:execution",
+      "manage_reminder:c05:execution",
+      "manage_reminder:c06:execution",
+      "manage_reminder:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_reminder:c04:execution",
+      "manage_reminder:c05:execution",
+      "manage_reminder:c06:execution",
+      "manage_reminder:c09:execution"
+    ],
+    "effective_fields": [
+      "include_closed",
+      "page"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recordatorio cancelar",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.cancel",
+    "parsed_cases": [
+      "manage_reminder:c07:execution"
+    ],
+    "observed_cases": [
+      "manage_reminder:c07:execution"
+    ],
+    "effective_fields": [
+      "reminder_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/recordatorio archivar",
+    "family": "manage_reminder",
+    "operation": "manage_reminder.archive",
+    "parsed_cases": [
+      "manage_reminder:c08:execution"
+    ],
+    "observed_cases": [
+      "manage_reminder:c08:execution"
+    ],
+    "effective_fields": [
+      "reminder_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/buscar",
+    "family": "search_web",
+    "operation": "search_web.run",
+    "parsed_cases": [
+      "search_web:c01:execution",
+      "search_web:c02:execution",
+      "search_web:c03:execution",
+      "search_web:c04:execution",
+      "search_web:c05:execution",
+      "search_web:c06:execution",
+      "search_web:c07:execution"
+    ],
+    "observed_cases": [
+      "search_web:c01:execution",
+      "search_web:c02:execution",
+      "search_web:c03:execution",
+      "search_web:c04:execution",
+      "search_web:c05:execution",
+      "search_web:c06:execution",
+      "search_web:c07:execution"
+    ],
+    "effective_fields": [
+      "query",
+      "required_terms"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/drive guardar",
+    "family": "manage_drive",
+    "operation": "manage_drive.save",
+    "parsed_cases": [
+      "manage_drive:c12:execution"
+    ],
+    "observed_cases": [
+      "manage_drive:c12:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/drive buscar",
+    "family": "manage_drive",
+    "operation": "manage_drive.search",
+    "parsed_cases": [
+      "manage_drive:c02:execution",
+      "manage_drive:c03:execution",
+      "manage_drive:c04:execution"
+    ],
+    "observed_cases": [
+      "manage_drive:c02:execution",
+      "manage_drive:c03:execution",
+      "manage_drive:c04:execution"
+    ],
+    "effective_fields": [
+      "query"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/drive elegir",
+    "family": "manage_drive",
+    "operation": "manage_drive.choose",
+    "parsed_cases": [
+      "manage_drive:c09:execution"
+    ],
+    "observed_cases": [
+      "manage_drive:c09:execution"
+    ],
+    "effective_fields": [
+      "choice",
+      "view_id"
+    ],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/drive cuota",
+    "family": "manage_drive",
+    "operation": "manage_drive.capacity",
+    "parsed_cases": [
+      "manage_drive:c01:execution"
+    ],
+    "observed_cases": [
+      "manage_drive:c01:execution"
+    ],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": true,
+    "coverage": "OBSERVED"
+  },
+  {
+    "route": "/clip lista",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.list",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip poner",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.play",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "clip_id",
+      "query"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip pausa",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.pause",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip seguir",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.resume",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip repetir",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.replay",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip siguiente",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.next",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip parar",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.stop",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip volumen",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.volume",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "volume"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/clip ajustar",
+    "family": "audiovisual.clip",
+    "operation": "audiovisual.clip.volume",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "adjustment",
+      "direction"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar fondo",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.background",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar expresion",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.expression",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "duration",
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar gesto",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.gesture",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "duration",
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/avatar rubor",
+    "family": "audiovisual.avatar",
+    "operation": "audiovisual.avatar.blush",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "duration",
+      "name"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada programar",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.create",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada agenda",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.list",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada reprogramar",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.update",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  },
+  {
+    "route": "/llamada cancelar-agenda",
+    "family": "audiovisual.agenda",
+    "operation": "audiovisual.agenda.cancel",
+    "parsed_cases": [],
+    "observed_cases": [],
+    "effective_fields": [],
+    "unobserved_fields": [
+      "id"
+    ],
+    "parsed": false,
+    "coverage": "NOT_TESTED"
+  }
+]

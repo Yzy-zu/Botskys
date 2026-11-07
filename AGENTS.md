@@ -188,3 +188,17 @@ ejecutar R11 ahora con respaldo, propiedad exclusiva, datos nuevos y reversión.
 Las comprobaciones no realizadas permanecen NOT_TESTED; no fingir aceptación
 humana ni ejecutar llamadas porque el dueño no esté disponible. Conservar límites
 de identidad/consentimiento/permisos, exclusiones NLP/GitHub y umbral5%.
+
+
+## 07/11 · Nueva campaña AGY por herramienta
+
+El propietario encargó usar AGY CLI de nuevo con subagentes independientes para
+testear Botsky herramienta por herramienta, modelo gemini-3.8-flash-medium explícito.
+Campaña nueva, no reanuda las anteriores. Casos del agente son propuestas;
+orquestador revisa, congela expectativas y ejecuta backend con DB/fixtures propios.
+Proveedores de contenido y consultas reales acotadas; entregas capturadas localmente
+y etiquetadas, sin ACK remoto ficticio. Sin cambios de producción, perfiles, llamadas,
+participantes ni Minecraft. Drive escritura deshabilitada en esta campaña.
+Los agentes reducen trabajo manual pero no acreditan percepción/recepción humana.
+Descubrimiento y evidencia separados, sin corregir producto durante la campaña.
+Conservar históricos, secretos privados0600, sinNLP/GitHub; cuota5% vigente.

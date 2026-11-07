@@ -1,0 +1,912 @@
+[
+  {
+    "path": "batch1/conversation/proposal-original.json",
+    "bytes": 4486,
+    "sha256": "0192e0880fab1ccfedec7bbdb7459270bfc9d04dca89f4507bd5a3a072cb192d"
+  },
+  {
+    "path": "batch1/convert_document/proposal-original.json",
+    "bytes": 6941,
+    "sha256": "ef719221de3cfef34f9b423f5152be1e19dc6f855b8810b1ed8ad2a592896049"
+  },
+  {
+    "path": "batch1/download_media/proposal-original.json",
+    "bytes": 5975,
+    "sha256": "9c7fc493e374f4e27012f5631ace4428b094f986a98b09943b8e825b9397eff3"
+  },
+  {
+    "path": "batch1/edit_media/proposal-original.json",
+    "bytes": 6714,
+    "sha256": "a5d6001a3cb70969824ead531c7394405308be4482271e593f7561d05a81ad86"
+  },
+  {
+    "path": "batch1/make_sticker/proposal-original.json",
+    "bytes": 5655,
+    "sha256": "7294b5f81d571982ccfdc1384f908c3ebcbf287f9a39bfa6b79932a5de8e6c7d"
+  },
+  {
+    "path": "batch1/make_voice/proposal-original.json",
+    "bytes": 6988,
+    "sha256": "ec6c6ef29ebe690191884cded47d975d7c158659327c48e0015d86090004bca4"
+  },
+  {
+    "path": "batch1/manage_pdf/proposal-original.json",
+    "bytes": 6615,
+    "sha256": "1cdd93dd597682e78fcf3fa1f14498832c7596bf09579f235c734e2ca763bc17"
+  },
+  {
+    "path": "batch1/read_image/proposal-original.json",
+    "bytes": 5890,
+    "sha256": "8a3f94b21154f23ff388c61fbebd9cac72d7320f0acb40cbb923d0937b0c817d"
+  },
+  {
+    "path": "batch1/search_web/proposal-original.json",
+    "bytes": 6378,
+    "sha256": "22c4fb5ec1919fb309351e879980481fa4207aefd71ede1536379408f6cef5c6"
+  },
+  {
+    "path": "batch1/transcribe_media/proposal-original.json",
+    "bytes": 6552,
+    "sha256": "c7ab7ad5e70a408a666e5c0493f4e52e35b725bdd2d98bd8e251f92cfe36331d"
+  },
+  {
+    "path": "batch2/find_notes/proposal-original.json",
+    "bytes": 6021,
+    "sha256": "2bc98d1e04f26b223fb05d6c3f2821b67ffddd478bd14278603eabe80ee9a631"
+  },
+  {
+    "path": "batch2/manage_conversation/proposal-original.json",
+    "bytes": 5055,
+    "sha256": "8ce3cd91aa22fc369cce60aa6bdca3e44838449a247357bd06f46dde130bf41b"
+  },
+  {
+    "path": "batch2/manage_drive/proposal-original.json",
+    "bytes": 6460,
+    "sha256": "83c446ddc6bad6992c6cd02277c1fa9f55d2bbbcbfcf7a2c271dff4027404559"
+  },
+  {
+    "path": "batch2/manage_memory/proposal-original.json",
+    "bytes": 5376,
+    "sha256": "6962fc8b01dfb64ce62954d6ea298b492c55025e22b1ff28d4a7f8750194fd9b"
+  },
+  {
+    "path": "batch2/manage_messages/proposal-original.json",
+    "bytes": 5842,
+    "sha256": "1b7f9d7cb6375ff715549acae30c72b35b5689ad14005507465c2971a2e82eb2"
+  },
+  {
+    "path": "batch2/manage_poll/proposal-original.json",
+    "bytes": 5674,
+    "sha256": "8619f1177da6212dfa032acc95cff1fda59e74b458767ec7e2be52ac863c3cb7"
+  },
+  {
+    "path": "batch2/manage_reminder/proposal-original.json",
+    "bytes": 5786,
+    "sha256": "90acb385e813cd480c2bf6af7e6788b22cd011b8c7d8ea5689ebca13e4126b4b"
+  },
+  {
+    "path": "batch2/manage_school/proposal-original.json",
+    "bytes": 7338,
+    "sha256": "7aa25d133606df1946605794f6e2d14ee1cf12add59cb4cce8a5b84e2e5a52d5"
+  },
+  {
+    "path": "batch2/save_note/proposal-original.json",
+    "bytes": 5425,
+    "sha256": "8c75b1f616345b700eed5f90123cc1e20adba7080bbabe25f0e0d6081aec724e"
+  },
+  {
+    "path": "batch2/send_sticker/proposal-original.json",
+    "bytes": 5034,
+    "sha256": "8dd0a6d492ef19c718caa1528a997bf9c42a53d8bb69ea391c9ad9d98b6d59d3"
+  },
+  {
+    "path": "batch3/control_call/proposal-original.json",
+    "bytes": 5572,
+    "sha256": "f26613e8e36168907a861312a1060adf7df20b3a8872717fae7facc6355fd55b"
+  },
+  {
+    "path": "batch3/make_prank/proposal-original.json",
+    "bytes": 5004,
+    "sha256": "dec97a508aa4efa79f9ef6110bb45b9e5c6d45b39d02b0cf33be83bdebfb94ea"
+  },
+  {
+    "path": "batch3/manage_admin/proposal-original.json",
+    "bytes": 6816,
+    "sha256": "62d25a29650f4da7a241dded193d840a567190f2a6d1418d2d0af6ccad6ecc4a"
+  },
+  {
+    "path": "batch3/manage_blackjack/proposal-original.json",
+    "bytes": 5350,
+    "sha256": "502c7455e8bb8358ef45a5fca163472d05e60518c6f1a58fa092978a28cd248d"
+  },
+  {
+    "path": "batch3/manage_cooperacha/proposal-original.json",
+    "bytes": 5580,
+    "sha256": "8526b04a1f2cef502ad5eda012c9240ad0eb7140f4b91f5950a90fd0775ecd09"
+  },
+  {
+    "path": "batch3/manage_economy/proposal-original.json",
+    "bytes": 5013,
+    "sha256": "34684f89710c9e479025c38d420f6eb729e108381609014a02d750a5f165573e"
+  },
+  {
+    "path": "batch3/manage_happy_hour/proposal-original.json",
+    "bytes": 5360,
+    "sha256": "f673f074902bc7c341a4a00bf60162f910e17ac6f898ecedf41d6d83caed7edc"
+  },
+  {
+    "path": "batch3/manage_minecraft/proposal-original.json",
+    "bytes": 4882,
+    "sha256": "1835ef5caa47cf3675224f9eb1f859c8f57197966a1c1adda92d3fb85dcb0147"
+  },
+  {
+    "path": "batch3/manage_pack/proposal-original.json",
+    "bytes": 5512,
+    "sha256": "77a1363515e236e303a65f926ab2bb78d29c96d2b15839f05ca3390409cffac7"
+  },
+  {
+    "path": "batch3/manage_roulette/proposal-original.json",
+    "bytes": 5222,
+    "sha256": "f29528f914052f9d09a2f7518684f7565a54eb60b9bbdc2c32384ae7ee20d987"
+  },
+  {
+    "path": "batch1/conversation/proposal.json",
+    "bytes": 4486,
+    "sha256": "0192e0880fab1ccfedec7bbdb7459270bfc9d04dca89f4507bd5a3a072cb192d"
+  },
+  {
+    "path": "batch1/convert_document/proposal.json",
+    "bytes": 6941,
+    "sha256": "ef719221de3cfef34f9b423f5152be1e19dc6f855b8810b1ed8ad2a592896049"
+  },
+  {
+    "path": "batch1/download_media/proposal.json",
+    "bytes": 5975,
+    "sha256": "9c7fc493e374f4e27012f5631ace4428b094f986a98b09943b8e825b9397eff3"
+  },
+  {
+    "path": "batch1/edit_media/proposal.json",
+    "bytes": 6714,
+    "sha256": "a5d6001a3cb70969824ead531c7394405308be4482271e593f7561d05a81ad86"
+  },
+  {
+    "path": "batch1/make_sticker/proposal.json",
+    "bytes": 5655,
+    "sha256": "7294b5f81d571982ccfdc1384f908c3ebcbf287f9a39bfa6b79932a5de8e6c7d"
+  },
+  {
+    "path": "batch1/make_voice/proposal.json",
+    "bytes": 6988,
+    "sha256": "ec6c6ef29ebe690191884cded47d975d7c158659327c48e0015d86090004bca4"
+  },
+  {
+    "path": "batch1/manage_pdf/proposal.json",
+    "bytes": 6615,
+    "sha256": "1cdd93dd597682e78fcf3fa1f14498832c7596bf09579f235c734e2ca763bc17"
+  },
+  {
+    "path": "batch1/read_image/proposal.json",
+    "bytes": 5890,
+    "sha256": "8a3f94b21154f23ff388c61fbebd9cac72d7320f0acb40cbb923d0937b0c817d"
+  },
+  {
+    "path": "batch1/search_web/proposal.json",
+    "bytes": 6378,
+    "sha256": "22c4fb5ec1919fb309351e879980481fa4207aefd71ede1536379408f6cef5c6"
+  },
+  {
+    "path": "batch1/transcribe_media/proposal.json",
+    "bytes": 6552,
+    "sha256": "c7ab7ad5e70a408a666e5c0493f4e52e35b725bdd2d98bd8e251f92cfe36331d"
+  },
+  {
+    "path": "batch2/find_notes/proposal.json",
+    "bytes": 6021,
+    "sha256": "2bc98d1e04f26b223fb05d6c3f2821b67ffddd478bd14278603eabe80ee9a631"
+  },
+  {
+    "path": "batch2/manage_conversation/proposal.json",
+    "bytes": 5055,
+    "sha256": "8ce3cd91aa22fc369cce60aa6bdca3e44838449a247357bd06f46dde130bf41b"
+  },
+  {
+    "path": "batch2/manage_drive/proposal.json",
+    "bytes": 6460,
+    "sha256": "83c446ddc6bad6992c6cd02277c1fa9f55d2bbbcbfcf7a2c271dff4027404559"
+  },
+  {
+    "path": "batch2/manage_memory/proposal.json",
+    "bytes": 5376,
+    "sha256": "6962fc8b01dfb64ce62954d6ea298b492c55025e22b1ff28d4a7f8750194fd9b"
+  },
+  {
+    "path": "batch2/manage_messages/proposal.json",
+    "bytes": 5842,
+    "sha256": "1b7f9d7cb6375ff715549acae30c72b35b5689ad14005507465c2971a2e82eb2"
+  },
+  {
+    "path": "batch2/manage_poll/proposal.json",
+    "bytes": 5674,
+    "sha256": "8619f1177da6212dfa032acc95cff1fda59e74b458767ec7e2be52ac863c3cb7"
+  },
+  {
+    "path": "batch2/manage_reminder/proposal.json",
+    "bytes": 5786,
+    "sha256": "90acb385e813cd480c2bf6af7e6788b22cd011b8c7d8ea5689ebca13e4126b4b"
+  },
+  {
+    "path": "batch2/manage_school/proposal.json",
+    "bytes": 7338,
+    "sha256": "7aa25d133606df1946605794f6e2d14ee1cf12add59cb4cce8a5b84e2e5a52d5"
+  },
+  {
+    "path": "batch2/save_note/proposal.json",
+    "bytes": 5425,
+    "sha256": "8c75b1f616345b700eed5f90123cc1e20adba7080bbabe25f0e0d6081aec724e"
+  },
+  {
+    "path": "batch2/send_sticker/proposal.json",
+    "bytes": 5035,
+    "sha256": "0a8b064ed5dd169b733b57d843cd4fa73aaf3d44c4801791ec619510c423ca59"
+  },
+  {
+    "path": "batch3/control_call/proposal.json",
+    "bytes": 5572,
+    "sha256": "f26613e8e36168907a861312a1060adf7df20b3a8872717fae7facc6355fd55b"
+  },
+  {
+    "path": "batch3/make_prank/proposal.json",
+    "bytes": 5004,
+    "sha256": "dec97a508aa4efa79f9ef6110bb45b9e5c6d45b39d02b0cf33be83bdebfb94ea"
+  },
+  {
+    "path": "batch3/manage_admin/proposal.json",
+    "bytes": 6816,
+    "sha256": "62d25a29650f4da7a241dded193d840a567190f2a6d1418d2d0af6ccad6ecc4a"
+  },
+  {
+    "path": "batch3/manage_blackjack/proposal.json",
+    "bytes": 5350,
+    "sha256": "502c7455e8bb8358ef45a5fca163472d05e60518c6f1a58fa092978a28cd248d"
+  },
+  {
+    "path": "batch3/manage_cooperacha/proposal.json",
+    "bytes": 5580,
+    "sha256": "8526b04a1f2cef502ad5eda012c9240ad0eb7140f4b91f5950a90fd0775ecd09"
+  },
+  {
+    "path": "batch3/manage_economy/proposal.json",
+    "bytes": 5013,
+    "sha256": "34684f89710c9e479025c38d420f6eb729e108381609014a02d750a5f165573e"
+  },
+  {
+    "path": "batch3/manage_happy_hour/proposal.json",
+    "bytes": 5360,
+    "sha256": "f673f074902bc7c341a4a00bf60162f910e17ac6f898ecedf41d6d83caed7edc"
+  },
+  {
+    "path": "batch3/manage_minecraft/proposal.json",
+    "bytes": 4882,
+    "sha256": "1835ef5caa47cf3675224f9eb1f859c8f57197966a1c1adda92d3fb85dcb0147"
+  },
+  {
+    "path": "batch3/manage_pack/proposal.json",
+    "bytes": 5512,
+    "sha256": "77a1363515e236e303a65f926ab2bb78d29c96d2b15839f05ca3390409cffac7"
+  },
+  {
+    "path": "batch3/manage_roulette/proposal.json",
+    "bytes": 5222,
+    "sha256": "f29528f914052f9d09a2f7518684f7565a54eb60b9bbdc2c32384ae7ee20d987"
+  },
+  {
+    "path": "batch1/conversation/state.json",
+    "bytes": 200,
+    "sha256": "d87c1cdde67845b8a6d09a05177369c74082c3a1700dcb426cb28f71e53feb49"
+  },
+  {
+    "path": "batch1/convert_document/state.json",
+    "bytes": 204,
+    "sha256": "0cda8be2dd1af81253c96ca3498ef23b0b84ff20dacced963433c142046aa917"
+  },
+  {
+    "path": "batch1/download_media/state.json",
+    "bytes": 202,
+    "sha256": "cfd7cece47cb1da6d427da7b4dbbe024c2ca459d226d716f8e8571e707b701e3"
+  },
+  {
+    "path": "batch1/edit_media/state.json",
+    "bytes": 198,
+    "sha256": "d47c5cf3064da110a1aaa3cc5d0eabbec4069b12dc73edbf398c0fd117e5f6d4"
+  },
+  {
+    "path": "batch1/make_sticker/state.json",
+    "bytes": 200,
+    "sha256": "cf6d2f7bdcf323ef7c6c0edea863c3942e5867bf53d8ac9a09face926c72dd18"
+  },
+  {
+    "path": "batch1/make_voice/state.json",
+    "bytes": 198,
+    "sha256": "749db723ac00a6a5dbcf6af1643539216c35c45c6f83a84c5821a9e35771ccac"
+  },
+  {
+    "path": "batch1/manage_pdf/state.json",
+    "bytes": 198,
+    "sha256": "54d79c04b8a0735b3faadfb5896515e974ba9f20e8dbad760fb8910299fc019b"
+  },
+  {
+    "path": "batch1/read_image/state.json",
+    "bytes": 198,
+    "sha256": "a57a1dc8b33f6932db8075908cf848901f69e87cb2ad214f0bcce1b03eb27aec"
+  },
+  {
+    "path": "batch1/search_web/state.json",
+    "bytes": 198,
+    "sha256": "503d583f0cdfdbf94efb787c239cdf70e93faee8e293b48d376284201194287e"
+  },
+  {
+    "path": "batch1/transcribe_media/state.json",
+    "bytes": 204,
+    "sha256": "0609f002e8dbf93aa9da535ded5bff992080c90b26fc3adbc685290898d6f41e"
+  },
+  {
+    "path": "batch2/find_notes/state.json",
+    "bytes": 198,
+    "sha256": "63d305facdb109db10f40f4f664591dc144a26cdff2db3e86d66ee8280c368e7"
+  },
+  {
+    "path": "batch2/manage_conversation/state.json",
+    "bytes": 207,
+    "sha256": "107d5802720155aa96a8ab0cd4b2b6e066e1a223d21aa6354ad30ee6403e3c2b"
+  },
+  {
+    "path": "batch2/manage_drive/state.json",
+    "bytes": 200,
+    "sha256": "7787a1ca29e3f38eaecd9e3aae34a63d8a691518e0bcb796b47887da14249d4d"
+  },
+  {
+    "path": "batch2/manage_memory/state.json",
+    "bytes": 201,
+    "sha256": "1e5abbcb9585dd12272799dcee23b0ba4b40fc2d7a6272a62df67a23a3272ee8"
+  },
+  {
+    "path": "batch2/manage_messages/state.json",
+    "bytes": 203,
+    "sha256": "e6a1e24d6581c64c4094456553ac1502a241bc06b7c98694384edd493ac5d2e8"
+  },
+  {
+    "path": "batch2/manage_poll/state.json",
+    "bytes": 199,
+    "sha256": "888a50f5fc38da1e368079c83c215eaa418993e22bde975f0f4b7e4119b96f81"
+  },
+  {
+    "path": "batch2/manage_reminder/state.json",
+    "bytes": 203,
+    "sha256": "41cb830053db0c031e6ae9fe631fc16dde543dc804a704ab5c5f512a0aff0be5"
+  },
+  {
+    "path": "batch2/manage_school/state.json",
+    "bytes": 201,
+    "sha256": "b1f05b226f9dfa65fd5bbdf9261a72804584d28c28dea92b1050e0e341341941"
+  },
+  {
+    "path": "batch2/save_note/state.json",
+    "bytes": 197,
+    "sha256": "62268dc98e1bff090ef7e23db431c10f97fb7df3647d73545e1939c06cfbd55c"
+  },
+  {
+    "path": "batch2/send_sticker/state.json",
+    "bytes": 200,
+    "sha256": "3f441a57e4a1711636aa6a23f3fe1dc9c9ed9a87f9e33e75418f8869a9ea73fe"
+  },
+  {
+    "path": "batch3/control_call/state.json",
+    "bytes": 200,
+    "sha256": "4a646fa4cda75c643476e1e2d76ef76802cb13768fef17d16bd1063bba110766"
+  },
+  {
+    "path": "batch3/make_prank/state.json",
+    "bytes": 198,
+    "sha256": "7044f32fcb91fce54fb57ed4c462057e9688c8890ada57e8ebb4e37949e63dd4"
+  },
+  {
+    "path": "batch3/manage_admin/state.json",
+    "bytes": 200,
+    "sha256": "0721f00a5532d23c4cec20bba6ec7dba978cbe493d70cb8b4277f6c4b7058410"
+  },
+  {
+    "path": "batch3/manage_blackjack/state.json",
+    "bytes": 204,
+    "sha256": "c19756bb8f79c61b0a6abccac8f2d6ec94b9d42e0813811b30335f5bae1a0ce3"
+  },
+  {
+    "path": "batch3/manage_cooperacha/state.json",
+    "bytes": 205,
+    "sha256": "241a7b02b59ce43948edba98458b4f3abb10b3eacea059e0786b4441b981719e"
+  },
+  {
+    "path": "batch3/manage_economy/state.json",
+    "bytes": 202,
+    "sha256": "9426deceed0af5370a8e4e4cbfb2b8ef993dcbe7085fb42becea0f5e896871b3"
+  },
+  {
+    "path": "batch3/manage_happy_hour/state.json",
+    "bytes": 205,
+    "sha256": "433237c841bacd7054fc672f012d217f5ce81879692522839e9abb4a1feb8616"
+  },
+  {
+    "path": "batch3/manage_minecraft/state.json",
+    "bytes": 204,
+    "sha256": "bb43becd700ef36960d1c5d27e3f25a2e1fdfedd07fbfa1aa6f739d7ad6a3e34"
+  },
+  {
+    "path": "batch3/manage_pack/state.json",
+    "bytes": 199,
+    "sha256": "485a1acf7e13b644edd97a01cf65d9cc5a325f345d1d8e59dc05940d51efb5b7"
+  },
+  {
+    "path": "batch3/manage_roulette/state.json",
+    "bytes": 203,
+    "sha256": "596ccc34edf75ca746b52502acacb89d6f28918ff9c1d508945a59ccb14f83e8"
+  },
+  {
+    "path": "batch1/conversation/report.json",
+    "bytes": 2675,
+    "sha256": "2f95b518653a25f7315060af33b19d7eae822eb412bd93eed6c3a7fedb575a1e"
+  },
+  {
+    "path": "batch1/convert_document/report.json",
+    "bytes": 4356,
+    "sha256": "7782efadbf621dadd5f2ec01acecb92737940964d0a7cd8a0b04ba0a6db7d5ce"
+  },
+  {
+    "path": "batch1/download_media/report.json",
+    "bytes": 3194,
+    "sha256": "39a4b95194a4c8a108968d169d774c0e0086d6cb0c252065eb0fd06a24f486ab"
+  },
+  {
+    "path": "batch1/edit_media/report.json",
+    "bytes": 3382,
+    "sha256": "35953ddc5117350c4429a4283d7d5d344e209401faa1c6e11ee560cf15a3fc54"
+  },
+  {
+    "path": "batch1/make_sticker/report.json",
+    "bytes": 2977,
+    "sha256": "a02dbf4eaf2aff43e735623e9a74a63e3f2e9ac6b77ef84a08c14d949f706aa5"
+  },
+  {
+    "path": "batch1/make_voice/report.json",
+    "bytes": 4126,
+    "sha256": "564938263ad8898548269d7c0ec93abc9dffa08cbd39c5964e7121d062dcd681"
+  },
+  {
+    "path": "batch1/manage_pdf/report.json",
+    "bytes": 3651,
+    "sha256": "e20ccb28b456fedb4d42a86ff32e8f93ed31ab22c506d22d03a64ae007cdc440"
+  },
+  {
+    "path": "batch1/read_image/report.json",
+    "bytes": 3097,
+    "sha256": "286235bef89b5870ab9216762f3d7465009e6205aebac742ccf871b2e84b257c"
+  },
+  {
+    "path": "batch1/search_web/report.json",
+    "bytes": 2605,
+    "sha256": "9352d4a8e12b7bb6f8b24675a5948ec73a649e9054a15d7c54ee9fccbb8b835d"
+  },
+  {
+    "path": "batch1/transcribe_media/report.json",
+    "bytes": 3006,
+    "sha256": "6e9529f3877c2973c776214559def53f168888ebae1d699710b4280777072d01"
+  },
+  {
+    "path": "batch2/find_notes/report.json",
+    "bytes": 3077,
+    "sha256": "85b4061f28af7a5c9148e61166de451bcc135b34d53927201df7b5e49ccf349e"
+  },
+  {
+    "path": "batch2/manage_conversation/report.json",
+    "bytes": 2150,
+    "sha256": "6f9dcd43a8b2fa07ea69f35596c585a7089bcfa5e4b0494fa4336a86391ec3a5"
+  },
+  {
+    "path": "batch2/manage_drive/report.json",
+    "bytes": 2603,
+    "sha256": "6ed438119a9e7eab760a03a39fffd344f3d7248b5d19efc872364382744cc952"
+  },
+  {
+    "path": "batch2/manage_memory/report.json",
+    "bytes": 2718,
+    "sha256": "0b445a6995b747ccd0ceabd7d8031e20f0e2f7abf564d53792fd6b8fc23243cc"
+  },
+  {
+    "path": "batch2/manage_messages/report.json",
+    "bytes": 3601,
+    "sha256": "defed6076fbb43cc85b7f9cd8b22ea443e20b67ad16c6a9096c20e343dc17b4a"
+  },
+  {
+    "path": "batch2/manage_poll/report.json",
+    "bytes": 4777,
+    "sha256": "7143d2ce9e9c774a3314a656eef54df6fe41493138c3d3b6f0441e44e8f64a13"
+  },
+  {
+    "path": "batch2/manage_reminder/report.json",
+    "bytes": 2986,
+    "sha256": "72fcb4d68f8e8438ec420939f679d8dfb7579d7a29d07929e48e5293d208f1cf"
+  },
+  {
+    "path": "batch2/manage_school/report.json",
+    "bytes": 2716,
+    "sha256": "efa5eaae303259cd14e8fc1ce5cfe8284ada8962459426d3977ac8ba9497f931"
+  },
+  {
+    "path": "batch2/save_note/report.json",
+    "bytes": 2372,
+    "sha256": "c4b22169f5b477f14a92340e0a897566231418b83960046877868acbb7c510a4"
+  },
+  {
+    "path": "batch2/send_sticker/report.json",
+    "bytes": 2648,
+    "sha256": "ed02831da7116f68a2c0bc7e0ac8d7fe558efb2df08499910c6cbf0137645666"
+  },
+  {
+    "path": "batch3/control_call/report.json",
+    "bytes": 3471,
+    "sha256": "105437468e1d816e49e60ebcd4a9e846422ba18ccf07efddc42504a7a3e6c463"
+  },
+  {
+    "path": "batch3/make_prank/report.json",
+    "bytes": 2984,
+    "sha256": "6254e852643981ea904b5f4c2f3143bf3e36fb4ac59d353ad3928a90f7c37d58"
+  },
+  {
+    "path": "batch3/manage_admin/report.json",
+    "bytes": 3115,
+    "sha256": "bc1fa972315abfea49d1bb5c5ffd9bd993a572d9c96daa573c07a8bf43934f65"
+  },
+  {
+    "path": "batch3/manage_blackjack/report.json",
+    "bytes": 2719,
+    "sha256": "2c4112944adbecf9a68bd5be5eeb8e39e450a33877ced2a06cd8f5b2dedeb55b"
+  },
+  {
+    "path": "batch3/manage_cooperacha/report.json",
+    "bytes": 2564,
+    "sha256": "e8b15bc9babf1ddeea59ff7216bca7ddfd727a1acfa9a8477a3ef92e8e818cde"
+  },
+  {
+    "path": "batch3/manage_economy/report.json",
+    "bytes": 3077,
+    "sha256": "fe56df0d775857cebe73b809093e378ae23608c13db3c9dd06d6855b8a0e8bd3"
+  },
+  {
+    "path": "batch3/manage_happy_hour/report.json",
+    "bytes": 4474,
+    "sha256": "4010bfd8eef2bfb6eb2b081f920eb9be53b636708b3e3272d171aeaca2345f23"
+  },
+  {
+    "path": "batch3/manage_minecraft/report.json",
+    "bytes": 4632,
+    "sha256": "cecf5b5277ba278f491c49ba8a065082cdf08a2e8736ad9de83880e29a568eb0"
+  },
+  {
+    "path": "batch3/manage_pack/report.json",
+    "bytes": 2989,
+    "sha256": "e575ec2228c87fedc7a013697952ebc6eb61c3d078cd495349f9d214a34030a6"
+  },
+  {
+    "path": "batch3/manage_roulette/report.json",
+    "bytes": 2817,
+    "sha256": "4b52103c4cfe5740e2c41f84b4e5503e194218882368703c3737e5677d3269c2"
+  },
+  {
+    "path": "batch1/conversation/feedback.json",
+    "bytes": 5860,
+    "sha256": "c9e9f6e4a1e5ac94934c3f5be20b6fd977b2a7dafd8282e793fe4659ddc88c16"
+  },
+  {
+    "path": "batch1/convert_document/feedback.json",
+    "bytes": 11523,
+    "sha256": "62213cba78591e0abc545327ea74328c5fa1ccfcf704a966f3f7291ec2b1ccbd"
+  },
+  {
+    "path": "batch1/download_media/feedback.json",
+    "bytes": 10258,
+    "sha256": "0b5c9bb9f5ceeabc69abe75c1bb0b02858a62883b15a290879cba9c4a865d3ec"
+  },
+  {
+    "path": "batch1/edit_media/feedback.json",
+    "bytes": 10289,
+    "sha256": "812019bdd541f76691e4107945ffca42a2495ffd89370662136895727df47c47"
+  },
+  {
+    "path": "batch1/make_sticker/feedback.json",
+    "bytes": 7894,
+    "sha256": "9cc8cd5c6724b4c4f36cb70686ae6a702886ea11da0ef90600db0f1f79059fe8"
+  },
+  {
+    "path": "batch1/make_voice/feedback.json",
+    "bytes": 14414,
+    "sha256": "245c4bd75b6dafe32ee68fb938041a24abdc4eca557302ee4ae9fd9204688028"
+  },
+  {
+    "path": "batch1/manage_pdf/feedback.json",
+    "bytes": 8280,
+    "sha256": "b3c1c798a208802da5bd84afaa2b62882e87f7a25560185cae59f29ce96519f2"
+  },
+  {
+    "path": "batch1/read_image/feedback.json",
+    "bytes": 6989,
+    "sha256": "dd204415e9121a832f3ca0634a385b5f63ffa8f814f52680912d35b93b410d14"
+  },
+  {
+    "path": "batch1/search_web/feedback.json",
+    "bytes": 14116,
+    "sha256": "fd3320aa79503c29b18a4874f5055d74cd207b1b881be84857a86318ab5cdf5e"
+  },
+  {
+    "path": "batch1/transcribe_media/feedback.json",
+    "bytes": 8263,
+    "sha256": "2411fe45318b3c963e50ccd324303e8def2f0f72a5a3fdfe4f229e3555c7221e"
+  },
+  {
+    "path": "batch2/find_notes/feedback.json",
+    "bytes": 9903,
+    "sha256": "a1486b9e0a23c3519c2a0a386614537af0a70049768e077d2e9c08c44c7d3fcc"
+  },
+  {
+    "path": "batch2/manage_conversation/feedback.json",
+    "bytes": 6704,
+    "sha256": "a06264cb7345d30df8b7b14dc6c28422f1ce867a26dea9c0719cd0b5cdf32224"
+  },
+  {
+    "path": "batch2/manage_drive/feedback.json",
+    "bytes": 7143,
+    "sha256": "2a1c4e90a6b1406af0355f065d05825eb06452d7b3a6f7cdca3c59aba6f8a019"
+  },
+  {
+    "path": "batch2/manage_memory/feedback.json",
+    "bytes": 8799,
+    "sha256": "26328035898562fe2638fb3ac04ce79d7e0d598f0566e6b2a779f50b65224daf"
+  },
+  {
+    "path": "batch2/manage_messages/feedback.json",
+    "bytes": 7053,
+    "sha256": "5d290c18b75c7cd25fd75b74b875201fc423a31e10c6224ae6fbba0551484c56"
+  },
+  {
+    "path": "batch2/manage_poll/feedback.json",
+    "bytes": 8904,
+    "sha256": "188024fa710f57064c3ec0a4c2839b3add9bb77fd6460087125320cb3e8581a0"
+  },
+  {
+    "path": "batch2/manage_reminder/feedback.json",
+    "bytes": 11772,
+    "sha256": "42434ce9421b7aabb3a6e315ed03c324c380adfd615aff827c6ca396205cdc35"
+  },
+  {
+    "path": "batch2/manage_school/feedback.json",
+    "bytes": 12124,
+    "sha256": "c62f80809d8781014db0ab08ab52dd939f3975f8d879b014350ff56c972d06c8"
+  },
+  {
+    "path": "batch2/save_note/feedback.json",
+    "bytes": 5835,
+    "sha256": "d1f025adddb9854c9b023cb22f935f2647ba26054a48cf77ae85b9b1dc15c219"
+  },
+  {
+    "path": "batch2/send_sticker/feedback.json",
+    "bytes": 7329,
+    "sha256": "1bc4163a26edc6a02c48cfb867407fb6ecd48765d8746f6eb559c7be985826ba"
+  },
+  {
+    "path": "batch3/control_call/feedback.json",
+    "bytes": 6959,
+    "sha256": "ac3f1e28d21bc6bb145a13bf7cad689f2f409b7cdb22fee2bbd7b5ade452a890"
+  },
+  {
+    "path": "batch3/make_prank/feedback.json",
+    "bytes": 6840,
+    "sha256": "40e30b4aed7df83772de02fabe03db40cb551f5af2aa5b979a51d217055c897a"
+  },
+  {
+    "path": "batch3/manage_admin/feedback.json",
+    "bytes": 7742,
+    "sha256": "4dbb0f1f37a1930ac988c02e5b18f6eddd13ade010e489eb4a4781233e07e068"
+  },
+  {
+    "path": "batch3/manage_blackjack/feedback.json",
+    "bytes": 8633,
+    "sha256": "284771970e4ddbbccac28a9e9943b08b3eace3202d9190f054c5410f7e10699c"
+  },
+  {
+    "path": "batch3/manage_cooperacha/feedback.json",
+    "bytes": 7091,
+    "sha256": "4e92b6f3b391217a3fc385eda954c3e83abbf281fefaa9d9a034f0d0c93467b8"
+  },
+  {
+    "path": "batch3/manage_economy/feedback.json",
+    "bytes": 6748,
+    "sha256": "df4872f180671eb7940cc7cb4b8776d0a779ce0d53428ec0c7cbf77fb1bf1069"
+  },
+  {
+    "path": "batch3/manage_happy_hour/feedback.json",
+    "bytes": 6915,
+    "sha256": "972ef617e554d7df93037597cde49015bfb5348618ef7af3dfe4cf29094c9f00"
+  },
+  {
+    "path": "batch3/manage_minecraft/feedback.json",
+    "bytes": 5760,
+    "sha256": "07c29e3b91a0f65d71715a3884ad82ca20183385524c786526380355633117c3"
+  },
+  {
+    "path": "batch3/manage_pack/feedback.json",
+    "bytes": 6594,
+    "sha256": "becbf8a6c5dc9a7b494c3e4ca734d0bb475c83197b50454ba439a3536c11795c"
+  },
+  {
+    "path": "batch3/manage_roulette/feedback.json",
+    "bytes": 5776,
+    "sha256": "942dd3ceb199e783680fbc262e9f59e01b1b8183991f150579a0eed399273f8d"
+  },
+  {
+    "path": "batch1/conversation/execution/results.json",
+    "bytes": 12071,
+    "sha256": "3fdb0d4b18cc4ddb27ea41f57db6598b644161d59013c669c31a0705a8bddeab"
+  },
+  {
+    "path": "batch1/convert_document/execution/results.json",
+    "bytes": 22214,
+    "sha256": "064925fc620ad1362e6ddc60dc0cc4c5356abf6d98c56ac7ee356e54e7efb1a4"
+  },
+  {
+    "path": "batch1/download_media/execution/results.json",
+    "bytes": 19409,
+    "sha256": "36b98cfeed457d0a0297275039a611d35331a44a7489169b344d1b9469b525ba"
+  },
+  {
+    "path": "batch1/edit_media/execution/results.json",
+    "bytes": 19910,
+    "sha256": "977d8b48316d203436264ba5a9c66660e34062bef5aa7f96bd54778fe1188860"
+  },
+  {
+    "path": "batch1/make_sticker/execution/results.json",
+    "bytes": 15724,
+    "sha256": "940c1b1eba81ceec68db258bcf319931cca1595212fe0aff9dd4b0b896c0b72f"
+  },
+  {
+    "path": "batch1/make_voice/execution/results.json",
+    "bytes": 24871,
+    "sha256": "93847e2671ad02b0e4aebdb6578b4bb1f09845f7f24d32d4ae0e0b01b230a7f4"
+  },
+  {
+    "path": "batch1/manage_pdf/execution/results.json",
+    "bytes": 17236,
+    "sha256": "99b5544bb761b5f8ea21f5d30a66e6fb5ccaccac3075b0bd9ad22924bf82e3fc"
+  },
+  {
+    "path": "batch1/read_image/execution/results.json",
+    "bytes": 15378,
+    "sha256": "ffa0e4107c5fea322fbc496dee9d6a353dabf184b889a141267f3c91f3bd04df"
+  },
+  {
+    "path": "batch1/search_web/execution/results.json",
+    "bytes": 28316,
+    "sha256": "e165d0cdeffd8b3c6879f86aca9cb4e2dcf39b7d51f7c02d221f21f19e2234cc"
+  },
+  {
+    "path": "batch1/transcribe_media/execution/results.json",
+    "bytes": 17017,
+    "sha256": "55c6d78d26ab042ce23038fd344a9bfbec366a237c90e68cb44ea686230e4413"
+  },
+  {
+    "path": "batch2/find_notes/execution/results.json",
+    "bytes": 18818,
+    "sha256": "497dedd4f034b4790162c6395fb18caf7ffd17a6bf462df358f13f0df0424d7a"
+  },
+  {
+    "path": "batch2/manage_conversation/execution/results.json",
+    "bytes": 14320,
+    "sha256": "ee92a2d860a13d4ac763c329a60c1c08bad22c5170ed1bc7e97d4880c7971d88"
+  },
+  {
+    "path": "batch2/manage_drive/execution/results.json",
+    "bytes": 14510,
+    "sha256": "258653af0038cae60423c668b4f525f623d2665342ff1ed799bea0ff27b31253"
+  },
+  {
+    "path": "batch2/manage_memory/execution/results.json",
+    "bytes": 17891,
+    "sha256": "ffffb508edac06119f097b0b05f038367d180a0fafe2d866f66ec85486c19967"
+  },
+  {
+    "path": "batch2/manage_messages/execution/results.json",
+    "bytes": 14378,
+    "sha256": "19a519d955548c0e1731e1791320a8468fccff32dba96faddc10048574973e7e"
+  },
+  {
+    "path": "batch2/manage_poll/execution/results.json",
+    "bytes": 18480,
+    "sha256": "9e5324daded392e4a099229b513bcd5c67f68efbe8e86d8278d0b9048e8a6369"
+  },
+  {
+    "path": "batch2/manage_reminder/execution/results.json",
+    "bytes": 22726,
+    "sha256": "3ab13dc2488cee9f629186cff0b12be29e80826222c6d076f93f1d94ec1cba08"
+  },
+  {
+    "path": "batch2/manage_school/execution/results.json",
+    "bytes": 24894,
+    "sha256": "58c494553c1ee2284cefc0f1ea09b0730b169e7b9a9d68cdd4f4ad10be5ff882"
+  },
+  {
+    "path": "batch2/save_note/execution/results.json",
+    "bytes": 12917,
+    "sha256": "e26bd40043b08f5d5f2f424f461ad3b3f8c81ef82797541d4897338487930315"
+  },
+  {
+    "path": "batch2/send_sticker/execution/results.json",
+    "bytes": 14386,
+    "sha256": "440b4e9776f4da27ca477b4580f65dc07b0bb4538357e44d97c56b722af9f03f"
+  },
+  {
+    "path": "batch3/control_call/execution/results.json",
+    "bytes": 14412,
+    "sha256": "2fb82655503edba1896392770bb774d0fbaab0b1123bb42cdc5beecc3414951f"
+  },
+  {
+    "path": "batch3/make_prank/execution/results.json",
+    "bytes": 13532,
+    "sha256": "298c579b2c906d218b9bd0553c36a79b72deec2d58579e58dcd9a59027b11c66"
+  },
+  {
+    "path": "batch3/manage_admin/execution/results.json",
+    "bytes": 16625,
+    "sha256": "7771f6d6f2436bc94133b35f8703797c623b00675db5557e44c7aaa4fc397532"
+  },
+  {
+    "path": "batch3/manage_blackjack/execution/results.json",
+    "bytes": 18553,
+    "sha256": "ff5c1c7934bd9e3e554bd5e5a762c8bb9952f81f4518d4afe321a0f6ced3c411"
+  },
+  {
+    "path": "batch3/manage_cooperacha/execution/results.json",
+    "bytes": 15644,
+    "sha256": "c49842a8ef182290fe454087ef5e6a673decc7052566c3e525e55fe6108ee8c8"
+  },
+  {
+    "path": "batch3/manage_economy/execution/results.json",
+    "bytes": 14080,
+    "sha256": "7be120f667b0b21b06b3d1b16e2664c54b63d3e2ebe3c8d27e67be813a30eed3"
+  },
+  {
+    "path": "batch3/manage_happy_hour/execution/results.json",
+    "bytes": 15173,
+    "sha256": "a0343ffd15632cc642b17b4e85c9c400c7d6e9e8f198e35a978dd70d798cc9c4"
+  },
+  {
+    "path": "batch3/manage_minecraft/execution/results.json",
+    "bytes": 51223,
+    "sha256": "1f01e2221fafdbbca8b06185dd4801399e87984ba3e646bbc1762eb7ab57cc6b"
+  },
+  {
+    "path": "batch3/manage_pack/execution/results.json",
+    "bytes": 13524,
+    "sha256": "ce76c1334b89677eeed8291a8cc5362bba7902d17bb0e38353768b4d49ee7ec7"
+  },
+  {
+    "path": "batch3/manage_roulette/execution/results.json",
+    "bytes": 11959,
+    "sha256": "46419877da1fd1b173fc8119ea7a53479a26ff0f9ab26252b8914da78a9f66e5"
+  },
+  {
+    "path": "base/fixture-ledger.json",
+    "bytes": 5033,
+    "sha256": "23c5faba5a71b235cad80b1ab76f0bc5f29604d72880dd0d9dde6a5877a126c4"
+  },
+  {
+    "path": "campaign.json",
+    "bytes": 745,
+    "sha256": "aa345a7e01a7282b7eb3aa8d9b91257790310c9b2c986571ca3504698991e33e"
+  }
+]

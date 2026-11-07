@@ -1,0 +1,7 @@
+test_fixture_ack_is_labeled_and_never_sent_to_provider (test_stress_campaign.StressCampaignTest.test_fixture_ack_is_labeled_and_never_sent_to_provider) ... ok
+test_proposal_cannot_dispatch_another_tool (test_stress_campaign.StressCampaignTest.test_proposal_cannot_dispatch_another_tool) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.561s
+
+OK

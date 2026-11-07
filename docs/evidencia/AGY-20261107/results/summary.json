@@ -1,0 +1,40 @@
+{
+  "model": "gemini-3.8-flash-medium",
+  "expected_tools": 30,
+  "tool_states_present": 30,
+  "proposed_cases": 378,
+  "recorded_result_rows": 378,
+  "verdict_counts": {
+    "PASS": 208,
+    "SUSPECTED": 141,
+    "BLOCKED": 29
+  },
+  "kind_verdict_counts": {
+    "positive": {
+      "PASS": 165,
+      "SUSPECTED": 61,
+      "BLOCKED": 18
+    },
+    "negative": {
+      "SUSPECTED": 76,
+      "PASS": 43,
+      "BLOCKED": 6
+    },
+    "blocked": {
+      "BLOCKED": 5,
+      "SUSPECTED": 4
+    }
+  },
+  "reports_available": 30,
+  "effective_routes_observed": 109,
+  "effective_routes_total": 154,
+  "claims_are_adjudicated": false,
+  "human_content_acceptance": "NOT_TESTED",
+  "human_delivery_receipt": "NOT_TESTED",
+  "notes": [
+    "SUSPECTED/discrepancy labels are unadjudicated claims, not confirmed errors.",
+    "Parsed and observed routes are separate; observation requires a receipt and result, including guards.",
+    "An observed guard does not establish a business effect; BLOCKED and NOT_TESTED are not success.",
+    "This is a sanitized index; inspect private evidence under its existing access controls."
+  ]
+}

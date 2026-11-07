@@ -1,0 +1,1325 @@
+[
+  {
+    "tool": "download_media",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 32.5,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/dl anterior",
+      "/dl buscar",
+      "/dl elegir",
+      "/dl mp3",
+      "/dl mp4",
+      "/dl srt",
+      "/dl webm"
+    ],
+    "observed_routes": [
+      "/dl anterior",
+      "/dl buscar",
+      "/dl elegir",
+      "/dl mp3",
+      "/dl mp4",
+      "/dl srt",
+      "/dl webm"
+    ],
+    "effective_fields": [
+      "choice",
+      "container",
+      "end_seconds",
+      "quality",
+      "query",
+      "source",
+      "start_seconds",
+      "subtitle_language",
+      "url",
+      "view_id"
+    ],
+    "verdict_counts": {
+      "PASS": 4,
+      "SUSPECTED": 8
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 4,
+        "SUSPECTED": 4
+      },
+      "negative": {
+        "SUSPECTED": 4
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "convert_document",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 38.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 16,
+    "recorded_rows": 16,
+    "parsed_routes": [
+      "/convertir"
+    ],
+    "observed_routes": [
+      "/convertir"
+    ],
+    "effective_fields": [
+      "target"
+    ],
+    "verdict_counts": {
+      "SUSPECTED": 8,
+      "PASS": 8
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "SUSPECTED": 7,
+        "PASS": 3
+      },
+      "negative": {
+        "PASS": 5,
+        "SUSPECTED": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "edit_media",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 26.3,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 14,
+    "recorded_rows": 14,
+    "parsed_routes": [
+      "/editar"
+    ],
+    "observed_routes": [
+      "/editar"
+    ],
+    "effective_fields": [
+      "container",
+      "end_seconds",
+      "quality",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "verdict_counts": {
+      "SUSPECTED": 6,
+      "PASS": 8
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "SUSPECTED": 3,
+        "PASS": 4
+      },
+      "negative": {
+        "PASS": 4,
+        "SUSPECTED": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_pdf",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 23.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 15,
+    "recorded_rows": 15,
+    "parsed_routes": [
+      "/pdf agregar",
+      "/pdf cancelar",
+      "/pdf extraer",
+      "/pdf iniciar",
+      "/pdf terminar"
+    ],
+    "observed_routes": [
+      "/pdf agregar",
+      "/pdf cancelar",
+      "/pdf extraer",
+      "/pdf iniciar",
+      "/pdf terminar"
+    ],
+    "effective_fields": [
+      "pages"
+    ],
+    "verdict_counts": {
+      "PASS": 8,
+      "SUSPECTED": 5,
+      "BLOCKED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 7,
+        "SUSPECTED": 2,
+        "BLOCKED": 2
+      },
+      "negative": {
+        "SUSPECTED": 3,
+        "PASS": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "make_sticker",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 23.9,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 13,
+    "recorded_rows": 13,
+    "parsed_routes": [
+      "/sticker"
+    ],
+    "observed_routes": [
+      "/sticker"
+    ],
+    "effective_fields": [],
+    "verdict_counts": {
+      "PASS": 11,
+      "SUSPECTED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6,
+        "SUSPECTED": 2
+      },
+      "negative": {
+        "PASS": 5
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "read_image",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 28.3,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 14,
+    "recorded_rows": 14,
+    "parsed_routes": [
+      "/ocr",
+      "/qr"
+    ],
+    "observed_routes": [
+      "/ocr",
+      "/qr"
+    ],
+    "effective_fields": [],
+    "verdict_counts": {
+      "PASS": 12,
+      "SUSPECTED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6,
+        "SUSPECTED": 2
+      },
+      "negative": {
+        "PASS": 6
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "transcribe_media",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 49.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 14,
+    "recorded_rows": 14,
+    "parsed_routes": [
+      "/transcribir"
+    ],
+    "observed_routes": [
+      "/transcribir"
+    ],
+    "effective_fields": [
+      "output_mode"
+    ],
+    "verdict_counts": {
+      "PASS": 13,
+      "SUSPECTED": 1
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 7,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "PASS": 6
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "make_voice",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 56.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 15,
+    "recorded_rows": 15,
+    "parsed_routes": [
+      "/voces",
+      "/voz",
+      "/voz cita",
+      "/voz crear",
+      "/voz ultima"
+    ],
+    "observed_routes": [
+      "/voces",
+      "/voz",
+      "/voz cita",
+      "/voz crear",
+      "/voz ultima"
+    ],
+    "effective_fields": [
+      "effect",
+      "requested_seconds",
+      "text",
+      "voice"
+    ],
+    "verdict_counts": {
+      "PASS": 2,
+      "SUSPECTED": 13
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 1,
+        "SUSPECTED": 10
+      },
+      "negative": {
+        "PASS": 1,
+        "SUSPECTED": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "conversation",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 77.0,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 10,
+    "recorded_rows": 10,
+    "parsed_routes": [
+      "/ia"
+    ],
+    "observed_routes": [
+      "/ia"
+    ],
+    "effective_fields": [
+      "text"
+    ],
+    "verdict_counts": {
+      "PASS": 9,
+      "SUSPECTED": 1
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "PASS": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "search_web",
+    "batch": 1,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 19.0,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/buscar"
+    ],
+    "observed_routes": [
+      "/buscar"
+    ],
+    "effective_fields": [
+      "query",
+      "required_terms"
+    ],
+    "verdict_counts": {
+      "PASS": 6,
+      "SUSPECTED": 6
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 4,
+        "SUSPECTED": 3
+      },
+      "negative": {
+        "PASS": 2,
+        "SUSPECTED": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_conversation",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 15.4,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/bot estado",
+      "/bot modo",
+      "/bot pausa",
+      "/bot reanudar"
+    ],
+    "observed_routes": [
+      "/bot estado",
+      "/bot modo",
+      "/bot pausa",
+      "/bot reanudar"
+    ],
+    "effective_fields": [
+      "minutes",
+      "mode"
+    ],
+    "verdict_counts": {
+      "PASS": 10,
+      "SUSPECTED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 8
+      },
+      "negative": {
+        "SUSPECTED": 2,
+        "PASS": 2
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "save_note",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 23.3,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 10,
+    "recorded_rows": 10,
+    "parsed_routes": [
+      "/nota guardar"
+    ],
+    "observed_routes": [
+      "/nota guardar"
+    ],
+    "effective_fields": [
+      "text"
+    ],
+    "verdict_counts": {
+      "SUSPECTED": 6,
+      "PASS": 4
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "SUSPECTED": 6,
+        "PASS": 1
+      },
+      "negative": {
+        "PASS": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "find_notes",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 23.0,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/notas"
+    ],
+    "observed_routes": [
+      "/notas"
+    ],
+    "effective_fields": [
+      "page",
+      "query"
+    ],
+    "verdict_counts": {
+      "PASS": 6,
+      "SUSPECTED": 6
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6,
+        "SUSPECTED": 2
+      },
+      "negative": {
+        "SUSPECTED": 4
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_memory",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 19.4,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/mem borrar-todo",
+      "/mem corregir",
+      "/mem guardar",
+      "/mem listar",
+      "/mem olvidar"
+    ],
+    "observed_routes": [
+      "/mem borrar-todo",
+      "/mem corregir",
+      "/mem guardar",
+      "/mem listar",
+      "/mem olvidar"
+    ],
+    "effective_fields": [
+      "kind",
+      "memory_id",
+      "page",
+      "text"
+    ],
+    "verdict_counts": {
+      "PASS": 8,
+      "SUSPECTED": 4
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 8,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "SUSPECTED": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_reminder",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 17.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/recordar el",
+      "/recordar en",
+      "/recordatorio archivar",
+      "/recordatorio cancelar",
+      "/recordatorios"
+    ],
+    "observed_routes": [
+      "/recordar el",
+      "/recordar en",
+      "/recordatorio archivar",
+      "/recordatorio cancelar",
+      "/recordatorios"
+    ],
+    "effective_fields": [
+      "date",
+      "duration_seconds",
+      "include_closed",
+      "page",
+      "reminder_id",
+      "text",
+      "time"
+    ],
+    "verdict_counts": {
+      "PASS": 8,
+      "SUSPECTED": 4
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 8,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "SUSPECTED": 3
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_school",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 17.3,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 16,
+    "recorded_rows": 16,
+    "parsed_routes": [
+      "/escuela resumen configurar",
+      "/escuela resumen estado",
+      "/horario agregar",
+      "/horario borrar",
+      "/horario listar",
+      "/tarea archivo",
+      "/tarea borrar",
+      "/tarea completar",
+      "/tarea crear",
+      "/tareas"
+    ],
+    "observed_routes": [
+      "/escuela resumen configurar",
+      "/escuela resumen estado",
+      "/horario agregar",
+      "/horario borrar",
+      "/horario listar",
+      "/tarea archivo",
+      "/tarea borrar",
+      "/tarea completar",
+      "/tarea crear",
+      "/tareas"
+    ],
+    "effective_fields": [
+      "attach",
+      "digest_time",
+      "due_date",
+      "due_time",
+      "enabled",
+      "end_time",
+      "include_closed",
+      "lesson_id",
+      "page",
+      "start_time",
+      "subject",
+      "task_id",
+      "text",
+      "weekday"
+    ],
+    "verdict_counts": {
+      "PASS": 13,
+      "SUSPECTED": 3
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 13,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "SUSPECTED": 2
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_poll",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 20.7,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/encuesta cerrar",
+      "/encuesta crear",
+      "/encuesta resultados",
+      "/encuesta votar"
+    ],
+    "observed_routes": [
+      "/encuesta cerrar",
+      "/encuesta crear",
+      "/encuesta resultados",
+      "/encuesta votar"
+    ],
+    "effective_fields": [
+      "choice",
+      "options",
+      "poll_id",
+      "question"
+    ],
+    "verdict_counts": {
+      "PASS": 8,
+      "SUSPECTED": 4
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 8
+      },
+      "negative": {
+        "SUSPECTED": 4
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_drive",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 20.1,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 13,
+    "recorded_rows": 13,
+    "parsed_routes": [
+      "/ayuda",
+      "/drive buscar",
+      "/drive cuota",
+      "/drive elegir",
+      "/drive guardar"
+    ],
+    "observed_routes": [
+      "/ayuda",
+      "/drive buscar",
+      "/drive cuota",
+      "/drive elegir",
+      "/drive guardar"
+    ],
+    "effective_fields": [
+      "choice",
+      "query",
+      "topic",
+      "view_id"
+    ],
+    "verdict_counts": {
+      "PASS": 6,
+      "BLOCKED": 5,
+      "SUSPECTED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 5,
+        "BLOCKED": 1
+      },
+      "negative": {
+        "BLOCKED": 4,
+        "SUSPECTED": 2,
+        "PASS": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_messages",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 21.9,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 13,
+    "recorded_rows": 13,
+    "parsed_routes": [
+      "/contactos",
+      "/recado cancelar",
+      "/recado enviar",
+      "/recado estado",
+      "/recado preparar"
+    ],
+    "observed_routes": [
+      "/contactos",
+      "/recado cancelar",
+      "/recado enviar",
+      "/recado estado",
+      "/recado preparar"
+    ],
+    "effective_fields": [
+      "attach",
+      "draft_id",
+      "recipients",
+      "text"
+    ],
+    "verdict_counts": {
+      "PASS": 1,
+      "SUSPECTED": 9,
+      "BLOCKED": 3
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 1,
+        "SUSPECTED": 4,
+        "BLOCKED": 3
+      },
+      "negative": {
+        "SUSPECTED": 5
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "send_sticker",
+    "batch": 2,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 14.7,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 11,
+    "recorded_rows": 11,
+    "parsed_routes": [
+      "/ayuda",
+      "/reaccion"
+    ],
+    "observed_routes": [
+      "/ayuda",
+      "/reaccion"
+    ],
+    "effective_fields": [
+      "sticker_id",
+      "topic"
+    ],
+    "verdict_counts": {
+      "PASS": 7,
+      "SUSPECTED": 4
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6
+      },
+      "negative": {
+        "PASS": 1,
+        "SUSPECTED": 4
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_pack",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 22.6,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/pack catalogo",
+      "/pack comprar"
+    ],
+    "observed_routes": [
+      "/pack catalogo",
+      "/pack comprar"
+    ],
+    "effective_fields": [
+      "category",
+      "page"
+    ],
+    "verdict_counts": {
+      "PASS": 4,
+      "SUSPECTED": 6,
+      "BLOCKED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 4,
+        "SUSPECTED": 1,
+        "BLOCKED": 2
+      },
+      "negative": {
+        "SUSPECTED": 5
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_cooperacha",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 20.6,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/coop aportar",
+      "/coop cancelar",
+      "/coop crear",
+      "/coop estado"
+    ],
+    "observed_routes": [
+      "/coop aportar",
+      "/coop cancelar",
+      "/coop crear",
+      "/coop estado"
+    ],
+    "effective_fields": [
+      "amount",
+      "category",
+      "challenge_id",
+      "target_xp"
+    ],
+    "verdict_counts": {
+      "PASS": 6,
+      "SUSPECTED": 6
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 6,
+        "SUSPECTED": 2
+      },
+      "negative": {
+        "SUSPECTED": 4
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_happy_hour",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 23.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/hh airdrop",
+      "/hh estado",
+      "/hh iniciar",
+      "/hh lluvia",
+      "/hh parar",
+      "/hh reclamar"
+    ],
+    "observed_routes": [
+      "/hh airdrop",
+      "/hh estado",
+      "/hh iniciar",
+      "/hh lluvia",
+      "/hh parar",
+      "/hh reclamar"
+    ],
+    "effective_fields": [
+      "duration_seconds",
+      "event_id"
+    ],
+    "verdict_counts": {
+      "PASS": 9,
+      "SUSPECTED": 3
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 8,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "PASS": 1,
+        "SUSPECTED": 2
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_economy",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 19.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/ayuda",
+      "/daily",
+      "/saldo",
+      "/top"
+    ],
+    "observed_routes": [
+      "/ayuda",
+      "/daily",
+      "/saldo",
+      "/top"
+    ],
+    "effective_fields": [
+      "topic"
+    ],
+    "verdict_counts": {
+      "PASS": 7,
+      "SUSPECTED": 5
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 7
+      },
+      "negative": {
+        "SUSPECTED": 5
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_blackjack",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 18.8,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/bj cancelar",
+      "/bj doblar",
+      "/bj entrar",
+      "/bj estado",
+      "/bj iniciar",
+      "/bj mesa",
+      "/bj pedir",
+      "/bj plantarse",
+      "/bj repartir"
+    ],
+    "observed_routes": [
+      "/bj cancelar",
+      "/bj doblar",
+      "/bj entrar",
+      "/bj estado",
+      "/bj iniciar",
+      "/bj mesa",
+      "/bj pedir",
+      "/bj plantarse",
+      "/bj repartir"
+    ],
+    "effective_fields": [
+      "bet",
+      "game_id"
+    ],
+    "verdict_counts": {
+      "PASS": 9,
+      "SUSPECTED": 3
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 9,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "SUSPECTED": 2
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_roulette",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 18.4,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/ruleta cancelar",
+      "/ruleta crear",
+      "/ruleta entrar",
+      "/ruleta estado"
+    ],
+    "observed_routes": [
+      "/ruleta cancelar",
+      "/ruleta crear",
+      "/ruleta entrar",
+      "/ruleta estado"
+    ],
+    "effective_fields": [
+      "bet",
+      "room_id"
+    ],
+    "verdict_counts": {
+      "BLOCKED": 8,
+      "SUSPECTED": 3,
+      "PASS": 1
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "BLOCKED": 6,
+        "SUSPECTED": 1
+      },
+      "negative": {
+        "SUSPECTED": 2,
+        "BLOCKED": 2,
+        "PASS": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_admin",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 28.5,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 14,
+    "recorded_rows": 14,
+    "parsed_routes": [
+      "/admin avisos",
+      "/admin nuclear-preparar",
+      "/admin xp-dar",
+      "/admin xp-quitar"
+    ],
+    "observed_routes": [
+      "/admin avisos",
+      "/admin nuclear-preparar",
+      "/admin xp-dar",
+      "/admin xp-quitar"
+    ],
+    "effective_fields": [
+      "account_id",
+      "amount"
+    ],
+    "verdict_counts": {
+      "PASS": 7,
+      "SUSPECTED": 5,
+      "BLOCKED": 2
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 7,
+        "BLOCKED": 2
+      },
+      "negative": {
+        "SUSPECTED": 5
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "manage_minecraft",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 27.0,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 11,
+    "recorded_rows": 11,
+    "parsed_routes": [
+      "/ayuda",
+      "/mc config",
+      "/mc diagnostico",
+      "/mc estado",
+      "/mc jugadores",
+      "/mc mods",
+      "/mc mundos"
+    ],
+    "observed_routes": [
+      "/ayuda",
+      "/mc config",
+      "/mc diagnostico",
+      "/mc estado",
+      "/mc jugadores",
+      "/mc mods",
+      "/mc mundos"
+    ],
+    "effective_fields": [
+      "topic"
+    ],
+    "verdict_counts": {
+      "PASS": 7,
+      "BLOCKED": 1,
+      "SUSPECTED": 3
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 7,
+        "BLOCKED": 1,
+        "SUSPECTED": 2
+      },
+      "negative": {
+        "SUSPECTED": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "make_prank",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 19.6,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 11,
+    "recorded_rows": 11,
+    "parsed_routes": [
+      "/broma"
+    ],
+    "observed_routes": [
+      "/broma"
+    ],
+    "effective_fields": [
+      "label"
+    ],
+    "verdict_counts": {
+      "PASS": 6,
+      "SUSPECTED": 5
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "PASS": 5,
+        "SUSPECTED": 3
+      },
+      "negative": {
+        "SUSPECTED": 2,
+        "PASS": 1
+      }
+    },
+    "report_available": true
+  },
+  {
+    "tool": "control_call",
+    "batch": 3,
+    "state_file_available": true,
+    "model": "gemini-3.8-flash-medium",
+    "phase": "complete",
+    "turns": 2,
+    "elapsed_seconds": 25.3,
+    "error": null,
+    "conversation_count": 1,
+    "proposed_cases": 12,
+    "recorded_rows": 12,
+    "parsed_routes": [
+      "/llamada cancelar",
+      "/llamada colgar",
+      "/llamada estado",
+      "/llamar"
+    ],
+    "observed_routes": [
+      "/llamada cancelar",
+      "/llamada colgar",
+      "/llamada estado",
+      "/llamar"
+    ],
+    "effective_fields": [
+      "topic",
+      "video"
+    ],
+    "verdict_counts": {
+      "BLOCKED": 6,
+      "SUSPECTED": 6
+    },
+    "kind_verdict_counts": {
+      "positive": {
+        "BLOCKED": 1
+      },
+      "blocked": {
+        "BLOCKED": 5,
+        "SUSPECTED": 4
+      },
+      "negative": {
+        "SUSPECTED": 2
+      }
+    },
+    "report_available": true
+  }
+]

@@ -1,5 +1,29 @@
 # Relevo Botsky
 
+## 07/11 · Nueva campaña AGY terminada:30herramientas/378casos
+
+Encargo nuevo del propietario, modelo explícito gemini-3.8-flash-medium confirmado
+por init nativo en30sesiones. Máximo3concurrentes, tres tandas,30informes completos.
+208PASS(165positivos/43negativos),141SUSPECTED,29BLOCKED;35claims NOadjudicados,
+no equivalen a35bugs. Evidencia histórica intacta; no corrección de producto.
+109/154rutas observadas conrecibo+resultado (incluyenguardias),45rutas/56campos
+NOT_TESTED.39artefactos inspeccionados; recepción/percepción humanaNOT_TESTED.
+
+Backend/DB/fixtures propios en private/retest-agy-20261107; referencias actuales
+productivas como entradas, sin usar DBproductiva.32POSTmensajería fixturelocal,
+0POSTproveedor; Drive/grupos/MCwritesfalse, callsdisabled/sinperfil.30SQLite
+integridad/FKok,0jobsrunning; efectos propios retirados y sandboxes sincredenciales.
+Producción mismosPID/saludready/0reinicios queinicio; no servicios/webhooktocados.
+
+Nuevo arnés ops/retest_agy.py y resumen ops/retest_report.py; históricos noeditados.
+Propuestaoriginal congelada, cadenasoutput excluidas porfalta decitacorrecta enarnés;
+feedbackampliado hasta12k, límite y otras debilidades del evaluador documentados.
+Informe docs/AGY_RETEST_20261107.md; evidencia docs/evidencia/AGY-20261107/.
+Dospruebasharness/compile/Ruff/formatPASS. NoAGYintegradoalruntime niNLP/GitHub.
+Campaña cerrada, noautoresume. Cuota8%/52%al00:43UTC, umbral5%obligatorio.
+Próximo paso posible: adjudicar35claims contra contratos/evidencia, sincontarlos
+comoerrores confirmados ni reabriresta campaña automáticamente.
+
 ## 06/11 · PRODUCCIÓN Botsky activa; Zhana archivada y recuperable
 
 Propietario dispensó explícitamente gateR10 y reiteró transición inmediata.
