@@ -25,3 +25,16 @@ class ModelsExperimentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(calls[0]['reasoning_effort'],'low')
         self.assertEqual(MODEL,'@cf/zai-org/glm-4.7-flash')
         self.assertEqual(provider.last_metrics['model'],calls[0]['model'])
+
+    async def test_actual_quota_code_4006_pauses_without_second_request(self):
+        from botsky.adapters.cloudflare_interpreter import InterpreterError
+        calls=[]
+        def handle(request):
+            calls.append(request)
+            return httpx.Response(429,json={'errors':[{'code':4006,'message':'you have used up your daily free allocation of 10,000 neurons'}]})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+            provider=ModelProvider(http,{'account_id':'a'*32,'api_token':'synthetic'},MODELS[0])
+            for _ in range(2):
+                with self.assertRaisesRegex(InterpreterError,'daily_quota'):
+                    await provider.propose([],[])
+        self.assertEqual(len(calls),1)

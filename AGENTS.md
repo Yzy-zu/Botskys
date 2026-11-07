@@ -355,3 +355,13 @@ GLM sin cambios. Fixtures/oracles congelados,selección de finalistas previament
 fijada,latencia/uso/errores medidos,sin herramientas ni envíos/llamadas. Sin activar
 planes/créditos ni modelos restringidos de pago;parar ante3036,sin reintentos o
 reanudación automática. No reabre A/Bcancelado. Cuota5h5% vigente.
+
+## 07/11 · Elección y configuración del mejor modelo tras contraste
+
+El propietario reiteró consumir las neuronas para probar qué modelo funciona mejor
+ydejarlo configurado. Autoriza comparar ydesplegar el ganador contrastado con
+respaldo/reversión propios;no hace falta volver a pedir permiso para ese paso.
+No autoriza inventar ganador ante bloqueos ni activar un plan de pago. Ronda
+07/11rechazada:HTTP429/código4006,mensaje explícito de asignación diaria10.000
+agotada. Sin inferencias exitosas,no hay ganador. Conservar evidencia yno reanudar
+esta corrida automáticamente;A/Bdecatálogos cancelado sigue cerrado.

@@ -1,0 +1,110 @@
+{
+  "manifest_sha256": "9a12aaabee6753d1e254d9204285e9da72ea757b4b9c8cafcc65dfb0e277c1da",
+  "results": [
+    {
+      "model": "GLM4.7Flash",
+      "case": "04-nota-hostil",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.089,
+      "metrics": null
+    },
+    {
+      "model": "Gemma4-26B",
+      "case": "04-nota-hostil",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.043,
+      "metrics": null
+    },
+    {
+      "model": "Llama4Scout",
+      "case": "04-nota-hostil",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.048,
+      "metrics": null
+    },
+    {
+      "model": "GPT-OSS20B",
+      "case": "04-nota-hostil",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.076,
+      "metrics": null
+    },
+    {
+      "model": "Qwen3.8-27B-low",
+      "case": "04-nota-hostil",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.107,
+      "metrics": null
+    },
+    {
+      "model": "Gemma4-26B",
+      "case": "11-video",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.101,
+      "metrics": null
+    },
+    {
+      "model": "Llama4Scout",
+      "case": "11-video",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.049,
+      "metrics": null
+    },
+    {
+      "model": "GPT-OSS20B",
+      "case": "11-video",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.112,
+      "metrics": null
+    },
+    {
+      "model": "Qwen3.8-27B-low",
+      "case": "11-video",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.041,
+      "metrics": null
+    },
+    {
+      "model": "GLM4.7Flash",
+      "case": "11-video",
+      "stage": "screen",
+      "pass": false,
+      "error": "provider_http_429",
+      "requests": 1,
+      "duration_seconds": 0.039,
+      "metrics": null
+    }
+  ],
+  "status": "finished",
+  "backend_effects": 0,
+  "production_changes": 0,
+  "automatic_resume": false,
+  "finalists": []
+}

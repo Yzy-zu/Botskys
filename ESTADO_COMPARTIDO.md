@@ -1,5 +1,24 @@
 # Relevo Botsky
 
+## 07/11 · Modelos Cloudflare: comparación bloqueada por cuota real
+
+Propietario encargó probar otros modelos gratuitos y reiteró gastar cuota ydejar
+configurado el ganador probado. Autorización de comparación/despliegue enAGENTS;
+no pedirla de nuevo cuando exista evidencia. No reabre A/Bcancelado.
+Investigación oficial:Gemma4-26B,Llama4Scout,GPTOSS20B,Qwen3.8-27Blow yGLMcontrol,
+catálogo actual155variantes;manifest/oracles/selección finalistas congeladosbee78cf.
+10peticiones de screening fueronHTTP429/code4006,todas sin respuesta de modelo.
+Diagnóstico mínimo adicional confirma mensaje de proveedor:daily free allocation
+10.000neurons agotada. Cero inferencias exitosas,no score de calidad ni ganador.
+Runner decíafinished sin finalistas;histórico intacto,adjudicaciónBLOCKED_DAILY_QUOTA.
+Guardia del evaluador corregida para4006+mensaje de cuota;2tests locales pasan,
+una sola petición al bloquear incluso ensegunda invocación. Producción sin cambios.
+Docs/MODELOS_CLOUDFLARE_20261107.md yevidencia/MODELOS_CF_20261107 conservan todo.
+Pendiente:comprobación nueva cuando proveedor permita inferencia,yconfigurar ganador
+tras prueba. No reanudar automáticamente ni activar cobros/cuentas alternativas.
+Cuota Cloudflare compartida,también afecta frontendproductivo;resetoficial00:00UTC.
+No se conserva razonamiento/cabeceras ni secretos públicos;private0700/0600.
+
 ## 07/11 · Comparación de catálogo cancelada expresamente
 
 Propietario encargó comparar actual/compacto sin cambiar producción;manifest y

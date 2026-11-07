@@ -5,12 +5,12 @@ import hashlib
 import json
 import os
 from dataclasses import asdict
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
 
 import httpx
-from botsky.adapters.cloudflare_interpreter import CloudflareInterpreter, read_credentials, MODEL
+from botsky.adapters.cloudflare_interpreter import CloudflareInterpreter, read_credentials, MODEL, InterpreterError
 from botsky.frontend.service import FrontendService
 from evaluar_frontend_f7 import evaluate
 
@@ -26,10 +26,18 @@ MODELS=[
 
 
 class ModelHTTP:
-    def __init__(self,http,profile):self.http,self.profile=http,profile
+    def __init__(self,http,profile):
+        self.http,self.profile=http,profile
+        self.quota_blocked=False
     async def post(self,url,*,headers,json,timeout):
         payload={**json,'model':self.profile['id'],**self.profile['extra']}
-        return await self.http.post(url,headers=headers,json=payload,timeout=timeout)
+        response=await self.http.post(url,headers=headers,json=payload,timeout=timeout)
+        self.quota_blocked=False
+        if response.status_code==429:
+            try:errors=response.json().get('errors',[])
+            except ValueError:errors=[]
+            self.quota_blocked=any(e.get('code')==3036 or (e.get('code')==4006 and 'daily free allocation' in str(e.get('message','')).lower()) for e in errors if isinstance(e,dict))
+        return response
 
 
 class ModelProvider(CloudflareInterpreter):
@@ -38,6 +46,11 @@ class ModelProvider(CloudflareInterpreter):
         self.profile=profile
     async def propose(self,messages,tools):
         try:return await super().propose(messages,tools)
+        except InterpreterError:
+            if self.http.quota_blocked:
+                self.paused_until=(datetime.now(UTC)+timedelta(days=1)).replace(hour=0,minute=0,second=0,microsecond=0)
+                raise InterpreterError('daily_quota') from None
+            raise
         finally:
             if self.last_metrics:self.last_metrics['model']=self.profile['id']
 
