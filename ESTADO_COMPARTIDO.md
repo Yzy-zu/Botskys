@@ -1,5 +1,21 @@
 # Relevo Botsky
 
+## 07/11 · Compacto íntegro desplegado
+
+Encargo expreso:implementar ydesplegar. Default FrontendService usa LosslessCatalog
+propio,155acciones directas,schemas compartidos;expansión JSON exacta incluyendo
+metadata/descripciones/permisos. No el prototipo anterior con pérdida.61tests
+locales pasan. Aceptación nueva cf04:6casos únicos pasan en7intentos;confirmación
+tuvolímite40s,suplemento explícito pasó8,769s. Timeout histórico conservado.
+Tres pares frente baseline anterior:aprox24,1%menos entrada y23,4%menos neuronas,
+no45,7%del prototipo anterior. Caché0. Aproximadamente68consultas/día similares
+concinco cuotas completas;no saldo actual ni garantía.
+Desplegado e8b98f4,PID3880318,healthruntime/calls ready,sin llamada activa.
+Backup propio deploy-compact-20261107*,DB íntegra/esquema20ysin cambios alparar,
+perfil/pool5sin cambios,serviciosajenos mismosPID. Sin entregas/inferencias durante
+elcorte. Informe docs/DESPLIEGUE_COMPACTO_QWEN_20261107.md y evidencia separada.
+No reanudar aceptación nicampañas cerradas.
+
 ## 07/11 · Campaña nueva de ahorro Qwen cerrada
 
 Propietario autorizó gastar una API: exclusivamente cf05,9732,9633neuronas

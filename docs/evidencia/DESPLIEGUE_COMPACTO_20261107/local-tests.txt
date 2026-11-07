@@ -1,0 +1,6 @@
+----------------------------------------------------------------------
+Ran 34 tests in 2.600s
+
+OK
+
+Additional completed suites: test_cloudflare_pool.py 8 OK; test_integrations.py 15 OK; test_configured_integrations.py 3 OK; test_qwen_lossless_catalog.py 1 OK. Total61.

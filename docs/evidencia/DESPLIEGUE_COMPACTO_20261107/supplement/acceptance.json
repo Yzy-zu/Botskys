@@ -1,0 +1,72 @@
+{
+  "status": "accepted_cases",
+  "results": [
+    {
+      "case": "17-confirmar",
+      "passed": true,
+      "decision": {
+        "action_key": "recado.enviar",
+        "arguments": {
+          "draft_id": "synthetic-draft"
+        }
+      },
+      "seconds": 8.769,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17042,
+            "completion_tokens": 198,
+            "total_tokens": 17240,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 754.7726440429688
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"recado.enviar\",\"arguments\":{\"draft_id\":\"synthetic-draft\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "24-gemini",
+      "passed": true,
+      "decision": {
+        "action_key": "ia",
+        "arguments": {
+          "text": "Explícame por qué la luna tiene fases"
+        }
+      },
+      "seconds": 4.518,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17013,
+            "completion_tokens": 92,
+            "total_tokens": 17105,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 722.7499389648438
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"ia\",\"arguments\":{\"text\":\"Explícame por qué la luna tiene fases\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "account_alias": "cf04",
+  "backend_effects": 0,
+  "automatic_resume": false
+}

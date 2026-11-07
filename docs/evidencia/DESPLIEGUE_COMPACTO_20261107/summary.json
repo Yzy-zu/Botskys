@@ -1,0 +1,17 @@
+{
+  "unique_cases_passed": 6,
+  "attempts": 7,
+  "timeouts": 1,
+  "cached_tokens": 0,
+  "matched_cases": 3,
+  "matched_input_tokens": 51093,
+  "matched_neurons": 2168.1316528320312,
+  "input_reduction_percent": 24.104278074866315,
+  "neurons_reduction_percent": 23.440692223456207,
+  "successful_median_seconds": 4.8855,
+  "reported_neurons_cf04": 4416.563293457031,
+  "timeout_usage": "UNKNOWN",
+  "five_fully_available_accounts_estimated_similar_queries": 67.92611813000359,
+  "production_deployed": true,
+  "automatic_resume": false
+}
