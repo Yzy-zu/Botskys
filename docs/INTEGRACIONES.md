@@ -230,3 +230,15 @@ entrantefalse. Webhook/cuenta/navegador cedidos de forma exclusiva; Zhana retira
 de PM2 y de sus dumps, preservada con respaldos/reversión. Prueba de salud real
 desde Evolution y aviso único Lab aceptado; Android/recepción humana NOT_TESTED.
 El perfil operativo anterior de laboratorio no se modificó para simular aceptación.
+
+## 07/11 · Cloudflare con pool y Qwen contrastado
+
+Por encargo posterior,se instaló pool propio de dos cuentasCloudflare ymodelo
+@cf/qwen/qwen3.8-27b con reasoning_effort=low. Credenciales0600 yregistro operativos
+privados;alta explícita medianteops/registrar_cuenta_cloudflare.py. Cuota observada
+por cuenta persiste al reiniciar;no se duplica por token. Un modelo yuna petición
+por mensaje,sin fallback de modelos ni reintento con otra cuenta en ese turno.
+Ambas cuentas agotaron cuota el07/11;renovación oficial00:00UTC para mensajes nuevos.
+No cambia Gemini (contenido yclave única),permisos,transportes oservicios ajenos.
+Comparación ylímites:docs/POOL_CLOUDFLARE_20261107.md. Correrlo local sigue pendiente
+de otro ajuste de proveedor;referencias en docs/QWEN_LOCAL_REFERENCIA.md.

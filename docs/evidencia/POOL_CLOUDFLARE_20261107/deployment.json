@@ -1,0 +1,45 @@
+{
+  "phase": "active_healthy",
+  "target_commit": "3c29a2161f2cdba049e2d8bdfd0d12371ca2f44a",
+  "messages": 0,
+  "calls": 0,
+  "inferences_during_deploy": 0,
+  "preflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "before": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend": 0
+  },
+  "accounts_not_paused_by_observed_quota": 0,
+  "provider_quota_available_now": false,
+  "backup_verified": true,
+  "pool_accounts": 2,
+  "cf01_observed_quota_pause": true,
+  "configuration_composed": true,
+  "postflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "other_supervisors_unchanged": true,
+  "new_runtime_pid": 3842369,
+  "after": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend": 0
+  },
+  "model": "@cf/qwen/qwen3.8-27b",
+  "reasoning_effort": "low",
+  "profile_only_interpreter_changed": true,
+  "credential_permissions_verified": true,
+  "backup_rechecked": true,
+  "bridge_ready": true
+}

@@ -1,5 +1,28 @@
 # Relevo Botsky
 
+## 07/11 · Pool instalado, Qwen seleccionado, ambas cuotas agotadas
+
+Propietario proporcionó segundo token/AccountID yencargó pool. Datos propios0600,
+fueraGit;tokencf02verificadoactivo/accesoAIreal;dosAccountIDdistintos comprobados.
+Nuevoexperimento1600eec conoraclesanteriores:22intentos,catálogo155completo.
+Qwen3.8-27Blow6/6,GLM5/6,Scout3/6(GemmayGPTOSSsolo1/2cadauno). MedianasQwen9,628s,
+GLM8,298s,Scout1,236s. Qwenmáx39,704s;seeligeaciertos,nopromesa de rapidez/ahorro.
+Scoutquery«videosdegatos»frente«gatos»adjudicadaintenciónválida,sinreescribirscore;
+sífallóconsobreextraenconversiónygenerócontenidoenvezdelegarGemini. EvidenciaCF02.
+Qwenusaaprox6,4vecesneuronasGLMen5casosconusageambos. Cf02agotósucupoalcomprobar
+saludoadicional:daily_quota;aclaraciónnoejecutada. No fingirvalidaciónconversacional
+completa. No másconsultasdespuésdelagotamientoni reanudacionesautomáticas.
+Poolpersistente/dinámico:unmodelo,cada mensajeeligeunacuentaantesdeconsultar;sin
+reintentoconotraclaveenelmismoturno. CuotaporhashdeAccountID,duplicadosrechazados,
+reinicioconsupervivenciadepausas,altasoperadoratómicas0600.78pruebaslocalespasan.
+Desplegado3c29a21;PID3842369;runtime/calls/puenteready,serviciosajenosmismosPID.
+Backupprivadoconsistente/integridad/FK;esquema20sinmigrar. Perfilsalvointerpreter
+idéntico. Doscuentasenpausahasta00:00UTC;Qwenlow/poolhabilitadosperoAIactualmente
+limitadaporcuota. NoWhatsApp/mensajes/llamadasniinferenciasenelcorte. Altafutura
+ops/registrar_cuenta_cloudflare.py,rutasexplícitas.Noimportanentorno/Zhana/perfiles.
+Documentación docs/POOL_CLOUDFLARE_20261107.md;proveedores/descargalocalpedidos
+posteriormente en docs/QWEN_LOCAL_REFERENCIA.md. No se descargó ni instaló local.
+
 ## 07/11 · Modelos Cloudflare: comparación bloqueada por cuota real
 
 Propietario encargó probar otros modelos gratuitos y reiteró gastar cuota ydejar

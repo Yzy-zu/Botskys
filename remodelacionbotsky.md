@@ -902,3 +902,13 @@ la arquitectura de selección directa y el catálogo completo; el transporte fin
 usa un sobre JSON plano cerrado en la misma consulta GLM. No hay segundo selector,
 reparación por IA ni retorno tras el resultado. Variación técnica y evidencias en
 docs/REMODELACION_F7.md; históricos iniciales conservados. F8 no se ejecutó.
+
+## Nota posterior · pool y modelo Qwen · 07/11
+
+El propietario sustituyó la cuenta/modelo únicos por un pool de cuentasCloudflare
+yencargó probar alternativas/configurar el ganador. Se preservó selección directa
+ycatálogo completo;Qwen3.8-27Blow obtuvo6/6 en la muestra frentea5/6deGLM. Dos cuentas
+registradas;unmodelo yuna consulta por mensaje,cuota persistente,sin reintentos.
+Código3c29a21 desplegado. Ambas cuotas agotadas al cierre;saludo/aclaraciónQwen
+adicionalesNO_PROBADO. Evidencia,consumo ylímites en docs/POOL_CLOUDFLARE_20261107.md.
+No se reabre la comparación de catálogos cancelada ni hay instalación local.
