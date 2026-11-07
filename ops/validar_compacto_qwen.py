@@ -33,7 +33,7 @@ async def run():
    except Exception as exc:row.update(passed=False,error=str(exc) if isinstance(exc,ValueError) else type(exc).__name__)
    row.update(seconds=round(time.monotonic()-t,3),responses=responses[before:]);report['results'].append(row);save();print(json.dumps(row,ensure_ascii=False),flush=True)
    if not row['passed']:report['status']='acceptance_failed';break
-  else:report['status']='accepted_six_cases'
+  else:report['status']='accepted_cases'
   save()
 if __name__=='__main__':
  import sys

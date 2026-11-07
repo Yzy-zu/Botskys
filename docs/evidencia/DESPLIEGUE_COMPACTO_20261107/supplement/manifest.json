@@ -1,0 +1,52 @@
+{
+  "scope": "explicit_supplement_after_proposal_timeout_no_backend_effects",
+  "account_alias": "cf04",
+  "model": "@cf/qwen/qwen3.8-27b",
+  "cases": [
+    {
+      "id": "17-confirmar",
+      "message": "Sí, envíalo",
+      "context": {
+        "now": "2026-11-07T16:00:00+00:00",
+        "timezone": "America/Mexico_City",
+        "references": [
+          {
+            "kind": "message_preview",
+            "action_key": "recado.enviar",
+            "arguments": {
+              "draft_id": "synthetic-draft"
+            }
+          }
+        ]
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "recado.enviar",
+        "arguments": {
+          "draft_id": "synthetic-draft"
+        }
+      }
+    },
+    {
+      "id": "24-gemini",
+      "message": "Explícame por qué la luna tiene fases",
+      "context": {
+        "now": "2026-11-07T16:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "ia",
+        "arguments": {
+          "text": "Explícame por qué la luna tiene fases"
+        }
+      }
+    }
+  ],
+  "max_requests": 2,
+  "deadline_seconds": 40,
+  "backend_effects": 0,
+  "automatic_resume": false,
+  "production_changes_in_test": 0,
+  "source_sha256": "fbaebc741e1284275bf6ca075f34828a69976b20a3ce9fd56fa3b61ccb63328a"
+}
