@@ -1,0 +1,19 @@
+test_typed_payload_and_uncertain_statuses_never_retry_or_fallback (test_native_tables.TableHTTPTest.test_typed_payload_and_uncertain_statuses_never_retry_or_fallback) ... ok
+test_invalid_table_preflight_and_tampered_hash_never_dispatch (test_native_tables.TableStoreTest.test_invalid_table_preflight_and_tampered_hash_never_dispatch) ... ok
+test_migrate_18_preserves_canonical_data_and_pending_plan (test_native_tables.TableStoreTest.test_migrate_18_preserves_canonical_data_and_pending_plan) ... ok
+test_table_plan_restart_after_middle_part_does_not_recompose (test_native_tables.TableStoreTest.test_table_plan_restart_after_middle_part_does_not_recompose) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.110s
+
+OK
+test_evolution_sends_typed_table_and_never_text_substitute (test_native_tables.TableEvolutionTest.test_evolution_sends_typed_table_and_never_text_substitute) ... ok
+test_typed_payload_and_uncertain_statuses_never_retry_or_fallback (test_native_tables.TableHTTPTest.test_typed_payload_and_uncertain_statuses_never_retry_or_fallback) ... ok
+test_invalid_table_preflight_and_tampered_hash_never_dispatch (test_native_tables.TableStoreTest.test_invalid_table_preflight_and_tampered_hash_never_dispatch) ... ok
+test_migrate_18_preserves_canonical_data_and_pending_plan (test_native_tables.TableStoreTest.test_migrate_18_preserves_canonical_data_and_pending_plan) ... ok
+test_table_plan_restart_after_middle_part_does_not_recompose (test_native_tables.TableStoreTest.test_table_plan_restart_after_middle_part_does_not_recompose) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.153s
+
+OK

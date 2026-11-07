@@ -77,7 +77,7 @@ def read_profile(path):
     ):
         raise ValueError("single_explicit_live_required")
     for block, keys in (
-        (value["evolution"], ("delivery_enabled",)),
+        (value["evolution"], ("delivery_enabled", "native_tables_enabled")),
         (value.get("call_service", {}), ("enabled", "allow_browser_launch", "agenda_timers")),
     ):
         if any(k in block and type(block[k]) is not bool for k in keys):

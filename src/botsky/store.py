@@ -13,7 +13,7 @@ from .contracts import CommandContext, Receipt, Result, Scope, canonical
 from .presentation import split_text
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 18
+SCHEMA_VERSION = 19
 PART_CHARS = 3500
 
 
@@ -141,6 +141,9 @@ class Store:
                     (Path(__file__).parent / "migrations/018_transport.sql").read_text()
                 )
                 version = 18
+            if version == 18 and application_id == APPLICATION_ID:
+                db.executescript((Path(__file__).parent / 'migrations/019_presentation.sql').read_text())
+                version = 19
             if version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -271,27 +274,35 @@ class Store:
                 finally:
                     source.unlink(missing_ok=True)
                 text = 'El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres.'
-        count = 0
+        parts = []
         if result.data.get('media_first'):
-            for artifact_id in artifact_ids:
-                db.execute(
-                    "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json) VALUES(?,?,'','pending',?,?)",
-                    (context.receipt_id, count, now, canonical([artifact_id])),
-                )
-                count += 1
+            parts.extend(('media', '', {'artifacts': [identifier]}) for identifier in artifact_ids)
             artifact_ids = []
-        for position, fragment in enumerate(split_text(text, PART_CHARS), start=count):
+        table = None
+        if result.data.get('native_table'):
+            from .presentation.table import NativeTable
+            try:
+                table = NativeTable.parse(result.data['native_table'])
+            except (TypeError, ValueError):
+                pass  # Antes del despacho, conservar todo el texto canónico.
+        if table is not None and getattr(self, 'native_tables_enabled', False):
+            intro, footer = result.data.get('native_intro', ''), result.data.get('native_footer', '')
+            if not isinstance(intro, str) or not isinstance(footer, str):
+                raise ValueError('introducción/pie inválidos')
+            parts.extend(('text', fragment, {}) for fragment in split_text(intro, PART_CHARS))
+            parts.append(('table', '', table.payload()))
+            parts.extend(('text', fragment, {}) for fragment in split_text(footer, PART_CHARS))
+        else:
+            parts.extend(('text', fragment, {}) for fragment in split_text(text, PART_CHARS))
+        parts.extend(('media', '', {'artifacts': [identifier]}) for identifier in artifact_ids)
+        for position, (kind, fragment, payload) in enumerate(parts):
+            identifiers = payload.get('artifacts', [])
+            frozen = canonical({'kind': kind, 'text': fragment, 'payload': payload, 'version': 1})
             db.execute(
-                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms) VALUES(?,?,?,'pending',?)",
-                (context.receipt_id, position, fragment, now),
+                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json,kind,rich_payload_json,visual_version,content_sha256) VALUES(?,?,?,'pending',?,?,?,?,1,?)",
+                (context.receipt_id, position, fragment, now, canonical(identifiers), kind,
+                 canonical(payload), hashlib.sha256(frozen.encode()).hexdigest()),
             )
-            count = position + 1
-        for artifact_id in artifact_ids:
-            db.execute(
-                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json) VALUES(?,?,'','pending',?,?)",
-                (context.receipt_id, count, now, canonical([artifact_id])),
-            )
-            count += 1
 
     def execute(self, receipt_id, settings, now, handler):
         with self.transaction() as db:
@@ -534,6 +545,13 @@ class Store:
                 ("pending", "failed") if retry_failed else ("pending",)
             ):
                 return None
+            if row['visual_version']:
+                frozen = canonical({'kind': row['kind'], 'text': row['payload'],
+                    'payload': json.loads(row['rich_payload_json']), 'version': row['visual_version']})
+                if hashlib.sha256(frozen.encode()).hexdigest() != row['content_sha256']:
+                    db.execute("UPDATE outbox SET state='failed',error_code='presentation_plan_corrupt',revision=revision+1 WHERE receipt_id=? AND position=?",
+                               (receipt_id, row['position']))
+                    return None
             artifact_ids = tuple(json.loads(row["artifacts_json"]))
             if artifact_ids:
                 from .artifacts import ArtifactProblem, Artifacts
@@ -563,7 +581,8 @@ class Store:
             from .contracts import DeliveryPart
 
             return DeliveryPart(
-                receipt_id, row["position"], context, row["payload"], artifact_ids
+                receipt_id, row["position"], context, row["payload"], artifact_ids,
+                row["kind"], json.loads(row["rich_payload_json"]), row["visual_version"]
             ), row["revision"] + 1
 
     def finish_part(self, part, revision, settings, state, provider_id, code, now):

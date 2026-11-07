@@ -1,5 +1,15 @@
 # Relevo Botsky
 
+## 07/11 · V3 base técnica local: esquema19 y tablas nativas
+
+Outbox ampliada compatible, partes/version/hash inmutables, índice mensajes,
+tabla validadaUTF16/rectangular/presupuesto y rutaHTTP propia. Soporte instalado
+observado sololectura enmainEvolution/handler conhashes enUI-UX-V3-20261107.
+Capacidad native_tables_enabled explícita, predeterminadafalse; activar al deploy
+con evidencia instalada. Sin fallbacktras timeout; rechazo/ambiguo separados.
+5testsV3+14runtimePASS; migración18→19sintética íntegra. V4/V5se apoyan en esta
+base. Sin deploy/envíos/llamadas; visual/proveedorNO_PROBADO. Plan incompleto.
+
 ## 07/11 · V1 base ampliada y V2 local implementada
 
 Archivo UTF8íntegro para bloques indivisibles/código largo, citas de partes propias

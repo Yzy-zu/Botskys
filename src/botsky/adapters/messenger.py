@@ -66,6 +66,21 @@ class Messenger:
             raise MessageError("invalid_message_part", False)
         return await self._post(endpoint, body)
 
+    async def send_table(self, target, payload):
+        from ..presentation.table import NativeTable
+        from ..contracts import canonical
+        try:
+            Contact('destino', target)
+            table = NativeTable.parse(payload)
+        except ValueError:
+            raise MessageError('native_table_invalid', False) from None
+        body = {'number': target, 'table': table.payload()}
+        if not self.available or len(canonical(body).encode()) > 64 * 1024:
+            raise MessageError('native_table_invalid', False)
+        # La ruta puede haber enviado antes de fallar. Solo rechazos tipados
+        # previos al relay son concluyentes; nunca fallback tras timeout.
+        return await self._post('sendNativeTable', body, native_table=True)
+
     async def send_photo(self, target, data, mime, *, view_once=False, caption=""):
         if not self.available:
             raise MessageError("messenger_not_configured", False)
@@ -94,7 +109,7 @@ class Messenger:
         }
         return await self._post("sendMedia", body)
 
-    async def _post(self, endpoint, body):
+    async def _post(self, endpoint, body, *, native_table=False):
         try:
             async with self.http.stream(
                 "POST",
@@ -104,9 +119,11 @@ class Messenger:
                 follow_redirects=False,
                 timeout=10,
             ) as response:
-                if 400 <= response.status_code < 500 and response.status_code != 409:
+                if native_table and response.status_code == 404:
+                    raise MessageError('native_table_unavailable', False)
+                if not native_table and 400 <= response.status_code < 500 and response.status_code != 409:
                     raise MessageError("message_rejected", False)
-                if not 200 <= response.status_code < 300:
+                if not 200 <= response.status_code < 300 and not (native_table and response.status_code == 400):
                     raise MessageError("message_uncertain")
                 content = bytearray()
                 async for chunk in response.aiter_bytes():
@@ -116,6 +133,10 @@ class Messenger:
                 import json
 
                 result = json.loads(content)
+                if native_table and response.status_code == 400:
+                    if isinstance(result, dict) and result.get('code') in ('NATIVE_TABLE_INVALID', 'NATIVE_TABLE_UNSUPPORTED'):
+                        raise MessageError('native_table_rejected', False)
+                    raise MessageError('message_uncertain')
                 identifier = result.get("key", {}).get("id")
                 if not isinstance(identifier, str) or not identifier or len(identifier) > 256:
                     raise MessageError("message_invalid_ack")

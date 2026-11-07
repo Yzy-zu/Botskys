@@ -109,6 +109,9 @@ class DeliveryPart:
     context: CommandContext
     text: str
     artifacts: tuple[str, ...] = ()
+    kind: Literal['text', 'table', 'media'] = 'text'
+    payload: dict = field(default_factory=dict)
+    visual_version: int = 0
 
 
 @dataclass(frozen=True)

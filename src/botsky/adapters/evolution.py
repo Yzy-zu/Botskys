@@ -26,6 +26,8 @@ class EvolutionTransport:
         )
         if not self.api.available or self.settings.transport != "evolution":
             raise ValueError("evolution_configuration_required")
+        self.native_tables_enabled = config.get('native_tables_enabled', False) is True
+        self.app.store.native_tables_enabled = self.native_tables_enabled
         self.instance = config["instance"]
         from urllib.parse import quote
 
@@ -227,6 +229,20 @@ class EvolutionTransport:
             return DeliveryAck(False)
         if self.app.operations and not self.app.operations.delivers(c.scope.chat):
             return DeliveryAck(False)
+        if part.kind == 'table':
+            if not self.native_tables_enabled or part.artifacts or part.text:
+                return DeliveryAck(False)
+            from ..presentation.table import NativeTable
+            try:
+                table = NativeTable.parse(part.payload)
+                identifier = await self.api.send_table(c.scope.chat, table.payload())
+                return DeliveryAck(True, identifier)
+            except ValueError:
+                return DeliveryAck(False)
+            except MessageError as exc:
+                if not exc.uncertain:
+                    return DeliveryAck(False)
+                raise
         if not part.artifacts:
             try:
                 return DeliveryAck(True, await self.api.send(c.scope.chat, "text", text=part.text))
