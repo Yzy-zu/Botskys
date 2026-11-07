@@ -261,3 +261,13 @@ Este cierre es documental: no cambia producto, servicios, perfiles, proveedores
 ni envía mensajes/llamadas. No importa runtime/NLP/datos de Zhana. Plan vigente en
 docs/PLAN_MODERNIZACION_VISUAL_UI_UX.md; implementación posterior por fases V1–V7,
 con evidencia y alcance de ejecución que corresponda. Cuota5% sigue vigente.
+
+## 07/11 · Implementación y despliegue del plan visual encargados
+
+El propietario encargó implementar V1–V7, con datos/contratos propios, cierres
+pequeños, pruebas, evidencia/matriz/relevo y commits. Autoriza despliegue reversible
+con respaldo, preservando datos productivos y servicios ajenos. Sin llamadas ni
+envíos de prueba nuevos; cliente/humano no observado queda NO_PROBADO y no impide
+trabajo independiente. No cerrar fases incompletas ni confundir mock/HTTP con render.
+Aclaró después: priorizar cuota de cinco horas; la semanal no impide continuar.
+El umbral5% se aplica a cinco horas; guardar y parar sin reanudación automática.

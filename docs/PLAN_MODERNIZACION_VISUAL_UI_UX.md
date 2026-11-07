@@ -1,7 +1,13 @@
 # Modernización visual y de experiencia de Botsky
 
 Versión 1 · 07/11/2026 · Encargo: recuperar la calidad visual de Zhana en toda la experiencia.
-Estado: **plan y auditoría documental terminados; implementación pendiente**.
+Estado: **implementación parcial V1–V6 en commits locales; V7 en verificación. Plan completo NO cerrado**.
+
+Encargo posterior: implementación y despliegue autorizados, sin llamadas/envíos de
+prueba. Evidencias separadas UI-UX-V1 a V6-20261107; matriz conserva pendientes.
+Quedan catálogo exhaustivo154rutas, literalidad visual completa, fallos/casos
+difíciles restantes y observación Android/Web/compresión/frames/voz. Un transporte
+instalado o una prueba local no cierran estos pendientes. V0 histórico intacto.
 Este documento amplía `PROPUESTA_UI_UX_20261107.md` y concreta una continuación de
 R1/R3/R7/R8/R9/R11 del plan de construcción, sin reabrir campañas históricas.
 

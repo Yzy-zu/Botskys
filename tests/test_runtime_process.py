@@ -12,7 +12,7 @@ from unittest import IsolatedAsyncioTestCase
 
 import httpx
 
-from botsky.store import Store
+from botsky.store import SCHEMA_VERSION, Store
 
 OWNER = "525511112222@s.whatsapp.net"
 BOT = "525544445555@s.whatsapp.net"
@@ -109,4 +109,4 @@ class RuntimeProcessTest(IsolatedAsyncioTestCase):
                 self.assertEqual(
                     db.execute("SELECT count(*) FROM outbox WHERE state='pending'").fetchone()[0], 1
                 )
-                self.assertEqual(db.execute("PRAGMA user_version").fetchone()[0], 18)
+                self.assertEqual(db.execute("PRAGMA user_version").fetchone()[0], SCHEMA_VERSION)
