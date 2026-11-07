@@ -1,5 +1,13 @@
 # Relevo Botsky
 
+## 07/11 · V5 primer corte comunidad local
+
+Saldos/top/daily, blackjack manos/turno/pago bruto/neto, stockpacks, avancecoop/
+HHdrop y tablasmods conavisos propios. Ningúncoste/permiso/consentimientoalterado.
+3testsV5+11games/16packsPASS. V5EN_CURSO porcatálogo67rutas/estados/adaptaciones
+pendientes. EvidenciaUI-UX-V5-20261107. SiguienteV6marca/agenda/catálogolocal,
+V7regresiónydeploy. ClienteNO_PROBADO, sinenvíos/llamadas. Cuota14%5h.
+
 ## 07/11 · V4 primer corte organización/archivos local
 
 Tablasdesdehechosreminder/tareas/horario/encuestas/Drive,20filasporparte,fallback

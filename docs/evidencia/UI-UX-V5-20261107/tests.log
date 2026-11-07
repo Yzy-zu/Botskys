@@ -1,0 +1,8 @@
+test_available_balance_top_native_and_daily_time (test_community_presentation.CommunityPresentationTest.test_available_balance_top_native_and_daily_time) ... ok
+test_blackjack_settlement_names_gross_and_net_without_mutating_facts (test_community_presentation.CommunityPresentationTest.test_blackjack_settlement_names_gross_and_net_without_mutating_facts) ... ok
+test_mods_table_never_asserts_unknown_configuration_or_load_and_keeps_warnings (test_community_presentation.CommunityPresentationTest.test_mods_table_never_asserts_unknown_configuration_or_load_and_keeps_warnings) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.097s
+
+OK

@@ -294,4 +294,140 @@ def present(result, *, zone="America/Mexico_City"):
                 (Block("heading", "Estado del recado"), Block("paragraph", "\n".join(lines)))
             ).text(),
         )
+    if code == "blackjack_board" and "dealer_visible" in data:
+        identifier = data["game_id"]
+        states = {
+            "lobby": "Esperando jugadores",
+            "playing": "En juego",
+            "stood": "se plantó",
+            "busted": "se pasó",
+            "blackjack": "blackjack",
+        }
+        lines = [
+            f"Mesa {identifier} · {states.get(data['state'], data['state'])}",
+            f"Apuesta: {data['bet']} XP por persona",
+        ]
+        if data["dealer_visible"]:
+            card = data["dealer_visible"][0]
+            lines.append("Crupier: " + card["rank"] + card["suit"] + " · carta oculta")
+        for player in data["players"]:
+            lines.append(
+                f"Asiento {player['seat']} · "
+                + " ".join(c["rank"] + c["suit"] for c in player["hand"])
+                + f" · {player['score']} puntos · "
+                + states.get(player["state"], player["state"])
+            )
+        if data["state"] == "lobby":
+            lines.append(f"/bj entrar {identifier}\n/bj repartir {identifier}")
+        else:
+            lines.append(
+                f"Turno: asiento {data['turn']}\n/bj pedir {identifier}\n/bj plantarse {identifier}\n/bj doblar {identifier}"
+            )
+        return replace(
+            result,
+            text=Document(
+                (Block("heading", "Blackjack"), Block("paragraph", "\n\n".join(lines)))
+            ).text(),
+        )
+    if code == "blackjack_settled":
+        from ..domains.blackjack import score
+
+        lines = ["Crupier: " + str(score(data["dealer"])) + " puntos"]
+        for player in data["players"]:
+            lines.append(
+                f"Asiento {player['seat']} · {player['outcome']} · {player['score']} puntos\n"
+                f"Apuesta: {player['bet']} XP · pago bruto: {player['payout']} XP · resultado neto: {player['payout'] - player['bet']:+d} XP"
+            )
+        return replace(
+            result,
+            text=Document(
+                (Block("heading", "Blackjack · final"), Block("paragraph", "\n\n".join(lines)))
+            ).text(),
+        )
+    if code == "pack_catalog":
+        return tabular(
+            result,
+            "Packs publicados",
+            ("Categoría", "Referencia", "Fotos"),
+            [(r["name"], r["category"], r["count"]) for r in data["items"]],
+            footer="150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles."
+            + (f"\nPágina {data['page']}/{data['pages']}" if "page" in data else "")
+            + (
+                f"\n/pack catalogo --pagina {data['page'] + 1}"
+                if data.get("page", 1) < data["pages"]
+                else ""
+            ),
+        )
+    if code == "coop_status" and "category" in data:
+        lines = [
+            f"Categoría: {data['category']}",
+            f"Estado: {STATES.get(data['state'], data['state'])}",
+            f"Avance: {data['total']}/{data['target']} XP",
+            f"Devuelto: {data['refund']} XP",
+        ]
+        if data.get("expires_ms"):
+            lines.append("Vence: " + date_time(data["expires_ms"], zone))
+        if data["state"] == "open":
+            lines.append(f"/coop aportar {data['challenge_id']} CANTIDAD")
+        return replace(
+            result,
+            text=Document(
+                (Block("heading", "Cooperacha"), Block("paragraph", "\n".join(lines)))
+            ).text(),
+        )
+    if code == "happy_status":
+        lines = [STATES.get(data["state"], data["state"])]
+        if data.get("expires_ms"):
+            lines.append("Vence: " + date_time(data["expires_ms"], zone))
+        drop = data.get("drop")
+        if drop:
+            lines.append("AirDrop: " + STATES.get(drop["state"], drop["state"]))
+            if drop["state"] == "open":
+                lines.append("/hh reclamar " + drop["id"])
+        return replace(
+            result,
+            text=Document(
+                (Block("heading", "Hora feliz"), Block("paragraph", "\n".join(lines)))
+            ).text(),
+        )
+    if code == "minecraft_completed" and data.get("action") == "mods":
+        response = data["response"]
+        installed = response.get("installed")
+        if isinstance(installed, list):
+            rows = []
+            for pack in installed:
+                if not isinstance(pack, dict):
+                    continue
+                version = pack.get("version")
+                version = (
+                    ".".join(str(v) for v in version)
+                    if isinstance(version, list)
+                    else str(version or "Desconocida")
+                )
+                configured = pack.get("enabled", pack.get("configured", pack.get("active")))
+                rows.append(
+                    (
+                        str(pack.get("name") or "(sin nombre)")
+                        + " · "
+                        + str(pack.get("pack_type") or pack.get("type") or "tipo desconocido"),
+                        version,
+                        "Sí"
+                        if configured is True
+                        else "No"
+                        if configured is False
+                        else "Desconocido",
+                        "Observada"
+                        if pack.get("loaded") is True
+                        else "No confirmada"
+                        if pack.get("loaded") is False
+                        else "Desconocida",
+                    )
+                )
+            return tabular(
+                result,
+                "Paquetes del servidor",
+                ("Paquete", "Versión", "Configurado", "Carga"),
+                rows,
+                footer="Detalles, advertencias y comandos verificados:\n" + result.text,
+            )
     return result

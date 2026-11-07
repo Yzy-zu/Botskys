@@ -142,7 +142,7 @@ def execute(db, context, spec, args, now, app):
             "pack_catalog",
             "Packs publicados ·150 XP, hora feliz75 XP.\n"
             + "\n".join(f"{a['name']} ({a['category']}): {a['count']} fotos" for a in items),
-            {"items": items, "pages": pages},
+            {"items": items, "pages": pages, "page": args["page"]},
         )
     if not args.get("purchase_id"):
         category = args["category"]

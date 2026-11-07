@@ -23,6 +23,8 @@ def summary(row):
             "total": row["total"],
             "target": row["target"],
             "refund": row["refund"],
+            "category": row["category"],
+            "expires_ms": row["expires_ms"],
         },
     )
 

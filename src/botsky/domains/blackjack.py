@@ -239,6 +239,9 @@ def board(db, context, row, now):
             "state": row["state"],
             "revision": row["revision"],
             "players": visible,
+            "dealer_visible": dealer[:1],
+            "bet": row["bet"],
+            "turn": row["turn"] + 1,
         },
     )
 
