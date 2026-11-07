@@ -40,4 +40,5 @@ class NetworkDownloads:
             return None
         from ..engines.downloads import download_source
         from ..engines.search_collage import fetch_thumbnail
+
         return await fetch_thumbnail(thumbnail_url, download_source(video_url))

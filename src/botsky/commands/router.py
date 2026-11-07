@@ -206,14 +206,22 @@ class Router:
                     position=position,
                     spec=spec,
                 )
-        if spec.operation in ('download_media.choose', 'manage_drive.choose') and 'choice' not in values:
-            choice_field = next(f for f in spec.fields if f.name == 'choice')
-            raw = values.pop('view_id')
+        if (
+            spec.operation in ("download_media.choose", "manage_drive.choose")
+            and "choice" not in values
+        ):
+            choice_field = next(f for f in spec.fields if f.name == "choice")
+            raw = values.pop("view_id")
             try:
-                values['choice'] = choice_field.convert(raw)
+                values["choice"] = choice_field.convert(raw)
             except ValueError:
-                raise CommandError('missing_field', 'Indica NUMERO o ID_DE_LISTA NUMERO.', field='choice', spec=spec) from None
-            spans['choice'] = spans.pop('view_id')
+                raise CommandError(
+                    "missing_field",
+                    "Indica NUMERO o ID_DE_LISTA NUMERO.",
+                    field="choice",
+                    spec=spec,
+                ) from None
+            spans["choice"] = spans.pop("view_id")
         self._validate(spec, values)
         return ParsedCommand(spec, MappingProxyType(values), MappingProxyType(spans))
 

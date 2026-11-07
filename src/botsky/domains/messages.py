@@ -168,7 +168,7 @@ def execute(db, context, spec, command, now, app):
         )
         preview = "Recado para: " + ", ".join(c.name for c in selected) + "\n" + content
         if artifact:
-            preview += f"\nAdjunto: {artifact['format']}, {artifact['size']} bytes, SHA256 {artifact['sha256']}."
+            preview += f"\nAdjunto: {artifact['format']}, {artifact['size']} bytes."
         return Result(
             "needs_input",
             "message_preview",

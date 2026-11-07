@@ -35,9 +35,7 @@ def cancel_job(db, context, target):
     ).fetchone()
     if not row and not interaction:
         return None
-    result = Result(
-        "cancelled", "request_cancelled", "Cancelado.", {"id": target}
-    )
+    result = Result("cancelled", "request_cancelled", "Cancelado.", {"id": target})
     db.execute(
         "UPDATE jobs SET state='cancelled',lease_token=NULL,revision=revision+1,result_json=? WHERE id=? AND state IN ('queued','running')",
         (result.to_json(), target),
@@ -465,12 +463,17 @@ class Jobs:
                     ),
                 )
                 from .presentation.search import videos
+
                 result = Result(
-                    "needs_input", "download_choices",
-                    videos(data['choices'], now + 900000, now,
-                           intro=result.text or 'Videos'),
-                    {**result.data, "view_id": identifier,
-                     "choices": data["choices"], "media_first": True},
+                    "needs_input",
+                    "download_choices",
+                    videos(data["choices"], now + 900000, now, intro=result.text or "Videos"),
+                    {
+                        **result.data,
+                        "view_id": identifier,
+                        "choices": data["choices"],
+                        "media_first": True,
+                    },
                 )
             if result.code == "drive_choices":
                 from .domains.drive import finish_choices
@@ -773,7 +776,8 @@ class Jobs:
                 raise MediaError("web_not_configured")
             items = await backend.search(args["query"], args.get("required_terms", ()))
             from .presentation.search import web
-            text = web(items, args['query'])
+
+            text = web(items, args["query"])
             return EngineOutput(
                 Result(
                     "ok" if items else "empty",
@@ -821,9 +825,19 @@ class Jobs:
                     if not title.strip():
                         continue
                     seen.add(url)
-                    normalized.append({"url": url, "title": title,
-                        "duration": candidate.duration if isinstance(candidate.duration, (int, float)) and __import__("math").isfinite(candidate.duration) and candidate.duration > 0 else None, "author": candidate.author,
-                        "thumbnail_url": candidate.thumbnail_url})
+                    normalized.append(
+                        {
+                            "url": url,
+                            "title": title,
+                            "duration": candidate.duration
+                            if isinstance(candidate.duration, (int, float))
+                            and __import__("math").isfinite(candidate.duration)
+                            and candidate.duration > 0
+                            else None,
+                            "author": candidate.author,
+                            "thumbnail_url": candidate.thumbnail_url,
+                        }
+                    )
                 if not normalized:
                     return EngineOutput(
                         Result(
@@ -832,13 +846,16 @@ class Jobs:
                     )
                 parameters = {k: v for k, v in args.items() if k not in ("url", "query")}
                 from .engines.search_collage import create
+
                 collage_files = ()
-                collage_state = 'unavailable'
+                collage_state = "unavailable"
                 try:
-                    collage = await create(normalized, directory / 'videos.jpg', getattr(backend, 'thumbnail', None))
+                    collage = await create(
+                        normalized, directory / "videos.jpg", getattr(backend, "thumbnail", None)
+                    )
                     collage_files = (collage,)
-                    collage_state = 'ready'
-                except (OSError, ValueError):
+                    collage_state = "ready"
+                except OSError, ValueError:
                     pass
                 return EngineOutput(
                     Result(
@@ -847,7 +864,11 @@ class Jobs:
                         "Spotify aporta metadatos; selecciona una coincidencia real."
                         if spotify
                         else "Elige una coincidencia:",
-                        {"choices": normalized, "arguments": parameters, "collage_state": collage_state},
+                        {
+                            "choices": normalized,
+                            "arguments": parameters,
+                            "collage_state": collage_state,
+                        },
                     ),
                     collage_files,
                 )
@@ -869,7 +890,7 @@ class Jobs:
                     "ok",
                     "download_ready",
                     "Archivo preparado.",
-                    {"url": url, "format": args["container"]},
+                    {"url": url, "format": args["container"], "title": args.get("title", "Video")},
                 ),
                 (output,),
             )

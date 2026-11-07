@@ -1,5 +1,15 @@
 # Relevo Botsky
 
+## 07/11 · V4 primer corte organización/archivos local
+
+Tablasdesdehechosreminder/tareas/horario/encuestas/Drive,20filasporparte,fallback
+con campos completos y guardias intactos. Nombres/captions durables propios,
+voz/sticker conservados. Notas/memoria/OCR/transcripción separadas, recado sinSHA
+intrusivo. 3testsV4+11org/16medios/15integracionesPASS; evidenciaUI-UX-V4-20261107.
+Ruffbase/cambios verificados. V4EN_CURSO por catálogo54rutas/revisiónliteralPDF/
+vozQR/recados/cliente. V5/V6sigue dependenciabaseV1/V3. Producciónno recargada,
+sinenvíos/llamadas; visualNO_PROBADO. Cuota17%5h, semanal ignorada por aclaración.
+
 ## 07/11 · V3 base técnica local: esquema19 y tablas nativas
 
 Outbox ampliada compatible, partes/version/hash inmutables, índice mensajes,

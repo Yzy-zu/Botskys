@@ -75,6 +75,7 @@ class Application:
         )
         self.artifacts = Artifacts(self.store, settings.root / "private/artifacts")
         self.store.presentation_artifacts = self.artifacts
+        self.store.presentation_timezone = settings.timezone
         self.jobs = Jobs(
             self.store,
             settings,

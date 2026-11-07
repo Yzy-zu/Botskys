@@ -8,7 +8,6 @@ from uuid import uuid4
 from .. import interactions
 from ..artifacts import ArtifactProblem
 from ..contracts import Result, canonical
-from .notes import SCOPE_SQL
 
 
 def scope_hash(context, folder):
@@ -42,7 +41,7 @@ def execute(db, context, spec, command, now, app):
         except ArtifactProblem as exc:
             return Result("failed", exc.code, "El archivo propio no está disponible.")
     if spec.original_action == "choose":
-        view, ambiguity = interactions.choose_view(db, context, 'drive', now, args.get('view_id'))
+        view, ambiguity = interactions.choose_view(db, context, "drive", now, args.get("view_id"))
         if ambiguity:
             return ambiguity
         if not view:

@@ -1,0 +1,40 @@
+test_drive_units_full_fields_native_and_fallback_are_equivalent (test_domain_presentation.DomainPresentationTest.test_drive_units_full_fields_native_and_fallback_are_equivalent) ... ok
+test_large_cells_never_lose_text_or_dates_to_force_native_table (test_domain_presentation.DomainPresentationTest.test_large_cells_never_lose_text_or_dates_to_force_native_table) ... ok
+test_real_sqlite_reminder_schedule_and_poll_table_payloads (test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads) ... ERROR
+
+======================================================================
+ERROR: test_real_sqlite_reminder_schedule_and_poll_table_payloads (test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_domain_presentation.py", line 32, in test_real_sqlite_reminder_schedule_and_poll_table_payloads
+    table = next(p for p in self.parts(schedule) if p.kind=='table')
+StopIteration
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.088s
+
+FAILED (errors=1)
+test_drive_units_full_fields_native_and_fallback_are_equivalent (test_domain_presentation.DomainPresentationTest.test_drive_units_full_fields_native_and_fallback_are_equivalent) ... ok
+test_large_cells_never_lose_text_or_dates_to_force_native_table (test_domain_presentation.DomainPresentationTest.test_large_cells_never_lose_text_or_dates_to_force_native_table) ... ok
+test_real_sqlite_reminder_schedule_and_poll_table_payloads (test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads) ... ERROR
+
+======================================================================
+ERROR: test_real_sqlite_reminder_schedule_and_poll_table_payloads (test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/petrov/botsky/tests/test_domain_presentation.py", line 32, in test_real_sqlite_reminder_schedule_and_poll_table_payloads
+    table = next(p for p in self.parts(schedule) if p.kind=='table')
+StopIteration
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.079s
+
+FAILED (errors=1)
+test_drive_units_full_fields_native_and_fallback_are_equivalent (test_domain_presentation.DomainPresentationTest.test_drive_units_full_fields_native_and_fallback_are_equivalent) ... ok
+test_large_cells_never_lose_text_or_dates_to_force_native_table (test_domain_presentation.DomainPresentationTest.test_large_cells_never_lose_text_or_dates_to_force_native_table) ... ok
+test_real_sqlite_reminder_schedule_and_poll_table_payloads (test_domain_presentation.DomainPresentationTest.test_real_sqlite_reminder_schedule_and_poll_table_payloads) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.106s
+
+OK

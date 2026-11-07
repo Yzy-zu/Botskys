@@ -94,7 +94,7 @@ def paginate(db, table, where, params, page, *, order="id"):
         "ok" if rows else "empty",
         "organization_list",
         rendered,
-        {"items": rows, "page": page, "pages": pages, "total": total},
+        {"items": rows, "page": page, "pages": pages, "total": total, "list_kind": table},
     )
 
 
@@ -256,7 +256,7 @@ def reminder(db, context, action, args, now):
         return Result(
             "ok",
             "reminder_created",
-            f"Recordatorio {cur.lastrowid}: {args['text']}\n{shown} · Ciudad de México. Aviso local pendiente; no hay WhatsApp activado.",
+            f"Recordatorio {cur.lastrowid}: {args['text']}\n{shown} · Ciudad de México. Aviso pendiente; entrega aún no comprobada.",
             {"reminder_id": cur.lastrowid, "due_ms": due},
         )
     if action == "list":
@@ -399,7 +399,13 @@ def poll(db, context, action, args, now, owner):
         "\n".join(
             [row["question"], *[f"{r['choice']}. {r['text']}: {r['votes']}" for r in results]]
         ),
-        {"poll_id": row["id"], "options": results, "participants": sum(counts.values())},
+        {
+            "poll_id": row["id"],
+            "options": results,
+            "participants": sum(counts.values()),
+            "question": row["question"],
+            "state": "closed" if action == "close" else row["state"],
+        },
     )
 
 

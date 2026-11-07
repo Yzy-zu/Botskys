@@ -26,7 +26,7 @@ class EvolutionTransport:
         )
         if not self.api.available or self.settings.transport != "evolution":
             raise ValueError("evolution_configuration_required")
-        self.native_tables_enabled = config.get('native_tables_enabled', False) is True
+        self.native_tables_enabled = config.get("native_tables_enabled", False) is True
         self.app.store.native_tables_enabled = self.native_tables_enabled
         self.instance = config["instance"]
         from urllib.parse import quote
@@ -229,10 +229,11 @@ class EvolutionTransport:
             return DeliveryAck(False)
         if self.app.operations and not self.app.operations.delivers(c.scope.chat):
             return DeliveryAck(False)
-        if part.kind == 'table':
+        if part.kind == "table":
             if not self.native_tables_enabled or part.artifacts or part.text:
                 return DeliveryAck(False)
             from ..presentation.table import NativeTable
+
             try:
                 table = NativeTable.parse(part.payload)
                 identifier = await self.api.send_table(c.scope.chat, table.payload())
@@ -287,7 +288,8 @@ class EvolutionTransport:
         body = {
             "number": c.scope.chat,
             "mediatype": kind,
-            "fileName": "botsky." + fmt,
+            "fileName": part.payload.get("name", "Botsky." + fmt),
+            "caption": part.payload.get("caption", ""),
             "mimetype": mimetypes.guess_type("output." + fmt)[0] or "application/octet-stream",
         }
         endpoint, field = "sendMedia", "media"

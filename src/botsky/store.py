@@ -142,7 +142,9 @@ class Store:
                 )
                 version = 18
             if version == 18 and application_id == APPLICATION_ID:
-                db.executescript((Path(__file__).parent / 'migrations/019_presentation.sql').read_text())
+                db.executescript(
+                    (Path(__file__).parent / "migrations/019_presentation.sql").read_text()
+                )
                 version = 19
             if version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
@@ -254,54 +256,114 @@ class Store:
     def enqueue(self, db, context, result, now):
         if result.code == "job_queued":
             return
+        from .presentation.domains import present
+
+        result = present(result, zone=getattr(self, "presentation_timezone", "America/Mexico_City"))
         text = result.text
         artifact_ids = list(result.data.get("artifacts", ()))
-        if text and (any(len(token) > PART_CHARS for token in text.split())
-                     or len(text) > PART_CHARS and '```' in text):
+        if text and (
+            any(len(token) > PART_CHARS for token in text.split())
+            or len(text) > PART_CHARS
+            and "```" in text
+        ):
             # Fuente íntegra, privada y durable. La vista previa nunca se hace
             # pasar por el contenido completo; no cortar URLs ni bloques de código.
             from tempfile import NamedTemporaryFile
 
-            artifacts = getattr(self, 'presentation_artifacts', None)
+            artifacts = getattr(self, "presentation_artifacts", None)
             if artifacts is not None:
-                with NamedTemporaryFile(dir=artifacts.root, suffix='.txt', delete=False) as output:
+                with NamedTemporaryFile(dir=artifacts.root, suffix=".txt", delete=False) as output:
                     source = Path(output.name)
-                    output.write(text.encode('utf-8'))
+                    output.write(text.encode("utf-8"))
                 try:
                     staged = artifacts.stage(source, output=True)
-                    artifact_ids.append(artifacts.register(db, staged, context,
-                        context.receipt_id, now, origin='result', receipt_id=context.receipt_id))
+                    artifact_ids.append(
+                        artifacts.register(
+                            db,
+                            staged,
+                            context,
+                            context.receipt_id,
+                            now,
+                            origin="result",
+                            receipt_id=context.receipt_id,
+                        )
+                    )
                 finally:
                     source.unlink(missing_ok=True)
-                text = 'El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres.'
+                text = "El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres."
         parts = []
-        if result.data.get('media_first'):
-            parts.extend(('media', '', {'artifacts': [identifier]}) for identifier in artifact_ids)
+        if result.data.get("media_first"):
+            parts.extend(("media", "", {"artifacts": [identifier]}) for identifier in artifact_ids)
             artifact_ids = []
-        table = None
-        if result.data.get('native_table'):
+        tables = []
+        if result.data.get("native_table") or result.data.get("native_tables"):
             from .presentation.table import NativeTable
+
             try:
-                table = NativeTable.parse(result.data['native_table'])
-            except (TypeError, ValueError):
+                raw_tables = result.data.get("native_tables") or [result.data["native_table"]]
+                tables = [NativeTable.parse(raw) for raw in raw_tables]
+            except TypeError, ValueError:
                 pass  # Antes del despacho, conservar todo el texto canónico.
-        if table is not None and getattr(self, 'native_tables_enabled', False):
-            intro, footer = result.data.get('native_intro', ''), result.data.get('native_footer', '')
+        if tables and getattr(self, "native_tables_enabled", False):
+            intro, footer = (
+                result.data.get("native_intro", ""),
+                result.data.get("native_footer", ""),
+            )
             if not isinstance(intro, str) or not isinstance(footer, str):
-                raise ValueError('introducción/pie inválidos')
-            parts.extend(('text', fragment, {}) for fragment in split_text(intro, PART_CHARS))
-            parts.append(('table', '', table.payload()))
-            parts.extend(('text', fragment, {}) for fragment in split_text(footer, PART_CHARS))
+                raise ValueError("introducción/pie inválidos")
+            parts.extend(("text", fragment, {}) for fragment in split_text(intro, PART_CHARS))
+            parts.extend(("table", "", table.payload()) for table in tables)
+            parts.extend(("text", fragment, {}) for fragment in split_text(footer, PART_CHARS))
         else:
-            parts.extend(('text', fragment, {}) for fragment in split_text(text, PART_CHARS))
-        parts.extend(('media', '', {'artifacts': [identifier]}) for identifier in artifact_ids)
+            parts.extend(("text", fragment, {}) for fragment in split_text(text, PART_CHARS))
+        parts.extend(("media", "", {"artifacts": [identifier]}) for identifier in artifact_ids)
+        from .presentation.domains import filename
+
+        for kind, _, payload in parts:
+            if kind == "media":
+                identifier = payload["artifacts"][0]
+                metadata = db.execute(
+                    "SELECT format FROM artifacts WHERE id=?", (identifier,)
+                ).fetchone()
+                extension = metadata["format"] if metadata else "bin"
+                name = (
+                    result.data.get("name")
+                    or result.data.get("title")
+                    or {
+                        "download_choices": "Videos",
+                        "download_ready": "Video",
+                        "voice_ready": "Voz Botsky",
+                        "pdf_assembled": "Documento",
+                        "pdf_extracted": "Páginas",
+                        "image_read": "Lectura de imagen",
+                        "document_converted": "Documento convertido",
+                    }.get(result.code, "Botsky")
+                )
+                payload["name"] = filename(name, extension)
+                payload["caption"] = (
+                    ""
+                    if result.code in ("sticker_created", "reaction_ready", "voice_ready")
+                    else f"Videos · {len(result.data['choices'])} opciones. Fichas y selección en el mensaje siguiente."
+                    if result.code == "download_choices"
+                    else result.text
+                    if len(result.text) <= 900
+                    else result.text[:880] + "… [vista previa]"
+                )
         for position, (kind, fragment, payload) in enumerate(parts):
-            identifiers = payload.get('artifacts', [])
-            frozen = canonical({'kind': kind, 'text': fragment, 'payload': payload, 'version': 1})
+            identifiers = payload.get("artifacts", [])
+            frozen = canonical({"kind": kind, "text": fragment, "payload": payload, "version": 1})
             db.execute(
                 "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json,kind,rich_payload_json,visual_version,content_sha256) VALUES(?,?,?,'pending',?,?,?,?,1,?)",
-                (context.receipt_id, position, fragment, now, canonical(identifiers), kind,
-                 canonical(payload), hashlib.sha256(frozen.encode()).hexdigest()),
+                (
+                    context.receipt_id,
+                    position,
+                    fragment,
+                    now,
+                    canonical(identifiers),
+                    kind,
+                    canonical(payload),
+                    hashlib.sha256(frozen.encode()).hexdigest(),
+                ),
             )
 
     def execute(self, receipt_id, settings, now, handler):
@@ -366,20 +428,27 @@ class Store:
     def follow(self, db, context, target, now, *, cancel=False):
         if target:
             return self.cancel(db, context, target) if cancel else self.state(db, context, target)
-        parent = db.execute('SELECT quoted_message_id FROM inbox WHERE id=?', (context.receipt_id,)).fetchone()
+        parent = db.execute(
+            "SELECT quoted_message_id FROM inbox WHERE id=?", (context.receipt_id,)
+        ).fetchone()
         if parent and parent[0]:
             cited = db.execute(
-                'SELECT i.id FROM inbox i JOIN outbox o ON o.receipt_id=i.id '
+                "SELECT i.id FROM inbox i JOIN outbox o ON o.receipt_id=i.id "
                 "WHERE o.provider_message_id=? AND o.state='accepted' "
-                'AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? '
-                'AND i.is_group=? AND i.epoch=? AND i.received_ms>?',
+                "AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? "
+                "AND i.is_group=? AND i.epoch=? AND i.received_ms>?",
                 (parent[0], *context.scope_key, now - 86400000),
             ).fetchall()
-            if len({r['id'] for r in cited}) == 1:
-                target = cited[0]['id']
-                return self.cancel(db, context, target) if cancel else self.state(db, context, target)
-            return Result('needs_input', 'request_quote_unavailable',
-                          'La cita debe ser una respuesta propia entregada y vigente en este chat.')
+            if len({r["id"] for r in cited}) == 1:
+                target = cited[0]["id"]
+                return (
+                    self.cancel(db, context, target) if cancel else self.state(db, context, target)
+                )
+            return Result(
+                "needs_input",
+                "request_quote_unavailable",
+                "La cita debe ser una respuesta propia entregada y vigente en este chat.",
+            )
         # Nunca elegir «el último»: solo un trabajo vivo en este ámbito, o una
         # respuesta propia entregada en las últimas 24 h. Excluir controles.
         rows = db.execute(
@@ -393,14 +462,23 @@ class Store:
             (*context.scope_key, context.receipt_id, now - 86400000),
         ).fetchall()
         if not rows:
-            return Result('empty', 'no_current_request', 'No hay un encargo propio vigente en este chat.')
+            return Result(
+                "empty", "no_current_request", "No hay un encargo propio vigente en este chat."
+            )
         if len(rows) > 1:
-            command = '/cancelar' if cancel else '/estado'
-            return Result('needs_input', 'request_ambiguous',
-                          'Hay varios encargos. Elige uno con su referencia:\n' +
-                          '\n'.join(command + ' ' + row['id'] for row in rows),
-                          {'candidates': [row['id'] for row in rows]})
-        return self.cancel(db, context, rows[0]['id']) if cancel else self.state(db, context, rows[0]['id'])
+            command = "/cancelar" if cancel else "/estado"
+            return Result(
+                "needs_input",
+                "request_ambiguous",
+                "Hay varios encargos. Elige uno con su referencia:\n"
+                + "\n".join(command + " " + row["id"] for row in rows),
+                {"candidates": [row["id"] for row in rows]},
+            )
+        return (
+            self.cancel(db, context, rows[0]["id"])
+            if cancel
+            else self.state(db, context, rows[0]["id"])
+        )
 
     def state(self, db, context, target):
         row = self.own_receipt(db, target, context)
@@ -444,21 +522,24 @@ class Store:
     @staticmethod
     def state_text(state, deliveries):
         labels = {
-            'queued': 'En cola.', 'running': 'Lo estoy preparando.',
-            'succeeded': 'Preparado.', 'completed': 'Terminado.',
-            'failed': 'No se pudo completar.', 'cancelled': 'Cancelado.',
-            'uncertain': 'No pude confirmar el resultado. Revisa antes de repetirlo.',
+            "queued": "En cola.",
+            "running": "Lo estoy preparando.",
+            "succeeded": "Preparado.",
+            "completed": "Terminado.",
+            "failed": "No se pudo completar.",
+            "cancelled": "Cancelado.",
+            "uncertain": "No pude confirmar el resultado. Revisa antes de repetirlo.",
         }
-        text = labels.get(state, 'Estado no disponible.')
-        states = {part['state'] for part in deliveries}
-        if states & {'uncertain', 'sending'}:
-            text += ' No pude confirmar si llegó todo. Revisa antes de reenviarlo.'
-        elif 'failed' in states:
-            text += ' Hay partes cuya entrega fue rechazada.'
-        elif states and states <= {'accepted'}:
-            text += ' El servicio aceptó la entrega; lectura no comprobada.'
-        elif 'pending' in states:
-            text += ' Entrega pendiente.'
+        text = labels.get(state, "Estado no disponible.")
+        states = {part["state"] for part in deliveries}
+        if states & {"uncertain", "sending"}:
+            text += " No pude confirmar si llegó todo. Revisa antes de reenviarlo."
+        elif "failed" in states:
+            text += " Hay partes cuya entrega fue rechazada."
+        elif states and states <= {"accepted"}:
+            text += " El servicio aceptó la entrega; lectura no comprobada."
+        elif "pending" in states:
+            text += " Entrega pendiente."
         return text
 
     def cancel(self, db, context, target):
@@ -493,9 +574,7 @@ class Store:
             "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
             (target,),
         )
-        return Result(
-            "cancelled", "request_cancelled", "Cancelado.", {"id": target}
-        )
+        return Result("cancelled", "request_cancelled", "Cancelado.", {"id": target})
 
     def claim_part(self, receipt_id, settings, now, retry_failed=False):
         with self.transaction() as db:
@@ -545,12 +624,20 @@ class Store:
                 ("pending", "failed") if retry_failed else ("pending",)
             ):
                 return None
-            if row['visual_version']:
-                frozen = canonical({'kind': row['kind'], 'text': row['payload'],
-                    'payload': json.loads(row['rich_payload_json']), 'version': row['visual_version']})
-                if hashlib.sha256(frozen.encode()).hexdigest() != row['content_sha256']:
-                    db.execute("UPDATE outbox SET state='failed',error_code='presentation_plan_corrupt',revision=revision+1 WHERE receipt_id=? AND position=?",
-                               (receipt_id, row['position']))
+            if row["visual_version"]:
+                frozen = canonical(
+                    {
+                        "kind": row["kind"],
+                        "text": row["payload"],
+                        "payload": json.loads(row["rich_payload_json"]),
+                        "version": row["visual_version"],
+                    }
+                )
+                if hashlib.sha256(frozen.encode()).hexdigest() != row["content_sha256"]:
+                    db.execute(
+                        "UPDATE outbox SET state='failed',error_code='presentation_plan_corrupt',revision=revision+1 WHERE receipt_id=? AND position=?",
+                        (receipt_id, row["position"]),
+                    )
                     return None
             artifact_ids = tuple(json.loads(row["artifacts_json"]))
             if artifact_ids:
@@ -581,8 +668,14 @@ class Store:
             from .contracts import DeliveryPart
 
             return DeliveryPart(
-                receipt_id, row["position"], context, row["payload"], artifact_ids,
-                row["kind"], json.loads(row["rich_payload_json"]), row["visual_version"]
+                receipt_id,
+                row["position"],
+                context,
+                row["payload"],
+                artifact_ids,
+                row["kind"],
+                json.loads(row["rich_payload_json"]),
+                row["visual_version"],
             ), row["revision"] + 1
 
     def finish_part(self, part, revision, settings, state, provider_id, code, now):

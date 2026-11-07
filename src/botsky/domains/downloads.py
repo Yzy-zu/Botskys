@@ -56,7 +56,8 @@ def execute(db, context, spec, args, now, jobs, artifacts, backend):
     adult = getattr(backend, "adult_sources_enabled", False)
     if action == "choose":
         from ..interactions import choose_view
-        view, ambiguity = choose_view(db, context, 'download', now, args.get('view_id'))
+
+        view, ambiguity = choose_view(db, context, "download", now, args.get("view_id"))
         if ambiguity:
             return ambiguity
         if not view:

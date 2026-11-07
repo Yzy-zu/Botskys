@@ -256,14 +256,18 @@ def choose_view(db, context, kind, now, identifier=None):
     """Una forma corta solo es válida con una vista inequívoca ya entregada."""
     rows = db.execute(
         f"SELECT * FROM interactions WHERE {SCOPE_SQL} AND kind=? AND state='active' AND expires_ms>? "
-        + ('AND id=?' if identifier else '') + ' ORDER BY rowid DESC LIMIT 2',
+        + ("AND id=?" if identifier else "")
+        + " ORDER BY rowid DESC LIMIT 2",
         (*context.scope_key, kind, now, *((identifier,) if identifier else ())),
     ).fetchall()
     if len(rows) == 1:
         return rows[0], None
     if len(rows) > 1:
-        command = '/dl elegir' if kind == 'download' else '/drive elegir'
-        return None, Result('needs_input', 'selection_ambiguous',
-            'Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n' +
-            '\n'.join(command + ' ' + row['id'] + ' NUMERO' for row in rows))
+        command = "/dl elegir" if kind == "download" else "/drive elegir"
+        return None, Result(
+            "needs_input",
+            "selection_ambiguous",
+            "Hay varias listas vigentes. Usa la referencia de la lista que quieres:\n"
+            + "\n".join(command + " " + row["id"] + " NUMERO" for row in rows),
+        )
     return None, None
