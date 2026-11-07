@@ -1,5 +1,20 @@
 # Relevo Botsky
 
+## 07/11 · Logs y primera observación parcial Android del propietario
+
+Revisión de solo lectura a petición «Checa los logs», sin envíos ni consultas de
+proveedor. 12:28:15UTC /dl buscar: 6opciones, collage ready, media+textoaccepted,
+job3122ms. Seis duraciones/miniaturas presentes,0autores persistidos: «Autor
+ desconocido» fiel al dato, causa upstream no acreditada sin payload original.
+12:28:44 otra búsqueda acabó empty sin coincidencias en1424ms; no error técnico.
+/buscar produjo web_results; /dl sin acción produjo unknown_action+ayuda, conforme
+parser. stderrproductivo0bytes;0jobsactivos/entregaspendientes al consultar.
+Capturas del dueño acreditan PARCIAL_ANDROID_OSCURO: collage6 con numeración/fuente/
+duración e inicio de fichas, texto web y ayuda. No prueban selección/descarga, seis
+fichas completas,Web,accesibilidad niAV. Ayuda inválida larga y autores ausentes
+quedan observaciones explícitas; no se declara cierre global. Evidencia saneada
+UI-UX-OBSERVACION-20261107; originales privados sin copiar a Git. Cuota5h98%.
+
 ## 07/11 · Continuación visual desplegada y datos preservados; plan NO completo
 
 Desplegado189e71f (fuente producto bf2fba9), runtimePID3402770, anterior3344306.

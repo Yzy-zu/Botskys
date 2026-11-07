@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-07",
+  "source": "Capturas adjuntadas voluntariamente por el propietario y SQLite productivo de solo lectura; no nuevos envíos ni consultas de proveedor.",
+  "captures": [
+    {
+      "file": "1193.jpg",
+      "sha256": "b3aec53c7d6d27a6e17a897cf6ff232bd1b73cfd862efa0f3210ec718429dc52"
+    },
+    {
+      "file": "1195.jpg",
+      "sha256": "839f0155038a9f1c2e6a52007be865b929c164ac92a3c4f7460d9b4d1a865156"
+    },
+    {
+      "file": "1191.jpg",
+      "sha256": "ca8a0135b3d49b7923bfc9a1c448d15cf30f23a60de22381f86cdc9db1379ee0"
+    }
+  ],
+  "events": [
+    {
+      "utc": "12:26:15",
+      "route": "/buscar",
+      "code": "web_results",
+      "delivery": "text accepted"
+    },
+    {
+      "utc": "12:26:28",
+      "route": "/buscar",
+      "code": "web_results",
+      "delivery": "text accepted"
+    },
+    {
+      "utc": "12:26:48",
+      "route": "/dl sin acción admitida",
+      "code": "unknown_action",
+      "delivery": "help text accepted"
+    },
+    {
+      "utc": "12:28:15",
+      "route": "/dl buscar",
+      "code": "download_choices",
+      "collage_state": "ready",
+      "choices": 6,
+      "authors_present": 0,
+      "durations_present": 6,
+      "thumbnail_urls_present": 6,
+      "delivery": "media accepted + text accepted",
+      "job_ms": 3122
+    },
+    {
+      "utc": "12:28:44",
+      "route": "/dl buscar",
+      "code": "download_no_matches",
+      "delivery": "text accepted",
+      "job_ms": 1424
+    }
+  ],
+  "runtime_errors_log_bytes": 0,
+  "active_jobs": 0,
+  "unsettled_deliveries": 0,
+  "visual_observed": [
+    "Android oscuro: collage recibido, 6 miniaturas numeradas, fuente/duración legibles en la captura; inicio de fichas con título/URL y metadatos visibles.",
+    "Android oscuro: búsqueda web con encabezados/extractos/enlaces/fuente; ayuda por acción no válida visible."
+  ],
+  "limits": [
+    "Capturas parciales: no prueban las seis fichas completas, selección/descarga, lector, modo claro, Web o audiovisual.",
+    "Autor desconocido coincide con author ausente en las seis opciones persistidas. No hay payload upstream retenido para adjudicar causa de la ausencia; no se inventa autor.",
+    "La respuesta de ayuda por acción inválida es larga; la captura no acredita claridad de todos los comandos."
+  ],
+  "privacy": "Sin teléfonos, chats, IDs de proveedor, consultas, títulos ni URLs del propietario; imágenes originales no copiadas a Git."
+}
