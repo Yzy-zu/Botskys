@@ -377,3 +377,12 @@ en cuota disponible yninguna compra de planes. Autoriza integrar el pool propio 
 configurar/desplegar el ganador contrastado,con respaldo/reversión ysalud;sin
 mensajes o llamadas de prueba,perfiles ajenos,GitHub ni reanudación de campañas.
 Cuota Codex5h5% vigente. Tokens/AccountID no se publican ni se añaden aGit.
+
+## 07/11 · Descarga y prueba local Qwen2B/4B encargadas
+
+El propietario encargó descargarQwen3.5:2b y4b yprobarlos. Autoriza instancia
+Ollama propia temporal loopback11435,modelos/fixtures privados propios,una carga
+por vez ypruebas de propuestas sin herramientas/envíos/llamadas. Catálogo completo,
+oracles previos,medición frío/caliente/memoria/CPU. No cambia producción ni instala
+servicio de sistema. Descargas conservadas;liberar modelos/parar daemon propio al
+cerrar. No reabre A/Bcancelado ni campañas previas. Cuota5h5% vigente.
