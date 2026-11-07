@@ -1,5 +1,29 @@
 # Relevo Botsky
 
+## 07/11 · Plan supremo de remodelación preparado para otra IA
+
+Encargo documental completado en `remodelacionbotsky.md`, sobre código `03e613c`.
+Propietario fijó Cloudflare Workers AI / `@cf/zai-org/glm-4.7-flash` y aclaró dos
+partes: frontend conversacional que habla, pregunta y selecciona; backend que
+ejecuta sus procesos y entrega resultados sin pase posterior al intérprete.
+Fases F0–F8 con dependencias, archivos afectados, comprobación y criterio de cierre.
+Selección familia/variante en hasta dos consultas iniciales; contenido Gemini
+permanece herramienta separada. No se reescribe el backend ni se añade agente general.
+
+Revisados admisión/SQLite, dispatcher, jobs, interacciones, citas, presentadores,
+perfil y migraciones. Plan resuelve variantes repetidas, choice/view_id, admisión
+fuera de red en transacción, tabla aditiva de interpretación, borradores/adjuntos,
+confirmaciones por dominio, cancelación y reversión compatible con esquema nuevo.
+Inventario contrastado por script local: 34 familias, 155 variantes, 146 operaciones;
+tabla del documento coincide íntegramente con Registry; fases y bloques Markdown
+comprobados. Fuentes oficiales Cloudflare consultadas; sin inferencias nuevas.
+
+Solo documentación y excepción de diseño en AGENTS. No cambios de producto,
+configuración productiva, servicios, entregas ni pruebas de herramientas remotas.
+Piloto anterior conserva 11/12 y sus límites; no acredita esta implementación.
+Siguiente IA: recibir encargo de ejecución y comenzar F0; no desplegar solo por leer.
+Cuota de cierre observada: 72% restante en cinco horas; semanal no bloquea.
+
 ## 07/11 · Piloto Cloudflare real terminado:11/12oracles,1fallo conservado
 
 Propietario autorizó prueba pequeña y dio credenciales;archivo propio0600,noGit.

@@ -293,3 +293,15 @@ propio0600. No habilita producción,envíos,llamadas,mutaciones ni clasificador 
 Resultado e historial:docs/PILOTO_CLOUDFLARE_TOOLCALL_20261107.md. No reanudar una
 corrida terminada automáticamente ni confundir interpretación con efecto de backend.
 Cuota5%cincohoras vigente,semanalnoimpide. SinGitHub.
+
+## 07/11 · Plan de remodelación con frontend conversacional
+
+El propietario encargó redactar `remodelacionbotsky.md` para que otra IA ejecute
+la refactorización por fases. Fijó Cloudflare Workers AI con
+`@cf/zai-org/glm-4.7-flash`. El frontend conversa, aclara y selecciona una herramienta;
+el backend valida, ejecuta y entrega directamente, sin retorno al intérprete tras
+el resultado. Este diseño sustituye la sintaxis obligatoria y las restricciones
+anteriores de diseño NLP para esta remodelación; no reactiva el clasificador antiguo.
+Alcance actual documental: arquitectura basada en el código propio, fases F0–F8,
+pruebas proporcionadas al proyecto escolar. No encarga implementar ni desplegar
+en este cierre. Conservar históricos, secretos privados y cuota5% de cinco horas.
