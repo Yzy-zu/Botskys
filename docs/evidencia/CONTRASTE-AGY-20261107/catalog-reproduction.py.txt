@@ -1,0 +1,32 @@
+import asyncio,json,socket,tempfile
+from pathlib import Path
+from botsky.commands.registry import Registry
+from botsky.commands.router import Router,CommandError
+from botsky.adapters.downloads import NetworkDownloads
+from botsky.engines.process import MediaError
+out=Path('docs/evidencia/CONTRASTE-AGY-20261107');data={};attempts=[]
+def deny(self,address):attempts.append(str(address));raise AssertionError('network forbidden')
+socket.socket.connect=deny
+async def main():
+ specs={s.command:s for s in Registry().specs}
+ s=specs['/dl buscar'];parsed=Router().parse('/dl buscar mp3 --fuente soundcloud prueba')
+ assert parsed.arguments['source']=='soundcloud'
+ with tempfile.TemporaryDirectory() as d:
+  try:await NetworkDownloads(enabled=True).search('prueba','soundcloud',Path(d))
+  except MediaError as e:code=e.code
+  else:raise AssertionError('expected guard')
+ assert code=='source_search_unavailable'
+ data['source_search']={'catalog_sources':next(f.choices for f in s.fields if f.name=='source'),'parsed_source':parsed.arguments['source'],'adapter_result':code,'root_cause':'catalog permits sources that domain/adapter deliberately rejects for search; URL downloads are separate'}
+ usage=specs['/llamar'].usage
+ try:Router().parse('/llamar --duracion 600')
+ except CommandError as e:bare={'code':e.code,'reply':e.reply}
+ else:raise AssertionError('bare seconds unexpectedly accepted')
+ parsed=Router().parse('/llamar --duracion 600s')
+ assert parsed.arguments['max_seconds']==600
+ data['call_duration']={'usage':usage,'field_kind':next(f.kind for f in specs['/llamar'].fields if f.name=='max_seconds'),'bare_600':bare,'with_600s':dict(parsed.arguments),'scope':'misleading help placeholder; parser enforces declared duration kind correctly'}
+ s=specs['/hh reclamar'];parsed=Router().parse('/hh reclamar synthetic-drop-id')
+ data['happy_claim']={'usage':s.usage,'parsed_arguments':dict(parsed.arguments),'consumer_contract':'happy_hour.execute action=claim queries happy_drops d WHERE d.id=args[event_id]; requires drop id, not happy event id','historical_case':'manage_happy_hour/c05 returns distinct event_id/drop_id and prints /hh reclamar DROP_ID; c06 uses event_id and receives happy_drop_unavailable'}
+ data['network_connect_attempts']=attempts
+ assert not attempts
+ (out/'catalog-reproduction.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+asyncio.run(main());print('PASS three catalog inconsistencies reproduced without network/effects')

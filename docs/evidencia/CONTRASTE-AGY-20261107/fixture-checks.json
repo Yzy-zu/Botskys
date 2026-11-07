@@ -1,0 +1,38 @@
+{
+  "large_image.png": {
+    "size": [
+      4000,
+      4000
+    ],
+    "frames": 1,
+    "uniform": true
+  },
+  "wide_image.png": {
+    "size": [
+      4097,
+      16
+    ],
+    "frames": 1,
+    "uniform": true
+  },
+  "animated_webp.webp": {
+    "size": [
+      64,
+      64
+    ],
+    "frames": 2,
+    "uniform": false
+  },
+  "many_pages_pdf": {
+    "pages": 501
+  },
+  "video": {
+    "format": {
+      "duration": "3.000000"
+    }
+  },
+  "large_audio": {
+    "bytes": 11200078,
+    "max_asr_bytes": 10485760
+  }
+}

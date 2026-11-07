@@ -1,0 +1,269 @@
+{
+  "created_utc": "2026-11-07",
+  "scope": "Claims asignados; solo SQLite/fixtures privados históricos y contratos locales. Sin red ni producción.",
+  "claims": [
+    {
+      "id": "send_sticker-01",
+      "tool": "send_sticker",
+      "classification": "not_a_defect_claim",
+      "reason": "El claim agregado declara ausencia de fallas internas y validaciones needs_input; los resultados exhiben respuestas controladas y stickers locales generados. No formula discrepancia de producto verificable. La evidencia es arnés local; no prueba entrega remota.",
+      "contract_refs": [
+        "src/botsky/app.py:send_sticker",
+        "src/botsky/jobs.py:send_sticker.run",
+        "batch2/send_sticker/execution/results.json:c01-c11",
+        "docs/R7.md:Messenger"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch2/send_sticker/execution/results.json"
+      ],
+      "cases": [],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_pack-01",
+      "tool": "manage_pack",
+      "classification": "tester_expectation_error",
+      "reason": "page_out_of_range se calcula a partir de álbumes filtrados publicados (páginas=1 aquí); rango sintáctico 1–20 no promete que existan veinte páginas. La respuesta identifica el rango real y no es fallo del catálogo.",
+      "contract_refs": [
+        "src/botsky/domains/packs.py:catalog",
+        "docs/R7.md:packs"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_pack/execution/results.json",
+        "case:c04"
+      ],
+      "cases": [
+        "c04"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_cooperacha-01",
+      "tool": "manage_cooperacha",
+      "classification": "fixture_or_harness_issue",
+      "reason": "Los DB/fixtures propios confirman que el único álbum utilizable de la campaña es `LAB sintético` con slug `lab-sintetico` (library.db del perfil privado de esta ejecución). Los casos usaron categorías fiesta, meta_min y meta_max que no existen. El worker llama library.select(category,1,...) y si no encuentra foto finaliza en fallo conocido; el estado failed y coop_not_open son consecuencias esperadas de categoría sin stock, no un fallo con categoría válida ni de entrega aceptada. La marca delivery_states cancelled corresponde al preview no publicado luego del fallo de preparación. La prueba R7 local valida el happy path con categoría sintetico.",
+      "contract_refs": [
+        "src/botsky/domains/cooperacha.py:run",
+        "src/botsky/domains/cooperacha.py:retire_job",
+        "tests/test_packs.py:coop,test_coop_publication_own_contributions_goal_and_single_settlement",
+        "docs/R7.md:cooperacha"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/private/gallery/library.db:albums",
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/lab.sqlite3:jobs,cooperachas",
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/results.json:c01,c04,c06,c07"
+      ],
+      "cases": [
+        "c01",
+        "c06",
+        "c07"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático del DB sintético privado, DB de jobs y test local existente; no se repitió la campaña ni el efecto.",
+        "result": "No se probó aquí una nueva cooperacha. El test local test_coop_publication_own_contributions_goal_and_single_settlement crea categoría sintetico, procesa preview, simula delivery y demuestra estado open/aportes."
+      }
+    },
+    {
+      "id": "manage_cooperacha-02",
+      "tool": "manage_cooperacha",
+      "classification": "fixture_or_harness_issue",
+      "reason": "Los DB/fixtures propios confirman que el único álbum utilizable de la campaña es `LAB sintético` con slug `lab-sintetico` (library.db del perfil privado de esta ejecución). Los casos usaron categorías fiesta, meta_min y meta_max que no existen. El worker llama library.select(category,1,...) y si no encuentra foto finaliza en fallo conocido; el estado failed y coop_not_open son consecuencias esperadas de categoría sin stock, no un fallo con categoría válida ni de entrega aceptada. La marca delivery_states cancelled corresponde al preview no publicado luego del fallo de preparación. La prueba R7 local valida el happy path con categoría sintetico.",
+      "contract_refs": [
+        "src/botsky/domains/cooperacha.py:run",
+        "src/botsky/domains/cooperacha.py:retire_job",
+        "tests/test_packs.py:coop,test_coop_publication_own_contributions_goal_and_single_settlement",
+        "docs/R7.md:cooperacha"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/private/gallery/library.db:albums",
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/lab.sqlite3:jobs,cooperachas",
+        "private/retest-agy-20261107/batch3/manage_cooperacha/execution/results.json:c01,c04,c06,c07"
+      ],
+      "cases": [
+        "c04",
+        "c05"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático del DB sintético privado, DB de jobs y test local existente; no se repitió la campaña ni el efecto.",
+        "result": "No se probó aquí una nueva cooperacha. El test local test_coop_publication_own_contributions_goal_and_single_settlement crea categoría sintetico, procesa preview, simula delivery y demuestra estado open/aportes."
+      }
+    },
+    {
+      "id": "manage_happy_hour-01",
+      "tool": "manage_happy_hour",
+      "classification": "confirmed_product_defect",
+      "reason": "Defecto confirmado de contrato de interfaz: el registry define /hh reclamar EVENT_ID y el parseo produce arguments.event_id; el usuario que siga la ayuda puede pasar el ID emitido por c05 para el evento, pero el dominio busca happy_drops.id (drop_id). El comando correcto se imprime dinámicamente con drop_id, así que el claim observado c06 mezcla un uso incorrecto de ID con un defecto real y reproducible en la ayuda/contrato estático, no en el canje si se usa drop_id. Causa raíz: etiqueta/contrato de campo event_id no expresa que el valor debe ser drop_id.",
+      "contract_refs": [
+        "src/botsky/commands/registry.py:662-677",
+        "src/botsky/domains/happy_hour.py:68-80",
+        "docs/R7.md:HH"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_happy_hour/execution/results.json:c05,c06",
+        "local reproduction: PYTHONPATH=src Router().parse(\"/hh reclamar 0123456789abcdef\") -> arguments.event_id; registry.help(\"hh reclamar\") -> /hh reclamar EVENT_ID",
+        "src/botsky/domains/happy_hour.py:claim"
+      ],
+      "cases": [
+        "c06"
+      ],
+      "reproduction": {
+        "performed": true,
+        "method": "Parseo local sin red de /hh reclamar con ID sintético y lectura de ayuda generada; inspección del lookup de claim.",
+        "result": "Parser/help rotulan argumento EVENT_ID mientras executor busca por happy_drops.id; c05 además muestra que la salida dinámica ofrece drop_id. Defecto confirmado acotado a ayuda/contrato de entrada estático; la reclamación con drop_id no se reejecutó."
+      }
+    },
+    {
+      "id": "manage_economy-01",
+      "tool": "manage_economy",
+      "classification": "correct_contract_limit",
+      "reason": "/saldo no declara ni consume adjunto; el backend calcula saldo a partir de identidad verificada. Adjuntos innecesarios no forman parte de sus argumentos y el claim no prueba un requisito contractual de rechazo.",
+      "contract_refs": [
+        "src/botsky/commands/registry.py:manage_economy",
+        "src/botsky/domains/economy.py:balance",
+        "batch3/manage_economy/execution/results.json:c12",
+        "docs/R7.md:XP"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_economy/execution/results.json",
+        "case:c12"
+      ],
+      "cases": [
+        "c12"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_blackjack-01",
+      "tool": "manage_blackjack",
+      "classification": "correct_contract_limit",
+      "reason": "Una vez settled la partida, el executor devuelve result_json persistido antes de procesar cualquier acción adicional. La repetición del resultado no altera partida, balance ni reservas; el contrato no requiere error distinto para acción terminal.",
+      "contract_refs": [
+        "src/botsky/domains/blackjack.py:execute,settle",
+        "docs/R7.md:Blackjack",
+        "batch3/manage_blackjack/execution/results.json:c03,c11"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_blackjack/execution/results.json",
+        "case:c03",
+        "case:c11"
+      ],
+      "cases": [
+        "c03",
+        "c11"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_blackjack-02",
+      "tool": "manage_blackjack",
+      "classification": "not_a_defect_claim",
+      "reason": "La misma cuenta ya ocupa asiento en la mesa recién creada; el producto prohíbe una partida activa por wallet, tanto en inicio como al unirse. Rechazo esperado y protege de apuesta duplicada.",
+      "contract_refs": [
+        "src/botsky/domains/blackjack.py:execute(join)",
+        "docs/R7.md:Blackjack",
+        "batch3/manage_blackjack/execution/results.json:c08"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_blackjack/execution/results.json",
+        "case:c08"
+      ],
+      "cases": [
+        "c08"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_roulette-01",
+      "tool": "manage_roulette",
+      "classification": "correct_contract_limit",
+      "reason": "Crear/entrar son acciones de efecto y el guard operacional puede producir operation_not_enabled; estado/cancelar atraviesan handler de dominio que exige grupo configurado y produce roulette_group_not_configured. Diferencia de guardias explícitas, no inconsistencia de resultado en contexto equivalente de permisos.",
+      "contract_refs": [
+        "src/botsky/operational.py:roulette guard",
+        "src/botsky/domains/roulette.py:execute",
+        "docs/R7.md:Ruleta",
+        "batch3/manage_roulette/execution/results.json:c11,c12"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_roulette/execution/results.json"
+      ],
+      "cases": [],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "manage_roulette-02",
+      "tool": "manage_roulette",
+      "classification": "tester_expectation_error",
+      "reason": "Las entradas c06/c07 son fuera de rango y reciben validación sintáctica needs_input antes de ejecutar el handler del dominio. La validación previa de argumentos es comportamiento contractual normal; no acredita ruta con argumentos válidos ni defecto de orden de guardias.",
+      "contract_refs": [
+        "src/botsky/commands/registry.py:manage_roulette.create",
+        "src/botsky/operational.py",
+        "batch3/manage_roulette/execution/results.json:c06,c07",
+        "docs/R7.md:Ruleta"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/manage_roulette/execution/results.json",
+        "case:c06",
+        "case:c07"
+      ],
+      "cases": [
+        "c06",
+        "c07"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    },
+    {
+      "id": "make_prank-01",
+      "tool": "make_prank",
+      "classification": "correct_contract_limit",
+      "reason": "La broma es texto de ficción local por contrato y no acepta ni procesa imágenes. El adjunto corrupto no llega como argumento al handler; respuesta ok solo genera ficción inocua, sin consumir el archivo. El oráculo de que validar imagen era pertinente no aplica.",
+      "contract_refs": [
+        "src/botsky/domains/prank.py:execute",
+        "src/botsky/commands/registry.py:make_prank.run",
+        "docs/R7.md:Broma",
+        "batch3/make_prank/execution/results.json:c10"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch3/make_prank/execution/results.json",
+        "case:c10"
+      ],
+      "cases": [
+        "c10"
+      ],
+      "reproduction": {
+        "performed": false,
+        "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+        "result": "No se repitieron efectos; campaña AGY cerrada."
+      }
+    }
+  ]
+}

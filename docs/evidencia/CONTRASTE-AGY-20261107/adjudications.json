@@ -1,0 +1,746 @@
+[
+  {
+    "id": "download_media-01",
+    "classification": "confirmed_product_defect",
+    "cases": [
+      "c08"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/download_media/execution/results.json:c08",
+      "src/botsky/commands/registry.py:270-305",
+      "src/botsky/adapters/downloads.py:18-22",
+      "src/botsky/engines/downloads.py:673-687",
+      "docs/evidencia/CONTRASTE-AGY-20261107/catalog-reproduction.json"
+    ],
+    "reason": "El registro acepta explícitamente soundcloud para /dl buscar (src/botsky/commands/registry.py), pero el adaptador NetworkDownloads.search solo admite youtube/pornhub/xnxx/adult y retorna source_search_unavailable antes de llamar al motor. El motor Downloader.search tampoco implementa búsqueda SoundCloud: solo deriva a YouTube/adultos. El caso demuestra una contradicción catálogo/runtime; no atribuye el error a proveedor externo ni a que catálogo bloquee la entrada.",
+    "contract_refs": [
+      "src/botsky/commands/registry.py:270-305 (source enum incluye soundcloud)",
+      "docs/portados/medios-documentos.md:36-38 (búsqueda solo en fuentes que implementan la capacidad)"
+    ],
+    "reproduction": {
+      "kind": "campaign_observation_and_static_trace",
+      "steps": [
+        "/dl buscar mp3 --fuente soundcloud --calidad standard ambient test",
+        "backend devuelve source_search_unavailable en c08",
+        "trazar a NetworkDownloads.search que rechaza soundcloud antes de Downloader.search"
+      ],
+      "result": "Discrepancia catálogo/runtime confirmada; reproducción externa de búsqueda no ejecutada."
+    },
+    "principal_reviewed": true,
+    "defect_scope": "catalog_help_contract; no runtime effect or provider execution regression established"
+  },
+  {
+    "id": "download_media-02",
+    "classification": "external_dependency",
+    "cases": [
+      "c04"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/download_media/execution/results.json:c04",
+      "src/botsky/engines/remote_subtitles.py: fetch_subtitles; docs/portados/medios-documentos.md §Fuentes de descarga"
+    ],
+    "reason": "La operación llegó al extractor remoto y falló con subtitles_failed. Este caso depende de disponibilidad y respuesta actual de YouTube/yt-dlp; el contrato/evidencia local no permite distinguir indisponibilidad externa de fallo del extractor sin reejecutar red, prohibido en este contraste.",
+    "contract_refs": [
+      "src/botsky/engines/remote_subtitles.py: fetch_subtitles"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "convert_document-01",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c07"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/convert_document/execution/results.json:c07",
+      "src/botsky/engines/formats.py:143; private/retest-agy-20261107/batch1/convert_document/execution/results.json:c07"
+    ],
+    "reason": "El contrato explícitamente avisa que HTML se presenta como texto plano sin interpretar formato. El PDF contiene literalmente las etiquetas y el resultado lo advierte; el oracle exigió renderizado HTML no prometido.",
+    "contract_refs": [
+      "src/botsky/engines/formats.py:143"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "convert_document-02",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c12"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/convert_document/execution/results.json:c12",
+      "src/botsky/app.py:132; src/botsky/commands/registry.py:447"
+    ],
+    "reason": "El destino inválido es un error de validación de argumento antes de reservar el trabajo, representado como needs_input/invalid_field con la lista de destinos válidos. La expectativa exigía failed terminal, que no es el contrato de validación sintáctica.",
+    "contract_refs": [
+      "src/botsky/app.py:132"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "edit_media-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c01",
+      "c02"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/edit_media/execution/results.json:c01,c02",
+      "src/botsky/engines/media_edit.py:175-183; private/retest-agy-20261107/base/fixture-ledger.json:video",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "El fixture de video mide3.000000s (ffprobe nuevo). Pedidos --hasta4/5 superanEOF; el motor rechaza invalid_range explícitamente, sin recortar silenciosamente.",
+    "contract_refs": [
+      "src/botsky/engines/media_edit.py:175-183"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "edit_media-02",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c06"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/edit_media/execution/results.json:c06",
+      "src/botsky/engines/media_edit.py:_demuxer y rama container==srt (líneas 213-234); docs/portados/medios-documentos.md §Comprobaciones nuevas",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "La ruta SRT extrae una pista de subtítulos embebida desde un contenedor multimedia. No acepta SRT como medio de entrada para reescritura/normalización; la firma del fixture SRT es unsupported_media.",
+    "contract_refs": [
+      "src/botsky/engines/media_edit.py:_demuxer y rama container==srt (líneas 213-234)"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_pdf-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c08",
+      "c09"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/manage_pdf/execution/results.json:c08,c09",
+      "docs/R3.md §/pdf; src/botsky/engines/pdf_ops_worker.py:15; private/retest-agy-20261107/base/fixture-ledger.json:many_pages_pdf",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "El fixture tiene501páginas (verificación nueva), supera el máximo500de entrada. El límite se aplica antes de extraer1-2/1-3; seleccionar un subconjunto no evita validación del documento fuente.",
+    "contract_refs": [
+      "docs/R3.md §/pdf"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_pdf-02",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c12"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/manage_pdf/execution/results.json:c12",
+      "docs/R3.md §/pdf; src/botsky/domains/pdf.py:169; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:manage_pdf-01",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "/pdf iniciar crea la sesión y registra fuentes; validación/lectura ocurre al terminar y correr el motor. El resultado pdf_session_started no afirma que el contenido corrupto sea válido; adjudicación previa distingue inicio de procesamiento.",
+    "contract_refs": [
+      "docs/R3.md §/pdf"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "make_sticker-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c04"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/make_sticker/execution/results.json:c04",
+      "src/botsky/engines/image_validation.py:78; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:make_sticker-01",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "La imagen panorámica wide_image es 4097×16, excede el máximo por eje de 4096. El límite de seguridad se valida antes del reescalado de sticker.",
+    "contract_refs": [
+      "src/botsky/engines/image_validation.py:78"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "make_sticker-02",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c06"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/make_sticker/execution/results.json:c06",
+      "src/botsky/engines/image_validation.py:_image_codec; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:make_sticker-02",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "La entrada animada WebP se rechaza intencionalmente. La ruta de sticker admite imagen estática de un frame; no promete conservar animación ni elegir un fotograma.",
+    "contract_refs": [
+      "src/botsky/engines/image_validation.py:_image_codec"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "read_image-01",
+    "classification": "fixture_or_harness_issue",
+    "cases": [
+      "c04"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/read_image/execution/results.json:c04",
+      "private/retest-agy-20261107/base/fixture-ledger.json:large_image; src/botsky/engines/images.py:read_image; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:read_image-02",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "large_image mide 4000×4000, pero inspección local del fixture muestra una imagen azul uniforme, sin texto. El resultado image_empty es coherente; el caso nuevo añadió contains=BOTSKY LAB 31415 sin que ese contenido exista.",
+    "contract_refs": [
+      "private/retest-agy-20261107/base/fixture-ledger.json:large_image"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "read_image-02",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c05"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/read_image/execution/results.json:c05",
+      "src/botsky/engines/image_validation.py:78; private/retest-agy-20261107/base/fixture-ledger.json:wide_image; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:read_image-01",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "wide_image mide 4097×16, supera el máximo por eje 4096 y es rechazada antes de OCR. Afirmar texto esperado no anula el límite de admisión.",
+    "contract_refs": [
+      "src/botsky/engines/image_validation.py:78"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "transcribe_media-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c07"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/transcribe_media/execution/results.json:c07",
+      "src/botsky/engines/content_jobs.py:132-133; src/botsky/engines/audio.py:19; private/retest-agy-20261107/base/fixture-ledger.json:large_audio",
+      "docs/evidencia/CONTRASTE-AGY-20261107/fixture-checks.json"
+    ],
+    "reason": "large_audio mide 11200078 bytes, excede el límite ASR de 10 MiB y produce audio_too_large antes de transcripción. No es un fallo dentro de límites.",
+    "contract_refs": [
+      "src/botsky/engines/content_jobs.py:132-133"
+    ],
+    "reproduction": null,
+    "principal_reviewed": true
+  },
+  {
+    "id": "make_voice-01",
+    "classification": "external_dependency",
+    "cases": [
+      "c08"
+    ],
+    "reason": "Fallo real y controlado de disponibilidad: gemini_unavailable. El adaptador mapea errores API>=500 y fallos de transporte/timeout a este código. No se guardó la excepción/payload original: no es posible atribuir una causa HTTP concreta ni demostrar un defecto de backend. La reproducción local inyecta503 y obtiene ese código; no reproduce la caída remota histórica.",
+    "contract_refs": [
+      "src/botsky/adapters/gemini.py:GeminiContent.generate",
+      "src/botsky/engines/content_jobs.py:execute make_voice"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/make_voice/execution/results.json:c08",
+      "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+    ],
+    "reproduction": "503 sintético con SDKFixture; sin API real.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "make_voice-02",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c07",
+      "c09"
+    ],
+    "reason": "requested_seconds es duración orientativa de composición, no recorte ni garantía exacta. Se reenvía al generador y luego se sintetiza el guion completo. Audios observados10.3505s/4.8065s frente a objetivos5s/0.5s incumplen la expectativa inventada de exactitud, no el contrato. El oracle también exigía MP3 aunque salida contractual Ogg/Opus.",
+    "contract_refs": [
+      "docs/portados/ia-voz.md:duración orientativa",
+      "src/botsky/adapters/gemini.py:PURPOSE.compose",
+      "src/botsky/engines/content_jobs.py:execute"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/make_voice/execution/results.json:c07,c09",
+      "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+    ],
+    "reproduction": "Control SDK local confirma requested_seconds=10 en payload; no genera audio ni llama proveedores.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "conversation-01",
+    "classification": "external_dependency",
+    "subclassification": "confirmed_incorrect_generated_content",
+    "cases": [
+      "c07"
+    ],
+    "reason": "Error de contenido demostrado: QR real decodifica BOTSKY-LAB-27182, pero respuesta histórica de Gemini afirma BOTSKY LAB 31415. Hash de fixture coincide con metadatos de adjunto en DB de campaña. Nueva reproducción local recorre análisis de imagen+SDK con doble y comprueba bytes PNG exactos, sin sustitución por OCR. No hay captura original remota: no demuestra retrospectivamente el request exacto ni un bug de transporte/dispatch; sí demuestra respuesta final incorrecta. /qr es la ruta determinista para decodificar.",
+    "contract_refs": [
+      "src/botsky/engines/images.py:read_image mode=qr",
+      "src/botsky/engines/content_jobs.py:analysis_files",
+      "src/botsky/adapters/gemini.py:generate inline_data"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/conversation/execution/results.json:c07",
+      "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+    ],
+    "reproduction": "Motor QR local confirma payload y SDK doble recibe hash exacto; cero nuevas generaciones remotas.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "search_web-01",
+    "classification": "insufficient_evidence",
+    "cases": [
+      "c02",
+      "c03",
+      "c04"
+    ],
+    "reason": "La búsqueda aplica ALL términos literales sobre título+fragmento de los primeros10candidatos y puede devolver empty sin defecto. Campaña actual no capturó RSS crudo para estas tres consultas: no puede probarse que se descartara una coincidencia real. Consulta de8términos demuestra aceptación de lista, no existencia de resultados. Cuatro controles locales de filtro/replay histórico pasan; no explican de forma retroactiva RSS actual no conservado. No se repite red.",
+    "contract_refs": [
+      "src/botsky/adapters/web.py:NetworkWeb.search",
+      "src/botsky/engines/web_results.py:parse_results",
+      "tests/test_search_suspicion.py"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch1/search_web/execution/results.json:c02,c03,c04",
+      "docs/evidencia/CONTRASTE-AGY-20261107/local-tests.txt"
+    ],
+    "reproduction": "Pruebas sintéticas de ALL términos y replay RSS histórico separado; ninguna prueba remota nueva.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "find_notes-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c05",
+      "c06"
+    ],
+    "reason": "La búsqueda de c05 no devuelve coincidencias (total=0, pages=1); c06 pide 10000 cuando solo hay 3 páginas. El handler calcula páginas de resultados en runtime y responde needs_input/note_page_out_of_range para una página inexistente: es una condición recuperable con límites expresos, no un fallo del filtro ni una violación del rango sintáctico 1–10000.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/find_notes/execution/results.json#c05",
+      "private/retest-agy-20261107/batch2/find_notes/execution/results.json#c06"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/notes.py:find (pages=max(1,...); page>pages => needs_input)",
+      "docs/commands.json:find_notes.run; page 1..10000",
+      "ESTADO_COMPARTIDO.md: R2 cierre, vistas de búsqueda con filtro y recibo"
+    ],
+    "reproduction": "Caso c06 reproducido por inspección de resultados reproducibles: 12 notas => 3 páginas; 10000 > 3 => note_page_out_of_range. Caso c05 query reunion => total 0; páginas=1; página 2 > 1. Sin red.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_reminder-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c08"
+    ],
+    "reason": "Archivar un recordatorio pendiente está bloqueado intencionalmente: primero debe cancelarse para no perder un envío futuro sin resolverlo. El texto de needs_input expresa el paso requerido. La suite local cubre el ciclo pendiente→cancelado→archivado.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_reminder/execution/results.json#c08",
+      "tests/test_organization.py::test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:reminder action archive guard",
+      "tests/test_organization.py:123-145"
+    ],
+    "reproduction": "Suite local de organización: 11 pruebas OK; prueba específica verifica reminder_still_pending, luego reminder_cancelled y reminder_archived. Sin transporte remoto.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_school-01",
+    "classification": "fixture_or_harness_issue",
+    "cases": [
+      "c11"
+    ],
+    "reason": "La respuesta de dominio incluye el identificador del artefacto en data.artifacts. La lista artifacts de nivel superior del registro de ejecución es un campo separado del arnés, no la colección de adjuntos en el payload. La comprobación de entrega local confirma que la pieza final transporta ese artefacto; el reporte mezcló dos niveles distintos.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_school/execution/results.json#c11",
+      "private/retest-agy-20261107/batch2/manage_school/execution/results.json#c10",
+      "tests/test_organization.py::test_school_task_owner_complete_file_explicit_share_and_grant_revocation"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:get_attachment devuelve data.artifacts",
+      "tests/test_organization.py:178-221 (deliver retorna 2 y transport.parts[-1].artifacts contiene el ID)"
+    ],
+    "reproduction": "Suite local de organización: 11 pruebas OK. El caso de adjunto verifica creación, lookup explícito, delivery local de dos partes y artifacts=(task.artifact_id,) en la última parte. Sin proveedor/red.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_poll-01",
+    "classification": "not_a_defect_claim",
+    "cases": [
+      "c12"
+    ],
+    "reason": "Cerrar una encuesta ya cerrada produce el mismo resultado público poll_results. El cierre repetido es idempotente en su efecto observable (continúa cerrada y mantiene resultados); no se documenta un código obligatorio de segunda transición. El UPDATE repetido solo actualiza revisión interna y no altera votos/resultados. La sospecha se planteó como alternativa, no como defecto demostrado.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_poll/execution/results.json#c07",
+      "private/retest-agy-20261107/batch2/manage_poll/execution/results.json#c12",
+      "src/botsky/domains/organization.py:poll"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:poll close actualiza state='closed' y retorna poll_results"
+    ],
+    "reproduction": "La secuencia de campaña c07 cerrar y c12 cerrar otra vez devuelve poll_results con la misma encuesta y conteos. Suite local de organización: 11 pruebas OK. Sin red.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "send_sticker-01",
+    "tool": "send_sticker",
+    "classification": "not_a_defect_claim",
+    "reason": "El claim agregado declara ausencia de fallas internas y validaciones needs_input; los resultados exhiben respuestas controladas y stickers locales generados. No formula discrepancia de producto verificable. La evidencia es arnés local; no prueba entrega remota.",
+    "contract_refs": [
+      "src/botsky/app.py:send_sticker",
+      "src/botsky/jobs.py:send_sticker.run",
+      "batch2/send_sticker/execution/results.json:c01-c11",
+      "docs/R7.md:Messenger"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/send_sticker/execution/results.json"
+    ],
+    "cases": [],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_pack-01",
+    "tool": "manage_pack",
+    "classification": "tester_expectation_error",
+    "reason": "page_out_of_range se calcula a partir de álbumes filtrados publicados (páginas=1 aquí); rango sintáctico 1–20 no promete que existan veinte páginas. La respuesta identifica el rango real y no es fallo del catálogo.",
+    "contract_refs": [
+      "src/botsky/domains/packs.py:catalog",
+      "docs/R7.md:packs"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_pack/execution/results.json",
+      "case:c04"
+    ],
+    "cases": [
+      "c04"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_cooperacha-01",
+    "tool": "manage_cooperacha",
+    "classification": "fixture_or_harness_issue",
+    "reason": "Los DB/fixtures propios confirman que el único álbum utilizable de la campaña es `LAB sintético` con slug `lab-sintetico` (library.db del perfil privado de esta ejecución). Los casos usaron categorías fiesta, meta_min y meta_max que no existen. El worker llama library.select(category,1,...) y si no encuentra foto finaliza en fallo conocido; el estado failed y coop_not_open son consecuencias esperadas de categoría sin stock, no un fallo con categoría válida ni de entrega aceptada. La marca delivery_states cancelled corresponde al preview no publicado luego del fallo de preparación. La prueba R7 local valida el happy path con categoría sintetico.",
+    "contract_refs": [
+      "src/botsky/domains/cooperacha.py:run",
+      "src/botsky/domains/cooperacha.py:retire_job",
+      "tests/test_packs.py:coop,test_coop_publication_own_contributions_goal_and_single_settlement",
+      "docs/R7.md:cooperacha"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/private/gallery/library.db:albums",
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/lab.sqlite3:jobs,cooperachas",
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/results.json:c01,c04,c06,c07"
+    ],
+    "cases": [
+      "c01",
+      "c06",
+      "c07"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático del DB sintético privado, DB de jobs y test local existente; no se repitió la campaña ni el efecto.",
+      "result": "No se probó aquí una nueva cooperacha. El test local test_coop_publication_own_contributions_goal_and_single_settlement crea categoría sintetico, procesa preview, simula delivery y demuestra estado open/aportes."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_cooperacha-02",
+    "tool": "manage_cooperacha",
+    "classification": "fixture_or_harness_issue",
+    "reason": "Los DB/fixtures propios confirman que el único álbum utilizable de la campaña es `LAB sintético` con slug `lab-sintetico` (library.db del perfil privado de esta ejecución). Los casos usaron categorías fiesta, meta_min y meta_max que no existen. El worker llama library.select(category,1,...) y si no encuentra foto finaliza en fallo conocido; el estado failed y coop_not_open son consecuencias esperadas de categoría sin stock, no un fallo con categoría válida ni de entrega aceptada. La marca delivery_states cancelled corresponde al preview no publicado luego del fallo de preparación. La prueba R7 local valida el happy path con categoría sintetico.",
+    "contract_refs": [
+      "src/botsky/domains/cooperacha.py:run",
+      "src/botsky/domains/cooperacha.py:retire_job",
+      "tests/test_packs.py:coop,test_coop_publication_own_contributions_goal_and_single_settlement",
+      "docs/R7.md:cooperacha"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/private/gallery/library.db:albums",
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/app/lab.sqlite3:jobs,cooperachas",
+      "private/retest-agy-20261107/batch3/manage_cooperacha/execution/results.json:c01,c04,c06,c07"
+    ],
+    "cases": [
+      "c04",
+      "c05"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático del DB sintético privado, DB de jobs y test local existente; no se repitió la campaña ni el efecto.",
+      "result": "No se probó aquí una nueva cooperacha. El test local test_coop_publication_own_contributions_goal_and_single_settlement crea categoría sintetico, procesa preview, simula delivery y demuestra estado open/aportes."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_happy_hour-01",
+    "tool": "manage_happy_hour",
+    "classification": "confirmed_product_defect",
+    "reason": "Defecto confirmado de contrato de interfaz: el registry define /hh reclamar EVENT_ID y el parseo produce arguments.event_id; el usuario que siga la ayuda puede pasar el ID emitido por c05 para el evento, pero el dominio busca happy_drops.id (drop_id). El comando correcto se imprime dinámicamente con drop_id, así que el claim observado c06 mezcla un uso incorrecto de ID con un defecto real y reproducible en la ayuda/contrato estático, no en el canje si se usa drop_id. Causa raíz: etiqueta/contrato de campo event_id no expresa que el valor debe ser drop_id.",
+    "contract_refs": [
+      "src/botsky/commands/registry.py:662-677",
+      "src/botsky/domains/happy_hour.py:68-80",
+      "docs/R7.md:HH"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_happy_hour/execution/results.json:c05,c06",
+      "local reproduction: PYTHONPATH=src Router().parse(\"/hh reclamar 0123456789abcdef\") -> arguments.event_id; registry.help(\"hh reclamar\") -> /hh reclamar EVENT_ID",
+      "src/botsky/domains/happy_hour.py:claim",
+      "docs/evidencia/CONTRASTE-AGY-20261107/catalog-reproduction.json"
+    ],
+    "cases": [
+      "c06"
+    ],
+    "reproduction": {
+      "performed": true,
+      "method": "Parseo local sin red de /hh reclamar con ID sintético y lectura de ayuda generada; inspección del lookup de claim.",
+      "result": "Parser/help rotulan argumento EVENT_ID mientras executor busca por happy_drops.id; c05 además muestra que la salida dinámica ofrece drop_id. Defecto confirmado acotado a ayuda/contrato de entrada estático; la reclamación con drop_id no se reejecutó."
+    },
+    "principal_reviewed": true,
+    "defect_scope": "catalog_help_contract; no runtime effect or provider execution regression established"
+  },
+  {
+    "id": "manage_economy-01",
+    "tool": "manage_economy",
+    "classification": "correct_contract_limit",
+    "reason": "/saldo no declara ni consume adjunto; el backend calcula saldo a partir de identidad verificada. Adjuntos innecesarios no forman parte de sus argumentos y el claim no prueba un requisito contractual de rechazo.",
+    "contract_refs": [
+      "src/botsky/commands/registry.py:manage_economy",
+      "src/botsky/domains/economy.py:balance",
+      "batch3/manage_economy/execution/results.json:c12",
+      "docs/R7.md:XP"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_economy/execution/results.json",
+      "case:c12"
+    ],
+    "cases": [
+      "c12"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_blackjack-01",
+    "tool": "manage_blackjack",
+    "classification": "correct_contract_limit",
+    "reason": "Una vez settled la partida, el executor devuelve result_json persistido antes de procesar cualquier acción adicional. La repetición del resultado no altera partida, balance ni reservas; el contrato no requiere error distinto para acción terminal.",
+    "contract_refs": [
+      "src/botsky/domains/blackjack.py:execute,settle",
+      "docs/R7.md:Blackjack",
+      "batch3/manage_blackjack/execution/results.json:c03,c11"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_blackjack/execution/results.json",
+      "case:c03",
+      "case:c11"
+    ],
+    "cases": [
+      "c03",
+      "c11"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_blackjack-02",
+    "tool": "manage_blackjack",
+    "classification": "not_a_defect_claim",
+    "reason": "La misma cuenta ya ocupa asiento en la mesa recién creada; el producto prohíbe una partida activa por wallet, tanto en inicio como al unirse. Rechazo esperado y protege de apuesta duplicada.",
+    "contract_refs": [
+      "src/botsky/domains/blackjack.py:execute(join)",
+      "docs/R7.md:Blackjack",
+      "batch3/manage_blackjack/execution/results.json:c08"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_blackjack/execution/results.json",
+      "case:c08"
+    ],
+    "cases": [
+      "c08"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_roulette-01",
+    "tool": "manage_roulette",
+    "classification": "correct_contract_limit",
+    "reason": "Crear/entrar son acciones de efecto y el guard operacional puede producir operation_not_enabled; estado/cancelar atraviesan handler de dominio que exige grupo configurado y produce roulette_group_not_configured. Diferencia de guardias explícitas, no inconsistencia de resultado en contexto equivalente de permisos.",
+    "contract_refs": [
+      "src/botsky/operational.py:roulette guard",
+      "src/botsky/domains/roulette.py:execute",
+      "docs/R7.md:Ruleta",
+      "batch3/manage_roulette/execution/results.json:c11,c12"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_roulette/execution/results.json"
+    ],
+    "cases": [],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_roulette-02",
+    "tool": "manage_roulette",
+    "classification": "tester_expectation_error",
+    "reason": "Las entradas c06/c07 son fuera de rango y reciben validación sintáctica needs_input antes de ejecutar el handler del dominio. La validación previa de argumentos es comportamiento contractual normal; no acredita ruta con argumentos válidos ni defecto de orden de guardias.",
+    "contract_refs": [
+      "src/botsky/commands/registry.py:manage_roulette.create",
+      "src/botsky/operational.py",
+      "batch3/manage_roulette/execution/results.json:c06,c07",
+      "docs/R7.md:Ruleta"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_roulette/execution/results.json",
+      "case:c06",
+      "case:c07"
+    ],
+    "cases": [
+      "c06",
+      "c07"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "manage_minecraft-01",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c09",
+      "c10",
+      "c11"
+    ],
+    "reason": "Los comandos generales /estado, /confirmar y /cancelar no son comandos sin argumentos para el estado global ni para efectos implícitos. Su contrato exige un ID concreto de recibo/confirmación/cancelación; sin ID el parser debe pedirlo y no inferir contexto global. Además, estos casos no son rutas manage_minecraft sino comandos core, así que su asignación a la herramienta es errónea.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c09",
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c10",
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c11"
+    ],
+    "contract_refs": [
+      "docs/commands.json: /estado ID, /confirmar ID, /cancelar ID",
+      "src/botsky/commands/router.py: required field missing => CommandError(missing_field)"
+    ],
+    "reproduction": "Parser local sin efectos: /estado, /confirmar y /cancelar => missing_field id; /estado abc se enruta a core.estado con id=abc. Sin red.",
+    "principal_reviewed": true
+  },
+  {
+    "id": "make_prank-01",
+    "tool": "make_prank",
+    "classification": "correct_contract_limit",
+    "reason": "La broma es texto de ficción local por contrato y no acepta ni procesa imágenes. El adjunto corrupto no llega como argumento al handler; respuesta ok solo genera ficción inocua, sin consumir el archivo. El oráculo de que validar imagen era pertinente no aplica.",
+    "contract_refs": [
+      "src/botsky/domains/prank.py:execute",
+      "src/botsky/commands/registry.py:make_prank.run",
+      "docs/R7.md:Broma",
+      "batch3/make_prank/execution/results.json:c10"
+    ],
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/make_prank/execution/results.json",
+      "case:c10"
+    ],
+    "cases": [
+      "c10"
+    ],
+    "reproduction": {
+      "performed": false,
+      "method": "Contraste estático de resultado privado del arnés, contrato R7 y código actual; sin proveedor, red, perfil o runtime productivo.",
+      "result": "No se repitieron efectos; campaña AGY cerrada."
+    },
+    "principal_reviewed": true
+  },
+  {
+    "id": "control_call-01",
+    "classification": "confirmed_product_defect",
+    "cases": [
+      "c04",
+      "c06",
+      "c07",
+      "c08"
+    ],
+    "reason": "Hay una inconsistencia confirmada de catálogo/ayuda: uso generado declara --duracion MAX_SECONDS y el campo se llama max_seconds con límites numéricos en segundos, pero kind=duration obliga sufijo s/m/h/d. El parser funciona conforme a kind y rechaza enteros; el catálogo expone una firma que induce a enviar segundos desnudos. El defecto está en la firma de ayuda, no en ejecutar ni llamar al proveedor.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c04",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c07",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c08",
+      "src/botsky/commands/router.py:Router.parse",
+      "src/botsky/commands/types.py:Field.convert",
+      "docs/evidencia/CONTRASTE-AGY-20261107/catalog-reproduction.json"
+    ],
+    "contract_refs": [
+      "docs/commands.json:control_call.start fields max_seconds kind=duration, example=10m; usage MAX_SECONDS",
+      "docs/commands.md:413",
+      "src/botsky/commands/types.py: duration requires [0-9]+[smhd]"
+    ],
+    "reproduction": "Router local: /llamar --duracion 600 => invalid_field; 600s y 10m => operation control_call.start con max_seconds=600. No se invocó Application/provider ni red.",
+    "principal_reviewed": true,
+    "defect_scope": "catalog_help_contract; no runtime effect or provider execution regression established"
+  },
+  {
+    "id": "control_call-02",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c09",
+      "c10"
+    ],
+    "reason": "invalid_field para sintaxis/rango inválidos se presenta como needs_input para que la persona pueda corregir el comando; ese estado corresponde al error de parseo y no implica que el parser debiera producir failed. Además, las sesiones de llamada permanecen deliberadamente sin configurar en la campaña.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c09",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c10",
+      "src/botsky/commands/router.py:CommandError"
+    ],
+    "contract_refs": [
+      "src/botsky/commands/router.py: CommandError y reply",
+      "src/botsky/app.py: conversión de error de parseo a needs_input",
+      "docs/AGY_RETEST_20261107.md: limitaciones y capacidades no activadas"
+    ],
+    "reproduction": "En c09/c10 el parser devuelve needs_input/invalid_field antes del guard call_not_configured. Solo parseo, sin invocar llamadas ni proveedor.",
+    "principal_reviewed": true
+  }
+]

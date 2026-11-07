@@ -1,0 +1,235 @@
+{
+  "campaign": "AGY-20261107",
+  "scope": [
+    "convert_document",
+    "download_media",
+    "edit_media",
+    "make_sticker",
+    "manage_pdf",
+    "read_image",
+    "transcribe_media"
+  ],
+  "adjudications": [
+    {
+      "id": "download_media-01",
+      "classification": "confirmed_product_defect",
+      "cases": [
+        "c08"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/download_media/execution/results.json:c08",
+        "src/botsky/commands/registry.py:270-305",
+        "src/botsky/adapters/downloads.py:18-22",
+        "src/botsky/engines/downloads.py:673-687"
+      ],
+      "reason": "El registro acepta explícitamente soundcloud para /dl buscar (src/botsky/commands/registry.py), pero el adaptador NetworkDownloads.search solo admite youtube/pornhub/xnxx/adult y retorna source_search_unavailable antes de llamar al motor. El motor Downloader.search tampoco implementa búsqueda SoundCloud: solo deriva a YouTube/adultos. El caso demuestra una contradicción catálogo/runtime; no atribuye el error a proveedor externo ni a que catálogo bloquee la entrada.",
+      "contract_refs": [
+        "src/botsky/commands/registry.py:270-305 (source enum incluye soundcloud)",
+        "docs/portados/medios-documentos.md:36-38 (búsqueda solo en fuentes que implementan la capacidad)"
+      ],
+      "reproduction": {
+        "kind": "campaign_observation_and_static_trace",
+        "steps": [
+          "/dl buscar mp3 --fuente soundcloud --calidad standard ambient test",
+          "backend devuelve source_search_unavailable en c08",
+          "trazar a NetworkDownloads.search que rechaza soundcloud antes de Downloader.search"
+        ],
+        "result": "Discrepancia catálogo/runtime confirmada; reproducción externa de búsqueda no ejecutada."
+      }
+    },
+    {
+      "id": "download_media-02",
+      "classification": "external_dependency",
+      "cases": [
+        "c04"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/download_media/execution/results.json:c04",
+        "src/botsky/engines/remote_subtitles.py: fetch_subtitles; docs/portados/medios-documentos.md §Fuentes de descarga"
+      ],
+      "reason": "La operación llegó al extractor remoto y falló con subtitles_failed. Este caso depende de disponibilidad y respuesta actual de YouTube/yt-dlp; el contrato/evidencia local no permite distinguir indisponibilidad externa de fallo del extractor sin reejecutar red, prohibido en este contraste.",
+      "contract_refs": [
+        "src/botsky/engines/remote_subtitles.py: fetch_subtitles"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "convert_document-01",
+      "classification": "tester_expectation_error",
+      "cases": [
+        "c07"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/convert_document/execution/results.json:c07",
+        "src/botsky/engines/formats.py:143; private/retest-agy-20261107/batch1/convert_document/execution/results.json:c07"
+      ],
+      "reason": "El contrato explícitamente avisa que HTML se presenta como texto plano sin interpretar formato. El PDF contiene literalmente las etiquetas y el resultado lo advierte; el oracle exigió renderizado HTML no prometido.",
+      "contract_refs": [
+        "src/botsky/engines/formats.py:143"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "convert_document-02",
+      "classification": "tester_expectation_error",
+      "cases": [
+        "c12"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/convert_document/execution/results.json:c12",
+        "src/botsky/app.py:132; src/botsky/commands/registry.py:447"
+      ],
+      "reason": "El destino inválido es un error de validación de argumento antes de reservar el trabajo, representado como needs_input/invalid_field con la lista de destinos válidos. La expectativa exigía failed terminal, que no es el contrato de validación sintáctica.",
+      "contract_refs": [
+        "src/botsky/app.py:132"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "edit_media-01",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c01",
+        "c02"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/edit_media/execution/results.json:c01,c02",
+        "src/botsky/engines/media_edit.py:175-183; private/retest-agy-20261107/base/fixture-ledger.json:video"
+      ],
+      "reason": "El motor inspecciona la duración y rechaza cuando --hasta supera EOF mediante invalid_range; no recorta silenciosamente una solicitud fuera del rango. El fixture video solo mide 107667 bytes y la campaña no acredita duración mayor a los finales pedidos.",
+      "contract_refs": [
+        "src/botsky/engines/media_edit.py:175-183"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "edit_media-02",
+      "classification": "tester_expectation_error",
+      "cases": [
+        "c06"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/edit_media/execution/results.json:c06",
+        "src/botsky/engines/media_edit.py:_demuxer y rama container==srt (líneas 213-234); docs/portados/medios-documentos.md §Comprobaciones nuevas"
+      ],
+      "reason": "La ruta SRT extrae una pista de subtítulos embebida desde un contenedor multimedia. No acepta SRT como medio de entrada para reescritura/normalización; la firma del fixture SRT es unsupported_media.",
+      "contract_refs": [
+        "src/botsky/engines/media_edit.py:_demuxer y rama container==srt (líneas 213-234)"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "manage_pdf-01",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c08",
+        "c09"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/manage_pdf/execution/results.json:c08,c09",
+        "docs/R3.md §/pdf; src/botsky/engines/pdf_ops_worker.py:15; private/retest-agy-20261107/base/fixture-ledger.json:many_pages_pdf"
+      ],
+      "reason": "El motor impone 500 páginas al documento fuente antes de seleccionar páginas; el fixture many_pages_pdf es la muestra de 501 páginas ya establecida para esta campaña. Seleccionar 1-2 o 1-3 no rebasa el límite de entrada.",
+      "contract_refs": [
+        "docs/R3.md §/pdf"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "manage_pdf-02",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c12"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/manage_pdf/execution/results.json:c12",
+        "docs/R3.md §/pdf; src/botsky/domains/pdf.py:169; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:manage_pdf-01"
+      ],
+      "reason": "/pdf iniciar crea la sesión y registra fuentes; validación/lectura ocurre al terminar y correr el motor. El resultado pdf_session_started no afirma que el contenido corrupto sea válido; adjudicación previa distingue inicio de procesamiento.",
+      "contract_refs": [
+        "docs/R3.md §/pdf"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "make_sticker-01",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c04"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/make_sticker/execution/results.json:c04",
+        "src/botsky/engines/image_validation.py:78; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:make_sticker-01"
+      ],
+      "reason": "La imagen panorámica wide_image es 4097×16, excede el máximo por eje de 4096. El límite de seguridad se valida antes del reescalado de sticker.",
+      "contract_refs": [
+        "src/botsky/engines/image_validation.py:78"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "make_sticker-02",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c06"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/make_sticker/execution/results.json:c06",
+        "src/botsky/engines/image_validation.py:_image_codec; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:make_sticker-02"
+      ],
+      "reason": "La entrada animada WebP se rechaza intencionalmente. La ruta de sticker admite imagen estática de un frame; no promete conservar animación ni elegir un fotograma.",
+      "contract_refs": [
+        "src/botsky/engines/image_validation.py:_image_codec"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "read_image-01",
+      "classification": "fixture_or_harness_issue",
+      "cases": [
+        "c04"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/read_image/execution/results.json:c04",
+        "private/retest-agy-20261107/base/fixture-ledger.json:large_image; src/botsky/engines/images.py:read_image; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:read_image-02"
+      ],
+      "reason": "large_image mide 4000×4000, pero inspección local del fixture muestra una imagen azul uniforme, sin texto. El resultado image_empty es coherente; el caso nuevo añadió contains=BOTSKY LAB 31415 sin que ese contenido exista.",
+      "contract_refs": [
+        "private/retest-agy-20261107/base/fixture-ledger.json:large_image"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "read_image-02",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c05"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/read_image/execution/results.json:c05",
+        "src/botsky/engines/image_validation.py:78; private/retest-agy-20261107/base/fixture-ledger.json:wide_image; docs/evidencia/CONTRASTE-20261106/media-adjudications.json:read_image-01"
+      ],
+      "reason": "wide_image mide 4097×16, supera el máximo por eje 4096 y es rechazada antes de OCR. Afirmar texto esperado no anula el límite de admisión.",
+      "contract_refs": [
+        "src/botsky/engines/image_validation.py:78"
+      ],
+      "reproduction": null
+    },
+    {
+      "id": "transcribe_media-01",
+      "classification": "correct_contract_limit",
+      "cases": [
+        "c07"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/transcribe_media/execution/results.json:c07",
+        "src/botsky/engines/content_jobs.py:132-133; src/botsky/engines/audio.py:19; private/retest-agy-20261107/base/fixture-ledger.json:large_audio"
+      ],
+      "reason": "large_audio mide 11200078 bytes, excede el límite ASR de 10 MiB y produce audio_too_large antes de transcripción. No es un fallo dentro de límites.",
+      "contract_refs": [
+        "src/botsky/engines/content_jobs.py:132-133"
+      ],
+      "reproduction": null
+    }
+  ]
+}

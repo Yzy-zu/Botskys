@@ -1,0 +1,137 @@
+[
+  {
+    "id": "find_notes-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c05",
+      "c06"
+    ],
+    "reason": "La búsqueda de c05 no devuelve coincidencias (total=0, pages=1); c06 pide 10000 cuando solo hay 3 páginas. El handler calcula páginas de resultados en runtime y responde needs_input/note_page_out_of_range para una página inexistente: es una condición recuperable con límites expresos, no un fallo del filtro ni una violación del rango sintáctico 1–10000.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/find_notes/execution/results.json#c05",
+      "private/retest-agy-20261107/batch2/find_notes/execution/results.json#c06"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/notes.py:find (pages=max(1,...); page>pages => needs_input)",
+      "docs/commands.json:find_notes.run; page 1..10000",
+      "ESTADO_COMPARTIDO.md: R2 cierre, vistas de búsqueda con filtro y recibo"
+    ],
+    "reproduction": "Caso c06 reproducido por inspección de resultados reproducibles: 12 notas => 3 páginas; 10000 > 3 => note_page_out_of_range. Caso c05 query reunion => total 0; páginas=1; página 2 > 1. Sin red."
+  },
+  {
+    "id": "manage_reminder-01",
+    "classification": "correct_contract_limit",
+    "cases": [
+      "c08"
+    ],
+    "reason": "Archivar un recordatorio pendiente está bloqueado intencionalmente: primero debe cancelarse para no perder un envío futuro sin resolverlo. El texto de needs_input expresa el paso requerido. La suite local cubre el ciclo pendiente→cancelado→archivado.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_reminder/execution/results.json#c08",
+      "tests/test_organization.py::test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:reminder action archive guard",
+      "tests/test_organization.py:123-145"
+    ],
+    "reproduction": "Suite local de organización: 11 pruebas OK; prueba específica verifica reminder_still_pending, luego reminder_cancelled y reminder_archived. Sin transporte remoto."
+  },
+  {
+    "id": "manage_school-01",
+    "classification": "fixture_or_harness_issue",
+    "cases": [
+      "c11"
+    ],
+    "reason": "La respuesta de dominio incluye el identificador del artefacto en data.artifacts. La lista artifacts de nivel superior del registro de ejecución es un campo separado del arnés, no la colección de adjuntos en el payload. La comprobación de entrega local confirma que la pieza final transporta ese artefacto; el reporte mezcló dos niveles distintos.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_school/execution/results.json#c11",
+      "private/retest-agy-20261107/batch2/manage_school/execution/results.json#c10",
+      "tests/test_organization.py::test_school_task_owner_complete_file_explicit_share_and_grant_revocation"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:get_attachment devuelve data.artifacts",
+      "tests/test_organization.py:178-221 (deliver retorna 2 y transport.parts[-1].artifacts contiene el ID)"
+    ],
+    "reproduction": "Suite local de organización: 11 pruebas OK. El caso de adjunto verifica creación, lookup explícito, delivery local de dos partes y artifacts=(task.artifact_id,) en la última parte. Sin proveedor/red."
+  },
+  {
+    "id": "manage_poll-01",
+    "classification": "not_a_defect_claim",
+    "cases": [
+      "c12"
+    ],
+    "reason": "Cerrar una encuesta ya cerrada produce el mismo resultado público poll_results. El cierre repetido es idempotente en su efecto observable (continúa cerrada y mantiene resultados); no se documenta un código obligatorio de segunda transición. El UPDATE repetido solo actualiza revisión interna y no altera votos/resultados. La sospecha se planteó como alternativa, no como defecto demostrado.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch2/manage_poll/execution/results.json#c07",
+      "private/retest-agy-20261107/batch2/manage_poll/execution/results.json#c12",
+      "src/botsky/domains/organization.py:poll"
+    ],
+    "contract_refs": [
+      "src/botsky/domains/organization.py:poll close actualiza state='closed' y retorna poll_results"
+    ],
+    "reproduction": "La secuencia de campaña c07 cerrar y c12 cerrar otra vez devuelve poll_results con la misma encuesta y conteos. Suite local de organización: 11 pruebas OK. Sin red."
+  },
+  {
+    "id": "manage_minecraft-01",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c09",
+      "c10",
+      "c11"
+    ],
+    "reason": "Los comandos generales /estado, /confirmar y /cancelar no son comandos sin argumentos para el estado global ni para efectos implícitos. Su contrato exige un ID concreto de recibo/confirmación/cancelación; sin ID el parser debe pedirlo y no inferir contexto global. Además, estos casos no son rutas manage_minecraft sino comandos core, así que su asignación a la herramienta es errónea.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c09",
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c10",
+      "private/retest-agy-20261107/batch3/manage_minecraft/execution/results.json#c11"
+    ],
+    "contract_refs": [
+      "docs/commands.json: /estado ID, /confirmar ID, /cancelar ID",
+      "src/botsky/commands/router.py: required field missing => CommandError(missing_field)"
+    ],
+    "reproduction": "Parser local sin efectos: /estado, /confirmar y /cancelar => missing_field id; /estado abc se enruta a core.estado con id=abc. Sin red."
+  },
+  {
+    "id": "control_call-01",
+    "classification": "confirmed_product_defect",
+    "cases": [
+      "c04",
+      "c06",
+      "c07",
+      "c08"
+    ],
+    "reason": "Hay una inconsistencia confirmada de catálogo/ayuda: uso generado declara --duracion MAX_SECONDS y el campo se llama max_seconds con límites numéricos en segundos, pero kind=duration obliga sufijo s/m/h/d. El parser funciona conforme a kind y rechaza enteros; el catálogo expone una firma que induce a enviar segundos desnudos. El defecto está en la firma de ayuda, no en ejecutar ni llamar al proveedor.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c04",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c07",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c08",
+      "src/botsky/commands/router.py:Router.parse",
+      "src/botsky/commands/types.py:Field.convert"
+    ],
+    "contract_refs": [
+      "docs/commands.json:control_call.start fields max_seconds kind=duration, example=10m; usage MAX_SECONDS",
+      "docs/commands.md:413",
+      "src/botsky/commands/types.py: duration requires [0-9]+[smhd]"
+    ],
+    "reproduction": "Router local: /llamar --duracion 600 => invalid_field; 600s y 10m => operation control_call.start con max_seconds=600. No se invocó Application/provider ni red."
+  },
+  {
+    "id": "control_call-02",
+    "classification": "tester_expectation_error",
+    "cases": [
+      "c09",
+      "c10"
+    ],
+    "reason": "invalid_field para sintaxis/rango inválidos se presenta como needs_input para que la persona pueda corregir el comando; ese estado corresponde al error de parseo y no implica que el parser debiera producir failed. Además, las sesiones de llamada permanecen deliberadamente sin configurar en la campaña.",
+    "evidence_refs": [
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c09",
+      "private/retest-agy-20261107/batch3/control_call/execution/results.json#c10",
+      "src/botsky/commands/router.py:CommandError"
+    ],
+    "contract_refs": [
+      "src/botsky/commands/router.py: CommandError y reply",
+      "src/botsky/app.py: conversión de error de parseo a needs_input",
+      "docs/AGY_RETEST_20261107.md: limitaciones y capacidades no activadas"
+    ],
+    "reproduction": "En c09/c10 el parser devuelve needs_input/invalid_field antes del guard call_not_configured. Solo parseo, sin invocar llamadas ni proveedor."
+  }
+]

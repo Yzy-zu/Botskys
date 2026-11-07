@@ -1,0 +1,39 @@
+import asyncio,hashlib,json,socket,sys,tempfile,sqlite3
+from pathlib import Path
+sys.path[:0]=['/home/petrov/botsky/tests','/home/petrov/botsky/ops']
+from test_ai import SDKFixture
+from botsky.adapters.gemini import GeminiContent
+from botsky.engines.content_jobs import analysis_files
+from botsky.engines.images import read_image
+from botsky.engines.process import MediaError
+from google.genai import errors
+root=Path('/home/petrov/botsky')
+out=root/'docs/evidencia/CONTRASTE-AGY-20261107'
+old_connect=socket.socket.connect
+attempts=[]
+def blocked(self,address):
+ attempts.append(str(address));raise AssertionError('network forbidden')
+socket.socket.connect=blocked
+async def main():
+ fixture=root/'private/retest-agy-20261107/base/fixtures/qr.png'
+ observed=json.loads((root/'private/retest-agy-20261107/batch1/conversation/execution/results.json').read_text())
+ case=next(r for r in observed if r['case']=='c07')
+ with tempfile.TemporaryDirectory() as tmp:
+  d=Path(tmp);(d/'qr').mkdir()
+  text,data=await read_image(fixture,'qr',d/'qr');assert text=='BOTSKY-LAB-27182'
+  files=await analysis_files([fixture],d)
+  sdk=SDKFixture('Respuesta sintética de control')
+  gemini=GeminiContent('synthetic-key','synthetic-model',client_factory=lambda k:sdk)
+  await gemini.generate(case['command'][4:],files=files)
+  blob=sdk.calls[0]['contents'][0].parts[1].inline_data
+  assert blob.data==fixture.read_bytes() and blob.mime_type=='image/png'
+  sdk.error=errors.ServerError(503,{'error':{'message':'synthetic outage','code':503}})
+  try:await gemini.generate('comunicado',purpose='compose',requested_seconds=10)
+  except MediaError as exc:code=exc.code
+  else:raise AssertionError('expected controlled error')
+  assert code=='gemini_unavailable'
+  evidence={'qr':{'case':'conversation/c07','decoded':text,'fixture_sha256':hashlib.sha256(fixture.read_bytes()).hexdigest(),'sdk_inline_sha256':hashlib.sha256(blob.data).hexdigest(),'mime':blob.mime_type,'original_answer':case['result']['text'],'remote_request_original_captured':False,'new_generation':'SDK fixture only; no remote API'},'voice':{'synthetic_503_mapped_code':code,'requested_seconds_forwarded':json.loads(sdk.calls[-1]['contents'][0].parts[0].text)['requested_seconds'],'duration_contract':'orientativa, docs/portados/ia-voz.md; adapters/gemini.py PURPOSE.compose'},'network_connect_attempts':attempts}
+  assert not attempts
+  (out/'content-reproduction.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
+asyncio.run(main())
+print('PASS QR decoded, exact SDK bytes, compose duration forwarded, synthetic503 mapped; no network')

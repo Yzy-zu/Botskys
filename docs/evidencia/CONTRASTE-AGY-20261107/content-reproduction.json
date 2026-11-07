@@ -1,0 +1,18 @@
+{
+  "qr": {
+    "case": "conversation/c07",
+    "decoded": "BOTSKY-LAB-27182",
+    "fixture_sha256": "8122ced8cbefc360231ad1841282aceb6162eb895de55980baeb2202754f966d",
+    "sdk_inline_sha256": "8122ced8cbefc360231ad1841282aceb6162eb895de55980baeb2202754f966d",
+    "mime": "image/png",
+    "original_answer": "El código QR contiene el texto:\n\n**\"BOTSKY LAB 31415\"**",
+    "remote_request_original_captured": false,
+    "new_generation": "SDK fixture only; no remote API"
+  },
+  "voice": {
+    "synthetic_503_mapped_code": "gemini_unavailable",
+    "requested_seconds_forwarded": 10,
+    "duration_contract": "orientativa, docs/portados/ia-voz.md; adapters/gemini.py PURPOSE.compose"
+  },
+  "network_connect_attempts": []
+}

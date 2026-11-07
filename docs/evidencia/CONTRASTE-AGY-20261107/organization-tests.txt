@@ -1,0 +1,16 @@
+test_digest_delivery_rechecks_current_owner (test_organization.OrganizationTest.test_digest_delivery_rechecks_current_owner) ... ok
+test_memory_filter_pagination_and_reminder_closed_filter (test_organization.OrganizationTest.test_memory_filter_pagination_and_reminder_closed_filter) ... ok
+test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse (test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse) ... ok
+test_pending_notice_expiry_pause_and_sent_receipt_are_preserved (test_organization.OrganizationTest.test_pending_notice_expiry_pause_and_sent_receipt_are_preserved) ... ok
+test_poll_full_options_delivered_publication_ownership_and_monotonic_votes (test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes) ... ok
+test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat (test_organization.OrganizationTest.test_reminder_absolute_interval_restart_tick_and_uncertain_without_repeat) ... ok
+test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired (test_organization.OrganizationTest.test_reminder_cancel_scope_archive_and_outage_does_not_replay_expired) ... ok
+test_reserved_reminder_cancel_and_permission_revocation_prevent_transport (test_organization.OrganizationTest.test_reserved_reminder_cancel_and_permission_revocation_prevent_transport) ... ok
+test_school_owner_schedule_overlap_and_daily_digest_no_duplicates (test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates) ... ok
+test_school_task_owner_complete_file_explicit_share_and_grant_revocation (test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation) ... ok
+test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped (test_organization.OrganizationTest.test_status_catalog_task_listing_and_lesson_delete_keep_data_scoped) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.548s
+
+OK

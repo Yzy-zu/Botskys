@@ -202,3 +202,13 @@ participantes ni Minecraft. Drive escritura deshabilitada en esta campaña.
 Los agentes reducen trabajo manual pero no acreditan percepción/recepción humana.
 Descubrimiento y evidencia separados, sin corregir producto durante la campaña.
 Conservar históricos, secretos privados0600, sinNLP/GitHub; cuota5% vigente.
+
+
+## 07/11 · Contraste de la nueva campaña AGY
+
+El propietario encargó contrastar y comprobar los35hallazgos de la campaña nueva.
+Revisar contratos y evidencia, reproducir localmente con fixtures propios y dobles,
+sin reabrir campaña ni hacer llamadas/red/envíos/efectos productivos. Adjudicaciones
+nuevas separadas de los históricos; errores de contenido IA se distinguen de bugs
+del backend. No se encargó aplicar correcciones ni desplegar en esta fase.
+Conservar cuota5%, secretos privados, exclusionesNLP/GitHub y serviciosactivos.

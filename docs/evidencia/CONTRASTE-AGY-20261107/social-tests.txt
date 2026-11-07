@@ -1,0 +1,22 @@
+test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched (test_packs.PacksTest.test_cancel_during_photo_conserves_uncertainty_and_refunds_not_dispatched) ... ok
+test_category_lookup_uses_selection_bound_beyond_catalog_page_cap (test_packs.PacksTest.test_category_lookup_uses_selection_bound_beyond_catalog_page_cap) ... ok
+test_category_normalization_and_azar_remain_available (test_packs.PacksTest.test_category_normalization_and_azar_remain_available) ... ok
+test_coop_expiry_aggregate_rounding_and_cancellation_ownership (test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership) ... ok
+test_coop_missing_original_refunds_known_failure_and_preview_is_censored (test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored) ... ok
+test_coop_publication_own_contributions_goal_and_single_settlement (test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement) ... ok
+test_coop_uncertain_keeps_escrow_and_never_repeats_photo (test_packs.PacksTest.test_coop_uncertain_keeps_escrow_and_never_repeats_photo) ... ok
+test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge (test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge) ... ok
+test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain (test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain) ... ok
+test_happy_rain_reward_and_scheduled_ticks_have_durable_parts (test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts) ... ok
+test_library_actual_images_catalog_exact_category_and_symlinks (test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks) ... ok
+test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase (test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase) ... ok
+test_partial_refund_uncertain_hold_and_restart_do_not_send_again (test_packs.PacksTest.test_partial_refund_uncertain_hold_and_restart_do_not_send_again) ... ok
+test_photo_http_payload_retains_view_once_and_real_fixture_bytes (test_packs.PacksTest.test_photo_http_payload_retains_view_once_and_real_fixture_bytes) ... ok
+test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope (test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope) ... ok
+test_unpublished_category_is_rejected_before_creating_an_offer (test_packs.PacksTest.test_unpublished_category_is_rejected_before_creating_an_offer) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.188s
+
+OK
+NETWORK_CONNECT_ATTEMPTS []

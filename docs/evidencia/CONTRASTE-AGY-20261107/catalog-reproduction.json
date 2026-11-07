@@ -1,0 +1,42 @@
+{
+  "source_search": {
+    "catalog_sources": [
+      "youtube",
+      "soundcloud",
+      "dailymotion",
+      "vimeo",
+      "facebook",
+      "instagram",
+      "tiktok",
+      "spotify",
+      "pornhub",
+      "xnxx",
+      "adult"
+    ],
+    "parsed_source": "soundcloud",
+    "adapter_result": "source_search_unavailable",
+    "root_cause": "catalog permits sources that domain/adapter deliberately rejects for search; URL downloads are separate"
+  },
+  "call_duration": {
+    "usage": "/llamar [--video] [--duracion MAX_SECONDS] [--tema TOPIC]",
+    "field_kind": "duration",
+    "bare_600": {
+      "code": "invalid_field",
+      "reply": "max_seconds: usa un intervalo como 30s, 10m, 2h o 1d\nUso: /llamar [--video] [--duracion MAX_SECONDS] [--tema TOPIC]\nEjemplo: /llamar"
+    },
+    "with_600s": {
+      "max_seconds": 600,
+      "video": false
+    },
+    "scope": "misleading help placeholder; parser enforces declared duration kind correctly"
+  },
+  "happy_claim": {
+    "usage": "/hh reclamar EVENT_ID",
+    "parsed_arguments": {
+      "event_id": "synthetic-drop-id"
+    },
+    "consumer_contract": "happy_hour.execute action=claim queries happy_drops d WHERE d.id=args[event_id]; requires drop id, not happy event id",
+    "historical_case": "manage_happy_hour/c05 returns distinct event_id/drop_id and prints /hh reclamar DROP_ID; c06 uses event_id and receives happy_drop_unavailable"
+  },
+  "network_connect_attempts": []
+}

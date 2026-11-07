@@ -1,0 +1,33 @@
+{
+  "claims_total": 35,
+  "claims_adjudicated": 35,
+  "classification_counts": {
+    "confirmed_product_defect": 3,
+    "external_dependency": 3,
+    "tester_expectation_error": 8,
+    "correct_contract_limit": 13,
+    "fixture_or_harness_issue": 4,
+    "insufficient_evidence": 1,
+    "not_a_defect_claim": 3
+  },
+  "confirmed_product_defects": 3,
+  "confirmed_product_defect_ids": [
+    "download_media-01",
+    "manage_happy_hour-01",
+    "control_call-01"
+  ],
+  "confirmed_incorrect_generated_content": [
+    "conversation-01"
+  ],
+  "original_claims_sha256": "688b997d408395581c5a926eba06c55a1ce0cb87a18c8086b06d9062fa320d7b",
+  "new_remote_requests": 0,
+  "product_modified": false,
+  "production_modified": false,
+  "historical_results_modified": false,
+  "reproduction_scope": "local fixtures, SDK/HTTP doubles and parser; no campaign resumed",
+  "human_acceptance": "NOT_TESTED",
+  "local_tests_passed": 45,
+  "local_tests_failed": 0,
+  "original_private_manifest_files_verified": 182,
+  "original_private_evidence_unchanged": true
+}

@@ -1,5 +1,31 @@
 # Relevo Botsky
 
+## 07/11 · Contraste AGY:35/35claims adjudicados,3defectos de catálogo
+
+Encargo nuevo del propietario contrastar/comprobar, sincorrecciones/despliegue.
+Principal revisó evidencia y contratos con3Luna. Tresdefectos confirmados:
+download_media-01 catálogo permitebúsquedaSoundCloud que dominio/adaptadorrechazan;
+manage_happy_hour-01 ayuda/hh reclamar EVENT_ID perohandlerconsultaDROP_ID;
+control_call-01 ayudaMAX_SECONDS peroparserdurationexige600s/10m. Alcancecatálogo,
+no demostrarfalloejecuciónremota ni llamadas. Reprolocalnueva de los3sinred.
+
+RespuestaGeminiQR incorrecta comprobada: BOTSKYLAB31415 vsQRBOTSKY-LAB-27182;
+motorQRlocal/hashDB/bytesSDKdoble exactos, sincapturarequestremotooriginal.
+Clasificadaexternal_dependency/confirmed_incorrect_generated_content, nobugbackend.
+Balance35:3confirmed_product_defect,3external_dependency(incQR),8tester_expectation,
+13correct_contract_limit,4fixture_or_harness,1insufficient_evidence,3not_defect_claim.
+RSSoriginalausente ensearch_web-01, no se puededemostrarfiltrodefectuoso. Fallos
+subtítulos/Geminiunavailableobservados sincausahistóricaprecisa; norepetirremoto.
+
+Cooperachas categoríafixtureinexistente, nofallopublicaciónproveedor; OCRimagenazul
+uniforme,PDF501>500,video3srecorte4/5,audio>10MiB comprobados.45tests localesPASS
+IA/búsqueda18,organización11,packs16 conredbloqueada.182archivosprivadosoriginales
+SHAintactos. Nuevadocumentación/evidencia,0cambiosproducto/producción/arnéshistórico.
+Informe docs/CONTRASTE_AGY_20261107.md, evidencia CONTRASTE-AGY-20261107.
+Correccionesde3defectos quedan sinaplicar; campaña sigueterminado/sinautoresume.
+SinNLP/GitHub, mensajes,llamadas,perfiles oservicios. Cuota90%/17%al00:52UTC;
+umbral5%siguevigente. RecibohumanoNOT_TESTED.
+
 ## 07/11 · Nueva campaña AGY terminada:30herramientas/378casos
 
 Encargo nuevo del propietario, modelo explícito gemini-3.8-flash-medium confirmado

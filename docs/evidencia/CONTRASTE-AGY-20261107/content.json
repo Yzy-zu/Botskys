@@ -1,0 +1,79 @@
+{
+  "adjudications": [
+    {
+      "id": "make_voice-01",
+      "classification": "external_dependency",
+      "cases": [
+        "c08"
+      ],
+      "reason": "Fallo real y controlado de disponibilidad: gemini_unavailable. El adaptador mapea errores API>=500 y fallos de transporte/timeout a este código. No se guardó la excepción/payload original: no es posible atribuir una causa HTTP concreta ni demostrar un defecto de backend. La reproducción local inyecta503 y obtiene ese código; no reproduce la caída remota histórica.",
+      "contract_refs": [
+        "src/botsky/adapters/gemini.py:GeminiContent.generate",
+        "src/botsky/engines/content_jobs.py:execute make_voice"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/make_voice/execution/results.json:c08",
+        "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+      ],
+      "reproduction": "503 sintético con SDKFixture; sin API real."
+    },
+    {
+      "id": "make_voice-02",
+      "classification": "tester_expectation_error",
+      "cases": [
+        "c07",
+        "c09"
+      ],
+      "reason": "requested_seconds es duración orientativa de composición, no recorte ni garantía exacta. Se reenvía al generador y luego se sintetiza el guion completo. Audios observados10.3505s/4.8065s frente a objetivos5s/0.5s incumplen la expectativa inventada de exactitud, no el contrato. El oracle también exigía MP3 aunque salida contractual Ogg/Opus.",
+      "contract_refs": [
+        "docs/portados/ia-voz.md:duración orientativa",
+        "src/botsky/adapters/gemini.py:PURPOSE.compose",
+        "src/botsky/engines/content_jobs.py:execute"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/make_voice/execution/results.json:c07,c09",
+        "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+      ],
+      "reproduction": "Control SDK local confirma requested_seconds=10 en payload; no genera audio ni llama proveedores."
+    },
+    {
+      "id": "conversation-01",
+      "classification": "external_dependency",
+      "subclassification": "confirmed_incorrect_generated_content",
+      "cases": [
+        "c07"
+      ],
+      "reason": "Error de contenido demostrado: QR real decodifica BOTSKY-LAB-27182, pero respuesta histórica de Gemini afirma BOTSKY LAB 31415. Hash de fixture coincide con metadatos de adjunto en DB de campaña. Nueva reproducción local recorre análisis de imagen+SDK con doble y comprueba bytes PNG exactos, sin sustitución por OCR. No hay captura original remota: no demuestra retrospectivamente el request exacto ni un bug de transporte/dispatch; sí demuestra respuesta final incorrecta. /qr es la ruta determinista para decodificar.",
+      "contract_refs": [
+        "src/botsky/engines/images.py:read_image mode=qr",
+        "src/botsky/engines/content_jobs.py:analysis_files",
+        "src/botsky/adapters/gemini.py:generate inline_data"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/conversation/execution/results.json:c07",
+        "docs/evidencia/CONTRASTE-AGY-20261107/content-reproduction.json"
+      ],
+      "reproduction": "Motor QR local confirma payload y SDK doble recibe hash exacto; cero nuevas generaciones remotas."
+    },
+    {
+      "id": "search_web-01",
+      "classification": "insufficient_evidence",
+      "cases": [
+        "c02",
+        "c03",
+        "c04"
+      ],
+      "reason": "La búsqueda aplica ALL términos literales sobre título+fragmento de los primeros10candidatos y puede devolver empty sin defecto. Campaña actual no capturó RSS crudo para estas tres consultas: no puede probarse que se descartara una coincidencia real. Consulta de8términos demuestra aceptación de lista, no existencia de resultados. Cuatro controles locales de filtro/replay histórico pasan; no explican de forma retroactiva RSS actual no conservado. No se repite red.",
+      "contract_refs": [
+        "src/botsky/adapters/web.py:NetworkWeb.search",
+        "src/botsky/engines/web_results.py:parse_results",
+        "tests/test_search_suspicion.py"
+      ],
+      "evidence_refs": [
+        "private/retest-agy-20261107/batch1/search_web/execution/results.json:c02,c03,c04",
+        "docs/evidencia/CONTRASTE-AGY-20261107/local-tests.txt"
+      ],
+      "reproduction": "Pruebas sintéticas de ALL términos y replay RSS histórico separado; ninguna prueba remota nueva."
+    }
+  ]
+}
