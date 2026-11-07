@@ -231,3 +231,11 @@ acotada de RSS para observar queries/candidatos, sin reabrir campañas históric
 LecturaQR determinista como datos; sinNLP ni comandos desdecontenidoextraído.
 Mantener filtroALL, evidencias saneadas y recepciónhumanaNOT_TESTED. Sinenvíos,
 llamadas, perfiles, cambiosdeservicios, GitHub ni reanudaciónautomática. Cuota5%.
+
+
+## 07/11 · Despliegue y reinicio de las correcciones
+
+El propietario ordenó expresamente reiniciar y desplegar. Autoriza parada/arranque
+del runtime productivo propio, respaldo consistente, salud/estado y comprobación
+de webhook/puente, preservando datos y servicios ajenos. No activa campañas,
+mensajes, llamadas, NLP o GitHub. Cuota5% sigue vigente.

@@ -1,0 +1,49 @@
+{
+  "phase": "deployed_healthy",
+  "target_commit": "67500bf14bbe49157e82701aaade7c20d79dad47",
+  "old_runtime_pid": 3256051,
+  "active_jobs": 0,
+  "unsettled_deliveries": 0,
+  "sqlite_integrity": "ok",
+  "runtime_pid": 3303101,
+  "managed_restart_count": 0,
+  "other_supervisors_same_pids": true,
+  "runtime_ready": true,
+  "calls_ready": true,
+  "idle_media_released": true,
+  "warnings": [],
+  "tracked_resources": {
+    "bus": 1,
+    "display": 1,
+    "audio": 1,
+    "browser": 1
+  },
+  "initial_postflight": "First aggregate assertion did not pass during startup; fresh final checks all passed without another restart",
+  "source_sha256": {
+    "src/botsky/commands/registry.py": "8412c351085d9960f03e1ca2a3c9c9bf9c827349f23965a6fb083b8b34662733",
+    "src/botsky/commands/types.py": "12e4bbcca21656cd63d2d3d9e611bfb6ff27664e47e3856d81c1db8ff29469ef",
+    "src/botsky/domains/happy_hour.py": "23099ff56a0113a720dd1793e930a24686e9f4cbd962a8f9ceb0a5e68020481b",
+    "src/botsky/engines/downloads.py": "ca2606e04f48dea064c981d6cc7ef6b0ed618211181ce51bf729462bbdc5ff28",
+    "src/botsky/engines/content_jobs.py": "b523a0c49a64d170e20dc19e6a985457514661f697de5a687ed88e7f15b5bd4a",
+    "src/botsky/engines/images.py": "d98448f8ff517938d34004691e55dace9e7869b0f14070792c7947f4de8478e9",
+    "src/botsky/adapters/gemini.py": "f4380d15c9c896d4798ae8b1f6c1ca7126879f17b3dde197e78c8586a886d3f4",
+    "src/botsky/adapters/web.py": "61eccb7c8340218efb269346c0bbe300188a009cdccc25d7c62a772977c4bd5b"
+  },
+  "pm2_persistence": {
+    "dump.pm2": {
+      "botsky_present": true,
+      "legacy_absent": true
+    },
+    "dump.pm2.bak": {
+      "botsky_present": true,
+      "legacy_absent": true
+    }
+  },
+  "docker_bridge_health": {
+    "status": 200,
+    "body": {
+      "ready": true
+    }
+  },
+  "webhook_verified_unchanged": true
+}

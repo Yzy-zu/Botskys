@@ -1,5 +1,24 @@
 # Relevo Botsky
 
+## 07/11 · Correcciones67500bf desplegadas, runtime sano
+
+Encargoexpreso reiniciar/desplegar ejecutado. Runtime detenido limpio sinjobs/
+entregaspendientes/llamadas, backupSQLiteofflineintegridad/FKok/configpropia/fuente
+previa1e4dbe9 enprivate/deploy-20261107-0107. ArranquePID3303101(antes3256051),
+0reiniciosautomáticos,readyPython/calls,sinllamada/mediosociosos/warningsvacíos,
+recursosbus/display/audio/browser1cadauno. Puente yotrosPM2mismosPID; noZhana.
+
+Código67500bf incluye SoundCloudretirado,HHdrop_id,ayudaunidades,QRlocal y
+constraintsdebuscador.47+37tests focalespreviosconservados sin repetirproducto.
+Primeraaserciónpostarranque falló,nocausaprecisaconservada; comprobaciónfinal
+completapasa sinotroreinicio. DockerEvolution→puentehealth200/ready; webhookGET
+igualaURL/tokenpropios,sinPOST. PM2guardado,dumpybakBotskypresente/Zhanaausente.
+DBfinalintegridad/FKok,0jobsactivos/entregaspendientes. Sinmensajes,llamadas,
+campañas,perfilescopiados ni efectos deherramientas. Fuente67500bf cargada;
+commitsdocumentalesposteriores norequierenreinicio. InformeDESPLIEGUE_20261107.md,
+evidenciaDESPLIEGUE-20261107. ReversiónmanualconservarDBactual/efectosnuevos,
+norestaurarbackupautomático. Cuota~70%/14%restante;umbral5%vigente.
+
 ## 07/11 · QR local en/ia y términos enviados al buscador
 
 Propietario encargócorregir1y3. /ia extraeQRlocal en imágenes sinclasificarprompt,
