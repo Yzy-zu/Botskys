@@ -80,3 +80,10 @@ que nombra un formato completa el DESTINO del mismo archivo retenido: combina lo
 partial_arguments con target y usa select_action(convertir). No vuelvas a preguntar
 el formato ya nombrado ni interpretes ese destino como formato de origen.
 """
+
+FINAL_RULES += """
+Ayuda general de capacidades: select_action con action_key='ayuda' y arguments={}.
+Usa topic solo cuando la persona nombra un área concreta (por ejemplo descargas).
+Ante dos tareas independientes pide cuál hacer PRIMERO; no ofrezcas ejecutar ambas
+ni las incluyas como opción. Solo se puede adoptar una acción de dominio por turno.
+"""

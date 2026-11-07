@@ -51,7 +51,7 @@ async def main(options):
         except ValueError:
             data = {}
         # No cabeceras, claves, razonamiento ni conversaciones completas.
-        calls.append({'status':response.status_code,'choices':[{'finish_reason':c.get('finish_reason'),'tool_calls':c.get('message',{}).get('tool_calls',[])} for c in data.get('choices',[])], 'usage':data.get('usage'), 'errors': [{'code':e.get('code'), 'message':str(e.get('message',''))[:2000]} for e in data.get('errors',[]) if isinstance(e,dict)]})
+        calls.append({'status':response.status_code,'choices':[{'finish_reason':c.get('finish_reason'),'tool_calls':c.get('message',{}).get('tool_calls',[]), 'content': c.get('message',{}).get('content')} for c in data.get('choices',[])], 'usage':data.get('usage'), 'errors': [{'code':e.get('code'), 'message':str(e.get('message',''))[:2000]} for e in data.get('errors',[]) if isinstance(e,dict)]})
     summary = {'model':MODEL,'corpus_sha256':hashlib.sha256(corpus_path.read_bytes()).hexdigest(),'backend_effects':0,'automatic_resume':False,'results':[]}
     async with httpx.AsyncClient(trust_env=False,follow_redirects=False,event_hooks={'request':[register_request], 'response':[capture]}) as http:
         provider = CloudflareInterpreter(http,read_credentials(ROOT/'private/cloudflare-toolcall.json'))

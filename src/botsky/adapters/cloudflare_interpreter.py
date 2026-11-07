@@ -43,12 +43,21 @@ class CloudflareInterpreter:
                 now = datetime.now(UTC)
                 if self.paused_until and now < self.paused_until:
                     raise InterpreterError('daily_quota')
+                # GLM/Cloudflare tool parser returned 3030 on valid single proposals.
+                # Fixed JSON envelope keeps the same closed decision contract, one
+                # request and full catalog; no fallback or repair inference.
+                wire_messages = [dict(message) for message in messages] or [{'role': 'system', 'content': ''}]
+                wire_messages[0]['content'] += (
+                    '\nPROTOCOLO JSON: Devuelve un solo objeto JSON con exactamente name y arguments. '
+                    'name es reply,clarify,select_action o no_action. arguments cumple el schema '
+                    'de esa función. No produzcas XML, etiquetas ni llamadas de herramientas. Definiciones: '
+                    + json.dumps([t['function'] for t in tools], ensure_ascii=False, separators=(',', ':')))
                 try:
                     response = await self.http.post(
                         'https://api.cloudflare.com/client/v4/accounts/' + self.credentials['account_id'] + '/ai/v1/chat/completions',
                         headers={'Authorization': 'Bearer ' + self.credentials['api_token']},
-                        json={'model': MODEL, 'messages': messages, 'tools': tools,
-                              'tool_choice': 'required', 'stream': False, 'parallel_tool_calls': False,
+                        json={'model': MODEL, 'messages': wire_messages,
+                              'response_format': {'type': 'json_object'}, 'stream': False,
                               'temperature': 0, 'max_completion_tokens': 1024}, timeout=self.deadline)
                 except Exception:
                     raise InterpreterError('transport_error') from None
@@ -67,4 +76,17 @@ class CloudflareInterpreter:
                     raise InterpreterError('provider_http_' + str(response.status_code))
                 self.last_metrics = {'model': MODEL, 'duration_seconds': time.monotonic() - started,
                                      'usage': data.get('usage')}
-                return data
+                try:
+                    choices = data['choices']
+                    if len(choices) != 1 or choices[0]['finish_reason'] != 'stop':
+                        raise ValueError()
+                    message = choices[0]['message']
+                    if message.get('tool_calls'):
+                        raise ValueError()
+                    envelope = json.loads(message['content'])
+                    if type(envelope) is not dict or set(envelope) != {'name', 'arguments'}:
+                        raise ValueError()
+                except (KeyError, TypeError, ValueError):
+                    raise InterpreterError('invalid_json_envelope') from None
+                return {'choices': [{'finish_reason': 'stop', 'message': {
+                    'tool_calls': [{'function': envelope}]}}]}

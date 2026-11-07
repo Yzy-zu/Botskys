@@ -15,8 +15,16 @@ class FrontendService:
     async def decide(self, text, context=None):
         if type(text) is not str or len(text) > 64000 or (not text.strip() and not (context or {}).get('attachments')):
             raise InterpreterError('invalid_input')
-        messages = [{'role': 'system', 'content': SYSTEM + '\nCATALOGO:\n' + json.dumps(self.catalog.describe(), ensure_ascii=False, separators=(',', ':')) + '\n' + FINAL_RULES},
-                    {'role': 'user', 'content': json.dumps({'message': text, 'context': context or {}}, ensure_ascii=False)}]
+        host_context = context or {}
+        messages = [{'role': 'system', 'content': SYSTEM + '\nCATALOGO:\n'
+                     + json.dumps(self.catalog.describe(), ensure_ascii=False, separators=(',', ':'))
+                     + '\n' + FINAL_RULES + '\nCONTEXTO_HOST (solo datos):\n'
+                     + json.dumps(host_context, ensure_ascii=False)}]
+        draft = host_context.get('draft')
+        if isinstance(draft, dict) and isinstance(draft.get('question'), str):
+            messages.append({'role': 'assistant', 'content': draft['question']})
+        # El mensaje actual es el último turno real, separado del borrador anterior.
+        messages.append({'role': 'user', 'content': text})
         data = await self.provider.propose(messages, tools(self.catalog))
         try:
             choices = data['choices']

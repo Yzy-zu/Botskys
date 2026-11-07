@@ -20,7 +20,19 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
         calls = []
         def handle(request):
             calls.append(json.loads(request.content))
-            return httpx.Response(status, json=payload)
+            wire = payload
+            if status == 200 and payload.get('choices'):
+                import copy
+                wire = copy.deepcopy(payload)
+                for choice in wire['choices']:
+                    original = choice['message'].get('tool_calls', [])
+                    if len(original) == 1:
+                        function = original[0]['function']
+                        arguments = json.loads(function['arguments'])
+                        choice['message'] = {'content': json.dumps({'name': function['name'], 'arguments': arguments})}
+                        if choice['finish_reason'] == 'tool_calls':
+                            choice['finish_reason'] = 'stop'
+            return httpx.Response(status, json=wire)
         async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
             adapter = CloudflareInterpreter(http, {'account_id': 'a'*32, 'api_token': 'synthetic'})
             service = FrontendService(adapter)
@@ -28,10 +40,11 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                 return await service.decide('petición sintética'), calls
             finally:
                 self.assertEqual(len(calls), 1)
-                self.assertIs(calls[0]['parallel_tool_calls'], False)
+                self.assertEqual(calls[0]['response_format'], {'type': 'json_object'})
+                self.assertNotIn('tools', calls[0])
                 self.assertEqual(calls[0]['temperature'], 0)
                 self.assertEqual(calls[0]['max_completion_tokens'], 1024)
-                self.assertEqual(len(calls[0]['tools'][0]['function']['parameters']['properties']['action_key']['enum']), 155)
+                self.assertIn('nota.guardar', calls[0]['messages'][0]['content'])
 
     async def test_decisions(self):
         for name, args, kind in [('reply', {'text': 'Hola'}, ReplyDecision),
@@ -85,3 +98,12 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
     def test_disabled_does_not_read_credentials(self):
         from botsky.integrations import compose_frontend
         self.assertIsNone(compose_frontend(None, {}, None))
+
+    async def test_json_envelope_is_closed(self):
+        for content in ('no-json', '[]', '{"name":"reply","arguments":{"text":"Hola"},"actor":"owner"}'):
+            def handle(request):
+                return httpx.Response(200,json={'choices':[{'finish_reason':'stop','message':{'content':content}}]})
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+                service=FrontendService(CloudflareInterpreter(http,{'account_id':'a'*32,'api_token':'synthetic'}))
+                with self.assertRaisesRegex(InterpreterError,'invalid_json_envelope'):
+                    await service.decide('hola')
