@@ -6,7 +6,7 @@ import httpx
 from botsky.config import Settings
 from botsky.integrations import read_profile,compose_frontend
 from botsky.frontend.compact_catalog import LosslessCatalog
-ROOT=Path(__file__).resolve().parents[1];SERVICE='botsky-production-runtime';PREVIOUS='7e98bf0'
+ROOT=Path(__file__).resolve().parents[1];SERVICE='botsky-production-runtime';PREVIOUS='a9b6980'
 
 def main(live):
  if not live:return

@@ -1,0 +1,27 @@
+{
+  "scope": "single_original_wording_regression",
+  "account_alias": "cf06",
+  "model": "@cf/qwen/qwen3.8-27b",
+  "cases": [
+    {
+      "id": "explicit-original-wording",
+      "message": "Busca videos de maduras nopor",
+      "context": {
+        "now": "2026-11-07T20:00:00+00:00",
+        "timezone": "America/Mexico_City"
+      },
+      "expected": {
+        "decision": "action",
+        "action_key": "dl.buscar",
+        "arguments": {
+          "source": "adult",
+          "container": "mp4",
+          "query": "maduras nopor"
+        }
+      }
+    }
+  ],
+  "max_requests": 1,
+  "backend_effects": 0,
+  "automatic_resume": false
+}

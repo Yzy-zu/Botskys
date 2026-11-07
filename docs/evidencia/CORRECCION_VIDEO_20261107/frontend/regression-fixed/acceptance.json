@@ -1,0 +1,42 @@
+{
+  "status": "accepted_cases",
+  "results": [
+    {
+      "case": "explicit-original-wording",
+      "passed": true,
+      "decision": {
+        "action_key": "dl.buscar",
+        "arguments": {
+          "source": "adult",
+          "container": "mp4",
+          "query": "maduras nopor"
+        }
+      },
+      "seconds": 7.89,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17460,
+            "completion_tokens": 198,
+            "total_tokens": 17658,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 771.8726806640625
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"select_action\",\"action_key\":\"dl.buscar\",\"arguments\":{\"source\":\"adult\",\"container\":\"mp4\",\"query\":\"maduras nopor\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "account_alias": "cf06",
+  "backend_effects": 0,
+  "automatic_resume": false
+}

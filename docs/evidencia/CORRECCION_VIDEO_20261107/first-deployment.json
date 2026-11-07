@@ -1,0 +1,59 @@
+{
+  "release": "video_fixes",
+  "phase": "active_healthy",
+  "previous_commit": "7e98bf0",
+  "target_commit": "a9b6980f9314a098f9ca6dd23a1ea0ec39319544",
+  "messages": 0,
+  "calls": 0,
+  "inferences_during_deploy": 0,
+  "preflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "db_before": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend_tasks": 0
+  },
+  "profile_hash": "142b1a3212d36a75ed8ebf81d103869ed9f21ab5bd2178aa307df61ab2e3f74b",
+  "backup_verified": true,
+  "data_unchanged_while_stopped": true,
+  "pool_accounts": 7,
+  "compact_default": true,
+  "postflight": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false
+  },
+  "new_runtime_pid": 3900821,
+  "other_services_unchanged": true,
+  "profile_unchanged": true,
+  "db_after": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0,
+    "frontend_tasks": 0
+  },
+  "backup_hashes": {
+    "before.sqlite3-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "config.toml": "caa3b8928e8324e7947bec1704a2fd3e2c593ad32c83d93b89832607f012bfdc",
+    "integrations.production.json": "142b1a3212d36a75ed8ebf81d103869ed9f21ab5bd2178aa307df61ab2e3f74b",
+    "previous-code.tar": "0ded95c64b5b451f6aba4be273c2e2aa440194cca03f616d5486c4d5dcfa43a4",
+    "target-code.tar": "1ab5951c781bb6054ecf2d971f84f09fec27a9a0b8e32daa5625ae881e328a69",
+    "before.sqlite3": "445ab120da9607d6ac9ebba2a69174697dace3864bd60d7e642d25add8f063bc",
+    "before.sqlite3-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "cloudflare-pool/cf01.json": "30161241d9c5b73bd10365f625a0af355a5e7ff662dd4cdc707653c2ce1fb5f2",
+    "cloudflare-pool/cf04.json": "accce228aee63639e94db178cb2f143033c9d45bd6880eace8904222638d69b4",
+    "cloudflare-pool/cf07.json": "cfc2f5d9f919968c5a07224b612a33aa1892e42d41881c095f01cd2184391bcc",
+    "cloudflare-pool/quota-state.json": "372282cb600e5098df59862d30d2ada893fb9768fa2a942acca39d8e28a382c0",
+    "cloudflare-pool/cf02.json": "28f25d82594a03d71cbed72a2ec3055c1ba107377de1d420b9f8e895e19587c7",
+    "cloudflare-pool/cf03.json": "618a0ace88f932ed88dd9d1cde8daed6b7aee375fdebfc17e284b4332b4c9628",
+    "cloudflare-pool/registry.json": "0bb534547e898490147fae87e049668fc788c64f65e3104893d34fa70fe4b31a",
+    "cloudflare-pool/cf05.json": "d2bade0c376da85c686592b700f70f2c218acc32e972155d9ec15a09ec65e838",
+    "cloudflare-pool/cf06.json": "c4f658eabe2ac6ee18592591bbb726c90dfaf8eb651e81283b9c732554e8b62b"
+  }
+}

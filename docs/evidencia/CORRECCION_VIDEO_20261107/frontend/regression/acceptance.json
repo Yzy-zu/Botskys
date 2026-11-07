@@ -1,0 +1,46 @@
+{
+  "status": "acceptance_failed",
+  "results": [
+    {
+      "case": "explicit-original-wording",
+      "passed": false,
+      "decision": {
+        "question": "¿Buscas contenido para adultos o videos de mujeres maduras en general (por ejemplo, entrevistas, lifestyle, etc.)?",
+        "action_key": "dl.buscar",
+        "partial_arguments": {
+          "container": "mp4"
+        },
+        "missing_fields": [
+          "source",
+          "query"
+        ],
+        "choices": []
+      },
+      "seconds": 6.34,
+      "responses": [
+        {
+          "http": 200,
+          "usage": {
+            "prompt_tokens": 17285,
+            "completion_tokens": 194,
+            "total_tokens": 17479,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "neurons": 763.5499267578125
+          },
+          "error_codes": [],
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "content": "{\"name\":\"clarify\",\"question\":\"¿Buscas contenido para adultos o videos de mujeres maduras en general (por ejemplo, entrevistas, lifestyle, etc.)?\",\"action_key\":\"dl.buscar\",\"partial_arguments\":{\"container\":\"mp4\"},\"missing_fields\":[\"source\",\"query\"]}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "account_alias": "cf06",
+  "backend_effects": 0,
+  "automatic_resume": false
+}

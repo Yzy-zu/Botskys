@@ -102,3 +102,15 @@ Ejemplo general: «Busca videos de volcanes» => select_action dl.buscar con
 source=youtube,container=mp4,query=volcanes. Búsqueda explícita adulta => source=adult,
 container=mp4 y query literal pertinente. Haz la búsqueda en ese mismo turno.
 """
+
+
+FINAL_RULES += """
+La palabra «nopor» (igual que «porno» o «pornográfico») declara inequívocamente
+contenido adulto. Si adult está habilitado NO preguntes si se refiere a contenido
+adulto ni ofrezcas YouTube como alternativa. La regla de ambigüedad de «maduras»
+SOLO se aplica cuando NO hay indicación explícita como «nopor» en la petición.
+Ejemplo exacto: «Busca videos de maduras nopor» =>
+{"name":"select_action","action_key":"dl.buscar","arguments":{"source":"adult","container":"mp4","query":"maduras nopor"}}.
+No añadas preguntas de fuente ni formato a esa petición. Si la fuente adulta no
+está habilitada, explica la indisponibilidad y no sustituyas por YouTube.
+"""
