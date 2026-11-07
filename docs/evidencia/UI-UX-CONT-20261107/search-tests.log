@@ -1,0 +1,11 @@
+test_layouts_cover_canvas_without_overlap_and_jpeg_decodes (test_search_presentation.CollageTest.test_layouts_cover_canvas_without_overlap_and_jpeg_decodes) ... ok
+test_collage_list_barrier_partial_ack_and_short_choice (test_search_presentation.SearchPresentationTest.test_collage_list_barrier_partial_ack_and_short_choice) ... Executing <Task pending name='Task-7' coro=<Jobs.run_one() running at /home/petrov/botsky/src/botsky/jobs.py:584> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> cb=[_wait.<locals>._on_completion() at /usr/lib/python3.14/asyncio/tasks.py:503] created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.102 seconds
+ok
+test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign (test_search_presentation.SearchPresentationTest.test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign) ... ok
+test_short_choice_ambiguous_and_immutable_no_search_again (test_search_presentation.SearchPresentationTest.test_short_choice_ambiguous_and_immutable_no_search_again) ... ok
+test_thumbnail_private_credentials_and_ports_never_open_proxy (test_search_presentation.SearchPresentationTest.test_thumbnail_private_credentials_and_ports_never_open_proxy) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 10.378s
+
+OK

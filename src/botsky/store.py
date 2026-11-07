@@ -10,7 +10,6 @@ from pathlib import Path
 
 from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
-from .presentation import split_text
 
 APPLICATION_ID = 1112755033
 SCHEMA_VERSION = 19
@@ -259,64 +258,35 @@ class Store:
         from .presentation.domains import present
 
         result = present(result, zone=getattr(self, "presentation_timezone", "America/Mexico_City"))
-        text = result.text
-        artifact_ids = list(result.data.get("artifacts", ()))
-        if text and (
-            any(len(token) > PART_CHARS for token in text.split())
-            or len(text) > PART_CHARS
-            and "```" in text
-        ):
-            # Fuente íntegra, privada y durable. La vista previa nunca se hace
-            # pasar por el contenido completo; no cortar URLs ni bloques de código.
-            from tempfile import NamedTemporaryFile
+        from .artifacts import Artifacts
+        from .presentation.plan import VERSION, compile_result
 
+        def retain(text):
             artifacts = getattr(self, "presentation_artifacts", None)
-            if artifacts is not None:
-                with NamedTemporaryFile(dir=artifacts.root, suffix=".txt", delete=False) as output:
-                    source = Path(output.name)
-                    output.write(text.encode("utf-8"))
-                try:
-                    staged = artifacts.stage(source, output=True)
-                    artifact_ids.append(
-                        artifacts.register(
-                            db,
-                            staged,
-                            context,
-                            context.receipt_id,
-                            now,
-                            origin="result",
-                            receipt_id=context.receipt_id,
-                        )
-                    )
-                finally:
-                    source.unlink(missing_ok=True)
-                text = "El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres."
-        parts = []
-        if result.data.get("media_first"):
-            parts.extend(("media", "", {"artifacts": [identifier]}) for identifier in artifact_ids)
-            artifact_ids = []
-        tables = []
-        if result.data.get("native_table") or result.data.get("native_tables"):
-            from .presentation.table import NativeTable
-
+            if artifacts is None:
+                # Mismo almacenamiento propio para scheduler/recovery sin Application.
+                artifacts = Artifacts(self, self.path.parent / "private/artifacts")
+            staged = artifacts.stage_text(text)
             try:
-                raw_tables = result.data.get("native_tables") or [result.data["native_table"]]
-                tables = [NativeTable.parse(raw) for raw in raw_tables]
-            except TypeError, ValueError:
-                pass  # Antes del despacho, conservar todo el texto canónico.
-        if tables and getattr(self, "native_tables_enabled", False):
-            intro, footer = (
-                result.data.get("native_intro", ""),
-                result.data.get("native_footer", ""),
+                return artifacts.register(
+                    db,
+                    staged,
+                    context,
+                    context.receipt_id,
+                    now,
+                    origin="result",
+                    receipt_id=context.receipt_id,
+                )
+            except BaseException:
+                staged.path.unlink(missing_ok=True)
+                raise
+
+        parts = [
+            (part.kind, part.text, part.payload)
+            for part in compile_result(
+                result, retain, native_tables=getattr(self, "native_tables_enabled", False)
             )
-            if not isinstance(intro, str) or not isinstance(footer, str):
-                raise ValueError("introducción/pie inválidos")
-            parts.extend(("text", fragment, {}) for fragment in split_text(intro, PART_CHARS))
-            parts.extend(("table", "", table.payload()) for table in tables)
-            parts.extend(("text", fragment, {}) for fragment in split_text(footer, PART_CHARS))
-        else:
-            parts.extend(("text", fragment, {}) for fragment in split_text(text, PART_CHARS))
-        parts.extend(("media", "", {"artifacts": [identifier]}) for identifier in artifact_ids)
+        ]
         from .presentation.domains import filename
 
         for kind, _, payload in parts:
@@ -326,6 +296,8 @@ class Store:
                     "SELECT format FROM artifacts WHERE id=?", (identifier,)
                 ).fetchone()
                 extension = metadata["format"] if metadata else "bin"
+                if payload.get("role") == "literal_source":
+                    continue
                 name = (
                     result.data.get("name")
                     or result.data.get("title")
@@ -351,9 +323,11 @@ class Store:
                 )
         for position, (kind, fragment, payload) in enumerate(parts):
             identifiers = payload.get("artifacts", [])
-            frozen = canonical({"kind": kind, "text": fragment, "payload": payload, "version": 1})
+            frozen = canonical(
+                {"kind": kind, "text": fragment, "payload": payload, "version": VERSION}
+            )
             db.execute(
-                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json,kind,rich_payload_json,visual_version,content_sha256) VALUES(?,?,?,'pending',?,?,?,?,1,?)",
+                "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json,kind,rich_payload_json,visual_version,content_sha256) VALUES(?,?,?,'pending',?,?,?,?,?,?)",
                 (
                     context.receipt_id,
                     position,
@@ -362,6 +336,7 @@ class Store:
                     canonical(identifiers),
                     kind,
                     canonical(payload),
+                    VERSION,
                     hashlib.sha256(frozen.encode()).hexdigest(),
                 ),
             )
@@ -432,15 +407,11 @@ class Store:
             "SELECT quoted_message_id FROM inbox WHERE id=?", (context.receipt_id,)
         ).fetchone()
         if parent and parent[0]:
-            cited = db.execute(
-                "SELECT i.id FROM inbox i JOIN outbox o ON o.receipt_id=i.id "
-                "WHERE o.provider_message_id=? AND o.state='accepted' "
-                "AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? "
-                "AND i.is_group=? AND i.epoch=? AND i.received_ms>?",
-                (parent[0], *context.scope_key, now - 86400000),
-            ).fetchall()
-            if len({r["id"] for r in cited}) == 1:
-                target = cited[0]["id"]
+            from .presentation.quotes import own_delivered_parent
+
+            cited = own_delivered_parent(db, context, parent[0], now)
+            if cited:
+                target = cited["id"]
                 return (
                     self.cancel(db, context, target) if cancel else self.state(db, context, target)
                 )
@@ -625,15 +596,27 @@ class Store:
             ):
                 return None
             if row["visual_version"]:
-                frozen = canonical(
-                    {
-                        "kind": row["kind"],
-                        "text": row["payload"],
-                        "payload": json.loads(row["rich_payload_json"]),
-                        "version": row["visual_version"],
-                    }
-                )
-                if hashlib.sha256(frozen.encode()).hexdigest() != row["content_sha256"]:
+                try:
+                    rich_payload = json.loads(row["rich_payload_json"])
+                    identifiers = json.loads(row["artifacts_json"])
+                    valid = isinstance(rich_payload, dict) and isinstance(identifiers, list)
+                    valid = valid and identifiers == rich_payload.get("artifacts", [])
+                    frozen = canonical(
+                        {
+                            "kind": row["kind"],
+                            "text": row["payload"],
+                            "payload": rich_payload,
+                            "version": row["visual_version"],
+                        }
+                    )
+                    valid = (
+                        valid
+                        and row["visual_version"] in (1, 2)
+                        and hashlib.sha256(frozen.encode()).hexdigest() == row["content_sha256"]
+                    )
+                except ValueError, TypeError:
+                    valid = False
+                if not valid:
                     db.execute(
                         "UPDATE outbox SET state='failed',error_code='presentation_plan_corrupt',revision=revision+1 WHERE receipt_id=? AND position=?",
                         (receipt_id, row["position"]),

@@ -1,0 +1,10 @@
+test_literal_blocks_fenced_without_rewriting_canonical_or_executing (test_visual_integrity.VisualIntegrityTest.test_literal_blocks_fenced_without_rewriting_canonical_or_executing) ... ok
+test_literal_pdf_header_is_text_artifact_and_preserved_across_restart (test_visual_integrity.VisualIntegrityTest.test_literal_pdf_header_is_text_artifact_and_preserved_across_restart) ... ok
+test_plan_hash_also_binds_actual_artifact_list (test_visual_integrity.VisualIntegrityTest.test_plan_hash_also_binds_actual_artifact_list) ... ok
+test_table_intro_literal_and_fallback_keep_all_cells (test_visual_integrity.VisualIntegrityTest.test_table_intro_literal_and_fallback_keep_all_cells) ... ok
+test_unicode_utf16_combining_emoji_sequences_are_never_broken (test_visual_integrity.VisualIntegrityTest.test_unicode_utf16_combining_emoji_sequences_are_never_broken) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.145s
+
+OK

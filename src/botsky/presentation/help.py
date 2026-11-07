@@ -1,5 +1,6 @@
 """Ayuda humana derivada del registro; autoridad y sintaxis quedan en el registro."""
 
+from ..commands.editorial import FAMILIES
 from . import Block, Document
 
 CATEGORIES = (
@@ -10,7 +11,7 @@ CATEGORIES = (
         (
             "nota",
             "notas",
-            "memoria",
+            "mem",
             "recordar",
             "recordatorios",
             "escuela",
@@ -20,7 +21,7 @@ CATEGORIES = (
             "contactos",
         ),
     ),
-    ("Jugar", ("saldo", "daily", "top", "bj", "ruleta", "pack", "cooperacha", "hh", "broma")),
+    ("Jugar", ("saldo", "daily", "top", "bj", "ruleta", "pack", "coop", "hh", "broma")),
     ("Llamadas y video", ("llamar", "llamada", "clip", "avatar")),
     ("Control", ("bot", "admin", "mc", "estado", "cancelar", "confirmar", "ayuda")),
 )
@@ -70,7 +71,11 @@ def render_help(registry, topic=""):
             )
         blocks.append(Block("next_action", "Ejemplo de ayuda: /ayuda llamada programar"))
         return Document(tuple(blocks)).text()
+    families = list(dict.fromkeys(spec.family for spec in selected))
     blocks = []
+    for family in families:
+        title, description = FAMILIES[family]
+        blocks.extend((Block("heading", title), Block("paragraph", description)))
     for spec in selected:
         lines = [spec.usage, "Ejemplo: " + spec.sample]
         if spec.permission == "owner":

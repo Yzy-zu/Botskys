@@ -23,7 +23,14 @@ class CommandError(ValueError):
 
     @property
     def reply(self):
-        message = (f"{self.field}: " if self.field else "") + str(self)
+        from .editorial import FIELD_LABELS
+
+        label = FIELD_LABELS.get(self.field, self.field)
+        if self.spec and self.field:
+            field = next((f for f in self.spec.fields if f.name == self.field), None)
+            if field and field.option:
+                label = field.option
+        message = (f"{label}: " if label else "") + str(self)
         if self.spec:
             message += "\nUso: " + self.spec.usage + "\nEjemplo: " + self.spec.sample
         return message

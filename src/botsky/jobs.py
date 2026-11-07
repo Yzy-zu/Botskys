@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+import math
 import re
 import shutil
 from dataclasses import dataclass
@@ -35,7 +36,20 @@ def cancel_job(db, context, target):
     ).fetchone()
     if not row and not interaction:
         return None
-    result = Result("cancelled", "request_cancelled", "Cancelado.", {"id": target})
+    delivery = {
+        r["state"]: r["n"]
+        for r in db.execute(
+            "SELECT state,count(*) AS n FROM outbox WHERE receipt_id=? GROUP BY state", (target,)
+        )
+    }
+    text = "Cancelado."
+    if delivery.get("accepted"):
+        text += f" El servicio ya aceptó {delivery['accepted']} partes; no se retiraron."
+    if delivery.get("sending") or delivery.get("uncertain"):
+        text += " No pude confirmar si llegó una parte en curso. Revisa antes de repetir."
+    result = Result(
+        "cancelled", "request_cancelled", text, {"id": target, "delivery_before_cancel": delivery}
+    )
     db.execute(
         "UPDATE jobs SET state='cancelled',lease_token=NULL,revision=revision+1,result_json=? WHERE id=? AND state IN ('queued','running')",
         (result.to_json(), target),
@@ -462,17 +476,22 @@ class Jobs:
                         now + 900000,
                     ),
                 )
-                from .presentation.search import videos
+                from dataclasses import asdict
 
+                from .presentation.search import video_document
+
+                document = video_document(data["choices"], now + 900000, now, intro="Videos")
                 result = Result(
                     "needs_input",
                     "download_choices",
-                    videos(data["choices"], now + 900000, now, intro=result.text or "Videos"),
+                    document.text(),
                     {
                         **result.data,
                         "view_id": identifier,
                         "choices": data["choices"],
                         "media_first": True,
+                        "document": asdict(document),
+                        "expires_ms": now + 900000,
                     },
                 )
             if result.code == "drive_choices":
@@ -775,15 +794,16 @@ class Jobs:
             if backend is None:
                 raise MediaError("web_not_configured")
             items = await backend.search(args["query"], args.get("required_terms", ()))
-            from .presentation.search import web
+            from .presentation.search import web_document
 
-            text = web(items, args["query"])
+            document = web_document(items, args["query"])
+            text = document.text()
             return EngineOutput(
                 Result(
                     "ok" if items else "empty",
                     "web_results" if items else "web_empty",
                     text,
-                    {"items": [asdict(item) for item in items]},
+                    {"items": [asdict(item) for item in items], "document": asdict(document)},
                 )
             )
         if op == "send_sticker.run":
@@ -831,7 +851,8 @@ class Jobs:
                             "title": title,
                             "duration": candidate.duration
                             if isinstance(candidate.duration, (int, float))
-                            and __import__("math").isfinite(candidate.duration)
+                            and not isinstance(candidate.duration, bool)
+                            and math.isfinite(candidate.duration)
                             and candidate.duration > 0
                             else None,
                             "author": candidate.author,

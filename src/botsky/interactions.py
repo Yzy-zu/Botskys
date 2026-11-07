@@ -254,11 +254,35 @@ def confirm(db, context, identifier, now):
 
 def choose_view(db, context, kind, now, identifier=None):
     """Una forma corta solo es válida con una vista inequívoca ya entregada."""
+    from .presentation.quotes import own_delivered_parent
+
+    incoming = db.execute(
+        "SELECT quoted_message_id FROM inbox WHERE id=?", (context.receipt_id,)
+    ).fetchone()
+    quoted = incoming["quoted_message_id"] if incoming else None
+    quoted_parent = None
+    if quoted:
+        parent = own_delivered_parent(db, context, quoted, now)
+        if parent is None:
+            return None, Result(
+                "needs_input",
+                "selection_quote_unavailable",
+                "Responde a una lista propia recibida por completo y vigente, o busca de nuevo.",
+            )
+        quoted_parent = parent["id"]
+    clauses = []
+    parameters = [*context.scope_key, kind, now]
+    if identifier:
+        clauses.append("id=?")
+        parameters.append(identifier)
+    if quoted_parent:
+        clauses.append("receipt_id=?")
+        parameters.append(quoted_parent)
     rows = db.execute(
         f"SELECT * FROM interactions WHERE {SCOPE_SQL} AND kind=? AND state='active' AND expires_ms>? "
-        + ("AND id=?" if identifier else "")
-        + " ORDER BY rowid DESC LIMIT 2",
-        (*context.scope_key, kind, now, *((identifier,) if identifier else ())),
+        + "".join(" AND " + clause for clause in clauses)
+        + " ORDER BY rowid DESC LIMIT 6",
+        parameters,
     ).fetchall()
     if len(rows) == 1:
         return rows[0], None

@@ -125,3 +125,53 @@ class SearchPresentationTest(IsolatedAsyncioTestCase):
                 "https://evil.invalid/a",
             ):
                 self.assertIsNone(await fetch_thumbnail(url, "youtube"))
+
+    async def test_quote_selects_exact_list_from_multiple_and_rejects_partial_or_foreign(self):
+        from dataclasses import replace
+
+        first = self.receive("/dl buscar mp4 primera")
+        await self.app.jobs.run_pending()
+        self.app.deliver(first.id, CollectingTransport())
+        second = self.receive("/dl buscar mp4 segunda")
+        await self.app.jobs.run_pending()
+        self.app.deliver(second.id, CollectingTransport())
+        cited = self.rows(
+            "SELECT provider_message_id FROM outbox WHERE receipt_id=? AND position=0", (first.id,)
+        )[0]["provider_message_id"]
+        self.sequence += 1
+        incoming = self.adapter.incoming(
+            str(self.sequence), "alice", "private", "/dl elegir 1", quoted_message_id=cited
+        )
+        choice = self.app.receive(incoming)
+        self.assertEqual(choice.result.code, "job_queued")
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.result(choice.id).code, "download_ready")
+        self.assertEqual(self.backend.downloads, [test_downloads.W3])
+        self.sequence += 1
+        foreign = self.app.receive(
+            replace(
+                incoming, message_id=str(self.sequence), scope=replace(incoming.scope, actor="bob")
+            )
+        )
+        self.assertEqual(foreign.result.code, "selection_quote_unavailable")
+        third = self.receive("/dl buscar mp4 tercera")
+        await self.app.jobs.run_pending()
+
+        class Partial:
+            def send(self, part):
+                if part.artifacts:
+                    return DeliveryAck(True, "accepted-image-only")
+                raise TimeoutError()
+
+        self.app.deliver(third.id, Partial())
+        self.sequence += 1
+        partial = self.app.receive(
+            self.adapter.incoming(
+                str(self.sequence),
+                "alice",
+                "private",
+                "/dl elegir 1",
+                quoted_message_id="accepted-image-only",
+            )
+        )
+        self.assertEqual(partial.result.code, "selection_quote_unavailable")

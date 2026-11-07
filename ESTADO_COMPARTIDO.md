@@ -1,5 +1,18 @@
 # Relevo Botsky
 
+## 07/11 · Reanudación expresa; V1–V3 fuente literal/citas reforzadas localmente
+
+Cuota5h98% alretomar, semanalnoimpide. Planvisualv2enoutboxesquema19 compatible
+v0/v1; bloques/fuenteconservados, UTF16/Unicode sinfragmentar, archivoUTF8literal
+0600sinconfundir%PDFconPDF. Hashligatambiénartefactos;JSON/versiónmalformadosse
+rechazan. Citapadrequierecomposicióncompleta yscope/TTL;eleccióndl/Driveporcita
+sinfallariniciativaotra lista. Voz/sticker sinéxitoredundante,/vozultimaconserva
+guionexacto. Ayuda32familiasconmetadatoseditorialesdelregistro,erroresconopciones.
+5literal+5search+5tabla+17IA+14core+13commands+5presentationPASS; evidencia
+UI-UX-CONT-20261107/V1-V3.md. Sinenvíos,llamadas,proveedoresodeploynuevo.
+V2miniaturas/detallecompletosigue;V3fallosrestantes,V4–V7pendienteshistóricos
+siguenabiertos;ningunaaceptaciónvisualclientedeclarada.
+
 ## 07/11 · Corte por cuota5h5%; mejoras parciales desplegadas, plan NO completo
 
 Código4482c46 desplegado: runtimePID3344306, anterior3303101; respaldo privado

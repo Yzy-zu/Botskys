@@ -88,15 +88,21 @@ def literal_source(db, context, row, source, now):
         if incoming:
             return incoming["text"]
         own = db.execute(
-            "SELECT o.payload FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.provider_message_id=? AND o.state='accepted' AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>?",
+            "SELECT o.payload,o.rich_payload_json FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.provider_message_id=? AND o.state='accepted' AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>?",
             (quote, *context.scope_key, now - 86400000),
         ).fetchone()
-        return own["payload"] if own else None
+        return (
+            json.loads(own["rich_payload_json"]).get("source_text", own["payload"]) if own else None
+        )
     prior = db.execute(
-        "SELECT o.payload FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.state='accepted' AND length(o.payload)>0 AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>? ORDER BY o.rowid DESC LIMIT 1",
+        "SELECT o.payload,o.rich_payload_json FROM outbox o JOIN inbox i ON o.receipt_id=i.id WHERE o.state='accepted' AND (length(o.payload)>0 OR length(json_extract(o.rich_payload_json,'$.source_text'))>0) AND i.instance=? AND i.account=? AND i.actor=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND o.updated_ms>? ORDER BY o.rowid DESC LIMIT 1",
         (*context.scope_key, now - 86400000),
     ).fetchone()
-    return prior["payload"] if prior else None
+    return (
+        json.loads(prior["rich_payload_json"]).get("source_text", prior["payload"])
+        if prior
+        else None
+    )
 
 
 def execute(db, context, spec, command, now, app):

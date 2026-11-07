@@ -13,6 +13,10 @@ Cada campo, tipo, rango, valor por defecto, permiso y decisión de portado: [com
 ## /admin
 
 ```text
+*Administración*
+
+Opera sobre objetivos verificados; conserva las confirmaciones sensibles.
+
 /admin advertir TARGET
 Ejemplo: /admin advertir ID_REAL
 Solo el dueño.
@@ -86,6 +90,10 @@ Solo el dueño.
 ## /avatar
 
 ```text
+*Avatar*
+
+Aplica un fondo, expresión o gesto disponible durante una llamada autorizada.
+
 /avatar fondo studio|neon|sunset|night
 Ejemplo: /avatar fondo studio
 Requiere llamadas habilitadas y autorización en este chat.
@@ -110,6 +118,10 @@ Durante una llamada autorizada.
 ## /ayuda
 
 ```text
+*Ayuda y control*
+
+Consulta ayuda, sigue tus encargos y cancela lo pendiente.
+
 /ayuda [TOPIC]
 Ejemplo: /ayuda
 Lista familias o detalla un comando.
@@ -118,6 +130,10 @@ Lista familias o detalla un comando.
 ## /bj
 
 ```text
+*Blackjack*
+
+Juega con apuestas de XP, turnos publicados y cartas visibles.
+
 /bj iniciar [BET]
 Ejemplo: /bj iniciar
 
@@ -149,6 +165,10 @@ Ejemplo: /bj cancelar
 ## /bot
 
 ```text
+*Modo de Botsky*
+
+Consulta el modo y controla las pausas de este chat.
+
 /bot estado
 Ejemplo: /bot estado
 
@@ -168,6 +188,10 @@ Solo el dueño.
 ## /broma
 
 ```text
+*Broma ficticia*
+
+Crea una broma inocua; no investiga ni contacta a nadie.
+
 /broma [LABEL]
 Ejemplo: /broma
 ```
@@ -175,6 +199,10 @@ Ejemplo: /broma
 ## /buscar
 
 ```text
+*Búsqueda web*
+
+Consulta candidatos con términos y fuentes explícitos.
+
 /buscar [--terminos REQUIRED_TERMS] QUERY
 Ejemplo: /buscar ejemplo
 ```
@@ -182,6 +210,10 @@ Ejemplo: /buscar ejemplo
 ## /cancelar
 
 ```text
+*Ayuda y control*
+
+Consulta ayuda, sigue tus encargos y cancela lo pendiente.
+
 /cancelar [ID]
 Ejemplo: /cancelar
 ```
@@ -189,6 +221,10 @@ Ejemplo: /cancelar
 ## /clip
 
 ```text
+*Clips*
+
+Consulta clips y controla reproducción y volumen durante una llamada autorizada.
+
 /clip lista
 Ejemplo: /clip lista
 Requiere llamadas habilitadas y autorización en este chat.
@@ -238,6 +274,10 @@ Durante una llamada autorizada.
 ## /confirmar
 
 ```text
+*Ayuda y control*
+
+Consulta ayuda, sigue tus encargos y cancela lo pendiente.
+
 /confirmar ID
 Ejemplo: /confirmar ID_REAL
 Requiere recibir la vista previa y confirmar con su comando vigente.
@@ -246,6 +286,10 @@ Requiere recibir la vista previa y confirmar con su comando vigente.
 ## /contactos
 
 ```text
+*Recados*
+
+Prepara una vista previa para contactos verificados y confirma su envío.
+
 /contactos
 Ejemplo: /contactos
 Solo el dueño.
@@ -254,6 +298,10 @@ Solo el dueño.
 ## /convertir
 
 ```text
+*Convertir documentos*
+
+Convierte un adjunto; informa las limitaciones del formato final.
+
 /convertir pdf|docx|doc|odt|rtf|xlsx|xls|ods|csv|pptx|ppt|odp|txt|png|jpg|webp|json|html|md + adjunto o cita exacta
 Ejemplo: /convertir pdf
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -262,6 +310,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /coop
 
 ```text
+*Cooperachas*
+
+Consulta la previa censurada y aporta solo de tu propio saldo.
+
 /coop crear CATEGORY TARGET_XP
 Ejemplo: /coop crear ejemplo 50
 
@@ -278,6 +330,10 @@ Ejemplo: /coop cancelar ID_REAL
 ## /daily
 
 ```text
+*XP*
+
+Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.
+
 /daily
 Ejemplo: /daily
 ```
@@ -285,6 +341,10 @@ Ejemplo: /daily
 ## /dl
 
 ```text
+*Videos y descargas*
+
+Busca videos, elige una opción o descarga desde un enlace admitido.
+
 /dl mp3 [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] URL
 Ejemplo: /dl mp3 https://media.w3.org/2010/05/bunny/trailer.mp4
 
@@ -310,6 +370,10 @@ Ejemplo: /dl anterior mp3
 ## /drive
 
 ```text
+*Archivos de Drive*
+
+Busca en tu ámbito, recupera un archivo o guarda un adjunto.
+
 /drive guardar + adjunto o cita exacta
 Ejemplo: /drive guardar
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -328,6 +392,10 @@ Solo el dueño.
 ## /editar
 
 ```text
+*Editar audio y video*
+
+Convierte un archivo y conserva los límites o recortes pedidos.
+
 /editar mp3|mp4|webm|srt [--calidad small|standard|high] [--desde START_SECONDS] [--hasta END_SECONDS] [--idioma es|en] + adjunto o cita exacta
 Ejemplo: /editar mp3
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -336,6 +404,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /encuesta
 
 ```text
+*Encuestas*
+
+Publica una pregunta, vota y consulta resultados con opciones completas.
+
 /encuesta crear QUESTION OPTIONS ...
 Ejemplo: /encuesta crear "¿Hora?" "Opción 1" "Opción 2"
 
@@ -352,6 +424,10 @@ Ejemplo: /encuesta cerrar 1
 ## /escuela
 
 ```text
+*Escuela y horario*
+
+Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.
+
 /escuela resumen configurar ENABLED [--hora DIGEST_TIME]
 Ejemplo: /escuela resumen configurar si --hora 18:00
 Solo el dueño.
@@ -363,6 +439,10 @@ Ejemplo: /escuela resumen estado
 ## /estado
 
 ```text
+*Ayuda y control*
+
+Consulta ayuda, sigue tus encargos y cancela lo pendiente.
+
 /estado [ID]
 Ejemplo: /estado
 ```
@@ -370,6 +450,10 @@ Ejemplo: /estado
 ## /hh
 
 ```text
+*Hora feliz*
+
+Consulta eventos y reclama un AirDrop con su referencia publicada.
+
 /hh iniciar [--duracion DURACION_CON_UNIDAD]
 Ejemplo: /hh iniciar
 Solo el dueño.
@@ -397,6 +481,10 @@ Ejemplo: /hh reclamar ID_REAL
 ## /horario
 
 ```text
+*Escuela y horario*
+
+Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.
+
 /horario agregar --materia SUBJECT --dia WEEKDAY --inicio START_TIME --fin END_TIME
 Ejemplo: /horario agregar --materia ejemplo --dia 1 --inicio 12:00 --fin 13:00
 Solo el dueño.
@@ -412,6 +500,10 @@ Solo el dueño.
 ## /ia
 
 ```text
+*Inteligencia artificial*
+
+Pregunta o analiza un archivo; el contenido no ejecuta comandos.
+
 /ia TEXT
 Ejemplo: /ia ejemplo
 ```
@@ -440,12 +532,16 @@ Requieren llamadas habilitadas y autorización en este chat.
 /llamada reprogramar
 /llamada cancelar-agenda
 
-Ejemplo de ayuda: /ayuda llamada programar
+`Ejemplo de ayuda: /ayuda llamada programar`
 ```
 
 ## /llamar
 
 ```text
+*Llamadas*
+
+Inicia o controla una llamada autorizada en este chat.
+
 /llamar [--video] [--duracion DURACION_CON_UNIDAD] [--tema TOPIC]
 Ejemplo: /llamar
 Requiere llamadas habilitadas y autorización en este chat.
@@ -455,6 +551,10 @@ Requiere llamadas habilitadas y autorización en este chat.
 ## /mc
 
 ```text
+*Minecraft*
+
+Consulta salud y paquetes o solicita cambios observables del servidor.
+
 /mc estado
 Ejemplo: /mc estado
 
@@ -509,6 +609,10 @@ Solo el dueño.
 ## /mem
 
 ```text
+*Memoria*
+
+Guarda, consulta, corrige o retira recuerdos explícitos de este chat.
+
 /mem guardar [--tipo preferencia|dato] TEXT
 Ejemplo: /mem guardar ejemplo
 
@@ -529,6 +633,10 @@ Requiere recibir la vista previa y confirmar con su comando vigente.
 ## /nota
 
 ```text
+*Guardar nota*
+
+Guarda texto literal propio en este chat.
+
 /nota guardar TEXT
 Ejemplo: /nota guardar ejemplo
 ```
@@ -536,6 +644,10 @@ Ejemplo: /nota guardar ejemplo
 ## /notas
 
 ```text
+*Buscar notas*
+
+Consulta tus notas con filtro y páginas.
+
 /notas [--pagina PAGE] [QUERY]
 Ejemplo: /notas
 ```
@@ -543,6 +655,10 @@ Ejemplo: /notas
 ## /ocr
 
 ```text
+*Lectura de imagen*
+
+Extrae texto o QR como datos; no los ejecuta.
+
 /ocr + adjunto o cita exacta
 Ejemplo: /ocr
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -551,6 +667,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /pack
 
 ```text
+*Packs*
+
+Consulta categorías, stock y precio antes de confirmar una compra.
+
 /pack catalogo [--categoria CATEGORY] [--pagina PAGE]
 Ejemplo: /pack catalogo
 
@@ -569,6 +689,10 @@ Ejemplo: /pack estado ID_REAL
 ## /pdf
 
 ```text
+*Documentos PDF*
+
+Reúne archivos, extrae páginas y controla una sesión PDF propia.
+
 /pdf iniciar + adjunto o cita exacta
 Ejemplo: /pdf iniciar
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -595,6 +719,10 @@ Requiere recibir la vista previa y confirmar con su comando vigente.
 ## /qr
 
 ```text
+*Lectura de imagen*
+
+Extrae texto o QR como datos; no los ejecuta.
+
 /qr + adjunto o cita exacta
 Ejemplo: /qr
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -603,6 +731,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /reaccion
 
 ```text
+*Reacciones*
+
+Envía un sticker del catálogo disponible.
+
 /reaccion saludo|risa|pensando|sonrojo
 Ejemplo: /reaccion saludo
 ```
@@ -610,6 +742,10 @@ Ejemplo: /reaccion saludo
 ## /recado
 
 ```text
+*Recados*
+
+Prepara una vista previa para contactos verificados y confirma su envío.
+
 /recado preparar --para RECIPIENTS [--fuente actual|cita] [--adjunto] [TEXT]
 Ejemplo: /recado preparar --para Amiga -- hola
 Solo el dueño.
@@ -631,6 +767,10 @@ Solo el dueño.
 ## /recordar
 
 ```text
+*Recordatorios*
+
+Programa y consulta avisos propios con fecha y zona explícitas.
+
 /recordar en DURACION_CON_UNIDAD TEXT
 Ejemplo: /recordar en 10m ejemplo
 duration_seconds: entero con unidad s, m, h o d; ejemplo 10m. Rango: 1–3.1536e+07 segundos.
@@ -642,6 +782,10 @@ Ejemplo: /recordar el 2026-12-01 12:00 ejemplo
 ## /recordatorio
 
 ```text
+*Recordatorios*
+
+Programa y consulta avisos propios con fecha y zona explícitas.
+
 /recordatorio cancelar REMINDER_ID
 Ejemplo: /recordatorio cancelar 1
 
@@ -652,6 +796,10 @@ Ejemplo: /recordatorio archivar 1
 ## /recordatorios
 
 ```text
+*Recordatorios*
+
+Programa y consulta avisos propios con fecha y zona explícitas.
+
 /recordatorios [--pagina PAGE] [--cerradas]
 Ejemplo: /recordatorios
 ```
@@ -659,6 +807,10 @@ Ejemplo: /recordatorios
 ## /ruleta
 
 ```text
+*Ruleta*
+
+Consulta coste y consecuencias antes de entrar o iniciar una sala.
+
 /ruleta crear [BET]
 Ejemplo: /ruleta crear
 
@@ -680,6 +832,10 @@ Ejemplo: /ruleta cancelar ID_REAL
 ## /saldo
 
 ```text
+*XP*
+
+Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.
+
 /saldo
 Ejemplo: /saldo
 ```
@@ -687,6 +843,10 @@ Ejemplo: /saldo
 ## /sticker
 
 ```text
+*Crear sticker*
+
+Convierte una imagen adjunta o citada en sticker.
+
 /sticker + adjunto o cita exacta
 Ejemplo: /sticker
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -695,6 +855,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /tarea
 
 ```text
+*Escuela y horario*
+
+Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.
+
 /tarea crear [--materia SUBJECT] --fecha DUE_DATE [--hora DUE_TIME] [--adjunto] TEXT
 Ejemplo: /tarea crear --fecha 2026-12-01 ejemplo
 
@@ -711,6 +875,10 @@ Ejemplo: /tarea archivo 1
 ## /tareas
 
 ```text
+*Escuela y horario*
+
+Organiza tareas, adjuntos, clases y resúmenes del ámbito autorizado.
+
 /tareas [--pagina PAGE] [--cerradas]
 Ejemplo: /tareas
 ```
@@ -718,6 +886,10 @@ Ejemplo: /tareas
 ## /top
 
 ```text
+*XP*
+
+Consulta saldo, reservas, daily y clasificación de cuentas de Botsky.
+
 /top
 Ejemplo: /top
 ```
@@ -725,6 +897,10 @@ Ejemplo: /top
 ## /transcribir
 
 ```text
+*Transcribir*
+
+Obtén texto literal, resumen o ambos desde audio o video.
+
 /transcribir [--salida texto|resumen|ambos] + adjunto o cita exacta
 Ejemplo: /transcribir
 Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se verifican tipo y acceso.
@@ -733,6 +909,10 @@ Adjunta el archivo al comando o responde al mensaje exacto que lo contiene; se v
 ## /voces
 
 ```text
+*Voz*
+
+Lee texto literal o compone un guion antes de generar la voz elegida.
+
 /voces
 Ejemplo: /voces
 ```
@@ -740,6 +920,10 @@ Ejemplo: /voces
 ## /voz
 
 ```text
+*Voz*
+
+Lee texto literal o compone un guion antes de generar la voz elegida.
+
 /voz [--voz botsky|mexicana|colombiana|argentina|espanola|mexicano|colombiano|argentino|espanol|chileno|venezolano|peruano|anime] [--efecto none|robot|radio|ardilla|demonio] TEXT
 Ejemplo: /voz ejemplo
 

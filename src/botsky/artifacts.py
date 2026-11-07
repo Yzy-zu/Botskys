@@ -92,6 +92,24 @@ class Artifacts:
             if descriptor is not None:
                 os.close(descriptor)
 
+    def stage_text(self, text):
+        raw = text.encode("utf-8")
+        if not 0 < len(raw) <= DOCUMENT_BYTES:
+            raise ArtifactProblem("input_size")
+        destination = self.path(uuid4().hex)
+        try:
+            fd = os.open(destination, os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW | os.O_WRONLY, 0o600)
+            with os.fdopen(fd, "wb") as stream:
+                stream.write(raw)
+                stream.flush()
+                os.fsync(stream.fileno())
+            return StagedFile(
+                destination.stem, destination, "txt", len(raw), hashlib.sha256(raw).hexdigest()
+            )
+        except BaseException:
+            destination.unlink(missing_ok=True)
+            raise
+
     @staticmethod
     def _format(path, header):
         from .engines.documents import _kind

@@ -506,7 +506,7 @@ subprocess.run(['ffmpeg','-v','error','-nostdin','-f','lavfi','-i','sine=frequen
         self.assertEqual(self.result(last.id).code, "voice_ready")
         self.assertEqual(self.result(last.id).data["voice"], "peruano")
         self.assertEqual(json.loads(log.read_text().splitlines()[-1])["voice"], "es-PE-AlexNeural")
-        self.assertTrue(self.result(last.id).data["spoken_text"].startswith("Voz literal lista."))
+        self.assertEqual(self.result(last.id).data["spoken_text"], "Texto propio literal.")
 
     async def test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript(
         self,

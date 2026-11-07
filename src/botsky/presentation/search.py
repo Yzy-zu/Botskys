@@ -39,7 +39,7 @@ def source_label(url):
     return labels.get(source, source)
 
 
-def videos(choices, expires_ms, now, *, intro="Videos", short=True, view_id=""):
+def video_document(choices, expires_ms, now, *, intro="Videos", short=True, view_id=""):
     blocks = [Block("heading", intro)]
     for i, choice in enumerate(choices, 1):
         blocks.append(
@@ -65,12 +65,23 @@ def videos(choices, expires_ms, now, *, intro="Videos", short=True, view_id=""):
     )
     command = "/dl elegir " + ("" if short else view_id + " ")
     blocks.append(Block("next_action", command + "NUMERO"))
-    return Document(tuple(blocks)).text()
+    return Document(tuple(blocks))
 
 
-def web(items, query):
+def videos(choices, expires_ms, now, **kwargs):
+    return video_document(choices, expires_ms, now, **kwargs).text()
+
+
+def web_document(items, query):
     if not items:
-        return "No encontré resultados que cumplan los términos y las fuentes solicitadas."
+        return Document(
+            (
+                Block(
+                    "notice",
+                    "No encontré resultados que cumplan los términos y las fuentes solicitadas.",
+                ),
+            )
+        )
     blocks = [Block("heading", "Resultados de búsqueda"), Block("literal", query)]
     for i, item in enumerate(items, 1):
         blocks.append(
@@ -85,4 +96,8 @@ def web(items, query):
             "Resultados candidatos. No se han abierto ni verificado las páginas completas.",
         )
     )
-    return Document(tuple(blocks)).text()
+    return Document(tuple(blocks))
+
+
+def web(items, query):
+    return web_document(items, query).text()

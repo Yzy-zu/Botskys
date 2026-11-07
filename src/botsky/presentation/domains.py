@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import PurePath
 from zoneinfo import ZoneInfo
 
-from . import Block, Document
+from . import Block, Document, attach_document
 from .table import NativeTable
 
 STATES = {
@@ -154,19 +154,16 @@ def present(result, *, zone="America/Mexico_City"):
                 footer=footer,
             )
         if data.get("list_kind") == "memories":
-            return replace(
-                result,
-                text=Document(
+            blocks = [Block("heading", "Memoria")]
+            for row in rows:
+                blocks.extend(
                     (
-                        Block("heading", "Memoria"),
-                        Block(
-                            "paragraph",
-                            "\n\n".join(f"Ref. {r['id']} · {r['kind']}\n{r['text']}" for r in rows),
-                        ),
-                        Block("notice", footer),
+                        Block("paragraph", f"Ref. {row['id']} · {row['kind']}"),
+                        Block("literal", row["text"]),
                     )
-                ).text(),
-            )
+                )
+            blocks.append(Block("notice", footer))
+            return attach_document(result, Document(tuple(blocks)))
     if code == "school_schedule":
         days = ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
         return tabular(
@@ -185,6 +182,7 @@ def present(result, *, zone="America/Mexico_City"):
             footer="Zona: " + zone,
         )
     if code == "poll_results" and "question" in data and "state" in data:
+        result = replace(result, data={**result.data, "native_intro_literal": True})
         return tabular(
             result,
             "Resultados de encuesta",
@@ -230,16 +228,14 @@ def present(result, *, zone="America/Mexico_City"):
             Block("paragraph", f"{data['total']} notas · Página {data['page']}/{data['pages']}"),
         ]
         for row in rows:
-            blocks.extend(
-                (Block("paragraph", f"Nota {row['id']}"), Block("paragraph", row["text"]))
-            )
+            blocks.extend((Block("paragraph", f"Nota {row['id']}"), Block("literal", row["text"])))
         if data["page"] < data["pages"]:
             blocks.append(Block("next_action", f"/notas --pagina {data['page'] + 1}"))
-        return replace(result, text=Document(tuple(blocks)).text())
+        return attach_document(result, Document(tuple(blocks)))
     if code in ("image_read", "transcript_ready"):
         label = "Lectura de imagen" if code == "image_read" else "Transcripción literal"
-        return replace(
-            result, text=Document((Block("heading", label), Block("literal", result.text))).text()
+        return attach_document(
+            result, Document((Block("heading", label), Block("literal", result.text)))
         )
     if code == "xp_top":
         return tabular(
@@ -258,9 +254,9 @@ def present(result, *, zone="America/Mexico_City"):
             footer="Saldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
         )
     if code == "xp_balance":
-        return replace(
+        return attach_document(
             result,
-            text=Document(
+            Document(
                 (
                     Block("heading", "Tu saldo"),
                     Block(
@@ -269,7 +265,7 @@ def present(result, *, zone="America/Mexico_City"):
                     ),
                     Block("notice", "Cuenta compartida entre tus chats de Botsky."),
                 )
-            ).text(),
+            ),
         )
     if code in ("daily_cooldown", "daily_awarded"):
         return replace(
@@ -288,11 +284,9 @@ def present(result, *, zone="America/Mexico_City"):
         lines.append(
             "Aceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
         )
-        return replace(
+        return attach_document(
             result,
-            text=Document(
-                (Block("heading", "Estado del recado"), Block("paragraph", "\n".join(lines)))
-            ).text(),
+            Document((Block("heading", "Estado del recado"), Block("paragraph", "\n".join(lines)))),
         )
     if code == "blackjack_board" and "dealer_visible" in data:
         identifier = data["game_id"]
@@ -323,11 +317,9 @@ def present(result, *, zone="America/Mexico_City"):
             lines.append(
                 f"Turno: asiento {data['turn']}\n/bj pedir {identifier}\n/bj plantarse {identifier}\n/bj doblar {identifier}"
             )
-        return replace(
+        return attach_document(
             result,
-            text=Document(
-                (Block("heading", "Blackjack"), Block("paragraph", "\n\n".join(lines)))
-            ).text(),
+            Document((Block("heading", "Blackjack"), Block("paragraph", "\n\n".join(lines)))),
         )
     if code == "blackjack_settled":
         from ..domains.blackjack import score
@@ -338,11 +330,11 @@ def present(result, *, zone="America/Mexico_City"):
                 f"Asiento {player['seat']} · {player['outcome']} · {player['score']} puntos\n"
                 f"Apuesta: {player['bet']} XP · pago bruto: {player['payout']} XP · resultado neto: {player['payout'] - player['bet']:+d} XP"
             )
-        return replace(
+        return attach_document(
             result,
-            text=Document(
+            Document(
                 (Block("heading", "Blackjack · final"), Block("paragraph", "\n\n".join(lines)))
-            ).text(),
+            ),
         )
     if code == "pack_catalog":
         return tabular(
@@ -369,11 +361,8 @@ def present(result, *, zone="America/Mexico_City"):
             lines.append("Vence: " + date_time(data["expires_ms"], zone))
         if data["state"] == "open":
             lines.append(f"/coop aportar {data['challenge_id']} CANTIDAD")
-        return replace(
-            result,
-            text=Document(
-                (Block("heading", "Cooperacha"), Block("paragraph", "\n".join(lines)))
-            ).text(),
+        return attach_document(
+            result, Document((Block("heading", "Cooperacha"), Block("paragraph", "\n".join(lines))))
         )
     if code == "happy_status":
         lines = [STATES.get(data["state"], data["state"])]
@@ -384,11 +373,8 @@ def present(result, *, zone="America/Mexico_City"):
             lines.append("AirDrop: " + STATES.get(drop["state"], drop["state"]))
             if drop["state"] == "open":
                 lines.append("/hh reclamar " + drop["id"])
-        return replace(
-            result,
-            text=Document(
-                (Block("heading", "Hora feliz"), Block("paragraph", "\n".join(lines)))
-            ).text(),
+        return attach_document(
+            result, Document((Block("heading", "Hora feliz"), Block("paragraph", "\n".join(lines))))
         )
     if code == "minecraft_completed" and data.get("action") == "mods":
         response = data["response"]
@@ -474,9 +460,9 @@ def present(result, *, zone="America/Mexico_City"):
             "cancelled": "Cancelada",
         }
         call = data["call"]
-        return replace(
+        return attach_document(
             result,
-            text=Document(
+            Document(
                 (
                     Block("heading", "Llamada"),
                     Block("paragraph", states.get(call["state"], "Estado no reconocido")),
@@ -484,6 +470,6 @@ def present(result, *, zone="America/Mexico_City"):
                         "notice", "Estado del servicio; no acredita escucha ni recepción humana."
                     ),
                 )
-            ).text(),
+            ),
         )
     return result

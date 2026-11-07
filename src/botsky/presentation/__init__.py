@@ -15,6 +15,10 @@ class Block:
         # Los títulos son del producto. Los datos literales nunca se reescriben.
         if self.kind == "heading" and not any(c in self.text for c in "*_`\n"):
             return "*" + self.text + "*"
+        if self.kind == "quote":
+            return "\n".join("> " + line for line in self.text.split("\n"))
+        if self.kind == "next_action" and "\n" not in self.text and "`" not in self.text:
+            return "`" + self.text + "`"
         return self.text
 
 
@@ -28,25 +32,12 @@ class Document:
 
 
 def split_text(text: str, limit: int = 3500) -> tuple[str, ...]:
-    """Partes exactas, preferentemente por párrafo/línea/espacio. Sin strip ni regex.
+    from .splitter import split
 
-    Las partes se fijan en outbox antes del primer envío. El caso indivisible aún
-    usa fragmentos exactos: la alternativa de archivo se integra con los artefactos.
-    """
-    if limit < 1:
-        raise ValueError("límite inválido")
-    parts = []
-    while text:
-        if len(text) <= limit:
-            parts.append(text)
-            break
-        end = 0
-        for separator in ("\n\n", "\n", " "):
-            found = text.rfind(separator, 0, limit)
-            if found >= limit // 3:
-                end = found + len(separator)
-                break
-        end = end or limit
-        parts.append(text[:end])
-        text = text[end:]
-    return tuple(parts)
+    return split(text, limit)
+
+
+def attach_document(result, document):
+    from dataclasses import asdict, replace
+
+    return replace(result, text=document.text(), data={**result.data, "document": asdict(document)})
