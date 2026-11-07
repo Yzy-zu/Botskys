@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: V4 names, aliases and scoped choices never play ambiguous or missing clips
+ok 1 - V4 names, aliases and scoped choices never play ambiguous or missing clips
+  ---
+  duration_ms: 16.475785
+  ...
+# Subtest: V4 next/replay, real relative volume, idempotency and call changes preserve intent
+ok 2 - V4 next/replay, real relative volume, idempotency and call changes preserve intent
+  ---
+  duration_ms: 2.564336
+  ...
+# Subtest: V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+ok 3 - V5 volume changed after a clip ends is rounded, saved for the next clip and applied on replay
+  ---
+  duration_ms: 1.061087
+  ...
+# Subtest: N12b a later stop invalidates queued play commands before they reach the manager
+ok 4 - N12b a later stop invalidates queued play commands before they reach the manager
+  ---
+  duration_ms: 0.438043
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118.641715

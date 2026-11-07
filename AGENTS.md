@@ -239,3 +239,13 @@ El propietario ordenó expresamente reiniciar y desplegar. Autoriza parada/arran
 del runtime productivo propio, respaldo consistente, salud/estado y comprobación
 de webhook/puente, preservando datos y servicios ajenos. No activa campañas,
 mensajes, llamadas, NLP o GitHub. Cuota5% sigue vigente.
+
+
+## 07/11 · Cobertura complementaria de la última campaña
+
+El propietario encargó el punto2 pendiente: cubrir45rutas y56campos no observados
+en la campaña AGY cerrada del07/11. Autoriza pruebas locales de dominio/integración
+con SQLite/fixtures propios, motores y dobles; suplemento nuevo, sin reabrir AGY.
+La observación de una guardia o ACK no acredita efecto ni recepción humana.
+No cambia producción, participantes, Minecraft, proveedores reales, llamadas,
+navegador, servicios, perfiles, NLP o GitHub. Mantener históricos y cuota5%.

@@ -1,0 +1,110 @@
+{
+  "title": "Cobertura suplementaria AGY 2026-11-07: rutas sociales",
+  "baseline": "docs/evidencia/AGY-20261107/results/route-coverage.json",
+  "baseline_status": "Las seis rutas/campos figuran NOT_TESTED en la campaña AGY; este suplemento referencia pruebas de dominio/integración existentes, no altera el histórico.",
+  "scope": "Solo /pack estado purchase_id, /pack confirmar purchase_id, /bj iniciar bet, /ruleta jugar room_id, /ruleta estado room_id y /recado preparar source.",
+  "new_tests": [],
+  "routes": [
+    {
+      "route": "/pack estado",
+      "operation": "manage_pack.status",
+      "fields": [
+        "purchase_id"
+      ],
+      "test_ids": [
+        "test_packs.py.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope"
+      ],
+      "oracle": "Se crea oferta sintética y se consulta con su purchase_id; status ok, saldo/reserva sin cambios, cero entregas y purchase_id ajeno devuelve pack_not_found.",
+      "level": "dominio + SQLite real temporal; transporte recolector local",
+      "limits": [
+        "No acredita compra confirmada ni entrega humana.",
+        "No accede a álbumes/productores remotos."
+      ]
+    },
+    {
+      "route": "/pack confirmar",
+      "operation": "manage_pack.confirm",
+      "fields": [
+        "purchase_id"
+      ],
+      "test_ids": [
+        "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase"
+      ],
+      "oracle": "Un purchase_id de oferta se rechaza antes de publicación y para actor ajeno; tras publicar vista previa se confirma, completa entrega sintética y debita una vez. Repetir confirmación no genera entregas duplicadas.",
+      "level": "integración local con SQLite temporal, biblioteca/activos sintéticos y transporte recolector local",
+      "limits": [
+        "No compra con valor real ni acceso a proveedor externo.",
+        "La aceptación del transporte recolector no demuestra recepción/percepción humana."
+      ]
+    },
+    {
+      "route": "/bj iniciar",
+      "operation": "manage_blackjack.start",
+      "fields": [
+        "bet"
+      ],
+      "test_ids": [
+        "test_games.py.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+        "test_games.py.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published"
+      ],
+      "oracle": "Apuesta explícita 50 aceptada contra baraja sintética fijada; los resultados y saldo/reserva reflejan liquidación/reinicio/expiración sin volver a barajar.",
+      "level": "dominio + SQLite real temporal + baraja determinista; publicación recolectada localmente",
+      "limits": [
+        "No apuesta dinero real ni valida percepción de tablero por participantes.",
+        "No cubre estrategia aleatoria de producción."
+      ]
+    },
+    {
+      "route": "/ruleta jugar",
+      "operation": "manage_roulette.play",
+      "fields": [
+        "room_id"
+      ],
+      "test_ids": [
+        "test_roulette.py.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+        "test_roulette.py.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+        "test_roulette.py.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain"
+      ],
+      "oracle": "Se juega un room_id de lobby sintético, con dobles del grupo; payout/retorno se liquida una vez. Incertidumbre o cambio de rol conserva/reintegra saldo según contrato y no repite el efecto al reiniciar.",
+      "level": "integración local con SQLite temporal, grupos y efectos simulados",
+      "limits": [
+        "No mutación de participantes/grupo real ni servidor.",
+        "No acredita una partida aceptada por WhatsApp ni recepción humana."
+      ]
+    },
+    {
+      "route": "/ruleta estado",
+      "operation": "manage_roulette.status",
+      "fields": [
+        "room_id"
+      ],
+      "test_ids": [
+        "test_roulette.py.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick"
+      ],
+      "oracle": "Consulta estado con room_id del lobby del propietario; respuesta ok y cancelación/refund posterior no invoca kick ni otro método remoto del doble.",
+      "level": "dominio + SQLite real temporal + doble de grupo",
+      "limits": [
+        "Estado local de lobby, no confirma presencia o percepción de usuarios reales."
+      ]
+    },
+    {
+      "route": "/recado preparar",
+      "operation": "manage_messages.prepare",
+      "fields": [
+        "source"
+      ],
+      "test_ids": [
+        "test_integrations.py.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+        "test_integrations.py.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel"
+      ],
+      "oracle": "El modo texto prepara literal y produce draft_id; el modo cita adjunta fuente local sintética propia, preserva el texto fuente y prepara vista previa. Cita de otro actor falla.",
+      "level": "integración local con SQLite temporal, archivo sintético, Messenger MockTransport/recogida local",
+      "limits": [
+        "No envía recado a contacto real ni demuestra recepción humana.",
+        "No valida directorio remoto de contactos."
+      ]
+    }
+  ],
+  "execution": "Este suplemento referencia pruebas existentes; no se ejecutó una suite parcial para evitar duplicar la medición fullsuite del agente principal.",
+  "classification": "Cobertura local suplementaria; la campaña AGY cerrada y su clasificación histórica permanecen intactas."
+}

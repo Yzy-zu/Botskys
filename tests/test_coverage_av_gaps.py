@@ -202,3 +202,69 @@ class CoverageAvGapsTest(IsolatedAsyncioTestCase):
         stranger, _ = self.receive("/clip poner " + clip["id"], actor=FRIEND, chat=FRIEND)
         self.assertEqual(stranger.result.code, "call_not_configured")
         self.assertEqual((await self.ipc({"action": "stats"}))["dials"], 1)
+
+    async def test_clip_controls_and_avatar_arguments_reach_fixture_effects(self):
+        await self.command("/llamar --video")
+        await self.ipc({"action": "connect"})
+        seeded = await self.ipc({"action": "seedClip"})
+        await self.command("/clip poner " + seeded["id"])
+
+        # Check each control through the service response, which reflects the
+        # fixture driver's mutated clip state/volume.
+        for command, state, volume in (
+            ("/clip pausa", "paused", None),
+            ("/clip seguir", "playing", None),
+            ("/clip volumen 0.7", "playing", 0.7),
+            ("/clip ajustar bajar 0.1", "playing", 0.6),
+            ("/clip repetir", "playing", None),
+            ("/clip siguiente", "playing", None),
+            ("/clip parar", "stopped", None),
+        ):
+            result, _, _ = await self.command(command)
+            if command == "/clip siguiente":
+                self.assertEqual(result.code, "av_control_unconfirmed")
+                continue
+            self.assertEqual(result.code, "av_control_applied", command)
+            self.assertEqual(result.data["clip"]["state"], state, command)
+            if volume is not None:
+                self.assertEqual(result.data["clip"]["volume"], volume, command)
+
+        await self.ipc({"action": "confirmAvatar"})
+        commands = (
+            ("/avatar fondo neon", {"action": "background", "name": "neon"}),
+            (
+                "/avatar expresion happy --duracion 4",
+                {"action": "expression", "name": "happy", "duration": 4.0},
+            ),
+            (
+                "/avatar gesto wave --duracion 2",
+                {"action": "gesture", "name": "wave", "duration": 2.0},
+            ),
+            (
+                "/avatar rubor suave --duracion 5",
+                {"action": "blush", "name": "soft", "duration": 5.0},
+            ),
+        )
+        requests = []
+        original = self.backend.command
+
+        async def capture(action, payload=None, *, key=None):
+            if action == "avatar.control":
+                requests.append(dict(payload))
+            return await original(action, payload, key=key)
+
+        self.backend.command = capture
+        for command, expected in commands:
+            result, _, _ = await self.command(command)
+            self.assertEqual(result.code, "av_control_applied", command)
+            self.assertEqual(requests[-1]["action"], expected["action"])
+            self.assertEqual(requests[-1]["name"], expected["name"])
+            self.assertEqual(requests[-1].get("duration"), expected.get("duration"), command)
+            if expected["action"] == "background":
+                self.assertEqual(result.data["avatar"]["background"], expected["name"])
+            else:
+                self.assertEqual(
+                    result.data["avatar"]["applied" + expected["action"].title()]["applied"],
+                    True,
+                    command,
+                )

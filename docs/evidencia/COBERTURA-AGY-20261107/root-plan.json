@@ -1,0 +1,101 @@
+[
+  {
+    "route": "/estado",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign"
+    ],
+    "oracle": "Consulta recibo propio pendiente; oculta el ajeno.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/cancelar",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+      "test_media.MediaTest.test_cancelled_motor_and_late_output_do_not_publish_or_deliver"
+    ],
+    "oracle": "Cancela recibo exacto; salida tardía no publica ni produce artefactos.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/confirmar",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor"
+    ],
+    "oracle": "Solo vista propia entregada se consume una vez; mismo motor y artefacto.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/pdf reintentar",
+    "fields": [
+      "id",
+      "confirm_uncertain"
+    ],
+    "test_ids": [
+      "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview"
+    ],
+    "oracle": "Autoriza reentrega desde confirmación explícita, mismo artefacto y un solo job de motor.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/dl buscar",
+    "fields": [
+      "subtitle_language"
+    ],
+    "test_ids": [
+      "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source"
+    ],
+    "oracle": "Idioma es persistido y búsqueda produce vista con doble; no prueba obtención remota de subtítulos.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/dl anterior",
+    "fields": [
+      "subtitle_language"
+    ],
+    "test_ids": [
+      "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source"
+    ],
+    "oracle": "Idioma es preservado hasta motor y fuente local sin pista devuelve subtitles_unavailable; no nueva descarga.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/voz cita",
+    "fields": [
+      "voice",
+      "effect"
+    ],
+    "test_ids": [
+      "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied"
+    ],
+    "oracle": "Texto de cita propia exacto y voz argentina real en CLI doble, efecto radio y Ogg/Opus real.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  },
+  {
+    "route": "/voz ultima",
+    "fields": [
+      "voice"
+    ],
+    "test_ids": [
+      "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied"
+    ],
+    "oracle": "Texto de respuesta propia aceptada; voz peruana recibida en CLI doble y artefacto audio real.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance."
+  }
+]

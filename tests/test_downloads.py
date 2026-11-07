@@ -400,7 +400,19 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         no_subs = self.receive("/dl anterior srt --idioma es")
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(no_subs.id).code, "subtitles_unavailable")
+        previous_options = json.loads(
+            self.rows("SELECT arguments_json FROM jobs WHERE id=?", (no_subs.id,))[0][
+                "arguments_json"
+            ]
+        )
+        self.assertEqual(previous_options["subtitle_language"], "es")
         search = self.receive("/dl buscar srt --idioma es consulta sintética")
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(search.id).code, "download_choices")
+        search_options = json.loads(
+            self.rows("SELECT arguments_json FROM jobs WHERE id=?", (search.id,))[0][
+                "arguments_json"
+            ]
+        )
+        self.assertEqual(search_options["subtitle_language"], "es")
         self.assertEqual(self.backend.downloads, [W3, W3, W3])

@@ -1,0 +1,361 @@
+{
+  "baseline": "docs/evidencia/AGY-20261107/results/route-coverage.json",
+  "scope": [
+    "manage_admin",
+    "manage_minecraft"
+  ],
+  "gaps": [
+    {
+      "gap_route": "/mc iniciar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_minecraft.py::test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "tests/test_minecraft_health.py::test_start_requires_game_readiness_and_never_repeats_failed_start"
+      ],
+      "oracle": "one start action, health gate; no implicit repeat",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc parar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_minecraft.py::test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "tests/test_minecraft.py::test_failed_or_cancelled_control_keeps_uncertainty_blocking"
+      ],
+      "oracle": "stop action serial after uncertainty; no repeated call",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc reiniciar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_minecraft.py::test_uncertain_restart_allows_serial_stop_and_recovery_then_start"
+      ],
+      "oracle": "uncertain restart retained; later stop/recovery/start serialized",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc backup",
+      "fields": [],
+      "test_ids": [
+        "tests/test_coverage_mc_07.py::MinecraftCoverage07Test::test_backup_effect_reaches_only_synthetic_runner"
+      ],
+      "oracle": "successful receipt plus exactly one runner-double invocation with action=backup, configured fixture container, and empty params",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc recuperar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_minecraft.py::test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "tests/test_minecraft.py::test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+        "tests/test_minecraft_health.py::test_recover_timeout_is_uncertain_and_not_repeated"
+      ],
+      "oracle": "explicit recovery only after offline verification; uncertainty not replayed",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc mod activar",
+      "fields": [
+        "name"
+      ],
+      "test_ids": [
+        "tests/test_minecraft.py::test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+        "tests/test_minecraft.py::test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+        "tests/test_minecraft_recovery.py::RecoveryTest::test_restore_exact_bytes_and_refuse_concurrent_edits"
+      ],
+      "oracle": "literal name in JSON; duplicate once; synthetic worker changes own fixture bytes; reject dependencies",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc mod desactivar",
+      "fields": [
+        "name"
+      ],
+      "test_ids": [
+        "tests/test_minecraft.py::test_read_routes_and_disable_mod_retain_closed_remote_contract"
+      ],
+      "oracle": "disable_mod action with literal name in params",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/mc consola",
+      "fields": [
+        "command"
+      ],
+      "test_ids": [
+        "tests/test_minecraft.py::test_permissions_console_allowlist_and_queries_before_client",
+        "tests/test_minecraft.py::test_mod_literal_json_console_is_not_shell_and_duplicate_once"
+      ],
+      "oracle": "allowlisted command transmitted in JSON; shell separators and destructive tokens rejected before runner",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin advertir",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_owner_denied_before_client_and_warnings_never_route_to_balance"
+      ],
+      "oracle": "warning persisted; query exact ID then revoke; no wallet/group effect",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin quitar-aviso",
+      "fields": [
+        "target",
+        "warning_id"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_owner_denied_before_client_and_warnings_never_route_to_balance"
+      ],
+      "oracle": "revoked warning state by target and warning_id",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin expulsar",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_coverage_admin_gaps.py::AdminCoverageGapsTest::test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+        "tests/test_admin.py::test_protected_targets_and_nuclear_disabled_by_default"
+      ],
+      "oracle": "one verified alias removal on GroupFixture; protected target causes no call",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin ban",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+        "tests/test_admin.py::test_protected_targets_and_nuclear_disabled_by_default"
+      ],
+      "oracle": "ban persisted before client; uncertain blocks; protected admin target unchanged",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin unban",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias"
+      ],
+      "oracle": "state revoked after acknowledged unban; one fixture call",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin promover",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "verified alias passed to role change fixture; completed result",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin degradar",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "verified alias passed to role change fixture; protected target no effect",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin silenciar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "setting double receives announcement=true; owner guard",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin desilenciar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "setting double receives announcement=false; owner guard",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin cerrar",
+      "fields": [],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "setting double receives locked=true; owner guard",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin abrir",
+      "fields": [],
+      "test_ids": [
+        "tests/test_admin.py::test_moderation_setting_routes_preserve_target_and_owner_guards"
+      ],
+      "oracle": "setting double receives locked=false; owner guard",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin nuclear-confirmar",
+      "fields": [
+        "draft_id"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_nuclear_publication_role_snapshot_and_single_charge",
+        "tests/test_admin.py::test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+        "tests/test_admin.py::test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets"
+      ],
+      "oracle": "draft must have delivered preview; role snapshot checked; one charge/target action or fail-closed",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin nuclear-cancelar",
+      "fields": [
+        "draft_id"
+      ],
+      "test_ids": [
+        "tests/test_admin.py::test_nuclear_draft_cancel_has_no_cost_or_target_effect"
+      ],
+      "oracle": "draft cancelled; no charge and no target call",
+      "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+      "limits": [
+        "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+        "Fixture/double result proves only the asserted local contract."
+      ]
+    },
+    {
+      "gap_route": "/admin avisos",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance"
+      ],
+      "oracle": "warning query is scoped to resolved target; returned warning_id equals warning inserted for that target; warnings do not route to wallet; non-owner denied before group snapshot",
+      "level": "LOCAL_SQLITE_AND_GROUP_FIXTURE_EFFECT",
+      "limits": [
+        "SQLite temporary database and GroupFixture only; no real participant actions or human receipt."
+      ]
+    },
+    {
+      "gap_route": "/admin xp-dar",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+        "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope"
+      ],
+      "oracle": "target alias resolves to alice wallet; exact XP delta appears only on verified target account; account/target boundaries asserted in local SQLite",
+      "level": "LOCAL_SQLITE_EFFECT",
+      "limits": [
+        "Synthetic users and SQLite only; no external account or provider effects."
+      ]
+    },
+    {
+      "gap_route": "/admin xp-quitar",
+      "fields": [
+        "target"
+      ],
+      "test_ids": [
+        "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta"
+      ],
+      "oracle": "--objetivo alice resolves to verified wallet and balance decreases by exact requested delta; no group call",
+      "level": "LOCAL_SQLITE_EFFECT",
+      "limits": [
+        "Synthetic users and SQLite only; no external account or provider effects."
+      ]
+    }
+  ]
+}

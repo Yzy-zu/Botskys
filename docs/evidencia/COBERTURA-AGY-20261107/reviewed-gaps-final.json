@@ -1,0 +1,3150 @@
+[
+  {
+    "route": "/estado",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign"
+    ],
+    "oracle": "Consulta recibo propio pendiente; oculta el ajeno.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+        "route": "/estado",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "receipt_state"
+      },
+      {
+        "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+        "route": "/estado",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "receipt_not_found"
+      }
+    ],
+    "field_names_verified": [
+      "id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/cancelar",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+      "test_media.MediaTest.test_cancelled_motor_and_late_output_do_not_publish_or_deliver"
+    ],
+    "oracle": "Cancela recibo exacto; salida tardía no publica ni produce artefactos.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+        "route": "/cancelar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "receipt_not_found"
+      },
+      {
+        "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+        "route": "/cancelar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "cancelled",
+        "code": "request_cancelled"
+      },
+      {
+        "test": "test_core.CoreTest.test_cancel_exact_pending_own_request_and_status_hides_foreign",
+        "route": "/cancelar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "already_finished"
+      },
+      {
+        "test": "test_media.MediaTest.test_cancelled_motor_and_late_output_do_not_publish_or_deliver",
+        "route": "/cancelar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "cancelled",
+        "code": "request_cancelled"
+      }
+    ],
+    "field_names_verified": [
+      "id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/confirmar",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor"
+    ],
+    "oracle": "Solo vista propia entregada se consume una vez; mismo motor y artefacto.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+        "route": "/confirmar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "confirmation_unavailable"
+      },
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+        "route": "/confirmar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "delivery_retry_authorized"
+      }
+    ],
+    "field_names_verified": [
+      "id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/dl buscar",
+    "fields": [
+      "subtitle_language"
+    ],
+    "test_ids": [
+      "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source"
+    ],
+    "oracle": "Idioma es persistido y búsqueda produce vista con doble; no prueba obtención remota de subtítulos.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl buscar",
+        "explicit_fields": [
+          "container",
+          "query",
+          "subtitle_language"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl buscar",
+        "explicit_fields": [
+          "container",
+          "query",
+          "subtitle_language"
+        ],
+        "phase": "finished_worker",
+        "status": "needs_input",
+        "code": "download_choices"
+      }
+    ],
+    "field_names_verified": [
+      "container",
+      "query",
+      "subtitle_language"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/dl anterior",
+    "fields": [
+      "subtitle_language"
+    ],
+    "test_ids": [
+      "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source"
+    ],
+    "oracle": "Idioma es preservado hasta motor y fuente local sin pista devuelve subtitles_unavailable; no nueva descarga.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl anterior",
+        "explicit_fields": [
+          "container",
+          "end_seconds",
+          "start_seconds"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl anterior",
+        "explicit_fields": [
+          "container",
+          "end_seconds",
+          "start_seconds"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "media_edited"
+      },
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl anterior",
+        "explicit_fields": [
+          "container",
+          "subtitle_language"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+        "route": "/dl anterior",
+        "explicit_fields": [
+          "container",
+          "subtitle_language"
+        ],
+        "phase": "finished_worker",
+        "status": "failed",
+        "code": "subtitles_unavailable"
+      }
+    ],
+    "field_names_verified": [
+      "container",
+      "end_seconds",
+      "start_seconds",
+      "subtitle_language"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/voz cita",
+    "fields": [
+      "voice",
+      "effect"
+    ],
+    "test_ids": [
+      "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied"
+    ],
+    "oracle": "Texto de cita propia exacto y voz argentina real en CLI doble, efecto radio y Ogg/Opus real.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+        "route": "/voz cita",
+        "explicit_fields": [
+          "effect",
+          "voice"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+        "route": "/voz cita",
+        "explicit_fields": [
+          "effect",
+          "voice"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "voice_ready"
+      },
+      {
+        "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+        "route": "/voz cita",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "voice_source_unavailable"
+      }
+    ],
+    "field_names_verified": [
+      "effect",
+      "voice"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/voz ultima",
+    "fields": [
+      "voice"
+    ],
+    "test_ids": [
+      "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied"
+    ],
+    "oracle": "Texto de respuesta propia aceptada; voz peruana recibida en CLI doble y artefacto audio real.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+        "route": "/voz ultima",
+        "explicit_fields": [
+          "voice"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+        "route": "/voz ultima",
+        "explicit_fields": [
+          "voice"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "voice_ready"
+      }
+    ],
+    "field_names_verified": [
+      "voice"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/llamar",
+    "fields": [
+      "max_seconds"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate"
+    ],
+    "oracle": "POST /v1/calls lleva maxSeconds=125 junto a video/tema y una sola petición tras duplicado; fixture reporta un dial.",
+    "level": "Node HTTP fixture + SQLite/jobs local; efecto de backend observado.",
+    "limits": "No hay navegador, llamada, proveedor externo ni aceptación humana.",
+    "route": "/llamar",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+        "route": "/llamar",
+        "explicit_fields": [
+          "max_seconds",
+          "topic",
+          "video"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_llamar_payload_carries_explicit_fields_once_after_duplicate",
+        "route": "/llamar",
+        "explicit_fields": [
+          "max_seconds",
+          "topic",
+          "video"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "call_requested"
+      }
+    ],
+    "field_names_verified": [
+      "max_seconds",
+      "topic",
+      "video"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/pdf reintentar",
+    "fields": [
+      "id",
+      "confirm_uncertain"
+    ],
+    "test_ids": [
+      "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview"
+    ],
+    "oracle": "Autoriza reentrega desde confirmación explícita, mismo artefacto y un solo job de motor.",
+    "level": "local SQLite/motors/doubles",
+    "limits": "No proveedor remoto ni recepción humana; ver aserciones de test para alcance.",
+    "plan_source": "root-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+        "route": "/pdf reintentar",
+        "explicit_fields": [
+          "confirm_uncertain",
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "retry_preview_required"
+      },
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+        "route": "/pdf reintentar",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "delivery_retry_preview"
+      },
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+        "route": "/pdf reintentar",
+        "explicit_fields": [
+          "confirm_uncertain",
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "delivery_retry_authorized"
+      },
+      {
+        "test": "test_media.MediaTest.test_uncertain_pdf_retry_flag_consumes_only_delivered_preview",
+        "route": "/pdf reintentar",
+        "explicit_fields": [
+          "confirm_uncertain",
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "no_retryable_delivery"
+      }
+    ],
+    "field_names_verified": [
+      "confirm_uncertain",
+      "id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/recado preparar",
+    "operation": "manage_messages.prepare",
+    "fields": [
+      "source"
+    ],
+    "test_ids": [
+      "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+      "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel"
+    ],
+    "oracle": "El modo texto prepara literal y produce draft_id; el modo cita adjunta fuente local sintética propia, preserva el texto fuente y prepara vista previa. Cita de otro actor falla.",
+    "level": "integración local con SQLite temporal, archivo sintético, Messenger MockTransport/recogida local",
+    "limits": [
+      "No envía recado a contacto real ni demuestra recepción humana.",
+      "No valida directorio remoto de contactos."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "recipients",
+          "text"
+        ],
+        "phase": "committed_receipt",
+        "status": "failed",
+        "code": "message_private_required"
+      },
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "recipients",
+          "text"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "message_recipient_unknown"
+      },
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_preview_owner_private_directory_literal_and_duplicate",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "recipients",
+          "text"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "message_preview"
+      },
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "attach",
+          "recipients",
+          "source"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "message_preview"
+      },
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "attach",
+          "recipients",
+          "source"
+        ],
+        "phase": "committed_receipt",
+        "status": "failed",
+        "code": "quoted_attachment_unavailable"
+      },
+      {
+        "test": "test_integrations.IntegrationsTest.test_message_quote_attachment_and_ownership_and_mid_send_cancel",
+        "route": "/recado preparar",
+        "explicit_fields": [
+          "recipients",
+          "text"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "message_preview"
+      }
+    ],
+    "field_names_verified": [
+      "attach",
+      "recipients",
+      "source",
+      "text"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/pack confirmar",
+    "operation": "manage_pack.confirm",
+    "fields": [
+      "purchase_id"
+    ],
+    "test_ids": [
+      "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase"
+    ],
+    "oracle": "Un purchase_id de oferta se rechaza antes de publicación y para actor ajeno; tras publicar vista previa se confirma, completa entrega sintética y debita una vez. Repetir confirmación no genera entregas duplicadas.",
+    "level": "integración local con SQLite temporal, biblioteca/activos sintéticos y transporte recolector local",
+    "limits": [
+      "No compra con valor real ni acceso a proveedor externo.",
+      "La aceptación del transporte recolector no demuestra recepción/percepción humana."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+        "route": "/pack confirmar",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "pack_preview_required"
+      },
+      {
+        "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+        "route": "/pack confirmar",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "pack_not_found"
+      },
+      {
+        "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+        "route": "/pack confirmar",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+        "route": "/pack confirmar",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "pack_status"
+      },
+      {
+        "test": "test_packs.PacksTest.test_offer_delivery_scope_charge_view_once_and_no_duplicate_purchase",
+        "route": "/pack confirmar",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "pack_status"
+      }
+    ],
+    "field_names_verified": [
+      "purchase_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/pack estado",
+    "operation": "manage_pack.status",
+    "fields": [
+      "purchase_id"
+    ],
+    "test_ids": [
+      "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope"
+    ],
+    "oracle": "Se crea oferta sintética y se consulta con su purchase_id; status ok, saldo/reserva sin cambios, cero entregas y purchase_id ajeno devuelve pack_not_found.",
+    "level": "dominio + SQLite real temporal; transporte recolector local",
+    "limits": [
+      "No acredita compra confirmada ni entrega humana.",
+      "No accede a álbumes/productores remotos."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+        "route": "/pack estado",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "pack_status"
+      },
+      {
+        "test": "test_packs.PacksTest.test_purchase_status_does_not_charge_or_deliver_and_rejects_foreign_scope",
+        "route": "/pack estado",
+        "explicit_fields": [
+          "purchase_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "empty",
+        "code": "pack_not_found"
+      }
+    ],
+    "field_names_verified": [
+      "purchase_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc iniciar",
+    "fields": [],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+      "test_minecraft_health.HealthTest.test_start_requires_game_readiness_and_never_repeats_failed_start"
+    ],
+    "oracle": "one start action, health gate; no implicit repeat",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc iniciar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc iniciar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc iniciar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc parar",
+    "fields": [],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+      "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking"
+    ],
+    "oracle": "stop action serial after uncertainty; no repeated call",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc parar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+        "route": "/mc parar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+        "route": "/mc parar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "needs_input",
+        "code": "minecraft_change_rejected"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc parar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc parar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "minecraft_uncertain"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc reiniciar",
+    "fields": [],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start"
+    ],
+    "oracle": "uncertain restart retained; later stop/recovery/start serialized",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc reiniciar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc reiniciar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc reiniciar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "minecraft_uncertain"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc backup",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_mc_07.MinecraftCoverage07Test.test_backup_effect_reaches_only_synthetic_runner"
+    ],
+    "oracle": "successful receipt plus exactly one runner-double invocation with action=backup, configured fixture container, and empty params",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc backup",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_coverage_mc_07.MinecraftCoverage07Test.test_backup_effect_reaches_only_synthetic_runner",
+        "route": "/mc backup",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_mc_07.MinecraftCoverage07Test.test_backup_effect_reaches_only_synthetic_runner",
+        "route": "/mc backup",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc recuperar",
+    "fields": [],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+      "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+      "test_minecraft_health.HealthTest.test_recover_timeout_is_uncertain_and_not_repeated"
+    ],
+    "oracle": "explicit recovery only after offline verification; uncertainty not replayed",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc recuperar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+        "route": "/mc recuperar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_failed_or_cancelled_control_keeps_uncertainty_blocking",
+        "route": "/mc recuperar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc recuperar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+        "route": "/mc recuperar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc mod activar",
+    "fields": [
+      "name"
+    ],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+      "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+      "test_minecraft_recovery.RecoveryTest.test_restore_exact_bytes_and_refuse_concurrent_edits"
+    ],
+    "oracle": "literal name in JSON; duplicate once; synthetic worker changes own fixture bytes; reject dependencies",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc mod activar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+        "route": "/mc mod activar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+        "route": "/mc mod activar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+        "route": "/mc mod activar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+        "route": "/mc mod activar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "needs_input",
+        "code": "minecraft_change_rejected"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+        "route": "/mc mod activar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      }
+    ],
+    "field_names_verified": [
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc mod desactivar",
+    "fields": [
+      "name"
+    ],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract"
+    ],
+    "oracle": "disable_mod action with literal name in params",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc mod desactivar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+        "route": "/mc mod desactivar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+        "route": "/mc mod desactivar",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      }
+    ],
+    "field_names_verified": [
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/mc consola",
+    "fields": [
+      "command"
+    ],
+    "test_ids": [
+      "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+      "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once"
+    ],
+    "oracle": "allowlisted command transmitted in JSON; shell separators and destructive tokens rejected before runner",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/mc consola",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+        "route": "/mc consola",
+        "explicit_fields": [
+          "command"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+        "route": "/mc consola",
+        "explicit_fields": [
+          "command"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "minecraft_completed"
+      },
+      {
+        "test": "test_minecraft.MinecraftTest.test_permissions_console_allowlist_and_queries_before_client",
+        "route": "/mc consola",
+        "explicit_fields": [
+          "command"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "minecraft_local_validation"
+      }
+    ],
+    "field_names_verified": [
+      "command"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin advertir",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance"
+    ],
+    "oracle": "warning persisted; query exact ID then revoke; no wallet/group effect",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin advertir",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin advertir",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin advertir",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_warning_added"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin quitar-aviso",
+    "fields": [
+      "target",
+      "warning_id"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance"
+    ],
+    "oracle": "revoked warning state by target and warning_id",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin quitar-aviso",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin quitar-aviso",
+        "explicit_fields": [
+          "target",
+          "warning_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin quitar-aviso",
+        "explicit_fields": [
+          "target",
+          "warning_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_warning_revoked"
+      }
+    ],
+    "field_names_verified": [
+      "target",
+      "warning_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin avisos",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance"
+    ],
+    "oracle": "warning query is scoped to resolved target; returned warning_id equals warning inserted for that target; warnings do not route to wallet; non-owner denied before group snapshot",
+    "level": "LOCAL_SQLITE_AND_GROUP_FIXTURE_EFFECT",
+    "limits": [
+      "SQLite temporary database and GroupFixture only; no real participant actions or human receipt."
+    ],
+    "route": "/admin avisos",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin avisos",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin avisos",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_warnings"
+      },
+      {
+        "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+        "route": "/admin avisos",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "failed",
+        "code": "admin_group_required"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin expulsar",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+      "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default"
+    ],
+    "oracle": "one verified alias removal on GroupFixture; protected target causes no call",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin expulsar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+        "route": "/admin expulsar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+        "route": "/admin expulsar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "failed",
+        "code": "admin_failed"
+      },
+      {
+        "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+        "route": "/admin expulsar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_admin_gaps.AdminCoverageGapsTest.test_expel_targets_verified_member_and_duplicate_receipt_does_not_repeat_effect",
+        "route": "/admin expulsar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin ban",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+      "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default"
+    ],
+    "oracle": "ban persisted before client; uncertain blocks; protected admin target unchanged",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin ban",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+        "route": "/admin ban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+        "route": "/admin ban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "admin_uncertain"
+      },
+      {
+        "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+        "route": "/admin ban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+        "route": "/admin ban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "failed",
+        "code": "admin_failed"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin unban",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias"
+    ],
+    "oracle": "state revoked after acknowledged unban; one fixture call",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin unban",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+        "route": "/admin unban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+        "route": "/admin unban",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_unban"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin promover",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "verified alias passed to role change fixture; completed result",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin promover",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin promover",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin promover",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin degradar",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "verified alias passed to role change fixture; protected target no effect",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin degradar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin degradar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin degradar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin degradar",
+        "explicit_fields": [
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "failed",
+        "code": "admin_failed"
+      }
+    ],
+    "field_names_verified": [
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin silenciar",
+    "fields": [],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "setting double receives announcement=true; owner guard",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin silenciar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin silenciar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin silenciar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin desilenciar",
+    "fields": [],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "setting double receives announcement=false; owner guard",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin desilenciar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin desilenciar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin desilenciar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin cerrar",
+    "fields": [],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "setting double receives locked=true; owner guard",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin cerrar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin cerrar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin cerrar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin abrir",
+    "fields": [],
+    "test_ids": [
+      "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards"
+    ],
+    "oracle": "setting double receives locked=false; owner guard",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin abrir",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin abrir",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+        "route": "/admin abrir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_completed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin xp-dar",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+      "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope"
+    ],
+    "oracle": "target alias resolves to alice wallet; exact XP delta appears only on verified target account; account/target boundaries asserted in local SQLite",
+    "level": "LOCAL_SQLITE_EFFECT",
+    "limits": [
+      "Synthetic users and SQLite only; no external account or provider effects."
+    ],
+    "route": "/admin xp-dar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_xp_changed"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_xp_changed"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "account_id",
+          "amount"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_verified_account_and_target_limits_and_own_scope",
+        "route": "/admin xp-dar",
+        "explicit_fields": [
+          "account_id",
+          "amount"
+        ],
+        "phase": "finished_worker",
+        "status": "failed",
+        "code": "admin_failed"
+      }
+    ],
+    "field_names_verified": [
+      "account_id",
+      "amount",
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin xp-quitar",
+    "fields": [
+      "target"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta"
+    ],
+    "oracle": "--objetivo alice resolves to verified wallet and balance decreases by exact requested delta; no group call",
+    "level": "LOCAL_SQLITE_EFFECT",
+    "limits": [
+      "Synthetic users and SQLite only; no external account or provider effects."
+    ],
+    "route": "/admin xp-quitar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+        "route": "/admin xp-quitar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_xp_remove_by_verified_target_preserves_exact_delta",
+        "route": "/admin xp-quitar",
+        "explicit_fields": [
+          "amount",
+          "target"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "admin_xp_changed"
+      }
+    ],
+    "field_names_verified": [
+      "amount",
+      "target"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin nuclear-confirmar",
+    "fields": [
+      "draft_id"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+      "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+      "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets"
+    ],
+    "oracle": "draft must have delivered preview; role snapshot checked; one charge/target action or fail-closed",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin nuclear-confirmar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_changed_role_has_no_effect_or_charge_and_failure_refunds",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "nuclear_status"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "needs_input",
+        "code": "nuclear_preview_required"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "nuclear_status"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_publication_role_snapshot_and_single_charge",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "nuclear_status"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "nuclear_status"
+      },
+      {
+        "test": "test_admin.AdminTest.test_nuclear_uncertainty_conserves_cost_and_skips_remaining_targets",
+        "route": "/admin nuclear-confirmar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "uncertain",
+        "code": "nuclear_status"
+      }
+    ],
+    "field_names_verified": [
+      "draft_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gap_route": "/admin nuclear-cancelar",
+    "fields": [
+      "draft_id"
+    ],
+    "test_ids": [
+      "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect"
+    ],
+    "oracle": "draft cancelled; no charge and no target call",
+    "level": "LOCAL_SYNTHETIC_FIXTURE_EFFECT",
+    "limits": [
+      "No SSH, external network, production, real Minecraft, real group/participant action, or human receipt.",
+      "Fixture/double result proves only the asserted local contract."
+    ],
+    "route": "/admin nuclear-cancelar",
+    "plan_source": "admin-mc-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_admin.AdminTest.test_nuclear_draft_cancel_has_no_cost_or_target_effect",
+        "route": "/admin nuclear-cancelar",
+        "explicit_fields": [
+          "draft_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "nuclear_status"
+      }
+    ],
+    "field_names_verified": [
+      "draft_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/bj iniciar",
+    "operation": "manage_blackjack.start",
+    "fields": [
+      "bet"
+    ],
+    "test_ids": [
+      "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+      "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published"
+    ],
+    "oracle": "Apuesta explícita 50 aceptada contra baraja sintética fijada; los resultados y saldo/reserva reflejan liquidación/reinicio/expiración sin volver a barajar.",
+    "level": "dominio + SQLite real temporal + baraja determinista; publicación recolectada localmente",
+    "limits": [
+      "No apuesta dinero real ni valida percepción de tablero por participantes.",
+      "No cubre estrategia aleatoria de producción."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_games.GamesTest.test_blackjack_board_publication_turn_double_and_restart_saved_cards",
+        "route": "/bj iniciar",
+        "explicit_fields": [
+          "bet"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "blackjack_board"
+      },
+      {
+        "test": "test_games.GamesTest.test_blackjack_timeout_refunds_unpublished_and_settles_published",
+        "route": "/bj iniciar",
+        "explicit_fields": [
+          "bet"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "blackjack_board"
+      }
+    ],
+    "field_names_verified": [
+      "bet"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/ruleta jugar",
+    "operation": "manage_roulette.play",
+    "fields": [
+      "room_id"
+    ],
+    "test_ids": [
+      "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+      "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+      "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain"
+    ],
+    "oracle": "Se juega un room_id de lobby sintético, con dobles del grupo; payout/retorno se liquida una vez. Incertidumbre o cambio de rol conserva/reintegra saldo según contrato y no repite el efecto al reiniciar.",
+    "level": "integración local con SQLite temporal, grupos y efectos simulados",
+    "limits": [
+      "No mutación de participantes/grupo real ni servidor.",
+      "No acredita una partida aceptada por WhatsApp ni recepción humana."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "roulette_completed"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_role_change_before_dispatch_refunds_and_cancel_during_effect_is_uncertain",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "finished_worker",
+        "status": "cancelled",
+        "code": "roulette_failed"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "roulette_uncertain"
+      },
+      {
+        "test": "test_roulette.RouletteTest.test_uncertain_effect_retains_stakes_and_restart_does_not_repeat",
+        "route": "/ruleta jugar",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "finished_worker",
+        "status": "uncertain",
+        "code": "roulette_status"
+      }
+    ],
+    "field_names_verified": [
+      "room_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "route": "/ruleta estado",
+    "operation": "manage_roulette.status",
+    "fields": [
+      "room_id"
+    ],
+    "test_ids": [
+      "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick"
+    ],
+    "oracle": "Consulta estado con room_id del lobby del propietario; respuesta ok y cancelación/refund posterior no invoca kick ni otro método remoto del doble.",
+    "level": "dominio + SQLite real temporal + doble de grupo",
+    "limits": [
+      "Estado local de lobby, no confirma presencia o percepción de usuarios reales."
+    ],
+    "plan_source": "social-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_roulette.RouletteTest.test_owner_status_and_lobby_cancel_refund_each_contributor_without_kick",
+        "route": "/ruleta estado",
+        "explicit_fields": [
+          "room_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "roulette_board"
+      }
+    ],
+    "field_names_verified": [
+      "room_id"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip lista",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "La lista refleja el ID sembrado por el fixture y lo presenta como elemento del catálogo.",
+    "level": "Node HTTP fixture local.",
+    "limits": "Catálogo sintético; no certifica reproducción/render de frames.",
+    "route": "/clip lista",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip lista",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip lista",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip lista",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip lista",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip poner",
+    "fields": [
+      "clip_id",
+      "query"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "ID envía clip.play con callId/clipId exactos; nombre envía clip.command con query/scope y no clipId; fixture inicia clip.",
+    "level": "Node HTTP fixture local; payload y estado sintético.",
+    "limits": "No render de video ni percepción/recepción humana.",
+    "route": "/clip poner",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "query"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "query"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "clip_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "clip_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "clip_id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "clip_id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "query"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+        "route": "/clip poner",
+        "explicit_fields": [
+          "query"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "clip_id",
+      "query"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip pausa",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción pause se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip pausa",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip pausa",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip pausa",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip pausa",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip pausa",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip seguir",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción resume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip seguir",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip seguir",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip seguir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip seguir",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip seguir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip repetir",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción replay se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip repetir",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip repetir",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip repetir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip repetir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "empty",
+        "code": "call_ended"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip repetir",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip repetir",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip siguiente",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+      "calls/test/clip-commands.test.cjs: V4 next/replay, real relative volume, idempotency and call changes preserve intent"
+    ],
+    "oracle": "El fixture HTTP de chat solo acredita av_control_unconfirmed para siguiente; prueba Node del controlador nativo comprueba que next y replay seleccionan el ID b esperado.",
+    "level": "Chat: Node HTTP fixture local; siguiente queda sin confirmar. Controlador: prueba Node local con driver aislado verifica el ID reproducido.",
+    "limits": "La fixture de chat no modela lista de clips siguiente. No render de frames ni aceptación humana; prueba nativa no representa llamada productiva.",
+    "route": "/clip siguiente",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip siguiente",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip siguiente",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "needs_input",
+        "code": "av_control_unconfirmed"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip siguiente",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip siguiente",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "needs_input",
+        "code": "av_control_unconfirmed"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip parar",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción stop se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip parar",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip parar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip parar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip parar",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip parar",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip volumen",
+    "fields": [
+      "volume"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción volume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip volumen",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip volumen",
+        "explicit_fields": [
+          "volume"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip volumen",
+        "explicit_fields": [
+          "volume"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip volumen",
+        "explicit_fields": [
+          "volume"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip volumen",
+        "explicit_fields": [
+          "volume"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "volume"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/clip ajustar",
+    "fields": [
+      "adjustment",
+      "direction"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción volume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real.",
+    "route": "/clip ajustar",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip ajustar",
+        "explicit_fields": [
+          "adjustment",
+          "direction"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/clip ajustar",
+        "explicit_fields": [
+          "adjustment",
+          "direction"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip ajustar",
+        "explicit_fields": [
+          "adjustment",
+          "direction"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/clip ajustar",
+        "explicit_fields": [
+          "adjustment",
+          "direction"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "adjustment",
+      "direction"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/avatar fondo",
+    "fields": [
+      "name"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana.",
+    "route": "/avatar fondo",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar fondo",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar fondo",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar fondo",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar fondo",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/avatar expresion",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana.",
+    "route": "/avatar expresion",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar expresion",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar expresion",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "duration",
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/avatar gesto",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana.",
+    "route": "/avatar gesto",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar gesto",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar gesto",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar gesto",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar gesto",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "duration",
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/avatar rubor",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana.",
+    "route": "/avatar rubor",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar rubor",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+        "route": "/avatar rubor",
+        "explicit_fields": [
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar rubor",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+        "route": "/avatar rubor",
+        "explicit_fields": [
+          "duration",
+          "name"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "av_control_applied"
+      }
+    ],
+    "field_names_verified": [
+      "duration",
+      "name"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/llamada programar",
+    "fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+      "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy"
+    ],
+    "oracle": "Agenda guarda hora/zona y todos los campos de llamada en vivo o audio preparado; devuelve ID; dials=0.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana.",
+    "route": "/llamada programar",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "date",
+          "live_request",
+          "max_seconds",
+          "time"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "date",
+          "live_request",
+          "max_seconds",
+          "time"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_create"
+      },
+      {
+        "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "audio_id",
+          "date",
+          "end_after_audio",
+          "time",
+          "volume"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "audio_id",
+          "date",
+          "end_after_audio",
+          "time",
+          "volume"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_create"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "date",
+          "live_request",
+          "max_seconds",
+          "time",
+          "volume"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "date",
+          "live_request",
+          "max_seconds",
+          "time",
+          "volume"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_create"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "audio_id",
+          "date",
+          "end_after_audio",
+          "time",
+          "volume"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada programar",
+        "explicit_fields": [
+          "audio_id",
+          "date",
+          "end_after_audio",
+          "time",
+          "volume"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_create"
+      }
+    ],
+    "field_names_verified": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/llamada agenda",
+    "fields": [],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "Listado refleja solo las agendas sintéticas pendientes; IDs corresponden a creación/cancelación.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana.",
+    "route": "/llamada agenda",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada agenda",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada agenda",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_list"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada agenda",
+        "explicit_fields": [],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada agenda",
+        "explicit_fields": [],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_list"
+      }
+    ],
+    "field_names_verified": [],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/llamada reprogramar",
+    "fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "agenda.update recibe ID y dueAt convertido a America/Mexico_City; origen conserva actor/chat.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana.",
+    "route": "/llamada reprogramar",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada reprogramar",
+        "explicit_fields": [
+          "date",
+          "id",
+          "time"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada reprogramar",
+        "explicit_fields": [
+          "date",
+          "id",
+          "time"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_update"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada reprogramar",
+        "explicit_fields": [
+          "date",
+          "id",
+          "time"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada reprogramar",
+        "explicit_fields": [
+          "date",
+          "id",
+          "time"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_update"
+      }
+    ],
+    "field_names_verified": [
+      "date",
+      "id",
+      "time"
+    ],
+    "all_referenced_python_tests_pass": true
+  },
+  {
+    "gaproute": "/llamada cancelar-agenda",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "agenda.cancel recibe ID/origen exactos y el listado posterior ya no contiene el registro.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana.",
+    "route": "/llamada cancelar-agenda",
+    "plan_source": "av-plan.json",
+    "reviewed_observations": [
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada cancelar-agenda",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_calls.CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+        "route": "/llamada cancelar-agenda",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_cancel"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada cancelar-agenda",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "committed_receipt",
+        "status": "ok",
+        "code": "job_queued"
+      },
+      {
+        "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+        "route": "/llamada cancelar-agenda",
+        "explicit_fields": [
+          "id"
+        ],
+        "phase": "finished_worker",
+        "status": "ok",
+        "code": "agenda_cancel"
+      }
+    ],
+    "field_names_verified": [
+      "id"
+    ],
+    "all_referenced_python_tests_pass": true
+  }
+]

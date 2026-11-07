@@ -486,9 +486,14 @@ subprocess.run(['ffmpeg','-v','error','-nostdin','-f','lavfi','-i','sine=frequen
         self.app.tts, log = self.fake_edge()
         original = self.incoming("Texto propio literal.")
         self.app.receive(original)
-        read = self.receive("/voz cita", quoted_message_id=original.message_id)
+        read = self.receive(
+            "/voz cita --voz argentino --efecto radio", quoted_message_id=original.message_id
+        )
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(read.id).data["spoken_text"], "Texto propio literal.")
+        self.assertEqual(self.result(read.id).data["voice"], "argentino")
+        self.assertEqual(self.result(read.id).data["effect"], "radio")
+        self.assertEqual(json.loads(log.read_text().splitlines()[-1])["voice"], "es-AR-TomasNeural")
         foreign = self.incoming("Ajeno", actor="bob")
         self.app.receive(foreign)
         self.assertEqual(
@@ -496,9 +501,11 @@ subprocess.run(['ffmpeg','-v','error','-nostdin','-f','lavfi','-i','sine=frequen
             "voice_source_unavailable",
         )
         self.app.deliver(read.id, CollectingTransport())
-        last = self.receive("/voz ultima")
+        last = self.receive("/voz ultima --voz peruano")
         await self.app.jobs.run_pending()
         self.assertEqual(self.result(last.id).code, "voice_ready")
+        self.assertEqual(self.result(last.id).data["voice"], "peruano")
+        self.assertEqual(json.loads(log.read_text().splitlines()[-1])["voice"], "es-PE-AlexNeural")
         self.assertTrue(self.result(last.id).data["spoken_text"].startswith("Voz literal lista."))
 
     async def test_asr_real_audio_normalization_mock_http_and_summary_failure_preserve_transcript(

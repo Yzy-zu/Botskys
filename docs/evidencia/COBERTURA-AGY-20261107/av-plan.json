@@ -1,0 +1,236 @@
+[
+  {
+    "gaproute": "/llamar",
+    "fields": [
+      "max_seconds"
+    ],
+    "test_ids": [
+      "test_llamar_payload_carries_explicit_fields_once_after_duplicate"
+    ],
+    "oracle": "POST /v1/calls lleva maxSeconds=125 junto a video/tema y una sola petición tras duplicado; fixture reporta un dial.",
+    "level": "Node HTTP fixture + SQLite/jobs local; efecto de backend observado.",
+    "limits": "No hay navegador, llamada, proveedor externo ni aceptación humana."
+  },
+  {
+    "gaproute": "/clip lista",
+    "fields": [],
+    "test_ids": [
+      "test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "La lista refleja el ID sembrado por el fixture y lo presenta como elemento del catálogo.",
+    "level": "Node HTTP fixture local.",
+    "limits": "Catálogo sintético; no certifica reproducción/render de frames."
+  },
+  {
+    "gaproute": "/clip poner",
+    "fields": [
+      "clip_id",
+      "query"
+    ],
+    "test_ids": [
+      "test_clip_id_and_name_are_distinct_catalog_selection_payloads",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "ID envía clip.play con callId/clipId exactos; nombre envía clip.command con query/scope y no clipId; fixture inicia clip.",
+    "level": "Node HTTP fixture local; payload y estado sintético.",
+    "limits": "No render de video ni percepción/recepción humana."
+  },
+  {
+    "gaproute": "/clip pausa",
+    "fields": [],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción pause se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/clip seguir",
+    "fields": [],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción resume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/clip repetir",
+    "fields": [],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción replay se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/clip siguiente",
+    "fields": [],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only",
+      "calls/test/clip-commands.test.cjs: V4 next/replay, real relative volume, idempotency and call changes preserve intent"
+    ],
+    "oracle": "El fixture HTTP de chat solo acredita av_control_unconfirmed para siguiente; prueba Node del controlador nativo comprueba que next y replay seleccionan el ID b esperado.",
+    "level": "Chat: Node HTTP fixture local; siguiente queda sin confirmar. Controlador: prueba Node local con driver aislado verifica el ID reproducido.",
+    "limits": "La fixture de chat no modela lista de clips siguiente. No render de frames ni aceptación humana; prueba nativa no representa llamada productiva."
+  },
+  {
+    "gaproute": "/clip parar",
+    "fields": [],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción stop se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/clip volumen",
+    "fields": [
+      "volume"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción volume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/clip ajustar",
+    "fields": [
+      "adjustment",
+      "direction"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Acción volume se aplica al clip de la llamada actual; estado/volumen de respuesta del fixture coincide con el valor esperado.",
+    "level": "Node HTTP fixture local; efecto sintético reflejado en respuesta.",
+    "limits": "No hay render de frames; /clip siguiente solo acredita acuse no confirmado, no avance real."
+  },
+  {
+    "gaproute": "/avatar fondo",
+    "fields": [
+      "name"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana."
+  },
+  {
+    "gaproute": "/avatar expresion",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana."
+  },
+  {
+    "gaproute": "/avatar gesto",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana."
+  },
+  {
+    "gaproute": "/avatar rubor",
+    "fields": [
+      "name",
+      "duration"
+    ],
+    "test_ids": [
+      "test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+      "CallsTest.test_all_clip_controls_use_catalog_ids_and_current_session_only"
+    ],
+    "oracle": "Payload avatar.control conserva acción/nombre/duración; respuesta confirmada del driver sintético incluye applied* true.",
+    "level": "Node HTTP fixture local con confirmAvatar explícito.",
+    "limits": "No se comprueba visualmente el avatar ni recepción humana."
+  },
+  {
+    "gaproute": "/llamada programar",
+    "fields": [
+      "audio_id",
+      "date",
+      "end_after_audio",
+      "live_request",
+      "max_seconds",
+      "time",
+      "volume"
+    ],
+    "test_ids": [
+      "test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope",
+      "CallsTest.test_prepared_audio_agenda_retains_own_audio_id_volume_and_end_policy"
+    ],
+    "oracle": "Agenda guarda hora/zona y todos los campos de llamada en vivo o audio preparado; devuelve ID; dials=0.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana."
+  },
+  {
+    "gaproute": "/llamada agenda",
+    "fields": [],
+    "test_ids": [
+      "test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "Listado refleja solo las agendas sintéticas pendientes; IDs corresponden a creación/cancelación.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana."
+  },
+  {
+    "gaproute": "/llamada reprogramar",
+    "fields": [
+      "date",
+      "id",
+      "time"
+    ],
+    "test_ids": [
+      "test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "agenda.update recibe ID y dueAt convertido a America/Mexico_City; origen conserva actor/chat.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana."
+  },
+  {
+    "gaproute": "/llamada cancelar-agenda",
+    "fields": [
+      "id"
+    ],
+    "test_ids": [
+      "test_agenda_create_update_cancel_payloads_keep_mode_ids_and_scope",
+      "CallsTest.test_agenda_is_durable_without_dial_and_reprogram_cancel_keep_scope"
+    ],
+    "oracle": "agenda.cancel recibe ID/origen exactos y el listado posterior ya no contiene el registro.",
+    "level": "Backend HTTP local hacia fixture Node y SQLite propio; acciones capturadas.",
+    "limits": "Fechas fijadas sintéticamente; no se dispara agenda ni se marca llamada/recepción humana."
+  }
+]

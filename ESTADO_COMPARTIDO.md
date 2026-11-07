@@ -1,5 +1,27 @@
 # Relevo Botsky
 
+## 07/11 · Punto2 cobertura local cerrado:45rutas/56campos
+
+Propietario encargócubrirhuecosúltimaAGY.268Python+4NodePASS,ceroerrores/fallos/
+omisiones/intentosredexternaPython;Nodeguardialocal.45/45rutas y56/56camposmedidos
+contraoraclesespecíficos de56grupos; no soloparseo/propuestas/sondeosfríos. Todos
+los testIDsreferenciados pasan yhayrecibos/trabajosfinales con campos explícitos.
+
+Seampliaronasercionesvoz/efecto decita,vozúltima,idiomasdl; testcontrolesclip/avatar
+local ybackupMCrunnersintéticoexactounaacción. Otrosoraclesexistentesreutilizados.
+/clip siguientechatfixtureunconfirmednoacreditaavance;4NodeV4pruebaselectordel
+segundoclipseparado. MCbackupdoblenocertificarespaldo real;noSSHMCreal. AV
+no navegador,llamada,render orecepciónhumana. Administraciónsoloobjetivosdobles.
+
+Nuevoops/cobertura_agy_local.py usa baselineAGY07sinmodificarhistóricos, guardia
+red ycarpetaejecuciónnueva. EvidenciaCOBERTURA-AGY-20261107/final-summary.json,
+reviewed-gaps-final y268log; informe docs/COBERTURA_AGY_20261107.md. Ruff5archivos,
+formato/diffPASS.0bugsproducto confirmados;src/calls intactos,producción sin
+cambios,ningún despliegue/reinicio requerido. AGYcerrada109/154históricointacto;
+suplementocierrahuecosLOCALMENTE noaceptaciónremota. Quedanpendientesproveedores/
+recepciónhumana/participanteseligibles/stockgalería delbalanceproyecto. Cuota49%/
+10%al01:16UTC,umbral5%vigente. SinNLP/GitHub ni mensajes/llamadas reales.
+
 ## 07/11 · Correcciones67500bf desplegadas, runtime sano
 
 Encargoexpreso reiniciar/desplegar ejecutado. Runtime detenido limpio sinjobs/
