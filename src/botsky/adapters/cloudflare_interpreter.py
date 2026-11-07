@@ -48,7 +48,8 @@ class CloudflareInterpreter:
                         'https://api.cloudflare.com/client/v4/accounts/' + self.credentials['account_id'] + '/ai/v1/chat/completions',
                         headers={'Authorization': 'Bearer ' + self.credentials['api_token']},
                         json={'model': MODEL, 'messages': messages, 'tools': tools,
-                              'tool_choice': 'required', 'stream': False}, timeout=self.deadline)
+                              'tool_choice': 'required', 'stream': False, 'parallel_tool_calls': False,
+                              'temperature': 0, 'max_completion_tokens': 1024}, timeout=self.deadline)
                 except Exception:
                     raise InterpreterError('transport_error') from None
                 try:

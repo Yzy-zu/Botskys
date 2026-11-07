@@ -28,6 +28,9 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                 return await service.decide('petición sintética'), calls
             finally:
                 self.assertEqual(len(calls), 1)
+                self.assertIs(calls[0]['parallel_tool_calls'], False)
+                self.assertEqual(calls[0]['temperature'], 0)
+                self.assertEqual(calls[0]['max_completion_tokens'], 1024)
                 self.assertEqual(len(calls[0]['tools'][0]['function']['parameters']['properties']['action_key']['enum']), 155)
 
     async def test_decisions(self):
