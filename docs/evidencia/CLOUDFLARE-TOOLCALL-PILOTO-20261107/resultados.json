@@ -1,0 +1,308 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "corpus_sha256": "a450af8f4fdfc74a944418a9e9f8b9154f7c9183208be97689a291e8f1f9f9ac",
+  "backend_effects": 0,
+  "results": [
+    {
+      "case": "nota-literal",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 1162.39,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "save_note_run",
+        "arguments": {
+          "text": "comprar *pan* y leche"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1031,
+        "completion_tokens": 57,
+        "total_tokens": 1088,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.7453
+      }
+    },
+    {
+      "case": "buscar-notas",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 1361.8,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "find_notes_run",
+        "arguments": {
+          "query": "tortillas"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1027,
+        "completion_tokens": 65,
+        "total_tokens": 1092,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 8.0145
+      }
+    },
+    {
+      "case": "convertir-adjunto",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 2503.61,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "convert_document_run",
+        "arguments": {
+          "target": "pdf"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1046,
+        "completion_tokens": 103,
+        "total_tokens": 1149,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.502199999999998
+      }
+    },
+    {
+      "case": "falta-adjunto",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 1569.18,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "request_details",
+        "arguments": {
+          "missing": "attachment"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1033,
+        "completion_tokens": 73,
+        "total_tokens": 1106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 8.3387
+      }
+    },
+    {
+      "case": "videos-youtube",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 3083.73,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "download_media_search",
+        "arguments": {
+          "container": "mp4",
+          "source": "youtube",
+          "query": "conciertos de prueba"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1035,
+        "completion_tokens": 128,
+        "total_tokens": 1163,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 10.351700000000001
+      }
+    },
+    {
+      "case": "elegir-segundo",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 2081.22,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "download_media_choose",
+        "arguments": {
+          "choice": 2
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1046,
+        "completion_tokens": 120,
+        "total_tokens": 1166,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 10.120999999999999
+      }
+    },
+    {
+      "case": "elegir-ambiguo",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 9376.43,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "request_details",
+        "arguments": {
+          "missing": "download_view"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1065,
+        "completion_tokens": 110,
+        "total_tokens": 1175,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.8615
+      }
+    },
+    {
+      "case": "negacion",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 1564.07,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "no_action",
+        "arguments": {}
+      },
+      "usage": {
+        "prompt_tokens": 1033,
+        "completion_tokens": 78,
+        "total_tokens": 1111,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 8.5207
+      }
+    },
+    {
+      "case": "cita-hostil",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 4545.15,
+      "status": "EVALUATED",
+      "oracle_pass": false,
+      "reason": "oracle_mismatch",
+      "proposed": {
+        "name": "no_action",
+        "arguments": {}
+      },
+      "usage": {
+        "prompt_tokens": 1038,
+        "completion_tokens": 224,
+        "total_tokens": 1262,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.8626
+      }
+    },
+    {
+      "case": "falta-formato",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 2033.49,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "request_details",
+        "arguments": {
+          "missing": "target"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1044,
+        "completion_tokens": 137,
+        "total_tokens": 1181,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 10.7288
+      }
+    },
+    {
+      "case": "charla",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 14469.54,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "route_conversation",
+        "arguments": {}
+      },
+      "usage": {
+        "prompt_tokens": 1027,
+        "completion_tokens": 101,
+        "total_tokens": 1128,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.3249
+      }
+    },
+    {
+      "case": "orden-compuesta",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "http_status": 200,
+      "elapsed_ms": 8294.0,
+      "status": "EVALUATED",
+      "oracle_pass": true,
+      "reason": "oracle_match",
+      "proposed": {
+        "name": "request_details",
+        "arguments": {
+          "missing": "single_action"
+        }
+      },
+      "usage": {
+        "prompt_tokens": 1034,
+        "completion_tokens": 441,
+        "total_tokens": 1475,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 21.739400000000003
+      }
+    }
+  ],
+  "automatic_resume": false,
+  "pass_count": 11,
+  "attempted": 12,
+  "scope": "12 synthetic cases, 8 declarations; interpreter proposals only; no backend effects, no 146-operation coverage.",
+  "provider_calls": 12,
+  "metrics": {
+    "median_ms": 2292.415,
+    "p95_nearest_rank_ms": 14469.54,
+    "mean_ms": 4337.05,
+    "total_tokens": 14096,
+    "neurons": 128.1113
+  },
+  "source_sha256": {
+    "ops/probar_cloudflare_toolcall.py": "b90a069b219d190503a002c4e6498814736271c01b335f9416b2a125463c76f1",
+    "docs/evidencia/CLOUDFLARE-TOOLCALL-PILOTO-20261107/casos.json": "a450af8f4fdfc74a944418a9e9f8b9154f7c9183208be97689a291e8f1f9f9ac"
+  },
+  "private_response_evidence": "private/cloudflare-pilot-20261107T134908711868Z/"
+}

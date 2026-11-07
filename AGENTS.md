@@ -283,3 +283,13 @@ Investigación y diseño en docs/INVESTIGACION_TOOL_CALLING_20261107.md; este ci
 no implementa ni activa el intérprete ni hace pruebas de proveedor o cambios de
 producción. Mantener permisos/confirmaciones, datos propios, históricos, exclusión
 GitHub y umbral5% de cinco horas. El backend conserva ejecución y presentación.
+
+## 07/11 · Piloto real de Cloudflare Workers AI
+
+El propietario encargó probar Cloudflare y proporcionó AccountID/token. Autoriza
+este piloto acotado de inferencia con GLM4.7Flash,fixtures sintéticos y expectativas
+previas,propuestas capturadas sin ejecutar herramientas. Credenciales enprivate/
+propio0600. No habilita producción,envíos,llamadas,mutaciones ni clasificador antiguo.
+Resultado e historial:docs/PILOTO_CLOUDFLARE_TOOLCALL_20261107.md. No reanudar una
+corrida terminada automáticamente ni confundir interpretación con efecto de backend.
+Cuota5%cincohoras vigente,semanalnoimpide. SinGitHub.

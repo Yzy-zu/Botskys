@@ -5,6 +5,10 @@ No se realizaron inferencias autenticadas, altas, compras, envíos ni despliegue
 Esta comparación sustituye la recomendación preliminar de probar únicamente
 Groq contra Gemini. Distingue hechos publicados, cálculo y aspectos no medidos.
 
+Suplemento posterior autorizado: `PILOTO_CLOUDFLARE_TOOLCALL_20261107.md` registra
+12inferencias realesCloudflare,11oraclesPASS/1FAIL y consumo/latencia observados.
+No modifica los límites documentales de esta comparación ni prueba otros proveedores.
+
 ## Decisión
 
 Por presupuesto cero recurrente, volumen calculable y tratamiento de datos,

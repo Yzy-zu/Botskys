@@ -1,5 +1,25 @@
 # Relevo Botsky
 
+## 07/11 · Piloto Cloudflare real terminado:11/12oracles,1fallo conservado
+
+Propietario autorizó prueba pequeña y dio credenciales;archivo propio0600,noGit.
+12POSTGLM4.7Flash HTTP200,8declaraciones,1inferencia/caso,sin ejecutarbackend ni
+paso posterior. Casos/oracles fijados antes. Nota literal con instrucción hostil
+dio no_action:FAILfalsonegativo;no borrado. Resto11PASS,en alcance sintético.
+Mediana2292,42ms;máximo14469,54ms(saludo),ambigüedad9376,43ms.14.096tokens,
+128,1113neuronas reportadas;no extrapolar146ops ni certificar facturacióncuenta.
+No tocarproducción/WhatsApp/servicios,llamadas o efectos. No reanudación automática.
+
+Docs PILOTO_CLOUDFLARE_TOOLCALL_20261107;script ops/probar_cloudflare_toolcall.py
+requiere--live,por defecto sinred. Casos,resultados/hashes saneados en
+docs/evidencia/CLOUDFLARE-TOOLCALL-PILOTO-20261107;payloads privados0600/directorio
+0700enprivate/cloudflare-pilot-20261107T134908711868Z. Evaluadorlocal12esperadas+
+12multillamada,helpersecretos con fixture/permisos/nooverwritePASS;no se cuentan
+como precisiónmodelo. No selector2pases,146ops,backend,citasproductivas oentrega
+probados. No activar intérprete productivo por11/12deunpiloto conpromptdirigido.
+AST/hashcorpus/operacionesregistro/resultados/permisos/ausenciasecretospúblicos y
+diffcheckPASS. Cuotafinal5h68%/semanal5%;semanalnoimpide porinstrucciónvigente.
+
 ## 07/11 · Comparación profunda de proveedores gratuitos para tool calling
 
 Encargo posterior pide investigación fundamentada, no especulación. Comparados
