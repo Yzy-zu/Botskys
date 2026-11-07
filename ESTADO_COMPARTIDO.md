@@ -1,5 +1,12 @@
 # Relevo Botsky
 
+## 07/11 · Cuarta cuenta Cloudflare registrada
+
+cf04: token activo y acceso AI de cuenta verificados HTTP200. Cuenta distinta;
+cuatro cuentas en registros canónico y productivo, secretos0600. Recarga en
+siguiente turno sin reiniciar. Sin inferencias/mensajes; cuota NOT_TESTED.
+Evidencia POOL_CLOUDFLARE_20261107/cf04.json.
+
 ## 07/11 · Tercera cuenta Cloudflare registrada
 
 Encargo expreso de incorporar cada credencial enviada al pool. cf03 verificada:
