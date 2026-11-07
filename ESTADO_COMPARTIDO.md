@@ -1,5 +1,21 @@
 # Relevo Botsky
 
+## 07/11 · F8 desplegado y frontend productivo activo
+
+Propietario amplió puntos1/2 a «desplegarlo ya,todo activo»;autorización enAGENTS.
+Código641844a cargado,PID3801640,interpreter.enabled=true,GLM4.7Flash40s/2concurrentes.
+Backup consistente privado deploy-frontend-20261107T171813Z:DB/config/perfil,
+fuente anterior4482c46 yactual. Integridad/FK ybackuprecomprobados. Migración19→20
+con54tablas previas conservadas por hashes decolumnas/filas. Arranque desactivado
+listo yposterior activación lista. Perfil idéntico salvointerpreter;credencial0600
+propia relativa a settings.root. Runtime/calls ypuente autenticado ready,sin llamadas,
+advertencias,jobs oentregas pendientes. Supervisores ajenos mismosPID/estado.
+No mensajes,inferencias,llamadas ni observación humanaWhatsApp;NO_PROBADO persiste.
+idle_media_released=null:sin afirmar liberación observada. LímitesF7 conservados.
+Reversión:desactivar frontend con código compatible20,sin restaurarDBantigua sobre
+nuevos efectos. Docs/REMODELACION_F8.md yevidenciaF8-despliegue.json. No reanudar
+corte/campañas ni pruebas por iniciativa automática. Producción queda activa.
+
 ## 07/11 · F7 GLM real y correcciones cerradas con límites
 
 25casos/oracles congelados75ab33d:15coincidencias automáticas;históricos intactos.

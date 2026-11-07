@@ -1,0 +1,46 @@
+{
+  "phase": "active_healthy",
+  "target_commit": "641844acf1c2b7963f9f3a3d22eacacf44603d4d",
+  "previous_commit": "4482c46c18c773d81577a0fb4851daec59083d08",
+  "backup_verified": true,
+  "preserved_tables": 54,
+  "disabled_health": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": null,
+    "reserved_agenda": 0,
+    "warnings": []
+  },
+  "enabled_health": {
+    "runtime_ready": true,
+    "calls_ready": true,
+    "active_call": false,
+    "external_call": false,
+    "idle_media_released": null,
+    "reserved_agenda": 0,
+    "warnings": []
+  },
+  "other_supervisors_unchanged": true,
+  "new_runtime_pid": 3801640,
+  "db_before": {
+    "schema": 19,
+    "jobs": 0,
+    "outbox": 0
+  },
+  "db_after": {
+    "schema": 20,
+    "jobs": 0,
+    "outbox": 0
+  },
+  "interpreter_enabled": true,
+  "credentials_composed": true,
+  "messages": 0,
+  "calls": 0,
+  "inferences": 0,
+  "profile_only_interpreter_changed": true,
+  "credentials_0600_match": true,
+  "bridge_health_ready": true,
+  "backup_rechecked": true
+}
