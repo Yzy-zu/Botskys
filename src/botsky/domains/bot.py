@@ -77,6 +77,10 @@ def execute(db, context, action, args, now, capabilities):
         (*key(context), mode, paused),
     )
     if mode == "apagado" or paused > now:
+        pending = db.execute("SELECT i.id FROM inbox i JOIN frontend_tasks f ON f.receipt_id=i.id WHERE i.instance=? AND i.account=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND f.state IN ('pending','running')", key(context)).fetchall()
+        for item in pending:
+            db.execute("UPDATE frontend_tasks SET state='cancelled',updated_ms=? WHERE receipt_id=?", (now, item['id']))
+            db.execute("UPDATE inbox SET state='cancelled',revision=revision+1 WHERE id=? AND state='queued'", (item['id'],))
         rows = db.execute(
             "SELECT j.id FROM jobs j JOIN inbox i ON j.id=i.id WHERE i.instance=? AND i.account=? AND i.chat=? AND i.is_group=? AND i.epoch=? AND j.state IN ('queued','running') UNION SELECT receipt_id AS id FROM interactions WHERE instance=? AND account=? AND chat=? AND is_group=? AND epoch=? AND state IN ('active','pending_delivery')",
             (*key(context), *key(context)),

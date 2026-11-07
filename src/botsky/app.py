@@ -134,6 +134,17 @@ class Application:
                 command = self.router.parse(incoming.text)
             except CommandError as exc:
                 return None, Result("needs_input", exc.code, exc.reply), "completed"
+            if command is None and self.frontend is not None:
+                directed = (not incoming.scope.is_group or bool(set(incoming.mentioned_ids) & self.settings.bot_ids)
+                            or ai.named(incoming.text))
+                if directed:
+                    if denied := access.authorize("friend", context, self.settings):
+                        return None, denied, "completed"
+                    spec = self.router.registry.paths[("nota", "guardar")]
+                    if denied := bot.gate(db, context, spec, self.clock()):
+                        return None, denied, "completed"
+                    return None, None, "queued"
+                return None, None, "ignored"
             if command is None:
                 command = ai.invoked(
                     db, context, incoming, self.settings, self.router.registry, self.clock()

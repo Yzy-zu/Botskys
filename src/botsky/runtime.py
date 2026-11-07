@@ -182,6 +182,11 @@ class Runtime:
         await self.transport.receive_pending(media=True)
         self.app.recover(limit=20)
 
+    async def frontend_once(self):
+        if self.app.frontend is not None:
+            from .frontend.worker import run_pending
+            await run_pending(self.app, limit=2)
+
     async def jobs_once(self):
         await self.app.jobs.run_pending(limit=8)
 
@@ -266,6 +271,7 @@ class Runtime:
                     for name, action, delay in (
                         ("admission", self.admission_once, self.options["poll_seconds"]),
                         ("media-ingress", self.media_once, self.options["poll_seconds"]),
+                        ("frontend", self.frontend_once, self.options["poll_seconds"]),
                         ("jobs", self.jobs_once, self.options["poll_seconds"]),
                         ("scheduler", self.scheduler_once, self.options["poll_seconds"]),
                         ("delivery", self.delivery_once, self.options["poll_seconds"]),

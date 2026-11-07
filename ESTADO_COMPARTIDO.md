@@ -1,5 +1,23 @@
 # Relevo Botsky
 
+## 07/11 · F3 conexión durable local cerrada
+
+Migración aditiva20: input_mode por recibo y frontend_tasks con FK posterior al
+INSERT inbox. Entrada natural dirigida y autorizada conserva recibo queued sin
+command_json; process/recover solo ejecutan peticiones adoptadas. Worker independiente
+en runtime: claim con token/deadline,consulta fuera de transacción,adopción atómica
+y ejecución backend normal. No interpreta de nuevo un claim interrumpido: caduca
+con aviso; propuesta adoptada sobrevive reinicio sin consulta posterior.
+Revalidación de acceso,época,pausa y permisos del backend; cancelación/pausa descartan
+respuestas tardías incluso tras reanudar. Estado incluye tarea frontend.
+18 pruebas frontend pasan (7worker): nota real,PDF válido desde PNG sintético,
+duplicados,reinicio tras adopción,cancelación,pausa,reanudación,interrupción y
+comando independiente mientras espera proveedor.14core,14runtime y16media pasan.
+Evidencia docs/evidencia/REMODELACION/F3-tests.txt; Ruff no disponible.
+Sin inferencias reales,envíos,servicios o DB productiva. Cuota5h49% restante.
+Siguiente F4: borradores y referencias persistentes,continuidad y confirmaciones;
+las preguntas de F2 se entregan pero todavía no se retienen como borrador.
+
 ## 07/11 · F2 frontend aislado implementado
 
 CloudflareInterpreter usa modelo fijo GLM4.7Flash,una cuenta,una petición HTTP,

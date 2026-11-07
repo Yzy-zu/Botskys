@@ -12,7 +12,7 @@ from . import access
 from .contracts import CommandContext, Receipt, Result, Scope, canonical
 
 APPLICATION_ID = 1112755033
-SCHEMA_VERSION = 19
+SCHEMA_VERSION = 20
 PART_CHARS = 3500
 
 
@@ -145,6 +145,9 @@ class Store:
                     (Path(__file__).parent / "migrations/019_presentation.sql").read_text()
                 )
                 version = 19
+            if version == 19 and application_id == APPLICATION_ID:
+                db.executescript((Path(__file__).parent / "migrations/020_frontend.sql").read_text())
+                version = 20
             if version != SCHEMA_VERSION or application_id != APPLICATION_ID:
                 raise ValueError("DB ajena o esquema incompatible; no migrar")
             db.execute("PRAGMA journal_mode=WAL")
@@ -248,6 +251,10 @@ class Store:
                     canonical(incoming.mentioned_ids),
                 ),
             )
+            if state == "queued" and parsed is None:
+                db.execute("UPDATE inbox SET input_mode='natural' WHERE id=?", (incoming.id,))
+                db.execute("INSERT INTO frontend_tasks(receipt_id,state,created_ms,updated_ms) VALUES(?,'pending',?,?)",
+                           (incoming.id, incoming.received_ms, incoming.received_ms))
             if result and state == "completed":
                 self.enqueue(db, context, result, incoming.received_ms)
             return Receipt(incoming.id, state, result)
@@ -358,7 +365,7 @@ class Store:
             row = db.execute("SELECT * FROM inbox WHERE id=?", (receipt_id,)).fetchone()
             if row is None:
                 raise ValueError("recibo inexistente")
-            if row["state"] != "queued":
+            if row["state"] != "queued" or row["command_json"] is None:
                 return receipt_of(row)
             context = context_of(row)
             rejection = access.authorize(row["permission"], context, settings)
@@ -399,7 +406,7 @@ class Store:
             return [
                 r[0]
                 for r in db.execute(
-                    "SELECT id FROM inbox WHERE instance=? AND account=? AND epoch=? AND state='queued' ORDER BY received_ms,id LIMIT ?",
+                    "SELECT id FROM inbox WHERE instance=? AND account=? AND epoch=? AND state='queued' AND command_json IS NOT NULL ORDER BY received_ms,id LIMIT ?",
                     (settings.instance, settings.account, settings.epoch, limit),
                 )
             ]
@@ -438,7 +445,7 @@ class Store:
             "SELECT i.id FROM inbox i LEFT JOIN jobs j ON j.id=i.id "
             "WHERE i.instance=? AND i.account=? AND i.actor=? AND i.chat=? "
             "AND i.is_group=? AND i.epoch=? AND i.id<>? "
-            "AND json_extract(i.command_json,'$.operation') NOT LIKE 'core.%' "
+            "AND (i.command_json IS NULL OR json_extract(i.command_json,'$.operation') NOT LIKE 'core.%') "
             "AND (i.state='queued' OR j.state IN ('queued','running') "
             "OR (i.received_ms>? AND EXISTS (SELECT 1 FROM outbox o "
             "WHERE o.receipt_id=i.id AND o.state='accepted'))) ORDER BY i.received_ms DESC LIMIT 6",
@@ -489,6 +496,7 @@ class Store:
             if job
             else row["state"]
         )
+        frontend = db.execute("SELECT state,error_code FROM frontend_tasks WHERE receipt_id=?", (target,)).fetchone()
         return Result(
             "ok",
             "receipt_state",
@@ -499,6 +507,7 @@ class Store:
                 "revision": row["revision"],
                 "delivery": deliveries,
                 "job": job_data,
+                "frontend": dict(frontend) if frontend else None,
             },
         )
 
@@ -548,6 +557,7 @@ class Store:
                 "El encargo ya terminó; no se deshace su efecto.",
                 {"id": target, "state": row["state"]},
             )
+        db.execute("UPDATE frontend_tasks SET state='cancelled' WHERE receipt_id=? AND state IN ('pending','running')", (target,))
         result = Result("cancelled", "request_cancelled", "Encargo cancelado antes de ejecutarse.")
         db.execute(
             "UPDATE inbox SET state='cancelled',result_json=?,revision=revision+1 WHERE id=? AND revision=? AND state='queued'",

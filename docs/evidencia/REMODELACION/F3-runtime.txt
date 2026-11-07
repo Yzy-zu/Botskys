@@ -1,0 +1,6 @@
+......Executing <Task finished name='Task-68' coro=<RuntimeTest.test_partial_uncertainty_does_not_starve_other_receipts() done, defined at /home/petrov/botsky/tests/test_runtime.py:398> result=None created at /usr/lib/python3.14/asyncio/runners.py:109> took 0.301 seconds
+........
+----------------------------------------------------------------------
+Ran 14 tests in 2.008s
+
+OK
