@@ -1,0 +1,13 @@
+{
+  "registered_utc": "2026-11-07T19:31:32.021689+00:00",
+  "alias": "cf05",
+  "distinct_accounts": 5,
+  "token_active": true,
+  "account_ai_access": true,
+  "credentials_mode": "0600",
+  "canonical_and_production_registered": true,
+  "inference_tested": false,
+  "quota_available": "NOT_TESTED",
+  "service_restart": false,
+  "messages_sent": 0
+}
