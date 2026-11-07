@@ -24,6 +24,7 @@ class Application:
         *,
         clock=clock_ms,
         router=None,
+        frontend=None,
         downloads=None,
         web=None,
         gemini=None,
@@ -47,6 +48,7 @@ class Application:
         operations=None,
     ):
         self.settings, self.clock = settings, clock
+        self.frontend = frontend
         self.router = router or Router()
         self.downloads = downloads
         self.web = web

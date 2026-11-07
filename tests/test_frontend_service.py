@@ -1,0 +1,84 @@
+import json
+import unittest
+
+import httpx
+
+from botsky.adapters.cloudflare_interpreter import CloudflareInterpreter, InterpreterError
+from botsky.frontend.service import FrontendService
+from botsky.frontend.contracts import ActionRequest, ReplyDecision, ClarifyDecision
+from botsky.integrations import validate_interpreter
+
+
+def response(name='reply', args=None, finish='tool_calls', count=1):
+    return {'choices': [{'finish_reason': finish, 'message': {'tool_calls': [
+        {'function': {'name': name, 'arguments': json.dumps(args or {'text': 'Hola'})}}
+    ] * count}}]}
+
+
+class FrontendTests(unittest.IsolatedAsyncioTestCase):
+    async def run_case(self, payload, status=200):
+        calls = []
+        def handle(request):
+            calls.append(json.loads(request.content))
+            return httpx.Response(status, json=payload)
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+            adapter = CloudflareInterpreter(http, {'account_id': 'a'*32, 'api_token': 'synthetic'})
+            service = FrontendService(adapter)
+            try:
+                return await service.decide('petición sintética'), calls
+            finally:
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(len(calls[0]['tools'][0]['function']['parameters']['properties']['action_key']['enum']), 155)
+
+    async def test_decisions(self):
+        for name, args, kind in [('reply', {'text': 'Hola'}, ReplyDecision),
+            ('clarify', {'question': '¿A qué formato?'}, ClarifyDecision),
+            ('select_action', {'action_key': 'nota.guardar', 'arguments': {'text': '*pan*'}}, ActionRequest)]:
+            with self.subTest(name=name):
+                decision, _ = await self.run_case(response(name, args))
+                self.assertIsInstance(decision, kind)
+
+    async def test_invalid_responses(self):
+        for payload in [response(finish='length'), response(count=2), response(count=0),
+                        response('unknown'), response('select_action', {'action_key': 'nota.guardar', 'arguments': {'actor': 'owner'}})]:
+            with self.assertRaises(InterpreterError):
+                await self.run_case(payload)
+
+    async def test_quota_and_capacity(self):
+        for code, reason in [(3036, 'daily_quota'), (3040, 'capacity')]:
+            with self.assertRaisesRegex(InterpreterError, reason):
+                await self.run_case({'errors': [{'code': code}]}, 429)
+
+    def test_configuration(self):
+        self.assertEqual(validate_interpreter({}), {})
+        for block in [{'enabled': 1}, {'model': 'other'}, {'max_concurrency': True},
+                      {'credentials_file': '../secret'}, {'pool': []}]:
+            with self.assertRaises(ValueError):
+                validate_interpreter(block)
+
+    async def test_timeout_no_retry(self):
+        calls = []
+        async def handle(request):
+            calls.append(request)
+            raise httpx.ReadTimeout('synthetic')
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+            service = FrontendService(CloudflareInterpreter(http, {'account_id': 'a'*32, 'api_token': 'synthetic'}))
+            with self.assertRaisesRegex(InterpreterError, 'transport_error'):
+                await service.decide('hola')
+        self.assertEqual(len(calls), 1)
+
+    async def test_daily_quota_pauses_next_request(self):
+        calls = []
+        def handle(request):
+            calls.append(request)
+            return httpx.Response(429, json={'errors': [{'code': 3036}]})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+            adapter = CloudflareInterpreter(http, {'account_id': 'a'*32, 'api_token': 'synthetic'})
+            for _ in range(2):
+                with self.assertRaisesRegex(InterpreterError, 'daily_quota'):
+                    await adapter.propose([], [])
+        self.assertEqual(len(calls), 1)
+
+    def test_disabled_does_not_read_credentials(self):
+        from botsky.integrations import compose_frontend
+        self.assertIsNone(compose_frontend(None, {}, None))

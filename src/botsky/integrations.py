@@ -37,6 +37,7 @@ def read_profile(path):
         value = json.load(stream)
     allowed = {
         "version",
+        "interpreter",
         "gemini",
         "asr",
         "evolution",
@@ -82,7 +83,37 @@ def read_profile(path):
     ):
         if any(k in block and type(block[k]) is not bool for k in keys):
             raise ValueError("integration_profile_invalid")
+    validate_interpreter(value.get("interpreter", {}))
     return value
+
+
+def validate_interpreter(block):
+    from .adapters.cloudflare_interpreter import MODEL
+    allowed = {'enabled', 'provider', 'model', 'credentials_file', 'deadline_seconds', 'max_concurrency'}
+    if type(block) is not dict or set(block) - allowed:
+        raise ValueError('interpreter_config_invalid')
+    if type(block.get('enabled', False)) is not bool:
+        raise ValueError('interpreter_config_invalid')
+    if block.get('provider', 'cloudflare') != 'cloudflare' or block.get('model', MODEL) != MODEL:
+        raise ValueError('interpreter_model_invalid')
+    for key, default, lo, hi in [('deadline_seconds', 40, 1, 120), ('max_concurrency', 2, 1, 10)]:
+        if type(block.get(key, default)) is not int or not lo <= block.get(key, default) <= hi:
+            raise ValueError('interpreter_config_invalid')
+    path = block.get('credentials_file', 'private/cloudflare-toolcall.json')
+    if type(path) is not str or not path or Path(path).is_absolute() or '..' in Path(path).parts:
+        raise ValueError('interpreter_credentials_path_invalid')
+    return block
+
+
+def compose_frontend(settings, block, http):
+    from .adapters.cloudflare_interpreter import CloudflareInterpreter, read_credentials
+    from .frontend.service import FrontendService
+    validate_interpreter(block)
+    if not block.get('enabled', False):
+        return None
+    credentials = read_credentials(settings.root / block.get('credentials_file', 'private/cloudflare-toolcall.json'))
+    return FrontendService(CloudflareInterpreter(http, credentials,
+        deadline_seconds=block.get('deadline_seconds', 40), max_concurrency=block.get('max_concurrency', 2)))
 
 
 class Integrations:
@@ -205,6 +236,7 @@ class Integrations:
             )
             self.app = Application(
                 self.settings,
+                frontend=compose_frontend(self.settings, p.get("interpreter", {}), self.http),
                 gemini=gemini,
                 tts=EdgeTTS(enabled=p.get("tts", {}).get("enabled", False)),
                 asr=asr,

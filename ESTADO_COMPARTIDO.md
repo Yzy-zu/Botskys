@@ -1,5 +1,21 @@
 # Relevo Botsky
 
+## 07/11 · F2 frontend aislado implementado
+
+CloudflareInterpreter usa modelo fijo GLM4.7Flash,una cuenta,una petición HTTP,
+sin reintentos. Catálogo completo en prompt y enum155 de select_action. Servicio
+valida respuesta única completa y ActionRequest contra contrato F1; también
+reply/clarify/no_action. No importa ejecutor ni recibe resultados de dominios.
+Configuración interpreter optativa validada y compuesta en Application.frontend;
+default desactivado,no lee credenciales al desactivar. Secretos propios con
+NOFOLLOW,archivo regular y permisos privados. Deadline y concurrencia acotados.
+3036 pausa hasta siguiente día UTC,3040 finaliza turno; sin rotación/fallback.
+11 pruebas frontend pasan con HTTP doble,incluidos cuota,timeout,multillamada,
+truncación,decisiones y configuración;15 pruebas integración existentes pasan.
+Evidencia docs/evidencia/REMODELACION/F2-tests.txt. Sin inferencias reales ni
+producción; calidad catálogo completo pendiente F7. Próxima fase F3: persistencia,
+worker y adopción durable; frontend todavía no conectado a admisión ni efectos.
+
 ## 07/11 · F1 contratos nativos implementados
 
 Catálogo completo por ruta exacta,155 variantes sin deduplicar operaciones.
