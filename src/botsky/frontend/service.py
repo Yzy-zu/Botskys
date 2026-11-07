@@ -2,7 +2,7 @@
 import json
 
 from botsky.adapters.cloudflare_interpreter import InterpreterError
-from .catalog import Catalog
+from .compact_catalog import LosslessCatalog
 from .contracts import ActionRequest, ClarifyDecision, NoActionDecision, ReplyDecision
 from .prompts import SYSTEM, FINAL_RULES, tools
 
@@ -10,7 +10,7 @@ from .prompts import SYSTEM, FINAL_RULES, tools
 class FrontendService:
     def __init__(self, provider, catalog=None):
         self.provider = provider
-        self.catalog = catalog or Catalog()
+        self.catalog = catalog or LosslessCatalog()
 
     async def decide(self, text, context=None):
         if type(text) is not str or len(text) > 64000 or (not text.strip() and not (context or {}).get('attachments')):
