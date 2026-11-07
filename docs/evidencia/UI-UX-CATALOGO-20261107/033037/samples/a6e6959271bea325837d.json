@@ -1,0 +1,34 @@
+{
+  "route": "/ruleta entrar",
+  "operation": "manage_roulette.join",
+  "test": "test_roulette.RouletteTest.test_rules_must_be_delivered_before_acceptance_and_stake_is_own",
+  "input": "/ruleta entrar 1762aadf284e40a4b297f89032e1a797",
+  "result": {
+    "code": "roulette_preflight_failed",
+    "data": {},
+    "status": "failed",
+    "text": "No pude verificar miembros, identidad o permisos. No inicié un efecto de grupo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude verificar miembros, identidad o permisos. No inicié un efecto de grupo.",
+      "visual_version": 2,
+      "content_sha256": "014c9d1c3c39be30961da76670ae88cc3f17b689216a5a716ac1c031a122add7",
+      "rich_payload": {
+        "source_full": "No pude verificar miembros, identidad o permisos. No inicié un efecto de grupo.",
+        "source_text": "No pude verificar miembros, identidad o permisos. No inicié un efecto de grupo."
+      },
+      "utf16_units": 79
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

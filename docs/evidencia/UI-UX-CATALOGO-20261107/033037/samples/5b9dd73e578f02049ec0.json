@@ -1,0 +1,40 @@
+{
+  "route": "/admin avisos",
+  "operation": "manage_admin.warnings",
+  "test": "test_admin.AdminTest.test_owner_denied_before_client_and_warnings_never_route_to_balance",
+  "input": "/admin avisos alice",
+  "result": {
+    "code": "admin_warnings",
+    "data": {
+      "items": [
+        {
+          "warning_id": 1
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Avisos activos: 1"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Avisos activos: 1",
+      "visual_version": 2,
+      "content_sha256": "4f8dc6b0284c167ef9bf45b8422a849f10b7081831ffb43c13df80859a1120ed",
+      "rich_payload": {
+        "source_full": "Avisos activos: 1",
+        "source_text": "Avisos activos: 1"
+      },
+      "utf16_units": 17
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

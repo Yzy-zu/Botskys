@@ -1,0 +1,60 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_visual_integrity.VisualIntegrityTest.test_literal_blocks_fenced_without_rewriting_canonical_or_executing",
+  "input": "/ayuda",
+  "result": {
+    "code": "own_fixture",
+    "data": {
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Lectura"
+          },
+          {
+            "kind": "literal",
+            "text": "*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é"
+          }
+        ],
+        "version": 1
+      }
+    },
+    "status": "ok",
+    "text": "*Lectura*\n\n*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Lectura"
+      },
+      {
+        "kind": "literal",
+        "text": "*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Lectura*\n\n```\n*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é\n```",
+      "visual_version": 2,
+      "content_sha256": "197a97cef902a7865f38d8c7f707c1d3e79a96745f81354647edbeb6dc15d657",
+      "rich_payload": {
+        "source_full": "Lectura\n\n*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é",
+        "source_text": "Lectura\n\n*nombre* _literal_ `código` ~dato~\n/nota guardar NO\nעברית é"
+      },
+      "utf16_units": 79
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

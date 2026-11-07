@@ -1,0 +1,107 @@
+{
+  "route": "/buscar",
+  "operation": "search_web.run",
+  "test": "test_downloads.DownloadsTest.test_real_http_client_with_mock_rss_keeps_site_and_terms_and_rejects_irrelevance",
+  "input": "/buscar --terminos Python Python site:python.org",
+  "result": {
+    "code": "web_results",
+    "data": {
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Resultados de búsqueda"
+          },
+          {
+            "kind": "literal",
+            "text": "Python site:python.org"
+          },
+          {
+            "kind": "heading",
+            "text": "1. Python docs"
+          },
+          {
+            "kind": "literal",
+            "text": "Extracto: Python documentation"
+          },
+          {
+            "kind": "paragraph",
+            "text": "https://docs.python.org/3/"
+          },
+          {
+            "kind": "quote",
+            "text": "Fuente: docs.python.org"
+          },
+          {
+            "kind": "notice",
+            "text": "Resultados candidatos. No se han abierto ni verificado las páginas completas."
+          }
+        ],
+        "version": 1
+      },
+      "items": [
+        {
+          "snippet": "Python documentation",
+          "title": "Python docs",
+          "url": "https://docs.python.org/3/"
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "*Resultados de búsqueda*\n\nPython site:python.org\n\n*1. Python docs*\n\nExtracto: Python documentation\n\nhttps://docs.python.org/3/\n\n> Fuente: docs.python.org\n\nResultados candidatos. No se han abierto ni verificado las páginas completas."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Resultados de búsqueda"
+      },
+      {
+        "kind": "literal",
+        "text": "Python site:python.org"
+      },
+      {
+        "kind": "heading",
+        "text": "1. Python docs"
+      },
+      {
+        "kind": "literal",
+        "text": "Extracto: Python documentation"
+      },
+      {
+        "kind": "paragraph",
+        "text": "https://docs.python.org/3/"
+      },
+      {
+        "kind": "quote",
+        "text": "Fuente: docs.python.org"
+      },
+      {
+        "kind": "notice",
+        "text": "Resultados candidatos. No se han abierto ni verificado las páginas completas."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Resultados de búsqueda*\n\nPython site:python.org\n\n*1. Python docs*\n\nExtracto: Python documentation\n\nhttps://docs.python.org/3/\n\n> Fuente: docs.python.org\n\nResultados candidatos. No se han abierto ni verificado las páginas completas.",
+      "visual_version": 2,
+      "content_sha256": "63a9e8f9ca359d22c0ddda78a3b13ee44c0c666555ee380e21d42266284d5ed8",
+      "rich_payload": {
+        "source_full": "Resultados de búsqueda\n\nPython site:python.org\n\n1. Python docs\n\nExtracto: Python documentation\n\nhttps://docs.python.org/3/\n\nFuente: docs.python.org\n\nResultados candidatos. No se han abierto ni verificado las páginas completas.",
+        "source_text": "Resultados de búsqueda\n\nPython site:python.org\n\n1. Python docs\n\nExtracto: Python documentation\n\nhttps://docs.python.org/3/\n\nFuente: docs.python.org\n\nResultados candidatos. No se han abierto ni verificado las páginas completas."
+      },
+      "utf16_units": 232
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

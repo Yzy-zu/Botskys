@@ -1,0 +1,46 @@
+{
+  "route": "/mem olvidar",
+  "operation": "manage_memory.forget",
+  "test": "test_ai.AITest.test_explicit_memory_is_scoped_data_and_forget_changes_next_context",
+  "input": "/mem olvidar 1",
+  "result": {
+    "code": "memory_forgotten",
+    "data": {},
+    "status": "ok",
+    "text": "Recuerdo olvidado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria actualizada"
+      },
+      {
+        "kind": "notice",
+        "text": "Recuerdo olvidado. En este chat; no se promete borrar copias históricas."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria actualizada*\n\nRecuerdo olvidado. En este chat; no se promete borrar copias históricas.",
+      "visual_version": 2,
+      "content_sha256": "7cd69b887ce4bbd5a60c17d9b7bafec1790b805874baa4652fa6afba29e62a04",
+      "rich_payload": {
+        "source_full": "Memoria actualizada\n\nRecuerdo olvidado. En este chat; no se promete borrar copias históricas.",
+        "source_text": "Memoria actualizada\n\nRecuerdo olvidado. En este chat; no se promete borrar copias históricas."
+      },
+      "utf16_units": 95
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

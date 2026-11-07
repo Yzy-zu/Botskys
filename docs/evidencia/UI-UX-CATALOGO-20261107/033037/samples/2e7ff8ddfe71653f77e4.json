@@ -1,0 +1,146 @@
+{
+  "route": "/dl mp3",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced",
+  "input": "/dl mp3 https://open.spotify.com/track/0123456789abcdefghijkl",
+  "result": {
+    "code": "download_choices",
+    "data": {
+      "arguments": {
+        "container": "mp3",
+        "quality": "standard",
+        "start_seconds": 0.0
+      },
+      "artifacts": [
+        "c7ce00179b1040ed803f68ff8b9f3e42"
+      ],
+      "choices": [
+        {
+          "author": null,
+          "duration": null,
+          "thumbnail_url": null,
+          "title": "Video sintético /nota guardar NO",
+          "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+        }
+      ],
+      "collage_state": "ready",
+      "document": {
+        "blocks": [
+          {
+            "kind": "heading",
+            "text": "Videos"
+          },
+          {
+            "kind": "heading",
+            "text": "1. Video sintético /nota guardar NO"
+          },
+          {
+            "kind": "quote",
+            "text": "Duración desconocida · Autor desconocido · W3C"
+          },
+          {
+            "kind": "paragraph",
+            "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+          },
+          {
+            "kind": "notice",
+            "text": "Spotify aporta metadatos; selecciona una coincidencia real."
+          },
+          {
+            "kind": "notice",
+            "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+          },
+          {
+            "kind": "next_action",
+            "text": "/dl elegir NUMERO"
+          }
+        ],
+        "version": 1
+      },
+      "expires_ms": 1793938500000,
+      "file_facts": [
+        {
+          "bytes": 22929,
+          "extension": "jpg",
+          "format": "jpg",
+          "height": 720,
+          "width": 1280
+        }
+      ],
+      "media_first": true,
+      "search_note": "Spotify aporta metadatos; selecciona una coincidencia real.",
+      "view_id": "d627d032a9fc4c2196ae60550c38d183"
+    },
+    "status": "needs_input",
+    "text": "*Videos*\n\n*1. Video sintético /nota guardar NO*\n\n> Duración desconocida · Autor desconocido · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nSpotify aporta metadatos; selecciona una coincidencia real.\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`/dl elegir NUMERO`"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Videos"
+      },
+      {
+        "kind": "heading",
+        "text": "1. Video sintético /nota guardar NO"
+      },
+      {
+        "kind": "quote",
+        "text": "Duración desconocida · Autor desconocido · W3C"
+      },
+      {
+        "kind": "paragraph",
+        "text": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+      },
+      {
+        "kind": "notice",
+        "text": "Spotify aporta metadatos; selecciona una coincidencia real."
+      },
+      {
+        "kind": "notice",
+        "text": "Vigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1."
+      },
+      {
+        "kind": "next_action",
+        "text": "/dl elegir NUMERO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "f00859ff45eafb91bb24d81171a1c25882bc175792a15d6f67ffc044967eb3e3",
+      "rich_payload": {
+        "artifacts": [
+          "c7ce00179b1040ed803f68ff8b9f3e42"
+        ],
+        "caption": "Videos · 1 opciones. Fichas y selección en el mensaje siguiente.",
+        "name": "Videos.jpg",
+        "source_full": "Videos\n\n1. Video sintético /nota guardar NO\n\nDuración desconocida · Autor desconocido · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nSpotify aporta metadatos; selecciona una coincidencia real.\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Videos*\n\n*1. Video sintético /nota guardar NO*\n\n> Duración desconocida · Autor desconocido · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nSpotify aporta metadatos; selecciona una coincidencia real.\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n`/dl elegir NUMERO`",
+      "visual_version": 2,
+      "content_sha256": "ebc4684239ba286bbe29cf180e6d5fdc13016987ffd5dda417a30d0eab6ae14a",
+      "rich_payload": {
+        "source_text": "Videos\n\n1. Video sintético /nota guardar NO\n\nDuración desconocida · Autor desconocido · W3C\n\nhttps://media.w3.org/2010/05/bunny/trailer.mp4\n\nSpotify aporta metadatos; selecciona una coincidencia real.\n\nVigencia máxima: 15:00 desde la preparación. Vence: 2026-11-05 22:15:00 · America/Mexico_City. Opciones 1–1.\n\n/dl elegir NUMERO"
+      },
+      "utf16_units": 337
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

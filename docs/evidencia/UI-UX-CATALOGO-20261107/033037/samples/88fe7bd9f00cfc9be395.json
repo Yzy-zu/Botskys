@@ -1,0 +1,34 @@
+{
+  "route": "/drive elegir",
+  "operation": "manage_drive.choose",
+  "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+  "input": "/drive elegir 9723258d925e4d1ea19a10b7342f87cc 1",
+  "result": {
+    "code": "drive_view_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "La vista debe ser propia, entregada y vigente. Busca de nuevo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La vista debe ser propia, entregada y vigente. Busca de nuevo.",
+      "visual_version": 2,
+      "content_sha256": "a8c256d21616018b9d0d33a2c644f2f146dbae9cd3383589ddaf582bc183d1e9",
+      "rich_payload": {
+        "source_full": "La vista debe ser propia, entregada y vigente. Busca de nuevo.",
+        "source_text": "La vista debe ser propia, entregada y vigente. Busca de nuevo."
+      },
+      "utf16_units": 62
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

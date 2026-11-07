@@ -1,0 +1,55 @@
+{
+  "route": "/voz ultima",
+  "operation": "make_voice.verbatim",
+  "test": "test_ai.AITest.test_voice_quote_and_last_reply_are_exact_and_foreign_quote_is_denied",
+  "input": "/voz ultima --voz peruano",
+  "result": {
+    "code": "voice_ready",
+    "data": {
+      "artifacts": [
+        "79962e30f78d4e148a3f5240c5ea61fb"
+      ],
+      "effect": "none",
+      "file_facts": [
+        {
+          "bytes": 5040,
+          "duration_seconds": 1.0065,
+          "extension": "ogg",
+          "format": "ogg"
+        }
+      ],
+      "mode": "verbatim",
+      "spoken_text": "Texto propio literal.",
+      "voice": "peruano"
+    },
+    "status": "ok",
+    "text": "Voz literal lista."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "befd4a79a790482ea2d4c98b77e3ece94868cee2b89663d3ddaac90b66f0cb40",
+      "rich_payload": {
+        "artifacts": [
+          "79962e30f78d4e148a3f5240c5ea61fb"
+        ],
+        "caption": "",
+        "name": "Voz Botsky.ogg",
+        "source_full": "Texto propio literal.",
+        "source_text": "Texto propio literal."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

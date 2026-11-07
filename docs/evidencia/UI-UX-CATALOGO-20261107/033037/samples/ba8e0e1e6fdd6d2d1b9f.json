@@ -1,0 +1,36 @@
+{
+  "route": "/horario agregar",
+  "operation": "manage_school.set_lesson",
+  "test": "test_organization.OrganizationTest.test_school_owner_schedule_overlap_and_daily_digest_no_duplicates",
+  "input": "/horario agregar --materia Mate --dia 5 --inicio 10:00 --fin 11:00",
+  "result": {
+    "code": "school_lesson_created",
+    "data": {
+      "lesson_id": 1
+    },
+    "status": "ok",
+    "text": "Clase 1 guardada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Clase 1 guardada.",
+      "visual_version": 2,
+      "content_sha256": "a06fee60bb014b6af82f094aec508ea1916e6b193ea8918c4a4bad1c2267a003",
+      "rich_payload": {
+        "source_full": "Clase 1 guardada.",
+        "source_text": "Clase 1 guardada."
+      },
+      "utf16_units": 17
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

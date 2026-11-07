@@ -1,0 +1,55 @@
+{
+  "route": "/saldo",
+  "operation": "manage_economy.balance",
+  "test": "test_packs.PacksTest.test_coop_expiry_aggregate_rounding_and_cancellation_ownership",
+  "input": "/saldo",
+  "result": {
+    "code": "xp_balance",
+    "data": {
+      "account_id": 1,
+      "balance": 999,
+      "level": 50,
+      "reserved": 0
+    },
+    "status": "ok",
+    "text": "Cuenta #1: 999 XP · nivel 50. Reservas de pago: 0 XP. Cuenta compartida entre tus chats de Botsky."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Tu saldo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Disponible: 999 XP\nReservado: 0 XP\nNivel: 50\nCuenta #1"
+      },
+      {
+        "kind": "notice",
+        "text": "Cuenta compartida entre tus chats de Botsky."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Tu saldo*\n\nDisponible: 999 XP\nReservado: 0 XP\nNivel: 50\nCuenta #1\n\nCuenta compartida entre tus chats de Botsky.",
+      "visual_version": 2,
+      "content_sha256": "ddf07442882bd54ba7ce127b0d78d01c5008334162c6199f5b0cd9f0f2dcbd81",
+      "rich_payload": {
+        "source_full": "Tu saldo\n\nDisponible: 999 XP\nReservado: 0 XP\nNivel: 50\nCuenta #1\n\nCuenta compartida entre tus chats de Botsky.",
+        "source_text": "Tu saldo\n\nDisponible: 999 XP\nReservado: 0 XP\nNivel: 50\nCuenta #1\n\nCuenta compartida entre tus chats de Botsky."
+      },
+      "utf16_units": 112
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

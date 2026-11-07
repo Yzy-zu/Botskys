@@ -1,0 +1,34 @@
+{
+  "route": "/mc backup",
+  "operation": "manage_minecraft.backup",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/mc backup",
+  "result": {
+    "code": "minecraft_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "El servidor Minecraft no está configurado para Botsky."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "El servidor Minecraft no está configurado para Botsky.",
+      "visual_version": 2,
+      "content_sha256": "19004a8fd5831fbdd4b09d62b5b2df922024c928a385b23d565b5532ed09ec22",
+      "rich_payload": {
+        "source_full": "El servidor Minecraft no está configurado para Botsky.",
+        "source_text": "El servidor Minecraft no está configurado para Botsky."
+      },
+      "utf16_units": 54
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

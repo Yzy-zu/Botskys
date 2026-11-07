@@ -1,0 +1,60 @@
+{
+  "route": "/tarea crear",
+  "operation": "manage_school.add_task",
+  "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+  "input": "/tarea crear --fecha 2026-11-07 --materia Mate --adjunto resolver ejercicio",
+  "result": {
+    "code": "school_task_created",
+    "data": {
+      "due_date": "2026-11-07",
+      "due_time": null,
+      "subject": "Mate",
+      "task_id": 1,
+      "text": "resolver ejercicio"
+    },
+    "status": "ok",
+    "text": "Tarea 1 guardada para 2026-11-07 (sin hora definida)."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Tarea 1 guardada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Entrega: 2026-11-07 (sin hora definida) · America/Mexico_City"
+      },
+      {
+        "kind": "literal",
+        "text": "Mate"
+      },
+      {
+        "kind": "literal",
+        "text": "resolver ejercicio"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Tarea 1 guardada*\n\nEntrega: 2026-11-07 (sin hora definida) · America/Mexico_City\n\nMate\n\nresolver ejercicio",
+      "visual_version": 2,
+      "content_sha256": "1498d473896c254be54dd6d92d7b22d38429e7b5aedb47cd5dbb0304686b7a7b",
+      "rich_payload": {
+        "source_full": "Tarea 1 guardada\n\nEntrega: 2026-11-07 (sin hora definida) · America/Mexico_City\n\nMate\n\nresolver ejercicio",
+        "source_text": "Tarea 1 guardada\n\nEntrega: 2026-11-07 (sin hora definida) · America/Mexico_City\n\nMate\n\nresolver ejercicio"
+      },
+      "utf16_units": 107
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

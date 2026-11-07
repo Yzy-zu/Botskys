@@ -1,0 +1,86 @@
+{
+  "route": "/top",
+  "operation": "manage_economy.top",
+  "test": "test_community_presentation.CommunityPresentationTest.test_available_balance_top_native_and_daily_time",
+  "input": "/top",
+  "result": {
+    "code": "xp_top",
+    "data": {
+      "items": [
+        {
+          "account_id": 1,
+          "balance": 1000,
+          "level": 51,
+          "self": true
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Top XP:\n1. Tú · cuenta #1 · 1000 XP"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Top de XP",
+      "headers": [
+        "Puesto",
+        "Cuenta",
+        "XP",
+        "Nivel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Tú · #1",
+          "1000",
+          "51"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "c8b12a12c9337778d68b99f463469c752fc5f315a9c6d9b4d35189b78c40e764",
+      "rich_payload": {
+        "headers": [
+          "Puesto",
+          "Cuenta",
+          "XP",
+          "Nivel"
+        ],
+        "rows": [
+          [
+            "1",
+            "Tú · #1",
+            "1000",
+            "51"
+          ]
+        ],
+        "source_full": "Top de XP\n\nPuesto: 1\nCuenta: Tú · #1\nXP: 1000\nNivel: 51\n\nSaldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
+        "title": "Top de XP"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "Saldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
+      "visual_version": 2,
+      "content_sha256": "2cc044a92984b9e1f23746b4eed4314d25f3af84f726e8fda3f7aafa48bd5dd4",
+      "rich_payload": {
+        "source_text": "Saldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas."
+      },
+      "utf16_units": 83
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

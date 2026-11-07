@@ -1,0 +1,75 @@
+{
+  "route": "/dl mp3",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+  "input": "/dl mp3 --hasta 0.8 https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "3c5ea101ffb14d30976d4136168ff07a"
+      ],
+      "file_facts": [
+        {
+          "bytes": 13971,
+          "duration_seconds": 0.8,
+          "extension": "mp3",
+          "format": "mp3"
+        }
+      ],
+      "format": "mp3",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "b31a6cbf8140253875baa9bd184218b5f586fc9a25f19362ce72f373043531d9",
+      "rich_payload": {
+        "artifacts": [
+          "3c5ea101ffb14d30976d4136168ff07a"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.mp3",
+        "source_full": "Descarga preparada\n\nVideo\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: MP3 · 13.64 KiB (13971 bytes) · Duración: 0:01\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

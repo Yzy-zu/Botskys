@@ -1,0 +1,36 @@
+{
+  "route": "/mem borrar-todo",
+  "operation": "manage_memory.forget_all",
+  "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+  "input": "/mem borrar-todo",
+  "result": {
+    "code": "memory_delete_preview",
+    "data": {
+      "confirmation_id": "ccceba4b1dd342a7b2cf096f714dc509"
+    },
+    "status": "needs_input",
+    "text": "Borraré 1 recuerdos de este ámbito.\n/confirmar ccceba4b1dd342a7b2cf096f714dc509"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Borraré 1 recuerdos de este ámbito.\n/confirmar ccceba4b1dd342a7b2cf096f714dc509",
+      "visual_version": 2,
+      "content_sha256": "696a51a82bc10686b7b5740c936838de4c7bf661eeed8142797fb89ac69459bf",
+      "rich_payload": {
+        "source_full": "Borraré 1 recuerdos de este ámbito.\n/confirmar ccceba4b1dd342a7b2cf096f714dc509",
+        "source_text": "Borraré 1 recuerdos de este ámbito.\n/confirmar ccceba4b1dd342a7b2cf096f714dc509"
+      },
+      "utf16_units": 79
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

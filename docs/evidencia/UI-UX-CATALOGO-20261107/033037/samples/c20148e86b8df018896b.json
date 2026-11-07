@@ -1,0 +1,51 @@
+{
+  "route": "/avatar expresion",
+  "operation": "audiovisual.avatar.expression",
+  "test": "test_calls.CallsTest.test_explicit_commands_dispatch_once_and_control_exact_call",
+  "input": "/avatar expresion happy",
+  "result": {
+    "code": "av_control_unconfirmed",
+    "data": {
+      "message": "No pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible.",
+      "presentation_action": "expression",
+      "presentation_family": "avatar",
+      "success": false
+    },
+    "status": "needs_input",
+    "text": "No pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Avatar"
+      },
+      {
+        "kind": "notice",
+        "text": "No pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Avatar*\n\nNo pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible.",
+      "visual_version": 2,
+      "content_sha256": "4a67aa57db28d52e3d9714fcc1db2970ae79894d1c45638024c497d996bd797b",
+      "rich_payload": {
+        "source_full": "Avatar\n\nNo pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible.",
+        "source_text": "Avatar\n\nNo pude cambiar el avatar. Necesito una videollamada conectada y una opción disponible."
+      },
+      "utf16_units": 97
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

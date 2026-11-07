@@ -1,0 +1,61 @@
+{
+  "route": "/top",
+  "operation": "manage_economy.top",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/top",
+  "result": {
+    "code": "xp_top",
+    "data": {
+      "items": [
+        {
+          "account_id": 1,
+          "balance": 0,
+          "level": 1,
+          "self": true
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Top XP:\n1. Tú · cuenta #1 · 0 XP"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Top de XP",
+      "headers": [
+        "Puesto",
+        "Cuenta",
+        "XP",
+        "Nivel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Tú · #1",
+          "0",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nTop de XP\n\nPuesto: 1\nCuenta: Tú · #1\nXP: 0\nNivel: 1\n```\n\nSaldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
+      "visual_version": 2,
+      "content_sha256": "3c3e65be93caddeb57b8126f778d8ea8795750a68583249e9fd72b2396f72b8d",
+      "rich_payload": {
+        "source_full": "Top de XP\n\nPuesto: 1\nCuenta: Tú · #1\nXP: 0\nNivel: 1\n\nSaldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
+        "source_text": "Top de XP\n\nPuesto: 1\nCuenta: Tú · #1\nXP: 0\nNivel: 1\n\nSaldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas."
+      },
+      "utf16_units": 144
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

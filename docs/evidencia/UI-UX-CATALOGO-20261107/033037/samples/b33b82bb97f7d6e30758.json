@@ -1,0 +1,36 @@
+{
+  "route": "/nota guardar",
+  "operation": "save_note.run",
+  "test": "test_runtime.RuntimeTest.test_slow_media_does_not_block_text_commands_and_cancels_on_shutdown",
+  "input": "/nota guardar sin esperar medios",
+  "result": {
+    "code": "note_saved",
+    "data": {
+      "note_id": 1
+    },
+    "status": "ok",
+    "text": "Nota 1 guardada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Nota 1 guardada.",
+      "visual_version": 2,
+      "content_sha256": "09eeec28b95a14e3b82c3789496710172a0816bdd31a05027dd3b2a33aa0f90e",
+      "rich_payload": {
+        "source_full": "Nota 1 guardada.",
+        "source_text": "Nota 1 guardada."
+      },
+      "utf16_units": 16
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

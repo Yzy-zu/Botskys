@@ -1,0 +1,70 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_uncertain_pdf_retry_requires_delivered_bound_preview_and_never_repeats_motor",
+  "input": "/convertir pdf",
+  "result": {
+    "code": "document_converted",
+    "data": {
+      "artifacts": [
+        "ad03a850fea14c0fb60f5baee82f4ea8"
+      ],
+      "file_facts": [
+        {
+          "bytes": 10674,
+          "extension": "pdf",
+          "format": "pdf",
+          "pages": 1
+        }
+      ],
+      "source_format": "png",
+      "target_format": "pdf"
+    },
+    "status": "ok",
+    "text": "Conversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Documento convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1"
+      },
+      {
+        "kind": "notice",
+        "text": "Conversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "8477b1ab55110e516c64c4dcc366234eded99dee20226d75b86ff4156b10e274",
+      "rich_payload": {
+        "artifacts": [
+          "ad03a850fea14c0fb60f5baee82f4ea8"
+        ],
+        "caption": "*Documento convertido*\n\nFormato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1\n\nConversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco.",
+        "caption_frozen": true,
+        "name": "Documento convertido.pdf",
+        "source_full": "Documento convertido\n\nFormato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1\n\nConversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco.",
+        "source_text": "Documento convertido\n\nFormato final: PDF · 10.42 KiB (10674 bytes) · Páginas: 1\n\nConversión lista. Las páginas conservan la imagen; no se añadió OCR ni texto editable. La transparencia se reemplaza por fondo blanco."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,42 @@
+{
+  "route": "/mc reiniciar",
+  "operation": "manage_minecraft.restart",
+  "test": "test_visual_route_gaps.MinecraftVisualGaps.test_discover_stop_restart_use_only_runner_and_restart_health_is_observed",
+  "input": "/mc reiniciar",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "restart",
+      "response": {
+        "game_status": "ready",
+        "requires_healthcheck": true,
+        "status": "ok",
+        "verified": true
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes.",
+      "visual_version": 2,
+      "content_sha256": "8a48146eefa12c421e1757384d5efc08edaf5f6c425d8aaf73d4b171625b08d7",
+      "rich_payload": {
+        "source_full": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes.",
+        "source_text": "Minecraft arrancó y el juego confirmó disponibilidad. Consulta /mc mods para comprobar sus paquetes."
+      },
+      "utf16_units": 100
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,69 @@
+{
+  "route": "/convertir",
+  "operation": "convert_document.run",
+  "test": "test_media.MediaTest.test_pdf_all_pages_text_and_scanned_error_is_specific",
+  "input": "/convertir docx",
+  "result": {
+    "code": "document_converted",
+    "data": {
+      "artifacts": [
+        "522f07d485db415eaf1dd0b58b8d9652"
+      ],
+      "file_facts": [
+        {
+          "bytes": 36629,
+          "extension": "docx",
+          "format": "docx"
+        }
+      ],
+      "source_format": "pdf",
+      "target_format": "docx"
+    },
+    "status": "ok",
+    "text": "Conversión lista. El texto editable y el diseño pueden diferir del PDF original."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Documento convertido"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: DOCX · 35.77 KiB (36629 bytes)"
+      },
+      {
+        "kind": "notice",
+        "text": "Conversión lista. El texto editable y el diseño pueden diferir del PDF original."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "369bf3f5deea675becfb0949f0c2587919df03d686c692627ef8502fad42d04d",
+      "rich_payload": {
+        "artifacts": [
+          "522f07d485db415eaf1dd0b58b8d9652"
+        ],
+        "caption": "*Documento convertido*\n\nFormato final: DOCX · 35.77 KiB (36629 bytes)\n\nConversión lista. El texto editable y el diseño pueden diferir del PDF original.",
+        "caption_frozen": true,
+        "name": "Documento convertido.docx",
+        "source_full": "Documento convertido\n\nFormato final: DOCX · 35.77 KiB (36629 bytes)\n\nConversión lista. El texto editable y el diseño pueden diferir del PDF original.",
+        "source_text": "Documento convertido\n\nFormato final: DOCX · 35.77 KiB (36629 bytes)\n\nConversión lista. El texto editable y el diseño pueden diferir del PDF original."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

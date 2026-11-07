@@ -1,0 +1,34 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_quota_and_restart_after_dispatch_never_repeat_provider_and_local_tools_continue",
+  "input": "/ia pregunta",
+  "result": {
+    "code": "gemini_rate_limited",
+    "data": {},
+    "status": "failed",
+    "text": "No pude completar esta preparación. No se entregó un resultado nuevo. Consulta /ayuda ia."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "No pude completar esta preparación. No se entregó un resultado nuevo. Consulta /ayuda ia.",
+      "visual_version": 2,
+      "content_sha256": "1eadfd5921b91161e468bc75812c73bf223fdbf02e81f79a30afd56bd76ad4a8",
+      "rich_payload": {
+        "source_full": "No pude completar esta preparación. No se entregó un resultado nuevo. Consulta /ayuda ia.",
+        "source_text": "No pude completar esta preparación. No se entregó un resultado nuevo. Consulta /ayuda ia."
+      },
+      "utf16_units": 89
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

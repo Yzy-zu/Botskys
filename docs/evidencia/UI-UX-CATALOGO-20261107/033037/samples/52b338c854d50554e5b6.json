@@ -1,0 +1,48 @@
+{
+  "route": "/confirmar",
+  "operation": "core.confirmar",
+  "test": "test_organization.OrganizationTest.test_memory_literal_ownership_correction_confirmation_stale_and_no_id_reuse",
+  "input": "/confirmar 94f9c51b68854738bad0ef05d6a3a95c",
+  "result": {
+    "code": "memories_deleted",
+    "data": {
+      "count": 1
+    },
+    "status": "ok",
+    "text": "Recuerdos del ámbito borrados."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Memoria actualizada"
+      },
+      {
+        "kind": "notice",
+        "text": "Recuerdos del ámbito borrados. En este chat; no se promete borrar copias históricas."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Memoria actualizada*\n\nRecuerdos del ámbito borrados. En este chat; no se promete borrar copias históricas.",
+      "visual_version": 2,
+      "content_sha256": "60e6bce69d442da86525e7b7899a70b433955e23ad41fcd5052333325a66bcc2",
+      "rich_payload": {
+        "source_full": "Memoria actualizada\n\nRecuerdos del ámbito borrados. En este chat; no se promete borrar copias históricas.",
+        "source_text": "Memoria actualizada\n\nRecuerdos del ámbito borrados. En este chat; no se promete borrar copias históricas."
+      },
+      "utf16_units": 107
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

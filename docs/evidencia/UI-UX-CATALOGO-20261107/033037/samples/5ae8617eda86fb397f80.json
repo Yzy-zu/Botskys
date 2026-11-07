@@ -1,0 +1,57 @@
+{
+  "route": "/mc iniciar",
+  "operation": "manage_minecraft.start",
+  "test": "test_minecraft.MinecraftTest.test_uncertain_restart_allows_serial_stop_and_recovery_then_start",
+  "input": "/mc iniciar",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "start",
+      "response": {
+        "action": "start",
+        "requires_healthcheck": false,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Minecraft start:\n{\"status\": \"ok\", \"action\": \"start\", \"requires_healthcheck\": false}"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Minecraft"
+      },
+      {
+        "kind": "notice",
+        "text": "El servicio aceptó la solicitud de arranque; disponibilidad del juego no confirmada."
+      },
+      {
+        "kind": "next_action",
+        "text": "/mc estado"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Minecraft*\n\nEl servicio aceptó la solicitud de arranque; disponibilidad del juego no confirmada.\n\n`/mc estado`",
+      "visual_version": 2,
+      "content_sha256": "4da8ed91449dd8a9e34aeaecd2f09de9461d1392cb96066a16a40b5b5b3546b5",
+      "rich_payload": {
+        "source_full": "Minecraft\n\nEl servicio aceptó la solicitud de arranque; disponibilidad del juego no confirmada.\n\n/mc estado",
+        "source_text": "Minecraft\n\nEl servicio aceptó la solicitud de arranque; disponibilidad del juego no confirmada.\n\n/mc estado"
+      },
+      "utf16_units": 111
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

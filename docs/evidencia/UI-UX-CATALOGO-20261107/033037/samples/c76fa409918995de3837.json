@@ -1,0 +1,68 @@
+{
+  "route": "/clip seguir",
+  "operation": "audiovisual.clip.resume",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+  "input": "/clip seguir",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clip": {
+        "name": "Prueba audiovisual V3",
+        "state": "playing",
+        "volume": 0.5
+      },
+      "message": "Clip reanudado.",
+      "presentation_action": "resume",
+      "presentation_family": "clip",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Clip reanudado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "literal",
+        "text": "Prueba audiovisual V3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: Reproduciendo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen aplicado: 50 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Clip reanudado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 50 %\n\nClip reanudado.",
+      "visual_version": 2,
+      "content_sha256": "968aa2bcef0064cef58b9f06ca51c7eb1f48437ae6f0ab7a5ec191825d0a3552",
+      "rich_payload": {
+        "source_full": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 50 %\n\nClip reanudado.",
+        "source_text": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 50 %\n\nClip reanudado."
+      },
+      "utf16_units": 106
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

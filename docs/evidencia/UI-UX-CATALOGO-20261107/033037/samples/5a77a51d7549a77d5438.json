@@ -1,0 +1,36 @@
+{
+  "route": "/admin avisos",
+  "operation": "manage_admin.warnings",
+  "test": "test_admin.AdminTest.test_ban_persisted_before_client_uncertain_blocks_mutations_and_unban_alias",
+  "input": "/admin avisos alice",
+  "result": {
+    "code": "admin_warnings",
+    "data": {
+      "items": []
+    },
+    "status": "empty",
+    "text": "Avisos activos: "
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Avisos activos: ",
+      "visual_version": 2,
+      "content_sha256": "17bb6babcd46d706ed34ef7717178cb512bb17ddc58d0d44e6796d513ea9a586",
+      "rich_payload": {
+        "source_full": "Avisos activos: ",
+        "source_text": "Avisos activos: "
+      },
+      "utf16_units": 16
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

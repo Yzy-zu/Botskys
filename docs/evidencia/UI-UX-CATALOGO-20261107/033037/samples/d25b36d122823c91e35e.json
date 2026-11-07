@@ -1,0 +1,39 @@
+{
+  "route": "/ruleta jugar",
+  "operation": "manage_roulette.play",
+  "test": "test_roulette.RouletteTest.test_one_effect_payout_and_return_after_twenty_minutes_once",
+  "input": "/ruleta jugar 36275eb923e74c869030b60356e789cd",
+  "result": {
+    "code": "roulette_completed",
+    "data": {
+      "payout_each": 100,
+      "room_id": "36275eb923e74c869030b60356e789cd",
+      "state": "completed",
+      "target": "alice"
+    },
+    "status": "ok",
+    "text": "Ruleta 36275eb923e74c869030b60356e789cd: completed. Cada sobreviviente recibe 100 XP; efecto aceptado, sin recepción humana comprobada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Ruleta 36275eb923e74c869030b60356e789cd: completed. Cada sobreviviente recibe 100 XP; efecto aceptado, sin recepción humana comprobada.",
+      "visual_version": 2,
+      "content_sha256": "f528c84a871874597ba028cab2aa8c49ab5055b394dda030123b589358e4c230",
+      "rich_payload": {
+        "source_full": "Ruleta 36275eb923e74c869030b60356e789cd: completed. Cada sobreviviente recibe 100 XP; efecto aceptado, sin recepción humana comprobada.",
+        "source_text": "Ruleta 36275eb923e74c869030b60356e789cd: completed. Cada sobreviviente recibe 100 XP; efecto aceptado, sin recepción humana comprobada."
+      },
+      "utf16_units": 135
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

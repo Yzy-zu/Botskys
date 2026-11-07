@@ -82,6 +82,21 @@ class PacksTest(IsolatedAsyncioTestCase):
         self.adapter = LocalAdapter(self.settings, lambda: self.now)
         self.n = 0
 
+    async def test_catalog_next_page_keeps_literal_category_filter(self):
+        from botsky.presentation.domains import present
+        path = self.root / "private/gallery/library.db"
+        with sqlite3.connect(path) as db:
+            for i in range(6):
+                db.execute("INSERT INTO albums VALUES(?,?,?,1)", (f"extra{i}", "Misma categoría", f"extra{i}"))
+        found = self.receive('/pack catalogo --categoria "Misma categoría"')
+        self.assertEqual(found.result.data["pages"], 2)
+        command = '/pack catalogo --pagina 2 --categoria "Misma categoría"'
+        self.assertIn(command, present(found.result).text)
+        following = self.receive(command)
+        self.assertEqual(len(following.result.data["items"]), 1)
+        self.assertEqual(following.result.data["items"][0]["name"], "Misma categoría")
+        self.assertEqual(len(self.transport.calls), 0)
+
     def incoming(self, text, actor="alice", chat="private", **kw):
         self.n += 1
         return self.adapter.incoming(str(self.n), actor, chat, text, **kw)

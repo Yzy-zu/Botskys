@@ -1,0 +1,53 @@
+{
+  "route": "/admin abrir",
+  "operation": "manage_admin.unlock",
+  "test": "test_admin.AdminTest.test_moderation_setting_routes_preserve_target_and_owner_guards",
+  "input": "/admin abrir",
+  "result": {
+    "code": "admin_completed",
+    "data": {
+      "action": "unlock",
+      "target_label": "Este grupo"
+    },
+    "status": "ok",
+    "text": "Acción administrativa: completed. Una acción incierta no se repetirá."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Administración"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Permitir cambios del grupo · Este grupo"
+      },
+      {
+        "kind": "notice",
+        "text": "Aceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Administración*\n\nPermitir cambios del grupo · Este grupo\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+      "visual_version": 2,
+      "content_sha256": "dc663fe76a1845a66f00b376d01e3b021279a8a5a20a5c4a24f6de713da26482",
+      "rich_payload": {
+        "source_full": "Administración\n\nPermitir cambios del grupo · Este grupo\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana.",
+        "source_text": "Administración\n\nPermitir cambios del grupo · Este grupo\n\nAceptado por el servicio. No se repite una acción incierta. La aceptación no acredita percepción humana."
+      },
+      "utf16_units": 163
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,65 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+  "input": "/recado enviar c4952a3bc4c64ceeb50331677f0ce90d",
+  "result": {
+    "code": "message_status",
+    "data": {
+      "draft_id": "c4952a3bc4c64ceeb50331677f0ce90d",
+      "parts": [
+        {
+          "contact_name": "Amiga",
+          "error_code": null,
+          "kind": "text",
+          "position": 0,
+          "state": "accepted"
+        },
+        {
+          "contact_name": "Otra",
+          "error_code": "message_uncertain",
+          "kind": "text",
+          "position": 1,
+          "state": "uncertain"
+        }
+      ],
+      "state": "partial"
+    },
+    "status": "uncertain",
+    "text": "Recado c4952a3bc4c64ceeb50331677f0ce90d: partial.\nAmiga · text: accepted\nOtra · text: uncertain"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "parcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: incierto\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado del recado*\n\nparcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: incierto\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "e3fe6a5915a5698c1ef27812184abed587574b0e7e1e22aef18de6f871401c34",
+      "rich_payload": {
+        "source_full": "Estado del recado\n\nparcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: incierto\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+        "source_text": "Estado del recado\n\nparcial\nAmiga · Texto: aceptado por el servicio\nOtra · Texto: incierto\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      },
+      "utf16_units": 188
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

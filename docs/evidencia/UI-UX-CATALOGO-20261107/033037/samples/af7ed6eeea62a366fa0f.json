@@ -1,0 +1,74 @@
+{
+  "route": "/dl srt",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_url_webm_and_embedded_srt_are_real_files_without_remote_download",
+  "input": "/dl srt --idioma es https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "583df601250a4a1288ca3076bef4250a"
+      ],
+      "file_facts": [
+        {
+          "bytes": 64,
+          "extension": "srt",
+          "format": "srt"
+        }
+      ],
+      "format": "srt",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: SRT · 64 B"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "291950ec24b3baa90c2583e0e197bc561ff0ec2802522640300b7333e3293aa1",
+      "rich_payload": {
+        "artifacts": [
+          "583df601250a4a1288ca3076bef4250a"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: SRT · 64 B\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.srt",
+        "source_full": "Descarga preparada\n\nVideo\n\nFormato final: SRT · 64 B\n\nArchivo preparado.",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: SRT · 64 B\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

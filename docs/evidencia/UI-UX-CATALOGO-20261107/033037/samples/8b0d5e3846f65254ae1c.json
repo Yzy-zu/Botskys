@@ -1,0 +1,58 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_two_recado_confirmations_reserve_only_one_job_and_parts",
+  "input": "/recado enviar 37c4e5c53f7e46d7b4b630d2a583646d",
+  "result": {
+    "code": "message_status",
+    "data": {
+      "draft_id": "37c4e5c53f7e46d7b4b630d2a583646d",
+      "parts": [
+        {
+          "contact_name": "Amiga",
+          "error_code": null,
+          "kind": "text",
+          "position": 0,
+          "state": "pending"
+        }
+      ],
+      "state": "sending"
+    },
+    "status": "ok",
+    "text": "Recado 37c4e5c53f7e46d7b4b630d2a583646d: sending.\nAmiga · text: pending"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "enviando\nAmiga · Texto: pendiente\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado del recado*\n\nenviando\nAmiga · Texto: pendiente\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "7eea772acac4a892a13f82cae808e0a74612fed0d901f6468f0807fe060361cd",
+      "rich_payload": {
+        "source_full": "Estado del recado\n\nenviando\nAmiga · Texto: pendiente\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+        "source_text": "Estado del recado\n\nenviando\nAmiga · Texto: pendiente\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      },
+      "utf16_units": 151
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

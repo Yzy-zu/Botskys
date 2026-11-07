@@ -1,0 +1,64 @@
+{
+  "route": "/mc mods",
+  "operation": "manage_minecraft.mods",
+  "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+  "input": "/mc mods",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "mods",
+      "response": {
+        "base_pack_count": 0,
+        "installed": [],
+        "installed_total": 0,
+        "installed_truncated": false,
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Mods del servidor\nMundo: desconocido\nNo hay mods instalados/configurados.\nCarga en juego: desconocida (el puente no la informa)."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Paquetes del servidor"
+      },
+      {
+        "kind": "paragraph",
+        "text": ""
+      },
+      {
+        "kind": "notice",
+        "text": "Sin registros para mostrar."
+      },
+      {
+        "kind": "notice",
+        "text": "Detalles, advertencias y comandos verificados:\nMods del servidor\nMundo: desconocido\nNo hay mods instalados/configurados.\nCarga en juego: desconocida (el puente no la informa)."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Paquetes del servidor*\n\nSin registros para mostrar.\n\nDetalles, advertencias y comandos verificados:\nMods del servidor\nMundo: desconocido\nNo hay mods instalados/configurados.\nCarga en juego: desconocida (el puente no la informa).",
+      "visual_version": 2,
+      "content_sha256": "4003778f6175e389d046c28a28b2fcf324d08d3fdfb9960df3a88cc7fc023aa3",
+      "rich_payload": {
+        "source_full": "Paquetes del servidor\n\nSin registros para mostrar.\n\nDetalles, advertencias y comandos verificados:\nMods del servidor\nMundo: desconocido\nNo hay mods instalados/configurados.\nCarga en juego: desconocida (el puente no la informa).",
+        "source_text": "Paquetes del servidor\n\nSin registros para mostrar.\n\nDetalles, advertencias y comandos verificados:\nMods del servidor\nMundo: desconocido\nNo hay mods instalados/configurados.\nCarga en juego: desconocida (el puente no la informa)."
+      },
+      "utf16_units": 229
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

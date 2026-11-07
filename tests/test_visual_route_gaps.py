@@ -1,5 +1,6 @@
 """Huecos del catálogo, con oracles de efecto local y transporte exclusivamente doble."""
 
+import asyncio
 import json
 from unittest import IsolatedAsyncioTestCase, TestCase
 
@@ -143,7 +144,16 @@ class MinecraftVisualGaps(IsolatedAsyncioTestCase):
 class ClipVisualGaps(IsolatedAsyncioTestCase):
     asyncSetUp = test_calls.CallsTest.asyncSetUp
     close_process = test_calls.CallsTest.close_process
-    ipc = test_calls.CallsTest.ipc
+    async def ipc(self, value):
+        # Two bounded ffmpeg normalization passes can exceed the control-only
+        # five-second fixture timeout under the full suite. Product limits stay intact.
+        self.process.stdin.write((json.dumps(value) + "\n").encode())
+        await self.process.stdin.drain()
+        data = await asyncio.wait_for(self.process.stdout.readline(), 30)
+        self.assertTrue(data, "fixture process ended")
+        result = json.loads(data)
+        self.assertNotIn("error", result)
+        return result
     incoming = None
     receive = test_calls.CallsTest.receive
     rows = test_calls.CallsTest.rows

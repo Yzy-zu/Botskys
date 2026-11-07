@@ -1,0 +1,34 @@
+{
+  "route": "/admin nuclear-confirmar",
+  "operation": "manage_admin.nuclear_confirm",
+  "test": "test_admin.AdminTest.test_protected_targets_and_nuclear_disabled_by_default",
+  "input": "/admin nuclear-confirmar 642ba32397d34215ac732063023b3363",
+  "result": {
+    "code": "nuclear_disabled",
+    "data": {},
+    "status": "failed",
+    "text": "La ejecución nuclear está deshabilitada; no hubo cargo ni expulsiones."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La ejecución nuclear está deshabilitada; no hubo cargo ni expulsiones.",
+      "visual_version": 2,
+      "content_sha256": "c3cc866b3073a717e9d8487447e06d010b2338a8584a641539e9381c86afad82",
+      "rich_payload": {
+        "source_full": "La ejecución nuclear está deshabilitada; no hubo cargo ni expulsiones.",
+        "source_text": "La ejecución nuclear está deshabilitada; no hubo cargo ni expulsiones."
+      },
+      "utf16_units": 70
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

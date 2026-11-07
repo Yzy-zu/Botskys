@@ -1,0 +1,36 @@
+{
+  "route": "/hh parar",
+  "operation": "manage_happy_hour.stop",
+  "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+  "input": "/hh parar ae4e24e8625e4473b844dda9e174d38d",
+  "result": {
+    "code": "happy_stopped",
+    "data": {
+      "event_id": "ae4e24e8625e4473b844dda9e174d38d"
+    },
+    "status": "ok",
+    "text": "Hora feliz cerrada; premios nuevos retirados."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Hora feliz cerrada; premios nuevos retirados.",
+      "visual_version": 2,
+      "content_sha256": "32bc71ae0e667bfe6402122378e9311fb725b2a7784ccbe67d26991dc0c56ff9",
+      "rich_payload": {
+        "source_full": "Hora feliz cerrada; premios nuevos retirados.",
+        "source_text": "Hora feliz cerrada; premios nuevos retirados."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

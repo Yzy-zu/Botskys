@@ -1,0 +1,79 @@
+{
+  "route": "/bj iniciar",
+  "operation": "manage_blackjack.start",
+  "test": "test_games.GamesTest.test_stale_game_board_and_delayed_happy_publication_are_not_delivered",
+  "input": "/bj iniciar 50",
+  "result": {
+    "code": "blackjack_board",
+    "data": {
+      "bet": 50,
+      "dealer_visible": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        }
+      ],
+      "game_id": "c4fb2b05d9b043b2b365e20390ae1599",
+      "players": [
+        {
+          "bet": 50,
+          "hand": [
+            {
+              "rank": "5",
+              "suit": "♠",
+              "value": 5
+            },
+            {
+              "rank": "6",
+              "suit": "♠",
+              "value": 6
+            }
+          ],
+          "score": 11,
+          "seat": 1,
+          "state": "playing"
+        }
+      ],
+      "revision": 3,
+      "state": "playing",
+      "turn": 1
+    },
+    "status": "ok",
+    "text": "Blackjack c4fb2b05d9b043b2b365e20390ae1599 · playing · apuesta 50 XP.\nCrupier: 10♠ · carta oculta\nAsiento 1: 5♠ 6♠ (11) · playing\nTurno: asiento 1\n/bj pedir c4fb2b05d9b043b2b365e20390ae1599\n/bj plantarse c4fb2b05d9b043b2b365e20390ae1599\n/bj doblar c4fb2b05d9b043b2b365e20390ae1599"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Mesa c4fb2b05d9b043b2b365e20390ae1599 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 1\n/bj pedir c4fb2b05d9b043b2b365e20390ae1599\n/bj plantarse c4fb2b05d9b043b2b365e20390ae1599\n/bj doblar c4fb2b05d9b043b2b365e20390ae1599"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack*\n\nMesa c4fb2b05d9b043b2b365e20390ae1599 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 1\n/bj pedir c4fb2b05d9b043b2b365e20390ae1599\n/bj plantarse c4fb2b05d9b043b2b365e20390ae1599\n/bj doblar c4fb2b05d9b043b2b365e20390ae1599",
+      "visual_version": 2,
+      "content_sha256": "52e23372356bc29ffe20ff158b1fc1296d339d6907776af505568e50ffa73337",
+      "rich_payload": {
+        "source_full": "Blackjack\n\nMesa c4fb2b05d9b043b2b365e20390ae1599 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 1\n/bj pedir c4fb2b05d9b043b2b365e20390ae1599\n/bj plantarse c4fb2b05d9b043b2b365e20390ae1599\n/bj doblar c4fb2b05d9b043b2b365e20390ae1599",
+        "source_text": "Blackjack\n\nMesa c4fb2b05d9b043b2b365e20390ae1599 · En juego\n\nApuesta: 50 XP por persona\n\nCrupier: 10♠ · carta oculta\n\nAsiento 1 · 5♠ 6♠ · 11 puntos · En juego\n\nTurno: asiento 1\n/bj pedir c4fb2b05d9b043b2b365e20390ae1599\n/bj plantarse c4fb2b05d9b043b2b365e20390ae1599\n/bj doblar c4fb2b05d9b043b2b365e20390ae1599"
+      },
+      "utf16_units": 312
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

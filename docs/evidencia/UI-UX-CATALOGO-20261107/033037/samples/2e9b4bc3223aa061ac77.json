@@ -1,0 +1,53 @@
+{
+  "route": "/hh iniciar",
+  "operation": "manage_happy_hour.start",
+  "test": "test_packs.PacksTest.test_failed_photo_refunds_whole_price_and_discount_expiry_has_no_charge",
+  "input": "/hh iniciar --duracion 1m",
+  "result": {
+    "code": "happy_started",
+    "data": {
+      "duration_seconds": 60,
+      "event_id": "b2875564d146438fb0bcb38ffa9ff8fb"
+    },
+    "status": "ok",
+    "text": "Hora feliz b2875564d146438fb0bcb38ffa9ff8fb: 60s desde la entrega de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n/hh estado b2875564d146438fb0bcb38ffa9ff8fb"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Hora feliz"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Duración: 60 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles."
+      },
+      {
+        "kind": "next_action",
+        "text": "/hh estado b2875564d146438fb0bcb38ffa9ff8fb"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Hora feliz*\n\nDuración: 60 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n\n`/hh estado b2875564d146438fb0bcb38ffa9ff8fb`",
+      "visual_version": 2,
+      "content_sha256": "c63817c652b0ce340d773778f0e78919e68621a8f7cc321b4be8afaec9352389",
+      "rich_payload": {
+        "source_full": "Hora feliz\n\nDuración: 60 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n\n/hh estado b2875564d146438fb0bcb38ffa9ff8fb",
+        "source_text": "Hora feliz\n\nDuración: 60 s desde la entrega completa de este aviso. 20 XP por mensaje normal del grupo; packs a 75 XP cuando estén disponibles.\n\n/hh estado b2875564d146438fb0bcb38ffa9ff8fb"
+      },
+      "utf16_units": 192
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

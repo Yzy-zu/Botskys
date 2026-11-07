@@ -1,0 +1,56 @@
+{
+  "route": "/tarea archivo",
+  "operation": "manage_school.get_attachment",
+  "test": "test_organization.OrganizationTest.test_school_task_owner_complete_file_explicit_share_and_grant_revocation",
+  "input": "/tarea archivo 1",
+  "result": {
+    "code": "task_attachment",
+    "data": {
+      "artifacts": [
+        "052328c195b24479b4d125f1634c45b4"
+      ]
+    },
+    "status": "ok",
+    "text": "Archivo de la tarea."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Archivo de tarea"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo de la tarea."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "fb168f5f76cda096520b97fc0fc2c7230f63df29d618117dc52e2f189951ab38",
+      "rich_payload": {
+        "artifacts": [
+          "052328c195b24479b4d125f1634c45b4"
+        ],
+        "caption": "*Archivo de tarea*\n\nArchivo de la tarea.",
+        "caption_frozen": true,
+        "name": "Botsky.png",
+        "source_full": "Archivo de tarea\n\nArchivo de la tarea.",
+        "source_text": "Archivo de tarea\n\nArchivo de la tarea."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

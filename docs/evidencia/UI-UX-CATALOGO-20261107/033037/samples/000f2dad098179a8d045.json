@@ -1,0 +1,38 @@
+{
+  "route": "/hh reclamar",
+  "operation": "manage_happy_hour.claim",
+  "test": "test_packs.PacksTest.test_happy_automatic_drop_is_accepted_before_award_and_stop_retires_rain",
+  "input": "/hh reclamar 175e40e3fc2c4f3b957f654cf9f8df3e",
+  "result": {
+    "code": "happy_photos_result",
+    "data": {
+      "accepted": 0,
+      "event_id": "ae4e24e8625e4473b844dda9e174d38d",
+      "states": []
+    },
+    "status": "empty",
+    "text": "Fotos aceptadas: 0. No se usó una fuente web."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Fotos aceptadas: 0. No se usó una fuente web.",
+      "visual_version": 2,
+      "content_sha256": "49cadf12667b6de249dae010655fbedbc18f99716c172ffe131d6e3e6a2a9e75",
+      "rich_payload": {
+        "source_full": "Fotos aceptadas: 0. No se usó una fuente web.",
+        "source_text": "Fotos aceptadas: 0. No se usó una fuente web."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

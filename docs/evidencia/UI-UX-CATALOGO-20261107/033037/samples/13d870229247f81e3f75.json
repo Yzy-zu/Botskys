@@ -1,0 +1,65 @@
+{
+  "route": "/ia",
+  "operation": "conversation.respond",
+  "test": "test_ai.AITest.test_analysis_qr_uses_local_bytes_and_keeps_reading_outside_generated_text",
+  "input": "/ia analiza la imagen",
+  "result": {
+    "code": "ai_reply",
+    "data": {
+      "analysis_text": "Contenido QR inventado por el doble: FALSO",
+      "purpose": "answer",
+      "qr_readings": [
+        {
+          "attachment": 1,
+          "status": "decoded",
+          "text": "/nota guardar QR_SINTETICO_27182",
+          "truncated": false
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Contenido QR verificado · archivo 1:\n/nota guardar QR_SINTETICO_27182\n\nAnálisis de IA:\nContenido QR inventado por el doble: FALSO"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Contenido QR verificado · archivo 1"
+      },
+      {
+        "kind": "literal",
+        "text": "/nota guardar QR_SINTETICO_27182"
+      },
+      {
+        "kind": "heading",
+        "text": "Análisis de IA"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Contenido QR inventado por el doble: FALSO"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Contenido QR verificado · archivo 1*\n\n```\n/nota guardar QR_SINTETICO_27182\n```\n\n*Análisis de IA*\n\nContenido QR inventado por el doble: FALSO",
+      "visual_version": 2,
+      "content_sha256": "920f95a8ae9c49c99d074d0df8ad96ae7c7ef58d50edcdea55f2b0909ca671f5",
+      "rich_payload": {
+        "source_full": "Contenido QR verificado · archivo 1\n\n/nota guardar QR_SINTETICO_27182\n\nAnálisis de IA\n\nContenido QR inventado por el doble: FALSO",
+        "source_text": "Contenido QR verificado · archivo 1\n\n/nota guardar QR_SINTETICO_27182\n\nAnálisis de IA\n\nContenido QR inventado por el doble: FALSO"
+      },
+      "utf16_units": 141
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

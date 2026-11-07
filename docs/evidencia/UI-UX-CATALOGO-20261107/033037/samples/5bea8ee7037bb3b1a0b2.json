@@ -1,0 +1,68 @@
+{
+  "route": "/pdf terminar",
+  "operation": "manage_pdf.finish",
+  "test": "test_media.MediaTest.test_pdf_session_restart_multiple_sources_and_cancel_exact_job",
+  "input": "/pdf terminar",
+  "result": {
+    "code": "pdf_assembled",
+    "data": {
+      "artifacts": [
+        "068c4136a39b4295b7e64cc1da563053"
+      ],
+      "file_facts": [
+        {
+          "bytes": 20915,
+          "extension": "pdf",
+          "format": "pdf",
+          "pages": 2
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "PDF terminado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "PDF terminado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: PDF · 20.42 KiB (20915 bytes) · Páginas: 2"
+      },
+      {
+        "kind": "notice",
+        "text": "PDF terminado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "bea6d7f74cbfdd5adfb619d7dc1b2de1ef0e6eceae3937ad32b063936ba8b82b",
+      "rich_payload": {
+        "artifacts": [
+          "068c4136a39b4295b7e64cc1da563053"
+        ],
+        "caption": "*PDF terminado*\n\nFormato final: PDF · 20.42 KiB (20915 bytes) · Páginas: 2\n\nPDF terminado.",
+        "caption_frozen": true,
+        "name": "Documento.pdf",
+        "source_full": "PDF terminado\n\nFormato final: PDF · 20.42 KiB (20915 bytes) · Páginas: 2\n\nPDF terminado.",
+        "source_text": "PDF terminado\n\nFormato final: PDF · 20.42 KiB (20915 bytes) · Páginas: 2\n\nPDF terminado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,70 @@
+{
+  "route": "/bj iniciar",
+  "operation": "manage_blackjack.start",
+  "test": "test_games.GamesTest.test_blackjack_natural_payout_single_receipt_and_rescue_default",
+  "input": "/bj iniciar",
+  "result": {
+    "code": "blackjack_settled",
+    "data": {
+      "dealer": [
+        {
+          "rank": "10",
+          "suit": "♠",
+          "value": 10
+        },
+        {
+          "rank": "8",
+          "suit": "♠",
+          "value": 8
+        }
+      ],
+      "game_id": "e17cf4e2fdab46359da0bf2923e01e36",
+      "players": [
+        {
+          "bet": 20,
+          "outcome": "blackjack",
+          "payout": 50,
+          "score": 21,
+          "seat": 1
+        }
+      ],
+      "state": "settled"
+    },
+    "status": "ok",
+    "text": "Crupier: 18\nAsiento 1: blackjack · pago 50 XP"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Blackjack · final"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Crupier: 18 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 20 XP · pago bruto: 50 XP · resultado neto: +30 XP"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Blackjack · final*\n\nCrupier: 18 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 20 XP · pago bruto: 50 XP · resultado neto: +30 XP",
+      "visual_version": 2,
+      "content_sha256": "df147da0ee5f17599fd0bbbe474f1b2624022051cf10b014d4f01d560ae7cd0f",
+      "rich_payload": {
+        "source_full": "Blackjack · final\n\nCrupier: 18 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 20 XP · pago bruto: 50 XP · resultado neto: +30 XP",
+        "source_text": "Blackjack · final\n\nCrupier: 18 puntos\n\nAsiento 1 · blackjack · 21 puntos\nApuesta: 20 XP · pago bruto: 50 XP · resultado neto: +30 XP"
+      },
+      "utf16_units": 134
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

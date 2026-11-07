@@ -1,0 +1,63 @@
+{
+  "route": "/drive buscar",
+  "operation": "manage_drive.search",
+  "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+  "input": "/drive buscar literal",
+  "result": {
+    "code": "drive_choices",
+    "data": {
+      "choices": [
+        {
+          "id": "file1",
+          "mime_type": "text/plain",
+          "name": "literal.txt",
+          "size": 3,
+          "web_view_link": "https://drive.google.com/file/d/file1/view"
+        }
+      ],
+      "expires_ms": 1793963100000,
+      "prepared_ms": 1793962800000,
+      "view_id": "9723258d925e4d1ea19a10b7342f87cc"
+    },
+    "status": "needs_input",
+    "text": "Archivos de tu ámbito:\n1. literal.txt\n/drive elegir 9723258d925e4d1ea19a10b7342f87cc 1"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Archivos de Drive",
+      "headers": [
+        "Opción",
+        "Archivo",
+        "Tamaño"
+      ],
+      "rows": [
+        [
+          "1",
+          "literal.txt",
+          "3 B"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nArchivos de Drive\n\nOpción: 1\nArchivo: literal.txt\nTamaño: 3 B\n```\n\nLista de tu ámbito · Vence: 2026-11-06 05:05:00 · America/Mexico_City\n/drive elegir NUMERO",
+      "visual_version": 2,
+      "content_sha256": "758b40b7b75eaefee6fe8675c180653f5d285a1ca802678ce7d00efd2b4b8ddd",
+      "rich_payload": {
+        "source_full": "Archivos de Drive\n\nOpción: 1\nArchivo: literal.txt\nTamaño: 3 B\n\nLista de tu ámbito · Vence: 2026-11-06 05:05:00 · America/Mexico_City\n/drive elegir NUMERO",
+        "source_text": "Archivos de Drive\n\nOpción: 1\nArchivo: literal.txt\nTamaño: 3 B\n\nLista de tu ámbito · Vence: 2026-11-06 05:05:00 · America/Mexico_City\n/drive elegir NUMERO"
+      },
+      "utf16_units": 161
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

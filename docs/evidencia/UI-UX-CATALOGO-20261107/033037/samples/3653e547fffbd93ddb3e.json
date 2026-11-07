@@ -1,0 +1,39 @@
+{
+  "route": "/hh reclamar",
+  "operation": "manage_happy_hour.claim",
+  "test": "test_games.GamesTest.test_happy_hour_publication_owner_scope_drop_race_and_expiry",
+  "input": "/hh reclamar 79e4d7ed949241ac98abaa4df2173ecb",
+  "result": {
+    "code": "happy_drop_claimed",
+    "data": {
+      "drop_id": "79e4d7ed949241ac98abaa4df2173ecb",
+      "event_id": "9fd16b604dce44089e3810b10c75dc69",
+      "gained": 500,
+      "wallet_id": 1
+    },
+    "status": "ok",
+    "text": "AirDrop 79e4d7ed949241ac98abaa4df2173ecb: +500 XP adjudicados una sola vez a cuenta #1. El premio fotográfico se gestiona por separado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "AirDrop 79e4d7ed949241ac98abaa4df2173ecb: +500 XP adjudicados una sola vez a cuenta #1. El premio fotográfico se gestiona por separado.",
+      "visual_version": 2,
+      "content_sha256": "fbe8ed94214159c8d7c03c1f2f00c75a8b3c9bd138b7392cbd7925cba359efce",
+      "rich_payload": {
+        "source_full": "AirDrop 79e4d7ed949241ac98abaa4df2173ecb: +500 XP adjudicados una sola vez a cuenta #1. El premio fotográfico se gestiona por separado.",
+        "source_text": "AirDrop 79e4d7ed949241ac98abaa4df2173ecb: +500 XP adjudicados una sola vez a cuenta #1. El premio fotográfico se gestiona por separado."
+      },
+      "utf16_units": 135
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

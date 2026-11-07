@@ -1,0 +1,34 @@
+{
+  "route": "/dl mp4",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_remote_clients_are_disabled_and_sources_do_not_fall_back",
+  "input": "/dl mp4 https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "downloads_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "Las fuentes remotas no están habilitadas en este laboratorio."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Las fuentes remotas no están habilitadas en este laboratorio.",
+      "visual_version": 2,
+      "content_sha256": "f3f1b5f8df2552189f2473ad0b4844050383e15d499996d79cca9b098f015e2e",
+      "rich_payload": {
+        "source_full": "Las fuentes remotas no están habilitadas en este laboratorio.",
+        "source_text": "Las fuentes remotas no están habilitadas en este laboratorio."
+      },
+      "utf16_units": 61
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,40 @@
+{
+  "route": "/mc mod activar",
+  "operation": "manage_minecraft.enable_mod",
+  "test": "test_minecraft.MinecraftTest.test_mod_literal_json_console_is_not_shell_and_duplicate_once",
+  "input": "/mc mod activar \"Nombre con espacios\"",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "enable_mod",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Activación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Activación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada.",
+      "visual_version": 2,
+      "content_sha256": "f4bec1aadc3f54755a2c36fe6898466e5cb4d5cee718b4b8028c5185cea27d1c",
+      "rich_payload": {
+        "source_full": "Activación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada.",
+        "source_text": "Activación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada."
+      },
+      "utf16_units": 147
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

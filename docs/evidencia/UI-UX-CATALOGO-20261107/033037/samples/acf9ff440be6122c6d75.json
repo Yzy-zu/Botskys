@@ -1,0 +1,50 @@
+{
+  "route": "/recado estado",
+  "operation": "manage_messages.status",
+  "test": "test_integrations.IntegrationsTest.test_contact_and_draft_status_and_drive_capacity_are_scoped_read_only",
+  "input": "/recado estado 5f97633ab2ac4caaa6311437b80dd185",
+  "result": {
+    "code": "message_status",
+    "data": {
+      "draft_id": "5f97633ab2ac4caaa6311437b80dd185",
+      "parts": [],
+      "state": "draft"
+    },
+    "status": "ok",
+    "text": "Recado 5f97633ab2ac4caaa6311437b80dd185: draft."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "borrador\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado del recado*\n\nborrador\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "4cf373c16a54f91b6425aa50121e89c900d77b3172d9f9a247ac79bafdcd5d84",
+      "rich_payload": {
+        "source_full": "Estado del recado\n\nborrador\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir.",
+        "source_text": "Estado del recado\n\nborrador\nAceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+      },
+      "utf16_units": 126
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

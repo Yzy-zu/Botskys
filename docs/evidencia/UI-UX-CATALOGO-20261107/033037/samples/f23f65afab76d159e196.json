@@ -1,0 +1,34 @@
+{
+  "route": "/coop estado",
+  "operation": "manage_cooperacha.status",
+  "test": "test_packs.PacksTest.test_coop_publication_own_contributions_goal_and_single_settlement",
+  "input": "/coop estado bf258ade49ca4a0297f128ca7267674c",
+  "result": {
+    "code": "coop_group_required",
+    "data": {},
+    "status": "failed",
+    "text": "Las cooperachas requieren un grupo habilitado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Las cooperachas requieren un grupo habilitado.",
+      "visual_version": 2,
+      "content_sha256": "f5c3677213a1c9a6e07e5622f336ab01d2428b91e2b65812aac92b320e526d3a",
+      "rich_payload": {
+        "source_full": "Las cooperachas requieren un grupo habilitado.",
+        "source_text": "Las cooperachas requieren un grupo habilitado."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

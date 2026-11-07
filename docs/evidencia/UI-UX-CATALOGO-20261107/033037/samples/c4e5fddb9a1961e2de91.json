@@ -1,0 +1,34 @@
+{
+  "route": "/recado enviar",
+  "operation": "manage_messages.send",
+  "test": "test_integrations.IntegrationsTest.test_message_crash_and_revoked_owner_stop_before_next_send",
+  "input": "/recado enviar 837c09dbc7b3441bb384a8c54e91f87a",
+  "result": {
+    "code": "owner_required",
+    "data": {},
+    "status": "failed",
+    "text": "Esta acción está reservada al dueño verificado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Esta acción está reservada al dueño verificado.",
+      "visual_version": 2,
+      "content_sha256": "7cd0dbdf2406dc92032bf1f677149083502be76571109e9df470a254af467c91",
+      "rich_payload": {
+        "source_full": "Esta acción está reservada al dueño verificado.",
+        "source_text": "Esta acción está reservada al dueño verificado."
+      },
+      "utf16_units": 47
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

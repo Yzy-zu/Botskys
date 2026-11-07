@@ -1,0 +1,40 @@
+{
+  "route": "/mc mod desactivar",
+  "operation": "manage_minecraft.disable_mod",
+  "test": "test_minecraft.MinecraftTest.test_read_routes_and_disable_mod_retain_closed_remote_contract",
+  "input": "/mc mod desactivar \"Nombre sintético\"",
+  "result": {
+    "code": "minecraft_completed",
+    "data": {
+      "action": "disable_mod",
+      "response": {
+        "online": true,
+        "status": "ok"
+      }
+    },
+    "status": "ok",
+    "text": "Desactivación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Desactivación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada.",
+      "visual_version": 2,
+      "content_sha256": "601888b822dab0de3b39684a3c0e6ef5b6ae510e4f42b3186399b44c693786b9",
+      "rich_payload": {
+        "source_full": "Desactivación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada.",
+        "source_text": "Desactivación de mod: solicitada; cambio no informado. Sin cambio nuevo; si había cambios pendientes, usa /mc reiniciar. Carga en juego no confirmada."
+      },
+      "utf16_units": 150
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

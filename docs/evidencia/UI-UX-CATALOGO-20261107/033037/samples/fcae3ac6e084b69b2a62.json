@@ -1,0 +1,72 @@
+{
+  "route": "/encuesta resultados",
+  "operation": "manage_poll.results",
+  "test": "test_organization.OrganizationTest.test_poll_full_options_delivered_publication_ownership_and_monotonic_votes",
+  "input": "/encuesta resultados 1",
+  "result": {
+    "code": "poll_results",
+    "data": {
+      "options": [
+        {
+          "choice": 1,
+          "text": "A las dos",
+          "votes": 1
+        },
+        {
+          "choice": 2,
+          "text": "A las tres",
+          "votes": 1
+        }
+      ],
+      "participants": 2,
+      "poll_id": 1,
+      "question": "¿Qué hora?",
+      "state": "open"
+    },
+    "status": "ok",
+    "text": "¿Qué hora?\n1. A las dos: 1\n2. A las tres: 1"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Resultados de encuesta",
+      "headers": [
+        "Opción",
+        "Respuesta",
+        "Votos"
+      ],
+      "rows": [
+        [
+          "1",
+          "A las dos",
+          "1"
+        ],
+        [
+          "2",
+          "A las tres",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "¿Qué hora?\n\n```\nResultados de encuesta\n\nOpción: 1\nRespuesta: A las dos\nVotos: 1\n\nOpción: 2\nRespuesta: A las tres\nVotos: 1\n```\n\n2 participantes · abierta · Encuesta 1",
+      "visual_version": 2,
+      "content_sha256": "5b9e6bf13422be0f2c31374ce3a09e27e4448f21db0ef06a3a7eaa35abd1b7aa",
+      "rich_payload": {
+        "source_full": "¿Qué hora?\n\nResultados de encuesta\n\nOpción: 1\nRespuesta: A las dos\nVotos: 1\n\nOpción: 2\nRespuesta: A las tres\nVotos: 1\n\n2 participantes · abierta · Encuesta 1",
+        "source_text": "¿Qué hora?\n\nResultados de encuesta\n\nOpción: 1\nRespuesta: A las dos\nVotos: 1\n\nOpción: 2\nRespuesta: A las tres\nVotos: 1\n\n2 participantes · abierta · Encuesta 1"
+      },
+      "utf16_units": 165
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

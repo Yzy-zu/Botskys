@@ -1,0 +1,96 @@
+{
+  "route": "/ayuda",
+  "operation": "core.help",
+  "test": "test_visual_integrity.VisualIntegrityTest.test_quote_of_intermediate_table_reads_whole_canonical_answer_and_rejects_partial",
+  "input": "/ayuda",
+  "result": {
+    "code": "own_fixture",
+    "data": {
+      "native_footer": "Final",
+      "native_intro": "Introducción",
+      "native_table": {
+        "headers": [
+          "Dato",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "42"
+          ]
+        ],
+        "title": "Comparación"
+      }
+    },
+    "status": "ok",
+    "text": "Introducción\n\nDato: *literal*\nValor: 42\n\nFinal"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Comparación",
+      "headers": [
+        "Dato",
+        "Valor"
+      ],
+      "rows": [
+        [
+          "*literal*",
+          "42"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Introducción",
+      "visual_version": 2,
+      "content_sha256": "e07bb4cab5b4456c1ee720e1dbc2666bace63ecf0b07569a9ab9f7bf608a21b0",
+      "rich_payload": {
+        "source_full": "Introducción\n\nDato: *literal*\nValor: 42\n\nFinal",
+        "source_text": "Introducción"
+      },
+      "utf16_units": 12
+    },
+    {
+      "position": 1,
+      "kind": "table",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "332044f918a4bb79377a64a9ecb787aa99c7bac52203f42df7ea6d51c4a82b59",
+      "rich_payload": {
+        "headers": [
+          "Dato",
+          "Valor"
+        ],
+        "rows": [
+          [
+            "*literal*",
+            "42"
+          ]
+        ],
+        "title": "Comparación"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 2,
+      "kind": "text",
+      "payload": "Final",
+      "visual_version": 2,
+      "content_sha256": "200047b6ce54b49f6827728a9d14b67fdf91793630ca6267d3a19994c8b530e9",
+      "rich_payload": {
+        "source_text": "Final"
+      },
+      "utf16_units": 5
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

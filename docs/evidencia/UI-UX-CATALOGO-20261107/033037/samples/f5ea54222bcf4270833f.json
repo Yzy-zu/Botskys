@@ -1,0 +1,41 @@
+{
+  "route": "/cancelar",
+  "operation": "core.cancelar",
+  "test": "test_native_tables.TableRecoveryTest.test_cancel_inflight_preserves_prior_ack_warns_and_suppresses_footer",
+  "input": "/cancelar 62b0d1e638a9f8355928d0e294309f4d",
+  "result": {
+    "code": "request_cancelled",
+    "data": {
+      "delivery_before_cancel": {
+        "accepted": 1,
+        "pending": 1,
+        "sending": 1
+      },
+      "id": "62b0d1e638a9f8355928d0e294309f4d"
+    },
+    "status": "cancelled",
+    "text": "Cancelado. El servicio ya aceptó 1 partes; no se retiraron. No pude confirmar si llegó una parte en curso. Revisa antes de repetir."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Cancelado. El servicio ya aceptó 1 partes; no se retiraron. No pude confirmar si llegó una parte en curso. Revisa antes de repetir.",
+      "visual_version": 2,
+      "content_sha256": "495c78c75fbeb49e0203d9f1666fa71653cb2ebdbf651c60ca20c443f04fe477",
+      "rich_payload": {
+        "source_full": "Cancelado. El servicio ya aceptó 1 partes; no se retiraron. No pude confirmar si llegó una parte en curso. Revisa antes de repetir.",
+        "source_text": "Cancelado. El servicio ya aceptó 1 partes; no se retiraron. No pude confirmar si llegó una parte en curso. Revisa antes de repetir."
+      },
+      "utf16_units": 131
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

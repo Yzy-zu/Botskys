@@ -1,0 +1,60 @@
+{
+  "route": "/pack catalogo",
+  "operation": "manage_pack.catalog",
+  "test": "test_packs.PacksTest.test_library_actual_images_catalog_exact_category_and_symlinks",
+  "input": "/pack catalogo --categoria sintetico",
+  "result": {
+    "code": "pack_catalog",
+    "data": {
+      "items": [
+        {
+          "category": "sintetico",
+          "count": 6,
+          "name": "Geométricos sintéticos"
+        }
+      ],
+      "page": 1,
+      "pages": 1
+    },
+    "status": "ok",
+    "text": "Packs publicados ·150 XP, hora feliz75 XP.\nGeométricos sintéticos (sintetico): 6 fotos"
+  },
+  "document": null,
+  "native_preview": [
+    {
+      "title": "Packs publicados",
+      "headers": [
+        "Categoría",
+        "Referencia",
+        "Fotos"
+      ],
+      "rows": [
+        [
+          "Geométricos sintéticos",
+          "sintetico",
+          "6"
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "```\nPacks publicados\n\nCategoría: Geométricos sintéticos\nReferencia: sintetico\nFotos: 6\n```\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/1",
+      "visual_version": 2,
+      "content_sha256": "292e07680b9f5bf6acba4e82b1c6612659007abb592a4597f7ea586718e528f5",
+      "rich_payload": {
+        "source_full": "Packs publicados\n\nCategoría: Geométricos sintéticos\nReferencia: sintetico\nFotos: 6\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/1",
+        "source_text": "Packs publicados\n\nCategoría: Geométricos sintéticos\nReferencia: sintetico\nFotos: 6\n\n150 XP · hora feliz 75 XP. Entrega privada bajo oferta y confirmación vigentes.\nEl stock 0 indica que no hay fotos disponibles.\nPágina 1/1"
+      },
+      "utf16_units": 230
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

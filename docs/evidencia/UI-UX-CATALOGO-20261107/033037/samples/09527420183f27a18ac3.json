@@ -1,0 +1,75 @@
+{
+  "route": "/dl webm",
+  "operation": "download_media.url",
+  "test": "test_downloads.DownloadsTest.test_clip_options_flow_through_url_search_and_retained_source",
+  "input": "/dl webm --hasta 0.8 https://media.w3.org/2010/05/bunny/trailer.mp4",
+  "result": {
+    "code": "download_ready",
+    "data": {
+      "artifacts": [
+        "032bc0c3b99c4643ae198fa501a4cf5f"
+      ],
+      "file_facts": [
+        {
+          "bytes": 16778,
+          "duration_seconds": 0.808,
+          "extension": "webm",
+          "format": "webm"
+        }
+      ],
+      "format": "webm",
+      "title": "Video",
+      "url": "https://media.w3.org/2010/05/bunny/trailer.mp4"
+    },
+    "status": "ok",
+    "text": "Archivo preparado."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Descarga preparada"
+      },
+      {
+        "kind": "literal",
+        "text": "Video"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: WEBM · 16.38 KiB (16778 bytes) · Duración: 0:01"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo preparado."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "af106ffd8b5525c3b810af458b91986b85458d0de2bbad0e1b42384314f4f3cc",
+      "rich_payload": {
+        "artifacts": [
+          "032bc0c3b99c4643ae198fa501a4cf5f"
+        ],
+        "caption": "*Descarga preparada*\n\nVideo\n\nFormato final: WEBM · 16.38 KiB (16778 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "caption_frozen": true,
+        "name": "Video.webm",
+        "source_full": "Descarga preparada\n\nVideo\n\nFormato final: WEBM · 16.38 KiB (16778 bytes) · Duración: 0:01\n\nArchivo preparado.",
+        "source_text": "Descarga preparada\n\nVideo\n\nFormato final: WEBM · 16.38 KiB (16778 bytes) · Duración: 0:01\n\nArchivo preparado."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

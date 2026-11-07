@@ -32,3 +32,10 @@ Métricasbenchmark.json miden40fixturesidénticosporcasoconfuente4482c46/current
 no latencia de proveedor. PDF ysticker bajan2→1parte;almacenamientopuedecrecerpor
 conservarfuente canónica. No se promete menorlatenciauniversal ni menosbytesdered.
 Se realizará una captura global final sobre fuente corregida y revisión por ruta.
+
+9. Corrida033037:320tests,0fallos/1error por timeout IPC de5s al generar primer
+clip sintético (doble ffmpeg),319correctos; fuentes sin cambios y0redexterna.
+Se amplía SOLO espera del fixture a30s manteniendo oracle de video y sesión.
+10. Catálogo Pack conservaba categoría al consultar pero perdía filtro en siguiente
+página. Se conserva literal en datos y comando con quoting; nuevo test usa6álbumes
+propios con mismo nombre, página2 contiene1 y no envía fotos.17packsPASS.

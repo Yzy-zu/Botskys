@@ -9,6 +9,7 @@ import ipaddress
 import json
 import os
 import socket
+import subprocess
 import sys
 import time
 import unittest
@@ -135,6 +136,17 @@ def main():
 
         return connect
 
+    source_files = sorted((ROOT / "src/botsky").rglob("*.py")) + sorted(
+        (ROOT / "calls/service").glob("*.*")
+    )
+    source_hashes = {
+        str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in source_files
+        if path.is_file()
+    }
+    source_revision = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+    ).strip()
     suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"))
     with (
         (target / "tests.log").open("w") as log,
@@ -202,6 +214,12 @@ def main():
             }
         )
     summary = {
+        "source_revision": source_revision,
+        "source_sha256": source_hashes,
+        "source_unchanged": all(
+            hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+            for path, digest in source_hashes.items()
+        ),
         "tests": run.testsRun,
         "success": run.wasSuccessful(),
         "failures": len(run.failures),
@@ -210,6 +228,7 @@ def main():
         "non_loopback_attempts": len(denied),
         "routes": len(coverage),
         "families": len({s.family for s in Registry().specs}),
+        "operation_roots": len({s.family.split(".")[0] for s in Registry().specs}),
         "captured_routes": sum(bool(r["observed"]) for r in coverage),
         "semantic_candidate_routes": sum(bool(r["semantic_candidates"]) for r in coverage),
         "samples": len(cases),
@@ -224,8 +243,15 @@ def main():
         ("summary.json", summary),
     ):
         (target / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-    print(json.dumps({"directory": str(target.relative_to(ROOT)), **summary}))
-    return 0 if run.wasSuccessful() and not denied else 1
+    print(
+        json.dumps(
+            {
+                "directory": str(target.relative_to(ROOT)),
+                **{key: value for key, value in summary.items() if key != "source_sha256"},
+            }
+        )
+    )
+    return 0 if run.wasSuccessful() and not denied and summary["source_unchanged"] else 1
 
 
 if __name__ == "__main__":

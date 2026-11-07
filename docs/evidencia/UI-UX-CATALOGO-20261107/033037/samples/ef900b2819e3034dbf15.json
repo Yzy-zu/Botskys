@@ -1,0 +1,41 @@
+{
+  "route": "/daily",
+  "operation": "manage_economy.daily",
+  "test": "test_community_presentation.CommunityPresentationTest.test_available_balance_top_native_and_daily_time",
+  "input": "/daily",
+  "result": {
+    "code": "daily_cooldown",
+    "data": {
+      "account_id": 1,
+      "balance": 1000,
+      "level": 51,
+      "reserved": 0,
+      "retry_at_ms": 1794049200000,
+      "streak": 1
+    },
+    "status": "ok",
+    "text": "Daily ya reclamado; consulta el próximo instante en el resultado."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Daily ya reclamado; consulta el próximo instante en el resultado.\nPróximo daily: 2026-11-07 05:00:00 · America/Mexico_City",
+      "visual_version": 2,
+      "content_sha256": "090346c320aabc51472087058b7b6594e1054a687e5a18396b6225081ebea66c",
+      "rich_payload": {
+        "source_full": "Daily ya reclamado; consulta el próximo instante en el resultado.\nPróximo daily: 2026-11-07 05:00:00 · America/Mexico_City",
+        "source_text": "Daily ya reclamado; consulta el próximo instante en el resultado.\nPróximo daily: 2026-11-07 05:00:00 · America/Mexico_City"
+      },
+      "utf16_units": 122
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

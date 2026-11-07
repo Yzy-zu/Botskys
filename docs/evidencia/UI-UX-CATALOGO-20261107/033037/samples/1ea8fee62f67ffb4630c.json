@@ -1,0 +1,81 @@
+{
+  "route": "/recado preparar",
+  "operation": "manage_messages.prepare",
+  "test": "test_integrations.IntegrationsTest.test_message_partial_uncertain_restart_never_sends_second_destination",
+  "input": "/recado preparar --para Amiga,Otra -- literal",
+  "result": {
+    "code": "message_preview",
+    "data": {
+      "artifact_id": null,
+      "attachment": null,
+      "content": "literal",
+      "draft_id": "c4952a3bc4c64ceeb50331677f0ce90d",
+      "expires_ms": 1793963100000,
+      "presented_ms": 1793962800000,
+      "recipients": [
+        "Amiga",
+        "Otra"
+      ]
+    },
+    "status": "needs_input",
+    "text": "Recado para: Amiga, Otra\nliteral\nCaduca en 5 minutos. Para enviarlo:\n/recado enviar c4952a3bc4c64ceeb50331677f0ce90d"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Vista previa del recado"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Destinatarios verificados:"
+      },
+      {
+        "kind": "literal",
+        "text": "Amiga"
+      },
+      {
+        "kind": "literal",
+        "text": "Otra"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Texto que se enviará:"
+      },
+      {
+        "kind": "literal",
+        "text": "literal"
+      },
+      {
+        "kind": "notice",
+        "text": "Vence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados."
+      },
+      {
+        "kind": "next_action",
+        "text": "/recado enviar c4952a3bc4c64ceeb50331677f0ce90d"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Vista previa del recado*\n\nDestinatarios verificados:\n\nAmiga\n\nOtra\n\nTexto que se enviará:\n\nliteral\n\nVence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\n`/recado enviar c4952a3bc4c64ceeb50331677f0ce90d`",
+      "visual_version": 2,
+      "content_sha256": "3d74a81f05f06982d9d332bf2c6dfff9b94b9217d1f616dc012f135e272806e1",
+      "rich_payload": {
+        "source_full": "Vista previa del recado\n\nDestinatarios verificados:\n\nAmiga\n\nOtra\n\nTexto que se enviará:\n\nliteral\n\nVence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\n/recado enviar c4952a3bc4c64ceeb50331677f0ce90d",
+        "source_text": "Vista previa del recado\n\nDestinatarios verificados:\n\nAmiga\n\nOtra\n\nTexto que se enviará:\n\nliteral\n\nVence: 2026-11-06 05:05:00 · America/Mexico_City. Al confirmar se enviará este contenido a los destinatarios mostrados.\n\n/recado enviar c4952a3bc4c64ceeb50331677f0ce90d"
+      },
+      "utf16_units": 270
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

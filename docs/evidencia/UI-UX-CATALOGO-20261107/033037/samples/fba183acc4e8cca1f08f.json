@@ -1,0 +1,53 @@
+{
+  "route": "/bot reanudar",
+  "operation": "manage_conversation.resume",
+  "test": "test_ai.AITest.test_bot_modes_pause_cancel_pending_work_and_never_enable_spontaneity",
+  "input": "/bot reanudar",
+  "result": {
+    "code": "bot_mode_updated",
+    "data": {
+      "mode": "discreto",
+      "paused_until_ms": 0
+    },
+    "status": "ok",
+    "text": "Modo discreto. Sin pausa."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Estado de Botsky"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Modo: discreto"
+      },
+      {
+        "kind": "notice",
+        "text": "Sin pausa."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Estado de Botsky*\n\nModo: discreto\n\nSin pausa.",
+      "visual_version": 2,
+      "content_sha256": "29d826fbc803d03abff4d2bcd8109416bccc5e82ac8a9970d74fd4e5d724d74c",
+      "rich_payload": {
+        "source_full": "Estado de Botsky\n\nModo: discreto\n\nSin pausa.",
+        "source_text": "Estado de Botsky\n\nModo: discreto\n\nSin pausa."
+      },
+      "utf16_units": 46
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,52 @@
+{
+  "route": "/sticker",
+  "operation": "make_sticker.run",
+  "test": "test_media.MediaTest.test_image_pdf_sticker_ocr_qr_outputs_and_source_bytes",
+  "input": "/sticker",
+  "result": {
+    "code": "sticker_created",
+    "data": {
+      "artifacts": [
+        "0faf323fd64d4a3893da4b4918d691b4"
+      ],
+      "file_facts": [
+        {
+          "bytes": 2652,
+          "extension": "webp",
+          "format": "webp",
+          "height": 512,
+          "width": 512
+        }
+      ]
+    },
+    "status": "ok",
+    "text": "Sticker listo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "820fb67ea7d00ce7a9525813c130e0fb4ceb1f2a25d399b136c91ba570effbf3",
+      "rich_payload": {
+        "artifacts": [
+          "0faf323fd64d4a3893da4b4918d691b4"
+        ],
+        "caption": "",
+        "name": "Botsky.webp",
+        "source_full": "Sticker listo.",
+        "source_text": ""
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

@@ -1,0 +1,34 @@
+{
+  "route": "/pdf terminar",
+  "operation": "manage_pdf.finish",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/pdf terminar",
+  "result": {
+    "code": "pdf_session_missing",
+    "data": {},
+    "status": "needs_input",
+    "text": "Primero usa /pdf iniciar y /pdf agregar con archivos propios."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Primero usa /pdf iniciar y /pdf agregar con archivos propios.",
+      "visual_version": 2,
+      "content_sha256": "e7b8c3b9951ddf4d76b75eb48f8ac05afefff1f68e09e4f72d04aeafcb00c6f3",
+      "rich_payload": {
+        "source_full": "Primero usa /pdf iniciar y /pdf agregar con archivos propios.",
+        "source_text": "Primero usa /pdf iniciar y /pdf agregar con archivos propios."
+      },
+      "utf16_units": 61
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

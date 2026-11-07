@@ -1,0 +1,68 @@
+{
+  "route": "/clip repetir",
+  "operation": "audiovisual.clip.replay",
+  "test": "test_coverage_av_gaps.CoverageAvGapsTest.test_clip_controls_and_avatar_arguments_reach_fixture_effects",
+  "input": "/clip repetir",
+  "result": {
+    "code": "av_control_applied",
+    "data": {
+      "clip": {
+        "name": "Prueba audiovisual V3",
+        "state": "playing",
+        "volume": 0.6
+      },
+      "message": "Clip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después.",
+      "presentation_action": "replay",
+      "presentation_family": "clip",
+      "success": true
+    },
+    "status": "ok",
+    "text": "Clip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Clip"
+      },
+      {
+        "kind": "literal",
+        "text": "Prueba audiovisual V3"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estado del servicio: Reproduciendo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Volumen aplicado: 60 %"
+      },
+      {
+        "kind": "notice",
+        "text": "Clip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "*Clip*\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nClip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después.",
+      "visual_version": 2,
+      "content_sha256": "f0c48aa4188ab971c7d0ada47aa3417f1d55d1aa785f92f0e2ea871278f22357",
+      "rich_payload": {
+        "source_full": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nClip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después.",
+        "source_text": "Clip\n\nPrueba audiovisual V3\n\nEstado del servicio: Reproduciendo\n\nVolumen aplicado: 60 %\n\nClip preparado: Prueba audiovisual V3. Se pausa cuando hablo y continúa después."
+      },
+      "utf16_units": 171
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

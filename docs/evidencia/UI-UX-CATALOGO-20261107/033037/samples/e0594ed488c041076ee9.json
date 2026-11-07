@@ -1,0 +1,34 @@
+{
+  "route": "/dl elegir",
+  "operation": "download_media.choose",
+  "test": "test_downloads.DownloadsTest.test_spotify_requires_real_choice_and_view_expiration_is_enforced",
+  "input": "/dl elegir d627d032a9fc4c2196ae60550c38d183 1",
+  "result": {
+    "code": "download_view_unavailable",
+    "data": {},
+    "status": "needs_input",
+    "text": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar.",
+      "visual_version": 2,
+      "content_sha256": "f1d1240a9bfc75e2d5412809d60e95b73fd8e69cebaf7fa5915650b40c495ba4",
+      "rich_payload": {
+        "source_full": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar.",
+        "source_text": "La lista no está disponible o venció. Vuelve a buscar con /dl buscar."
+      },
+      "utf16_units": 69
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

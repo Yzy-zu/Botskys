@@ -1,0 +1,41 @@
+{
+  "route": "/mc mod activar",
+  "operation": "manage_minecraft.enable_mod",
+  "test": "test_minecraft.MinecraftTest.test_mod_rejection_is_actionable_and_does_not_lock_next_change",
+  "input": "/mc mod activar \"fixture\"",
+  "result": {
+    "code": "minecraft_change_rejected",
+    "data": {
+      "action": "enable_mod",
+      "response": {
+        "code": "pack_dependency_not_configured",
+        "dispatched": false,
+        "status": "needs_input"
+      }
+    },
+    "status": "needs_input",
+    "text": "Falta configurar una dependencia del paquete. Activa primero sus paquetes requeridos; no cambié la configuración."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Falta configurar una dependencia del paquete. Activa primero sus paquetes requeridos; no cambié la configuración.",
+      "visual_version": 2,
+      "content_sha256": "d45309928655a2f78630e87a212afd7cc182b95b34b018fff1c86530bff1c255",
+      "rich_payload": {
+        "source_full": "Falta configurar una dependencia del paquete. Activa primero sus paquetes requeridos; no cambié la configuración.",
+        "source_text": "Falta configurar una dependencia del paquete. Activa primero sus paquetes requeridos; no cambié la configuración."
+      },
+      "utf16_units": 113
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,73 @@
+{
+  "route": "/drive elegir",
+  "operation": "manage_drive.choose",
+  "test": "test_integrations.IntegrationsTest.test_drive_search_selection_delivered_scope_and_real_artifact",
+  "input": "/drive elegir 9723258d925e4d1ea19a10b7342f87cc 1",
+  "result": {
+    "code": "drive_downloaded",
+    "data": {
+      "artifacts": [
+        "5cc9abedcbad47b88ca95176411ee77c"
+      ],
+      "file_facts": [
+        {
+          "bytes": 3,
+          "extension": "bin",
+          "format": "txt"
+        }
+      ],
+      "name": "literal.txt",
+      "remote_id": "file1"
+    },
+    "status": "ok",
+    "text": "Archivo recuperado de Drive."
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Archivo de Drive"
+      },
+      {
+        "kind": "literal",
+        "text": "literal.txt"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Formato final: BIN · 3 B"
+      },
+      {
+        "kind": "notice",
+        "text": "Archivo recuperado de Drive."
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "6d5241dc7cbe603b9ff0921b0d554075c9b58c8a613f05f3118809f7faea455b",
+      "rich_payload": {
+        "artifacts": [
+          "5cc9abedcbad47b88ca95176411ee77c"
+        ],
+        "caption": "*Archivo de Drive*\n\nliteral.txt\n\nFormato final: BIN · 3 B\n\nArchivo recuperado de Drive.",
+        "caption_frozen": true,
+        "name": "literal.txt",
+        "source_full": "Archivo de Drive\n\nliteral.txt\n\nFormato final: BIN · 3 B\n\nArchivo recuperado de Drive.",
+        "source_text": "Archivo de Drive\n\nliteral.txt\n\nFormato final: BIN · 3 B\n\nArchivo recuperado de Drive."
+      },
+      "utf16_units": 0
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

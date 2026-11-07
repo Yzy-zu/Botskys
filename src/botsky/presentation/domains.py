@@ -1,5 +1,6 @@
 """Presentadores de hechos propios. No parsear texto final ni datos como Markdown."""
 
+import json
 import unicodedata
 from dataclasses import replace
 from datetime import datetime
@@ -631,6 +632,7 @@ def present(result, *, zone="America/Mexico_City"):
             + (f"\nPágina {data['page']}/{data['pages']}" if "page" in data else "")
             + (
                 f"\n/pack catalogo --pagina {data['page'] + 1}"
+                + (" --categoria " + json.dumps(data["category_filter"], ensure_ascii=False) if data.get("category_filter") else "")
                 if data.get("page", 1) < data["pages"]
                 else ""
             ),

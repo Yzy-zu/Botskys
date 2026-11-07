@@ -1,0 +1,45 @@
+{
+  "route": "/hh reclamar",
+  "operation": "manage_happy_hour.claim",
+  "test": "test_packs.PacksTest.test_happy_rain_reward_and_scheduled_ticks_have_durable_parts",
+  "input": "/hh reclamar ed30ae5a49a84034a74162c53d320930",
+  "result": {
+    "code": "happy_photos_result",
+    "data": {
+      "accepted": 6,
+      "event_id": "43d12958e12749828a15bdfa42966608",
+      "states": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted"
+      ]
+    },
+    "status": "ok",
+    "text": "Fotos aceptadas: 6. No se usó una fuente web."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Fotos aceptadas: 6. No se usó una fuente web.",
+      "visual_version": 2,
+      "content_sha256": "edd26cb1d0853e0266d28c5539d8ec9d5bd2c17a79b59c442ed4b0d770abf851",
+      "rich_payload": {
+        "source_full": "Fotos aceptadas: 6. No se usó una fuente web.",
+        "source_text": "Fotos aceptadas: 6. No se usó una fuente web."
+      },
+      "utf16_units": 45
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

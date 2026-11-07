@@ -1,0 +1,37 @@
+{
+  "route": "/drive guardar",
+  "operation": "manage_drive.save",
+  "test": "test_integrations.IntegrationsTest.test_drive_save_reserved_identity_hash_and_no_repeat_after_restart",
+  "input": "/drive guardar",
+  "result": {
+    "code": "drive_saved",
+    "data": {
+      "name": "literal.txt",
+      "remote_id": "file1"
+    },
+    "status": "ok",
+    "text": "Archivo guardado en tu ámbito de Drive.\nhttps://drive.google.com/file/d/file1/view"
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Archivo guardado en tu ámbito de Drive.\nhttps://drive.google.com/file/d/file1/view",
+      "visual_version": 2,
+      "content_sha256": "fa10be43660757ed44d021cda985c3db3c25722ba5f35c4209ac4a0ea2ad8ed7",
+      "rich_payload": {
+        "source_full": "Archivo guardado en tu ámbito de Drive.\nhttps://drive.google.com/file/d/file1/view",
+        "source_text": "Archivo guardado en tu ámbito de Drive.\nhttps://drive.google.com/file/d/file1/view"
+      },
+      "utf16_units": 82
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}

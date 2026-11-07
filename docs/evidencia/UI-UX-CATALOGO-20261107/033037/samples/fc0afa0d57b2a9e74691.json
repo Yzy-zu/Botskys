@@ -1,0 +1,34 @@
+{
+  "route": "/notas",
+  "operation": "find_notes.run",
+  "test": "test_core.CoreTest.test_notes_filter_requires_accepted_current_own_view",
+  "input": "/notas --pagina 2",
+  "result": {
+    "code": "note_filter_required",
+    "data": {},
+    "status": "needs_input",
+    "text": "Falta una búsqueda propia entregada y vigente. Usa /notas --pagina N TEXTO."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Falta una búsqueda propia entregada y vigente. Usa /notas --pagina N TEXTO.",
+      "visual_version": 2,
+      "content_sha256": "54399a75ebacecd20bd6fa5fcc433c14c7da612be615e1ebbde565cd4851fc8a",
+      "rich_payload": {
+        "source_full": "Falta una búsqueda propia entregada y vigente. Usa /notas --pagina N TEXTO.",
+        "source_text": "Falta una búsqueda propia entregada y vigente. Usa /notas --pagina N TEXTO."
+      },
+      "utf16_units": 75
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

@@ -1,0 +1,2121 @@
+[
+  {
+    "route": "/ayuda",
+    "operation": "core.help",
+    "family": "core",
+    "observed": 32,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/28167f8b7a1a52f865b2.json",
+      "samples/91b767fc850f6ca42655.json",
+      "samples/4cdcc4b497333d2f8d94.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/estado",
+    "operation": "core.estado",
+    "family": "core",
+    "observed": 11,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/867b69b98dfe9037824b.json",
+      "samples/7f48b194b7de09cfa43e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/cancelar",
+    "operation": "core.cancelar",
+    "family": "core",
+    "observed": 17,
+    "semantic_candidates": 11,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e1b3d85ce8c6014a4ec7.json",
+      "samples/b754840799435c2840e1.json",
+      "samples/a6f861cda5f69aa6c6e1.json",
+      "samples/2526f58aa20d1e40c5a4.json",
+      "samples/6e05c6958fdc971911c4.json",
+      "samples/ac63debd3539e137d663.json",
+      "samples/55621d85a0071b5307ff.json",
+      "samples/48c2f8862d73fdd7ca44.json",
+      "samples/5d3345468ac51e4fc8ab.json",
+      "samples/0a6858ba878ae67837a1.json",
+      "samples/6cf1d369904b919490db.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/confirmar",
+    "operation": "core.confirmar",
+    "family": "core",
+    "observed": 6,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/538231ae098bb8de840a.json",
+      "samples/52b338c854d50554e5b6.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bot estado",
+    "operation": "manage_conversation.status",
+    "family": "manage_conversation",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/51f9aab2cca98bb207f8.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bot modo",
+    "operation": "manage_conversation.mode",
+    "family": "manage_conversation",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5d92b2607a180b2c4129.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bot pausa",
+    "operation": "manage_conversation.pause",
+    "family": "manage_conversation",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e67a740eb152c5d0ce29.json",
+      "samples/0e48c0b950862c179ca4.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bot reanudar",
+    "operation": "manage_conversation.resume",
+    "family": "manage_conversation",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/fba183acc4e8cca1f08f.json",
+      "samples/cd50998827f5c624fa3a.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/reaccion",
+    "operation": "send_sticker.run",
+    "family": "send_sticker",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/6c48f7ceae8fa7e6a712.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/sticker",
+    "operation": "make_sticker.run",
+    "family": "make_sticker",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/eb0d968a83635f2c8029.json",
+      "samples/babe8e855d27c86f9afc.json",
+      "samples/307eb8e7e8f2c2c53510.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ia",
+    "operation": "conversation.respond",
+    "family": "conversation",
+    "observed": 17,
+    "semantic_candidates": 9,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/f037d7cfd5effafedfdc.json",
+      "samples/a712106cdac3fdb3f410.json",
+      "samples/2076131e8ab9f7910505.json",
+      "samples/13d870229247f81e3f75.json",
+      "samples/142984ecdafd9efb30c1.json",
+      "samples/d1039f7ba10c0b298dd8.json",
+      "samples/44ab381ea89bac4103ff.json",
+      "samples/f5c123a04e9e072a2261.json",
+      "samples/0f45c7cb32b7e219097a.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/nota guardar",
+    "operation": "save_note.run",
+    "family": "save_note",
+    "observed": 25,
+    "semantic_candidates": 21,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/148e84d0b742c7dc9e3f.json",
+      "samples/7a9feab58149af9a41a1.json",
+      "samples/623245d56e9acc23c82e.json",
+      "samples/b054ea12d014bf648f61.json",
+      "samples/68a77ff852b2aa8d1732.json",
+      "samples/66c7781c574fcb461f11.json",
+      "samples/7247e1635c3b2f8455c1.json",
+      "samples/97829fe5968e9f8ba60b.json",
+      "samples/74afa729ec40529f6493.json",
+      "samples/40b24a4781169391bf3d.json",
+      "samples/315c94e8b3cdff8febac.json",
+      "samples/a2cebc04cec55dae5189.json",
+      "samples/21a76e45a1227334236a.json",
+      "samples/a2bd0feab76f8eb25d14.json",
+      "samples/bed17b8e45c647d15576.json",
+      "samples/7235b246010400c54399.json",
+      "samples/7c93dceb89d8a5e3c4dd.json",
+      "samples/636eadb36ce11e3735d4.json",
+      "samples/4ba57c06c50772ab9f8c.json",
+      "samples/b33b82bb97f7d6e30758.json",
+      "samples/5356420fa8ebd89b5fe2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/notas",
+    "operation": "find_notes.run",
+    "family": "find_notes",
+    "observed": 12,
+    "semantic_candidates": 5,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/afe521a1405a21c8ddd2.json",
+      "samples/b5efc799a153249bbc21.json",
+      "samples/6d925501d567eaa1fada.json",
+      "samples/32b292e178409a9f8dc6.json",
+      "samples/fe2f6446cd41fde75b98.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ocr",
+    "operation": "read_image.run",
+    "family": "read_image",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4ae62fce872e32f12950.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/qr",
+    "operation": "read_image.run",
+    "family": "read_image",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e0bc9bd8e9a9b8d52339.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/transcribir",
+    "operation": "transcribe_media.run",
+    "family": "transcribe_media",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0a268e6fa7af0d5b3bea.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl mp3",
+    "operation": "download_media.url",
+    "family": "download_media",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0c7ce8685b724f10258a.json",
+      "samples/2e7ff8ddfe71653f77e4.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl mp4",
+    "operation": "download_media.url",
+    "family": "download_media",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c9917b7dcf0565bdd49c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl webm",
+    "operation": "download_media.url",
+    "family": "download_media",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/09527420183f27a18ac3.json",
+      "samples/47756a9e1b02db4a1f95.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl srt",
+    "operation": "download_media.url",
+    "family": "download_media",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/af7ed6eeea62a366fa0f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl buscar",
+    "operation": "download_media.search",
+    "family": "download_media",
+    "observed": 8,
+    "semantic_candidates": 6,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/916cf7f75c89b9213760.json",
+      "samples/82718882f3513206d8e2.json",
+      "samples/06ac9e0a19ed25dc32af.json",
+      "samples/04d5c39028f576691777.json",
+      "samples/8c5dc751519c4305b59a.json",
+      "samples/4a2dcd697dae2f8d28b6.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl elegir",
+    "operation": "download_media.choose",
+    "family": "download_media",
+    "observed": 11,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/1bafca05a386d6696b35.json",
+      "samples/0308c3b6651c2aff73a1.json",
+      "samples/be1b3ed02e96773b369c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl detalle",
+    "operation": "download_media.inspect",
+    "family": "download_media",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c514be08cf9844dbd57a.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/dl anterior",
+    "operation": "download_media.previous",
+    "family": "download_media",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/794561ca6115f4247eca.json",
+      "samples/09a9b085c8ff2b22e2e9.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/editar",
+    "operation": "edit_media.run",
+    "family": "edit_media",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/053f59a5362f15e7a1c6.json",
+      "samples/4a4d30813f81cd15e66e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/voz",
+    "operation": "make_voice.verbatim",
+    "family": "make_voice",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/f1e9274b84183e2876e8.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/voz crear",
+    "operation": "make_voice.compose",
+    "family": "make_voice",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4c2635e42eba196a68e8.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/voz cita",
+    "operation": "make_voice.verbatim",
+    "family": "make_voice",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ca8bbb44bab07275502c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/voz ultima",
+    "operation": "make_voice.verbatim",
+    "family": "make_voice",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/493e43dc1641b5251202.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/voces",
+    "operation": "make_voice.catalog",
+    "family": "make_voice",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0851186167e317d4b182.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamar",
+    "operation": "control_call.start",
+    "family": "control_call",
+    "observed": 16,
+    "semantic_candidates": 8,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/9daa9744efb8e1e26736.json",
+      "samples/2538822d7735873ed8ac.json",
+      "samples/6fa7473115b9c2591df4.json",
+      "samples/6853bb22d5628e00970b.json",
+      "samples/c3c52854797780294010.json",
+      "samples/6b6d753c6f3496f33920.json",
+      "samples/3f61ea77bace0992baf6.json",
+      "samples/f6ebb17c29231c2a20cb.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada estado",
+    "operation": "control_call.status",
+    "family": "control_call",
+    "observed": 5,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e3fb25dac01fcc5b1d0a.json",
+      "samples/7cedcb3d864319d513bc.json",
+      "samples/0080ee4f1bfb4a6720af.json",
+      "samples/e9a331d520f2f15a0d36.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada colgar",
+    "operation": "control_call.hangup",
+    "family": "control_call",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/624543ff2e01c664240c.json",
+      "samples/9b6274bb96ab11e2e921.json",
+      "samples/8dff9684aaf953659290.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada cancelar",
+    "operation": "control_call.cancel",
+    "family": "control_call",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/a6e58c6396863a81e2e7.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf iniciar",
+    "operation": "manage_pdf.start",
+    "family": "manage_pdf",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/39ee1c7d8042eab8b389.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf agregar",
+    "operation": "manage_pdf.add",
+    "family": "manage_pdf",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/93f6e32d7316f669ee72.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf terminar",
+    "operation": "manage_pdf.finish",
+    "family": "manage_pdf",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5bea8ee7037bb3b1a0b2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf cancelar",
+    "operation": "manage_pdf.cancel",
+    "family": "manage_pdf",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/41ff1d7b34d3f21aa2f2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf extraer",
+    "operation": "manage_pdf.extract",
+    "family": "manage_pdf",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/6e30feea2cfd8bb5e89f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pdf reintentar",
+    "operation": "manage_pdf.retry",
+    "family": "manage_pdf",
+    "observed": 7,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/48b3c96bca36e5c80e0c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/convertir",
+    "operation": "convert_document.run",
+    "family": "convert_document",
+    "observed": 17,
+    "semantic_candidates": 10,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/dfc1c28c002dd66bc75a.json",
+      "samples/1752b46cb7a4483ff418.json",
+      "samples/f5de552ff6868a3686a4.json",
+      "samples/28dd6d048d2ebf3c1c2f.json",
+      "samples/93e9fb1975baa147ac77.json",
+      "samples/c79330828efc444f5dd8.json",
+      "samples/a638c27524eb4bcc0653.json",
+      "samples/78e96e11c9e21b31c693.json",
+      "samples/687fe7858d8ab9294998.json",
+      "samples/b91457123936111e29fc.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/tarea crear",
+    "operation": "manage_school.add_task",
+    "family": "manage_school",
+    "observed": 5,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/a0adf4edcd526ae6ce09.json",
+      "samples/c4b5c53912b0d8fed26a.json",
+      "samples/dae4a1c9c71311309b2c.json",
+      "samples/9cb2803b84a94c7d736e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/tareas",
+    "operation": "manage_school.list_tasks",
+    "family": "manage_school",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c208817e33797d311d0d.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/tarea completar",
+    "operation": "manage_school.complete_task",
+    "family": "manage_school",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e1d2c17fec37d3154910.json",
+      "samples/aa3f0a120064f529ed0d.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/tarea borrar",
+    "operation": "manage_school.delete_task",
+    "family": "manage_school",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/11e1b4cc41c7154ebaa8.json",
+      "samples/81c4859dc9146becfaab.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/tarea archivo",
+    "operation": "manage_school.get_attachment",
+    "family": "manage_school",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/9de38f808faee0c5dffa.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/horario agregar",
+    "operation": "manage_school.set_lesson",
+    "family": "manage_school",
+    "observed": 6,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/1c57f74bf7708d11c736.json",
+      "samples/ba8e0e1e6fdd6d2d1b9f.json",
+      "samples/cb3b3f40a538b5bc0ecd.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/horario listar",
+    "operation": "manage_school.list_schedule",
+    "family": "manage_school",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/68162cb2c9604911e643.json",
+      "samples/2ae2858ac739b0ee1f47.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/horario borrar",
+    "operation": "manage_school.delete_lesson",
+    "family": "manage_school",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d8801cc742592465fe33.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/escuela resumen configurar",
+    "operation": "manage_school.configure_digest",
+    "family": "manage_school",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e0c70a2ddd791202e192.json",
+      "samples/fd668732098cfe40ab49.json",
+      "samples/a88e8f5f6ed085334a09.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/escuela resumen estado",
+    "operation": "manage_school.status_digest",
+    "family": "manage_school",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ae3e9008569b42e51fd3.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/encuesta crear",
+    "operation": "manage_poll.create",
+    "family": "manage_poll",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ca35f38f4e6246ae01b7.json",
+      "samples/22d7ed33d1c9795c5433.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/encuesta votar",
+    "operation": "manage_poll.vote",
+    "family": "manage_poll",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0e4e51353499960c7565.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/encuesta resultados",
+    "operation": "manage_poll.results",
+    "family": "manage_poll",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4f50d872eba2ff68c466.json",
+      "samples/fcae3ac6e084b69b2a62.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/encuesta cerrar",
+    "operation": "manage_poll.close",
+    "family": "manage_poll",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/b0505b1cc30def53784f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recado preparar",
+    "operation": "manage_messages.prepare",
+    "family": "manage_messages",
+    "observed": 12,
+    "semantic_candidates": 8,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/378002b5784761b85725.json",
+      "samples/24dcb865a5f781fe8737.json",
+      "samples/096ad338f2a17f68faa5.json",
+      "samples/796547ca71db2f9813bd.json",
+      "samples/1ea8fee62f67ffb4630c.json",
+      "samples/97998cbcd2322a6cb907.json",
+      "samples/c88530800f76e76b026f.json",
+      "samples/1b5f5134a9f70e8018a5.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recado estado",
+    "operation": "manage_messages.status",
+    "family": "manage_messages",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/acf9ff440be6122c6d75.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recado enviar",
+    "operation": "manage_messages.send",
+    "family": "manage_messages",
+    "observed": 13,
+    "semantic_candidates": 5,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/7133aa5eee6a99d5b043.json",
+      "samples/046e3391281b82bdb92b.json",
+      "samples/393d1cb071358a3c8510.json",
+      "samples/447e490f590c290bed2b.json",
+      "samples/8b0d5e3846f65254ae1c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recado cancelar",
+    "operation": "manage_messages.cancel",
+    "family": "manage_messages",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/6cc4c6fbf1a8b3d2e52f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/contactos",
+    "operation": "manage_messages.contacts",
+    "family": "manage_messages",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/9eea877d7f52cd4e8137.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pack catalogo",
+    "operation": "manage_pack.catalog",
+    "family": "manage_pack",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/aca71e57404dee5c81c6.json",
+      "samples/9b838595fce225dbc752.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pack comprar",
+    "operation": "manage_pack.buy",
+    "family": "manage_pack",
+    "observed": 12,
+    "semantic_candidates": 9,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/3e6bb81a45cde5a4cf40.json",
+      "samples/002c0f82961f6d5f7236.json",
+      "samples/3b677bed592a37585ff9.json",
+      "samples/c52f9f58e6a96d6440bd.json",
+      "samples/a26828e6f3807c1c57b8.json",
+      "samples/5c93330e5fbd29b889f4.json",
+      "samples/323b68d86d49cbfe9800.json",
+      "samples/4d89a2714b65320b90c4.json",
+      "samples/ea64c7335a489451e9c5.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pack confirmar",
+    "operation": "manage_pack.buy",
+    "family": "manage_pack",
+    "observed": 9,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c49122f4a07c61e0ab10.json",
+      "samples/1bfea89857708fed41fd.json",
+      "samples/921e37c0bfef2f6712cd.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/pack estado",
+    "operation": "manage_pack.status",
+    "family": "manage_pack",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/86c9846f825e35a0650c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/coop crear",
+    "operation": "manage_cooperacha.start",
+    "family": "manage_cooperacha",
+    "observed": 6,
+    "semantic_candidates": 5,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4fe7b7b6ee35f1cd65d0.json",
+      "samples/c87cfdd68fb2e82f4075.json",
+      "samples/39523a5bc9728fdb00a5.json",
+      "samples/ba3f92a43ad07edbd131.json",
+      "samples/92be6c2d6668c3d4f541.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/coop aportar",
+    "operation": "manage_cooperacha.contribute",
+    "family": "manage_cooperacha",
+    "observed": 6,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/6ca084b6ede6e515cfd8.json",
+      "samples/2d1eb186a9fe2da994d5.json",
+      "samples/f05844ab36e24ac39a1e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/coop estado",
+    "operation": "manage_cooperacha.status",
+    "family": "manage_cooperacha",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2a4b7369f4f1e2b366ae.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/coop cancelar",
+    "operation": "manage_cooperacha.cancel",
+    "family": "manage_cooperacha",
+    "observed": 5,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2806d8dfe398f4928c07.json",
+      "samples/222e735280683308fcfd.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh iniciar",
+    "operation": "manage_happy_hour.start",
+    "family": "manage_happy_hour",
+    "observed": 7,
+    "semantic_candidates": 5,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d3e4d405928e9a056780.json",
+      "samples/b9f8e7c14125eaed6359.json",
+      "samples/2e9b4bc3223aa061ac77.json",
+      "samples/1cb9d56d36264686afd6.json",
+      "samples/22f0220937e1cfc8f368.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh parar",
+    "operation": "manage_happy_hour.stop",
+    "family": "manage_happy_hour",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/438fa6077e813e1ac4e5.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh estado",
+    "operation": "manage_happy_hour.status",
+    "family": "manage_happy_hour",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/1ad2762dbf6714e08aec.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh lluvia",
+    "operation": "manage_happy_hour.rain",
+    "family": "manage_happy_hour",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/b3977150b7dca728d56e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh airdrop",
+    "operation": "manage_happy_hour.airdrop",
+    "family": "manage_happy_hour",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/fc5dfb779712f37bd81e.json",
+      "samples/6e8f8adb6497547a5249.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/hh reclamar",
+    "operation": "manage_happy_hour.claim",
+    "family": "manage_happy_hour",
+    "observed": 7,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/3653e547fffbd93ddb3e.json",
+      "samples/fbbc4ab0f2f81910fbd5.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mem guardar",
+    "operation": "manage_memory.remember",
+    "family": "manage_memory",
+    "observed": 5,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/eff315bd807b0a655d6f.json",
+      "samples/199b1c19e427ce8aea80.json",
+      "samples/9fe0326028f86c5eec79.json",
+      "samples/b1eebc64cb5e3b5b2f01.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mem listar",
+    "operation": "manage_memory.list",
+    "family": "manage_memory",
+    "observed": 6,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/af4a959162350395bf71.json",
+      "samples/978bf11b648790221cb6.json",
+      "samples/a0d3bc981e6cf88c03db.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mem corregir",
+    "operation": "manage_memory.correct",
+    "family": "manage_memory",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/035f3ff2769b1a4f16ee.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mem olvidar",
+    "operation": "manage_memory.forget",
+    "family": "manage_memory",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ca8eecdd7d634fd80e30.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mem borrar-todo",
+    "operation": "manage_memory.forget_all",
+    "family": "manage_memory",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e353a8a14ffdcbb1020f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc estado",
+    "operation": "manage_minecraft.status",
+    "family": "manage_minecraft",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/11feadfc816d6c789e7c.json",
+      "samples/eb0074f0d3703efe61fc.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc jugadores",
+    "operation": "manage_minecraft.players",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/7a96ef6d880d92622524.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc mundos",
+    "operation": "manage_minecraft.worlds",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/7498cdca6e7fee9d2702.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc mods",
+    "operation": "manage_minecraft.mods",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/98c99a0c027ce569bc91.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc config",
+    "operation": "manage_minecraft.config",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d6c3e6917b00614893ec.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc diagnostico",
+    "operation": "manage_minecraft.discover",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/9c529f442bad484b6405.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc iniciar",
+    "operation": "manage_minecraft.start",
+    "family": "manage_minecraft",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5ae8617eda86fb397f80.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc parar",
+    "operation": "manage_minecraft.stop",
+    "family": "manage_minecraft",
+    "observed": 5,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4fe43e5510781bea5fd3.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc reiniciar",
+    "operation": "manage_minecraft.restart",
+    "family": "manage_minecraft",
+    "observed": 6,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/336f23ab9ad01174c988.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc backup",
+    "operation": "manage_minecraft.backup",
+    "family": "manage_minecraft",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/78c82e8a7d091ff12c39.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc recuperar",
+    "operation": "manage_minecraft.recover",
+    "family": "manage_minecraft",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/f1fce74aee0cdb79b26d.json",
+      "samples/f2cb77e14bd7687d2d51.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc mod activar",
+    "operation": "manage_minecraft.enable_mod",
+    "family": "manage_minecraft",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/7e3cb6adf8d00f910dcc.json",
+      "samples/ac4ac5943c342aee8fe0.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc mod desactivar",
+    "operation": "manage_minecraft.disable_mod",
+    "family": "manage_minecraft",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d3b824e8d647fb5538f9.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/mc consola",
+    "operation": "manage_minecraft.console",
+    "family": "manage_minecraft",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/630c6d62e2316d3cef46.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin advertir",
+    "operation": "manage_admin.warn",
+    "family": "manage_admin",
+    "observed": 5,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/804ddc7138d8a66f489c.json",
+      "samples/33732635ccd5c284f990.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin quitar-aviso",
+    "operation": "manage_admin.unwarn",
+    "family": "manage_admin",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0eba4820c72d9b4815c6.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin avisos",
+    "operation": "manage_admin.warnings",
+    "family": "manage_admin",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5b9dd73e578f02049ec0.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin expulsar",
+    "operation": "manage_admin.kick",
+    "family": "manage_admin",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ca8a767d61e74858e150.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin ban",
+    "operation": "manage_admin.ban",
+    "family": "manage_admin",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/076bd70758cb58f4d4dc.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin unban",
+    "operation": "manage_admin.unban",
+    "family": "manage_admin",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/97b10c75efa081cd4a82.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin promover",
+    "operation": "manage_admin.promote",
+    "family": "manage_admin",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/b31793e506208295302f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin degradar",
+    "operation": "manage_admin.demote",
+    "family": "manage_admin",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/db4305d957fa74734531.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin silenciar",
+    "operation": "manage_admin.mute",
+    "family": "manage_admin",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2da13bda21a0364b899d.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin desilenciar",
+    "operation": "manage_admin.unmute",
+    "family": "manage_admin",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/85218b23b840052ba2b4.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin cerrar",
+    "operation": "manage_admin.lock",
+    "family": "manage_admin",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/96f5a9f07d159f350959.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin abrir",
+    "operation": "manage_admin.unlock",
+    "family": "manage_admin",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/4bdc8c398391f6ccb2ab.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin xp-dar",
+    "operation": "manage_admin.xp_grant",
+    "family": "manage_admin",
+    "observed": 9,
+    "semantic_candidates": 7,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e4724d39e46cb7d4f3c3.json",
+      "samples/ccc745f323aaaa47b8ba.json",
+      "samples/9d93df5954a5e4b3eb74.json",
+      "samples/c1b3ed035e41f5f1cff0.json",
+      "samples/792aa07c279b0cf60f5e.json",
+      "samples/0a5de5582d8c569f116d.json",
+      "samples/bbdf3ac1330348fddf4c.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin xp-quitar",
+    "operation": "manage_admin.xp_remove",
+    "family": "manage_admin",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/0f45a30bbd60edcada8a.json",
+      "samples/00f3e31902f75c6c121f.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin nuclear-preparar",
+    "operation": "manage_admin.nuclear_prepare",
+    "family": "manage_admin",
+    "observed": 8,
+    "semantic_candidates": 7,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/77416060fc7a194e8541.json",
+      "samples/5864c9dc107e0e3301f2.json",
+      "samples/5516d1338e994b263330.json",
+      "samples/57166e2b4a1aeab86af1.json",
+      "samples/51b1fee2a1ec83073b0a.json",
+      "samples/8a245de610b196ff0991.json",
+      "samples/a5b1a13d795c2073f053.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin nuclear-confirmar",
+    "operation": "manage_admin.nuclear_confirm",
+    "family": "manage_admin",
+    "observed": 8,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/bb5c75f406257a365032.json",
+      "samples/9b2f841ee87e430fdffc.json",
+      "samples/98c0b8ceb04ef5f3bddb.json",
+      "samples/f163879dbd4e9e775155.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/admin nuclear-cancelar",
+    "operation": "manage_admin.nuclear_cancel",
+    "family": "manage_admin",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5bfc077437eef5c893b7.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj iniciar",
+    "operation": "manage_blackjack.start",
+    "family": "manage_blackjack",
+    "observed": 8,
+    "semantic_candidates": 6,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/067269d09b0ac3ceeb95.json",
+      "samples/2f606dec6cfd9b1e780b.json",
+      "samples/98f150224b9590f5aec8.json",
+      "samples/766d401e4d92b8ae098c.json",
+      "samples/da9aaa2fb9dbb68e7995.json",
+      "samples/06e1cd31c2cd8ad55bf1.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj mesa",
+    "operation": "manage_blackjack.table",
+    "family": "manage_blackjack",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/78b5208faabf79e631e8.json",
+      "samples/35ab65bf871cce31a4a9.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj entrar",
+    "operation": "manage_blackjack.join",
+    "family": "manage_blackjack",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c8c6dadbf05d6c22759c.json",
+      "samples/4da9e1cff91ed74b7708.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj repartir",
+    "operation": "manage_blackjack.deal",
+    "family": "manage_blackjack",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/1a1ec3f1c707c66161ad.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj pedir",
+    "operation": "manage_blackjack.hit",
+    "family": "manage_blackjack",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/fc99a42999c42d1ad50e.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj plantarse",
+    "operation": "manage_blackjack.stand",
+    "family": "manage_blackjack",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/06919f747d8ae2ea17b9.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj doblar",
+    "operation": "manage_blackjack.double",
+    "family": "manage_blackjack",
+    "observed": 5,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/390b6c74b5007c9d4921.json",
+      "samples/42c285fb8ae868a1d11d.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj estado",
+    "operation": "manage_blackjack.status",
+    "family": "manage_blackjack",
+    "observed": 6,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/fc65d1f29a09b2871030.json",
+      "samples/41c35bfc2a876f66c83b.json",
+      "samples/ae07a105a844ff0260b8.json",
+      "samples/ba7031a9ee809ad5ddb9.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/bj cancelar",
+    "operation": "manage_blackjack.cancel",
+    "family": "manage_blackjack",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/f801fa48d0e6acb5bdba.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ruleta crear",
+    "operation": "manage_roulette.create",
+    "family": "manage_roulette",
+    "observed": 7,
+    "semantic_candidates": 6,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/05a08f98619bc8a81aa4.json",
+      "samples/6c2b0ce39459fba8b62f.json",
+      "samples/42b7aab03d97ff903577.json",
+      "samples/80f2b8ab3348001dad0c.json",
+      "samples/8400bc4bf7824cfd8c08.json",
+      "samples/84ab2d2c282b760a611a.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ruleta entrar",
+    "operation": "manage_roulette.join",
+    "family": "manage_roulette",
+    "observed": 9,
+    "semantic_candidates": 6,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d28524f34219a90faf0d.json",
+      "samples/660e71662c09ae73954c.json",
+      "samples/b1bb71abaa0786aae859.json",
+      "samples/52e69bee1abf2e791535.json",
+      "samples/9cf99113eae6d2ace91b.json",
+      "samples/a69f5e79fb72cb014fa8.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ruleta jugar",
+    "operation": "manage_roulette.play",
+    "family": "manage_roulette",
+    "observed": 6,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2950d0d54a51f2883e36.json",
+      "samples/d25b36d122823c91e35e.json",
+      "samples/018c2c564198e10b7bc2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ruleta estado",
+    "operation": "manage_roulette.status",
+    "family": "manage_roulette",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/fc05fc47b925279a2881.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/ruleta cancelar",
+    "operation": "manage_roulette.cancel",
+    "family": "manage_roulette",
+    "observed": 2,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/f9d6becd4b7dc5dc72df.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/broma",
+    "operation": "make_prank.run",
+    "family": "make_prank",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/6890566f9ab1d68fe7f2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/daily",
+    "operation": "manage_economy.daily",
+    "family": "manage_economy",
+    "observed": 33,
+    "semantic_candidates": 31,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/3e8774406a1121f3bf21.json",
+      "samples/ef900b2819e3034dbf15.json",
+      "samples/c717cb822ed4413b989e.json",
+      "samples/29e52721f295f11ed3c0.json",
+      "samples/c68a41c0ffffa56db242.json",
+      "samples/6ffe690b45be1cae8791.json",
+      "samples/c8961d3e8aec250a384a.json",
+      "samples/616419a53d5d619588a3.json",
+      "samples/a8ba15ccfbec417d3d46.json",
+      "samples/8e79673af27c2f8158f0.json",
+      "samples/8aff916a8d963ab47127.json",
+      "samples/8d108ff6b6c122dd871a.json",
+      "samples/bdcbb9f2d9fef9192db7.json",
+      "samples/c6d4ff5597c2542703c4.json",
+      "samples/75c490de472ac72ad429.json",
+      "samples/b373bc197d2633144b42.json",
+      "samples/e66665c59ebf9b2ec9e4.json",
+      "samples/158b8fd053b0cc153511.json",
+      "samples/f463120028c0f820858f.json",
+      "samples/0f1a606d6a962c5ef273.json",
+      "samples/b1db80729eaafc68aa74.json",
+      "samples/0269d50161bb455c01c1.json",
+      "samples/02bb05c198eef6bb3770.json",
+      "samples/a6c8fae001d85e0447b0.json",
+      "samples/e18cec20ad854f91c299.json",
+      "samples/da7b46e97b1d5b9a3274.json",
+      "samples/9e74dc99b8317455a9f0.json",
+      "samples/3b5358d193e915c7d104.json",
+      "samples/d2af73df32be0af98c6c.json",
+      "samples/92db7c33b8f50f1671e4.json",
+      "samples/a451f256c9df0f262bc7.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/saldo",
+    "operation": "manage_economy.balance",
+    "family": "manage_economy",
+    "observed": 22,
+    "semantic_candidates": 21,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/bbc92322c05ebfc1bd77.json",
+      "samples/e2ce48b4799ac58e8baf.json",
+      "samples/8f8cfb4f089d8d822e50.json",
+      "samples/8091543ad45e96cf2faf.json",
+      "samples/a46987938974aaa3c672.json",
+      "samples/835070a48f32298c2874.json",
+      "samples/9981fdeb281b39f2e2ee.json",
+      "samples/9b43a50fbadeba35d711.json",
+      "samples/a3ddbbf2aaf8be35a8b4.json",
+      "samples/77d02c1b70c7fbcc3572.json",
+      "samples/db0dfad230165afcf4ed.json",
+      "samples/86192f77b3048bed2cfa.json",
+      "samples/642812034eeb8ed9fec2.json",
+      "samples/daa4de8dbf0a06f514f9.json",
+      "samples/f977e0b87e5ea728e9dc.json",
+      "samples/882fa6d453db4f979e1d.json",
+      "samples/7bd0142abfb06a58b658.json",
+      "samples/c1c8db35eac9456de220.json",
+      "samples/8c8306a84990bf0b21ec.json",
+      "samples/021ae68cfa1d291c2456.json",
+      "samples/f1ef0bef36c6ccab42b0.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/top",
+    "operation": "manage_economy.top",
+    "family": "manage_economy",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/8afedc7196ef136ac383.json",
+      "samples/da3bff9d44741ab2ceb2.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recordar en",
+    "operation": "manage_reminder.create",
+    "family": "manage_reminder",
+    "observed": 9,
+    "semantic_candidates": 8,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/7e36d62c45827be71595.json",
+      "samples/cbc9302ace5a14722812.json",
+      "samples/92830b96107e88560c2a.json",
+      "samples/2e41e700c871513f3a62.json",
+      "samples/0430e8e008b71e5eed6e.json",
+      "samples/664b968673ed25d5996a.json",
+      "samples/56209f11ff0f055026f7.json",
+      "samples/6fe9f4a870ab3ba996e0.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recordar el",
+    "operation": "manage_reminder.create",
+    "family": "manage_reminder",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/3c4389995a88ef934961.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recordatorios",
+    "operation": "manage_reminder.list",
+    "family": "manage_reminder",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/bf066a9f66f5cb8c2199.json",
+      "samples/81f2a97c915aa334e6d9.json",
+      "samples/0045d43bcd392fa351cc.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recordatorio cancelar",
+    "operation": "manage_reminder.cancel",
+    "family": "manage_reminder",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/5501fc525d5e00c0c91b.json",
+      "samples/6c6502762f09d155af2d.json",
+      "samples/c6df5c0ee7fe892ea9e1.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/recordatorio archivar",
+    "operation": "manage_reminder.archive",
+    "family": "manage_reminder",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/861461baa6903e79248b.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/buscar",
+    "operation": "search_web.run",
+    "family": "search_web",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/663c71f27d3317184883.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/drive guardar",
+    "operation": "manage_drive.save",
+    "family": "manage_drive",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/8e48e79e80ff21727248.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/drive buscar",
+    "operation": "manage_drive.search",
+    "family": "manage_drive",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/b1ef74c78efd7860085d.json",
+      "samples/f40db761fcd524339f4b.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/drive elegir",
+    "operation": "manage_drive.choose",
+    "family": "manage_drive",
+    "observed": 5,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/d234f64115a850ac0c41.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/drive cuota",
+    "operation": "manage_drive.capacity",
+    "family": "manage_drive",
+    "observed": 4,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/23918869292291ddfde1.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip lista",
+    "operation": "audiovisual.clip.list",
+    "family": "audiovisual.clip",
+    "observed": 4,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/3ad7160c6e0ad3e551da.json",
+      "samples/eb1047f2a02673b908ff.json",
+      "samples/2a9618f859b67fde7f85.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip poner",
+    "operation": "audiovisual.clip.play",
+    "family": "audiovisual.clip",
+    "observed": 5,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/010861879065134566ef.json",
+      "samples/dff6ba387944ef76c2fe.json",
+      "samples/7aa1b0524a7fc2599328.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip pausa",
+    "operation": "audiovisual.clip.pause",
+    "family": "audiovisual.clip",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/ce3b4dcf1033d9a9739a.json",
+      "samples/19823de6568158934aea.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip seguir",
+    "operation": "audiovisual.clip.resume",
+    "family": "audiovisual.clip",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2d3a93c5e34ce2034d45.json",
+      "samples/c76fa409918995de3837.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip repetir",
+    "operation": "audiovisual.clip.replay",
+    "family": "audiovisual.clip",
+    "observed": 4,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/cbdb5b70418283e61a58.json",
+      "samples/39900734089ca6aff9b4.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip siguiente",
+    "operation": "audiovisual.clip.next",
+    "family": "audiovisual.clip",
+    "observed": 3,
+    "semantic_candidates": 0,
+    "review": "HUECO_O_SOLO_GUARDIA",
+    "sample_refs": [],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip parar",
+    "operation": "audiovisual.clip.stop",
+    "family": "audiovisual.clip",
+    "observed": 4,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/9d14b825e0a4f54a279d.json",
+      "samples/151c7e7a2b564f1d2a08.json",
+      "samples/dc95bac14a076e94bd27.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip volumen",
+    "operation": "audiovisual.clip.volume",
+    "family": "audiovisual.clip",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/e2c9b67b7b805cf36723.json",
+      "samples/694f92fb42b24f486ca5.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/clip ajustar",
+    "operation": "audiovisual.clip.volume",
+    "family": "audiovisual.clip",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/279a9f1a13435e622796.json",
+      "samples/7bcc4bf8dd68e4dd7f89.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/avatar fondo",
+    "operation": "audiovisual.avatar.background",
+    "family": "audiovisual.avatar",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/b1fe578efe22ef639491.json",
+      "samples/0fab013391fd2cd480ff.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/avatar expresion",
+    "operation": "audiovisual.avatar.expression",
+    "family": "audiovisual.avatar",
+    "observed": 3,
+    "semantic_candidates": 1,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/a2ac6503c4e25da1c188.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/avatar gesto",
+    "operation": "audiovisual.avatar.gesture",
+    "family": "audiovisual.avatar",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/86f2649431324c3f6a5b.json",
+      "samples/86e00882bb2e6cbf2a0b.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/avatar rubor",
+    "operation": "audiovisual.avatar.blush",
+    "family": "audiovisual.avatar",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/445ffca4b48b3a16a230.json",
+      "samples/ddacfbafd2a6ca60080a.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada programar",
+    "operation": "audiovisual.agenda.create",
+    "family": "audiovisual.agenda",
+    "observed": 5,
+    "semantic_candidates": 4,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/2fc54fe3cafa42c51c16.json",
+      "samples/fc839bde378233d75dcb.json",
+      "samples/35d9ac830d8fca0c460e.json",
+      "samples/46835c50de7564861f9d.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada agenda",
+    "operation": "audiovisual.agenda.list",
+    "family": "audiovisual.agenda",
+    "observed": 4,
+    "semantic_candidates": 3,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c1bd10018c82828a205d.json",
+      "samples/bdd72dfdb2f4120cc248.json",
+      "samples/a2cd9ae121afe5b2e697.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada reprogramar",
+    "operation": "audiovisual.agenda.update",
+    "family": "audiovisual.agenda",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/c5f06ef3ce9e48f98577.json",
+      "samples/4231da0b1604ccde9c03.json"
+    ],
+    "visual": "NO_PROBADO"
+  },
+  {
+    "route": "/llamada cancelar-agenda",
+    "operation": "audiovisual.agenda.cancel",
+    "family": "audiovisual.agenda",
+    "observed": 3,
+    "semantic_candidates": 2,
+    "review": "PENDIENTE_REVISAR_ORACLE",
+    "sample_refs": [
+      "samples/dff607c669948b093691.json",
+      "samples/d7a28384ada2d6ea374b.json"
+    ],
+    "visual": "NO_PROBADO"
+  }
+]

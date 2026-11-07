@@ -1,0 +1,34 @@
+{
+  "route": "/pack comprar",
+  "operation": "manage_pack.buy",
+  "test": "test_acceptance_local.LocalTransportAcceptanceTest.test_every_route_reaches_its_guard_or_handler_and_delivers_locally",
+  "input": "/pack comprar ejemplo",
+  "result": {
+    "code": "packs_not_configured",
+    "data": {},
+    "status": "failed",
+    "text": "Packs requieren biblioteca publicada y entrega privada explícitamente habilitadas en este chat; no hubo cargo."
+  },
+  "document": null,
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "text",
+      "payload": "Packs requieren biblioteca publicada y entrega privada explícitamente habilitadas en este chat; no hubo cargo.",
+      "visual_version": 2,
+      "content_sha256": "c41af1bcbc897847ab6426fbb9bb8185e584806b0b68d48cfcdf7db29fbf4bab",
+      "rich_payload": {
+        "source_full": "Packs requieren biblioteca publicada y entrega privada explícitamente habilitadas en este chat; no hubo cargo.",
+        "source_text": "Packs requieren biblioteca publicada y entrega privada explícitamente habilitadas en este chat; no hubo cargo."
+      },
+      "utf16_units": 110
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": false
+}

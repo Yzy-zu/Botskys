@@ -1,0 +1,81 @@
+{
+  "route": "/coop crear",
+  "operation": "manage_cooperacha.start",
+  "test": "test_packs.PacksTest.test_coop_missing_original_refunds_known_failure_and_preview_is_censored",
+  "input": "/coop crear sintetico 100",
+  "result": {
+    "code": "coop_preview",
+    "data": {
+      "artifacts": [
+        "ed5aabfb592d48fe8619ba2ef8a473e1"
+      ],
+      "category": "sintetico",
+      "challenge_id": "6b4b52c3eb2a4bd38d151c245a250200",
+      "media_first": true,
+      "target": 100
+    },
+    "status": "ok",
+    "text": "Cooperacha 6b4b52c3eb2a4bd38d151c245a250200 · meta 100 XP. Vence10min tras aceptar esta vista completa. Al completar se publica la foto original en este grupo. Al vencer se devuelve80% por persona, redondeado hacia abajo; cancelación o fallo conocido100%; entrega incierta retiene el saldo, sin reenviar.\n/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50"
+  },
+  "document": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "Cooperacha · previa censurada"
+      },
+      {
+        "kind": "literal",
+        "text": "Categoría: sintetico"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Meta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa."
+      },
+      {
+        "kind": "notice",
+        "text": "Al completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar."
+      },
+      {
+        "kind": "next_action",
+        "text": "/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50"
+      }
+    ],
+    "version": 1
+  },
+  "native_preview": [],
+  "parts": [
+    {
+      "position": 0,
+      "kind": "media",
+      "payload": "",
+      "visual_version": 2,
+      "content_sha256": "5943999d1a7a263cfb7da2ab2d6d6773fb69dfd0e7a931c3770c2fade6b5095a",
+      "rich_payload": {
+        "artifacts": [
+          "ed5aabfb592d48fe8619ba2ef8a473e1"
+        ],
+        "caption": "*Cooperacha · previa censurada*\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n`/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50`",
+        "name": "Botsky.jpg",
+        "source_full": "Cooperacha · previa censurada\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50"
+      },
+      "utf16_units": 0
+    },
+    {
+      "position": 1,
+      "kind": "text",
+      "payload": "*Cooperacha · previa censurada*\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n`/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50`",
+      "visual_version": 2,
+      "content_sha256": "98dd729f01f1a9b59473fe67b683b61e8bed30b175242f413e0fc1b3aee0f0ec",
+      "rich_payload": {
+        "source_text": "Cooperacha · previa censurada\n\nCategoría: sintetico\n\nMeta: 100 XP. Cada persona aporta solo de su propio saldo. Vence 10 minutos después de aceptar esta vista completa.\n\nAl completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.\n\n/coop aportar 6b4b52c3eb2a4bd38d151c245a250200 50"
+      },
+      "utf16_units": 426
+    }
+  ],
+  "synthetic_data": true,
+  "provider": "DOBLE_O_LOCAL",
+  "client_visual": "NO_PROBADO",
+  "human_reception": "NO_PROBADO",
+  "asserting_test_result": "PASS",
+  "semantic_candidate": true
+}
