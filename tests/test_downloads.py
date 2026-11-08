@@ -841,3 +841,35 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             self.assertIn(b"moov", header)
             self.assertLess(header.find(b"moov"), 100)
 
+        # 3. Video de más de 20MB: nunca pasa por remux directo, va forzado a compresión y streaming
+        import struct
+
+        captured_ffmpeg_calls.clear()
+        raw_light = self.video.read_bytes()
+        pad_size = 21 * 1024 * 1024
+        over_20mb_bytes = raw_light + struct.pack(">I4s", pad_size, b"free") + b"\x00" * (pad_size - 8)
+        self.assertGreater(len(over_20mb_bytes), 20 * 1024 * 1024)
+
+        async def aiter_over_20mb():
+            yield over_20mb_bytes
+
+        mock_response.aiter_bytes = aiter_over_20mb
+
+        with patch("httpx.AsyncClient", return_value=mock_client), patch(
+            "botsky.engines.downloads.run_process", side_effect=intercept_run_process
+        ):
+            over_20mb_artifact = await downloader.download(W3, format="video")
+
+        self.assertTrue(over_20mb_artifact.is_file())
+        self.assertEqual(len(captured_ffmpeg_calls), 1)
+        over_20mb_cmd = captured_ffmpeg_calls[0]
+        self.assertNotIn("copy", over_20mb_cmd)
+        self.assertIn("libx264", over_20mb_cmd)
+        self.assertIn("+faststart", over_20mb_cmd)
+
+        with over_20mb_artifact.open("rb") as f:
+            header = f.read(256)
+            self.assertIn(b"moov", header)
+            self.assertLess(header.find(b"moov"), 100)
+
+
