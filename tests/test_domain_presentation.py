@@ -73,6 +73,11 @@ class DomainPresentationTest(TestCase):
         self.assertIn("1.00 GB (1000000000 bytes)", quota.text)
         self.assertIn("Desconocido", quota.text)
         self.assertIn("compartida", quota.text)
+        from botsky.presentation.plan import compile_result
+
+        parts = compile_result(quota, lambda _: "art", native_tables=True)
+        self.assertEqual(len(parts), 1)
+        self.assertEqual(parts[0].kind, "table")
         self.assertEqual(size(None), "Desconocido")
         self.assertEqual(filename("../secreto/Nombre: vídeo?.mp4", "mp3"), "Nombre vídeo.mp3")
 

@@ -392,12 +392,12 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             and quota["limit"] >= quota["usage"]
         ):
             rows.append(("Disponible", size(quota["limit"] - quota["usage"], decimal=True)))
+        rows.append(("Cuenta", "Cuota compartida (Drive, Gmail y Fotos)"))
         return tabular(
             result,
             "Espacio de Google",
             ("Concepto", "Espacio"),
             rows,
-            footer="Cuota compartida de tu cuenta de Google (incluye Drive, Gmail y Fotos).",
         )
     if code == "drive_choices":
         return tabular(
