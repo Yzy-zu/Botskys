@@ -152,10 +152,27 @@ class MediaTest(IsolatedAsyncioTestCase):
             ],
             15,
         )
-        _, _, sticker = await self.convert("/sticker", video)
+        from botsky.engines import images
+
+        original_run_process = images.run_process
+        encoding_args = []
+
+        async def capture_process(argv, *args, **kwargs):
+            if "libwebp_anim" in argv:
+                encoding_args.append(argv)
+            return await original_run_process(argv, *args, **kwargs)
+
+        with patch.object(images, "run_process", side_effect=capture_process):
+            _, _, sticker = await self.convert("/sticker", video)
         self.assertEqual(sticker.code, "sticker_created")
         sticker_path = self.file_of(sticker)
         self.assertLessEqual(sticker_path.stat().st_size, 950000)
+        self.assertTrue(encoding_args)
+        for argv in encoding_args:
+            filter_graph = argv[argv.index("-vf") + 1]
+            self.assertNotIn("deband", filter_graph)
+            self.assertIn("flags=lanczos", filter_graph)
+            self.assertGreaterEqual(int(argv[argv.index("-q:v") + 1]), 76)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -192,6 +209,25 @@ class MediaTest(IsolatedAsyncioTestCase):
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
 
+    async def test_animated_webp_longer_than_ten_seconds_is_trimmed(self):
+        from botsky.engines.images import _animated_webp_durations, sticker
+
+        source = self.settings.root / "long_anim.webp"
+        a = Image.new("RGBA", (512, 512), (240, 20, 20, 255))
+        b = Image.new("RGBA", (512, 512), (20, 40, 240, 255))
+        a.save(source, format="WEBP", save_all=True, append_images=[b],
+               duration=[6000, 6000], loop=0, quality=88)
+        self.assertGreater(sum(_animated_webp_durations(source)), 10000)
+        output_dir = self.settings.root / "trimmed_sticker"
+        output_dir.mkdir()
+        result = await sticker(source, output_dir)
+        self.assertLessEqual(result.stat().st_size, 950000)
+        with Image.open(result) as image:
+            self.assertTrue(getattr(image, "is_animated", False))
+            self.assertEqual(image.size, (512, 512))
+            self.assertIn(b"sticker-pack-name", image.info.get("exif", b""))
+        self.assertLessEqual(sum(_animated_webp_durations(result)), 10000)
+
     async def test_static_sticker_has_sar_and_metadata_under_limit(self):
         _, _, sticker = await self.convert("/sticker", self.png)
         self.assertEqual(sticker.code, "sticker_created")
@@ -200,6 +236,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertFalse(getattr(image, "is_animated", False))
+            self.assertIn(b"sticker-pack-name", image.info.get("exif", b""))
 
     async def test_video_without_duration_metadata_produces_sticker(self):
         from botsky.engines.images import sticker

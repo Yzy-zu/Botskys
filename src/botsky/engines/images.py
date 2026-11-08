@@ -49,13 +49,46 @@ async def add_sticker_metadata(file: Path) -> None:
         exif_file.unlink(missing_ok=True)
 
 
+def _animated_webp_durations(source: Path) -> list[int]:
+    """Read true frame timings from RIFF ANMF; Pillow omits these on some versions."""
+    data = source.read_bytes()
+    if len(data) < 12 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+        raise MediaError("invalid_image")
+    if int.from_bytes(data[4:8], "little") + 8 != len(data):
+        raise MediaError("invalid_image")
+    durations = []
+    pos = 12
+    while pos + 8 <= len(data):
+        kind = data[pos : pos + 4]
+        size = int.from_bytes(data[pos + 4 : pos + 8], "little")
+        begin = pos + 8
+        end = begin + size
+        if end > len(data):
+            raise MediaError("invalid_image")
+        if kind == b"ANMF":
+            if size < 16 or len(durations) >= 600:
+                raise MediaError("invalid_image")
+            durations.append(int.from_bytes(data[begin + 12 : begin + 15], "little"))
+        pos = end + (size & 1)
+    if pos != len(data) or len(durations) < 2:
+        raise MediaError("invalid_image")
+    return durations
+
+
 async def _convert_animated_webp(source: Path, output: Path) -> Path:
     try:
+        timings = _animated_webp_durations(source)
         with Image.open(source) as im:
-            if not getattr(im, "is_animated", False) or getattr(im, "n_frames", 1) <= 1:
+            if not getattr(im, "is_animated", False) or im.n_frames != len(timings):
                 raise MediaError("unsupported_image")
             width, height = im.size
-            if width == 512 and height == 512 and source.stat().st_size <= 950000:
+            # Avoid a second lossy encode for an already compliant sticker.
+            if (
+                (width, height) == (512, 512)
+                and source.stat().st_size <= 950000
+                and all(ms >= 8 for ms in timings)
+                and sum(timings) <= 10000
+            ):
                 output.write_bytes(source.read_bytes())
                 await add_sticker_metadata(output)
                 if output.stat().st_size <= 950000:
@@ -64,19 +97,28 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
 
             frames = []
             durations = []
-            for frame in ImageSequence.Iterator(im):
-                durations.append(frame.info.get("duration", 100))
-                f = frame.convert("RGBA")
-                f.thumbnail((512, 512), Image.Resampling.LANCZOS)
-                canvas = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
-                offset = ((512 - f.width) // 2, (512 - f.height) // 2)
-                canvas.paste(f, offset)
-                frames.append(canvas)
-            if not frames:
+            elapsed_ms = 0
+            last_frame_ms = 0
+            # Limit to 10 seconds and approximately 12fps of frames kept in memory.
+            for frame, frame_ms in zip(ImageSequence.Iterator(im), timings, strict=True):
+                if elapsed_ms >= 10000:
+                    break
+                if not frames or elapsed_ms - last_frame_ms >= 80:
+                    if durations:
+                        durations[-1] = elapsed_ms - last_frame_ms
+                    picture = frame.convert("RGBA")
+                    picture.thumbnail((512, 512), Image.Resampling.LANCZOS)
+                    canvas = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
+                    canvas.paste(picture, ((512 - picture.width) // 2, (512 - picture.height) // 2))
+                    frames.append(canvas)
+                    durations.append(0)
+                    last_frame_ms = elapsed_ms
+                elapsed_ms += min(max(20, frame_ms), 10000 - elapsed_ms)
+            if len(frames) < 2:
                 raise MediaError("invalid_output")
-            for q in (65, 50, 40, 30, 20, 15):
-                if output.exists():
-                    output.unlink()
+            durations[-1] = elapsed_ms - last_frame_ms
+            for quality in (88, 82, 76, 70):
+                output.unlink(missing_ok=True)
                 frames[0].save(
                     output,
                     save_all=True,
@@ -84,14 +126,18 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
                     format="WEBP",
                     loop=0,
                     duration=durations,
-                    quality=q,
+                    quality=quality,
                     method=6,
                 )
-                if output.is_file():
+                if output.is_file() and 0 < output.stat().st_size <= 950000:
                     await add_sticker_metadata(output)
                     if output.stat().st_size <= 950000:
                         with Image.open(output) as verified:
-                            if verified.format == "WEBP" and verified.size == (512, 512):
+                            if (
+                                verified.format == "WEBP"
+                                and verified.size == (512, 512)
+                                and getattr(verified, "is_animated", False)
+                            ):
                                 output.chmod(0o600)
                                 return output
             raise MediaError("invalid_output")
@@ -123,51 +169,58 @@ async def sticker(path: Path, directory: Path):
 
     if is_static:
         output = directory / "sticker.webp"
-        await run_process(
-            [
-                "prlimit",
-                "--fsize=102400",
-                "--",
-                "ffmpeg",
-                "-v",
-                "error",
-                "-nostdin",
-                "-protocol_whitelist",
-                "file,pipe",
-                "-max_pixels",
-                "16000000",
-                "-threads",
-                "1",
-                "-filter_threads",
-                "1",
-                "-f",
-                "image2",
-                "-c:v",
-                static_codec,
-                "-i",
-                str(path),
-                "-frames:v",
-                "1",
-                "-vf",
-                "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1",
-                "-c:v",
-                "libwebp",
-                "-preset",
-                "picture",
-                "-threads",
-                "1",
-                "-quality",
-                "75",
-                "-f",
-                "webp",
-                str(output),
-            ],
-            30,
-        )
-        if not output.is_file():
-            raise MediaError("invalid_output")
-        await add_sticker_metadata(output)
-        if not 0 < output.stat().st_size <= 102400:
+        # Try a high-quality still first. Include EXIF in the final 100KiB bound.
+        for quality in (90, 82, 74):
+            output.unlink(missing_ok=True)
+            try:
+                await run_process(
+                    [
+                        "prlimit",
+                        "--fsize=1048576",
+                        "--",
+                        "ffmpeg",
+                        "-v",
+                        "error",
+                        "-nostdin",
+                        "-protocol_whitelist",
+                        "file,pipe",
+                        "-max_pixels",
+                        "16000000",
+                        "-threads",
+                        "1",
+                        "-filter_threads",
+                        "1",
+                        "-f",
+                        "image2",
+                        "-c:v",
+                        static_codec,
+                        "-i",
+                        str(path),
+                        "-frames:v",
+                        "1",
+                        "-vf",
+                        "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1",
+                        "-c:v",
+                        "libwebp",
+                        "-preset",
+                        "picture",
+                        "-threads",
+                        "1",
+                        "-quality",
+                        str(quality),
+                        "-f",
+                        "webp",
+                        str(output),
+                    ],
+                    30,
+                )
+            except MediaError:
+                continue
+            if output.is_file() and 0 < output.stat().st_size <= 102400:
+                await add_sticker_metadata(output)
+                if output.stat().st_size <= 102400:
+                    break
+        else:
             raise MediaError("invalid_output")
         raw = await run_process(
             [
@@ -196,10 +249,13 @@ async def sticker(path: Path, directory: Path):
         return output
 
     try:
-        data_head = path.read_bytes()[:12] if size >= 12 else b""
+        with path.open("rb") as source_file:
+            data_head = source_file.read(12)
     except OSError:
         raise MediaError("invalid_image")
     if data_head.startswith(b"RIFF") and data_head[8:12] == b"WEBP":
+        if size > 10 * 1024 * 1024:
+            raise MediaError("input_size")
         return await _convert_animated_webp(path, directory / "sticker.webp")
 
     try:
@@ -244,50 +300,41 @@ async def sticker(path: Path, directory: Path):
 
     effective_duration = min(duration, 10.0) if duration > 0 else 10.0
 
+    # Debanding with blur destroyed high-frequency detail in every clip.
     scale = (
-        "deband=range=20:blur=true,"
-        "scale=512:512:force_original_aspect_ratio=decrease:flags=bicubic,"
+        "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,"
         "format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1,format=yuva420p"
     )
-    if 0 < effective_duration <= 3.5:
-        profiles = [
-            (70, 15),
-            (65, 14),
-            (60, 12),
-            (55, 12),
-            (50, 10),
-            (42, 10),
-        ]
-    elif 3.5 < effective_duration <= 6.5:
-        profiles = [
-            (65, 14),
-            (60, 12),
-            (55, 12),
-            (50, 10),
-            (45, 10),
-            (40, 8),
-        ]
-    else:
-        profiles = [
-            (65, 12),
-            (60, 12),
-            (55, 12),
-            (55, 10),
-            (50, 10),
-            (45, 10),
-            (50, 8),
-            (42, 8),
-            (35, 6),
-        ]
-
+    # Keep visual quality high. Shorten a difficult clip before heavily
+    # quantizing all its frames to squeeze ten seconds below the byte limit.
+    profile_candidates = (
+        (10, 88, 12),
+        (10, 82, 10),
+        (10, 76, 8),
+        (6, 88, 12),
+        (6, 82, 10),
+        (4, 88, 12),
+        (4, 82, 10),
+        (3, 76, 8),
+    )
+    profiles = []
+    for max_seconds, quality, fps in profile_candidates:
+        candidate = (min(effective_duration, float(max_seconds)), quality, fps)
+        if candidate not in profiles:
+            profiles.append(candidate)
     output = directory / "sticker.webp"
-    for quality, fps in profiles:
+    for clip_seconds, quality, fps in profiles:
         if output.exists():
             output.unlink()
         try:
             await run_process(
                 [
+                    "prlimit",
+                    "--fsize=2000000",
+                    "--",
                     "ffmpeg",
+                    "-v",
+                    "error",
                     "-nostdin",
                     "-y",
                     "-filter_threads",
@@ -295,14 +342,14 @@ async def sticker(path: Path, directory: Path):
                     "-i",
                     str(path),
                     "-t",
-                    "10",
+                    str(clip_seconds),
                     "-an",
                     "-vf",
                     f"fps={fps},{scale}",
                     "-c:v",
                     "libwebp_anim",
                     "-preset",
-                    "photo",
+                    "picture",
                     "-q:v",
                     str(quality),
                     "-compression_level",
