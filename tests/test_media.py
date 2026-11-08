@@ -116,7 +116,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, sticker = await self.convert("/sticker", video)
         self.assertEqual(sticker.code, "sticker_created")
         sticker_path = self.file_of(sticker)
-        self.assertLessEqual(sticker_path.stat().st_size, 512000)
+        self.assertLessEqual(sticker_path.stat().st_size, 500000)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -129,8 +129,105 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, gif_sticker = await self.convert("/sticker", gif)
         self.assertEqual(gif_sticker.code, "sticker_created")
         gif_sticker_path = self.file_of(gif_sticker)
-        self.assertLessEqual(gif_sticker_path.stat().st_size, 512000)
+        self.assertLessEqual(gif_sticker_path.stat().st_size, 500000)
         with Image.open(gif_sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertTrue(getattr(image, "is_animated", False))
+
+    async def test_ten_second_video_produces_high_quality_animated_sticker(self):
+        video = self.settings.root / "ten_sec.mp4"
+        await run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-f",
+                "lavfi",
+                "-i",
+                "testsrc=size=320x240:rate=15",
+                "-t",
+                "10",
+                str(video),
+            ],
+            15,
+        )
+        _, _, sticker = await self.convert("/sticker", video)
+        self.assertEqual(sticker.code, "sticker_created")
+        sticker_path = self.file_of(sticker)
+        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        with Image.open(sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertTrue(getattr(image, "is_animated", False))
+            self.assertGreaterEqual(getattr(image, "n_frames", 1), 60)
+
+    async def test_animated_webp_sticker_strictly_under_limit_with_metadata(self):
+        # Create an animated WebP and convert it to sticker
+        source_anim = self.settings.root / "source_anim.webp"
+        await run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-f",
+                "lavfi",
+                "-i",
+                "testsrc=size=512x512:rate=10",
+                "-t",
+                "3",
+                "-c:v",
+                "libwebp_anim",
+                "-q:v",
+                "60",
+                str(source_anim),
+            ],
+            15,
+        )
+        _, _, sticker = await self.convert("/sticker", source_anim)
+        self.assertEqual(sticker.code, "sticker_created")
+        sticker_path = self.file_of(sticker)
+        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        with Image.open(sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertTrue(getattr(image, "is_animated", False))
+
+    async def test_static_sticker_has_sar_and_metadata_under_limit(self):
+        _, _, sticker = await self.convert("/sticker", self.png)
+        self.assertEqual(sticker.code, "sticker_created")
+        sticker_path = self.file_of(sticker)
+        self.assertLessEqual(sticker_path.stat().st_size, 102400)
+        with Image.open(sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertFalse(getattr(image, "is_animated", False))
+
+    async def test_video_without_duration_metadata_produces_sticker(self):
+        from botsky.engines.images import sticker
+
+        raw_video = self.settings.root / "raw_stream.h264"
+        await run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-f",
+                "lavfi",
+                "-i",
+                "testsrc=size=320x240:rate=15",
+                "-t",
+                "2",
+                "-c:v",
+                "libx264",
+                str(raw_video),
+            ],
+            15,
+        )
+        out_dir = self.settings.root / "raw_sticker_dir"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        sticker_path = await sticker(raw_video, out_dir)
+        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
 

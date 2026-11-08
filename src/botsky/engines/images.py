@@ -58,8 +58,9 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
             if width == 512 and height == 512 and source.stat().st_size <= 500000:
                 output.write_bytes(source.read_bytes())
                 await add_sticker_metadata(output)
-                output.chmod(0o600)
-                return output
+                if output.stat().st_size <= 500000:
+                    output.chmod(0o600)
+                    return output
 
             frames = []
             durations = []
@@ -73,7 +74,7 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
                 frames.append(canvas)
             if not frames:
                 raise MediaError("invalid_output")
-            for q in (60, 40, 25, 15):
+            for q in (65, 50, 40, 30, 20, 15):
                 if output.exists():
                     output.unlink()
                 frames[0].save(
@@ -86,12 +87,13 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
                     quality=q,
                     method=6,
                 )
-                if output.is_file() and 0 < output.stat().st_size <= 500000:
+                if output.is_file():
                     await add_sticker_metadata(output)
-                    with Image.open(output) as verified:
-                        if verified.format == "WEBP" and verified.size == (512, 512):
-                            output.chmod(0o600)
-                            return output
+                    if output.stat().st_size <= 500000:
+                        with Image.open(output) as verified:
+                            if verified.format == "WEBP" and verified.size == (512, 512):
+                                output.chmod(0o600)
+                                return output
             raise MediaError("invalid_output")
     except MediaError:
         raise
@@ -147,9 +149,11 @@ async def sticker(path: Path, directory: Path):
                 "-frames:v",
                 "1",
                 "-vf",
-                "scale=512:512:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000",
+                "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1",
                 "-c:v",
                 "libwebp",
+                "-preset",
+                "picture",
                 "-threads",
                 "1",
                 "-quality",
@@ -160,9 +164,11 @@ async def sticker(path: Path, directory: Path):
             ],
             30,
         )
-        if not output.is_file() or not 0 < output.stat().st_size <= 102400:
+        if not output.is_file():
             raise MediaError("invalid_output")
         await add_sticker_metadata(output)
+        if not 0 < output.stat().st_size <= 102400:
+            raise MediaError("invalid_output")
         raw = await run_process(
             [
                 "ffprobe",
@@ -205,14 +211,15 @@ async def sticker(path: Path, directory: Path):
                 "-protocol_whitelist",
                 "file,pipe",
                 "-show_entries",
-                "stream=codec_name,codec_type,width,height",
+                "stream=codec_name,codec_type,width,height,duration:format=duration",
                 "-of",
                 "json",
                 str(path),
             ],
             15,
         )
-        streams = json.loads(probe).get("streams", [])
+        probe_data = json.loads(probe)
+        streams = probe_data.get("streams", [])
         video_stream = next((s for s in streams if s.get("codec_type") == "video"), None)
         if not video_stream:
             raise MediaError("unsupported_media")
@@ -220,13 +227,64 @@ async def sticker(path: Path, directory: Path):
         height = int(video_stream["height"])
         if width <= 0 or height <= 0:
             raise MediaError("invalid_media")
+        duration = 0.0
+        try:
+            duration = float(probe_data.get("format", {}).get("duration", 0))
+        except (ValueError, TypeError):
+            duration = 0.0
+        if duration <= 0.0:
+            try:
+                duration = float(video_stream.get("duration", 0))
+            except (ValueError, TypeError):
+                duration = 0.0
     except MediaError:
         raise
     except Exception as exc:
         raise MediaError("invalid_media") from exc
 
-    scale = "scale=512:512:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000"
-    profiles = [[60, 15], [40, 12], [25, 10], [15, 8], [10, 6]]
+    effective_duration = min(duration, 10.0) if duration > 0 else 10.0
+
+    scale = (
+        "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,"
+        "format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1,format=yuva420p"
+    )
+    if 0 < effective_duration <= 3.5:
+        profiles = [
+            (65, 15),
+            (55, 15),
+            (50, 12),
+            (45, 12),
+            (50, 10),
+            (42, 10),
+            (45, 8),
+            (35, 8),
+        ]
+    elif 3.5 < effective_duration <= 6.5:
+        profiles = [
+            (58, 12),
+            (50, 12),
+            (52, 10),
+            (45, 10),
+            (48, 8),
+            (40, 8),
+            (55, 6),
+            (45, 6),
+            (35, 6),
+        ]
+    else:
+        profiles = [
+            (50, 10),
+            (42, 10),
+            (48, 8),
+            (42, 8),
+            (36, 8),
+            (62, 6),
+            (52, 6),
+            (42, 6),
+            (35, 6),
+            (25, 6),
+        ]
+
     output = directory / "sticker.webp"
     for quality, fps in profiles:
         if output.exists():
@@ -241,15 +299,19 @@ async def sticker(path: Path, directory: Path):
                     "1",
                     "-i",
                     str(path),
+                    "-t",
+                    "10",
                     "-an",
                     "-vf",
-                    f"fps={fps},{scale},format=bgra",
+                    f"fps={fps},{scale}",
                     "-c:v",
                     "libwebp_anim",
+                    "-preset",
+                    "picture",
                     "-q:v",
                     str(quality),
                     "-compression_level",
-                    "4",
+                    "6",
                     "-threads",
                     "2",
                     "-loop",
