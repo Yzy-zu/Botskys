@@ -90,7 +90,7 @@ def retry_snapshot(db, target):
     return [
         dict(row)
         for row in db.execute(
-            "SELECT position,revision,state,artifacts_json FROM outbox WHERE receipt_id=? AND state IN ('failed','uncertain') ORDER BY position",
+            "SELECT position,revision,state,artifacts_json FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NULL AND state IN ('failed','uncertain') ORDER BY position",
             (target,),
         )
     ]

@@ -216,9 +216,18 @@ class Store:
                 from .interactions import replace_file_waits
 
                 notice = replace_file_waits(db, context)
+            denied_codes = {"group_denied", "actor_denied", "stale_scope", "unknown_permission"}
+            permission = (
+                parsed.spec.permission
+                if parsed and (result is None or result.code in denied_codes)
+                else "friend"
+                if result and result.code in denied_codes
+                else "public"
+            )
+            if result and result.code in denied_codes:
+                parsed = None
             command = parsed.canonical() if parsed else None
             path = canonical(parsed.spec.path) if parsed else None
-            permission = parsed.spec.permission if parsed and result is None else "public"
             db.execute(
                 "INSERT INTO inbox(id,instance,account,message_id,actor,chat,is_group,epoch,source_ms,received_ms,fingerprint,command_json,path_json,permission,state,result_json,attachments_json,quoted_message_id,notice,text,mentions_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (
@@ -384,10 +393,11 @@ class Store:
             result = rejection or handler(
                 db, context, tuple(json.loads(row["path_json"])), command, effect_id, now
             )
-            if row["notice"]:
+            if row["notice"] and not (result.code == "job_queued" and result.data.get("reaction")):
                 from dataclasses import replace
 
                 result = replace(result, text=row["notice"] + result.text)
+                db.execute("UPDATE inbox SET notice='' WHERE id=?", (receipt_id,))
             db.execute(
                 "INSERT INTO effects VALUES(?,?,?,?,?,?)",
                 (
@@ -487,7 +497,8 @@ class Store:
         deliveries = [
             dict(r)
             for r in db.execute(
-                "SELECT position,state FROM outbox WHERE receipt_id=? ORDER BY position", (target,)
+                "SELECT position,state FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NULL ORDER BY position",
+                (target,),
             )
         ]
         job = db.execute(
@@ -497,21 +508,29 @@ class Store:
         if job and job["result_json"]:
             result = Result.from_json(job["result_json"])
             job_data.update(status=result.status, code=result.code)
+        frontend = db.execute("SELECT state,error_code FROM frontend_tasks WHERE receipt_id=?", (target,)).fetchone()
+        row_result = Result.from_json(row["result_json"]) if row["result_json"] else None
         visible_state = (
             "uncertain"
-            if job_data and job_data.get("status") == "uncertain"
+            if (job_data and job_data.get("status") == "uncertain")
+            or (row_result and row_result.status == "uncertain")
             else job["state"]
             if job
+            else frontend["state"]
+            if frontend and frontend["state"] in ("running", "failed", "cancelled")
+            else "failed"
+            if row_result and row_result.status == "failed"
+            else "cancelled"
+            if row_result and row_result.status == "cancelled"
             else row["state"]
         )
-        frontend = db.execute("SELECT state,error_code FROM frontend_tasks WHERE receipt_id=?", (target,)).fetchone()
         return Result(
             "ok",
             "receipt_state",
             self.state_text(visible_state, deliveries),
             {
                 "id": target,
-                "state": row["state"],
+                "state": visible_state if visible_state in ("failed", "cancelled", "uncertain") else row["state"],
                 "revision": row["revision"],
                 "delivery": deliveries,
                 "job": job_data,
@@ -584,6 +603,10 @@ class Store:
                 return None
             context = context_of(parent)
             if access.authorize(parent["permission"], context, settings):
+                db.execute(
+                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
+                    (receipt_id,),
+                )
                 return None
             from .domains.game_delivery import retired
 
@@ -617,8 +640,16 @@ class Store:
                         (receipt_id,),
                     )
                     return None
+            if db.execute(
+                "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NULL AND state IN ('sending','accepted','uncertain','failed')",
+                (receipt_id,),
+            ).fetchone():
+                db.execute(
+                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL AND state='pending'",
+                    (receipt_id,),
+                )
             row = db.execute(
-                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' ORDER BY position LIMIT 1",
+                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR state='pending') ORDER BY position LIMIT 1",
                 (receipt_id,),
             ).fetchone()
             if row is None or row["state"] not in (
@@ -693,11 +724,16 @@ class Store:
 
     def finish_part(self, part, revision, settings, state, provider_id, code, now):
         with self.transaction() as db:
+            is_reaction = bool(part.payload.get("reaction"))
             parent = db.execute("SELECT * FROM inbox WHERE id=?", (part.receipt_id,)).fetchone()
             if (
                 parent is None
                 or parent["epoch"] != settings.epoch
-                or parent["revision"] != part.context.revision
+                or (
+                    parent["state"] != "completed"
+                    if is_reaction
+                    else parent["revision"] != part.context.revision
+                )
             ):
                 state, code = "uncertain", "stale_delivery"
             db.execute(
@@ -713,7 +749,7 @@ class Store:
                     "DELETE FROM artifact_leases WHERE holder=? AND token=?",
                     (f"delivery-{part.receipt_id}-{part.position}", str(revision)),
                 )
-            if changed and state in ("failed", "uncertain"):
+            if changed and not is_reaction and state in ("failed", "uncertain"):
                 db.execute(
                     "UPDATE reminders SET state=?,revision=revision+1 WHERE delivery_receipt_id=?",
                     (state, part.receipt_id),
@@ -724,9 +760,10 @@ class Store:
                 )
             if (
                 changed
+                and not is_reaction
                 and state == "accepted"
                 and not db.execute(
-                    "SELECT 1 FROM outbox WHERE receipt_id=? AND state!='accepted'",
+                    "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NULL AND state!='accepted'",
                     (part.receipt_id,),
                 ).fetchone()
             ):

@@ -8,7 +8,7 @@ import tempfile
 import uuid
 from pathlib import Path
 
-from .documents import DocumentEngine, _copy_output, _kind
+from .documents import SANDBOX_PYTHON, DocumentEngine, _copy_output, _kind
 from .limits import DOCUMENT_INPUT_BYTES, DOCUMENT_PROCESS_SECONDS, PDF_TOTAL_BYTES
 from .process import MediaError, run_process
 
@@ -32,7 +32,8 @@ class PdfOperations:
             with tempfile.TemporaryDirectory(prefix="document-", dir=self.work) as temp:
                 await run_process(
                     self.engine._sandbox(
-                        Path(temp), ["/usr/bin/python3", "-c", "import pypdf,PIL"]
+                        Path(temp),
+                        [SANDBOX_PYTHON, "-c", "import pypdf,PIL;from PIL import Image"],
                     ),
                     5,
                 )
@@ -90,7 +91,7 @@ class PdfOperations:
             )
             script = Path(__file__).with_name("pdf_ops_worker.py")
             (directory / "worker.py").write_bytes(script.read_bytes())
-            raw = await self.engine._run(directory, ["/usr/bin/python3", "/work/worker.py"])
+            raw = await self.engine._run(directory, [SANDBOX_PYTHON, "/work/worker.py"])
             try:
                 result = json.loads(raw)
                 if not isinstance(result, dict):

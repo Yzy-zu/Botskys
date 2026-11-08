@@ -579,3 +579,37 @@ class MediaTest(IsolatedAsyncioTestCase):
                 ):
                     roundtrip = await engine.convert(output.read_bytes(), "txt")
                     self.assertIn("BOTSKY", roundtrip.read_text())
+
+    async def test_bwrap_uses_compatible_python_and_pillow_converts_image_to_pdf_and_docs_links_valid(
+        self,
+    ):
+        import re
+        from botsky.engines.documents import SANDBOX_PYTHON, DocumentEngine
+        from botsky.engines.pdf import PdfOperations
+
+        doc_engine = DocumentEngine(self.settings.root / "bwrap-doc")
+        pdf_ops = PdfOperations(self.settings.root / "bwrap-pdf")
+        self.assertTrue(await doc_engine.available())
+        self.assertTrue(await pdf_ops.available())
+        sandbox_cmd = doc_engine._sandbox(self.settings.root, ["/usr/bin/python3", "-c", "pass"])
+        self.assertIn(SANDBOX_PYTHON, sandbox_cmd)
+
+        converted = await doc_engine.convert(self.png.read_bytes(), "pdf")
+        self.assertTrue(converted.read_bytes().startswith(b"%PDF-"))
+        self.assertEqual(len(PdfReader(converted).pages), 1)
+
+        assembled = await pdf_ops.assemble([self.png.read_bytes()])
+        self.assertTrue(assembled.read_bytes().startswith(b"%PDF-"))
+        self.assertEqual(len(PdfReader(assembled).pages), 1)
+
+        repo_root = Path(__file__).resolve().parents[1]
+        for doc_rel in ("README.md", "docs/GUIA_BOTSKY.md"):
+            doc_path = repo_root / doc_rel
+            content = doc_path.read_text(encoding="utf-8")
+            self.assertIn("Responder", content)
+            for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", content):
+                if target.startswith(("http://", "https://", "#")):
+                    continue
+                self.assertFalse(target.startswith("/"), f"Enlace absoluto en {doc_rel}: {target}")
+                resolved = (doc_path.parent / target).resolve()
+                self.assertTrue(resolved.exists(), f"Enlace roto en {doc_rel}: {target}")

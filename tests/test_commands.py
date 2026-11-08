@@ -202,7 +202,7 @@ class CommandsTest(TestCase):
         ):
             help_text = self.router.registry.help(topic)
             self.assertIn("--duracion DURACION_CON_UNIDAD", help_text)
-            self.assertIn("ejemplo 10m", help_text)
+            self.assertIn("duración en segundos, minutos u horas (ej. 10m)", help_text)
             self.assertIn("5–3600 segundos", help_text)
             self.assertIn("Por defecto: 300 segundos", help_text)
             self.assertEqual(self.parse(command + " --duracion 600s").arguments["max_seconds"], 600)

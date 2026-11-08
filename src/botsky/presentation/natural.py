@@ -7,9 +7,9 @@ from . import Block, Document, attach_document
 # Solo instrucciones tipadas next_action del producto. No se buscan patrones en
 # el mensaje final, párrafos de contenido, notas, enlaces o archivos del usuario.
 NEXT_ACTIONS = {
-    '/dl elegir ': 'Responde con el número del video que quieres descargar.',
+    '/dl elegir ': 'Usa Responder sobre esta lista y escribe el número del video que quieres descargar.',
     'Título y autor completos: /dl detalle ': 'Para ver el enlace o datos completos, di «pásame el enlace del 1», indicando su número.',
-    '/drive elegir ': 'Responde con el número del archivo que quieres recuperar.',
+    '/drive elegir ': 'Usa Responder sobre esta lista y escribe el número del archivo que quieres recuperar.',
     '/recado enviar ': 'Responde «sí, envíalo» a esta vista previa.',
     '/pack confirmar ': 'Responde «confirma la compra» a esta oferta.',
     '/admin nuclear-confirmar ': 'Para confirmar la expulsión grupal, responde «confirma la acción nuclear».',

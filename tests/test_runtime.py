@@ -82,8 +82,18 @@ class RuntimeTest(IsolatedAsyncioTestCase):
         raise AssertionError(request.url.path)
 
     def payload(
-        self, text="/nota guardar tortilla", *, identifier="MSG1", group=False, media=False
+        self,
+        text="/nota guardar tortilla",
+        *,
+        identifier="MSG1",
+        group=False,
+        media=False,
+        chat=None,
+        actor=None,
     ):
+        remote_jid = chat or (GROUP if group else OWNER)
+        is_group = group or remote_jid.endswith("@g.us")
+        participant = actor or OWNER
         return {
             "event": "messages.upsert",
             "instance": "provider-instance",
@@ -92,8 +102,8 @@ class RuntimeTest(IsolatedAsyncioTestCase):
                 "key": {
                     "id": identifier,
                     "fromMe": False,
-                    "remoteJid": GROUP if group else OWNER,
-                    **({"participant": OWNER} if group else {}),
+                    "remoteJid": remote_jid,
+                    **({"participant": participant} if is_group else {}),
                 },
                 "messageTimestamp": self.now // 1000,
                 "message": {"imageMessage": {"caption": text, "fileLength": len(self.image)}}
@@ -533,3 +543,96 @@ class RuntimeTest(IsolatedAsyncioTestCase):
                 "reaction": "⏳",
             },
         )
+
+    async def test_disabled_group_denials_retired_and_temporary_pauses_resumed_without_blocking_other_chats(
+        self,
+    ):
+        from dataclasses import replace
+
+        FRIEND = "525533334444@s.whatsapp.net"
+        self.settings = replace(self.settings, friends=frozenset({FRIEND}))
+        self.app.settings = self.settings
+        runtime = Runtime(self.app, self.profile, self.http)
+        runtime.options["scheduler_enabled"] = True
+        for index in range(20):
+            runtime.transport.enqueue(
+                self.payload(
+                    "/ayuda",
+                    chat="999999999999@g.us",
+                    actor=FRIEND,
+                    identifier=f"DENIED_GRP_{index}",
+                )
+            )
+        owner_msg = runtime.transport.enqueue(
+            self.payload("/nota guardar pan", chat=OWNER, actor=OWNER, identifier="OWNER_NOTE_1")
+        )
+        for _ in range(3):
+            await runtime.admission_once()
+        await runtime.delivery_once()
+        self.assertEqual(len(self.sent), 1)
+        self.assertEqual(self.sent[0]["number"], OWNER)
+        self.assertIn("Nota 1 guardada", self.sent[0]["text"])
+        self.assertEqual(
+            self.rows("SELECT state FROM outbox WHERE receipt_id=?", (owner_msg["receipt_id"],))[0][
+                "state"
+            ],
+            "accepted",
+        )
+        denied_states = {
+            row["state"]
+            for row in self.rows(
+                "SELECT state FROM outbox WHERE receipt_id<>?", (owner_msg["receipt_id"],)
+            )
+        }
+        self.assertEqual(denied_states, {"cancelled"})
+
+        # Pausa temporal en grupo permitido: no bloquea otros chats y permite reanudar después.
+        self.sent.clear()
+        for index in range(20):
+            rem = self.payload(
+                f"/recordar en 10s aviso-{index}",
+                chat=GROUP,
+                actor=FRIEND,
+                identifier=f"REM_{index}",
+            )
+            runtime.transport.enqueue(rem)
+        for _ in range(3):
+            await runtime.admission_once()
+        await runtime.delivery_once()
+        self.sent.clear()
+        self.now += 11000
+        await runtime.scheduler_once()
+        pause_msg = runtime.transport.enqueue(
+            self.payload("/bot pausa 15", chat=GROUP, actor=OWNER, identifier="PAUSE_GROUP")
+        )
+        await runtime.admission_once()
+        # Borrar aviso de /bot pausa para dejar solo los 20 avisos internos pausados en GROUP
+        with self.app.store.transaction() as db:
+            db.execute("DELETE FROM outbox WHERE receipt_id=?", (pause_msg["receipt_id"],))
+        owner_second = runtime.transport.enqueue(
+            self.payload(
+                "/nota guardar leche", chat=OWNER, actor=OWNER, identifier="OWNER_NOTE_2"
+            )
+        )
+        await runtime.admission_once()
+        await runtime.delivery_once()
+        self.assertEqual(len(self.sent), 1)
+        self.assertEqual(self.sent[0]["number"], OWNER)
+        self.assertIn("Nota 2 guardada", self.sent[0]["text"])
+        self.assertEqual(
+            self.rows("SELECT state FROM outbox WHERE receipt_id=?", (owner_second["receipt_id"],))[
+                0
+            ]["state"],
+            "accepted",
+        )
+        # Reanudar la pausa temporal con /bot reanudar: los 20 avisos pendientes salen
+        self.sent.clear()
+        resume_msg = runtime.transport.enqueue(
+            self.payload("/bot reanudar", chat=GROUP, actor=OWNER, identifier="RESUME_GROUP")
+        )
+        await runtime.admission_once()
+        with self.app.store.transaction() as db:
+            db.execute("DELETE FROM outbox WHERE receipt_id=?", (resume_msg["receipt_id"],))
+        await runtime.delivery_once()
+        self.assertEqual(len(self.sent), 20)
+        self.assertTrue(all(item["number"] == GROUP for item in self.sent))

@@ -73,6 +73,8 @@ class CloudflareInterpreter:
                 try:
                     data = response.json()
                 except ValueError:
+                    if response.status_code != 200:
+                        raise InterpreterError('provider_http_' + str(response.status_code)) from None
                     raise InterpreterError('invalid_response') from None
                 errors = data.get('errors', []) if isinstance(data, dict) else []
                 codes = {e.get('code') for e in errors if isinstance(e, dict)}

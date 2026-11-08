@@ -410,7 +410,11 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                 if "expires_ms" in data
                 else "Lista de tu ámbito · Vigencia máxima de 5 minutos desde la preparación."
             )
-            + ("\nResponde con el número del archivo que quieres recuperar." if input_mode == 'natural' else "\n/drive elegir NUMERO"),
+            + (
+                "\nUsa Responder sobre esta lista y escribe el número del archivo que quieres recuperar."
+                if input_mode == "natural"
+                else "\n/drive elegir NUMERO · Usa Responder sobre esta lista y escribe el número"
+            ),
         )
     if code == "notes_found":
         rows = data["items"]

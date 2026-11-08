@@ -452,3 +452,119 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         )
         self.assertEqual(search_options["subtitle_language"], "es")
         self.assertEqual(self.backend.downloads, [W3, W3, W3])
+
+    async def test_reaction_failure_and_late_ack_deliver_mp4_once_and_preserve_uncertain_mp4(self):
+        from botsky.contracts import DeliveryAck
+
+        search = self.receive("/dl buscar mp4 muestra")
+        await self.app.jobs.run_pending()
+        self.app.deliver(search.id, CollectingTransport())
+        view = self.result(search.id).data["view_id"]
+
+        # Caso 1: la reacción ⏳ falla al enviar; el MP4 debe entregarse una sola vez.
+        choice1 = self.receive("/dl elegir " + view + " 1")
+
+        class RejectReactionTransport:
+            def __init__(self):
+                self.media_parts = []
+                self.reactions = 0
+
+            def send(self, part):
+                if part.payload.get("reaction"):
+                    self.reactions += 1
+                    return DeliveryAck(False, None)
+                self.media_parts.append(part)
+                return DeliveryAck(True, f"mp4-{len(self.media_parts)}")
+
+        t1 = RejectReactionTransport()
+        self.assertEqual(self.app.deliver(choice1.id, t1), 0)
+        self.assertEqual(t1.reactions, 1)
+        await self.app.jobs.run_pending()
+        self.assertEqual(self.app.deliver(choice1.id, t1), 1)
+        self.assertEqual(len(t1.media_parts), 1)
+        self.assertEqual(self.app.deliver(choice1.id, t1), 0)
+        self.assertEqual(len(t1.media_parts), 1)
+
+        # Caso 2: la confirmación de ⏳ llega después de preparar el MP4; el MP4 se entrega una sola vez.
+        choice2 = self.receive("/dl elegir " + view + " 1")
+        claimed_reaction = self.app.store.claim_part(choice2.id, self.settings, self.now)
+        self.assertIsNotNone(claimed_reaction)
+        reaction_part, reaction_rev = claimed_reaction
+        self.assertEqual(reaction_part.payload.get("reaction"), "⏳")
+        await self.app.jobs.run_pending()
+        t2 = CollectingTransport()
+        self.assertEqual(self.app.deliver(choice2.id, t2), 1)
+        self.assertEqual(len(t2.parts), 1)
+        self.assertEqual(t2.parts[0].kind, "media")
+        self.assertTrue(
+            self.app.store.finish_part(
+                reaction_part,
+                reaction_rev,
+                self.settings,
+                "accepted",
+                "late-reaction-ack",
+                None,
+                self.now,
+            )
+        )
+        self.assertEqual(self.app.deliver(choice2.id, t2), 0)
+        self.assertEqual(len(t2.parts), 1)
+
+        # Caso 3: pendiente antiguo de reacción no reenvía MP4, y acuse incierto del propio MP4 conserva protección.
+        choice3 = self.receive("/dl elegir " + view + " 1")
+        await self.app.jobs.run_pending()
+
+        class UncertainMp4Transport:
+            def __init__(self):
+                self.media_attempts = 0
+
+            def send(self, part):
+                if part.payload.get("reaction"):
+                    return DeliveryAck(True, "reaction-ok")
+                self.media_attempts += 1
+                raise TimeoutError("uncertain mp4 ack")
+
+        t3 = UncertainMp4Transport()
+        self.assertEqual(self.app.deliver(choice3.id, t3), 1)
+        self.assertEqual(t3.media_attempts, 1)
+        # Simular fila antigua de reacción pendiente cuando el MP4 ya quedó incierto
+        with self.app.store.transaction() as db:
+            db.execute(
+                "UPDATE outbox SET state='pending' WHERE receipt_id=? AND position=0",
+                (choice3.id,),
+            )
+        self.assertEqual(self.app.deliver(choice3.id, CollectingTransport()), 0)
+        states = {
+            r["position"]: r["state"]
+            for r in self.rows(
+                "SELECT position,state FROM outbox WHERE receipt_id=?", (choice3.id,)
+            )
+        }
+        self.assertEqual(states[0], "cancelled")
+        self.assertEqual(states[1], "uncertain")
+
+    async def test_youtube_extractor_receives_the_xx_intro_and_nissan_skyline_r34_intact(self):
+        from unittest.mock import patch
+        from botsky.engines.downloads import Downloader, sanitize_search_query
+        from botsky.frontend.prompts import FINAL_RULES, SYSTEM
+
+        self.assertEqual(sanitize_search_query("The xx Intro", "youtube"), "The xx Intro")
+        self.assertEqual(
+            sanitize_search_query("Nissan Skyline R34", "youtube"), "Nissan Skyline R34"
+        )
+        captured_cmds = []
+
+        async def fake_run_process(cmd, timeout, **kwargs):
+            captured_cmds.append(list(cmd))
+            return b'{"entries": []}'
+
+        downloader = Downloader(self.settings.root / "dl-engine")
+        with patch("botsky.engines.downloads.run_process", side_effect=fake_run_process):
+            await downloader.search("The xx Intro", "youtube")
+            await downloader.search("Nissan Skyline R34", "youtube")
+        self.assertEqual(len(captured_cmds), 2)
+        self.assertIn("ytsearch20:The xx Intro", captured_cmds[0])
+        self.assertIn("ytsearch20:Nissan Skyline R34", captured_cmds[1])
+        self.assertIn("recetas rusas", SYSTEM)
+        self.assertIn("recetas rusas", FINAL_RULES)
+        self.assertIn("source='youtube', query='recetas rusas'", FINAL_RULES)

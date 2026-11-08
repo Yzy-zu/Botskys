@@ -124,9 +124,7 @@ SEARCH_ADULT_KEYWORDS = (
     r"porno?",
     r"porn",
     r"xxx+",
-    r"\bxx\b",
     r"nsfw",
-    r"r34",
     r"rule\s*34",
     r"hentai",
     r"ecchi",
@@ -153,8 +151,9 @@ SEARCH_FILLER_PATTERNS = (
 def sanitize_search_query(query: str, source: str = "youtube") -> str:
     original = query.strip()
     text = original
-    for pattern in SEARCH_ADULT_KEYWORDS:
-        text = re.sub(r"\b" + pattern + r"\b", " ", text, flags=re.IGNORECASE)
+    if source in ("adult", "pornhub", "xnxx", "combined"):
+        for pattern in SEARCH_ADULT_KEYWORDS:
+            text = re.sub(r"\b" + pattern + r"\b", " ", text, flags=re.IGNORECASE)
     for pattern in SEARCH_FILLER_PATTERNS:
         text = re.sub(pattern, " ", text, flags=re.IGNORECASE)
     text = re.sub(r"^\s*(?:videos?|audios?)\s+(?:de|del)?\s*", " ", text, flags=re.IGNORECASE)

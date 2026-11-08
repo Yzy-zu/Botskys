@@ -39,14 +39,14 @@ def tools(catalog):
 
 SYSTEM += """
 Fuentes: usa solo search_sources para búsquedas y url_sources para enlaces.
-Búsqueda general de videos: youtube si está habilitado. Contenido adulto: fuente
-adulta habilitada (adult, pornhub, xnxx), nunca sustituir por youtube ni repreguntar.
-Clasifica la intención de forma autónoma según el contexto del mensaje: si contiene
-términos de contenido adulto (teens, maduras, milf, rusas, latinas, etc.), clasifícalo
-directamente como adulto sin pedir confirmación. Fuente por URL que no admite búsqueda:
-pide el enlace. source es obligatorio para buscar. Respeta formato,negaciones,
-literales y fechas. Una capacidad deshabilitada se explica sin prometer ejecución
-ni éxito.
+Búsqueda general de videos (como «recetas rusas», música, autos, tutoriales o cultura):
+usa youtube si está habilitado. Peticiones adultas explícitas («porno», «nopor», «xxx»,
+«sexo», «erótico», «hentai», «milf» o sitios como Pornhub y XNXX): respétalas y usa
+la fuente adulta habilitada (adult, pornhub, xnxx) sin sustituir por youtube ni pedir
+confirmación. No clasifiques gentilicios o temas generales («recetas rusas») como
+adultos sin petición explícita. Fuente por URL que no admite búsqueda: pide el enlace.
+source es obligatorio para buscar. Respeta formato,negaciones,literales y fechas.
+Una capacidad deshabilitada se explica sin prometer ejecución ni éxito.
 """
 
 FINAL_RULES = """REGLAS DE SALIDA Y OPERACIÓN (obligatorias):
@@ -77,13 +77,13 @@ Devuelve EXACTAMENTE UNA llamada a función, nunca dos ni texto libre.
 - Ayuda: select_action con action_key='ayuda' y arguments={}; usa topic solo cuando nombra un área concreta.
 - Búsquedas multimedia e interpretación de intención (clasificación autónoma directa):
   * Clasifica de forma autónoma la intención del usuario sin pedir confirmaciones innecesarias:
-    - Intención de adultos: peticiones de contenido erótico/adulto, ya sea explícito («porno», «nopor», «xxx», «sexo», «erótico», «hentai», «ecchi») o por categorías («maduras», «maduras latinas», «teens», «milf», «rusas», «colegialas», «amateur», «casero», o nombres de sitios adultos como Pornhub, XNXX). Usa DIRECTAMENTE select_action('dl.buscar', arguments={'source': 'adult', 'query': ..., 'container': 'mp4'}). NUNCA preguntes con clarify si prefiere YouTube o contenido para adultos; clasifícalo como adulto directamente.
-    - Intención general / YouTube: canciones, música, tutoriales, tráilers, recetas, documentales, videojuegos, o si menciona «de youtube», «en youtube». Usa DIRECTAMENTE select_action('dl.buscar', arguments={'source': 'youtube', 'query': ..., 'container': 'mp4'}) (o container='mp3' si pide música, canciones o audio).
-  * Sanitización del query: el argumento query debe contener ÚNICAMENTE el tema o sujeto principal limpio. ELIMINA palabras de activación y relleno como «oye», «busca», «videos de», «de youtube», «en youtube», «nopor», «porno», «xxx», «en mp4».
+    - Intención general / YouTube: temas generales, cocina («recetas rusas»), canciones, música, tutoriales, tráilers, autos («Nissan Skyline R34»), bandas («The xx Intro»), documentales, videojuegos, o si menciona «de youtube», «en youtube». Los gentilicios o temas cotidianos sin petición adulta explícita son SIEMPRE búsqueda general en YouTube: usa DIRECTAMENTE select_action('dl.buscar', arguments={'source': 'youtube', 'query': ..., 'container': 'mp4'}) (o container='mp3' si pide música, canciones o audio).
+    - Intención de adultos explícita: cuando la petición sea explícitamente adulta («porno», «nopor», «xxx», «sexo», «erótico», «hentai», «ecchi», «milf», «teens nopor», «maduras nopor», o nombres de sitios adultos como Pornhub, XNXX) y su fuente esté habilitada en search_sources, respétala y usa DIRECTAMENTE select_action('dl.buscar', arguments={'source': 'adult', 'query': ..., 'container': 'mp4'}). NUNCA sustituyas por YouTube ni preguntes con clarify si prefiere YouTube o contenido para adultos; si la fuente adulta no está habilitada, informa que no está disponible sin sustituir por YouTube.
+  * Sanitización del query: conserva íntegros los nombres propios, bandas, modelos y temas generales («The xx Intro», «Nissan Skyline R34», «recetas rusas»). Elimina únicamente palabras de activación como «oye», «busca», «videos de», «en youtube», «en mp4».
     Ejemplos:
-    - «busca videos de teens» -> dl.buscar(source='adult', query='teens', container='mp4')
-    - «busca videos de maduras latinas» -> dl.buscar(source='adult', query='maduras latinas', container='mp4')
-    - «videos de colegialas» -> dl.buscar(source='adult', query='colegialas', container='mp4')
+    - «busca recetas rusas» -> dl.buscar(source='youtube', query='recetas rusas', container='mp4')
+    - «busca videos de teens nopor» -> dl.buscar(source='adult', query='teens nopor', container='mp4')
+    - «busca videos de maduras nopor» -> dl.buscar(source='adult', query='maduras nopor', container='mp4')
     - «quiero ver videos de bad bunny en youtube» -> dl.buscar(source='youtube', query='bad bunny', container='mp4')
     - «busca tutorial de python en youtube» -> dl.buscar(source='youtube', query='tutorial de python', container='mp4')
     - «rolas de queen en mp3» -> dl.buscar(source='youtube', query='queen', container='mp3')

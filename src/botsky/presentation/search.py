@@ -85,7 +85,12 @@ def video_document(
     ):
         blocks.append(Block("next_action", "Título y autor completos: /dl detalle NUMERO"))
     command = "/dl elegir " + ("" if short else view_id + " ")
-    blocks.append(Block("next_action", command + "NUMERO"))
+    blocks.append(
+        Block(
+            "next_action",
+            command + "NUMERO · Usa Responder sobre esta lista y escribe el número",
+        )
+    )
     return Document(tuple(blocks))
 
 

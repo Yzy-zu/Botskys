@@ -127,7 +127,7 @@ def render_natural_help(registry, topic=''):
                 '• «Pasa este archivo a PDF» y adjunta el documento\n'
                 '• «Recuérdame entregar la tarea mañana a las ocho»\n'
                 '• «Explícame este ejercicio»\n\n'
-                'Si falta un dato, te lo preguntaré. Para elegir algo, responde a su lista con el número. '
+                'Si falta un dato, te lo preguntaré. Usa Responder sobre esta lista y escribe el número para elegir una opción. '
                 'También puedes pedirme ayuda con una herramienta concreta.')
     families = [family for family, (title, _) in FAMILIES.items()
                 if topic in title.casefold() or any(s.family == family and topic in ' '.join(s.path) for s in registry.specs)]

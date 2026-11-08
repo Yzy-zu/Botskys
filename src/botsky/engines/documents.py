@@ -11,11 +11,14 @@ import os
 import re
 import shutil
 import stat
+import sys
 import sysconfig
 import tempfile
 import uuid
 import zipfile
 from pathlib import Path, PurePosixPath
+
+SANDBOX_PYTHON = str(Path(sys.executable).resolve())
 
 from .formats import (
     FORMAT_TARGETS,
@@ -324,9 +327,20 @@ class DocumentEngine:
         ]
         if Path("/lib64").exists():
             command += ["--ro-bind", "/lib64", "/lib64"]
-        if argv and argv[0] == "/usr/bin/python3":
-            packages = sysconfig.get_paths()["purelib"]
-            command += ["--ro-bind", packages, "/packages", "--setenv", "PYTHONPATH", "/packages"]
+        if argv and argv[0] in ("/usr/bin/python3", SANDBOX_PYTHON):
+            argv = [SANDBOX_PYTHON, *argv[1:]]
+            base_prefix = str(Path(sys.base_prefix).resolve())
+            if not base_prefix.startswith("/usr"):
+                command += ["--ro-bind", base_prefix, base_prefix]
+            paths = sysconfig.get_paths()
+            purelib = paths["purelib"]
+            platlib = paths["platlib"]
+            pypath = "/packages"
+            command += ["--ro-bind", purelib, "/packages"]
+            if platlib != purelib and Path(platlib).exists():
+                command += ["--ro-bind", platlib, "/platpackages"]
+                pypath = "/packages:/platpackages"
+            command += ["--setenv", "PYTHONPATH", pypath]
         return command + ["--", *argv]
 
     async def available(self) -> bool:
@@ -341,9 +355,9 @@ class DocumentEngine:
                     self._sandbox(
                         Path(temp),
                         [
-                            "/usr/bin/python3",
+                            SANDBOX_PYTHON,
                             "-c",
-                            "import docx,openpyxl,pptx,pdfplumber,pypdfium2,olefile,PIL,markdown_it",
+                            "import docx,openpyxl,pptx,pdfplumber,pypdfium2,olefile,PIL,markdown_it;from PIL import Image",
                         ],
                     ),
                     5,
@@ -389,7 +403,7 @@ class DocumentEngine:
                 *self._sandbox(directory, argv),
             ],
             DOCUMENT_PROCESS_SECONDS,
-            allowed_returncodes=(0, 1) if argv[0] == "/usr/bin/python3" else (0,),
+            allowed_returncodes=(0, 1) if argv[0] in ("/usr/bin/python3", SANDBOX_PYTHON) else (0,),
         )
 
     async def _pdf_check(self, pdf: Path) -> None:
@@ -468,7 +482,7 @@ class DocumentEngine:
                 result = await self._run(
                     directory,
                     [
-                        "/usr/bin/python3",
+                        SANDBOX_PYTHON,
                         "/work/worker.py",
                         action,
                         "/work/" + input_path.name,

@@ -26,10 +26,27 @@ def find(db, context, args, now):
     if query is None and page == 1:
         query = ""
     elif query is None:
-        view = db.execute(
-            f"SELECT query FROM note_views WHERE {SCOPE_SQL} AND accepted=1 AND expires_ms>? ORDER BY rowid DESC LIMIT 1",
-            (*context.scope_key, now),
+        incoming = db.execute(
+            "SELECT quoted_message_id FROM inbox WHERE id=?", (context.receipt_id,)
         ).fetchone()
+        quoted = incoming["quoted_message_id"] if incoming else None
+        if quoted:
+            from ..presentation.quotes import own_delivered_parent
+
+            parent = own_delivered_parent(db, context, quoted, now)
+            view = (
+                db.execute(
+                    f"SELECT query FROM note_views WHERE receipt_id=? AND {SCOPE_SQL} AND accepted=1 AND expires_ms>? ORDER BY rowid DESC LIMIT 1",
+                    (parent["id"], *context.scope_key, now),
+                ).fetchone()
+                if parent is not None
+                else None
+            )
+        else:
+            view = db.execute(
+                f"SELECT query FROM note_views WHERE {SCOPE_SQL} AND accepted=1 AND expires_ms>? ORDER BY rowid DESC LIMIT 1",
+                (*context.scope_key, now),
+            ).fetchone()
         if view is None:
             return Result(
                 "needs_input",

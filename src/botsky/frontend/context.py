@@ -43,7 +43,7 @@ def load(app, db, row, now):
         "SELECT i.text,f.decision_json FROM inbox i JOIN frontend_tasks f ON f.receipt_id=i.id WHERE "
         + " AND ".join("i." + term for term in SCOPE_SQL.split(" AND "))
         + " AND f.state='completed' AND i.received_ms>? AND i.id<>? "
-        "AND NOT EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND o.state!='accepted') "
+        "AND NOT EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND json_extract(o.rich_payload_json,'$.reaction') IS NULL AND o.state!='accepted') "
         "ORDER BY i.received_ms DESC,i.rowid DESC LIMIT 4",
         (*context.scope_key, now-TTL, row['id'])).fetchall()
     conversation = []
@@ -56,9 +56,11 @@ def load(app, db, row, now):
         "SELECT i.id,i.path_json,i.command_json,i.result_json FROM inbox i WHERE "
         + " AND ".join("i." + term for term in SCOPE_SQL.split(" AND "))
         + " AND i.state='completed' AND i.received_ms>? AND i.id<>? "
-        "AND EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND o.state='accepted') "
-        "AND NOT EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND o.state!='accepted') "
+        "AND EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND json_extract(o.rich_payload_json,'$.reaction') IS NULL AND o.state='accepted') "
+        "AND NOT EXISTS(SELECT 1 FROM outbox o WHERE o.receipt_id=i.id AND json_extract(o.rich_payload_json,'$.reaction') IS NULL AND o.state!='accepted') "
         "ORDER BY i.received_ms DESC,i.rowid DESC LIMIT 6", (*context.scope_key, now-TTL, row['id'])).fetchall()
+    if row['quoted_message_id']:
+        pages = [p for p in pages if parent and p['id'] == parent['id']]
     for page in pages:
         result_data = json.loads(page['result_json'] or '{}').get('data', {})
         if result_data.get('pages', 0) > result_data.get('page', 1) and page['command_json']:
@@ -66,6 +68,12 @@ def load(app, db, row, now):
             arguments = command.get('arguments', {})
             # Only list filters and page references, not domain result content.
             arguments = {k:v for k,v in arguments.items() if k in ('query','page','category','kind','state','include_closed')}
+            if 'query' not in arguments and result_data.get('query') is not None:
+                arguments['query'] = result_data['query']
+            if isinstance(result_data.get('filters'), dict):
+                for k, v in result_data['filters'].items():
+                    if k in ('query','category','kind','state','include_closed') and v is not None:
+                        arguments.setdefault(k, v)
             arguments['page'] = result_data.get('page', 1)+1
             references.append({'kind': 'pagination', 'action_key': '.'.join(json.loads(page['path_json'])), 'arguments': arguments})
     result = {'conversation': conversation, 'references': references, 'quoted_reference_unavailable': bool(row['quoted_message_id'] and not parent)}
@@ -125,6 +133,14 @@ def adopt_context(app, db, row, decision, snapshot, draft, now):
             args['view_id'] = candidates[0]['view_id']
         if args['view_id'] not in {v['view_id'] for v in candidates}:
             raise ValueError('unavailable_reference')
+    paginations = [v for v in snapshot['references'] if v['kind'] == 'pagination' and v.get('action_key') == decision.action_key]
+    if row['quoted_message_id'] and paginations:
+        if len(paginations) != 1:
+            raise ValueError('ambiguous_reference')
+        args = {**args, **paginations[0]['arguments']}
+    elif len(paginations) == 1 and args.get('page', 1) > 1:
+        for k, v in paginations[0]['arguments'].items():
+            args.setdefault(k, v)
     confirmation_fields = {'recado.enviar': 'draft_id', 'pack.confirmar': 'purchase_id', 'confirmar': 'id', 'admin.nuclear-confirmar': 'draft_id'}
     if decision.action_key in confirmation_fields:
         field = confirmation_fields[decision.action_key]

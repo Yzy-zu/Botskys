@@ -171,6 +171,8 @@ class Application:
                         resumed = interactions.resume_file(db, context, incoming, self.router.registry, self.clock())
                         if resumed is not None:
                             return resumed, None, 'queued'
+                        if not pending and not own_quote:
+                            return None, None, 'ignored'
                     if not incoming.text.strip() and not incoming.attachments:
                         return None, None, 'ignored'
                     if denied := access.authorize("friend", context, self.settings):

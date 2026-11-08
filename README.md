@@ -2,9 +2,17 @@
 
 **Producción activa06/11:** Botsky reemplazó a Zhana por instrucción expresa del propietario y dispensa del gateR10. [Estado, alcance y reversión](docs/R11_PRODUCCION_20261106.md). Zhana archivada recuperable; datos nuevos, sin migrar DB31. Los apartados siguientes conservan cierres históricos.
 
-Reconstrucción independiente por comandos explícitos. Plan vigente:
-[/home/petrov/zhana/rebuildbotsky.md](/home/petrov/zhana/rebuildbotsky.md).
+Reconstrucción independiente por comandos explícitos y lenguaje natural acotado.
+Documentación de uso y referencia: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md) y [docs/commands.md](docs/commands.md).
 Estado real y siguiente trabajo en [ESTADO_COMPARTIDO.md](ESTADO_COMPARTIDO.md).
+
+### Ejemplos actuales y uso de **Responder**
+
+- «Guarda una nota: comprar pan» o `/nota guardar pan`
+- «Busca videos de recetas rusas» o `/dl buscar mp4 recetas rusas`
+- «Pasa este archivo a PDF» o `/convertir pdf` adjuntando el documento
+
+Para elegir una opción de un listado (videos o archivos de Drive), avanzar de página sobre una búsqueda concreta o confirmar una vista previa, usa **Responder** sobre el mensaje de esa lista en WhatsApp y escribe el número o la instrucción («2», «siguiente», «sí, envíalo»). En grupos, los números sueltos sin **Responder** se ignoran; en privado, si solo hay una lista vigente, también puedes escribir el número directamente.
 
 Python 3.14 y SQLite propios. El núcleo arranca sin IA ni clasificador. No hay
 dependencia del runtime de Zhana ni acceso a sus datos privados. Repositorio solo

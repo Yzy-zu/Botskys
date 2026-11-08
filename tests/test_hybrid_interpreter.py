@@ -225,6 +225,59 @@ class HybridInterpreterTest(IsolatedAsyncioTestCase):
         self.assertEqual(hybrid.active_provider, "fallback")
         self.assertGreater(hybrid.cooldown_until, time.monotonic())
 
+    async def test_both_gemini_and_cloudflare_503_inform_down_offer_command_and_estado_reports_failed(
+        self,
+    ):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        from botsky.adapters.cloudflare_interpreter import CloudflareInterpreter
+        from botsky.adapters.local import CollectingTransport, LocalAdapter
+        from botsky.app import Application
+        from botsky.config import Settings
+        from botsky.frontend.worker import run_one
+
+        def handle_503(request: httpx.Request) -> httpx.Response:
+            return httpx.Response(503, text="Service Unavailable")
+
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            now = 1794000000000
+            settings = Settings(
+                root,
+                "hybrid-503",
+                "local",
+                1,
+                root / "db.sqlite",
+                now - 1000,
+                "owner",
+                frozenset({"alice"}),
+                frozenset(),
+            )
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handle_503)) as http:
+                primary = GeminiInterpreter(http, api_key="AQ.Ab8RN6fake")
+                fallback = CloudflareInterpreter(
+                    http, {"account_id": "a" * 32, "api_token": "synthetic"}
+                )
+                hybrid = HybridInterpreter(primary, fallback, cooldown_seconds=60)
+                service = FrontendService(hybrid)
+                app = Application(settings, clock=lambda: now, frontend=service)
+                adapter = LocalAdapter(settings, lambda: now)
+
+                turn = app.receive(adapter.incoming("m-503", "alice", "private", "hola botsky"))
+                await run_one(app)
+                transport = CollectingTransport()
+                self.assertEqual(app.deliver(turn.id, transport), 1)
+                notice_text = transport.parts[0].text
+                self.assertIn("temporalmente caído", notice_text)
+                self.assertIn("/ayuda", notice_text)
+
+                status = app.receive(adapter.incoming("m-estado", "alice", "private", "/estado"))
+                self.assertEqual(status.result.code, "receipt_state")
+                self.assertEqual(status.result.data["id"], turn.id)
+                self.assertEqual(status.result.data["state"], "failed")
+                self.assertIn("No se pudo completar.", status.result.text)
+                self.assertIn("El servicio aceptó la entrega", status.result.text)
+
 
 class HybridConfigurationTest(TestCase):
     def test_validate_interpreter_hybrid(self):

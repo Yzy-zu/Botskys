@@ -26,6 +26,47 @@ class EngineOutput:
     files: tuple[Path, ...] = ()
 
 
+def _retire_domain_job(db, operation, job_id, now, *, result_code=None):
+    if operation.startswith(("control_call.", "audiovisual.")):
+        if result_code is None or (
+            operation in ("control_call.start", "audiovisual.agenda.create")
+            and result_code not in ("call_requested", "agenda_create")
+        ):
+            from .domains.calls import retire_job
+
+            retire_job(db, job_id, now)
+    if operation.startswith("manage_admin."):
+        from .domains.admin import retire_job
+
+        retire_job(db, job_id, now)
+    if operation.startswith("manage_minecraft."):
+        from .domains.minecraft import retire_job
+
+        retire_job(db, job_id, now)
+    if operation.startswith("manage_roulette."):
+        from .domains.roulette import retire_job
+
+        retire_job(db, job_id, now)
+    if operation.startswith("manage_happy_hour."):
+        from .domains.happy_media import retire_job
+
+        retire_job(db, job_id, now)
+    if operation.startswith("manage_cooperacha.") and (
+        result_code is None or operation == "manage_cooperacha.complete"
+    ):
+        from .domains.cooperacha import retire_job
+
+        retire_job(db, job_id, now)
+    if operation == "manage_pack.buy":
+        from .domains.packs import retire_job
+
+        retire_job(db, job_id, now)
+    if operation == "manage_messages.send":
+        from .domains.messages import retire_job
+
+        retire_job(db, job_id, now)
+
+
 def cancel_job(db, context, target):
     row = db.execute(
         "SELECT * FROM jobs WHERE id=? AND state IN ('queued','running')", (target,)
@@ -70,54 +111,9 @@ def cancel_job(db, context, target):
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
-        if row["operation"].startswith(("control_call.", "audiovisual.")):
-            from time import time_ns
+        from time import time_ns
 
-            from .domains.calls import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"].startswith("manage_admin."):
-            from time import time_ns
-
-            from .domains.admin import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"].startswith("manage_minecraft."):
-            from time import time_ns
-
-            from .domains.minecraft import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"].startswith("manage_roulette."):
-            from time import time_ns
-
-            from .domains.roulette import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"].startswith("manage_happy_hour."):
-            from time import time_ns
-
-            from .domains.happy_media import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"].startswith("manage_cooperacha."):
-            from time import time_ns
-
-            from .domains.cooperacha import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"] == "manage_messages.send":
-            from time import time_ns
-
-            from .domains.messages import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
-        if row["operation"] == "manage_pack.buy":
-            from time import time_ns
-
-            from .domains.packs import retire_job
-
-            retire_job(db, target, time_ns() // 1000000)
+        _retire_domain_job(db, row["operation"], target, time_ns() // 1000000)
         args = json.loads(row["arguments_json"])
         if args.get("session_id"):
             db.execute(
@@ -225,38 +221,7 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
-                if row["operation"].startswith(("control_call.", "audiovisual.")):
-                    from .domains.calls import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"].startswith("manage_admin."):
-                    from .domains.admin import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"].startswith("manage_minecraft."):
-                    from .domains.minecraft import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"].startswith("manage_roulette."):
-                    from .domains.roulette import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"].startswith("manage_happy_hour."):
-                    from .domains.happy_media import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"].startswith("manage_cooperacha."):
-                    from .domains.cooperacha import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"] == "manage_pack.buy":
-                    from .domains.packs import retire_job
-
-                    retire_job(db, row["id"], now)
-                if row["operation"] == "manage_messages.send":
-                    from .domains.messages import retire_job
-
-                    retire_job(db, row["id"], now)
+                _retire_domain_job(db, row["operation"], row["id"], now)
                 db.execute(
                     "UPDATE drive_uploads SET state='uncertain',updated_ms=? WHERE receipt_id=? AND state='reserved'",
                     (now, row["id"]),
@@ -394,41 +359,7 @@ class Jobs:
                 return False
             context = context_of(parent)
             args = json.loads(row["arguments_json"])
-            if row["operation"] in (
-                "control_call.start",
-                "audiovisual.agenda.create",
-            ) and result.code not in ("call_requested", "agenda_create"):
-                from .domains.calls import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"].startswith("manage_admin."):
-                from .domains.admin import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"].startswith("manage_minecraft."):
-                from .domains.minecraft import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"].startswith("manage_roulette."):
-                from .domains.roulette import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"].startswith("manage_happy_hour."):
-                from .domains.happy_media import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"] == "manage_cooperacha.complete":
-                from .domains.cooperacha import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"] == "manage_pack.buy":
-                from .domains.packs import retire_job
-
-                retire_job(db, job["id"], now)
-            if row["operation"] == "manage_messages.send":
-                from .domains.messages import retire_job
-
-                retire_job(db, job["id"], now)
+            _retire_domain_job(db, row["operation"], job["id"], now, result_code=result.code)
             session = None
             if args.get("session_id"):
                 session = db.execute(
@@ -545,6 +476,10 @@ class Jobs:
                         now + 1800000,
                     ),
                 )
+            if parent["notice"] and result.text:
+                from dataclasses import replace
+
+                result = replace(result, text=parent["notice"] + result.text)
             db.execute(
                 "UPDATE jobs SET state=?,result_json=?,lease_token=NULL,revision=revision+1,updated_ms=? WHERE id=? AND revision=?",
                 (
@@ -556,7 +491,7 @@ class Jobs:
                 ),
             )
             db.execute(
-                "UPDATE inbox SET result_json=?,revision=revision+1 WHERE id=? AND revision=?",
+                "UPDATE inbox SET result_json=?,notice='',revision=revision+1 WHERE id=? AND revision=?",
                 (result.to_json(), job["id"], parent["revision"]),
             )
             db.execute(

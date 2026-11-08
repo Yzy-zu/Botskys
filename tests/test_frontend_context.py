@@ -104,3 +104,140 @@ class ContextTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(snapshot['references'], [])
             with self.assertRaises(ValueError):
                 adopt_context(self.app, db, row, ActionRequest('recado.enviar', {'draft_id':'view1'}), snapshot, None, self.now)
+
+    async def test_quoted_pagination_isolates_search_and_filters_and_determines_result(self):
+        from botsky.adapters.local import CollectingTransport
+        from botsky.contracts import Result
+
+        for i in range(7):
+            self.app.receive(self.incoming(f'c-{i}', f'/nota guardar cable {i}'))
+            self.app.receive(self.incoming(f't-{i}', f'/nota guardar tarea {i}'))
+        cable_p1 = self.app.receive(self.incoming('s-cable', '/notas cable'))
+        tarea_p1 = self.app.receive(self.incoming('s-tarea', '/notas tarea'))
+        self.app.deliver(cable_p1.id, CollectingTransport())
+        self.app.deliver(tarea_p1.id, CollectingTransport())
+        with self.app.store.transaction() as db:
+            cable_msg_id = db.execute(
+                'SELECT provider_message_id FROM outbox WHERE receipt_id=?', (cable_p1.id,)
+            ).fetchone()[0]
+        next_cable = self.app.receive(
+            self.incoming('next-cable', 'siguiente', quoted_message_id=cable_msg_id)
+        )
+        with self.app.store.transaction() as db:
+            row = db.execute('SELECT * FROM inbox WHERE id=?', (next_cable.id,)).fetchone()
+            snapshot, _ = load(self.app, db, row, self.now)
+        self.assertEqual(
+            snapshot['references'],
+            [
+                {
+                    'kind': 'pagination',
+                    'action_key': 'notas',
+                    'arguments': {'query': 'cable', 'page': 2},
+                }
+            ],
+        )
+        # Incluso si el modelo omite el filtro query al proponer la página 2, la cita determina el filtro «cable»
+        self.frontend.decision = ActionRequest('notas', {'page': 2})
+        await run_one(self.app)
+        with self.app.store.transaction() as db:
+            result = Result.from_json(
+                db.execute('SELECT result_json FROM inbox WHERE id=?', (next_cable.id,)).fetchone()[0]
+            )
+        self.assertEqual(result.code, 'notes_found')
+        self.assertEqual(result.data['query'], 'cable')
+        self.assertEqual(result.data['page'], 2)
+        self.assertEqual(len(result.data['items']), 2)
+        self.assertTrue(all('cable' in item['text'] for item in result.data['items']))
+
+    async def test_group_quoted_selection_bare_number_silence_and_private_single_list_selection(self):
+        from dataclasses import replace
+        from botsky.adapters.local import CollectingTransport, LocalAdapter
+        from botsky.engines.downloads import DownloadOption
+
+        class StubDownloads:
+            enabled = True
+            adult_sources_enabled = False
+
+            def __init__(self, root):
+                self.root = root
+                self.downloads = []
+
+            async def search(self, query, source, directory):
+                return (
+                    DownloadOption('https://media.w3.org/2010/05/bunny/trailer.mp4', 'Video 1', 10, 'Autor'),
+                    DownloadOption('https://www.youtube.com/watch?v=AbCDEfgHI12', 'Video 2', 20, 'Autor'),
+                )
+
+            async def download(self, url, options, directory):
+                self.downloads.append(url)
+                out = directory / 'out.mp4'
+                out.write_bytes(b'\x00\x00\x00\x18ftypmp42\x00\x00\x00\x00mp42isom')
+                return out
+
+        self.settings = replace(
+            self.settings,
+            allowed_groups=frozenset({'group-1'}),
+            friends=frozenset({'alice'}),
+        )
+        self.app.settings = self.settings
+        self.app.downloads = StubDownloads(self.settings.root)
+        adapter = LocalAdapter(self.settings, lambda: self.now)
+
+        # 1. En grupo: publicar búsqueda
+        g_search = self.app.receive(
+            adapter.incoming('g-1', 'alice', 'group-1', '/dl buscar mp4 gatos', is_group=True)
+        )
+        await self.app.jobs.run_pending()
+        transport = CollectingTransport()
+        self.app.deliver(g_search.id, transport)
+        self.assertIn(
+            'Usa Responder sobre esta lista y escribe el número',
+            transport.parts[0].payload.get('caption', '') or transport.parts[0].text,
+        )
+        with self.app.store.transaction() as db:
+            group_list_msg = db.execute(
+                'SELECT provider_message_id FROM outbox WHERE receipt_id=?', (g_search.id,)
+            ).fetchone()[0]
+
+        # 2. Silencio ante números sueltos en grupos
+        bare = self.app.receive(
+            adapter.incoming('g-bare', 'alice', 'group-1', '1', is_group=True)
+        )
+        self.assertEqual(bare.state, 'ignored')
+        with self.app.store.transaction() as db:
+            self.assertEqual(
+                db.execute('SELECT count(*) FROM outbox WHERE receipt_id=?', (bare.id,)).fetchone()[0],
+                0,
+            )
+
+        # 3. Elección citada en grupo funciona
+        self.frontend.decision = ActionRequest('dl.elegir', {'choice': 1})
+        quoted_choice = self.app.receive(
+            adapter.incoming(
+                'g-quoted',
+                'alice',
+                'group-1',
+                '1',
+                is_group=True,
+                quoted_message_id=group_list_msg,
+            )
+        )
+        self.assertEqual(quoted_choice.state, 'queued')
+        await run_one(self.app)
+        await self.app.jobs.run_pending()
+        self.assertEqual(len(self.app.downloads.downloads), 1)
+
+        # 4. Elección directa con una sola lista en privado
+        p_search = self.app.receive(
+            adapter.incoming('p-1', 'alice', 'private-alice', '/dl buscar mp4 perros', is_group=False)
+        )
+        await self.app.jobs.run_pending()
+        self.app.deliver(p_search.id, CollectingTransport())
+        self.frontend.decision = ActionRequest('dl.elegir', {'choice': 1})
+        direct_private = self.app.receive(
+            adapter.incoming('p-direct', 'alice', 'private-alice', '1', is_group=False)
+        )
+        self.assertEqual(direct_private.state, 'queued')
+        await run_one(self.app)
+        await self.app.jobs.run_pending()
+        self.assertEqual(len(self.app.downloads.downloads), 2)

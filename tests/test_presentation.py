@@ -74,9 +74,9 @@ class PresentationTest(TestCase):
             db.execute("DELETE FROM outbox WHERE receipt_id=?", (receipt.id,))
             self.app.store.enqueue(db, context_of(row), Result("ok", "literal", literal), self.now)
         self.assertEqual(self.app.deliver(receipt.id, self.transport), 2)
-        self.assertIn("contenido completo", self.transport.parts[0].text)
+        self.assertIn("archivo adjunto", self.transport.parts[0].text)
         artifact = self.transport.parts[1].artifacts[0]
-        self.assertEqual(self.app.artifacts.path(artifact).read_text(), literal)
+        self.assertEqual(self.app.artifacts.path(artifact).read_text(encoding="utf-8"), literal)
         self.assertEqual(self.app.artifacts.path(artifact).stat().st_mode & 0o777, 0o600)
         self.assertEqual(self.app.deliver(receipt.id, self.transport), 0)
 

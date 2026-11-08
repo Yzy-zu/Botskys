@@ -199,20 +199,61 @@ class Runtime:
     async def delivery_once(self):
         if not self.transport.delivery_enabled:
             return
-        with self.app.store.transaction() as db:
-            rows = db.execute(
-                "SELECT DISTINCT o.receipt_id FROM outbox o JOIN inbox i ON i.id=o.receipt_id WHERE i.instance=? AND i.account=? AND i.epoch=? AND o.state='pending' AND NOT EXISTS(SELECT 1 FROM outbox p WHERE p.receipt_id=o.receipt_id AND p.position<o.position AND p.state!='accepted') ORDER BY o.updated_ms LIMIT 20",
-                (self.app.settings.instance, self.app.settings.account, self.app.settings.epoch),
-            ).fetchall()
-        for row in rows:
-            if self.app.operations:
-                with self.app.store.transaction() as db:
-                    chat = db.execute("SELECT chat FROM inbox WHERE id=?", (row[0],)).fetchone()[0]
-                if not self.app.operations.delivers(chat):
-                    continue
-            await deliver_async(
-                self.app.store, row[0], self.app.settings, self.transport, self.app.clock
+        seen = set()
+        attempted = 0
+        while attempted < 20:
+            exclusion = (
+                f" AND o.receipt_id NOT IN ({','.join('?' for _ in seen)})" if seen else ""
             )
+            with self.app.store.transaction() as db:
+                rows = db.execute(
+                    "SELECT DISTINCT o.receipt_id FROM outbox o JOIN inbox i ON i.id=o.receipt_id "
+                    "WHERE i.instance=? AND i.account=? AND i.epoch=? AND o.state='pending' "
+                    "AND NOT EXISTS(SELECT 1 FROM outbox p WHERE p.receipt_id=o.receipt_id "
+                    "AND p.position<o.position AND json_extract(p.rich_payload_json,'$.reaction') IS NULL "
+                    "AND p.state!='accepted')"
+                    + exclusion
+                    + " ORDER BY o.updated_ms LIMIT 20",
+                    (
+                        self.app.settings.instance,
+                        self.app.settings.account,
+                        self.app.settings.epoch,
+                        *seen,
+                    ),
+                ).fetchall()
+            if not rows:
+                break
+            for row in rows:
+                receipt_id = row[0]
+                seen.add(receipt_id)
+                if self.app.operations:
+                    with self.app.store.transaction() as db:
+                        chat = db.execute(
+                            "SELECT chat FROM inbox WHERE id=?", (receipt_id,)
+                        ).fetchone()[0]
+                        if not self.app.operations.delivers(chat):
+                            db.execute(
+                                "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
+                                (receipt_id,),
+                            )
+                            continue
+                with self.app.store.transaction() as db:
+                    before = db.execute(
+                        "SELECT count(*) FROM delivery_attempts WHERE receipt_id=?",
+                        (receipt_id,),
+                    ).fetchone()[0]
+                await deliver_async(
+                    self.app.store, receipt_id, self.app.settings, self.transport, self.app.clock
+                )
+                with self.app.store.transaction() as db:
+                    after = db.execute(
+                        "SELECT count(*) FROM delivery_attempts WHERE receipt_id=?",
+                        (receipt_id,),
+                    ).fetchone()[0]
+                if after > before:
+                    attempted += 1
+                    if attempted >= 20:
+                        break
 
     async def maintenance_once(self):
         self.app.store.prune_context(self.app.settings, self.app.clock())

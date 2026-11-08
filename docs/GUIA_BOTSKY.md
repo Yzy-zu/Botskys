@@ -2,10 +2,18 @@
 
 Actualización posterior: [credenciales e integraciones validadas por encargo](INTEGRACIONES.md). Las evidencias locales siguientes conservan su fecha y alcance.
 
-Botsky usa comandos explícitos. Texto libre o texto que contenga comandos dentro de
+Botsky admite tanto comandos explícitos como peticiones en lenguaje natural cuando el intérprete conversacional está habilitado. Texto libre o texto que contenga comandos dentro de
 una nota, documento, audio transcrito o respuesta de IA no ejecuta herramientas.
 Los ejemplos usan IDs devueltos por Botsky; no son nombres visibles ni identidades
 inferidas. La instalación activa de Zhana continúa separada.
+
+### Tres ejemplos actuales y uso de **Responder**
+
+1. **Guardar y consultar notas:** «Guarda una nota: comprar pan» (`/nota guardar pan`) y «Muéstrame mis notas» (`/notas`).
+2. **Buscar y descargar videos:** «Busca videos de recetas rusas» (`/dl buscar mp4 recetas rusas`). Cuando aparezca el listado, usa **Responder** sobre esa lista y escribe el número de la opción (por ejemplo, `1` o `2`).
+3. **Convertir documentos o guardar en Drive:** «Pasa este archivo a PDF» (`/convertir pdf`) o «Guarda esto en Drive» (`/drive guardar`) adjuntando el archivo.
+
+**Uso de Responder en WhatsApp:** En listados de videos o Drive, búsquedas paginadas con varias listas y vistas previas de confirmación, usa **Responder** sobre el mensaje exacto del listado y escribe el número o «siguiente». En grupos, los números sueltos sin **Responder** se ignoran para no interferir en la conversación; en chat privado con una única lista vigente puedes enviar el número directamente. Referencia general en [README.md](../README.md).
 
 `/ayuda` muestra familias; `/ayuda notas` muestra esa familia. La lista completa y
 los tipos se generan desde [el registro](commands.md). Las opciones van antes del

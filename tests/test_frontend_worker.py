@@ -134,3 +134,128 @@ class WorkerTests(unittest.IsolatedAsyncioTestCase):
         self.frontend.wait.set()
         await task
         self.assertEqual(self.count('notes'), 0)
+
+    async def test_drive_wait_closed_by_natural_forget_and_other_action_uploads_zero_and_active_wait_uploads_once(self):
+        from types import SimpleNamespace
+        from PIL import Image
+        from botsky.adapters.local import CollectingTransport
+        from botsky.frontend.contracts import NoActionDecision
+
+        class StubDrive:
+            available = True
+            folder_id = 'folder-1'
+
+            def __init__(self):
+                self.uploads = []
+
+            async def folder(self):
+                return self.folder_id
+
+            async def generate_id(self):
+                return f'remote-{len(self.uploads) + 1}'
+
+            async def upload_file(self, remote_id, name, mime, path, *, scope_key):
+                self.uploads.append((remote_id, name, mime, scope_key, path.read_bytes()))
+                return SimpleNamespace(
+                    id=remote_id,
+                    name=name,
+                    web_view_link=f'https://drive.google.com/file/d/{remote_id}/view',
+                )
+
+        drive = StubDrive()
+        self.app.drive = drive
+        sample_file = self.settings.root / 'drive_sample.png'
+        Image.new('RGB', (16, 16), 'blue').save(sample_file)
+
+        # Caso 1: «ya no, olvídalo» tras /drive guardar sin adjunto -> siguiente adjunto sin texto = 0 subidas
+        wait1 = self.app.receive(self.incoming('w1', '/drive guardar'))
+        self.assertEqual(wait1.result.code, 'attachment_required')
+        self.app.deliver(wait1.id, CollectingTransport())
+        self.frontend.decision = NoActionDecision('usuario desistió')
+        forget = self.app.receive(self.incoming('w2', 'ya no, olvídalo'))
+        await run_one(self.app)
+        self.app.deliver(forget.id, CollectingTransport())
+        att1 = self.app.attach_local(self.incoming('w3', ''), sample_file)
+        res1 = self.app.receive(att1)
+        self.assertEqual(res1.state, 'ignored')
+        await self.app.jobs.run_pending()
+        self.assertEqual(len(drive.uploads), 0)
+
+        # Caso 2: «mejor guarda la nota pan» tras /drive guardar sin adjunto -> siguiente adjunto sin texto = 0 subidas
+        wait2 = self.app.receive(self.incoming('w4', '/drive guardar'))
+        self.assertEqual(wait2.result.code, 'attachment_required')
+        self.app.deliver(wait2.id, CollectingTransport())
+        self.frontend.decision = ActionRequest('nota.guardar', {'text': 'pan'})
+        better_note = self.app.receive(self.incoming('w5', 'mejor guarda la nota pan'))
+        await run_one(self.app)
+        self.app.deliver(better_note.id, CollectingTransport())
+        self.assertEqual(self.count('notes'), 1)
+        att2 = self.app.attach_local(self.incoming('w6', ''), sample_file)
+        res2 = self.app.receive(att2)
+        self.assertEqual(res2.state, 'ignored')
+        await self.app.jobs.run_pending()
+        self.assertEqual(len(drive.uploads), 0)
+
+        # Caso 3: con la espera vigente -> el siguiente adjunto sin texto se sube una vez
+        wait3 = self.app.receive(self.incoming('w7', '/drive guardar'))
+        self.assertEqual(wait3.result.code, 'attachment_required')
+        self.app.deliver(wait3.id, CollectingTransport())
+        att3 = self.app.attach_local(self.incoming('w8', ''), sample_file)
+        res3 = self.app.receive(att3)
+        self.assertEqual(res3.result.code, 'job_queued')
+        await self.app.jobs.run_pending()
+        self.assertEqual(len(drive.uploads), 1)
+
+    async def test_turn_order_per_person_and_chat_while_other_chats_advance(self):
+        from dataclasses import replace
+        from botsky.adapters.local import LocalAdapter
+        from botsky.contracts import Result
+
+        self.settings = replace(self.settings, friends=frozenset({'alice', 'bob'}))
+        self.app.settings = self.settings
+        pan_entered = asyncio.Event()
+        release_pan = asyncio.Event()
+        bob_finished = asyncio.Event()
+
+        class ControlledFrontend:
+            def __init__(self, catalog):
+                self.catalog = catalog
+
+            async def decide(self, text, context):
+                if text == 'guarda la nota pan':
+                    pan_entered.set()
+                    await release_pan.wait()
+                    return ActionRequest('nota.guardar', {'text': 'pan'})
+                if text == 'muéstrame mis notas':
+                    return ActionRequest('notas', {})
+                return ReplyDecision('Hola Bob')
+
+        self.app.frontend = ControlledFrontend(self.frontend.catalog)
+        t1 = self.app.receive(self.incoming('ord-1', 'guarda la nota pan', actor='alice'))
+        t2 = self.app.receive(self.incoming('ord-2', 'muéstrame mis notas', actor='alice'))
+
+        worker1 = asyncio.create_task(run_one(self.app))
+        await asyncio.wait_for(pan_entered.wait(), 2)
+        worker2 = asyncio.create_task(run_one(self.app))
+        await asyncio.sleep(0.02)
+        self.assertFalse(worker2.done())
+
+        # Mientras el chat de alice espera, otro chat (bob) avanza sin bloquearse
+        bob_incoming = LocalAdapter(self.settings, lambda: self.now).incoming('ord-bob', 'bob', 'private-bob', 'hola botsky')
+        t_bob = self.app.receive(bob_incoming)
+        worker_bob = asyncio.create_task(run_one(self.app))
+        await asyncio.wait_for(worker_bob, 2)
+        bob_finished.set()
+        self.assertTrue(bob_finished.is_set())
+        with self.app.store.transaction() as db:
+            bob_res = Result.from_json(db.execute('SELECT result_json FROM inbox WHERE id=?', (t_bob.id,)).fetchone()[0])
+        self.assertEqual(bob_res.text, 'Hola Bob')
+
+        # Liberar «guarda la nota pan»: debe completarse antes de «muéstrame mis notas»
+        release_pan.set()
+        await asyncio.wait_for(asyncio.gather(worker1, worker2), 2)
+        with self.app.store.transaction() as db:
+            notes_res = Result.from_json(db.execute('SELECT result_json FROM inbox WHERE id=?', (t2.id,)).fetchone()[0])
+        self.assertEqual(notes_res.code, 'notes_found')
+        self.assertIn('pan', notes_res.text)
+        self.assertEqual([item['text'] for item in notes_res.data['items']], ['pan'])
