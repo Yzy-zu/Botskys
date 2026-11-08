@@ -586,9 +586,9 @@ class DownloadsTest(IsolatedAsyncioTestCase):
 
         class TrackingTransport:
             def send(self, part):
-                if part.payload.get("reaction"):
+                if "reaction" in part.payload:
                     reactions_sent.append((part.text, part.payload["reaction"]))
-                    return DeliveryAck(True, "rx-1")
+                    return DeliveryAck(True, f"rx-{len(reactions_sent)}")
                 media_sent.append(part)
                 return DeliveryAck(True, f"media-{len(media_sent)}")
 
@@ -611,13 +611,28 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             await self.app.jobs.run_pending()
         self.assertEqual(current_calls, 0)
 
-        # Al terminar el trabajo, se entrega el archivo final una sola vez sin repetir la reacción
+        # Al terminar el trabajo, retira la reacción ⏳ ("") y entrega el archivo final una sola vez
         self.assertEqual(self.app.deliver(dl_receipt.id, transport), 1)
-        self.assertEqual(len(reactions_sent), 1)
+        self.assertEqual(reactions_sent, [("", "⏳"), ("", "")])
         self.assertEqual(len(media_sent), 1)
+        self.assertEqual(self.app.deliver(dl_receipt.id, transport), 0)
+        self.assertEqual(reactions_sent, [("", "⏳"), ("", "")])
 
-        # 2. Cancelación en curso despierta inmediatamente sin esperar el intervalo de 500ms
+        # 2. Cancelación en curso despierta inmediatamente y retira la reacción ⏳ ya enviada
         slow_receipt = self.receive("/dl buscar mp4 consulta lenta")
+        cancel_reactions = []
+
+        class CancelReactionTransport:
+            def send(self, part):
+                if "reaction" in part.payload:
+                    cancel_reactions.append(part.payload["reaction"])
+                    return DeliveryAck(True, f"crx-{len(cancel_reactions)}")
+                return DeliveryAck(True, "other")
+
+        cancel_transport = CancelReactionTransport()
+        self.assertEqual(self.app.deliver(slow_receipt.id, cancel_transport), 1)
+        self.assertEqual(cancel_reactions, ["⏳"])
+
         started = asyncio.Event()
 
         async def slow_engine(job, directory):
@@ -632,6 +647,41 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             t0 = time.monotonic()
             cancel_res = self.receive("/cancelar " + slow_receipt.id)
             self.assertEqual(cancel_res.result.status, "cancelled")
+            self.assertEqual(cancel_res.result.text, "Cancelado.")
             await asyncio.wait_for(run_task, 0.25)
             elapsed = time.monotonic() - t0
             self.assertLess(elapsed, 0.25)
+
+        self.assertEqual(self.app.deliver(slow_receipt.id, cancel_transport), 0)
+        self.assertEqual(cancel_reactions, ["⏳", ""])
+        self.assertEqual(self.app.deliver(slow_receipt.id, cancel_transport), 0)
+        self.assertEqual(cancel_reactions, ["⏳", ""])
+
+        # 3. Si un trabajo con ⏳ ya enviada falla, también retira la reacción ⏳ al entregar el error
+        fail_receipt = self.receive("/dl buscar mp4 fallo")
+        fail_reactions = []
+        fail_texts = []
+
+        class FailTrackingTransport:
+            def send(self, part):
+                if "reaction" in part.payload:
+                    fail_reactions.append(part.payload["reaction"])
+                    return DeliveryAck(True, f"frx-{len(fail_reactions)}")
+                fail_texts.append(part.text)
+                return DeliveryAck(True, "ftxt-1")
+
+        fail_transport = FailTrackingTransport()
+        self.assertEqual(self.app.deliver(fail_receipt.id, fail_transport), 1)
+        self.assertEqual(fail_reactions, ["⏳"])
+
+        async def failing_search(job, directory):
+            from botsky.engines.process import MediaError
+
+            raise MediaError("source_failed")
+
+        with patch.object(self.app.jobs, "execute_engine", failing_search):
+            await self.app.jobs.run_pending()
+
+        self.assertEqual(self.app.deliver(fail_receipt.id, fail_transport), 1)
+        self.assertEqual(fail_reactions, ["⏳", ""])
+        self.assertEqual(len(fail_texts), 1)

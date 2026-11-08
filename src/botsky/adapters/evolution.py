@@ -314,21 +314,35 @@ class EvolutionTransport:
                 raise
         if not part.artifacts:
             try:
-                if part.payload.get("reaction"):
+                if "reaction" in part.payload:
                     with self.app.store.transaction() as db:
                         row = db.execute(
                             "SELECT message_id FROM inbox WHERE id=?", (part.receipt_id,)
                         ).fetchone()
                     msg_id = row["message_id"] if row else None
-                    identifier = None
-                    if msg_id:
-                        identifier = await self.api.send_reaction(
-                            c.scope.chat, msg_id, part.payload["reaction"]
+                    if not isinstance(msg_id, str) or not msg_id:
+                        if not part.text:
+                            logger.warning(
+                                "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=missing_reaction_target http_status=%s exc_type=%s",
+                                part.receipt_id,
+                                part.position,
+                                part.kind,
+                                None,
+                                None,
+                            )
+                            return DeliveryAck(False, None)
+                        return DeliveryAck(
+                            True, await self.api.send(c.scope.chat, "text", text=part.text)
                         )
+                    identifier = await self.api.send_reaction(
+                        c.scope.chat, msg_id, part.payload["reaction"]
+                    )
                     if part.text:
                         text_id = await self.api.send(c.scope.chat, "text", text=part.text)
-                        identifier = identifier or text_id
-                    return DeliveryAck(True, identifier or f"reaction-{part.receipt_id}")
+                        identifier = text_id or identifier
+                    if not isinstance(identifier, str) or not identifier:
+                        return DeliveryAck(False, None)
+                    return DeliveryAck(True, identifier)
                 return DeliveryAck(True, await self.api.send(c.scope.chat, "text", text=part.text))
             except MessageError as exc:
                 logger.warning(

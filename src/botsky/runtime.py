@@ -209,9 +209,10 @@ class Runtime:
                 rows = db.execute(
                     "SELECT DISTINCT o.receipt_id FROM outbox o JOIN inbox i ON i.id=o.receipt_id "
                     "WHERE i.instance=? AND i.account=? AND i.epoch=? AND o.state='pending' "
-                    "AND NOT EXISTS(SELECT 1 FROM outbox p WHERE p.receipt_id=o.receipt_id "
+                    "AND (json_extract(o.rich_payload_json,'$.reaction')='' "
+                    "OR NOT EXISTS(SELECT 1 FROM outbox p WHERE p.receipt_id=o.receipt_id "
                     "AND p.position<o.position AND json_extract(p.rich_payload_json,'$.reaction') IS NULL "
-                    "AND p.state!='accepted')"
+                    "AND p.state!='accepted'))"
                     + exclusion
                     + " ORDER BY o.updated_ms LIMIT 20",
                     (

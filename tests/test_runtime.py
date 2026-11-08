@@ -543,6 +543,56 @@ class RuntimeTest(IsolatedAsyncioTestCase):
                 "reaction": "⏳",
             },
         )
+        # Al encolar y entregar el resultado final, se retira la reacción ⏳ ("") y se envía el resultado
+        with self.app.store.transaction() as db:
+            row = db.execute("SELECT * FROM inbox WHERE id=?", (receipt_id,)).fetchone()
+            self.app.store.enqueue(
+                db, context_of(row), Result("ok", "note_saved", "Guardada."), self.now
+            )
+        delivered_final = await deliver_async(
+            self.app.store, receipt_id, self.settings, self.transport, self.app.clock
+        )
+        self.assertEqual(delivered_final, 1)
+        self.assertEqual(len(self.sent), 3)
+        self.assertEqual(
+            self.sent[1],
+            {
+                "key": {
+                    "remoteJid": OWNER,
+                    "fromMe": False,
+                    "id": "MSG_REACTION_1",
+                },
+                "reaction": "",
+            },
+        )
+        self.assertIn("Guardada.", self.sent[2]["text"])
+
+        # Si falta message_id en inbox, no se inventa DeliveryAck(True, ...) ni se envía reacción ficticia
+        second = self.transport.enqueue(self.payload("el 3", identifier="MSG_REACTION_2"))
+        await self.transport.receive_pending()
+        missing_id_receipt = second["receipt_id"]
+        with self.app.store.transaction() as db:
+            db.execute(
+                "UPDATE inbox SET state='completed',message_id='' WHERE id=?",
+                (missing_id_receipt,),
+            )
+            row2 = db.execute("SELECT * FROM inbox WHERE id=?", (missing_id_receipt,)).fetchone()
+            self.app.store.enqueue(
+                db, context_of(row2), Result("ok", "job_queued", "", {"reaction": "⏳"}), self.now
+            )
+        sent_before = len(self.sent)
+        delivered_missing = await deliver_async(
+            self.app.store, missing_id_receipt, self.settings, self.transport, self.app.clock
+        )
+        self.assertEqual(delivered_missing, 0)
+        self.assertEqual(len(self.sent), sent_before)
+        outbox_row = self.rows(
+            "SELECT state,provider_message_id,error_code FROM outbox WHERE receipt_id=?",
+            (missing_id_receipt,),
+        )[0]
+        self.assertEqual(outbox_row["state"], "failed")
+        self.assertIsNone(outbox_row["provider_message_id"])
+        self.assertEqual(outbox_row["error_code"], "delivery_rejected")
 
     async def test_disabled_group_denials_retired_and_temporary_pauses_resumed_without_blocking_other_chats(
         self,

@@ -6,7 +6,7 @@ from .contracts import DeliveryAck
 
 
 def is_optional_part(part):
-    return bool(part.payload.get("reaction"))
+    return "reaction" in part.payload
 
 
 def classify_ack(ack):
@@ -28,7 +28,7 @@ def deliver(store, receipt_id, settings, transport, clock, *, retry_failed=False
         except Exception:
             state, code, provider_id = "uncertain", "delivery_uncertain", None
         store.finish_part(part, revision, settings, state, provider_id, code, clock())
-        if state == "accepted":
+        if state == "accepted" and part.payload.get("reaction") != "":
             accepted += 1
         elif not is_optional_part(part):
             break
@@ -49,7 +49,7 @@ async def deliver_async(store, receipt_id, settings, transport, clock):
             pass
         finally:
             store.finish_part(part, revision, settings, state, provider_id, code, clock())
-        if state == "accepted":
+        if state == "accepted" and part.payload.get("reaction") != "":
             accepted += 1
         elif not is_optional_part(part):
             break

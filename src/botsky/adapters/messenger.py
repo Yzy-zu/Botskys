@@ -116,7 +116,7 @@ class Messenger:
         Contact("destino", target)
         if not isinstance(message_id, str) or not message_id:
             raise MessageError("invalid_reaction_target", False)
-        if not isinstance(reaction, str) or not reaction:
+        if not isinstance(reaction, str):
             raise MessageError("invalid_reaction_emoji", False)
         body = {
             "key": {

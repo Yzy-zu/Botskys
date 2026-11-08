@@ -36,6 +36,42 @@ def receipt_of(row, duplicate=False):
     )
 
 
+def enqueue_reaction_clear_if_needed(db, receipt_id: str, now: int) -> None:
+    if (
+        not db.execute(
+            "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')='⏳' AND state IN ('accepted','uncertain')",
+            (receipt_id,),
+        ).fetchone()
+        or db.execute(
+            "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')=''",
+            (receipt_id,),
+        ).fetchone()
+    ):
+        return
+    from .presentation.plan import VERSION
+
+    start_pos = db.execute(
+        "SELECT coalesce(max(position) + 1, 0) FROM outbox WHERE receipt_id=?",
+        (receipt_id,),
+    ).fetchone()[0]
+    payload = {"reaction": "", "source_text": ""}
+    frozen = canonical({"kind": "text", "text": "", "payload": payload, "version": VERSION})
+    db.execute(
+        "INSERT INTO outbox(receipt_id,position,payload,state,updated_ms,artifacts_json,kind,rich_payload_json,visual_version,content_sha256) VALUES(?,?,?,'pending',?,?,?,?,?,?)",
+        (
+            receipt_id,
+            start_pos,
+            "",
+            now,
+            "[]",
+            "text",
+            canonical(payload),
+            VERSION,
+            hashlib.sha256(frozen.encode()).hexdigest(),
+        ),
+    )
+
+
 class Store:
     def __init__(self, path):
         self.path = Path(path)
@@ -269,7 +305,7 @@ class Store:
             return Receipt(incoming.id, state, result)
 
     def enqueue(self, db, context, result, now):
-        if result.code == "job_queued" and not result.data.get("reaction"):
+        if result.code == "job_queued" and "reaction" not in result.data:
             return
         from .presentation.domains import present
 
@@ -352,13 +388,13 @@ class Store:
                     else result.text
                 )
             parts[0][2]["source_full"] = source
-        if not result.data.get("reaction"):
+        if "reaction" not in result.data:
             eff = db.execute(
                 "SELECT operation FROM effects WHERE receipt_id=?", (context.receipt_id,)
             ).fetchone()
             if not eff or eff["operation"] != "download_media.choose":
                 db.execute(
-                    "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL",
+                    "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction')='⏳'",
                     (context.receipt_id,),
                 )
         start_pos = db.execute(
@@ -385,6 +421,8 @@ class Store:
                     hashlib.sha256(frozen.encode()).hexdigest(),
                 ),
             )
+        if "reaction" not in result.data:
+            enqueue_reaction_clear_if_needed(db, context.receipt_id, now)
 
     def execute(self, receipt_id, settings, now, handler):
         with self.transaction() as db:
@@ -676,11 +714,11 @@ class Store:
                 (receipt_id,),
             ).fetchone():
                 db.execute(
-                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL AND state='pending'",
+                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')='⏳' AND state='pending'",
                     (receipt_id,),
                 )
             row = db.execute(
-                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR state='pending') ORDER BY position LIMIT 1",
+                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR state='pending') ORDER BY CASE WHEN json_extract(rich_payload_json,'$.reaction')='' THEN 0 ELSE 1 END, position LIMIT 1",
                 (receipt_id,),
             ).fetchone()
             if row is None or row["state"] not in (
@@ -755,7 +793,7 @@ class Store:
 
     def finish_part(self, part, revision, settings, state, provider_id, code, now):
         with self.transaction() as db:
-            is_reaction = bool(part.payload.get("reaction"))
+            is_reaction = "reaction" in part.payload
             parent = db.execute("SELECT * FROM inbox WHERE id=?", (part.receipt_id,)).fetchone()
             if (
                 parent is None

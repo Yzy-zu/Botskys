@@ -15,7 +15,7 @@ from . import access
 from .artifacts import ArtifactProblem
 from .contracts import Result, canonical
 from .local_files import private_directory, worker_lock
-from .store import context_of
+from .store import context_of, enqueue_reaction_clear_if_needed
 
 logger = logging.getLogger(__name__)
 
@@ -133,7 +133,8 @@ def cancel_job(db, context, target):
     delivery = {
         r["state"]: r["n"]
         for r in db.execute(
-            "SELECT state,count(*) AS n FROM outbox WHERE receipt_id=? GROUP BY state", (target,)
+            "SELECT state,count(*) AS n FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction') IS NULL GROUP BY state",
+            (target,),
         )
     }
     text = "Cancelado."
@@ -157,20 +158,22 @@ def cancel_job(db, context, target):
     )
     db.execute("UPDATE effects SET result_json=? WHERE receipt_id=?", (result.to_json(), target))
     db.execute(
-        "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL",
+        "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction')='⏳'",
         (target,),
     )
     db.execute(
         "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
         (target,),
     )
+    from time import time_ns
+
+    now_ms = time_ns() // 1000000
+    enqueue_reaction_clear_if_needed(db, target, now_ms)
     # En ejecución el lease de archivo se retiene hasta que el worker libere sus recursos.
     if not row or row["state"] == "queued":
         db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + target,))
     if row:
-        from time import time_ns
-
-        _retire_domain_job(db, row["operation"], target, time_ns() // 1000000)
+        _retire_domain_job(db, row["operation"], target, now_ms)
         args = json.loads(row["arguments_json"])
         if args.get("session_id"):
             db.execute(
@@ -313,6 +316,8 @@ class Jobs:
                         (result.to_json(), row["id"]),
                     )
                     self.store.enqueue(db, context_of(parent), result, now)
+                else:
+                    enqueue_reaction_clear_if_needed(db, row["id"], now)
                 db.execute("DELETE FROM artifact_leases WHERE holder=?", ("job-" + row["id"],))
             # Solo motores locales/lecturas externas; nunca una compra, envío o marcado.
             db.execute(
