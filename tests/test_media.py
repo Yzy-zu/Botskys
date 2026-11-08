@@ -95,6 +95,45 @@ class MediaTest(IsolatedAsyncioTestCase):
         )
         self.assertEqual(self.app.deliver(receipt.id, transport), 0)
 
+    async def test_video_and_gif_produce_animated_sticker(self):
+        video = self.settings.root / "anim.mp4"
+        await run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-f",
+                "lavfi",
+                "-i",
+                "testsrc=size=160x120:rate=15",
+                "-t",
+                "2",
+                str(video),
+            ],
+            10,
+        )
+        _, _, sticker = await self.convert("/sticker", video)
+        self.assertEqual(sticker.code, "sticker_created")
+        sticker_path = self.file_of(sticker)
+        self.assertLessEqual(sticker_path.stat().st_size, 512000)
+        with Image.open(sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertTrue(getattr(image, "is_animated", False))
+
+        gif = self.settings.root / "anim.gif"
+        await run_process(
+            ["ffmpeg", "-v", "error", "-nostdin", "-i", str(video), "-t", "1", str(gif)],
+            10,
+        )
+        _, _, gif_sticker = await self.convert("/sticker", gif)
+        self.assertEqual(gif_sticker.code, "sticker_created")
+        gif_sticker_path = self.file_of(gif_sticker)
+        self.assertLessEqual(gif_sticker_path.stat().st_size, 512000)
+        with Image.open(gif_sticker_path) as image:
+            self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
+            self.assertTrue(getattr(image, "is_animated", False))
+
     async def test_same_video_mp3_actual_stream_and_clip_duration(self):
         video = self.settings.root / "video.mp4"
         await run_process(

@@ -125,6 +125,8 @@ def present_document_error(code: str) -> str:
 
 
 def _kind(data: bytes) -> str:
+    if data.startswith((b"GIF87a", b"GIF89a")):
+        return "gif"
     if data.startswith(b"\x89PNG\r\n\x1a\n"):
         return "png"
     if data.startswith(b"\xff\xd8\xff"):

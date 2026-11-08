@@ -242,10 +242,10 @@ class EvolutionTransport:
             staged = self.app.artifacts.stage(target)
             kind = _content(record["message"])[2]
             formats = {
-                "image": {"jpg", "png", "webp"},
+                "image": {"jpg", "png", "webp", "gif"},
                 "sticker": {"webp"},
                 "audio": {"ogg", "mp3", "aac", "wav", "flac", "mp4"},
-                "video": {"mp4", "webm"},
+                "video": {"mp4", "webm", "gif"},
             }
             if kind in formats and staged.format not in formats[kind]:
                 staged.path.unlink(missing_ok=True)
@@ -411,7 +411,7 @@ class EvolutionTransport:
         }
         endpoint, field = "sendMedia", "media"
         if fmt == "webp" and result_code in ("sticker_created", "reaction_ready"):
-            if size > 100 * 1024:
+            if size > 500 * 1024:
                 return DeliveryAck(False)
             endpoint, field, body = "sendSticker", "sticker", {"number": c.scope.chat}
         elif fmt == "ogg" and result_code == "voice_ready":

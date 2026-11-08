@@ -26,7 +26,7 @@ SUMMARIES = {
     "convert_document.run": "Convertir un documento adjunto o citado al formato especificado.",
     "save_note.run": "Guardar un fragmento de texto o apunte en las notas de este chat.",
     "find_notes.run": "Buscar notas guardadas por palabra clave o ver el listado paginado.",
-    "make_sticker.run": "Crear un sticker de WhatsApp a partir de una foto o imagen adjunta.",
+    "make_sticker.run": "Crear un sticker de WhatsApp a partir de una foto, imagen o video adjunto.",
     "send_sticker.run": "Enviar un sticker predefinido de la galería de reacciones.",
     "read_image.run": "Escanear una imagen para extraer su texto (OCR) o leer un código QR.",
     "edit_media.run": "Recortar, cambiar formato o extraer audio de un video o archivo multimedia.",

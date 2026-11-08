@@ -22,7 +22,7 @@ FAMILIES = {
         "Guarda, consulta, corrige o retira recuerdos explícitos de este chat.",
     ),
     "send_sticker": ("Reacciones", "Envía un sticker del catálogo disponible."),
-    "make_sticker": ("Crear sticker", "Convierte una imagen adjunta o citada en sticker."),
+    "make_sticker": ("Crear sticker", "Convierte una imagen o video en sticker de WhatsApp."),
     "read_image": ("Lectura de imagen", "Extrae texto o QR como datos; no los ejecuta."),
     "edit_media": (
         "Editar audio y video",
