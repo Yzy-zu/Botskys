@@ -116,7 +116,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, sticker = await self.convert("/sticker", video)
         self.assertEqual(sticker.code, "sticker_created")
         sticker_path = self.file_of(sticker)
-        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        self.assertLessEqual(sticker_path.stat().st_size, 950000)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -129,7 +129,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, gif_sticker = await self.convert("/sticker", gif)
         self.assertEqual(gif_sticker.code, "sticker_created")
         gif_sticker_path = self.file_of(gif_sticker)
-        self.assertLessEqual(gif_sticker_path.stat().st_size, 500000)
+        self.assertLessEqual(gif_sticker_path.stat().st_size, 950000)
         with Image.open(gif_sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -155,7 +155,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, sticker = await self.convert("/sticker", video)
         self.assertEqual(sticker.code, "sticker_created")
         sticker_path = self.file_of(sticker)
-        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        self.assertLessEqual(sticker_path.stat().st_size, 950000)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -187,7 +187,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         _, _, sticker = await self.convert("/sticker", source_anim)
         self.assertEqual(sticker.code, "sticker_created")
         sticker_path = self.file_of(sticker)
-        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        self.assertLessEqual(sticker_path.stat().st_size, 950000)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
@@ -226,7 +226,7 @@ class MediaTest(IsolatedAsyncioTestCase):
         out_dir = self.settings.root / "raw_sticker_dir"
         out_dir.mkdir(parents=True, exist_ok=True)
         sticker_path = await sticker(raw_video, out_dir)
-        self.assertLessEqual(sticker_path.stat().st_size, 500000)
+        self.assertLessEqual(sticker_path.stat().st_size, 950000)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))

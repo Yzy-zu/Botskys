@@ -55,10 +55,10 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
             if not getattr(im, "is_animated", False) or getattr(im, "n_frames", 1) <= 1:
                 raise MediaError("unsupported_image")
             width, height = im.size
-            if width == 512 and height == 512 and source.stat().st_size <= 500000:
+            if width == 512 and height == 512 and source.stat().st_size <= 950000:
                 output.write_bytes(source.read_bytes())
                 await add_sticker_metadata(output)
-                if output.stat().st_size <= 500000:
+                if output.stat().st_size <= 950000:
                     output.chmod(0o600)
                     return output
 
@@ -89,7 +89,7 @@ async def _convert_animated_webp(source: Path, output: Path) -> Path:
                 )
                 if output.is_file():
                     await add_sticker_metadata(output)
-                    if output.stat().st_size <= 500000:
+                    if output.stat().st_size <= 950000:
                         with Image.open(output) as verified:
                             if verified.format == "WEBP" and verified.size == (512, 512):
                                 output.chmod(0o600)
@@ -245,44 +245,39 @@ async def sticker(path: Path, directory: Path):
     effective_duration = min(duration, 10.0) if duration > 0 else 10.0
 
     scale = (
-        "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,"
+        "deband=range=20:blur=true,"
+        "scale=512:512:force_original_aspect_ratio=decrease:flags=bicubic,"
         "format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1,format=yuva420p"
     )
     if 0 < effective_duration <= 3.5:
         profiles = [
-            (65, 15),
-            (55, 15),
-            (50, 12),
-            (45, 12),
+            (70, 15),
+            (65, 14),
+            (60, 12),
+            (55, 12),
             (50, 10),
             (42, 10),
-            (45, 8),
-            (35, 8),
         ]
     elif 3.5 < effective_duration <= 6.5:
         profiles = [
-            (58, 12),
-            (50, 12),
-            (52, 10),
+            (65, 14),
+            (60, 12),
+            (55, 12),
+            (50, 10),
             (45, 10),
-            (48, 8),
             (40, 8),
-            (55, 6),
-            (45, 6),
-            (35, 6),
         ]
     else:
         profiles = [
+            (65, 12),
+            (60, 12),
+            (55, 12),
+            (55, 10),
             (50, 10),
-            (42, 10),
-            (48, 8),
+            (45, 10),
+            (50, 8),
             (42, 8),
-            (36, 8),
-            (62, 6),
-            (52, 6),
-            (42, 6),
             (35, 6),
-            (25, 6),
         ]
 
     output = directory / "sticker.webp"
@@ -307,7 +302,7 @@ async def sticker(path: Path, directory: Path):
                     "-c:v",
                     "libwebp_anim",
                     "-preset",
-                    "picture",
+                    "photo",
                     "-q:v",
                     str(quality),
                     "-compression_level",
@@ -323,7 +318,7 @@ async def sticker(path: Path, directory: Path):
             if not output.is_file() or output.stat().st_size == 0:
                 continue
             await add_sticker_metadata(output)
-            if output.stat().st_size <= 500000:
+            if output.stat().st_size <= 950000:
                 with Image.open(output) as img:
                     if (
                         img.format == "WEBP"

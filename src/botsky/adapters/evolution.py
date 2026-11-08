@@ -411,7 +411,7 @@ class EvolutionTransport:
         }
         endpoint, field = "sendMedia", "media"
         if fmt == "webp" and result_code in ("sticker_created", "reaction_ready"):
-            if size > 500 * 1024:
+            if size > 1000 * 1024:
                 return DeliveryAck(False)
             endpoint, field, body = (
                 "sendSticker",
