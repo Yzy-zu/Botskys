@@ -413,7 +413,16 @@ class EvolutionTransport:
         if fmt == "webp" and result_code in ("sticker_created", "reaction_ready"):
             if size > 500 * 1024:
                 return DeliveryAck(False)
-            endpoint, field, body = "sendSticker", "sticker", {"number": c.scope.chat}
+            endpoint, field, body = (
+                "sendSticker",
+                "sticker",
+                {
+                    "number": c.scope.chat,
+                    "notConvertSticker": True,
+                    "delay": 0,
+                    "options": {"delay": 0},
+                },
+            )
         elif fmt == "ogg" and result_code == "voice_ready":
             if size > 10 * 1024 * 1024:
                 return DeliveryAck(False)

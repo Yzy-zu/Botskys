@@ -23,16 +23,47 @@ async def image_source(path: Path):
     return codec
 
 
-def _convert_animated_webp(source: Path, output: Path) -> Path:
+async def add_sticker_metadata(file: Path) -> None:
+    payload = json.dumps(
+        {
+            "sticker-pack-id": "botsky",
+            "sticker-pack-name": "Botsky",
+            "sticker-pack-publisher": "Botsky",
+            "emojis": [],
+        }
+    ).encode("utf-8")
+    header = bytearray(
+        [0x49, 0x49, 0x2A, 0, 8, 0, 0, 0, 1, 0, 0x41, 0x57, 7, 0, 0, 0, 0, 0, 0x16, 0, 0, 0]
+    )
+    header[14:18] = len(payload).to_bytes(4, "little")
+    exif_data = bytes(header) + payload
+
+    exif_file = file.with_suffix(".exif")
+    exif_file.write_bytes(exif_data)
+    try:
+        await run_process(
+            ["webpmux", "-set", "exif", str(exif_file), str(file), "-o", str(file)],
+            15,
+        )
+    finally:
+        exif_file.unlink(missing_ok=True)
+
+
+async def _convert_animated_webp(source: Path, output: Path) -> Path:
     try:
         with Image.open(source) as im:
             if not getattr(im, "is_animated", False) or getattr(im, "n_frames", 1) <= 1:
                 raise MediaError("unsupported_image")
+            width, height = im.size
+            if width == 512 and height == 512 and source.stat().st_size <= 500000:
+                output.write_bytes(source.read_bytes())
+                await add_sticker_metadata(output)
+                output.chmod(0o600)
+                return output
+
             frames = []
             durations = []
-            for i, frame in enumerate(ImageSequence.Iterator(im)):
-                if i >= 60:
-                    break
+            for frame in ImageSequence.Iterator(im):
                 durations.append(frame.info.get("duration", 100))
                 f = frame.convert("RGBA")
                 f.thumbnail((512, 512), Image.Resampling.LANCZOS)
@@ -42,7 +73,7 @@ def _convert_animated_webp(source: Path, output: Path) -> Path:
                 frames.append(canvas)
             if not frames:
                 raise MediaError("invalid_output")
-            for q in (50, 35, 20):
+            for q in (60, 40, 25, 15):
                 if output.exists():
                     output.unlink()
                 frames[0].save(
@@ -55,7 +86,8 @@ def _convert_animated_webp(source: Path, output: Path) -> Path:
                     quality=q,
                     method=6,
                 )
-                if output.is_file() and 0 < output.stat().st_size <= 512000:
+                if output.is_file() and 0 < output.stat().st_size <= 500000:
+                    await add_sticker_metadata(output)
                     with Image.open(output) as verified:
                         if verified.format == "WEBP" and verified.size == (512, 512):
                             output.chmod(0o600)
@@ -130,6 +162,7 @@ async def sticker(path: Path, directory: Path):
         )
         if not output.is_file() or not 0 < output.stat().st_size <= 102400:
             raise MediaError("invalid_output")
+        await add_sticker_metadata(output)
         raw = await run_process(
             [
                 "ffprobe",
@@ -161,7 +194,7 @@ async def sticker(path: Path, directory: Path):
     except OSError:
         raise MediaError("invalid_image")
     if data_head.startswith(b"RIFF") and data_head[8:12] == b"WEBP":
-        return _convert_animated_webp(path, directory / "sticker.webp")
+        return await _convert_animated_webp(path, directory / "sticker.webp")
 
     try:
         probe = await run_process(
@@ -192,53 +225,49 @@ async def sticker(path: Path, directory: Path):
     except Exception as exc:
         raise MediaError("invalid_media") from exc
 
-    passes = [
-        (5, 14, 512, 50),
-        (4, 10, 448, 35),
-        (3, 8, 384, 20),
-    ]
+    scale = "scale=512:512:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000"
+    profiles = [[60, 15], [40, 12], [25, 10], [15, 8], [10, 6]]
     output = directory / "sticker.webp"
-    for dur, fps, scale, q in passes:
+    for quality, fps in profiles:
         if output.exists():
             output.unlink()
         try:
             await run_process(
                 [
-                    "prlimit",
-                    "--fsize=512000",
-                    "--",
                     "ffmpeg",
-                    "-v",
-                    "error",
                     "-nostdin",
-                    "-protocol_whitelist",
-                    "file,pipe",
-                    "-threads",
-                    "2",
-                    "-t",
-                    str(dur),
+                    "-y",
+                    "-filter_threads",
+                    "1",
                     "-i",
                     str(path),
+                    "-an",
                     "-vf",
-                    f"scale={scale}:{scale}:force_original_aspect_ratio=decrease,fps={fps},format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000",
+                    f"fps={fps},{scale},format=bgra",
                     "-c:v",
-                    "libwebp",
-                    "-lossless",
-                    "0",
+                    "libwebp_anim",
                     "-q:v",
-                    str(q),
+                    str(quality),
+                    "-compression_level",
+                    "4",
+                    "-threads",
+                    "2",
                     "-loop",
                     "0",
-                    "-an",
-                    "-f",
-                    "webp",
                     str(output),
                 ],
-                30,
+                60,
             )
-            if output.is_file() and 0 < output.stat().st_size <= 512000:
+            if not output.is_file() or output.stat().st_size == 0:
+                continue
+            await add_sticker_metadata(output)
+            if output.stat().st_size <= 500000:
                 with Image.open(output) as img:
-                    if img.format == "WEBP" and img.size == (512, 512):
+                    if (
+                        img.format == "WEBP"
+                        and img.size == (512, 512)
+                        and getattr(img, "is_animated", False)
+                    ):
                         output.chmod(0o600)
                         return output
         except MediaError:
