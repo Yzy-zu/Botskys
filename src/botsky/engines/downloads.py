@@ -32,6 +32,11 @@ from .media_edit import MediaEditor, MediaOptions
 from .process import MediaError, run_process
 
 MAX_BYTES = 16 * 1024 * 1024
+WHATSAPP_TARGET_VIDEO_BYTES = 60_000_000
+WHATSAPP_TARGET_VIDEO_BITRATE = 1_600_000
+WHATSAPP_COMPAT_MIN_RAW_BYTES = 1_000_000
+WHATSAPP_COMPAT_MAX_BITRATE = 2_000_000
+WHATSAPP_COMPAT_SIZE_LIMIT = 48 * 1024 * 1024
 _VIDEO_ID = re.compile(r"[A-Za-z0-9_-]{11}\Z")
 _W3_PATH = "/2010/05/bunny/trailer.mp4"
 DownloadSource = Literal[
@@ -1543,6 +1548,13 @@ class Downloader:
                 streams = info.get("streams", [])
                 videos = [x for x in streams if x.get("codec_type") == "video"]
                 audios = [x for x in streams if x.get("codec_type") == "audio"]
+                eff_dur = max(duration, 1.0)
+                source_size = source.stat().st_size
+                source_bitrate = (source_size * 8) / eff_dur
+                already_light = source_size <= WHATSAPP_COMPAT_MIN_RAW_BYTES or (
+                    source_size <= WHATSAPP_COMPAT_SIZE_LIMIT
+                    and source_bitrate <= WHATSAPP_COMPAT_MAX_BITRATE
+                )
                 compatible = (
                     format == "video"
                     and len(videos) == 1
@@ -1552,7 +1564,8 @@ class Downloader:
                     and 0 < videos[0].get("width", 0) <= 1280
                     and 0 < videos[0].get("height", 0) <= 720
                     and all(x.get("codec_name") == "aac" for x in audios)
-                    and source.stat().st_size <= max_output_bytes
+                    and source_size <= max_output_bytes
+                    and already_light
                 )
                 if compatible:
                     try:
@@ -1598,10 +1611,20 @@ class Downloader:
                     # A remux can grow slightly at the boundary. Compress the
                     # original instead of accepting a truncated copy.
                     output.unlink(missing_ok=True)
-                eff_dur = max(duration, 1.0)
-                total_br = int((max_output_bytes * 0.94 * 8) / eff_dur)
-                audio_br = min(128000, max(8000, total_br // 4))
+                video_budget = (
+                    WHATSAPP_TARGET_VIDEO_BYTES if format == "video" else max_output_bytes
+                )
+                total_br = int((video_budget * 0.94 * 8) / eff_dur)
+                audio_br = min(
+                    128000,
+                    max(32000, total_br // 8 if format == "video" else total_br // 4),
+                )
                 max_v_br = max(1000, total_br - audio_br)
+                target_v_br = (
+                    min(WHATSAPP_TARGET_VIDEO_BITRATE, max_v_br)
+                    if format == "video"
+                    else max_v_br
+                )
                 codec = (
                     ["-map", "0:a:0", "-vn", "-c:a", "libmp3lame", "-b:a", "128k"]
                     if format == "audio"
@@ -1620,12 +1643,12 @@ class Downloader:
                         "libx264",
                         "-preset",
                         "superfast",
-                        "-b:v",
-                        str(max_v_br),
+                        "-crf",
+                        "26",
                         "-maxrate",
-                        str(max_v_br),
+                        str(target_v_br),
                         "-bufsize",
-                        str(max_v_br * 2),
+                        str(target_v_br * 2),
                         "-c:a",
                         "aac",
                         "-b:a",

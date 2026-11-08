@@ -735,3 +735,109 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         self.assertEqual(events, [("reaction", ""), ("media", 1)])
         self.assertEqual(self.app.deliver(receipt.id, transport), 0)
         self.assertEqual(events, [("reaction", ""), ("media", 1)])
+
+    async def test_video_download_compresses_heavy_sources_and_sets_faststart_for_streaming(self):
+        from contextlib import asynccontextmanager
+        from unittest.mock import AsyncMock, patch
+        from botsky.engines.downloads import Downloader
+
+        downloader = Downloader(self.root / "dl-stream-engine")
+        captured_ffmpeg_calls = []
+        real_run_process = run_process
+
+        async def intercept_run_process(cmd, timeout, **kwargs):
+            if cmd and cmd[0] == "prlimit" and "ffmpeg" in cmd:
+                captured_ffmpeg_calls.append(list(cmd))
+            return await real_run_process(cmd, timeout, **kwargs)
+
+        # 1. Video ligero compatible: remux directo con copy y faststart
+        light_bytes = self.video.read_bytes()
+        mock_response = AsyncMock()
+        mock_response.status_code = 200
+
+        async def aiter_light():
+            yield light_bytes
+
+        mock_response.aiter_bytes = aiter_light
+
+        mock_client = AsyncMock()
+        mock_client.__aenter__.return_value = mock_client
+        mock_client.__aexit__.return_value = False
+
+        @asynccontextmanager
+        async def fake_stream(*args, **kwargs):
+            yield mock_response
+
+        mock_client.stream = fake_stream
+
+        with patch("httpx.AsyncClient", return_value=mock_client), patch(
+            "botsky.engines.downloads.run_process", side_effect=intercept_run_process
+        ):
+            artifact = await downloader.download(W3, format="video")
+
+        self.assertTrue(artifact.is_file())
+        self.assertEqual(len(captured_ffmpeg_calls), 1)
+        copy_cmd = captured_ffmpeg_calls[0]
+        self.assertIn("copy", copy_cmd)
+        self.assertIn("+faststart", copy_cmd)
+
+        with artifact.open("rb") as f:
+            header = f.read(256)
+            self.assertIn(b"moov", header)
+            self.assertLess(header.find(b"moov"), 100)
+
+        # 2. Video pesado o de alto bitrate: activa compresión estilo WhatsApp con CRF 26, maxrate 1.6M y faststart
+        captured_ffmpeg_calls.clear()
+        heavy_video = self.root / "heavy_fixture.mp4"
+        await real_run_process(
+            [
+                "ffmpeg",
+                "-v",
+                "error",
+                "-nostdin",
+                "-f",
+                "lavfi",
+                "-i",
+                "testsrc2=duration=2:size=1280x720:rate=30",
+                "-f",
+                "lavfi",
+                "-i",
+                "sine=duration=2",
+                "-c:v",
+                "libx264",
+                "-b:v",
+                "15000k",
+                "-c:a",
+                "aac",
+                str(heavy_video),
+            ],
+            15,
+        )
+        heavy_bytes = heavy_video.read_bytes()
+
+        async def aiter_heavy():
+            yield heavy_bytes
+
+        mock_response.aiter_bytes = aiter_heavy
+
+        with patch("httpx.AsyncClient", return_value=mock_client), patch(
+            "botsky.engines.downloads.run_process", side_effect=intercept_run_process
+        ):
+            heavy_artifact = await downloader.download(W3, format="video")
+
+        self.assertTrue(heavy_artifact.is_file())
+        self.assertEqual(len(captured_ffmpeg_calls), 1)
+        compress_cmd = captured_ffmpeg_calls[0]
+        self.assertNotIn("copy", compress_cmd)
+        self.assertIn("libx264", compress_cmd)
+        self.assertIn("-crf", compress_cmd)
+        self.assertIn("26", compress_cmd)
+        self.assertIn("-maxrate", compress_cmd)
+        self.assertIn("1600000", compress_cmd)
+        self.assertIn("+faststart", compress_cmd)
+
+        with heavy_artifact.open("rb") as f:
+            header = f.read(256)
+            self.assertIn(b"moov", header)
+            self.assertLess(header.find(b"moov"), 100)
+
