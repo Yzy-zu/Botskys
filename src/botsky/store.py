@@ -39,7 +39,7 @@ def receipt_of(row, duplicate=False):
 def enqueue_reaction_clear_if_needed(db, receipt_id: str, now: int) -> None:
     if (
         not db.execute(
-            "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')='⏳' AND state IN ('accepted','uncertain')",
+            "SELECT 1 FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')='⏳' AND state IN ('sending','accepted','uncertain')",
             (receipt_id,),
         ).fetchone()
         or db.execute(
@@ -718,7 +718,11 @@ class Store:
                     (receipt_id,),
                 )
             row = db.execute(
-                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR state='pending') ORDER BY CASE WHEN json_extract(rich_payload_json,'$.reaction')='' THEN 0 ELSE 1 END, position LIMIT 1",
+                "SELECT * FROM outbox WHERE receipt_id=? AND state!='accepted' "
+                "AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR state='pending') "
+                "AND (json_extract(rich_payload_json,'$.reaction') IS NULL OR json_extract(rich_payload_json,'$.reaction')!='' "
+                "OR NOT EXISTS(SELECT 1 FROM outbox h WHERE h.receipt_id=outbox.receipt_id AND json_extract(h.rich_payload_json,'$.reaction')='⏳' AND h.state='sending')) "
+                "ORDER BY CASE WHEN json_extract(rich_payload_json,'$.reaction')='' THEN 0 ELSE 1 END, position LIMIT 1",
                 (receipt_id,),
             ).fetchone()
             if row is None or row["state"] not in (
@@ -813,6 +817,11 @@ class Store:
                 "UPDATE outbox SET state=?,provider_message_id=?,error_code=?,revision=revision+1,updated_ms=? WHERE receipt_id=? AND position=? AND state='sending' AND revision=?",
                 (state, provider_id, code, now, part.receipt_id, part.position, revision),
             ).rowcount
+            if changed and part.payload.get("reaction") == "⏳" and state == "failed":
+                db.execute(
+                    "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')='' AND state='pending'",
+                    (part.receipt_id,),
+                )
             if changed and state != "uncertain":
                 db.execute(
                     "DELETE FROM artifact_leases WHERE holder=? AND token=?",

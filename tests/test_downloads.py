@@ -508,7 +508,8 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             )
         )
         self.assertEqual(self.app.deliver(choice2.id, t2), 0)
-        self.assertEqual(len(t2.parts), 1)
+        self.assertEqual([p.kind for p in t2.parts if p.kind == "media"], ["media"])
+        self.assertEqual(t2.parts[-1].payload.get("reaction"), "")
 
         # Caso 3: pendiente antiguo de reacción no reenvía MP4, y acuse incierto del propio MP4 conserva protección.
         choice3 = self.receive("/dl elegir " + view + " 1")
@@ -685,3 +686,52 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         self.assertEqual(self.app.deliver(fail_receipt.id, fail_transport), 1)
         self.assertEqual(fail_reactions, ["⏳", ""])
         self.assertEqual(len(fail_texts), 1)
+
+    async def test_reaction_in_flight_when_job_finishes_is_cleared_after_confirmation(self):
+        from botsky.contracts import DeliveryAck
+
+        # 1. Reacción ⏳ entra en estado 'sending'
+        receipt = self.receive("/dl mp4 " + W3)
+        claimed = self.app.store.claim_part(receipt.id, self.settings, self.now)
+        self.assertIsNotNone(claimed)
+        reaction_part, reaction_rev = claimed
+        self.assertEqual(reaction_part.payload.get("reaction"), "⏳")
+
+        # 2. El trabajo finaliza mientras la reacción ⏳ sigue en 'sending'
+        await self.app.jobs.run_pending()
+        clear_rows = self.rows(
+            "SELECT state FROM outbox WHERE receipt_id=? AND json_extract(rich_payload_json,'$.reaction')=''",
+            (receipt.id,),
+        )
+        self.assertEqual(len(clear_rows), 1)
+        self.assertEqual(clear_rows[0]["state"], "pending")
+
+        # 3. La reacción ⏳ se confirma ('accepted')
+        self.assertTrue(
+            self.app.store.finish_part(
+                reaction_part,
+                reaction_rev,
+                self.settings,
+                "accepted",
+                "rx-inflight-ok",
+                None,
+                self.now,
+            )
+        )
+
+        # 4. Se entrega su retirada ("") y el archivo final una sola vez
+        events = []
+
+        class InFlightTransport:
+            def send(self, part):
+                if "reaction" in part.payload:
+                    events.append(("reaction", part.payload["reaction"]))
+                    return DeliveryAck(True, "rx-clear-ok")
+                events.append((part.kind, len(part.artifacts)))
+                return DeliveryAck(True, "media-ok")
+
+        transport = InFlightTransport()
+        self.assertEqual(self.app.deliver(receipt.id, transport), 1)
+        self.assertEqual(events, [("reaction", ""), ("media", 1)])
+        self.assertEqual(self.app.deliver(receipt.id, transport), 0)
+        self.assertEqual(events, [("reaction", ""), ("media", 1)])
