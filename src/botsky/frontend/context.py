@@ -34,6 +34,7 @@ def load(app, db, row, now):
             references.append({'kind': kind, 'view_id': view['id'],
                                'choices': [{'number': n, 'title': str(c.get('title', c.get('name', '')))[:300]}
                                            for n, c in enumerate(data.get('choices', [])[:10], 1)],
+                               'default_action': 'dl.elegir' if kind == 'download' else 'drive.elegir',
                                'actions': ['dl.elegir', 'dl.detalle'] if kind == 'download' else ['drive.elegir']})
         elif kind in CONFIRMATIONS:
             action, field = CONFIRMATIONS[kind]

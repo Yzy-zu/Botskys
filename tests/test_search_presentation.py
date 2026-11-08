@@ -69,15 +69,23 @@ class SearchPresentationTest(IsolatedAsyncioTestCase):
 
     async def test_collage_list_barrier_partial_ack_and_short_choice(self):
         async def search(query, source, directory):
-            return (DownloadOption(test_downloads.W3, "Título íntegro " * 30, 252, "Autor"),) * 2
+            return tuple(
+                DownloadOption(
+                    f"https://www.youtube.com/watch?v=AbCDEfgHI1{i}",
+                    "Título íntegro " * 15,
+                    252,
+                    "Autor",
+                )
+                for i in range(4)
+            )
 
         self.backend.search = search
         search_receipt = self.receive("/dl buscar mp4 muestra")
         await self.app.jobs.run_pending()
         result = self.result(search_receipt.id)
-        self.assertEqual(len(result.data["choices"]), 1)
-        self.assertEqual(result.data["choices"][0]["title"], "Título íntegro " * 30)
-        self.assertIn("4:12 · Autor · W3C", result.text)
+        self.assertEqual(len(result.data["choices"]), 4)
+        self.assertEqual(result.data["choices"][0]["title"], "Título íntegro " * 15)
+        self.assertIn("4:12 · Autor · YouTube", result.text)
         self.assertIn("[vista previa]", result.text)
         self.assertIn("/dl elegir NUMERO", result.text)
         self.assertEqual(self.receive("/dl elegir 1").result.code, "download_view_unavailable")
@@ -154,6 +162,19 @@ class SearchPresentationTest(IsolatedAsyncioTestCase):
             )
         )
         self.assertEqual(foreign.result.code, "selection_quote_unavailable")
+
+        async def multi_search(query, source, directory):
+            return tuple(
+                DownloadOption(
+                    f"https://www.youtube.com/watch?v=AbCDEfgHI2{i}",
+                    "Título íntegro " * 15,
+                    252,
+                    "Autor",
+                )
+                for i in range(4)
+            )
+
+        self.backend.search = multi_search
         third = self.receive("/dl buscar mp4 tercera")
         await self.app.jobs.run_pending()
 
@@ -191,6 +212,8 @@ class SearchPresentationTest(IsolatedAsyncioTestCase):
         self.app.downloads = None
         detail = self.receive("/dl detalle 1")
         self.assertEqual(detail.result.code, "download_detail")
+        self.assertNotIn(test_downloads.W3, self.result(first.id).text)
+        self.assertIn(test_downloads.W3, detail.result.text)
         self.assertIn(title, detail.result.text)
         self.assertIn(author, detail.result.text)
         self.assertEqual(detail.result.data["choice"]["url"], test_downloads.W3)

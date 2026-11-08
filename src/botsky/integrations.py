@@ -89,24 +89,45 @@ def read_profile(path):
 
 def validate_interpreter(block):
     from .adapters.cloudflare_interpreter import MODEL, MODELS
-    allowed = {'enabled', 'provider', 'model', 'credentials_file', 'pool_file', 'deadline_seconds', 'max_concurrency', 'reasoning_effort'}
+    allowed = {
+        'enabled', 'provider', 'model', 'credentials_file', 'pool_file',
+        'deadline_seconds', 'max_concurrency', 'reasoning_effort',
+        'gemini_key', 'gemini_model', 'cooldown_seconds'
+    }
     if type(block) is not dict or set(block) - allowed:
         raise ValueError('interpreter_config_invalid')
     if type(block.get('enabled', False)) is not bool:
         raise ValueError('interpreter_config_invalid')
-    if block.get('provider', 'cloudflare') != 'cloudflare' or block.get('model', MODEL) not in MODELS:
-        raise ValueError('interpreter_model_invalid')
-    for key, default, lo, hi in [('deadline_seconds', 40, 1, 120), ('max_concurrency', 2, 1, 10)]:
-        if type(block.get(key, default)) is not int or not lo <= block.get(key, default) <= hi:
+    provider = block.get('provider', 'cloudflare')
+    if provider not in ('cloudflare', 'hybrid', 'gemini'):
+        raise ValueError('interpreter_provider_invalid')
+    if provider in ('cloudflare', 'hybrid'):
+        if block.get('model', MODEL) not in MODELS:
+            raise ValueError('interpreter_model_invalid')
+    if provider in ('hybrid', 'gemini'):
+        from .adapters.gemini_interpreter import DEFAULT_GEMINI_MODEL, SUPPORTED_GEMINI_MODELS
+        gem_key = block.get('gemini_key')
+        if type(gem_key) is not str or not gem_key.strip():
+            raise ValueError('interpreter_gemini_key_required')
+        gem_model = block.get('gemini_model', DEFAULT_GEMINI_MODEL)
+        if gem_model not in SUPPORTED_GEMINI_MODELS:
+            raise ValueError('interpreter_gemini_model_invalid')
+        cooldown = block.get('cooldown_seconds', 60)
+        if type(cooldown) is not int or type(cooldown) is bool or not 5 <= cooldown <= 3600:
             raise ValueError('interpreter_config_invalid')
-    effort=block.get('reasoning_effort')
-    if effort is not None and (block.get('model',MODEL) != '@cf/qwen/qwen3.8-27b' or effort not in ('low','medium','xhigh')):
+    for key, default, lo, hi in [('deadline_seconds', 40, 1, 120), ('max_concurrency', 2, 1, 10)]:
+        val = block.get(key, default)
+        if type(val) is not int or type(val) is bool or not lo <= val <= hi:
+            raise ValueError('interpreter_config_invalid')
+    effort = block.get('reasoning_effort')
+    if effort is not None and (block.get('model', MODEL) != '@cf/qwen/qwen3.8-27b' or effort not in ('low', 'medium', 'xhigh')):
         raise ValueError('interpreter_reasoning_invalid')
     if 'pool_file' in block and 'credentials_file' in block:
         raise ValueError('interpreter_credentials_ambiguous')
-    path = block.get('pool_file', block.get('credentials_file', 'private/cloudflare-toolcall.json'))
-    if type(path) is not str or not path or Path(path).is_absolute() or '..' in Path(path).parts:
-        raise ValueError('interpreter_credentials_path_invalid')
+    if provider in ('cloudflare', 'hybrid'):
+        path = block.get('pool_file', block.get('credentials_file', 'private/cloudflare-toolcall.json'))
+        if type(path) is not str or not path or Path(path).is_absolute() or '..' in Path(path).parts:
+            raise ValueError('interpreter_credentials_path_invalid')
     return block
 
 
@@ -116,12 +137,53 @@ def compose_frontend(settings, block, http):
     validate_interpreter(block)
     if not block.get('enabled', False):
         return None
-    options={k:block[k] for k in ('model','reasoning_effort','deadline_seconds','max_concurrency') if k in block}
-    if 'pool_file' in block:
+    provider = block.get('provider', 'cloudflare')
+    options = {k: block[k] for k in ('model', 'reasoning_effort', 'deadline_seconds', 'max_concurrency') if k in block}
+
+    if provider == 'cloudflare':
+        if 'pool_file' in block:
+            from .adapters.cloudflare_pool import CloudflarePool
+            return FrontendService(CloudflarePool(http, settings.root, block['pool_file'], **options))
+        credentials = read_credentials(settings.root / block.get('credentials_file', 'private/cloudflare-toolcall.json'))
+        return FrontendService(CloudflareInterpreter(http, credentials, **options))
+
+    if provider == 'hybrid':
+        from .adapters.gemini_interpreter import GeminiInterpreter, DEFAULT_GEMINI_MODEL
+        from .adapters.hybrid_interpreter import HybridInterpreter
         from .adapters.cloudflare_pool import CloudflarePool
-        return FrontendService(CloudflarePool(http,settings.root,block['pool_file'],**options))
-    credentials = read_credentials(settings.root / block.get('credentials_file', 'private/cloudflare-toolcall.json'))
-    return FrontendService(CloudflareInterpreter(http, credentials,**options))
+
+        gemini_options = {
+            'deadline_seconds': block.get('deadline_seconds', 30),
+            'max_concurrency': block.get('max_concurrency', 4),
+        }
+        primary = GeminiInterpreter(
+            http,
+            block['gemini_key'],
+            model=block.get('gemini_model', DEFAULT_GEMINI_MODEL),
+            **gemini_options
+        )
+        if 'pool_file' in block:
+            fallback = CloudflarePool(http, settings.root, block['pool_file'], **options)
+        else:
+            credentials = read_credentials(settings.root / block.get('credentials_file', 'private/cloudflare-toolcall.json'))
+            fallback = CloudflareInterpreter(http, credentials, **options)
+
+        hybrid = HybridInterpreter(primary, fallback, cooldown_seconds=block.get('cooldown_seconds', 60))
+        return FrontendService(hybrid)
+
+    if provider == 'gemini':
+        from .adapters.gemini_interpreter import GeminiInterpreter, DEFAULT_GEMINI_MODEL
+        gemini_options = {
+            'deadline_seconds': block.get('deadline_seconds', 30),
+            'max_concurrency': block.get('max_concurrency', 4),
+        }
+        gemini = GeminiInterpreter(
+            http,
+            block['gemini_key'],
+            model=block.get('gemini_model', DEFAULT_GEMINI_MODEL),
+            **gemini_options
+        )
+        return FrontendService(gemini)
 
 
 class Integrations:

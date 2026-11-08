@@ -81,10 +81,12 @@ class TableStoreTest(TestCase):
     def test_migrate_18_preserves_canonical_data_and_pending_plan(self):
         receipt = self.enqueue()
         with self.app.store.transaction() as db:
+            db.execute("DROP TABLE IF EXISTS frontend_tasks")
+            db.execute("ALTER TABLE inbox DROP COLUMN input_mode")
             db.execute("DROP INDEX outbox_provider_part")
             for column in ("kind", "rich_payload_json", "visual_version", "content_sha256"):
                 db.execute("ALTER TABLE outbox DROP COLUMN " + column)
-            db.execute("DELETE FROM schema_version WHERE version=19")
+            db.execute("DELETE FROM schema_version WHERE version IN (19, 20)")
             db.execute("PRAGMA user_version=18")
             before = dict(
                 db.execute("SELECT * FROM outbox WHERE receipt_id=?", (receipt.id,)).fetchone()

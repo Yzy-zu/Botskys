@@ -110,6 +110,24 @@ class Messenger:
         }
         return await self._post("sendMedia", body)
 
+    async def send_reaction(self, target, message_id, reaction):
+        if not self.available:
+            raise MessageError("messenger_not_configured", False)
+        Contact("destino", target)
+        if not isinstance(message_id, str) or not message_id:
+            raise MessageError("invalid_reaction_target", False)
+        if not isinstance(reaction, str) or not reaction:
+            raise MessageError("invalid_reaction_emoji", False)
+        body = {
+            "key": {
+                "remoteJid": target,
+                "fromMe": False,
+                "id": message_id,
+            },
+            "reaction": reaction,
+        }
+        return await self._post("sendReaction", body)
+
     async def _post(self, endpoint, body, *, native_table=False):
         try:
             async with self.http.stream(

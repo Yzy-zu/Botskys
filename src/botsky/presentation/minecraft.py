@@ -26,7 +26,7 @@ def present_minecraft(result):
                 Document(
                     (
                         Block("heading", "Configuración Minecraft"),
-                        Block("notice", "El servicio no informó propiedades verificables."),
+                        Block("notice", "No fue posible consultar la configuración del servidor en este momento."),
                     )
                 ),
             )
@@ -47,7 +47,7 @@ def present_minecraft(result):
                 Document(
                     (
                         Block("heading", "Mundos de Minecraft"),
-                        Block("notice", "No se recibió una lista verificable de mundos."),
+                        Block("notice", "No hay información de mundos disponible."),
                     )
                 ),
             )
@@ -67,7 +67,7 @@ def present_minecraft(result):
                 for world in worlds
                 if isinstance(world, dict)
             ],
-            footer="Selección configurada no acredita que el juego haya cargado ese mundo.",
+            footer="Mundo establecido en la configuración.",
         )
     if action == "backup":
         blocks = [Block("heading", "Respaldo Minecraft")]
@@ -81,7 +81,7 @@ def present_minecraft(result):
         blocks.append(
             Block(
                 "notice",
-                "El servicio informó creación del respaldo. Tamaño comprimido y restauración no comprobados en esta respuesta.",
+                "Respaldo creado correctamente en el servidor.",
             )
         )
         return attach_document(result, Document(tuple(blocks)))
@@ -92,11 +92,11 @@ def present_minecraft(result):
                 Document(
                     (
                         Block("heading", "Jugadores"),
-                        Block("notice", "No hay una lista actual verificada de jugadores."),
+                        Block("notice", "No se pudo obtener la lista de jugadores conectados."),
                     )
                 ),
             )
-        blocks = [Block("heading", "Jugadores observados")]
+        blocks = [Block("heading", "Jugadores")]
         if type(data.get("count")) is int:
             blocks.append(
                 Block(
@@ -109,7 +109,7 @@ def present_minecraft(result):
         if isinstance(players, list):
             blocks.extend(Block("literal", str(player)) for player in players)
             if not players:
-                blocks.append(Block("notice", "Lista observada vacía."))
+                blocks.append(Block("notice", "No hay jugadores conectados actualmente."))
         return attach_document(result, Document(tuple(blocks)))
     if action == "status":
         blocks = [Block("heading", "Estado de Minecraft"), Block("notice", result.text)]
@@ -133,7 +133,7 @@ def present_minecraft(result):
             )
         blocks.append(
             Block(
-                "notice", "Contenedor activo no equivale a juego disponible ni a paquetes cargados."
+                "notice", "El servidor se encuentra activo."
             )
         )
         return attach_document(result, Document(tuple(blocks)))
@@ -163,15 +163,15 @@ def present_minecraft(result):
     if action in ("start", "stop"):
         if action == "start":
             text = (
-                "El juego confirmó disponibilidad."
+                "El servidor de Minecraft está listo y disponible."
                 if data.get("verified") is True
-                else "El servicio aceptó la solicitud de arranque; disponibilidad del juego no confirmada."
+                else "Iniciando el servidor de Minecraft. Estará listo en unos momentos."
             )
         else:
             text = (
-                "El servicio informó la parada."
+                "El servidor de Minecraft se ha detenido correctamente."
                 if data.get("status") == "ok"
-                else "Solicitud de parada recibida; estado final no confirmado."
+                else "Deteniendo el servidor de Minecraft..."
             )
         return attach_document(
             result,

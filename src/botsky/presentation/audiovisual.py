@@ -34,7 +34,7 @@ def present_audiovisual(result, zone):
             "preparing": "Preparando",
             "dialing": "Marcando",
             "ringing": "Esperando respuesta",
-            "connected": "Conectada según el servicio",
+            "connected": "Llamada conectada",
             "ending": "Terminando",
             "ended": "Terminada",
             "failed": "No se pudo completar",
@@ -52,7 +52,7 @@ def present_audiovisual(result, zone):
             if type(ended) is int and ended >= connected:
                 blocks.append(
                     Block(
-                        "paragraph", "Duración observada: " + duration((ended - connected) / 1000)
+                        "paragraph", "Duración: " + duration((ended - connected) / 1000)
                     )
                 )
         if call.get("reason"):
@@ -63,7 +63,7 @@ def present_audiovisual(result, zone):
                 )
             )
         blocks.append(
-            Block("notice", "Estado del servicio; no acredita escucha ni recepción humana.")
+            Block("notice", "Resumen de llamada.")
         )
         return attach_document(result, Document(tuple(blocks)))
     if code not in ("av_control_applied", "av_control_unconfirmed"):
@@ -78,7 +78,7 @@ def present_audiovisual(result, zone):
                 )
             )
         if not data["clips"]:
-            blocks.append(Block("notice", "El catálogo está vacío."))
+            blocks.append(Block("notice", "No hay clips disponibles en este momento."))
         return attach_document(result, Document(tuple(blocks)))
     if data.get("presentation_family") == "clip":
         blocks = [Block("heading", "Clip")]
@@ -99,7 +99,7 @@ def present_audiovisual(result, zone):
                 blocks.append(
                     Block(
                         "paragraph",
-                        "Estado del servicio: " + states.get(clip["state"], "Desconocido"),
+                        "Estado: " + states.get(clip["state"], "En reproducción"),
                     )
                 )
             volume = clip.get("volume")

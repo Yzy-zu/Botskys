@@ -53,6 +53,43 @@ class NaturalPresentationTests(unittest.TestCase):
         self.assertIn('duplicarla',retry.text)
         self.assertIn('no se repetirá',retry.text)
 
+    def test_natural_dates_bytes_and_validity_cleanup(self):
+        doc = Document((
+            Block('paragraph', 'Archivo: prueba.pdf · 1.00 KiB (1024 bytes) · 2026-11-06 22:00:00 · America/Mexico_City'),
+            Block('notice', 'Vigencia máxima: 5:00 desde la preparación. Vence: 2026-11-06 22:05:00 · America/Mexico_City. Opciones 1–4.'),
+            Block('literal', 'No tocar: 1.00 KiB (1024 bytes) 2026-11-06 22:00:00 · America/Mexico_City'),
+        ))
+        adapted = adapt(attach_document(Result('ok', 'test_cleanup'), doc))
+        self.assertIn('1.00 KiB · 06/11/2026, 10:00 p.m.', adapted.text)
+        self.assertNotIn('(1024 bytes)', adapted.text.split('No tocar:')[0])
+        self.assertIn('⏱️ _Opciones válidas por 5 min. Elige respondiendo del 1 al 4._', adapted.text)
+        self.assertIn('No tocar: 1.00 KiB (1024 bytes) 2026-11-06 22:00:00 · America/Mexico_City', adapted.text)
+
+    def test_fase_3_emojis_and_conversational_messages(self):
+        doc = Document((
+            Block('heading', 'Notas'),
+            Block('heading', 'Recordatorio 10 guardado'),
+            Block('next_action', '/admin nuclear-confirmar ID'),
+            Block('next_action', '/coop aportar C1 50'),
+            Block('next_action', '/tarea 5'),
+        ))
+        adapted = adapt(attach_document(Result('ok', 'fixture'), doc))
+        self.assertIn('*📝 Notas*', adapted.text)
+        self.assertIn('*🔔 Recordatorio 10 guardado*', adapted.text)
+        self.assertIn('expulsión grupal', adapted.text)
+        self.assertIn('50 XP', adapted.text)
+        self.assertIn('número de tarea', adapted.text)
+
+        for code, expected_fragment in (
+            ('invalid_proposal', 'No entendí qué opción deseas'),
+            ('confirmation_unavailable', 'La confirmación ya venció'),
+            ('ai_quote_unavailable', 'No encontré el mensaje citado'),
+            ('previous_download_missing', 'No encontré un archivo previo'),
+            ('note_filter_required', 'Dime qué palabra o asunto deseas buscar'),
+        ):
+            res = adapt(Result('needs_input', code))
+            self.assertIn(expected_fragment, res.text)
+
 
 class ReceiptModeTests(unittest.IsolatedAsyncioTestCase):
     async def test_natural_help_and_receipt_mode_survive_configuration_change(self):

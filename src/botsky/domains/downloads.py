@@ -120,4 +120,7 @@ def execute(db, context, spec, args, now, jobs, artifacts, backend):
         return Result(
             "failed", exc.code, "La fuente o el enlace no están admitidos para esta operación."
         )
-    return jobs.reserve(db, context, operation, params, [], now)
+    queued = jobs.reserve(db, context, operation, params, [], now)
+    if action == "choose" and queued.code == "job_queued":
+        return Result("ok", "job_queued", "", {"job_id": context.receipt_id, "reaction": "⏳"})
+    return queued

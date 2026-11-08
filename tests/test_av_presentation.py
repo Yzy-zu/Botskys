@@ -23,7 +23,7 @@ class AVPresentationTest(TestCase):
         self.assertIn("1:35", text)
         self.assertIn("America/Mexico_City", text)
         self.assertIn("Se alcanzó la duración permitida", text)
-        self.assertIn("no acredita escucha", text)
+        self.assertIn("Resumen de llamada", text)
         self.assertNotIn("duration_limit", text)
 
     def test_volume_uses_observed_value_and_preserves_deferred_message(self):

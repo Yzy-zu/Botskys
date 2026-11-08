@@ -260,7 +260,7 @@ class Store:
             return Receipt(incoming.id, state, result)
 
     def enqueue(self, db, context, result, now):
-        if result.code == "job_queued":
+        if result.code == "job_queued" and not result.data.get("reaction"):
             return
         from .presentation.domains import present
 
@@ -327,9 +327,7 @@ class Store:
                 if not payload.get("caption_frozen"):
                     payload["caption"] = (
                         ""
-                        if result.code in ("sticker_created", "reaction_ready", "voice_ready")
-                        else f"Videos · {len(result.data['choices'])} opciones. Fichas y selección en el mensaje siguiente."
-                        if result.code == "download_choices"
+                        if result.code in ("sticker_created", "reaction_ready", "voice_ready", "download_choices")
                         else result.text
                         if len(result.text) <= 900
                         else result.text[:880] + "… [vista previa]"
@@ -345,7 +343,12 @@ class Store:
                     else result.text
                 )
             parts[0][2]["source_full"] = source
-        for position, (kind, fragment, payload) in enumerate(parts):
+        start_pos = db.execute(
+            "SELECT coalesce(max(position) + 1, 0) FROM outbox WHERE receipt_id=?",
+            (context.receipt_id,),
+        ).fetchone()[0]
+        for offset, (kind, fragment, payload) in enumerate(parts):
+            position = start_pos + offset
             identifiers = payload.get("artifacts", [])
             frozen = canonical(
                 {"kind": kind, "text": fragment, "payload": payload, "version": VERSION}

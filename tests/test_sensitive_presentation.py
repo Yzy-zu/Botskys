@@ -130,7 +130,7 @@ class OperationalPresentationTest(TestCase):
             )
         )
         self.assertEqual(worlds.data["native_tables"][0]["rows"], [["Mundo *literal*", "Sí"]])
-        self.assertIn("no acredita", worlds.text)
+        self.assertIn("Mundo establecido", worlds.text)
         backup = present(
             Result(
                 "ok",
@@ -143,7 +143,7 @@ class OperationalPresentationTest(TestCase):
             )
         )
         self.assertIn("Datos incluidos: 1.00 KiB", backup.text)
-        self.assertIn("restauración no comprobados", backup.text)
+        self.assertIn("Respaldo creado", backup.text)
         self.assertNotIn("{", backup.text)
         config = present(
             Result(

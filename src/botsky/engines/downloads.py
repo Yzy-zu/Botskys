@@ -110,6 +110,88 @@ class SearchOptions(tuple[DownloadOption, ...]):
         return result
 
 
+SEARCH_ADULT_KEYWORDS = (
+    r"videos?\s+nopor",
+    r"video\s+nopor",
+    r"videos?\s+porno?",
+    r"video\s+porno?",
+    r"videos?\s+xxx",
+    r"videos?\s+de\s+sexo",
+    r"videos?\s+er[oó]ticos?",
+    r"porno\s+de",
+    r"nopor\s+de",
+    r"nopor",
+    r"porno?",
+    r"porn",
+    r"xxx+",
+    r"\bxx\b",
+    r"nsfw",
+    r"r34",
+    r"rule\s*34",
+    r"hentai",
+    r"ecchi",
+    r"er[oó]tico[sa]?",
+    r"pornhub",
+    r"xnxx",
+    r"xvideos",
+    r"redtube",
+    r"youporn",
+    r"brazzers",
+    r"onlyfans",
+    r"chaturbate",
+)
+
+SEARCH_FILLER_PATTERNS = (
+    r"^\s*(?:oye\s+)?(?:por\s+fa(?:vor)?\s+)?(?:busca(?:r)?|encuentra|pon(?:me)?|quiero\s+ver|mu[eé]strame|dame)\s+",
+    r"^\s*(?:videos?|rolas?|cancion(?:es)?|tracks?|audios?)\s+(?:de|del|sobre|en)\s+",
+    r"\b(?:en|de|por|para)?\s*(?:youtube|yt)\b",
+    r"\b(?:en\s+)?(?:formato\s+)?(?:mp4|mp3|webm|srt)\b",
+    r"\b(?:en\s+)?(?:hd|1080p|720p|4k)\b",
+)
+
+
+def sanitize_search_query(query: str, source: str = "youtube") -> str:
+    original = query.strip()
+    text = original
+    for pattern in SEARCH_ADULT_KEYWORDS:
+        text = re.sub(r"\b" + pattern + r"\b", " ", text, flags=re.IGNORECASE)
+    for pattern in SEARCH_FILLER_PATTERNS:
+        text = re.sub(pattern, " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*(?:videos?|audios?)\s+(?:de|del)?\s*", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*(?:cancion(?:es)?|rolas?|tracks?)\s+(?:de|del)?\s*", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*(?:de|del|en|para|sobre|con)\s+", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"\s+(?:en|de|del|para|sobre|con|por)\s*$", "", text, flags=re.IGNORECASE)
+    cleaned = " ".join(text.split()).strip()
+    if not cleaned:
+        if source in ("adult", "pornhub", "xnxx", "combined"):
+            return "popular"
+        return original
+    return cleaned
+
+
+def clean_display_title(title: str) -> str:
+    t = html.unescape(title).strip()
+    t = re.sub(
+        r"[\s\-_|]*(?:aplica\s+el\s+c[oó]digo|c[oó]digo\s+[a-z0-9]+).*$",
+        "",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"[\s\-_|]*videos?\s+completos?\s+en\s+enlace.*$", "", t, flags=re.IGNORECASE
+    )
+    t = re.sub(r"[\s\-_|]*sub\s+espa[ñn]ol.*$", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"^[A-Za-z0-9_]+\s*4K\s*\|\s*", "", t)
+    words = t.split()
+    if (
+        len(words) >= 4
+        and sum(1 for w in words if w.isupper() and len(w) > 1) / len(words) > 0.5
+    ):
+        t = t.capitalize()
+    t = " ".join("".join(c for c in t if c.isprintable() or c.isspace()).split())[:300]
+    return t.strip(" -_|:,")
+
+
 def validate_download_url(url: str) -> str:
     try:
         if len(url) > 2000 or any(ord(c) <= 32 or ord(c) >= 127 for c in url):
@@ -136,7 +218,7 @@ def validate_download_url(url: str) -> str:
         if host in ("vimeo.com", "www.vimeo.com") and not parts.query:
             if re.fullmatch(r"/[0-9]+", parts.path):
                 return f"https://vimeo.com{parts.path}"
-        if host in ("xnxx.com", "www.xnxx.com", "video.xnxx.com"):
+        if host in ("xnxx.com", "www.xnxx.com", "video.xnxx.com", "xnxx.es", "www.xnxx.es"):
             match = re.fullmatch(r"/video-?([0-9a-z]+)/([A-Za-z0-9_-]*)", parts.path)
             if not match or parts.query:
                 raise ValueError
@@ -230,9 +312,9 @@ def download_source(url: str) -> DownloadSource:
         return "vimeo"
     if host == "media.w3.org":
         return "w3"
-    if host == "www.xnxx.com":
+    if host in ("www.xnxx.com", "xnxx.com", "www.xnxx.es", "xnxx.es"):
         return "xnxx"
-    if host == "www.pornhub.com":
+    if host in ("www.pornhub.com", "pornhub.com", "es.pornhub.com", "fr.pornhub.com"):
         return "pornhub"
     return "youtube"
 
@@ -250,7 +332,7 @@ def _allowed_host(host: str, source: DownloadSource | None = None) -> bool:
         )
     )
     # CDN hosts observed in yt-dlp issue reports; unknown edges fail closed.
-    xnxx = host in ("xnxx.com", "www.xnxx.com", "video.xnxx.com") or bool(
+    xnxx = host in ("xnxx.com", "www.xnxx.com", "video.xnxx.com", "xnxx.es", "www.xnxx.es") or bool(
         re.match(r"^[a-z0-9_-]+\.xnxx-cdn\.com$", host)
     )
     pornhub = bool(
@@ -659,16 +741,17 @@ class Downloader:
             raise MediaError("invalid_query")
         if source in ("pornhub", "xnxx", "combined") and not self.adult_sources_enabled:
             raise MediaError("unsupported_source")
+        clean_query = sanitize_search_query(query, source)
         if source == "combined":
-            return await self.search_combined(query)
+            return await self.search_combined(clean_query)
         if source == "pornhub":
-            return await self._search_pornhub(query)
+            return await self._search_pornhub(clean_query)
         if source == "xnxx":
-            return await self._search_xnxx(query)
-        return await self._search_youtube(query)
+            return await self._search_xnxx(clean_query)
+        return await self._search_youtube(clean_query)
 
     async def search_combined(self, query: str) -> tuple[DownloadOption, ...]:
-        clean_query = query.strip()
+        clean_query = sanitize_search_query(query, "combined")
         results = await asyncio.gather(
             self._search_pornhub(clean_query),
             self._search_xnxx(clean_query),
@@ -702,11 +785,12 @@ class Downloader:
         return SearchOptions(tuple(combined[:MULTIMEDIA_CHOICES]), failed_sources)
 
     async def _search_youtube(self, query: str) -> tuple[DownloadOption, ...]:
+        clean_query = sanitize_search_query(query, "youtube")
         try:
             async with asyncio.timeout(120), _proxy("youtube") as proxy:
                 output = await run_process(
                     self._base(proxy)
-                    + ["--flat-playlist", "--dump-single-json", "--", f"ytsearch20:{query}"],
+                    + ["--flat-playlist", "--dump-single-json", "--", f"ytsearch20:{clean_query}"],
                     115,
                     env={"PATH": os.environ.get("PATH", "")},
                 )
@@ -771,14 +855,19 @@ class Downloader:
             raise MediaError("search_failed") from exc
 
     async def _search_pornhub(self, query: str) -> tuple[DownloadOption, ...]:
-        clean_query = query.strip()
-        # Direct web HTML parsing from videoBoxesSearch (avoids navbar widgets and prioritizes <= 10 min videos)
+        clean_query = sanitize_search_query(query, "pornhub")
+        query_stems = [w.lower().rstrip("s") for w in clean_query.split() if len(w) > 2]
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept-Language": "es-MX,es;q=0.9,es-ES;q=0.8,en;q=0.1",
+            "Cookie": "accessAgeDisclaimerPH=1; platform=pc; language=es; il=es",
+        }
+        # Direct web HTML parsing from videoBoxesSearch using es.pornhub.com with &o=mv (Most Viewed / popular)
         try:
             async with asyncio.timeout(15), _proxy("pornhub") as proxy:
-                async with httpx.AsyncClient(proxy=proxy, trust_env=False, timeout=10) as client:
+                async with httpx.AsyncClient(proxy=proxy, trust_env=False, timeout=10, headers=headers) as client:
                     resp = await client.get(
-                        f"https://www.pornhub.com/video/search?search={quote_plus(clean_query)}",
-                        headers={"User-Agent": "Mozilla/5.0"},
+                        f"https://es.pornhub.com/video/search?search={quote_plus(clean_query)}&o=mv"
                     )
                     if resp.status_code == 200:
                         chunks = (
@@ -822,10 +911,8 @@ class Downloader:
                             )
                             if not title_m:
                                 continue
-                            title = html.unescape(title_m.group(1)).strip()
-                            title = " ".join(
-                                "".join(c for c in title if c.isprintable() or c.isspace()).split()
-                            )[:300]
+                            raw_title = html.unescape(title_m.group(1)).strip()
+                            title = clean_display_title(raw_title)
                             if not title:
                                 continue
 
@@ -861,11 +948,18 @@ class Downloader:
                             opt = DownloadOption(
                                 valid_url, title, duration, author, thumbnail_url=thumb
                             )
-                            if duration is not None and 60 <= duration <= 600:
+                            has_kw = (
+                                any(
+                                    st in title.lower() or (author and st in author.lower())
+                                    for st in query_stems
+                                )
+                                if query_stems
+                                else True
+                            )
+                            if has_kw and (duration is None or (isinstance(duration, (int, float)) and 0 < duration <= 1800)):
                                 preferred.append(opt)
                             else:
                                 others.append(opt)
-                        others.sort(key=lambda o: o.duration if o.duration is not None else 99999.0)
                         direct_options = (preferred + others)[:MULTIMEDIA_CHOICES]
                         if direct_options:
                             return tuple(direct_options)
@@ -884,7 +978,7 @@ class Downloader:
                         "--dump-single-json",
                         "--playlist-items",
                         "1:6",
-                        f"https://www.pornhub.com/video/search?search={quote_plus(clean_query)}",
+                        f"https://es.pornhub.com/video/search?search={quote_plus(clean_query)}&o=mv",
                     ]
                 )
                 output = await run_process(cmd, 115, env={"PATH": os.environ.get("PATH", "")})
@@ -895,11 +989,10 @@ class Downloader:
             try:
                 async with asyncio.timeout(15), _proxy("pornhub") as proxy:
                     async with httpx.AsyncClient(
-                        proxy=proxy, trust_env=False, timeout=10
+                        proxy=proxy, trust_env=False, timeout=10, headers=headers
                     ) as client:
                         resp = await client.get(
-                            f"https://www.pornhub.com/video/search?search={quote_plus(clean_query)}",
-                            headers={"User-Agent": "Mozilla/5.0"},
+                            f"https://es.pornhub.com/video/search?search={quote_plus(clean_query)}&o=mv"
                         )
                         if resp.status_code == 200:
                             for box in re.finditer(
@@ -1002,14 +1095,24 @@ class Downloader:
             raise MediaError("search_failed") from exc
 
     async def _search_xnxx(self, query: str) -> tuple[DownloadOption, ...]:
-        clean_query = query.strip()
+        clean_query = sanitize_search_query(query, "xnxx")
+        query_stems = [w.lower().rstrip("s") for w in clean_query.split() if len(w) > 2]
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept-Language": "es-MX,es;q=0.9,es-ES;q=0.8,en;q=0.1",
+        }
         try:
             async with asyncio.timeout(60), _proxy("xnxx") as proxy:
-                async with httpx.AsyncClient(proxy=proxy, trust_env=False, timeout=20) as client:
+                async with httpx.AsyncClient(
+                    proxy=proxy, trust_env=False, timeout=20, follow_redirects=True, headers=headers
+                ) as client:
                     resp = await client.get(
-                        f"https://www.xnxx.com/search/{quote_plus(clean_query)}",
-                        headers={"User-Agent": "Mozilla/5.0"},
+                        f"https://www.xnxx.es/search/hits/{quote_plus(clean_query)}"
                     )
+                    if resp.status_code != 200:
+                        resp = await client.get(
+                            f"https://www.xnxx.com/search/hits/{quote_plus(clean_query)}"
+                        )
                     if resp.status_code != 200:
                         raise MediaError("search_failed")
                     html_text = resp.text
@@ -1027,10 +1130,9 @@ class Downloader:
                         r'<a[^>]+href="/video-[^"]+"[^>]+title="([^"]+)"', c
                     ) or re.search(r'title="([^"]*)"', c)
                     title_raw = title_m.group(1) if title_m else ""
-                    title = html.unescape(title_raw).strip()
-                    title = " ".join(
-                        "".join(ch for ch in title if ch.isprintable() or ch.isspace()).split()
-                    )[:300]
+                    title = clean_display_title(title_raw)
+                    if not title:
+                        continue
                     try:
                         valid_url = validate_download_url(f"https://www.xnxx.com{path}")
                     except MediaError:
@@ -1059,11 +1161,18 @@ class Downloader:
                     thumb = thumb_m.group(1) if thumb_m else None
                     seen_urls.add(valid_url)
                     opt = DownloadOption(valid_url, title, duration, author, thumbnail_url=thumb)
-                    if duration is not None and 60 <= duration <= 600:
+                    has_kw = (
+                        any(
+                            st in title.lower() or (author and st in author.lower())
+                            for st in query_stems
+                        )
+                        if query_stems
+                        else True
+                    )
+                    if has_kw and (duration is None or (isinstance(duration, (int, float)) and 0 < duration <= 1800)):
                         preferred.append(opt)
                     else:
                         others.append(opt)
-                others.sort(key=lambda o: o.duration if o.duration is not None else 99999.0)
                 return tuple((preferred + others)[:MULTIMEDIA_CHOICES])
             pattern = re.compile(
                 r"""<div class="thumb-under">\s*<p><a href="(/video-[0-9a-z]+/[A-Za-z0-9_-]*)" title="([^"]*)">([^<]*)</a></p>.*?<p class="metadata">(.*?)</p>""",

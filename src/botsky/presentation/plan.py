@@ -75,15 +75,15 @@ def text_parts(blocks, retain):
                 (
                     Part(
                         "text",
-                        "El contenido completo está en el archivo de texto adjunto; conserva todos los caracteres.",
+                        "📄 El texto es muy extenso o contiene caracteres especiales. Te lo comparto en este archivo adjunto:",
                         {"source_text": ""},
                     ),
                     Part(
                         "media",
                         payload={
                             "artifacts": [identifier],
-                            "name": "Contenido literal.txt",
-                            "caption": "Contenido literal completo · UTF-8",
+                            "name": "Documento.txt",
+                            "caption": "📄 Archivo de texto adjunto",
                             "role": "literal_source",
                         },
                     ),
@@ -100,8 +100,8 @@ def text_parts(blocks, retain):
                     "media",
                     payload={
                         "artifacts": [identifier],
-                        "name": "Contenido literal.txt",
-                        "caption": "Contenido literal completo · UTF-8",
+                        "name": "Texto.txt",
+                        "caption": "📄 Contenido completo",
                         "role": "literal_source",
                     },
                 )
@@ -126,6 +126,8 @@ def text_parts(blocks, retain):
 
 def compile_result(result, retain, *, native_tables=False):
     data = result.data
+    if data.get("reaction"):
+        return [Part("text", result.text, payload={"reaction": data["reaction"], "source_text": result.text})]
     media_only = {"sticker_created", "reaction_ready", "voice_ready"}
     if result.code in media_only and data.get("artifacts"):
         return [
@@ -167,7 +169,7 @@ def compile_result(result, retain, *, native_tables=False):
         parts = text_parts(
             [
                 Block("literal" if data.get("native_intro_literal") else "paragraph", intro),
-                *(Block("literal", table.fallback()) for table in tables),
+                *(Block("paragraph", table.fallback()) for table in tables),
                 Block("paragraph", footer),
             ],
             retain,
@@ -192,13 +194,15 @@ def compile_result(result, retain, *, native_tables=False):
         "pdf_extracted",
         "drive_downloaded",
         "task_attachment",
+        "download_choices",
     }
+    caption_limit = 1024 if result.code == "download_choices" else 900
     if (
         result.code in caption_codes
         and len(media) == 1
         and len(parts) == 1
         and parts[0].kind == "text"
-        and units(parts[0].text) <= 900
+        and units(parts[0].text) <= caption_limit
     ):
         return [
             Part(

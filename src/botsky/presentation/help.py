@@ -42,7 +42,7 @@ def render_help(registry, topic=""):
         parts[0] = registry.aliases.get(parts[0], parts[0])
     selected = [s for s in registry.specs if s.path[: len(parts)] == tuple(parts)]
     if not selected:
-        return "Comando desconocido. Usa /ayuda."
+        return "No reconozco esa opción. Escribe /ayuda o pídeme lo que necesitas con tus palabras."
     if not parts:
         roots = {s.path[0] for s in registry.specs}
         blocks = [Block("heading", "Botsky · ayuda")]
@@ -93,7 +93,7 @@ def render_help(registry, topic=""):
         for field in spec.fields:
             if field.kind == "duration":
                 detail = (
-                    f"{field.option or field.name}: entero con unidad s, m, h o d; ejemplo {field.example}. "
+                    f"⏱️ {field.option or field.name}: duración en segundos, minutos u horas (ej. {field.example}). "
                     f"Rango: {field.minimum:g}–{field.maximum:g} segundos."
                 )
                 if field.default is not None:
@@ -132,7 +132,7 @@ def render_natural_help(registry, topic=''):
     families = [family for family, (title, _) in FAMILIES.items()
                 if topic in title.casefold() or any(s.family == family and topic in ' '.join(s.path) for s in registry.specs)]
     if not families:
-        return 'Dime qué quieres hacer y te explicaré cómo pedirlo; por ejemplo, buscar videos, convertir un archivo o guardar una nota.'
+        return '¿En qué puedo ayudarte? Puedes pedirme buscar videos, convertir documentos a PDF, guardar notas, recordar tareas o jugar.'
     blocks = []
     for family in families[:2]:
         title, purpose = FAMILIES[family]
@@ -142,5 +142,5 @@ def render_natural_help(registry, topic=''):
             blocks.append(Block('paragraph', '\n'.join('• «'+example+'»' for example in examples)))
     if any(s.permission == 'call_authorized' for s in registry.specs if s.family in families):
         blocks.append(Block('notice', 'Requiere llamadas habilitadas y autorización en este chat.'))
-    blocks.append(Block('paragraph', 'Si falta un dato, te lo preguntaré. Las acciones sujetas a confirmación conservan su vista previa.'))
+    blocks.append(Block('paragraph', 'Si falta algún dato te lo preguntaré antes de continuar. En acciones importantes siempre verás una vista previa para confirmar.'))
     return Document(tuple(blocks)).text()

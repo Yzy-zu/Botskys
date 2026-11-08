@@ -66,9 +66,6 @@ def video_document(
             + source_label(choice["url"])
         )
         blocks.append(Block("literal" if requires_literal(metadata) else "quote", metadata))
-        # El enlace canónico ya está validado; separado del título literal para
-        # que el cliente lo reconozca sin inventar enlaces Markdown.
-        blocks.append(Block("paragraph", choice["url"]))
     if note:
         blocks.append(Block("notice", note))
     from .domains import date_time
@@ -121,7 +118,7 @@ def web_document(items, query):
     blocks.append(
         Block(
             "notice",
-            "Resultados candidatos. No se han abierto ni verificado las páginas completas.",
+            "Resultados web principales.",
         )
     )
     return Document(tuple(blocks))

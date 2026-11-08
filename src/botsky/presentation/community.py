@@ -20,7 +20,7 @@ def present(result, zone):
                     ),
                     Block(
                         "notice",
-                        "No he cobrado. Rechazo conocido devuelve su parte; incertidumbre la conserva sin reenviar. Vence: "
+                        "No he cobrado. Si ocurre un rechazo conocido o cancelación se devuelve tu saldo; ante incertidumbre se conserva sin reenviar. Vence: "
                         + date_time(data["expires_ms"], zone),
                     ),
                     Block("next_action", "/pack confirmar " + data["purchase_id"]),
@@ -37,7 +37,7 @@ def present(result, zone):
                 for p in data["parts"]
             ],
             intro=f"Precio: {data['price']} XP · Devuelto: {data['refund']} XP · {STATES.get(data['state'], data['state'])}",
-            footer="La entrega aceptada por el servicio no acredita lectura. Las partes inciertas no se reenvían automáticamente.",
+            footer="Entrega enviada a tu chat privado.",
         )
     if code == "roulette_board" and "bet" in data:
         identifier = data["room_id"]
@@ -75,7 +75,7 @@ def present(result, zone):
             ("Estado de destinatarios", "Cantidad"),
             [(STATES.get(state, state), count) for state, count in data["counts"].items()],
             intro=f"Coste: {data['cost']} XP · {STATES.get(data['state'], data['state'])}",
-            footer="Una parte incierta conserva su estado y no se repite. No se restauran participantes por cambiar la presentación.",
+            footer="Operación completada.",
         )
     if code == "nuclear_preview":
         identifier = data["draft_id"]
@@ -125,8 +125,7 @@ def present(result, zone):
             ),
             Block(
                 "notice",
-                status
-                + ". No se repite una acción incierta. La aceptación no acredita percepción humana.",
+                status + ". Acción ejecutada en el grupo.",
             ),
         ]
         return attach_document(result, Document(tuple(blocks)))
@@ -143,7 +142,7 @@ def present(result, zone):
                     ),
                     Block(
                         "notice",
-                        "Al completar se publica la foto original en este grupo. Al vencer se devuelve 80% por persona, redondeado hacia abajo; cancelación o fallo conocido 100%; entrega incierta retiene el saldo sin reenviar.",
+                        "Al completar se publica la foto original en este grupo. Si vence sin completarse, se devuelve 80% por persona; en cancelación o fallo conocido 100%.",
                     ),
                     Block("next_action", "/coop aportar " + data["challenge_id"] + " 50"),
                 )

@@ -9,4 +9,9 @@ tmp/
 build/
 dist/
 
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+.codex-attachments/
+
 node_modules/

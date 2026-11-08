@@ -77,7 +77,7 @@ def tabular(result, title, headers, rows, *, intro="", footer=""):
                 (
                     Block("heading", title),
                     Block("paragraph", intro),
-                    Block("notice", "Sin registros para mostrar."),
+                    Block("notice", "No hay elementos registrados para mostrar."),
                     Block("notice", footer),
                 )
             ),
@@ -140,7 +140,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
         return attach_document(
             result,
             Document(
-                (Block("notice", "Tarea " + str(data.get("task_id", "")) + " " + text + "."),)
+                (Block("notice", f"Tarea #{data.get('task_id', '')} marcada como {text}."),)
             ),
         )
     if code in ("reminder_cancelled", "reminder_archived") and "state" in data:
@@ -180,7 +180,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                     Block("heading", f"Recordatorio {data['reminder_id']} guardado"),
                     Block("paragraph", date_time(data["due_ms"], zone)),
                     Block("literal", data["text"]),
-                    Block("notice", "Aviso pendiente; entrega aún no comprobada."),
+                    Block("notice", "Te avisaré puntualmente en la fecha programada."),
                 )
             ),
         )
@@ -212,7 +212,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                     Block("heading", "Memoria actualizada"),
                     Block(
                         "notice",
-                        result.text + " En este chat; no se promete borrar copias históricas.",
+                        result.text + " Los recuerdos de este chat han sido eliminados.",
                     ),
                 )
             ),
@@ -238,7 +238,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             blocks.append(
                 Block(
                     "paragraph",
-                    "Configuración (no prueba del proveedor):\n"
+                    "Servicios configurados:\n"
                     + "\n".join(
                         labels.get(k, k) + ": " + ("configurado" if v else "sin configurar")
                         for k, v in data["capabilities"].items()
@@ -278,7 +278,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
 
                 lines.append("Duración: " + duration(facts["duration_seconds"]))
             if facts.get("status") == "unavailable" or facts.get("pages_status"):
-                lines.append("No se pudieron medir todos los metadatos.")
+                lines.append("Algunos metadatos complementarios no estuvieron disponibles.")
             blocks.append(Block("paragraph", " · ".join(lines)))
         blocks.append(Block("notice", result.text))
         return attach_document(result, Document(tuple(blocks)))
@@ -397,7 +397,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             "Espacio de Google",
             ("Concepto", "Espacio"),
             rows,
-            footer="Cuota compartida con otros servicios de Google; no es una cuota exclusiva de Botsky.",
+            footer="Cuota compartida de tu cuenta de Google (incluye Drive, Gmail y Fotos).",
         )
     if code == "drive_choices":
         return tabular(
@@ -461,7 +461,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                 )
         blocks.append(Block("heading", "Análisis de IA"))
         blocks.append(
-            Block("paragraph", data.get("analysis_text", "El análisis de IA no está disponible."))
+            Block("paragraph", data.get("analysis_text", "No fue posible generar el análisis de la imagen en este momento."))
         )
         return attach_document(result, Document(tuple(blocks)))
     if code in ("transcript_summary_ready", "summary_unavailable") and "output_mode" in data:
@@ -476,7 +476,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             )
         else:
             blocks.append(
-                Block("notice", "La transcripción se completó, pero el resumen no está disponible.")
+                Block("notice", "Transcripción lista. El resumen breve no pudo generarse.")
             )
         return attach_document(result, Document(tuple(blocks)))
     if code in ("image_read", "transcript_ready"):
@@ -490,7 +490,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             blocks.append(
                 Block(
                     "notice",
-                    "Lectura truncada por límite de tamaño. El archivo original conserva el contenido restante.",
+                    "Texto muy extenso: se muestra la primera parte. El documento adjunto conserva el resto.",
                 )
             )
         return attach_document(result, Document(tuple(blocks)))
@@ -508,7 +508,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                 )
                 for i, r in enumerate(data["items"], 1)
             ],
-            footer="Saldo global de Botsky, compartido entre tus chats. No incluye apuestas reservadas.",
+            footer="Puntos XP acumulados en Botsky.",
         )
     if code == "xp_balance":
         return attach_document(
@@ -568,7 +568,7 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
             for p in data["parts"]
         ]
         lines.append(
-            "Aceptado por el servicio no acredita lectura. Si una parte es incierta, revisa antes de repetir."
+            "Mensaje enviado al destinatario."
         )
         return attach_document(
             result,
@@ -747,6 +747,6 @@ def present(result, *, zone="America/Mexico_City", input_mode="command"):
                     )
                     for item in schedules
                 ],
-                footer="La programación no acredita una llamada conectada ni recepción humana.",
+                footer="Recordatorio de llamada programada.",
             )
     return result

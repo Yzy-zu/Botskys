@@ -30,7 +30,7 @@ async def run_one(app):
         expired = db.execute("SELECT i.* FROM frontend_tasks f JOIN inbox i ON i.id=f.receipt_id WHERE f.state='running' AND f.deadline_ms<=? AND i.instance=? AND i.account=? AND i.epoch=?", (now, app.settings.instance, app.settings.account, app.settings.epoch)).fetchall()
         for row in expired:
             if row['state'] == 'queued':
-                finish(app, db, row, 'failed', Result('failed', 'frontend_interrupted', 'La interpretación se interrumpió. Puedes enviar una petición nueva.'), now)
+                finish(app, db, row, 'failed', Result('failed', 'frontend_interrupted', 'Hubo una pausa inesperada al procesar tu mensaje. Por favor, vuelve a enviarlo.'), now)
         db.execute("UPDATE frontend_tasks SET state='cancelled',updated_ms=? WHERE state IN ('pending','running') AND receipt_id IN (SELECT id FROM inbox WHERE state!='queued')", (now,))
         row = db.execute("SELECT i.* FROM frontend_tasks f JOIN inbox i ON i.id=f.receipt_id WHERE f.state='pending' AND i.state='queued' AND i.instance=? AND i.account=? AND i.epoch=? ORDER BY f.created_ms LIMIT 1", (app.settings.instance, app.settings.account, app.settings.epoch)).fetchone()
         if row is None:
@@ -62,13 +62,13 @@ async def run_one(app):
             return True
         now = app.clock()
         if current['epoch'] != app.settings.epoch or now >= current['deadline_ms']:
-            finish(app, db, current, 'failed', Result('failed', 'frontend_expired', 'La interpretación caducó; envía una petición nueva.'), now)
+            finish(app, db, current, 'failed', Result('failed', 'frontend_expired', 'Se agotó el tiempo de espera para procesar tu solicitud. Por favor, inténtalo de nuevo.'), now)
             return True
         denied = access.authorize('friend', context_of(current), app.settings) or (bot.gate(db, context_of(current), gate_spec, now) if current['actor'] != app.settings.owner else None)
         if denied:
             finish(app, db, current, 'cancelled', denied, now)
         elif error:
-            finish(app, db, current, 'failed', Result('failed', error, 'La cuota diaria de las cuentas configuradas está agotada. La interpretación volverá a estar disponible cuando el proveedor renueve la cuota.' if error == 'frontend_quota_exhausted' else 'La cuenta elegida agotó su cuota. Puedes enviar la petición de nuevo para usar otra cuenta disponible.' if error == 'frontend_account_quota' else 'No pude interpretar la petición. Inténtalo con un mensaje nuevo.'), now)
+            finish(app, db, current, 'failed', Result('failed', error, 'El asistente conversacional alcanzó su límite de consultas de hoy. Estará disponible de nuevo mañana; mientras tanto, puedes usar comandos directos (escribe /ayuda).' if error == 'frontend_quota_exhausted' else 'El servicio estuvo momentáneamente ocupado. Por favor, reenvía tu mensaje para reintentarlo.' if error == 'frontend_account_quota' else 'No logré entender tu solicitud. Puedes reformularla con más detalle o escribir /ayuda para ver las opciones disponibles.'), now)
         elif isinstance(decision, ActionRequest):
             db.execute('SAVEPOINT frontend_adoption')
             try:
@@ -77,7 +77,7 @@ async def run_one(app):
             except (ValueError, KeyError, TypeError, ArtifactProblem):
                 db.execute('ROLLBACK TO frontend_adoption')
                 db.execute('RELEASE frontend_adoption')
-                finish(app, db, current, 'failed', Result('failed', 'invalid_proposal', 'La propuesta no es válida.'), now)
+                finish(app, db, current, 'failed', Result('failed', 'invalid_proposal', 'No pude procesar esa acción con los datos indicados. Escribe claramente qué deseas hacer o responde al mensaje correspondiente.'), now)
                 return True
             db.execute('RELEASE frontend_adoption')
             db.execute("UPDATE inbox SET command_json=?,path_json=?,permission=?,revision=revision+1 WHERE id=?", (parsed.canonical(), json.dumps(parsed.spec.path), parsed.spec.permission, row['id']))
@@ -90,12 +90,12 @@ async def run_one(app):
                 except (ValueError, ArtifactProblem):
                     db.execute('ROLLBACK TO frontend_draft')
                     db.execute('RELEASE frontend_draft')
-                    finish(app, db, current, 'failed', Result('failed', 'invalid_draft', 'No pude conservar la petición; vuelve a indicarla.'), now)
+                    finish(app, db, current, 'failed', Result('failed', 'invalid_draft', 'No pude guardar el borrador de tu solicitud. Por favor, vuelve a indicarla desde el principio.'), now)
                     return True
                 db.execute('RELEASE frontend_draft')
             elif draft:
                 db.execute("UPDATE interactions SET state='cancelled',revision=revision+1 WHERE id=?", (draft['id'],))
-            text = decision.text if isinstance(decision, ReplyDecision) else decision.question if isinstance(decision, ClarifyDecision) else 'De acuerdo.'
+            text = decision.text if isinstance(decision, ReplyDecision) else decision.question if isinstance(decision, ClarifyDecision) else 'Entendido. Si necesitas algo más, aquí estaré para ayudarte.'
             finish(app, db, current, 'completed', Result('ok', 'frontend_reply', text), now, asdict(decision))
     # Adoption is already committed: restart only executes this canonical request.
     app.recover(limit=20)

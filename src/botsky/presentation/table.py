@@ -49,12 +49,11 @@ class NativeTable:
         }
 
     def fallback(self):
-        return "\n\n".join(
-            [self.title]
-            + [
-                "\n".join(
-                    f"{label}: {value}" for label, value in zip(self.headers, row, strict=True)
-                )
-                for row in self.rows
-            ]
-        )
+        header = f"*{self.title}*" if self.title and not (self.title.startswith("*") and self.title.endswith("*")) else self.title
+        rows_text = [
+            "\n".join(
+                f"• *{label}*: {value}" for label, value in zip(self.headers, row, strict=True)
+            )
+            for row in self.rows
+        ]
+        return "\n\n".join(filter(None, [header, *rows_text]))

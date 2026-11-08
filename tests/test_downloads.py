@@ -163,6 +163,34 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         self.assertEqual(len(self.backend.downloads), 1)
         self.assertEqual(self.rows("SELECT * FROM notes"), [])
 
+    def test_sanitize_search_query_adult_and_general(self):
+        from botsky.engines.downloads import sanitize_search_query
+        self.assertEqual(sanitize_search_query("teens nopor", "adult"), "teens")
+        self.assertEqual(sanitize_search_query("Oye busca videos de teens nopor en mp4", "adult"), "teens")
+        self.assertEqual(sanitize_search_query("videos de maduras nopor", "adult"), "maduras")
+        self.assertEqual(sanitize_search_query("colegialas porno xxx", "adult"), "colegialas")
+        self.assertEqual(sanitize_search_query("videos xxx de latinas en xnxx", "adult"), "latinas")
+        self.assertEqual(sanitize_search_query("chicas calientes nopor", "adult"), "chicas calientes")
+        self.assertEqual(sanitize_search_query("nopor", "adult"), "popular")
+        self.assertEqual(sanitize_search_query("quiero ver videos de bad bunny en youtube", "youtube"), "bad bunny")
+        self.assertEqual(sanitize_search_query("videos de rock de los 80 de youtube", "youtube"), "rock de los 80")
+        self.assertEqual(sanitize_search_query("cancion hotel california mp3", "youtube"), "hotel california")
+        self.assertEqual(sanitize_search_query("CABLE literal", "youtube"), "CABLE literal")
+
+    async def test_search_collage_and_choices_deliver_in_single_captioned_media_message(self):
+        search = self.receive("/dl buscar mp4 --hasta 0.8 CABLE literal")
+        await self.app.jobs.run_pending()
+        transport = CollectingTransport()
+        self.assertEqual(self.app.deliver(search.id, transport), 1)
+        self.assertEqual(len(transport.parts), 1)
+        part = transport.parts[0]
+        self.assertEqual(part.kind, "media")
+        self.assertEqual(part.text, "")
+        self.assertIn("Videos", part.payload["caption"])
+        self.assertIn("1. Video sintético", part.payload["caption"])
+        self.assertTrue(part.payload.get("caption_frozen"))
+        self.assertNotIn("siguiente", part.payload["caption"])
+
     async def test_spotify_requires_real_choice_and_view_expiration_is_enforced(self):
         receipt = self.receive("/dl mp3 https://open.spotify.com/track/0123456789abcdefghijkl")
         await self.app.jobs.run_pending()
@@ -208,6 +236,14 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         }
         for source, url in sources.items():
             self.assertEqual(download_source(validate_url(url, adult=True)), source)
+        self.assertEqual(
+            download_source(validate_url("https://www.xnxx.es/video-synthetic/example", adult=True)),
+            "xnxx",
+        )
+        self.assertEqual(
+            download_source(validate_url("https://es.pornhub.com/view_video.php?viewkey=synthetic", adult=True)),
+            "pornhub",
+        )
         self.assertIn(
             "open.spotify.com",
             validate_url("https://open.spotify.com/track/0123456789abcdefghijkl"),

@@ -251,6 +251,21 @@ class EvolutionTransport:
                 raise
         if not part.artifacts:
             try:
+                if part.payload.get("reaction"):
+                    with self.app.store.transaction() as db:
+                        row = db.execute(
+                            "SELECT message_id FROM inbox WHERE id=?", (part.receipt_id,)
+                        ).fetchone()
+                    msg_id = row["message_id"] if row else None
+                    identifier = None
+                    if msg_id:
+                        identifier = await self.api.send_reaction(
+                            c.scope.chat, msg_id, part.payload["reaction"]
+                        )
+                    if part.text:
+                        text_id = await self.api.send(c.scope.chat, "text", text=part.text)
+                        identifier = identifier or text_id
+                    return DeliveryAck(True, identifier or f"reaction-{part.receipt_id}")
                 return DeliveryAck(True, await self.api.send(c.scope.chat, "text", text=part.text))
             except MessageError as exc:
                 if not exc.uncertain:

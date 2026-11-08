@@ -501,3 +501,35 @@ class RuntimeTest(IsolatedAsyncioTestCase):
             ],
             "pending",
         )
+
+    async def test_reaction_delivery_to_user_message(self):
+        from botsky.contracts import Result
+        from botsky.delivery import deliver_async
+        from botsky.store import context_of
+        payload = self.payload("el 2", identifier="MSG_REACTION_1")
+        first = self.transport.enqueue(payload)
+        await self.transport.receive_pending()
+        receipt_id = first["receipt_id"]
+        with self.app.store.transaction() as db:
+            db.execute("UPDATE inbox SET state='completed' WHERE id=?", (receipt_id,))
+            row = db.execute("SELECT * FROM inbox WHERE id=?", (receipt_id,)).fetchone()
+            context = context_of(row)
+            self.app.store.enqueue(
+                db, context, Result("ok", "job_queued", "", {"reaction": "⏳"}), self.now
+            )
+        delivered = await deliver_async(
+            self.app.store, receipt_id, self.settings, self.transport, self.app.clock
+        )
+        self.assertEqual(delivered, 1)
+        self.assertEqual(len(self.sent), 1)
+        self.assertEqual(
+            self.sent[0],
+            {
+                "key": {
+                    "remoteJid": OWNER,
+                    "fromMe": False,
+                    "id": "MSG_REACTION_1",
+                },
+                "reaction": "⏳",
+            },
+        )
