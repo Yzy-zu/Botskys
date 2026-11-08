@@ -87,6 +87,8 @@ def authentication_state(path):
 
 
 class CloudflarePool:
+    provider_name = "cloudflare"
+
     def __init__(self,http,root,pool_file,*,model=MODEL,reasoning_effort=None,deadline_seconds=40,max_concurrency=2,clock=None,factory=CloudflareInterpreter):
         self.http,self.root=http,Path(root).absolute()
         self.path=owned_path(self.root,pool_file)
@@ -97,6 +99,7 @@ class CloudflarePool:
         self.clock=clock or (lambda:datetime.now(UTC))
         self.factory=factory
         self.providers={};self.cursor=0;self.last_metrics=None;self.paused_until=None
+        self.last_credential_alias=None
         self.load()
 
     def load(self):
@@ -139,7 +142,7 @@ class CloudflarePool:
         self.pauses={key:datetime.fromisoformat(value) for key,value in state['paused_until'].items()}
 
     async def propose(self,messages,tools):
-        self.last_metrics=None;self.paused_until=None
+        self.last_metrics=None;self.paused_until=None;self.last_credential_alias=None
         self.load()
         now=self.clock()
         available=[e for e in self.entries if self.pauses.get(e[1],now)<=now]
@@ -149,6 +152,7 @@ class CloudflarePool:
         alias,key,provider=available[self.cursor%len(available)];self.cursor+=1
         provider.last_metrics=None
         credential_fingerprint=self.providers[alias][0]
+        self.last_credential_alias = alias
         try:
             return await provider.propose(messages,tools)
         except InterpreterError as exc:

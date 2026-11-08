@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import logging
 import mimetypes
 import os
 from dataclasses import replace
@@ -16,6 +17,8 @@ from ..engines.media_stream import Base64JSONWriter, StreamMediaError, json_file
 from ..local_files import private_directory
 from .evolution_normalize import _content, normalize
 from .messenger import MessageError, Messenger
+
+logger = logging.getLogger(__name__)
 
 
 class EvolutionTransport:
@@ -156,8 +159,40 @@ class EvolutionTransport:
                     state, code = "rejected", receipt.result.code if receipt.result else "rejected"
             except ArtifactProblem as exc:
                 state, code = "rejected", exc.code
-            except ValueError, httpx.HTTPError, StreamMediaError, TimeoutError:
+                media_error = exc.code
+                mid = row["id"]
+                kind = None
+                if record and "message" in record:
+                    try:
+                        content_info = _content(record["message"])
+                        kind = content_info[2] if content_info else None
+                    except Exception:
+                        pass
+                logger.warning(
+                    "event=ingress_media_failed stage=transport.ingress provider=evolution receipt_id=%s kind=%s error_code=%s exc_type=%s",
+                    mid,
+                    kind,
+                    media_error,
+                    type(exc).__name__,
+                )
+            except (ValueError, httpx.HTTPError, StreamMediaError, TimeoutError) as exc:
                 state, code = "rejected", "transport_media_unavailable"
+                media_error = "media_download_failed"
+                mid = row["id"]
+                kind = None
+                if record and "message" in record:
+                    try:
+                        content_info = _content(record["message"])
+                        kind = content_info[2] if content_info else None
+                    except Exception:
+                        pass
+                logger.warning(
+                    "event=ingress_media_failed stage=transport.ingress provider=evolution receipt_id=%s kind=%s error_code=%s exc_type=%s",
+                    mid,
+                    kind,
+                    media_error,
+                    type(exc).__name__,
+                )
             if (
                 code
                 and not prior
@@ -231,7 +266,7 @@ class EvolutionTransport:
             return DeliveryAck(False)
         if part.kind == "table":
             if not self.native_tables_enabled or part.artifacts or part.text:
-                return DeliveryAck(False)
+                return DeliveryAck(False, None)
             from ..presentation.table import NativeTable
 
             try:
@@ -243,11 +278,39 @@ class EvolutionTransport:
                 table = NativeTable.parse(table_payload)
                 identifier = await self.api.send_table(c.scope.chat, table.payload())
                 return DeliveryAck(True, identifier)
-            except ValueError:
-                return DeliveryAck(False)
+            except ValueError as exc:
+                logger.warning(
+                    "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=invalid_payload http_status=%s exc_type=%s",
+                    part.receipt_id,
+                    part.position,
+                    part.kind,
+                    None,
+                    type(exc).__name__,
+                )
+                return DeliveryAck(False, None)
             except MessageError as exc:
+                logger.warning(
+                    "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=%s http_status=%s exc_type=%s",
+                    part.receipt_id,
+                    part.position,
+                    part.kind,
+                    exc.code,
+                    getattr(exc, "http_status", None),
+                    type(exc).__name__,
+                )
                 if not exc.uncertain:
-                    return DeliveryAck(False)
+                    return DeliveryAck(False, None)
+                raise
+            except Exception as exc:
+                logger.warning(
+                    "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=%s http_status=%s exc_type=%s",
+                    part.receipt_id,
+                    part.position,
+                    part.kind,
+                    getattr(exc, "code", "delivery_error"),
+                    getattr(exc, "http_status", getattr(exc, "status_code", None)),
+                    type(exc).__name__,
+                )
                 raise
         if not part.artifacts:
             try:
@@ -268,8 +331,28 @@ class EvolutionTransport:
                     return DeliveryAck(True, identifier or f"reaction-{part.receipt_id}")
                 return DeliveryAck(True, await self.api.send(c.scope.chat, "text", text=part.text))
             except MessageError as exc:
+                logger.warning(
+                    "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=%s http_status=%s exc_type=%s",
+                    part.receipt_id,
+                    part.position,
+                    part.kind,
+                    exc.code,
+                    getattr(exc, "http_status", None),
+                    type(exc).__name__,
+                )
                 if not exc.uncertain:
-                    return DeliveryAck(False)
+                    return DeliveryAck(False, None)
+                raise
+            except Exception as exc:
+                logger.warning(
+                    "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=%s http_status=%s exc_type=%s",
+                    part.receipt_id,
+                    part.position,
+                    part.kind,
+                    getattr(exc, "code", "delivery_error"),
+                    getattr(exc, "http_status", getattr(exc, "status_code", None)),
+                    type(exc).__name__,
+                )
                 raise
         if len(part.artifacts) != 1 or part.text:
             return DeliveryAck(False)
@@ -336,18 +419,65 @@ class EvolutionTransport:
                 follow_redirects=False,
             ) as response:
                 if 400 <= response.status_code < 500 and response.status_code != 409:
-                    return DeliveryAck(False)
+                    logger.warning(
+                        "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=delivery_rejected http_status=%s exc_type=%s",
+                        part.receipt_id,
+                        part.position,
+                        part.kind,
+                        response.status_code,
+                        None,
+                    )
+                    return DeliveryAck(False, None)
                 if not 200 <= response.status_code < 300:
+                    logger.warning(
+                        "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=delivery_uncertain http_status=%s exc_type=%s",
+                        part.receipt_id,
+                        part.position,
+                        part.kind,
+                        response.status_code,
+                        "MessageError",
+                    )
                     raise MessageError("delivery_uncertain")
                 data = bytearray()
                 async for block in response.aiter_bytes():
                     data.extend(block)
                     if len(data) > 65536:
+                        logger.warning(
+                            "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=invalid_ack http_status=%s exc_type=%s",
+                            part.receipt_id,
+                            part.position,
+                            part.kind,
+                            response.status_code,
+                            "MessageError",
+                        )
                         raise MessageError("invalid_ack")
                 result = json.loads(data)
                 provider_id = result.get("key", {}).get("id")
                 if not isinstance(provider_id, str) or not 0 < len(provider_id) <= 256:
+                    logger.warning(
+                        "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=missing_remote_id http_status=%s exc_type=%s",
+                        part.receipt_id,
+                        part.position,
+                        part.kind,
+                        response.status_code,
+                        "MessageError",
+                    )
                     raise MessageError("invalid_ack")
                 return DeliveryAck(True, provider_id)
+        except MessageError as exc:
+            if not exc.uncertain:
+                return DeliveryAck(False, None)
+            raise
+        except Exception as exc:
+            logger.warning(
+                "event=delivery_failed stage=transport.delivery provider=evolution receipt_id=%s position=%s kind=%s error_code=%s http_status=%s exc_type=%s",
+                part.receipt_id,
+                part.position,
+                part.kind,
+                getattr(exc, "code", "delivery_error"),
+                getattr(exc, "http_status", getattr(exc, "status_code", None)),
+                type(exc).__name__,
+            )
+            raise
         finally:
             await content.aclose()

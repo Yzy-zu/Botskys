@@ -568,3 +568,70 @@ class DownloadsTest(IsolatedAsyncioTestCase):
         self.assertIn("recetas rusas", SYSTEM)
         self.assertIn("recetas rusas", FINAL_RULES)
         self.assertIn("source='youtube', query='recetas rusas'", FINAL_RULES)
+
+    async def test_long_jobs_queue_reaction_report_stage_and_optimize_polling(self):
+        import time
+        from unittest.mock import patch
+        from botsky.contracts import DeliveryAck
+
+        # 1. Descarga por URL y búsqueda encolan reacción ⏳ sin texto repetitivo y detallan etapa en /estado
+        dl_receipt = self.receive("/dl mp4 " + W3)
+        self.assertEqual(dl_receipt.result.code, "job_queued")
+        self.assertEqual(dl_receipt.result.data.get("reaction"), "⏳")
+        queued_status = self.receive("/estado " + dl_receipt.id).result
+        self.assertIn("En cola (descarga).", queued_status.text)
+
+        reactions_sent = []
+        media_sent = []
+
+        class TrackingTransport:
+            def send(self, part):
+                if part.payload.get("reaction"):
+                    reactions_sent.append((part.text, part.payload["reaction"]))
+                    return DeliveryAck(True, "rx-1")
+                media_sent.append(part)
+                return DeliveryAck(True, f"media-{len(media_sent)}")
+
+        transport = TrackingTransport()
+        # Si se entrega mientras está en cola/ejecución, envía solo la reacción ⏳ vacía de texto
+        self.assertEqual(self.app.deliver(dl_receipt.id, transport), 1)
+        self.assertEqual(reactions_sent, [("", "⏳")])
+        self.assertEqual(media_sent, [])
+
+        # Ejecución rápida (<500ms) no realiza consultas de polling innecesarias a Jobs.current
+        current_calls = 0
+        orig_current = self.app.jobs.current
+
+        def counted_current(job):
+            nonlocal current_calls
+            current_calls += 1
+            return orig_current(job)
+
+        with patch.object(self.app.jobs, "current", side_effect=counted_current):
+            await self.app.jobs.run_pending()
+        self.assertEqual(current_calls, 0)
+
+        # Al terminar el trabajo, se entrega el archivo final una sola vez sin repetir la reacción
+        self.assertEqual(self.app.deliver(dl_receipt.id, transport), 1)
+        self.assertEqual(len(reactions_sent), 1)
+        self.assertEqual(len(media_sent), 1)
+
+        # 2. Cancelación en curso despierta inmediatamente sin esperar el intervalo de 500ms
+        slow_receipt = self.receive("/dl buscar mp4 consulta lenta")
+        started = asyncio.Event()
+
+        async def slow_engine(job, directory):
+            started.set()
+            await asyncio.sleep(10)
+
+        with patch.object(self.app.jobs, "execute_engine", slow_engine):
+            run_task = asyncio.create_task(self.app.jobs.run_pending())
+            await asyncio.wait_for(started.wait(), 1.0)
+            running_status = self.receive("/estado " + slow_receipt.id).result
+            self.assertIn("Lo estoy preparando (buscando resultados).", running_status.text)
+            t0 = time.monotonic()
+            cancel_res = self.receive("/cancelar " + slow_receipt.id)
+            self.assertEqual(cancel_res.result.status, "cancelled")
+            await asyncio.wait_for(run_task, 0.25)
+            elapsed = time.monotonic() - t0
+            self.assertLess(elapsed, 0.25)

@@ -498,7 +498,7 @@ async def _bounded_network_process(
     try:
         while True:
             _workspace_size(workspace, max_bytes)
-            done, _ = await asyncio.wait({task}, timeout=0.05)
+            done, _ = await asyncio.wait({task}, timeout=0.25)
             if done:
                 await task
                 _workspace_size(workspace, max_bytes)

@@ -1,11 +1,11 @@
-# Uso de Botsky · construcción local
+# Guía de uso de Botsky
 
-Actualización posterior: [credenciales e integraciones validadas por encargo](INTEGRACIONES.md). Las evidencias locales siguientes conservan su fecha y alcance.
+Repositorio operativo en `/home/petrov/botsky`, operable mediante servicio de supervisión (`botsky.service`), CLI local y transporte Evolution API. [Credenciales e integraciones validadas por encargo](INTEGRACIONES.md). Las evidencias locales conservan su fecha y alcance histórico; Zhana permanece archivada como referencia histórica separada.
 
 Botsky admite tanto comandos explícitos como peticiones en lenguaje natural cuando el intérprete conversacional está habilitado. Texto libre o texto que contenga comandos dentro de
 una nota, documento, audio transcrito o respuesta de IA no ejecuta herramientas.
 Los ejemplos usan IDs devueltos por Botsky; no son nombres visibles ni identidades
-inferidas. La instalación activa de Zhana continúa separada.
+inferidas.
 
 ### Tres ejemplos actuales y uso de **Responder**
 
@@ -55,11 +55,16 @@ mantienen consentimiento, publicación y saldo propios.
 
 Esta construcción utiliza conectores optativos. Sin configuración propia, Botsky
 devuelve un límite explícito; no toma claves, DB, contactos, sesiones ni catálogos
-privados de Zhana. Live requiere una única credencial y modelo explícitos. Avatar
-requiere modelo y licencia propios: actualmente no están configurados. El video
+privados de Zhana. Live requiere una única credencial y modelo explícitos. El activo
+VRM de Kazumi está configurado localmente con permiso del dueño, pero el motor de
+renderizado de avatar aún no está conectado en runtime. El video
 conserva la restricción de la solución original al privado del dueño o primer grupo.
 
-Las comprobaciones actuales son locales: motores reales sobre fixtures, clientes
-con fronteras locales/dobles, audio privado y WebRTC de loopback. Proveedores reales,
-WhatsApp, Android y aceptación humana esperan una campaña expresamente encargada.
-No hay cuenta, sesión, navegador o transporte productivo de Botsky activados.
+## Alcance de pruebas
+
+Las comprobaciones habituales de desarrollo y regresión son locales y reproducibles:
+motores reales sobre fixtures, clientes con fronteras locales/dobles, audio privado y
+WebRTC de loopback, sin tocar servicios externos. Para el historial de activación y
+despliegue en producción con transporte real, consúltense [README.md](../README.md) y
+[docs/R11_PRODUCCION_20261106.md](R11_PRODUCCION_20261106.md); estas pruebas locales
+no afirman ni verifican el estado en vivo de servicios externos.

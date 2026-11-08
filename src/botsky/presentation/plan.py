@@ -127,7 +127,8 @@ def text_parts(blocks, retain):
 def compile_result(result, retain, *, native_tables=False):
     data = result.data
     if data.get("reaction"):
-        return [Part("text", result.text, payload={"reaction": data["reaction"], "source_text": result.text})]
+        text = "" if result.code == "job_queued" else result.text
+        return [Part("text", text, payload={"reaction": data["reaction"], "source_text": text})]
     media_only = {"sticker_created", "reaction_ready", "voice_ready"}
     if result.code in media_only and data.get("artifacts"):
         return [

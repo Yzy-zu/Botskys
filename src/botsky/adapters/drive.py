@@ -101,7 +101,10 @@ class DriveClient:
     @staticmethod
     def _json(response: httpx.Response, code: str = "drive_rejected") -> dict:
         if not 200 <= response.status_code < 300:
-            raise DriveError("not_found" if response.status_code == 404 else code)
+            raise DriveError(
+                "not_found" if response.status_code == 404 else code,
+                http_status=response.status_code,
+            )
         if len(response.content) > 65536:
             raise DriveError("invalid_provider_result")
         try:
@@ -465,7 +468,7 @@ class DriveClient:
                 follow_redirects=False,
             ) as response:
                 if response.status_code != 200:
-                    raise DriveError("download_rejected")
+                    raise DriveError("download_rejected", http_status=response.status_code)
                 result = bytearray()
                 async for chunk in response.aiter_bytes():
                     if len(result) + len(chunk) > MAX_FILE_BYTES:

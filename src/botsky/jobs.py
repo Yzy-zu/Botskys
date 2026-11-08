@@ -2,9 +2,11 @@
 
 import asyncio
 import json
+import logging
 import math
 import re
 import shutil
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from uuid import uuid4
@@ -15,9 +17,60 @@ from .contracts import Result, canonical
 from .local_files import private_directory, worker_lock
 from .store import context_of
 
+logger = logging.getLogger(__name__)
+
 MAX_CONCURRENCY = 2
 MAX_QUEUED = 128
 MAX_ACTOR_QUEUED = 8
+JOB_POLL_INTERVAL_SECONDS = 0.5
+
+PROGRESS_OPERATIONS = (
+    "download_media.",
+    "convert_document.",
+    "edit_media.",
+    "manage_pdf.",
+    "make_sticker.",
+    "read_image.",
+    "search_web.",
+    "manage_drive.",
+    "conversation.",
+    "make_voice.",
+    "transcribe_media.",
+)
+
+_CANCEL_WAITERS: dict[str, set[asyncio.Event]] = {}
+
+
+def _notify_job_change(job_id: str) -> None:
+    waiters = _CANCEL_WAITERS.get(job_id)
+    if waiters:
+        for event in tuple(waiters):
+            event.set()
+
+
+def _job_provider(operation: str, arguments: dict | None = None) -> str:
+    args = arguments if isinstance(arguments, dict) else {}
+    if operation.startswith("download_media."):
+        return str(args.get("source") or "downloads")
+    if operation.startswith(
+        ("convert_document.", "edit_media.", "manage_pdf.", "make_sticker.", "read_image.")
+    ):
+        return "local_media"
+    if operation.startswith("search_web."):
+        return "web"
+    if operation.startswith("manage_drive."):
+        return "drive"
+    if operation.startswith("conversation."):
+        return "gemini"
+    if operation.startswith("make_voice."):
+        return "tts"
+    if operation.startswith("transcribe_media."):
+        return "whisper"
+    if operation.startswith("manage_minecraft."):
+        return "minecraft"
+    if operation.startswith(("control_call.", "audiovisual.")):
+        return "calls"
+    return operation.split(".", 1)[0] or "local"
 
 
 @dataclass(frozen=True)
@@ -104,6 +157,10 @@ def cancel_job(db, context, target):
     )
     db.execute("UPDATE effects SET result_json=? WHERE receipt_id=?", (result.to_json(), target))
     db.execute(
+        "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL",
+        (target,),
+    )
+    db.execute(
         "UPDATE outbox SET state='cancelled',revision=revision+1 WHERE receipt_id=? AND state='pending'",
         (target,),
     )
@@ -120,6 +177,7 @@ def cancel_job(db, context, target):
                 "UPDATE pdf_sessions SET state='open',revision=revision+1 WHERE id=? AND state='processing' AND revision=?",
                 (args["session_id"], args["session_revision"]),
             )
+    _notify_job_change(target)
     return result
 
 
@@ -206,11 +264,14 @@ class Jobs:
                 now,
             ),
         )
+        data = {"job_id": context.receipt_id}
+        if operation.startswith(PROGRESS_OPERATIONS):
+            data["reaction"] = "⏳"
         return Result(
             "ok",
             "job_queued",
             "Trabajo en cola. Usa /estado para consultarlo.",
-            {"job_id": context.receipt_id},
+            data,
         )
 
     def claim(self):
@@ -221,6 +282,12 @@ class Jobs:
                 (self.settings.instance, self.settings.account, self.settings.epoch, now),
             ).fetchall()
             for row in interrupted:
+                logger.warning(
+                    "event=job_interrupted job_id=%s stage=job.recover operation=%s provider=%s error_code=provider_interrupted",
+                    row["id"],
+                    row["operation"],
+                    _job_provider(row["operation"], json.loads(row["arguments_json"])),
+                )
                 _retire_domain_job(db, row["operation"], row["id"], now)
                 db.execute(
                     "UPDATE drive_uploads SET state='uncertain',updated_ms=? WHERE receipt_id=? AND state='reserved'",
@@ -520,6 +587,8 @@ class Jobs:
         staged = []
         task = None
         published = False
+        started = time.monotonic()
+        provider = _job_provider(job["operation"], job.get("arguments"))
         try:
             if job["early_result"]:
                 output = EngineOutput(job["early_result"])
@@ -536,14 +605,43 @@ class Jobs:
                     return await enrich(await self.execute_engine(job, directory))
 
                 task = asyncio.create_task(execute_with_facts())
-                async with asyncio.timeout(job["budget"]):
-                    while not task.done():
-                        await asyncio.wait([task], timeout=0.05)
-                        if not self.current(job):
-                            task.cancel()
-                            await asyncio.gather(task, return_exceptions=True)
-                            return
-                    output = await task
+                signal = asyncio.Event()
+                _CANCEL_WAITERS.setdefault(job["id"], set()).add(signal)
+                signal_task = asyncio.create_task(signal.wait())
+                try:
+                    async with asyncio.timeout(job["budget"]):
+                        while not task.done():
+                            await asyncio.wait(
+                                [task, signal_task],
+                                timeout=JOB_POLL_INTERVAL_SECONDS,
+                                return_when=asyncio.FIRST_COMPLETED,
+                            )
+                            if signal.is_set():
+                                signal.clear()
+                                signal_task = asyncio.create_task(signal.wait())
+                            if not task.done() and not self.current(job):
+                                task.cancel()
+                                await asyncio.gather(task, return_exceptions=True)
+                                return
+                        output = await task
+                finally:
+                    signal_task.cancel()
+                    waiters = _CANCEL_WAITERS.get(job["id"])
+                    if waiters is not None:
+                        waiters.discard(signal)
+                        if not waiters:
+                            _CANCEL_WAITERS.pop(job["id"], None)
+            if output.result.status in ("failed", "uncertain"):
+                duration_ms = int((time.monotonic() - started) * 1000)
+                logger.warning(
+                    "event=job_failed job_id=%s stage=job.result operation=%s provider=%s status=%s error_code=%s duration_ms=%d",
+                    job["id"],
+                    job["operation"],
+                    provider,
+                    output.result.status,
+                    output.result.code,
+                    duration_ms,
+                )
             for file in output.files:
                 staged.append(self.artifacts.stage(file, output=True))
             published = self.finish(job, output, staged)
@@ -564,6 +662,20 @@ class Jobs:
                 code = exc.code
             if isinstance(exc, TimeoutError):
                 code = "job_timeout"
+            duration_ms = int((time.monotonic() - started) * 1000)
+            http_status = getattr(exc, "http_status", None) or getattr(
+                exc.__cause__, "http_status", None
+            )
+            logger.warning(
+                "event=job_exception job_id=%s stage=job.execute operation=%s provider=%s error_code=%s exc_type=%s http_status=%s duration_ms=%d",
+                job["id"],
+                job["operation"],
+                provider,
+                code,
+                type(exc).__name__,
+                http_status,
+                duration_ms,
+            )
             from .engines.documents import present_document_error
             from .presentation.errors import job_error
 

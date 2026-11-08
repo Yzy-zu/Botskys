@@ -259,3 +259,62 @@ class WorkerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(notes_res.code, 'notes_found')
         self.assertIn('pan', notes_res.text)
         self.assertEqual([item['text'] for item in notes_res.data['items']], ['pan'])
+
+    async def test_structured_error_diagnostics_log_stage_provider_code_duration_without_secrets(self):
+        from botsky.adapters.cloudflare_interpreter import InterpreterError
+        from botsky.engines.process import MediaError
+        from unittest.mock import patch
+
+        secret_message = 'clave-secreta-personal-998877'
+
+        class FailingFrontend:
+            def __init__(self, catalog):
+                self.catalog = catalog
+                self.interpreter = type(
+                    'StubPool',
+                    (),
+                    {'provider_name': 'cloudflare', 'last_credential_alias': 'cf-2'},
+                )()
+
+            async def decide(self, text, context):
+                raise InterpreterError('provider_http_503')
+
+        self.app.frontend = FailingFrontend(self.frontend.catalog)
+        r1 = self.app.receive(self.incoming('diag-1', secret_message, actor='alice'))
+        with self.assertLogs('botsky.frontend.worker', level='WARNING') as front_logs:
+            await run_one(self.app)
+        joined_front = '\n'.join(front_logs.output)
+        self.assertIn('event=frontend_decide_failed', joined_front)
+        self.assertIn(f'receipt_id={r1.id}', joined_front)
+        self.assertIn('stage=frontend.decide', joined_front)
+        self.assertIn('provider=cloudflare:cf-2', joined_front)
+        self.assertIn('error_code=provider_http_503', joined_front)
+        self.assertIn('http_status=503', joined_front)
+        self.assertIn('duration_ms=', joined_front)
+        self.assertNotIn(secret_message, joined_front)
+
+        # Fallo en ejecución de trabajo registra job_id, stage, operation, provider, error_code y duration_ms
+        from PIL import Image
+        source = self.settings.root / 'diag.png'
+        Image.new('RGB', (16, 16), 'white').save(source)
+        self.frontend.decision = ActionRequest('convertir', {'target': 'pdf'})
+        self.app.frontend = self.frontend
+        inc_job = self.app.attach_local(self.incoming('diag-2', secret_message, actor='alice'), source)
+        r2 = self.app.receive(inc_job)
+        await run_one(self.app)
+
+        async def failing_engine(job, directory):
+            raise MediaError('process_timeout')
+
+        with patch.object(self.app.jobs, 'execute_engine', failing_engine):
+            with self.assertLogs('botsky.jobs', level='WARNING') as job_logs:
+                await self.app.jobs.run_pending()
+        joined_jobs = '\n'.join(job_logs.output)
+        self.assertIn('event=job_exception', joined_jobs)
+        self.assertIn(f'job_id={r2.id}', joined_jobs)
+        self.assertIn('stage=job.execute', joined_jobs)
+        self.assertIn('operation=convert_document.run', joined_jobs)
+        self.assertIn('provider=local_media', joined_jobs)
+        self.assertIn('error_code=process_timeout', joined_jobs)
+        self.assertIn('duration_ms=', joined_jobs)
+        self.assertNotIn(secret_message, joined_jobs)

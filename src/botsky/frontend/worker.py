@@ -1,6 +1,8 @@
 """Claim durable, inferencia fuera de transacción y adopción atómica sin reintento."""
 import asyncio
 import json
+import logging
+import time
 import uuid
 from dataclasses import asdict
 from datetime import UTC, datetime
@@ -15,7 +17,38 @@ from botsky.store import context_of
 from .contracts import ActionRequest, ClarifyDecision, ReplyDecision
 from .context import load, save_draft, adopt_context
 
+logger = logging.getLogger(__name__)
+
 _ACTIVE_SCOPES: dict[tuple, asyncio.Event] = {}
+
+
+def _provider_name(frontend) -> str:
+    interp = getattr(frontend, "interpreter", None) or getattr(frontend, "provider", None) if frontend else None
+    if interp is None:
+        return "none"
+    if hasattr(interp, "active_provider"):
+        active = getattr(interp, "active_provider", "primary")
+        target = getattr(interp, active, None) or interp
+    else:
+        target = interp
+
+    alias = getattr(target, "last_credential_alias", None)
+    if not alias and hasattr(interp, "last_credential_alias"):
+        alias = getattr(interp, "last_credential_alias", None)
+
+    name = getattr(target, "provider_name", None)
+    if not name:
+        target_cls = type(target).__name__.lower()
+        if "gemini" in target_cls:
+            name = "gemini"
+        elif "cloudflare" in target_cls:
+            name = "cloudflare"
+        else:
+            name = target_cls
+
+    if alias:
+        return f"{name}:{alias}"
+    return str(name)
 
 
 def _scope_key(app, row):
@@ -29,6 +62,32 @@ def finish(app, db, row, state, result, now, decision=None):
     app.store.enqueue(db, context_of(row), result, now)
 
 
+def _fail_running_expired(app, db, now):
+    expired = db.execute(
+        "SELECT i.* FROM frontend_tasks f JOIN inbox i ON i.id=f.receipt_id "
+        "WHERE f.state='running' AND f.deadline_ms<=? AND i.instance=? AND i.account=? AND i.epoch=?",
+        (now, app.settings.instance, app.settings.account, app.settings.epoch),
+    ).fetchall()
+    for row in expired:
+        if row['state'] == 'queued':
+            logger.warning(
+                "event=frontend_expired receipt_id=%s stage=frontend.expired error_code=frontend_interrupted",
+                row['id'],
+            )
+            finish(
+                app,
+                db,
+                row,
+                'failed',
+                Result(
+                    'failed',
+                    'frontend_interrupted',
+                    'Hubo una pausa inesperada al procesar tu mensaje. Por favor, vuelve a enviarlo.',
+                ),
+                now,
+            )
+
+
 async def run_one(app):
     while True:
         now = app.clock()
@@ -37,10 +96,7 @@ async def run_one(app):
         skey = None
         with app.store.transaction() as db:
             # An interrupted inference is never submitted again. Late responses lose token/state.
-            expired = db.execute("SELECT i.* FROM frontend_tasks f JOIN inbox i ON i.id=f.receipt_id WHERE f.state='running' AND f.deadline_ms<=? AND i.instance=? AND i.account=? AND i.epoch=?", (now, app.settings.instance, app.settings.account, app.settings.epoch)).fetchall()
-            for row in expired:
-                if row['state'] == 'queued':
-                    finish(app, db, row, 'failed', Result('failed', 'frontend_interrupted', 'Hubo una pausa inesperada al procesar tu mensaje. Por favor, vuelve a enviarlo.'), now)
+            _fail_running_expired(app, db, now)
             db.execute("UPDATE frontend_tasks SET state='cancelled',updated_ms=? WHERE state IN ('pending','running') AND receipt_id IN (SELECT id FROM inbox WHERE state!='queued')", (now,))
             candidates = db.execute(
                 "SELECT i.* FROM frontend_tasks f JOIN inbox i ON i.id=f.receipt_id "
@@ -87,6 +143,7 @@ async def run_one(app):
     try:
         with app.store.transaction() as db:
             snapshot, draft = load(app, db, row, now)
+        decide_start = time.monotonic()
         try:
             async with asyncio.timeout(50):
                 decision = await app.frontend.decide(row['text'], {
@@ -95,10 +152,52 @@ async def run_one(app):
                     'attachments': json.loads(row['attachments_json']), **snapshot})
             error = None
         except InterpreterError as exc:
+            duration_ms = int((time.monotonic() - decide_start) * 1000)
             decision = None
-            error = 'frontend_quota_exhausted' if str(exc) == 'daily_quota_pool' else 'frontend_account_quota' if str(exc) == 'daily_quota' else 'frontend_unavailable'
-        except Exception:
+            err_str = str(exc)
+            error = 'frontend_quota_exhausted' if err_str == 'daily_quota_pool' else 'frontend_account_quota' if err_str == 'daily_quota' else 'frontend_unavailable'
+            provider = _provider_name(app.frontend)
+            http_status = getattr(exc, "http_status", None)
+            if http_status is None and err_str.startswith("provider_http_"):
+                try:
+                    http_status = int(err_str.split("_")[-1])
+                except ValueError:
+                    pass
+            logger.warning(
+                "event=frontend_decide_failed receipt_id=%s stage=frontend.decide provider=%s error_code=%s http_status=%s exc_type=%s duration_ms=%d",
+                row['id'],
+                provider,
+                getattr(exc, "code", err_str),
+                http_status,
+                type(exc).__name__,
+                duration_ms,
+            )
+        except TimeoutError as exc:
+            duration_ms = int((time.monotonic() - decide_start) * 1000)
             decision, error = None, 'frontend_unavailable'
+            provider = _provider_name(app.frontend)
+            logger.warning(
+                "event=frontend_decide_failed receipt_id=%s stage=frontend.decide provider=%s error_code=%s http_status=%s exc_type=%s duration_ms=%d",
+                row['id'],
+                provider,
+                "timeout",
+                None,
+                type(exc).__name__,
+                duration_ms,
+            )
+        except Exception as exc:
+            duration_ms = int((time.monotonic() - decide_start) * 1000)
+            decision, error = None, 'frontend_unavailable'
+            provider = _provider_name(app.frontend)
+            logger.warning(
+                "event=frontend_decide_failed receipt_id=%s stage=frontend.decide provider=%s error_code=%s http_status=%s exc_type=%s duration_ms=%d",
+                row['id'],
+                provider,
+                getattr(exc, "code", str(exc)),
+                getattr(exc, "http_status", None),
+                type(exc).__name__,
+                duration_ms,
+            )
         with app.store.transaction() as db:
             current = db.execute("SELECT i.*,f.state AS frontend_state,f.token,f.deadline_ms FROM inbox i JOIN frontend_tasks f ON f.receipt_id=i.id WHERE i.id=?", (row['id'],)).fetchone()
             if current['state'] != 'queued' or current['frontend_state'] != 'running' or current['token'] != token:
@@ -117,9 +216,18 @@ async def run_one(app):
                 try:
                     decision = adopt_context(app, db, current, decision, snapshot, draft, now)
                     parsed = app.frontend.catalog.build(decision)
-                except (ValueError, KeyError, TypeError, ArtifactProblem):
+                except (ValueError, KeyError, TypeError, ArtifactProblem) as exc:
                     db.execute('ROLLBACK TO frontend_adoption')
                     db.execute('RELEASE frontend_adoption')
+                    action_key = getattr(decision, "action_key", None)
+                    error_code = getattr(exc, "code", str(exc))
+                    logger.warning(
+                        "event=frontend_adopt_failed receipt_id=%s stage=frontend.adopt action_key=%s error_code=%s exc_type=%s",
+                        current['id'],
+                        action_key,
+                        error_code,
+                        type(exc).__name__,
+                    )
                     finish(app, db, current, 'failed', Result('failed', 'invalid_proposal', 'No pude procesar esa acción con los datos indicados. Escribe claramente qué deseas hacer o responde al mensaje correspondiente.'), now)
                     return True
                 db.execute('RELEASE frontend_adoption')
@@ -136,9 +244,17 @@ async def run_one(app):
                     db.execute('SAVEPOINT frontend_draft')
                     try:
                         save_draft(app, db, current, decision, now)
-                    except (ValueError, ArtifactProblem):
+                    except (ValueError, ArtifactProblem) as exc:
                         db.execute('ROLLBACK TO frontend_draft')
                         db.execute('RELEASE frontend_draft')
+                        if isinstance(exc, ValueError):
+                            kind = getattr(decision, "action_key", None) or "clarify"
+                            logger.warning(
+                                "event=frontend_draft_failed receipt_id=%s stage=frontend.draft kind=%s error_code=invalid_draft exc_type=%s",
+                                current['id'],
+                                kind,
+                                type(exc).__name__,
+                            )
                         finish(app, db, current, 'failed', Result('failed', 'invalid_draft', 'No pude guardar el borrador de tu solicitud. Por favor, vuelve a indicarla desde el principio.'), now)
                         return True
                     db.execute('RELEASE frontend_draft')

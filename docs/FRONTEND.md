@@ -1,5 +1,7 @@
 # Frontend conversacional · F4
 
+> Nota de estado actual (esquema 20): La operación actual utiliza el intérprete híbrido Gemini/Cloudflare (`HybridInterpreter`) con pool de cuentas Cloudflare (`CloudflarePool`, Qwen 3.8) y `botsky.service`. Las notas de cierre y diseño F4/F7 conservadas más abajo forman parte del registro histórico de aquellas fases de desarrollo (cuando aún se utilizaba GLM sin pools y antes del despliegue productivo de R11).
+
 Admisión durable conectada a `Application.frontend` cuando está configurado.
 Runtime ejecuta el worker en un bucle independiente; no se activa producción aquí.
 Una decisión es una propuesta validada, nunca evidencia de efecto.

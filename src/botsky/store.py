@@ -352,6 +352,15 @@ class Store:
                     else result.text
                 )
             parts[0][2]["source_full"] = source
+        if not result.data.get("reaction"):
+            eff = db.execute(
+                "SELECT operation FROM effects WHERE receipt_id=?", (context.receipt_id,)
+            ).fetchone()
+            if not eff or eff["operation"] != "download_media.choose":
+                db.execute(
+                    "DELETE FROM outbox WHERE receipt_id=? AND state='pending' AND json_extract(rich_payload_json,'$.reaction') IS NOT NULL",
+                    (context.receipt_id,),
+                )
         start_pos = db.execute(
             "SELECT coalesce(max(position) + 1, 0) FROM outbox WHERE receipt_id=?",
             (context.receipt_id,),
@@ -502,9 +511,13 @@ class Store:
             )
         ]
         job = db.execute(
-            "SELECT state,revision,result_json FROM jobs WHERE id=?", (target,)
+            "SELECT operation,state,revision,result_json FROM jobs WHERE id=?", (target,)
         ).fetchone()
-        job_data = {"state": job["state"], "revision": job["revision"]} if job else None
+        job_data = (
+            {"operation": job["operation"], "state": job["state"], "revision": job["revision"]}
+            if job
+            else None
+        )
         if job and job["result_json"]:
             result = Result.from_json(job["result_json"])
             job_data.update(status=result.status, code=result.code)
@@ -527,7 +540,7 @@ class Store:
         return Result(
             "ok",
             "receipt_state",
-            self.state_text(visible_state, deliveries),
+            self.state_text(visible_state, deliveries, operation=job["operation"] if job else None),
             {
                 "id": target,
                 "state": visible_state if visible_state in ("failed", "cancelled", "uncertain") else row["state"],
@@ -539,7 +552,7 @@ class Store:
         )
 
     @staticmethod
-    def state_text(state, deliveries):
+    def state_text(state, deliveries, *, operation=None):
         labels = {
             "queued": "En cola.",
             "running": "Lo estoy preparando.",
@@ -550,6 +563,24 @@ class Store:
             "uncertain": "No pude confirmar el resultado. Revisa antes de repetirlo.",
         }
         text = labels.get(state, "Estado no disponible.")
+        if operation and state in ("queued", "running"):
+            stage_labels = (
+                (("download_media.search", "search_web.", "manage_drive.search"), "búsqueda", "buscando resultados"),
+                (("download_media.",), "descarga", "descargando archivo"),
+                (("convert_document.", "edit_media.", "make_sticker."), "conversión", "convirtiendo archivo"),
+                (("manage_pdf.",), "PDF", "procesando PDF"),
+                (("read_image.",), "lectura de imagen", "leyendo imagen"),
+                (("transcribe_media.",), "transcripción", "transcribiendo audio"),
+                (("make_voice.",), "voz", "generando audio"),
+                (("manage_drive.",), "Drive", "sincronizando con Drive"),
+                (("conversation.",), "consulta", "generando respuesta"),
+            )
+            for prefixes, queued_hint, running_hint in stage_labels:
+                if operation.startswith(prefixes):
+                    hint = queued_hint if state == "queued" else running_hint
+                    base = "En cola" if state == "queued" else "Lo estoy preparando"
+                    text = f"{base} ({hint})."
+                    break
         states = {part["state"] for part in deliveries}
         if states & {"uncertain", "sending"}:
             text += " No pude confirmar si llegó todo. Revisa antes de reenviarlo."
