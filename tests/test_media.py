@@ -145,7 +145,7 @@ class MediaTest(IsolatedAsyncioTestCase):
                 "-f",
                 "lavfi",
                 "-i",
-                "testsrc=size=320x240:rate=15",
+                "testsrc2=size=640x360:rate=30",
                 "-t",
                 "10",
                 str(video),
@@ -153,6 +153,7 @@ class MediaTest(IsolatedAsyncioTestCase):
             15,
         )
         from botsky.engines import images
+        from botsky.engines.images import _animated_webp_durations
 
         original_run_process = images.run_process
         encoding_args = []
@@ -172,11 +173,17 @@ class MediaTest(IsolatedAsyncioTestCase):
             filter_graph = argv[argv.index("-vf") + 1]
             self.assertNotIn("deband", filter_graph)
             self.assertIn("flags=lanczos", filter_graph)
-            self.assertGreaterEqual(int(argv[argv.index("-q:v") + 1]), 76)
+            fps = int(filter_graph.split("fps=", 1)[1].split(",", 1)[0])
+            self.assertGreaterEqual(fps, 24)
+            self.assertEqual(argv[argv.index("-t") + 1], "10.0")
+            self.assertGreaterEqual(int(argv[argv.index("-q:v") + 1]), 48)
+        frame_times = _animated_webp_durations(sticker_path)
+        self.assertGreaterEqual(sum(frame_times), 9800)
+        self.assertLessEqual(sum(frame_times), 10200)
         with Image.open(sticker_path) as image:
             self.assertEqual((image.format, image.size), ("WEBP", (512, 512)))
             self.assertTrue(getattr(image, "is_animated", False))
-            self.assertGreaterEqual(getattr(image, "n_frames", 1), 60)
+            self.assertGreaterEqual(getattr(image, "n_frames", 1), 200)
 
     async def test_animated_webp_sticker_strictly_under_limit_with_metadata(self):
         # Create an animated WebP and convert it to sticker

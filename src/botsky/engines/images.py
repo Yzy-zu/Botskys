@@ -300,30 +300,25 @@ async def sticker(path: Path, directory: Path):
 
     effective_duration = min(duration, 10.0) if duration > 0 else 10.0
 
-    # Debanding with blur destroyed high-frequency detail in every clip.
-    scale = (
-        "scale=512:512:force_original_aspect_ratio=decrease:flags=lanczos,"
-        "format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1,format=yuva420p"
+    # Never shorten a source clip to meet the sticker byte budget. Preserve
+    # the first 10 seconds and keep motion fluid (24-30fps). When necessary,
+    # reduce encoded image detail instead of dropping frames or using blocky
+    # low-quality WebP quantization. The result stays on a 512px canvas.
+    profiles = (
+        (512, 30, 70),
+        (512, 30, 55),
+        (448, 30, 60),
+        (384, 30, 55),
+        (512, 24, 58),
+        (448, 24, 56),
+        (384, 24, 55),
+        (320, 30, 55),
+        (320, 24, 52),
+        (288, 24, 50),
+        (256, 24, 48),
     )
-    # Keep visual quality high. Shorten a difficult clip before heavily
-    # quantizing all its frames to squeeze ten seconds below the byte limit.
-    profile_candidates = (
-        (10, 88, 12),
-        (10, 82, 10),
-        (10, 76, 8),
-        (6, 88, 12),
-        (6, 82, 10),
-        (4, 88, 12),
-        (4, 82, 10),
-        (3, 76, 8),
-    )
-    profiles = []
-    for max_seconds, quality, fps in profile_candidates:
-        candidate = (min(effective_duration, float(max_seconds)), quality, fps)
-        if candidate not in profiles:
-            profiles.append(candidate)
     output = directory / "sticker.webp"
-    for clip_seconds, quality, fps in profiles:
+    for render_size, fps, quality in profiles:
         if output.exists():
             output.unlink()
         try:
@@ -342,10 +337,11 @@ async def sticker(path: Path, directory: Path):
                     "-i",
                     str(path),
                     "-t",
-                    str(clip_seconds),
+                    str(effective_duration),
                     "-an",
                     "-vf",
-                    f"fps={fps},{scale}",
+                    f"fps={fps},scale={render_size}:{render_size}:force_original_aspect_ratio=decrease:flags=lanczos,"
+                    "format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000,setsar=1,format=yuva420p",
                     "-c:v",
                     "libwebp_anim",
                     "-preset",
