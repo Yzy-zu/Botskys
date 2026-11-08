@@ -286,6 +286,8 @@ def build_specs():
             "facebook",
             "instagram",
             "tiktok",
+            "twitter",
+            "x",
             "spotify",
             "pornhub",
             "xnxx",

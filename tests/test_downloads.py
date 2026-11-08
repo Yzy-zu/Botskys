@@ -231,6 +231,7 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             "facebook": "https://www.facebook.com/reel/12345678",
             "instagram": "https://www.instagram.com/reel/Synthetic01/",
             "tiktok": "https://www.tiktok.com/@synthetic/video/12345678",
+            "twitter": "https://x.com/acervodoguinhos/status/2119437133891199166/video/1",
             "pornhub": "https://www.pornhub.com/view_video.php?viewkey=synthetic",
             "xnxx": "https://www.xnxx.com/video-synthetic/example",
         }
@@ -244,11 +245,22 @@ class DownloadsTest(IsolatedAsyncioTestCase):
             download_source(validate_url("https://es.pornhub.com/view_video.php?viewkey=synthetic", adult=True)),
             "pornhub",
         )
+        self.assertEqual(
+            download_source(validate_url("https://twitter.com/acervodoguinhos/status/2119437133891199166")),
+            "twitter",
+        )
+        self.assertEqual(
+            download_source(validate_url("https://t.co/abcXYZ123")),
+            "twitter",
+        )
         self.assertIn(
             "open.spotify.com",
             validate_url("https://open.spotify.com/track/0123456789abcdefghijkl"),
         )
         for url in (
+            "https://x.com/home",
+            "https://x.com/acervodoguinhos",
+            "https://twitter.com/settings",
             "https://127.0.0.1/a",
             "https://[::1]/a",
             "https://www.youtube.com.evil.test/watch?v=AbCDEfgHI12",

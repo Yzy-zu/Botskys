@@ -50,8 +50,9 @@ DownloadSource = Literal[
     "facebook",
     "instagram",
     "tiktok",
+    "twitter",
 ]
-SOCIAL_SOURCES = frozenset({"facebook", "instagram", "tiktok"})
+SOCIAL_SOURCES = frozenset({"facebook", "instagram", "tiktok", "twitter"})
 
 
 def _social_url(host: str, path: str, query: str) -> str | None:
@@ -80,13 +81,28 @@ def _social_url(host: str, path: str, query: str) -> str | None:
     if host in {"vm.tiktok.com", "vt.tiktok.com"}:
         if re.fullmatch(r"/[A-Za-z0-9]+/?", path):
             return f"https://{host}{path}"
+    if host in {
+        "x.com",
+        "www.x.com",
+        "twitter.com",
+        "www.twitter.com",
+        "mobile.twitter.com",
+        "m.twitter.com",
+    }:
+        if re.fullmatch(
+            r"/(?:(?:[A-Za-z0-9_]+|i(?:/web)?)/status|statuses)/[0-9]+(?:/(?:video|photo)/[0-9]+)?/?",
+            path,
+        ):
+            return f"https://x.com{path}"
+    if host == "t.co" and re.fullmatch(r"/[A-Za-z0-9]+/?", path):
+        return f"https://t.co{path}"
     return None
 
 
 def _social_short_url(url: str) -> bool:
     parts = urlsplit(url)
     return (
-        parts.hostname in {"fb.watch", "vm.tiktok.com", "vt.tiktok.com"}
+        parts.hostname in {"fb.watch", "vm.tiktok.com", "vt.tiktok.com", "t.co"}
         or (parts.hostname == "www.facebook.com" and parts.path.startswith("/share/"))
         or (parts.hostname == "www.tiktok.com" and parts.path.startswith("/t/"))
         or (parts.hostname == "www.instagram.com" and parts.path.startswith("/share/"))
@@ -310,6 +326,16 @@ def download_source(url: str) -> DownloadSource:
         return "instagram"
     if host in {"www.tiktok.com", "vm.tiktok.com", "vt.tiktok.com"}:
         return "tiktok"
+    if host in {
+        "x.com",
+        "www.x.com",
+        "twitter.com",
+        "www.twitter.com",
+        "mobile.twitter.com",
+        "m.twitter.com",
+        "t.co",
+    }:
+        return "twitter"
     if host == "www.dailymotion.com":
         return "dailymotion"
     if host == "vimeo.com":
@@ -396,6 +422,7 @@ def _allowed_host(host: str, source: DownloadSource | None = None) -> bool:
         "muscdn.com",
         "musical.ly",
     )
+    twitter = domain("twitter.com", "x.com", "twimg.com", "t.co")
     if source is None:
         return youtube or host == "media.w3.org"
     return {
@@ -409,6 +436,7 @@ def _allowed_host(host: str, source: DownloadSource | None = None) -> bool:
         "facebook": facebook,
         "instagram": instagram,
         "tiktok": tiktok,
+        "twitter": twitter,
     }[source]
 
 
@@ -726,6 +754,7 @@ class Downloader:
                 "facebook": "facebook,facebook:reel",
                 "instagram": "instagram",
                 "tiktok": "tiktok",
+                "twitter": "twitter",
             }[source],
             "--proxy",
             proxy,

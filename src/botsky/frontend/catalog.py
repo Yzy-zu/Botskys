@@ -8,7 +8,7 @@ from botsky.commands.validation import validate_arguments
 
 from .editorial import description, field_description, reference_fields
 
-URL_SOURCES = ('youtube', 'dailymotion', 'vimeo', 'facebook', 'instagram', 'tiktok', 'spotify', 'pornhub', 'xnxx')
+URL_SOURCES = ('youtube', 'dailymotion', 'vimeo', 'facebook', 'instagram', 'tiktok', 'twitter', 'x', 'spotify', 'pornhub', 'xnxx')
 
 SELECTIONS = {'download_media.choose', 'download_media.inspect', 'manage_drive.choose'}
 

@@ -34,6 +34,10 @@ def source_label(url):
         "w3": "W3C",
         "vimeo": "Vimeo",
         "dailymotion": "Dailymotion",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "X (Twitter)",
     }
     source = download_source(url)
     return labels.get(source, source)
