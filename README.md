@@ -1,55 +1,128 @@
 # Botsky
 
-**Producción activa06/11:** Botsky reemplazó a Zhana por instrucción expresa del propietario y dispensa del gateR10. [Estado, alcance y reversión](docs/R11_PRODUCCION_20261106.md). Zhana archivada recuperable; datos nuevos, sin migrar DB31. Los apartados siguientes conservan cierres históricos.
+> Asistente local-first para WhatsApp: comandos explícitos, automatización práctica y permisos verificables.
 
-Reconstrucción independiente por comandos explícitos y lenguaje natural acotado.
-Documentación de uso y referencia: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md) y [docs/commands.md](docs/commands.md).
-Estado real y siguiente trabajo en [ESTADO_COMPARTIDO.md](ESTADO_COMPARTIDO.md).
+[![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![SQLite](https://img.shields.io/badge/Storage-SQLite-003B57?logo=sqlite&logoColor=white)](docs/RUNTIME.md)
+[![Tests](https://img.shields.io/badge/Tests-Python%20%2B%20Node-6E56CF)](tests/)
+[![Status](https://img.shields.io/badge/Status-Active%20development-2EA043)](ESTADO_COMPARTIDO.md)
 
-### Ejemplos actuales y uso de **Responder**
+Botsky reconstruye un asistente operativo independiente alrededor de una idea sencilla: **la IA puede generar contenido, pero nunca decide ni ejecuta comandos por su cuenta**. El núcleo trabaja con almacenamiento propio, validación de ámbito y una política de permisos explícita.
 
-- «Guarda una nota: comprar pan» o `/nota guardar pan`
-- «Busca videos de recetas rusas» o `/dl buscar mp4 recetas rusas`
-- «Pasa este archivo a PDF» o `/convertir pdf` adjuntando el documento
+## Qué hace
 
-Para elegir una opción de un listado (videos o archivos de Drive), avanzar de página sobre una búsqueda concreta o confirmar una vista previa, usa **Responder** sobre el mensaje de esa lista en WhatsApp y escribe el número o la instrucción («2», «siguiente», «sí, envíalo»). En grupos, los números sueltos sin **Responder** se ignoran; en privado, si solo hay una lista vigente, también puedes escribir el número directamente.
+- Interpreta comandos canónicos y peticiones acotadas en lenguaje natural.
+- Gestiona notas, descargas, conversiones, archivos, búsquedas, agenda y trabajos locales.
+- Integra capacidades opcionales de Drive, IA, audio, vídeo, avatar y llamadas.
+- Mantiene recepción, autorización, ejecución y entrega como etapas separadas.
+- Procesa mensajes sintéticos localmente para probar flujos sin activar proveedores remotos.
+- Conserva recibos, estados, límites y resultados en SQLite propio.
 
-## Estado actual y operación
+> **Estado operativo:** el núcleo local está activo y en evolución. Los conectores externos son opt-in y requieren configuración explícita; ejecutar el CLI no inicia WhatsApp, IA ni otros proveedores automáticamente.
 
-Python 3.14 y SQLite propios. El núcleo arranca sin IA ni clasificador. No hay
-dependencia del runtime de Zhana ni acceso a sus datos privados. Transporte productivo
-y sesión exclusiva activos; Zhana archivada recuperable.
-Integraciones optativas propias validadas por encargo posterior: [estado](docs/INTEGRACIONES.md).
-Transporte WhatsApp, proceso continuo y composición de llamadas implementados:
-[configuración y límites](docs/RUNTIME.md). Activación y reversión en [R11](docs/R11_PRODUCCION_20261106.md).
-Galería conservada, Kazumi recuperado y permisos por integración/chat conectados:
-[activos y permisos](docs/ACTIVOS_Y_PERMISOS.md). Tres álbumes originales sin fotos.
+## Principios de diseño
 
-Inventario técnico en [docs/inventario](docs/inventario/README.md), con contratos,
-hashes, límites, formatos, dependencias y superficie audiovisual. Tener una
-capacidad en el registro no acredita que su handler esté construido.
+| Principio | Aplicación |
+| --- | --- |
+| Local-first | SQLite, fixtures y trabajos propios antes de cualquier integración externa. |
+| Autoridad explícita | Actor, chat, grupo, bot, época y permisos se validan antes de ejecutar. |
+| IA acotada | La IA produce contenido; el router y las políticas deciden qué se puede ejecutar. |
+| Trazabilidad | Cada operación conserva recibo, estado, resultado y evidencia reproducible. |
+| Fallo seguro | Mensajes viejos, ámbitos no permitidos y acciones ambiguas se rechazan. |
 
-Comprobaciones locales: `PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v`.
-Pruebas Node locales: `node --test calls/test/*.test.cjs` (sin navegador).
-Configuración de ejemplo sin secretos en config.example.toml. Los datos propios
-de laboratorio están en private/ (ignorado); nunca se importa private/ de Zhana.
-Ayuda de todas las rutas: [docs/commands.md](docs/commands.md). Permisos y recepción
-humana conservan los alcances documentados; presencia de ruta no acredita aceptación remota.
+## Arquitectura
 
-## Historial de fases y campañas (evidencia histórica)
+```mermaid
+flowchart LR
+    A[Entrada local o transporte] --> B[Freshness + ámbito]
+    B --> C[Autorización]
+    C --> D[Router de comandos]
+    D --> E[Dominios y trabajos]
+    E --> F[(SQLite propio)]
+    E --> G[Entrega controlada]
+    H[IA e integraciones opcionales] -. contenido acotado .-> D
+    H -. nunca ejecuta .-> E
+```
 
-Campaña automática real encargada, con resultados en Botsky Lab y laboratorio
-detenido: [116 casos, hallazgos y bloqueos](docs/LAB_20261106.md).
-Nueva campaña de descubrimiento10+10+10: [783casos y29informes](docs/STRESS_20261106.md).
-[Paquete original de contraste](docs/CONTRASTE_STRESS_20261106.md); correcciones y evidencia posterior en el relevo.
+La separación detallada está en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-R0–R9 cerrados localmente. Recorrido mínimo: [docs/R2.md](docs/R2.md).
-Archivos, motores y CLI de trabajos: [docs/R3.md](docs/R3.md).
-Contenido y voz sin despacho desde IA: [docs/R4.md](docs/R4.md).
-Organización y scheduler local: [docs/R5.md](docs/R5.md).
-Drive y recados explícitos: [docs/R6.md](docs/R6.md).
-Economía y juegos: [docs/R7.md](docs/R7.md).
-Administración y Minecraft: [docs/R8.md](docs/R8.md).
-Audiovisual portado y límites: [docs/R9.md](docs/R9.md).
-Integración local, matriz y límites de aceptación: [docs/R10.md](docs/R10.md). La fase R10 conserva su registro con cierre global formal abierto; este gate fue dispensado expresamente por el dueño para ejecutar el corte a producción en R11 ([docs/R11_PRODUCCION_20261106.md](docs/R11_PRODUCCION_20261106.md)), sin transformar pruebas pendientes en PASS ficticios.
-Guía de uso: [docs/GUIA_BOTSKY.md](docs/GUIA_BOTSKY.md).
+## Inicio rápido
+
+```bash
+git clone https://github.com/Yzy-zu/Botskys.git
+cd Botskys
+python3.14 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+cp config.example.toml config.toml
+
+# Inicializa únicamente el almacenamiento propio
+botsky --config config.toml init
+
+# Prueba el parser sin DB, IA ni proveedores
+botsky parse "/nota guardar comprar pan"
+
+# Simula una entrada local y entrega el resultado por stdout
+botsky --config config.toml local "/nota guardar comprar pan"
+```
+
+Para capacidades opcionales instala solo el extra necesario:
+
+```bash
+pip install -e ".[media,ai,integrations,rtc]"
+```
+
+## CLI local
+
+| Comando | Uso |
+| --- | --- |
+| `botsky parse "..."` | Analiza un comando sin tocar DB ni proveedores. |
+| `botsky local "..."` | Simula una entrada de operador local. |
+| `botsky init` | Inicializa el almacenamiento propio. |
+| `botsky work` | Ejecuta trabajos locales pendientes. |
+| `botsky tick` | Reserva notificaciones locales vencidas. |
+| `botsky deliver <id>` | Acepta por stdout partes pendientes de un recibo. |
+
+La referencia completa de comandos está en [docs/commands.md](docs/commands.md).
+
+## Configuración mínima
+
+Copia `config.example.toml` a un archivo privado y revisa, como mínimo:
+
+- `database`: ruta de la base SQLite propia.
+- `timezone`: zona usada por presentaciones y agenda.
+- `owner`, `friends` y `allowed_groups`: límites de identidad y ámbito.
+- `transport`: transporte seleccionado para el entorno actual.
+- `activation_at`, `max_age_seconds` y `max_future_seconds`: ventana temporal de mensajes.
+
+No subas secretos, sesiones, bases de datos ni la carpeta `private/`. Las integraciones y sus límites están documentados en [docs/INTEGRACIONES.md](docs/INTEGRACIONES.md).
+
+## Desarrollo y validación
+
+```bash
+# Suite Python
+PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
+
+# Suite Node del subsistema audiovisual
+node --test calls/test/*.test.cjs
+
+# Lint configurado
+ruff check .
+```
+
+Los cambios de comportamiento deben incluir pruebas locales y mantener la separación entre fixtures, evidencia histórica y datos operativos.
+
+## Documentación
+
+- [Guía de uso](docs/GUIA_BOTSKY.md)
+- [Arquitectura y límites](docs/ARCHITECTURE.md)
+- [Runtime y despliegue](docs/RUNTIME.md)
+- [Integraciones opcionales](docs/INTEGRACIONES.md)
+- [Activos y permisos](docs/ACTIVOS_Y_PERMISOS.md)
+- [Estado compartido](ESTADO_COMPARTIDO.md)
+- [Índice de comandos](docs/commands.md)
+- [Evidencia histórica](docs/evidencia/)
+
+## Licencia y estado
+
+Este repositorio es una reconstrucción independiente y conserva documentación de campañas, pruebas y decisiones anteriores. La evidencia histórica no sustituye al código actual ni autoriza por sí misma una integración o transición operativa.
